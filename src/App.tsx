@@ -1,0 +1,26 @@
+import React from 'react';
+import Home from './components/Home'; // Import your custom components here
+import Resources from './components/Resources';
+import Contact from './components/Contact';
+import About from './components/About';
+import Values from './components/Values';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import TestimonialsSection from './components/TestimonialSection';
+
+function App() {
+  return (
+    <div className="App">
+      <Navigation /> 
+      <Home /> 
+      <About /> 
+      <Values /> 
+      <Resources /> 
+      <TestimonialsSection /> 
+      <Contact /> 
+      <Footer /> 
+    </div>
+  );
+}
+
+export default App;
