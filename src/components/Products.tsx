@@ -5,7 +5,7 @@ import React from 'react';
 const FeaturedProducts: React.FC = () => {
   return (
     <section className="flex items-center bg-white lg:h-screen font-poppins dark:bg-gray-100">
-      <div className="justify-center flex-1 max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+      <div id="products" className="justify-center flex-1 max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
       <div className="px-4 pl-4 mb-6 border-l-4 border-blue-500">
                 <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Why Pivot For Dancers?</span>
                 <h1 className="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
