@@ -25,12 +25,13 @@ const TestimonialsSection: React.FC = () => {
   return (
     <section className="flex items-center bg-gray-100 lg:h-screen dark:bg-gray-800">
       <div className="p-4 mx-auto max-w-7xl">
-        <div className="text-center mb-14">
-          <h1 className="mb-4 text-3xl font-bold dark:text-white">Testimonials</h1>
-          <p className="max-w-xl mx-auto text-gray-500">
-          Let’s ditch the idea that if we’re not dancing, we’re only merely surviving. Pivot is about finding fulfilling jobs for when times get tough or our passions change, instead of meaningless survival jobs that make us feel desperate.
-          </p>
-        </div>
+      <div className="px-4 pl-4 mb-6 border-l-4 border-blue-500">
+            <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Why Pivot For Dancers?</span>
+            <h1 className="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
+              Testimonials
+            </h1>
+          </div>
+        <br></br>
         <div className="flex">
           <div className="grid grid-cols-1 gap-4 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './components/Home'; // Import your custom components here
-import Resources from './components/Resources';
+import FeaturedProducts from './components/Products';
 import Contact from './components/Contact';
 import About from './components/About';
 import Values from './components/Values';
@@ -15,7 +15,7 @@ function App() {
       <Home /> 
       <About /> 
       <Values /> 
-      <Resources /> 
+      <FeaturedProducts /> 
       <TestimonialsSection /> 
       <Contact /> 
       <Footer /> 
