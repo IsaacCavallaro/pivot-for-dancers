@@ -18,7 +18,7 @@ const FeaturedProducts: React.FC = () => {
         <div className="border border-gray-200 rounded-md dark:border-none">
           <div className="relative">
             <a href="https://www.youtube.com/watch?v=jVOzzS-Rdks&list=PLgpMNLeroa9rYSEVR0FFySlFowT4HuTZh" target="_blank" rel="noopener noreferrer">
-              <img src="https://i.postimg.cc/mg7F7104/blue-t-shirt.jpg" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
+              <img src="/assets/pivot-pannels.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
             </a>
             <span className="absolute top-0 left-0 px-4 py-2 lg:px-2 lg:py-1 text-sm font-bold text-gray-100 border-2 rounded-md bg-rose-600">
               Sale
@@ -49,7 +49,7 @@ const FeaturedProducts: React.FC = () => {
           <div className="border border-gray-200 rounded-md dark:border-none">
             <div className="relative">
               <a href="#" className="">
-                <img src="https://i.postimg.cc/mg7F7104/blue-t-shirt.jpg" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
+                <img src="/assets/how-to-pivot-ebook.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
               </a>
               <div className="absolute bottom-0 right-0 z-10 flex items-center justify-center p-2 -mb-6 text-center text-gray-100 bg-teal-600 rounded-full shadow-xl hover:bg-teal-700 w-11 h-11">
                 <a href="#" className="">
@@ -76,7 +76,7 @@ const FeaturedProducts: React.FC = () => {
           <div className="border border-gray-200 rounded-md dark:border-none">
             <div className="relative">
               <a href="#" className="">
-                <img src="https://i.postimg.cc/mg7F7104/blue-t-shirt.jpg" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
+                <img src="/assets/pivot-workshop.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
               </a>
               <div className="absolute bottom-0 right-0 z-10 flex items-center justify-center p-2 -mb-6 text-center text-gray-100 bg-teal-600 rounded-full shadow-xl hover:bg-teal-700 w-11 h-11">
                 <a href="#" className="">
@@ -103,7 +103,7 @@ const FeaturedProducts: React.FC = () => {
           <div className="border border-gray-200 rounded-md dark:border-none">
             <div className="relative">
               <a href="#" className="">
-                <img src="https://i.postimg.cc/mg7F7104/blue-t-shirt.jpg" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
+                <img src="/assets/pivot-mentorship.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
               </a>
               <div className="absolute bottom-0 right-0 z-10 flex items-center justify-center p-2 -mb-6 text-center text-gray-100 bg-teal-600 rounded-full shadow-xl hover:bg-teal-700 w-11 h-11">
                 <a href="#" className="">

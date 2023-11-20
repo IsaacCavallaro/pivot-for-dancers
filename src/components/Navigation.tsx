@@ -1,132 +1,101 @@
 import React, { useState, useEffect } from 'react';
 
-const Navigation: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+function Navbar() {
+  const [activeSection, setActiveSection] = useState('');
+  const [open, setOpen] = useState(false); // State to manage the mobile sidebar
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!isScrolling) {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollPosition = window.scrollY + 300;
-
-        sections.forEach((section) => {
-          const typedSection = section as HTMLElement;
-          const sectionTop = typedSection.offsetTop;
-          const sectionBottom = sectionTop + typedSection.clientHeight;
-
-          if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-            setActiveSection(typedSection.getAttribute('id'));
-          }
-        });
-      }
-    };
-
-    const debounce = function (func: Function, delay: number) {
-      let timeoutId: NodeJS.Timeout;
-      return function (this: any) {
-        const context = this;
-        const args = arguments;
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-        }
-        timeoutId = setTimeout(() => {
-          func.apply(context, args);
-        }, delay);
-      };
-    };
-
-    const debouncedHandleScroll = debounce(handleScroll, 50);
-
-    window.addEventListener('scroll', debouncedHandleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', debouncedHandleScroll);
-    };
-  }, [isScrolling]);
-
-  const handleNavLinkClick = (sectionId: string) => {
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-      setIsScrolling(true);
-      const offset = targetSection.offsetTop - 80; // Adjust as needed
-      window.scrollTo({ top: offset, behavior: 'smooth' });
-
-      // Disable scrolling temporarily during smooth scrolling
-      setTimeout(() => {
-        setIsScrolling(false);
-      }, 800);
-
-      setActiveSection(sectionId);
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 fixed top-0 w-full z-50">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#home" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/assets/logo.png" className="h-8" alt="Your Logo" />
-        </a>
-        <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-          id="navbar-cta"
-        >
-          <ul
-            className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
-              <button
-                onClick={() => handleNavLinkClick('home')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'home'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
-              >
-                Home
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavLinkClick('about')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'about'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
-              >
-                About
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavLinkClick('products')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'products'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
-              >
-                Products
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavLinkClick('contact')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'contact'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
-              >
-                Contact
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
-};
+  const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    scrollToSection(id);
+  };
 
-export default Navigation;
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionIds = ['home', 'about', 'products', 'contact'];
+
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+          if (isVisible) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+    <section className="bg-green-800 dark:bg-gray-900 font-poppins">
+      <div className="max-w-6xl px-4 mx-auto">
+        <nav className="fixed top-0 left-0 right-0 bg-green-800 dark:bg-gray-900 py-4 z-50">
+          <div className="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="/" className="text-xl font-medium leading-none text-gray-200 dark:text-gray-300">Logo</a>
+            <div className="lg:hidden">
+              <button
+                className="text-gray-200 dark:text-gray-300 focus:outline-none"
+                onClick={() => setOpen(!open)}
+              >
+                {/* Hamburger menu icon */}
+                <svg
+                  className="w-6 h-6 fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+              </button>
+            </div>
+            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${open ? 'block' : 'hidden'}`}>
+              <li><a href="#home" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'home' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('home', e)}>Home</a></li>
+              <li><a href="#about" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'about' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('about', e)}>About</a></li>
+              <li><a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'products' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>Products</a></li>
+              <li><a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'contact' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+        {/* Mobile Sidebar */}
+        <div className={`fixed inset-0 w-full bg-gray-900 opacity-25 dark:bg-gray-400 lg:hidden ${open ? 'ease-in-opacity-100' : 'ease-out opacity-0'}`}>
+        </div>
+        <div className={`absolute inset-0 z-10 h-screen p-3 text-gray-700 duration-500 transform shadow-md dark:bg-gray-800 bg-blue-50 w-80 lg:hidden lg:transform-none lg:relative ${open ? 'ease-in-opacity-100 translate-x-0' : 'ease-out opacity-0 -translate-x-full'}`}>
+          <div className="flex justify-between px-5 py-2">
+            <a className="text-2xl font-bold dark:text-gray-300" href="#">Logo</a>
+            <button className="rounded-md hover:text-blue-300 lg:hidden dark:text-gray-400" onClick={() => setOpen(false)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </button>
+          </div>
+          {/* Rest of the sidebar content */}
+          <ul className="px-5 text-left mt-7">
+            {/* ... */}
+          </ul>
+          <div className="border-t border-green-400 dark:border-gray-400 my-7"></div>
+          <div className="flex items-center px-5 lg:hidden">
+            {/* ... */}
+          </div>
+        </div>
+        {/* ... */}
+      </div>
+    </section>
+  );
+}
+
+export default Navbar;
