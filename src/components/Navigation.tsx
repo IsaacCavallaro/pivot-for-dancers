@@ -96,16 +96,13 @@ const Navbar: React.FC<NavbarProps> = () => {
               <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-100">Home</a>
             </li>
             <li className="pb-3">
-              <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-400">About us</a>
+            <li><a href="#about" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'about' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('about', e)}>About</a></li>
             </li>
             <li className="pb-3">
-              <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-400">Features</a>
+            <li><a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'products' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>Products</a></li>
             </li>
             <li className="pb-3">
-              <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-400">Blog</a>
-            </li>
-            <li className="pb-3">
-              <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-400">Testimonials</a>
+            <li><a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'contact' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>Contact</a></li>
             </li>
           </ul>
           {/* Rest of the sidebar content */}
