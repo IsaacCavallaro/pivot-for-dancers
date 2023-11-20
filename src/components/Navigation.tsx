@@ -71,11 +71,16 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </svg>
               </button>
             </div>
-            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${open ? 'hidden' : 'block'}`}>
-              <li><a href="#home" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'home' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('home', e)}>Home</a></li>
-              <li><a href="#about" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'about' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('about', e)}>About</a></li>
-              <li><a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'products' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>Products</a></li>
-              <li><a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'contact' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>Contact</a></li>
+            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
+              {/* Conditionally render section links based on mobile sidebar open/close */}
+              {!open && (
+                <>
+                  <li><a href="#home" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'home' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('home', e)}>Home</a></li>
+                  <li><a href="#about" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'about' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('about', e)}>About</a></li>
+                  <li><a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'products' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>Products</a></li>
+                  <li><a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'contact' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>Contact</a></li>
+                </>
+              )}
             </ul>
           </div>
         </nav>
@@ -92,17 +97,18 @@ const Navbar: React.FC<NavbarProps> = () => {
             </button>
           </div>
           <ul className="px-5 text-left mt-7">
+            {/* Sidebar links remain unchanged */}
             <li className="pb-3">
               <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-100">Home</a>
             </li>
             <li className="pb-3">
-            <li><a href="#about" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'about' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('about', e)}>About</a></li>
+              <a href="#about" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'about' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('about', e)}>About</a>
             </li>
             <li className="pb-3">
-            <li><a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'products' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>Products</a></li>
+              <a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'products' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>Products</a>
             </li>
             <li className="pb-3">
-            <li><a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'contact' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>Contact</a></li>
+              <a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 ${activeSection === 'contact' ? 'text-red-500' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>Contact</a>
             </li>
           </ul>
           {/* Rest of the sidebar content */}
