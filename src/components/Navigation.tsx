@@ -54,7 +54,9 @@ const Navbar: React.FC<NavbarProps> = () => {
       <div className="max-w-6xl px-4 mx-auto">
         <nav className="fixed top-0 left-0 right-0 bg-green-800 dark:bg-gray-900 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
-            <a href="/" className="lg:block hidden text-xl font-medium leading-none text-gray-200 dark:text-gray-300">Logo</a>
+          <a href="/" className="lg:block hidden">
+              <img src="/assets/logo.png" alt="Logo" className="h-8" /> {/* Add your image path and adjust the class for size */}
+            </a>
             <div className="lg:hidden">
               <button
                 className="text-gray-200 dark:text-gray-300 focus:outline-none"
