@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const iconSize = "h-8 w-8"; // Set the desired size
 
   return (
-    <footer className="bg-gray-900 text-white p-8">
+    <footer className="bg-gray-700 text-white p-8">
       <hr className="border-t border-gray-600 my-8" />
       <div className="max-w-screen-xl mx-auto">
         {/* Your footer content goes here */}

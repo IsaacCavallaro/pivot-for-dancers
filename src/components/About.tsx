@@ -42,7 +42,7 @@ const AboutUsSection: React.FC = () => {
               <div className="flex flex-wrap items-center">
                 {features.map((feature, index) => (
                   <div key={index} className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
+                    <div className="p-6 bg-gray-700">
                       <p className="mt-4 mb-2 text-3xl font-bold text-gray-700 dark:text-gray-400">{feature.count}</p>
                       <h2 className="text-sm text-gray-700 dark:text-gray-400">{feature.title}</h2>
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">{feature.description}</p>

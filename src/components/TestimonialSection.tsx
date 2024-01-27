@@ -23,7 +23,7 @@ const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <section className="flex items-center bg-gray-100 lg:h-screen dark:bg-gray-800">
+    <section className="flex items-center bg-gray-900 lg:h-screen">
       <div className="p-4 mx-auto max-w-7xl">
       <div className="px-4 pl-4 mb-6 border-l-4 border-blue-500">
             <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Why Pivot For Dancers?</span>
@@ -35,7 +35,7 @@ const TestimonialsSection: React.FC = () => {
         <div className="flex">
           <div className="grid grid-cols-1 gap-4 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="mb-8 bg-white rounded shadow dark:bg-gray-700">
+              <div key={index} className="bg-gray-100 dark:bg-gray-800">
                 <div className="relative z-20 p-8 -mt-14">
                   <span className="inline-block p-3 mb-3 text-xs text-white bg-blue-500 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-quote" viewBox="0 0 16 16">

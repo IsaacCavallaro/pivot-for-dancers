@@ -15,7 +15,7 @@ const Home: React.FC = () => {
           </p>
           <a
             href="#contact"
-            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-4"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-4"
           >
             Join Our Community
             <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

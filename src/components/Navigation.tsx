@@ -53,9 +53,9 @@ const Navbar: React.FC<NavbarProps> = () => {
   }, []);
 
   return (
-    <section className="bg-green-800 dark:bg-gray-900 font-poppins">
+    <section className="bg-gray-100 dark:bg-gray-800 font-poppins">
       <div className="max-w-6xl px-4 mx-auto">
-        <nav className="fixed top-0 left-0 right-0 bg-green-800 dark:bg-gray-900 py-4 z-50">
+        <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
             <a href="/" className="lg:block hidden">
               <img src="/assets/logo.png" alt="Logo" className="h-8" />
@@ -80,25 +80,25 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <>
                   <li>
                   <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('home', e)}>
-                    Home
+                    HOME
                   </a>
                   </li>
                   <li>
                     <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('about', e)}>
-                      About
+                      ABOUT
                     </a>
                   </li>
 
                   <li>
                     <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('products', e)}>
-                      Products
+                      PRODUCTS
                     </a>
                   </li>
 
 
                   <li>
                     <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('contact', e)}>
-                      Contact
+                      CONTACT
                     </a>
                   </li>
                 </>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact: React.FC = () => {
   return (
-    <div id="contact" className="section bg-gray-900 text-white p-8 relative">
+    <div id="contact" className="section bg-gray-700 text-white p-8 relative">
       <h2 className="text-3xl font-bold mb-6 text-center">Contact Us</h2>
       <p className="text-lg mb-8 text-center">
         Want to share your story on Pivot for Dancers? 
