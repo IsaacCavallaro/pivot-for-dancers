@@ -1,132 +1,154 @@
 import React, { useState, useEffect } from 'react';
 
-const Navigation: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+interface NavbarProps {
+  // Define any props if needed
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!isScrolling) {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollPosition = window.scrollY + 300;
+const Navbar: React.FC<NavbarProps> = () => {
+  const [activeSection, setActiveSection] = useState('');
+  const [open, setOpen] = useState(false);
 
-        sections.forEach((section) => {
-          const typedSection = section as HTMLElement;
-          const sectionTop = typedSection.offsetTop;
-          const sectionBottom = sectionTop + typedSection.clientHeight;
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
-          if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-            setActiveSection(typedSection.getAttribute('id'));
-          }
-        });
-      }
-    };
-
-    const debounce = function (func: Function, delay: number) {
-      let timeoutId: NodeJS.Timeout;
-      return function (this: any) {
-        const context = this;
-        const args = arguments;
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-        }
-        timeoutId = setTimeout(() => {
-          func.apply(context, args);
-        }, delay);
-      };
-    };
-
-    const debouncedHandleScroll = debounce(handleScroll, 50);
-
-    window.addEventListener('scroll', debouncedHandleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', debouncedHandleScroll);
-    };
-  }, [isScrolling]);
-
-  const handleNavLinkClick = (sectionId: string) => {
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-      setIsScrolling(true);
-      const offset = targetSection.offsetTop - 80; // Adjust as needed
-      window.scrollTo({ top: offset, behavior: 'smooth' });
-
-      // Disable scrolling temporarily during smooth scrolling
-      setTimeout(() => {
-        setIsScrolling(false);
-      }, 800);
-
-      setActiveSection(sectionId);
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    scrollToSection(id);
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionIds = ['home', 'about', 'products', 'contact'];
+    
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const section = document.getElementById(id);
+    
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const isMidpointVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+    
+          if (isMidpointVisible) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 fixed top-0 w-full z-50">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#home" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/assets/logo.png" className="h-8" alt="Your Logo" />
-        </a>
-        <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-          id="navbar-cta"
-        >
-          <ul
-            className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
+    <section className="bg-green-800 dark:bg-gray-900 font-poppins">
+      <div className="max-w-6xl px-4 mx-auto">
+        <nav className="fixed top-0 left-0 right-0 bg-green-800 dark:bg-gray-900 py-4 z-50">
+          <div className="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="/" className="lg:block hidden">
+              <img src="/assets/logo.png" alt="Logo" className="h-8" />
+            </a>
+            <div className="lg:hidden">
               <button
-                onClick={() => handleNavLinkClick('home')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'home'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
+                className="text-gray-200 dark:text-gray-300 focus:outline-none"
+                onClick={handleToggle}
               >
+                <svg
+                  className="w-6 h-6 fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+              </button>
+            </div>
+            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
+              {!open && (
+                <>
+                  <li>
+                  <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('home', e)}>
+                    Home
+                  </a>
+                  </li>
+                  <li>
+                    <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('about', e)}>
+                      About
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('products', e)}>
+                      Products
+                    </a>
+                  </li>
+
+
+                  <li>
+                    <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('contact', e)}>
+                      Contact
+                    </a>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
+        </nav>
+        <div className={`lg:hidden fixed inset-0 z-20 bg-gray-900 bg-opacity-25 dark:bg-gray-400 ${open ? 'block' : 'hidden'}`} onClick={handleToggle}></div>
+        <div className={`lg:hidden fixed inset-y-0 left-0 z-30 w-64 bg-blue-50 dark:bg-gray-800 transform duration-300 ease-in-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+          <div className="flex justify-between items-center px-5 py-2">
+            <a className="text-2xl font-bold dark:text-gray-300" href="#">
+              Logo
+            </a>
+            <button className="rounded-md hover:text-blue-300 dark:text-gray-400" onClick={handleToggle}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </button>
+          </div>
+          <ul className="px-5 text-left mt-7">
+            <li className="pb-3">
+              <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-100">
                 Home
-              </button>
+              </a>
             </li>
-            <li>
-              <button
-                onClick={() => handleNavLinkClick('about')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'about'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
-              >
-                About
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavLinkClick('products')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'products'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
-              >
+            <li className="pb-3">
+                <a
+                  href="#about"
+                  className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 hover:tan-300 ${activeSection === 'about' ? 'tan-300' : ''}`}
+                  onClick={(e) => handleNavLinkClick('about', e)}
+                >
+                  About
+                </a>
+              </li>
+            <li className="pb-3">
+              <a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:tan-300 ${activeSection === 'products' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>
                 Products
-              </button>
+              </a>
             </li>
-            <li>
-              <button
-                onClick={() => handleNavLinkClick('contact')}
-                className={`py-2 px-3 md:p-0 ${
-                  activeSection === 'contact'
-                    ? 'text-white bg-gray-900 rounded md:bg-transparent md:text-gray-900 md:dark:text-gray-900'
-                    : 'text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                }`}
-              >
+            <li className="pb-3">
+              <a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:tan-300 ${activeSection === 'contact' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>
                 Contact
-              </button>
+              </a>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
+    </section>
   );
 };
 
-export default Navigation;
+export default Navbar;
