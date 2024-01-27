@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -6,15 +5,21 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'gray-900': '#433E49',
+        'gray-900': '#647C90',
         'purple-800': '#928490',
-        'tan-300': '#DBC1AD',
-        'pink-100': '#F3E8EB',
+        'tan-300': '#E2DED0',
+        'cool-gray-100': '#4E4F50',
+        'gray-700': '#746C70',
       },
       textColor: {
         'white': '#FFFFFF',
+        'gray-900': '#647C90',
+        'purple-800': '#928490',
+        'tan-300': '#E2DED0',
+        'cool-gray-100': '#4E4F50',
+        'gray-700': '#746C70',
       },
     },
   },
   plugins: [],
-}
+};
