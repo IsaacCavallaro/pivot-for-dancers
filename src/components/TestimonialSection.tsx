@@ -25,9 +25,9 @@ const TestimonialsSection: React.FC = () => {
   return (
     <section className="flex items-center bg-light-gray lg:h-screen">
       <div className="p-4 mx-auto max-w-7xl">
-      <div className="px-4 pl-4 mb-6 border-l-4 border-blue-500">
-            <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Why Pivot For Dancers?</span>
-            <h1 className="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
+      <div className="px-4 pl-4 mb-6 border-l-4 border-white">
+            <span className="text-sm text-white uppercase dark:text-gray-400">Why Pivot For Dancers?</span>
+            <h1 className="mt-2 text-3xl font-black text-white md:text-5xl">
               Testimonials
             </h1>
           </div>

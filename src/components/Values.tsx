@@ -4,7 +4,7 @@ const Values: React.FC = () => {
   return (
     <section className="flex items-center bg-purple-gray lg:h-screen font-poppins">
       <div className="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
-      <div className="px-4 pl-4 mb-6 border-l-4 border-blue-500">
+      <div className="px-4 pl-4 mb-6 border-l-4 border-white">
         <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Why Pivot For Dancers?</span>
         <h1 className="mt-2 text-3xl font-black text-white md:text-5xl">
           Our Values

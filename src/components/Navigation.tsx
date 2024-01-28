@@ -53,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 dark:bg-gray-800 font-poppins">
+    <section className="bg-dark-gray font-poppins">
       <div className="max-w-6xl px-4 mx-auto">
         <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -79,25 +79,25 @@ const Navbar: React.FC<NavbarProps> = () => {
               {!open && (
                 <>
                   <li>
-                  <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('home', e)}>
+                  <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('home', e)}>
                     HOME
                   </a>
                   </li>
                   <li>
-                    <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('about', e)}>
+                    <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('about', e)}>
+                    PRODUCTS
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('products', e)}>
                       ABOUT
                     </a>
                   </li>
 
-                  <li>
-                    <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('products', e)}>
-                      PRODUCTS
-                    </a>
-                  </li>
-
 
                   <li>
-                    <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('contact', e)}>
+                    <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('contact', e)}>
                       CONTACT
                     </a>
                   </li>
@@ -109,9 +109,6 @@ const Navbar: React.FC<NavbarProps> = () => {
         <div className={`lg:hidden fixed inset-0 z-20 bg-gray-900 bg-opacity-25 dark:bg-gray-400 ${open ? 'block' : 'hidden'}`} onClick={handleToggle}></div>
         <div className={`lg:hidden fixed inset-y-0 left-0 z-30 w-64 bg-blue-50 dark:bg-gray-800 transform duration-300 ease-in-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="flex justify-between items-center px-5 py-2">
-            <a className="text-2xl font-bold dark:text-gray-300" href="#">
-              Logo
-            </a>
             <button className="rounded-md hover:text-blue-300 dark:text-gray-400" onClick={handleToggle}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-x-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
