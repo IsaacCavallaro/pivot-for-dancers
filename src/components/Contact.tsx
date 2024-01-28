@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact: React.FC = () => {
   return (
-    <div id="contact" className="section bg-gray-700 text-white p-8 relative">
+    <div id="contact" className="section bg-beige text-black p-8 relative">
       <h2 className="text-3xl font-bold mb-6 text-center">Contact Us</h2>
       <p className="text-lg mb-8 text-center">
         Want to share your story on Pivot for Dancers? 
@@ -25,7 +25,7 @@ const Contact: React.FC = () => {
         noValidate
       >
       <div className="flex flex-col items-center justify-center mx-auto max-w-md">
-        <label htmlFor="mce-EMAIL" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-center">
+        <label htmlFor="mce-EMAIL" className="block mb-2 text-sm font-medium text-black text-center">
           Your email
         </label>
         <input
@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
           required
         />
 
-        <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500 dark:text-gray-400 text-center">
+        <p id="helper-text-explanation" className="mt-2 text-sm text-black dark:text-gray-400 text-center">
           We’ll never share your details. Read our{' '}
           <a href="#" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
             Privacy Policy
@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
         type="submit"
         name="subscribe"
         id="mc-embedded-subscribe"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-4"
+        className="bg-light-gray hover:bg-dark-gray text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-4"
         value="Subscribe"
       />
       </div>

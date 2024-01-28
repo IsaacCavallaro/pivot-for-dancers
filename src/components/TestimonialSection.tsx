@@ -23,7 +23,7 @@ const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <section className="flex items-center bg-gray-900 lg:h-screen">
+    <section className="flex items-center bg-light-gray lg:h-screen">
       <div className="p-4 mx-auto max-w-7xl">
       <div className="px-4 pl-4 mb-6 border-l-4 border-blue-500">
             <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Why Pivot For Dancers?</span>
@@ -35,14 +35,14 @@ const TestimonialsSection: React.FC = () => {
         <div className="flex">
           <div className="grid grid-cols-1 gap-4 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-100 dark:bg-gray-800">
+              <div key={index} className="bg-purple-gray">
                 <div className="relative z-20 p-8 -mt-14">
-                  <span className="inline-block p-3 mb-3 text-xs text-white bg-blue-500 rounded-full">
+                  <span className="inline-block p-3 mb-3 text-xs text-white rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-quote" viewBox="0 0 16 16">
                       <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
                     </svg>
                   </span>
-                  <p className="mb-4 text-base leading-7 text-gray-400">{testimonial.content}</p>
+                  <p className="mb-4 text-base leading-7 text-white">{testimonial.content}</p>
                   <div className="flex items-center gap-x-4">
                     <div className="relative w-20 h-20 overflow-hidden rounded-full">
                       <img className="object-cover w-full h-full transition-all hover:scale-110" src={testimonial.imageSrc} alt="" />

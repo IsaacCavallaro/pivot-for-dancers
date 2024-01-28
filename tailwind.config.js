@@ -5,20 +5,21 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'gray-900': '#647C90',
-        'purple-800': '#928490',
-        'tan-300': '#E2DED0',
-        'cool-gray-100': '#4E4F50',
-        'gray-700': '#746C70',
+        'light-gray': '#647C90',
+        'purple-gray': '#928490',
+        'beige': '#E2DED0',
+        'dark-gray': '#4E4F50',
+        'brown-gray': '#746C70',
         'off-white': '#FAF9F6'
       },
       textColor: {
         'white': '#FFFFFF',
-        'gray-900': '#647C90',
-        'purple-800': '#928490',
-        'tan-300': '#E2DED0',
-        'cool-gray-100': '#4E4F50',
-        'gray-700': '#746C70',
+        'black': '#000000',
+        'light-gray': '#647C90',
+        'purple-gray': '#928490',
+        'beige': '#E2DED0',
+        'dark-gray': '#4E4F50',
+        'brown-gray': '#746C70',
       },
       fontFamily: {
         'brown-sugar': ['Brown Sugar', 'cursive'],
