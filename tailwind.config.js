@@ -22,10 +22,10 @@ module.exports = {
         'brown-gray': '#746C70',
       },
       fontFamily: {
-        'brown-sugar': ['Brown Sugar', 'cursive'],
+        'merriweather': ['Merriweather', 'serif'], // Headings
+        'montserrat': ['Montserrat', 'sans-serif'],  // Paragraphs
       },
     },
   },
   plugins: [],
 };
-

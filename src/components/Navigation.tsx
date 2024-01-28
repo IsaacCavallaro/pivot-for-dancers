@@ -53,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   }, []);
 
   return (
-    <section className="bg-dark-gray font-poppins">
+    <section className="bg-dark-gray">
       <div className="max-w-6xl px-4 mx-auto">
         <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -84,13 +84,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </a>
                   </li>
                   <li>
-                    <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('about', e)}>
+                    <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('products', e)}>
                     PRODUCTS
                     </a>
                   </li>
 
                   <li>
-                    <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('products', e)}>
+                    <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('about', e)}>
                       ABOUT
                     </a>
                   </li>

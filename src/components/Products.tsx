@@ -4,11 +4,11 @@ import React from 'react';
 
 const FeaturedProducts: React.FC = () => {
   return (
-    <section className="flex items-center bg-beige lg:h-screen">
-      <div id="products" className="justify-center flex-1 max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+    <section className="flex items-center bg-beige">
+      <div id="products" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-20 md:px-6">
       <div className="px-4 pl-4 mb-6 border-l-4 border-black">
                 <span className="text-sm text-black uppercase">Why Pivot For Dancers?</span>
-                <h1 className="mt-2 text-3xl font-black text-black md:text-5xl">
+                <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
                   Products
                 </h1>
               </div>
@@ -32,13 +32,13 @@ const FeaturedProducts: React.FC = () => {
             </div>
           </div>
           <div className="p-6 bg-off-white">
-            <h3 className="mb-2 text-xl font-medium text-center dark:text-gray-400">
+            <h3 className="mb-2 text-xl font-merriweather text-center text-black">
               <a href="https://www.youtube.com/watch?v=jVOzzS-Rdks&list=PLgpMNLeroa9rYSEVR0FFySlFowT4HuTZh" target="_blank" rel="noopener noreferrer">Pivot Panels </a>
             </h3>
             <div className="flex justify-center mb-2 text-center">
-              <p className="text-lg font-bold text-gray-600 dark:text-gray-400">
-                <span className="text-rose-500 dark:text-gray-300">FREE</span>
-                <span className="ml-2 line-through dark:text-gray-400">$50</span>
+              <p className="text-lg font-merriweather text-black">
+                <span className="text-black ">FREE</span>
+                <span className="ml-2 line-through text-black">$50</span>
               </p>
             </div>
           </div>
@@ -60,13 +60,13 @@ const FeaturedProducts: React.FC = () => {
               </div>
             </div>
             <div className="p-6 bg-off-white">
-              <h3 className="mb-2 text-xl font-medium text-center dark:text-gray-400">
+              <h3 className="mb-2 text-xl font-merriweather text-center text-black">
                 <a href="#">ebook</a>
               </h3>
               <div className="flex justify-center mb-2 text-center">
-                <p className="text-lg font-bold text-gray-600 dark:text-gray-400">
-                  <span className="text-rose-500 dark:text-gray-300">COMING SOON</span>
-                  <span className="ml-2 line-through dark:text-gray-400"></span>
+                <p className="text-lg font-merriweather text-gray-600 text-black">
+                  <span className="text-black">COMING SOON</span>
+                  <span className="ml-2 line-through text-black"></span>
                 </p>
               </div>
             </div>
@@ -87,13 +87,13 @@ const FeaturedProducts: React.FC = () => {
               </div>
             </div>
             <div className="p-6 bg-off-white">
-              <h3 className="mb-2 text-xl font-medium text-center dark:text-gray-400">
+              <h3 className="mb-2 text-xl font-merriweather text-center text-black">
                 <a href="#">How to pivot course</a>
               </h3>
               <div className="flex justify-center mb-2 text-center">
-                <p className="text-lg font-bold text-gray-600 dark:text-gray-400">
-                  <span className="text-rose-500 dark:text-gray-300">$800.00</span>
-                  <span className="ml-2 line-through dark:text-gray-400">1500</span>
+                <p className="text-lg font-merriweather text-gray-600 text-black">
+                  <span className="text-black">$800.00</span>
+                  <span className="ml-2 line-through text-black">1500</span>
                 </p>
               </div>
             </div>
@@ -114,13 +114,13 @@ const FeaturedProducts: React.FC = () => {
               </div>
             </div>
             <div className="p-6 bg-off-white">
-              <h3 className="mb-2 text-xl font-medium text-center dark:text-gray-400">
+              <h3 className="mb-2 text-xl font-merriweather text-center text-black">
                 <a href="#">Private Mentorship</a>
               </h3>
               <div className="flex justify-center mb-2 text-center">
-                <p className="text-lg font-bold text-gray-600 dark:text-gray-400">
-                  <span className="text-rose-500 dark:text-gray-300">ON REQUESTS</span>
-                  <span className="ml-2 line-through dark:text-gray-400"></span>
+                <p className="text-lg font-merriweather text-gray-600 text-black">
+                  <span className="text-black">ON REQUESTS</span>
+                  <span className="ml-2 line-through text-black"></span>
                 </p>
               </div>
             </div>
