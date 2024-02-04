@@ -3,15 +3,15 @@ import React from 'react';
 const Contact: React.FC = () => {
   return (
     <div id="contact" className="section bg-beige text-black p-8 relative">
-      <h2 className="text-3xl font-merriweather mb-6 text-center">Contact Us</h2>
+      <h2 className="mt-2 mb-6 text-3xl font-merriweather text-text-black md:text-5xl text-center">Join the Pivot for Dancers Community</h2>
       <p className="text-lg mb-8 text-center font-montserrat">
-        Want to share your story on Pivot for Dancers? 
+      When you join, you’ll become part of a 
       </p>
       <p className="text-lg mb-8 text-center font-montserrat">
-        Have a career change resource you'd like to tell us about? 
+      growing community of current and former professional dancers 
       </p>
       <p className="text-lg mb-8 text-center font-montserrat">
-        Looking for help finding jobs for dancers that aren't performance jobs?
+      who are talking about career change. You’ll also get
       </p>
 
       {/* Mailchimp embedded form */}

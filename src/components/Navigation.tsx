@@ -28,32 +28,42 @@ const Navbar: React.FC<NavbarProps> = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sectionIds = ['home', 'about', 'products', 'contact'];
-    
+      let threshold = 0.8; // Adjust this threshold as needed
+  
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const id = sectionIds[i];
         const section = document.getElementById(id);
-    
+  
         if (section) {
           const rect = section.getBoundingClientRect();
           const isMidpointVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-    
+  
           if (isMidpointVisible) {
+            setActiveSection(id);
+            break;
+          }
+  
+          // Check if the section is within the threshold
+          const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
+  
+          if (isInThreshold) {
             setActiveSection(id);
             break;
           }
         }
       }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
-
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
 
   return (
-    <section className="bg-dark-gray">
+    <section className="bg-dark-gray max-device-width">
       <div className="max-w-6xl px-4 mx-auto">
         <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -75,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </svg>
               </button>
             </div>
-            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
+            <ul className={`max-device-width lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
               {!open && (
                 <>
                   <li>
@@ -94,8 +104,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                       ABOUT
                     </a>
                   </li>
-
-
+                  
                   <li>
                     <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('contact', e)}>
                       CONTACT

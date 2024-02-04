@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './components/Home'; // Import your custom components here
+import Home from './components/Home';
 import FeaturedProducts from './components/Products';
 import Contact from './components/Contact';
 import About from './components/About';

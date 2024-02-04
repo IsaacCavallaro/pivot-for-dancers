@@ -42,24 +42,24 @@ const Values: React.FC = () => {
   });
 
   return (
-    <section id="values" className="bg-purple-gray font-poppins lg:py-20">
+    <section id="values" className="bg-beige font-poppins lg:py-20">
       <div className="max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
-        <div className="px-4 pl-4 mb-6 border-l-4 border-black">
-          <span className="text-sm text-black0 uppercase font-merriweather">Why Pivot For Dancers?</span>
-          <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
+        <div className="px-4 pl-4 mb-6">
+          <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Why Pivot For Dancers?</span>
+          <h1 className="mt-2 text-3xl font-merriweather text-text-black md:text-5xl">
           Our Values
         </h1>
         </div>
         <div className="flex flex-wrap">
-          <div className="w-full lg:w-1/2 px-4 mb-10">
+          <div className="w-full lg:w-1/2 px-4 mb-10 opacity-70">
             <animated.img
               style={iconAnimation}
-              className="object-cover w-full h-full rounded-lg opacity-60"
+              className="object-cover w-full h-full rounded-lg"
               src="/assets/test-pic-three.jpeg"
-              alt="Image Description"
+              alt="Female artistically reaching for the sky"
             />
           </div>
-          <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
+          <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0 ">
             <div className="flex flex-col space-y-8">
               {values.map((value, index) => (
                 <animated.div
@@ -67,17 +67,17 @@ const Values: React.FC = () => {
                   style={valuesAnimation}
                   className="flex mb-4 animate__animated animate__fadeIn"
                 >
-                  <animated.span style={iconAnimation} className="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 bg-blue-500 rounded dark:bg-blue-500 dark:text-gray-100 text-gray-50">
+                  <animated.span style={iconAnimation} className="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 dark:bg-gray-700 text-white">
                     {value.title === 'Curiosity' && <IoMdSearch className="w-6 h-6" />}
                     {value.title === 'Empowerment' && <IoIosFitness className="w-6 h-6" />}
                     {value.title === 'Resilience' && <IoMdHeartHalf className="w-6 h-6" />}
                     {value.title !== 'Curiosity' && value.title !== 'Empowerment' && value.title !== 'Resilience' && <IoMdCode className="w-6 h-6" />}
                   </animated.span>
                   <div>
-                    <animated.h2 style={valuesAnimation} className="mb-4 text-xl font-bold leading-tight dark:text-gray-300 md:text-2xl">
+                    <animated.h2 style={valuesAnimation} className="mb-4 text-xl font-bold leading-tight text-text-black md:text-2xl">
                       {value.title}
                     </animated.h2>
-                    <animated.p style={valuesAnimation} className="text-base leading-loose text-gray-500 dark:text-gray-400">
+                    <animated.p style={valuesAnimation} className="text-base leading-loose text-black">
                       {value.description}
                     </animated.p>
                   </div>
