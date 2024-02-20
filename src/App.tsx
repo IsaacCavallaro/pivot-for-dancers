@@ -7,18 +7,22 @@ import Values from './components/Values';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import TestimonialsSection from './components/TestimonialSection';
+import Faq from './components/Faq';
+import Timeline from './components/Timeline';
 
 function App() {
   return (
     <div className="App">
-      <Navigation /> 
-      <Home /> 
-      <FeaturedProducts /> 
-      <About /> 
-      <Values /> 
-      <TestimonialsSection /> 
-      <Contact /> 
-      <Footer /> 
+      <Navigation />
+      <Home />
+      <FeaturedProducts />
+      <About />
+      <Timeline />
+      <Values />
+      <TestimonialsSection />
+      <Contact />
+      <Faq />
+      <Footer />
     </div>
   );
 }
