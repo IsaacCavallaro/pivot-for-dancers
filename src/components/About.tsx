@@ -46,7 +46,7 @@ const AboutUsSection: React.FC = () => {
           <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
             <div className="lg:max-w-md">
               <div className="px-4 pl-4 mb-6">
-                <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Why Pivot For Dancers?</span>
+                <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Who We Are & What We Do</span>
                 <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
                   About Us
                 </h1>
@@ -84,7 +84,7 @@ const AboutUsSection: React.FC = () => {
         </div>
       </div>
     </section>
-  ); 
+  );
 };
 
 export default AboutUsSection;
