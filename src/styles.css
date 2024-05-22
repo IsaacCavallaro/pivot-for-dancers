@@ -1,9 +1,9 @@
 @import '@fortawesome/fontawesome-free/css/all.css';
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
 
 .invisible-placeholder {
   height: 60px; /* Adjust this value based on your navigation bar height */
@@ -11,4 +11,10 @@
 }
 
 
-
+/* home background image */
+#home .overlay {
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0.7; 
+}

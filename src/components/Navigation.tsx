@@ -28,16 +28,25 @@ const Navbar: React.FC<NavbarProps> = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sectionIds = ['home', 'about', 'products', 'contact'];
-    
+      let threshold = 0.8; // Adjust this threshold as needed
+
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const id = sectionIds[i];
         const section = document.getElementById(id);
-    
+
         if (section) {
           const rect = section.getBoundingClientRect();
           const isMidpointVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-    
+
           if (isMidpointVisible) {
+            setActiveSection(id);
+            break;
+          }
+
+          // Check if the section is within the threshold
+          const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
+
+          if (isInThreshold) {
             setActiveSection(id);
             break;
           }
@@ -52,10 +61,11 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
   }, []);
 
+
   return (
-    <section className="bg-green-800 dark:bg-gray-900 font-poppins">
+    <section className="bg-dark-gray max-device-width">
       <div className="max-w-6xl px-4 mx-auto">
-        <nav className="fixed top-0 left-0 right-0 bg-green-800 dark:bg-gray-900 py-4 z-50">
+        <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
             <a href="/" className="lg:block hidden">
               <img src="/assets/logo.png" alt="Logo" className="h-8" />
@@ -75,30 +85,29 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </svg>
               </button>
             </div>
-            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
+            <ul className={`max-device-width lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
               {!open && (
                 <>
                   <li>
-                  <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('home', e)}>
-                    Home
-                  </a>
+                    <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('home', e)}>
+                      HOME
+                    </a>
                   </li>
                   <li>
-                    <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('about', e)}>
-                      About
+                    <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('products', e)}>
+                      PRODUCTS
                     </a>
                   </li>
 
                   <li>
-                    <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('products', e)}>
-                      Products
+                    <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('about', e)}>
+                      ABOUT
                     </a>
                   </li>
 
-
                   <li>
-                    <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-blue-200 dark:hover:text-blue-300`} onClick={(e) => handleNavLinkClick('contact', e)}>
-                      Contact
+                    <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('contact', e)}>
+                      SIGN UP
                     </a>
                   </li>
                 </>
@@ -109,9 +118,6 @@ const Navbar: React.FC<NavbarProps> = () => {
         <div className={`lg:hidden fixed inset-0 z-20 bg-gray-900 bg-opacity-25 dark:bg-gray-400 ${open ? 'block' : 'hidden'}`} onClick={handleToggle}></div>
         <div className={`lg:hidden fixed inset-y-0 left-0 z-30 w-64 bg-blue-50 dark:bg-gray-800 transform duration-300 ease-in-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="flex justify-between items-center px-5 py-2">
-            <a className="text-2xl font-bold dark:text-gray-300" href="#">
-              Logo
-            </a>
             <button className="rounded-md hover:text-blue-300 dark:text-gray-400" onClick={handleToggle}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-x-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -126,14 +132,14 @@ const Navbar: React.FC<NavbarProps> = () => {
               </a>
             </li>
             <li className="pb-3">
-                <a
-                  href="#about"
-                  className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 hover:tan-300 ${activeSection === 'about' ? 'tan-300' : ''}`}
-                  onClick={(e) => handleNavLinkClick('about', e)}
-                >
-                  About
-                </a>
-              </li>
+              <a
+                href="#about"
+                className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 hover:tan-300 ${activeSection === 'about' ? 'tan-300' : ''}`}
+                onClick={(e) => handleNavLinkClick('about', e)}
+              >
+                About
+              </a>
+            </li>
             <li className="pb-3">
               <a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:tan-300 ${activeSection === 'products' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>
                 Products
