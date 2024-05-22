@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
                         type="submit"
                         className="w-full px-6 py-4 text-sm font-semibold text-gray-100 bg-blue-500 rounded-md md:w-auto md:ml-2 hover:bg-blue-600"
                       >
-                        Subscribe
+                        Sign Up
                       </button>
                     </form>
                   </div>
@@ -77,7 +77,7 @@ const Contact: React.FC = () => {
                     <a href="https://www.linkedin.com/company/pivotfordancers/" className={`text-white bg-blue-500 hover:bg-blue-400 mx-3 p-2 rounded-full flex items-center justify-center ${iconSize}`} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://www.youtube.com/@pivotfordancers8979" className={`text-white bg-red-500 hover:bg-red-400 mx-3 p-2 rounded-full flex items-center justify-center ${iconSize}`} target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.youtube.com/@pivotfordancers" className={`text-white bg-red-500 hover:bg-red-400 mx-3 p-2 rounded-full flex items-center justify-center ${iconSize}`} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-youtube"></i>
                     </a>
                   </div>

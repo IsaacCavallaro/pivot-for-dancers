@@ -7,16 +7,8 @@ const Timeline: React.FC = () => {
                 <div className="px-4 pl-4 mb-6">
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Does this sound familiar?</span>
                     <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
-                        Next Stage
+                        Pivot Stages
                     </h1>
-                </div>
-                <div className="w-full md:w-1/2 px-4 mb-10 xl:mb-0">
-                    <h2 className="mt-2 mb-4 text-2xl font-bold text-black">
-                        What's your next stage?
-                    </h2>
-                    <p className="mb-4 text-base leading-7 text-black">
-                        If you’ve gone through any of these stages, Pivot for Dancers is for you. Of course, everyone’s story is wonderfully unique, but if you resonate at all, you’re in the right place.
-                    </p>
                 </div>
                 <div className="w-full mx-auto lg:max-w-3xl">
                     {/* Stage 1 */}
@@ -32,9 +24,9 @@ const Timeline: React.FC = () => {
                                     </svg>
                                 </div>
                             </div>
-                            <div className="w-px h-full bg-blue-300"></div>
+                            <div className="w-px h-full dark:bg-gray-700"></div>
                         </div>
-                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-900">
+                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700">
                             <div className="absolute inline-block w-4 overflow-hidden -translate-y-1/2 top-7 -left-4">
                                 <div className="hidden h-10 origin-top-right transform -rotate-45 bg-blue-600 dark:bg-blue-500 lg:block drop-shadow-lg"></div>
                             </div>
@@ -42,7 +34,7 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Stage 1</span>
                                 </div>
-                                <p className="mt-4 mb-2 text-xl font-bold text-gray-600 lg:mt-8 dark:text-gray-400">You’ve trained to be a dancer since you were tiny — probably 3 or 4. You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you’re truly living the dream.</p>
+                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You’ve trained to be a dancer since you were tiny. You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you’re truly living the dream.</p>
                             </div>
                         </div>
                     </div>
@@ -59,9 +51,9 @@ const Timeline: React.FC = () => {
                                     </svg>
                                 </div>
                             </div>
-                            <div className="w-px h-full bg-blue-300"></div>
+                            <div className="w-px h-full dark:bg-gray-700"></div>
                         </div>
-                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-900">
+                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700">
                             <div className="absolute inline-block w-4 overflow-hidden -translate-y-1/2 top-7 -left-4">
                                 <div className="hidden h-10 origin-top-right transform -rotate-45 bg-blue-600 dark:bg-blue-500 lg:block drop-shadow-lg"></div>
                             </div>
@@ -69,7 +61,7 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Stage 2</span>
                                 </div>
-                                <p className="mt-4 mb-2 text-xl font-bold text-gray-600 lg:mt-8 dark:text-gray-400">You’re still dancing professionally and it makes up the majority of your income. But you also juggle teaching four nights a week, you grab up any extra gig you can get, and you’re honestly still struggling to make ends meet. You met someone and you want to plant roots but there aren’t many dance jobs that won’t mean touring or moving. Or, if you can stay local, you work nights and probably on every holiday where you start to feel like you’re missing out on other aspects of life. But still, you’re living the dream so who cares?</p>
+                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You’re still dancing professionally and loving it. You also teach four nights a week, take any extra gig you can get, but still struggle to make ends meet. You work nights and most holidays and sometimes feel like you’re missing out on other aspects of life. But you’re living the dream, so who cares?</p>
                             </div>
                         </div>
                     </div>
@@ -86,9 +78,9 @@ const Timeline: React.FC = () => {
                                     </svg>
                                 </div>
                             </div>
-                            <div className="w-px h-full bg-blue-300"></div>
+                            <div className="w-px h-full dark:bg-gray-700"></div>
                         </div>
-                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-900">
+                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700">
                             <div className="absolute inline-block w-4 overflow-hidden -translate-y-1/2 top-7 -left-4">
                                 <div className="hidden h-10 origin-top-right transform -rotate-45 bg-blue-600 dark:bg-blue-500 lg:block drop-shadow-lg"></div>
                             </div>
@@ -96,7 +88,7 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Stage 3</span>
                                 </div>
-                                <p className="mt-4 mb-2 text-xl font-bold text-gray-600 lg:mt-8 dark:text-gray-400">You’re older, a bit more achy, and you’ve perhaps had a few heartbreaks sprinkled in along the way. You feel like you’ve “been there, done that” with every new job you book. You’re no longer challenged and might be feeling bored doing the same choreography day after day. You notice that you’re not connecting to your dance friends the way you used to. They still seem really into it and you’re quietly confused, unsure if there’s something more for you. You’re broke and have no idea how to get ahead financially, let alone out of debt. And you crave settling down but don’t tell anyone because that’s seen as a bad thing.</p>
+                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave settling down but keep these thoughts to yourself because you’re living the dream, right?</p>
                             </div>
                         </div>
                     </div>
@@ -113,9 +105,9 @@ const Timeline: React.FC = () => {
                                     </svg>
                                 </div>
                             </div>
-                            <div className="w-px h-full bg-blue-300"></div>
+                            <div className="w-px h-full dark:bg-gray-700"></div>
                         </div>
-                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-900">
+                        <div className="relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700">
                             <div className="absolute inline-block w-4 overflow-hidden -translate-y-1/2 top-7 -left-4">
                                 <div className="hidden h-10 origin-top-right transform -rotate-45 bg-blue-600 dark:bg-blue-500 lg:block drop-shadow-lg"></div>
                             </div>
@@ -123,13 +115,24 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Pivot</span>
                                 </div>
-                                <p className="mt-4 mb-2 text-xl font-bold text-gray-600 lg:mt-8 dark:text-gray-400">You make the hard choice to leave your dance career and embark on a new adventure. You explore new hobbies and remember old interests you put aside. You start a family or start a business. You learn about money and start to value yourself in dollars for the first time. You continue to dance and protect your relationship with it. You didn’t end up jaded and bitter about the dance industry and all the shows you didn’t book. You’re grateful and proud of your dance career and you bring dance in your life in new ways. You can afford to support theatres and ballets, and you have time to take class regularly and with no pressure. You learn that you’re more than a dancer and that life doesn’t end just because your dance career did. You chose to pivot. Welcome to the next stage.</p>
+                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You decide to make a career change on your terms. You start a family or a business. You explore new hobbies and make real money for the first time. You still take class and you’re not bitter about the industry. You’re proud of your dance career but learn you’re more than a dancer. </p>
                             </div>
                         </div>
                     </div>
-                    {/* Repeat the same structure for Stages 2, 3, and Pivot */}
+                </div>
+                <div className="w-full md:w-1/2 px-4 mb-10 xl:mb-0">
+                    <h2 className="mt-2 mb-4 text-2xl font-bold text-black">
+                        What's your next stage?
+                    </h2>
+                    <p className="mb-4 text-base leading-7 text-black">
+                        If you’ve gone through any of these stages, Pivot for Dancers is for you. Of course, everyone’s story is wonderfully unique, but if you resonate at all, you’re in the right place.
+                    </p>
+                    <p className="px-4 mb-6 text-2xl font-montserrat text-black">
+                        you’re in the right place.
+                    </p>
                 </div>
             </div>
+
         </section>
     );
 };

@@ -29,23 +29,23 @@ const Navbar: React.FC<NavbarProps> = () => {
     const handleScroll = () => {
       const sectionIds = ['home', 'about', 'products', 'contact'];
       let threshold = 0.8; // Adjust this threshold as needed
-  
+
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const id = sectionIds[i];
         const section = document.getElementById(id);
-  
+
         if (section) {
           const rect = section.getBoundingClientRect();
           const isMidpointVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-  
+
           if (isMidpointVisible) {
             setActiveSection(id);
             break;
           }
-  
+
           // Check if the section is within the threshold
           const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
-  
+
           if (isInThreshold) {
             setActiveSection(id);
             break;
@@ -53,14 +53,14 @@ const Navbar: React.FC<NavbarProps> = () => {
         }
       }
     };
-  
+
     window.addEventListener('scroll', handleScroll);
-  
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
+
 
   return (
     <section className="bg-dark-gray max-device-width">
@@ -89,13 +89,13 @@ const Navbar: React.FC<NavbarProps> = () => {
               {!open && (
                 <>
                   <li>
-                  <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('home', e)}>
-                    HOME
-                  </a>
+                    <a href="#home" className={`text-sm ${activeSection === 'home' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('home', e)}>
+                      HOME
+                    </a>
                   </li>
                   <li>
                     <a href="#products" className={`text-sm ${activeSection === 'products' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('products', e)}>
-                    PRODUCTS
+                      PRODUCTS
                     </a>
                   </li>
 
@@ -104,10 +104,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                       ABOUT
                     </a>
                   </li>
-                  
+
                   <li>
                     <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('contact', e)}>
-                      CONTACT
+                      SIGN UP
                     </a>
                   </li>
                 </>
@@ -132,14 +132,14 @@ const Navbar: React.FC<NavbarProps> = () => {
               </a>
             </li>
             <li className="pb-3">
-                <a
-                  href="#about"
-                  className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 hover:tan-300 ${activeSection === 'about' ? 'tan-300' : ''}`}
-                  onClick={(e) => handleNavLinkClick('about', e)}
-                >
-                  About
-                </a>
-              </li>
+              <a
+                href="#about"
+                className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 hover:tan-300 ${activeSection === 'about' ? 'tan-300' : ''}`}
+                onClick={(e) => handleNavLinkClick('about', e)}
+              >
+                About
+              </a>
+            </li>
             <li className="pb-3">
               <a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:tan-300 ${activeSection === 'products' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>
                 Products
