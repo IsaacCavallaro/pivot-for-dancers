@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { IoMdCompass, IoMdSearch, IoIosFitness, IoMdHeartHalf, IoMdCode } from 'react-icons/io';
+import { IoMdSearch, IoIosFitness, IoMdHeartHalf, IoMdFlag } from 'react-icons/io';
 
 const Values: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -71,7 +71,7 @@ const Values: React.FC = () => {
                     {value.title === 'Curiosity' && <IoMdSearch className="w-6 h-6" />}
                     {value.title === 'Empowerment' && <IoIosFitness className="w-6 h-6" />}
                     {value.title === 'Resilience' && <IoMdHeartHalf className="w-6 h-6" />}
-                    {value.title !== 'Curiosity' && value.title !== 'Empowerment' && value.title !== 'Resilience' && <IoMdCode className="w-6 h-6" />}
+                    {value.title === 'Humility' && <IoMdFlag className="w-6 h-6" />}
                   </animated.span>
                   <div>
                     <animated.h2 style={valuesAnimation} className="mb-4 text-xl font-bold leading-tight text-text-black md:text-2xl">
@@ -94,15 +94,31 @@ const Values: React.FC = () => {
 const values = [
   {
     title: 'Curiosity',
-    description: 'Pivot for Dancers encourages dancers to explore other interests simultaneously with pursuing a dance career. It doesn\'t have to be one or the other.',
+    description: (
+      <>
+        Pivot for Dancers <span className="text-lg font-bold">encourages</span> dancers to explore other interests simultaneously with pursuing a dance career. It doesn&apos;t have to be one or the other.
+      </>
+    ),
   },
   {
     title: 'Empowerment',
-    description: 'Let\'s ditch the idea that if we\'re not dancing, we\'re only merely surviving. Pivot is about finding fulfilling work for when times get tough or our passions change, instead of meaningless survival jobs that make us feel desperate.',
+    description: (
+      <>
+        Let&apos;s ditch the idea that if we&apos;re not dancing, we&apos;re only merely surviving. Pivot is about finding <span className="text-lg font-bold">fulfilling</span> work for when times get tough or our passions change, instead of meaningless survival jobs that make us feel desperate.
+      </>
+    ),
   },
   {
     title: 'Resilience',
-    description: 'You\'ve made the courageous choice to see what else is out there for you. It\'s that resilience you learned as an ambitious dancer that will help you through.',
+    description: (
+      <>
+        You&apos;ve made the courageous choice to see what else is out there for you. It&apos;s that <span className="text-lg font-bold">resilience</span> you learned as an ambitious dancer that will help you through.
+      </>
+    ),
+  },
+  {
+    title: 'Humility',
+    description: ' blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
   },
 ];
 
