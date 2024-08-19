@@ -17,7 +17,7 @@ const Timeline: React.FC = () => {
                     </h1>
                 </div>
                 <div className="w-full mx-auto lg:max-w-3xl">
-                    {/* THE DREAM */}
+                    {/* STAGE 1 - THE DREAM */}
                     <div className="relative flex justify-between">
                         <div className="flex flex-col items-center w-10 mr-4 md:w-24">
                             <div>
@@ -34,8 +34,17 @@ const Timeline: React.FC = () => {
                         >
                             <div className="relative z-20 p-6 text-center">
                                 <h2 className="text-lg font-semibold text-blue-500 dark:text-blue-400">
-                                    {visibleStage === 1 ? 'Hide Stage 1' : 'THE DREAM'}
+                                    THE DREAM
                                 </h2>
+                                <div className="mt-2 flex justify-center">
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
+                                        {visibleStage === 1 ? (
+                                            <i className="fas fa-chevron-up text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        )}
+                                    </div>
+                                </div>
                                 {visibleStage === 1 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
                                         You’ve trained to be a dancer since you were tiny. You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you’re truly living the dream.
@@ -43,6 +52,7 @@ const Timeline: React.FC = () => {
                                 )}
                             </div>
                         </div>
+
                     </div>
                     {/* THE GRIT */}
                     <div className="relative flex justify-between">
@@ -61,8 +71,17 @@ const Timeline: React.FC = () => {
                         >
                             <div className="relative z-20 p-6 text-center">
                                 <h2 className="text-lg font-semibold text-blue-500 dark:text-blue-400">
-                                    {visibleStage === 2 ? 'Hide Stage 2' : 'THE GRIT'}
+                                    THE GRIT
                                 </h2>
+                                <div className="mt-2 flex justify-center">
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
+                                        {visibleStage === 2 ? (
+                                            <i className="fas fa-chevron-up text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        )}
+                                    </div>
+                                </div>
                                 {visibleStage === 2 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
                                         You’re still dancing professionally and loving it. You also teach four nights a week, take any extra gig you can get, but still struggle to make ends meet. You work nights and most holidays and sometimes feel like you’re missing out on other aspects of life. But you’re living the dream, so who cares?
@@ -70,6 +89,7 @@ const Timeline: React.FC = () => {
                                 )}
                             </div>
                         </div>
+
                     </div>
                     {/* THE REALITY */}
                     <div className="relative flex justify-between">
@@ -88,8 +108,17 @@ const Timeline: React.FC = () => {
                         >
                             <div className="relative z-20 p-6 text-center">
                                 <h2 className="text-lg font-semibold text-blue-500 dark:text-blue-400">
-                                    {visibleStage === 3 ? 'Hide Stage 3' : 'THE REALITY'}
+                                    THE REALITY
                                 </h2>
+                                <div className="mt-2 flex justify-center">
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
+                                        {visibleStage === 3 ? (
+                                            <i className="fas fa-chevron-up text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        )}
+                                    </div>
+                                </div>
                                 {visibleStage === 3 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
                                         You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave settling down but keep these thoughts to yourself because you’re living the dream, right?
@@ -117,6 +146,15 @@ const Timeline: React.FC = () => {
                                 <h2 className="text-lg font-semibold text-blue-500 dark:text-blue-400">
                                     {visibleStage === 4 ? 'Hide Pivot' : 'THE PIVOT'}
                                 </h2>
+                                <div className="mt-2 flex justify-center">
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
+                                        {visibleStage === 4 ? (
+                                            <i className="fas fa-chevron-up text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-blue-500 dark:text-blue-400 text-xl"></i>
+                                        )}
+                                    </div>
+                                </div>
                                 {visibleStage === 4 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
                                         You’ve pivoted to a new career path, maybe teaching or choreography. You’re still passionate about dancing but find joy in helping others, and you’re starting to see new opportunities. This new direction brings a fresh perspective and excitement to your life.
@@ -124,6 +162,8 @@ const Timeline: React.FC = () => {
                                 )}
                             </div>
                         </div>
+
+
                     </div>
                     <div className="w-full lg:w-full lg:px-8 px-4">
                         <h2 className="mt-2 mb-4 text-2xl font-bold text-black">
