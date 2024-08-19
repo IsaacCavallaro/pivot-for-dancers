@@ -6,6 +6,18 @@ const FAQ = () => {
     const [showAnswer3, setShowAnswer3] = useState(false);
     const [showAnswer4, setShowAnswer4] = useState(false);
 
+    const PlusIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
+            <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+        </svg>
+    );
+
+    const MinusIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
+            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+        </svg>
+    );
+
     return (
         <section className="bg-beige">
             <div className="max-w-6xl py-4 mx-auto md:px-6">
@@ -23,9 +35,7 @@ const FAQ = () => {
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold dark:text-white"> What is Pivot for Dancers?</span>
                                         <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer1(!showAnswer1)}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-                                                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                                            </svg>
+                                            {showAnswer1 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
                                     {showAnswer1 && (
@@ -38,9 +48,7 @@ const FAQ = () => {
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold text-white"> What are Pivot Panels? </span>
                                         <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer2(!showAnswer2)}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                            </svg>
+                                            {showAnswer2 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
                                     {showAnswer2 && (
@@ -53,9 +61,7 @@ const FAQ = () => {
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold dark:text-white"> Who runs Pivot for Dancers? </span>
                                         <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer3(!showAnswer3)}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-                                                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                                            </svg>
+                                            {showAnswer3 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
                                     {showAnswer3 && (
@@ -68,9 +74,7 @@ const FAQ = () => {
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold dark:text-white"> When is the next Pivot Conversations?</span>
                                         <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer4(!showAnswer4)}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-                                                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                                            </svg>
+                                            {showAnswer4 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
                                     {showAnswer4 && (
