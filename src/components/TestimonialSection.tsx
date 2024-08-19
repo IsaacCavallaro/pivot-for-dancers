@@ -34,7 +34,7 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <section className="bg-beige">
-      <div className="max-w-6xl py-4 mx-auto lg:py-20 md:px-6">
+      <div className="max-w-6xl py-4 mx-auto md:px-6">
         <div className="px-4 pl-4 mb-6">
           <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Why Pivot For Dancers?</span>
           <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
@@ -46,12 +46,12 @@ const TestimonialsSection: React.FC = () => {
           <div className="z-20 p-8 flex flex-col items-center lg:flex-row">
             <div className="w-full lg:w-2/3 pr-8 mb-8 lg:mb-0 lg:order-1">
               <div className="flex gap-x-1">
-                <button onClick={goToPrevTestimonial} className="absolute p-3 text-black -translate-y-1/2 bg-white rounded -left-2 lg:-left-5 top-1/2">
+                <button onClick={goToPrevTestimonial} className="absolute p-3 text-white -translate-y-1/2 bg-purple-gray rounded -left-2 lg:-left-5 top-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
                   </svg>
                 </button>
-                <button onClick={goToNextTestimonial} className="absolute p-3 text-black -translate-y-1/2 bg-white rounded -right-2 lg:-right-5 top-1/2">
+                <button onClick={goToNextTestimonial} className="absolute p-3 text-white -translate-y-1/2 bg-purple-gray rounded -right-2 lg:-right-5 top-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                   </svg>

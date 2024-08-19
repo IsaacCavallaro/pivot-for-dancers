@@ -10,7 +10,7 @@ module.exports = {
         'beige': '#E2DED0',
         'dark-gray': '#4E4F50',
         'brown-gray': '#746C70',
-        'off-white': '#FAF9F6'
+        'off-white': '#FAF9F6',
       },
       textColor: {
         'white': '#FFFFFF',
@@ -24,6 +24,14 @@ module.exports = {
       fontFamily: {
         'merriweather': ['Merriweather', 'serif'], // Headings
         'montserrat': ['Montserrat', 'sans-serif'],  // Paragraphs
+      },
+      borderColor: {
+        'light-gray': '#647C90',
+        'purple-gray': '#928490',
+        'beige': '#E2DED0',
+        'dark-gray': '#4E4F50',
+        'brown-gray': '#746C70',
+        'off-white': '#FAF9F6',
       },
     },
   },

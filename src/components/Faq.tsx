@@ -34,7 +34,7 @@ const FAQ = () => {
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold dark:text-white"> What is Pivot for Dancers?</span>
-                                        <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer1(!showAnswer1)}>
+                                        <button className="p-2 bg-purple-gray rounded" onClick={() => setShowAnswer1(!showAnswer1)}>
                                             {showAnswer1 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
@@ -47,7 +47,7 @@ const FAQ = () => {
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold text-white"> What are Pivot Panels? </span>
-                                        <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer2(!showAnswer2)}>
+                                        <button className="p-2 bg-purple-gray rounded" onClick={() => setShowAnswer2(!showAnswer2)}>
                                             {showAnswer2 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
@@ -60,7 +60,7 @@ const FAQ = () => {
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold dark:text-white"> Who runs Pivot for Dancers? </span>
-                                        <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer3(!showAnswer3)}>
+                                        <button className="p-2 bg-purple-gray rounded" onClick={() => setShowAnswer3(!showAnswer3)}>
                                             {showAnswer3 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
@@ -73,7 +73,7 @@ const FAQ = () => {
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
                                         <span className="font-bold dark:text-white"> When is the next Pivot Conversations?</span>
-                                        <button className="p-2 bg-blue-500 rounded" onClick={() => setShowAnswer4(!showAnswer4)}>
+                                        <button className="p-2 bg-purple-gray rounded" onClick={() => setShowAnswer4(!showAnswer4)}>
                                             {showAnswer4 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
