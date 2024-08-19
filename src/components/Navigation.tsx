@@ -104,9 +104,12 @@ const Navbar: React.FC<NavbarProps> = () => {
                       ABOUT
                     </a>
                   </li>
-
                   <li>
-                    <a href="#contact" className={`text-sm ${activeSection === 'contact' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('contact', e)}>
+                    <a
+                      href="#contact"
+                      className={`text-sm ${activeSection === 'contact' ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white'} px-4 py-2 rounded-full hover:bg-blue-700`}
+                      onClick={(e) => handleNavLinkClick('contact', e)}
+                    >
                       SIGN UP
                     </a>
                   </li>
@@ -147,7 +150,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             </li>
             <li className="pb-3">
               <a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:tan-300 ${activeSection === 'contact' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>
-                Contact
+                Sign Up
               </a>
             </li>
           </ul>
