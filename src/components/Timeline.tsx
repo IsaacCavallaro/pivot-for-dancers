@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 const Timeline: React.FC = () => {
-    const [visibleStage, setVisibleStage] = useState<number | null>(null);
+    // Set the initial visible stage to 1 (THE DREAM)
+    const [visibleStage, setVisibleStage] = useState<number | null>(1);
 
     const toggleStage = (stageNumber: number) => {
         setVisibleStage(visibleStage === stageNumber ? null : stageNumber);
@@ -32,19 +33,18 @@ const Timeline: React.FC = () => {
                                 }`}
                             onClick={() => toggleStage(1)}
                         >
-                            <div className="relative z-20 p-6 text-center">
-                                <h2 className="text-lg font-semibold text-white">
-                                    THE DREAM
-                                </h2>
-                                <div className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
-                                    {visibleStage === 1 ? (
-                                        <i className="fas fa-chevron-up text-white text-xl"></i>
-                                    ) : (
-                                        <i className="fas fa-chevron-down text-white text-xl"></i>
-                                    )}
-                                </div>
-                                <div className="mt-2 flex justify-center">
-                                    {/* Icon placement */}
+                            <div className="relative z-20 p-6">
+                                <div className="flex items-center justify-between">
+                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
+                                        {visibleStage === 1 ? 'THE DREAM' : 'THE DREAM'}
+                                    </h2>
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
+                                        {visibleStage === 1 ? (
+                                            <i className="fas fa-chevron-up text-white text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-white text-xl"></i>
+                                        )}
+                                    </div>
                                 </div>
                                 {visibleStage === 1 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
@@ -53,8 +53,8 @@ const Timeline: React.FC = () => {
                                 )}
                             </div>
                         </div>
-
                     </div>
+
                     {/* THE GRIT */}
                     <div className="relative flex justify-between">
                         <div className="flex flex-col items-center w-10 mr-4 md:w-24">
@@ -70,19 +70,18 @@ const Timeline: React.FC = () => {
                                 }`}
                             onClick={() => toggleStage(2)}
                         >
-                            <div className="relative z-20 p-6 text-center">
-                                <h2 className="text-lg font-semibold text-white">
-                                    THE GRIT
-                                </h2>
-                                <div className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
-                                    {visibleStage === 2 ? (
-                                        <i className="fas fa-chevron-up text-white text-xl"></i>
-                                    ) : (
-                                        <i className="fas fa-chevron-down text-white text-xl"></i>
-                                    )}
-                                </div>
-                                <div className="mt-2 flex justify-center">
-                                    {/* Optional additional content */}
+                            <div className="relative z-20 p-6">
+                                <div className="flex items-center justify-between">
+                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
+                                        {visibleStage === 2 ? 'THE GRIT' : 'THE GRIT'}
+                                    </h2>
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
+                                        {visibleStage === 2 ? (
+                                            <i className="fas fa-chevron-up text-white text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-white text-xl"></i>
+                                        )}
+                                    </div>
                                 </div>
                                 {visibleStage === 2 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
@@ -96,10 +95,8 @@ const Timeline: React.FC = () => {
                     {/* THE REALITY */}
                     <div className="relative flex justify-between">
                         <div className="flex flex-col items-center w-10 mr-4 md:w-24">
-                            <div>
-                                <div className="flex items-center justify-center w-10 h-10 border border-black rounded-full">
-                                    <i className="fas fa-7 text-black text-xl"></i>
-                                </div>
+                            <div className="flex items-center justify-center w-10 h-10 border border-black rounded-full">
+                                <i className="fas fa-7 text-black text-xl"></i>
                             </div>
                             <div className="w-px h-full dark:bg-gray-700"></div>
                         </div>
@@ -108,19 +105,18 @@ const Timeline: React.FC = () => {
                                 }`}
                             onClick={() => toggleStage(3)}
                         >
-                            <div className="relative z-20 p-6 text-center">
-                                <h2 className="text-lg font-semibold text-white">
-                                    THE REALITY
-                                </h2>
-                                <div className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
-                                    {visibleStage === 3 ? (
-                                        <i className="fas fa-chevron-up text-white text-xl"></i>
-                                    ) : (
-                                        <i className="fas fa-chevron-down text-white text-xl"></i>
-                                    )}
-                                </div>
-                                <div className="mt-2 flex justify-center">
-                                    {/* Optional additional content */}
+                            <div className="relative z-20 p-6">
+                                <div className="flex items-center">
+                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
+                                        THE REALITY
+                                    </h2>
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
+                                        {visibleStage === 3 ? (
+                                            <i className="fas fa-chevron-up text-white text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-white text-xl"></i>
+                                        )}
+                                    </div>
                                 </div>
                                 {visibleStage === 3 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
@@ -146,39 +142,30 @@ const Timeline: React.FC = () => {
                                 }`}
                             onClick={() => toggleStage(4)}
                         >
-                            <div className="relative z-20 p-6 text-center">
-                                <h2 className="text-lg font-semibold text-white">
-                                    {visibleStage === 4 ? 'LOOK AT YOU' : 'THE PIVOT'}
-                                </h2>
-                                <div className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center border-2 border-blue-500 rounded-full dark:border-blue-400">
-                                    {visibleStage === 4 ? (
-                                        <i className="fas fa-chevron-up text-white text-xl"></i>
-                                    ) : (
-                                        <i className="fas fa-chevron-down text-white text-xl"></i>
-                                    )}
+                            <div className="relative z-20 p-6">
+                                <div className="flex items-center justify-between">
+                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
+                                        {visibleStage === 4 ? 'LOOK AT YOU' : 'THE PIVOT'}
+                                    </h2>
+                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
+                                        {visibleStage === 4 ? (
+                                            <i className="fas fa-chevron-up text-white text-xl"></i>
+                                        ) : (
+                                            <i className="fas fa-chevron-down text-white text-xl"></i>
+                                        )}
+                                    </div>
                                 </div>
                                 {visibleStage === 4 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
-                                        You’ve pivoted to a new career path, maybe teaching or choreography. You’re still passionate about dancing but find joy in helping others, and you’re starting to see new opportunities. This new direction brings a fresh perspective and excitement to your life.
+                                        You’ve pivoted to a new career where you’re excited to wake up every day! You’re challenged again and your hard work is paying off. Plus, you finally have that stability you’ve always craved. Sure, it’s taken you a while to get here, but you wouldn’t change a thing!
                                     </p>
                                 )}
                             </div>
                         </div>
                     </div>
-                    <div className="w-full lg:w-full lg:px-8 px-4">
-                        <h2 className="mt-2 mb-4 text-2xl font-bold text-black">
-                            What's your next stage?
-                        </h2>
-                        <p className="mb-4 text-base leading-7 text-black">
-                            If you’ve gone through any of these stages, <span className="text-lg lg:text-xl font-semibold">Pivot for Dancers is for you.</span>
-                        </p>
-                        <p className="mb-4 text-base leading-7 text-black">
-                            Of course, everyone’s story is wonderfully unique, but if you resonate at all, <span className="text-lg lg:text-xl font-semibold">you’re in the right place.</span>
-                        </p>
-                    </div>
                 </div>
             </div>
-        </section >
+        </section>
     );
 };
 

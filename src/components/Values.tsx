@@ -42,7 +42,7 @@ const Values: React.FC = () => {
   });
 
   return (
-    <section id="values" className="bg-beige font-poppins lg:py-20">
+    <section id="values" className="bg-beige font-poppins">
       <div className="max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
         <div className="px-4 pl-4 mb-6">
           <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">What Drives Pivot For Dancers</span>
@@ -98,7 +98,7 @@ const values = [
   },
   {
     title: 'Empowerment',
-    description: 'Let\'s ditch the idea that if we\'re not dancing, we\'re only merely surviving. Pivot is about finding fulfilling jobs for when times get tough or our passions change, instead of meaningless survival jobs that make us feel desperate.',
+    description: 'Let\'s ditch the idea that if we\'re not dancing, we\'re only merely surviving. Pivot is about finding fulfilling work for when times get tough or our passions change, instead of meaningless survival jobs that make us feel desperate.',
   },
   {
     title: 'Resilience',

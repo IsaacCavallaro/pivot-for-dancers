@@ -107,10 +107,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <li>
                     <a
                       href="#contact"
-                      className={`text-sm ${activeSection === 'contact' ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white'} px-4 py-2 rounded-full hover:bg-blue-700`}
+                      className={`text-sm ${activeSection === 'contact' ? 'bg-purple-gray text-white' : 'bg-purple-gray text-white'} px-4 py-2 rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100`}
                       onClick={(e) => handleNavLinkClick('contact', e)}
                     >
-                      SIGN UP
+                      JOIN US
                     </a>
                   </li>
                 </>
@@ -131,7 +131,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           <ul className="px-5 text-left mt-7">
             <li className="pb-3">
               <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-100">
-                Home
+                HOME
               </a>
             </li>
             <li className="pb-3">
@@ -140,17 +140,17 @@ const Navbar: React.FC<NavbarProps> = () => {
                 className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:text-blue-300 hover:tan-300 ${activeSection === 'about' ? 'tan-300' : ''}`}
                 onClick={(e) => handleNavLinkClick('about', e)}
               >
-                About
+                ABOUT
               </a>
             </li>
             <li className="pb-3">
               <a href="#products" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:tan-300 ${activeSection === 'products' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('products', e)}>
-                Products
+                PRODUCTS
               </a>
             </li>
             <li className="pb-3">
-              <a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:text-blue-200 dark:hover:tan-300 ${activeSection === 'contact' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>
-                Sign Up
+              <a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:bg-purple-gray opacity-80 hover:opacity-100 ${activeSection === 'contact' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>
+                JOIN US
               </a>
             </li>
           </ul>
