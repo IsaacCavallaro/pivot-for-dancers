@@ -34,7 +34,10 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Stage 1</span>
                                 </div>
-                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You’ve trained to be a dancer since you were tiny. You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you’re truly living the dream.</p>
+                                <p className="mt-4 mb-2 pt-4 leading-7 text-white font-montserrat">
+                                    You’ve trained to be a dancer since you were tiny. You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you’re truly living the dream.
+                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -61,7 +64,7 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Stage 2</span>
                                 </div>
-                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You’re still dancing professionally and loving it. You also teach four nights a week, take any extra gig you can get, but still struggle to make ends meet. You work nights and most holidays and sometimes feel like you’re missing out on other aspects of life. But you’re living the dream, so who cares?</p>
+                                <p className="mt-4 mb-2 pt-4 leading-7 text-white font-montserrat">You’re still dancing professionally and loving it. You also teach four nights a week, take any extra gig you can get, but still struggle to make ends meet. You work nights and most holidays and sometimes feel like you’re missing out on other aspects of life. But you’re living the dream, so who cares?</p>
                             </div>
                         </div>
                     </div>
@@ -88,7 +91,7 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Stage 3</span>
                                 </div>
-                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave settling down but keep these thoughts to yourself because you’re living the dream, right?</p>
+                                <p className="mt-4 mb-2 pt-4 leading-7 text-white font-montserrat">You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave settling down but keep these thoughts to yourself because you’re living the dream, right?</p>
                             </div>
                         </div>
                     </div>
@@ -115,7 +118,7 @@ const Timeline: React.FC = () => {
                                 <div className="absolute -top-4 -left[-30px] lg:top-0 lg:left-0 inline-block px-2 py-2.5 dark:bg-blue-500 bg-blue-600 rounded-md lg:rounded-br-md lg:rounded-tl-md">
                                     <span className="text-xs text-gray-100">Pivot</span>
                                 </div>
-                                <p className="mt-4 mb-2 leading-7 text-white font-montserrat">You decide to make a career change on your terms. You start a family or a business. You explore new hobbies and make real money for the first time. You still take class and you’re not bitter about the industry. You’re proud of your dance career but learn you’re more than a dancer. </p>
+                                <p className="mt-4 mb-2 pt-4 leading-7 text-white font-montserrat">You decide to make a career change on your terms. You start a family or a business. You explore new hobbies and make real money for the first time. You still take class and you’re not bitter about the industry. You’re proud of your dance career but learn you’re more than a dancer. </p>
                             </div>
                         </div>
                     </div>
