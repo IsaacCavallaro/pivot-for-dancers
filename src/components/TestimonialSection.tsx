@@ -3,19 +3,19 @@ import React, { useState } from 'react';
 const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
-      content: "The most rewarding part of this transition was opening myself up to the possibility of loving another career just as much as dance",
+      content: `"The most rewarding part of this transition was opening myself up to the possibility of loving another career just as much as dance."`,
       author: "Alex Perry",
       role: "Former Dancer",
       imageSrc: "/assets/alex-perry.jpeg",
     },
     {
-      content: "The lifestyle of a dancer stopped feeling good for me. I still love dancing, but the lifestyle you must lead in order to make performing work as a career didn't feel good anymore",
+      content: `"The lifestyle of a dancer stopped feeling good for me. I still love dancing, but the lifestyle you must lead in order to make performing work as a career didn't feel good anymore."`,
       author: "Kelsey A Glennon",
       role: "Former Dancer",
       imageSrc: "/assets/kelsey-glennon.jpeg",
     },
     {
-      content: "Use the fire dancing gives you as the motivation to propel yourself into that new direction, rather than letting the struggle bring you down",
+      content: `"Use the fire dancing gives you as the motivation to propel yourself into that new direction, rather than letting the struggle bring you down."`,
       author: "Alexa Schmitt",
       role: "Former Dancer",
       imageSrc: "/assets/alexa-schmidt.jpeg",

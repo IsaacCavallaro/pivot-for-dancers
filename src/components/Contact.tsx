@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
     <section className="bg-beige">
       <div id="contact" className="max-w-6xl py-4 mx-auto md:px-6"> {/* Reduced lg:py-20 to lg:py-10 */}
         <div className="px-4 pl-4 mb-6">
-          <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Join the Pivot for Dancers Community</span>
+          <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">WANT TO PIVOT TOGETHER?</span>
           <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
             Community
           </h1>
@@ -36,16 +36,19 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="w-full px-4 mb-6 lg:mb-0 lg:w-1/2">
                   <h2 className="mb-3 text-3xl font-montserrat text-black sm:text-5xl">
-                    Join 100+ people on our newsletter
+                    <span>Connect with</span>
+                    <br />
+                    <span>our 750+ dancers</span>
                   </h2>
+
                   <p className="mb-6 font-montserrat text-gray-700 dark:text-gray-400">
-                    We promise you'll only get the best we got!
+                    Join our email list and say hello on socials.
                   </p>
                   <div className="flex flex-wrap justify-center mb-6"> {/* Centering the button and input on smaller screens */}
                     <input
                       className="w-full px-4 py-4 mb-6 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 border border-gray-300 rounded-md dark:text-gray-400 lg:mr-3 dark:placeholder-gray-400 dark:bg-gray-700 dark:border-gray-700 md:mb-0 md:w-1/2"
                       type="email"
-                      placeholder="Type your e-mail"
+                      placeholder="Enter your e-mail"
                       value={email}
                       onChange={handleEmailChange}
                     />
@@ -90,7 +93,7 @@ const Contact: React.FC = () => {
       <div className="max-w-6xl py-4 mx-auto md:px-6 flex flex-wrap">
         <div className="w-full md:w-1/2 px-4 mb-10 xl:mb-0">
           <h2 className="mt-2 mb-4 text-2xl font-bold text-black">
-            We are dedicated to supporting dancers
+            We’re dedicated to supporting dancers
           </h2>
           <p className="mb-4 text-base leading-7 text-black">
             When you join, you’ll become part of a growing community of current and former professional dancers who are talking about career change.
