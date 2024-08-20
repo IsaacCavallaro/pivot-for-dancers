@@ -43,7 +43,6 @@ const Navbar: React.FC<NavbarProps> = () => {
             break;
           }
 
-          // Check if the section is within the threshold
           const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
 
           if (isInThreshold) {
@@ -61,16 +60,19 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
   }, []);
 
+  const joinUsClassName = `text-sm px-4 py-2 rounded-full bg-purple-gray text-white opacity-80 hover:opacity-100 hover:bg-purple-gray`;
 
   return (
     <section className="bg-dark-gray max-device-width">
       <div className="max-w-6xl px-4 mx-auto">
         <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
-            <a href="/" className="lg:block hidden">
+            {/* Logo for both Desktop and Mobile */}
+            <a href="/" className="block pl-4 md:pl-6"> {/* Added padding here */}
               <img src="/assets/logo.png" alt="Logo" className="h-8" />
             </a>
-            <div className="lg:hidden">
+            <div className="lg:hidden flex items-center justify-end w-full pr-4 md:pr-6"> {/* Added padding here */}
+              {/* Hamburger Button */}
               <button
                 className="text-gray-200 dark:text-gray-300 focus:outline-none"
                 onClick={handleToggle}
@@ -85,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </svg>
               </button>
             </div>
-            <ul className={`max-device-width lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
+            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
               {!open && (
                 <>
                   <li>
@@ -98,7 +100,6 @@ const Navbar: React.FC<NavbarProps> = () => {
                       PRODUCTS
                     </a>
                   </li>
-
                   <li>
                     <a href="#about" className={`text-sm ${activeSection === 'about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={(e) => handleNavLinkClick('about', e)}>
                       ABOUT
@@ -107,7 +108,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <li>
                     <a
                       href="#contact"
-                      className={`text-sm ${activeSection === 'contact' ? 'bg-purple-gray text-white' : 'bg-purple-gray text-white'} px-4 py-2 rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100`}
+                      className={joinUsClassName}
                       onClick={(e) => handleNavLinkClick('contact', e)}
                     >
                       JOIN US
@@ -119,8 +120,13 @@ const Navbar: React.FC<NavbarProps> = () => {
           </div>
         </nav>
         <div className={`lg:hidden fixed inset-0 z-20 bg-gray-900 bg-opacity-25 dark:bg-gray-400 ${open ? 'block' : 'hidden'}`} onClick={handleToggle}></div>
-        <div className={`lg:hidden fixed inset-y-0 left-0 z-30 w-64 bg-blue-50 dark:bg-gray-800 transform duration-300 ease-in-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`lg:hidden fixed inset-y-0 right-0 z-30 w-64 bg-blue-50 dark:bg-gray-800 transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex justify-between items-center px-5 py-2">
+            {/* Mobile Sidebar Logo */}
+            <a href="/" className="ml-auto">
+              <img src="/assets/logo.png" alt="Logo" className="h-8" />
+            </a>
+            {/* Close Button */}
             <button className="rounded-md hover:text-blue-300 dark:text-gray-400" onClick={handleToggle}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-x-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -128,9 +134,10 @@ const Navbar: React.FC<NavbarProps> = () => {
               </svg>
             </button>
           </div>
+
           <ul className="px-5 text-left mt-7">
             <li className="pb-3">
-              <a href="" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-100">
+              <a href="/" className="text-sm text-gray-700 hover:text-blue-400 dark:text-gray-100">
                 HOME
               </a>
             </li>
@@ -149,7 +156,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               </a>
             </li>
             <li className="pb-3">
-              <a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:bg-purple-gray opacity-80 hover:opacity-100 ${activeSection === 'contact' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>
+              <a href="#contact" className={joinUsClassName} onClick={(e) => handleNavLinkClick('contact', e)}>
                 JOIN US
               </a>
             </li>
