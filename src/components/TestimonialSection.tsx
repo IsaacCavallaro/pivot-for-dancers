@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const TestimonialsSection: React.FC = () => {
   const testimonials = [
@@ -22,35 +25,15 @@ const TestimonialsSection: React.FC = () => {
     },
   ];
 
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [fadeClass, setFadeClass] = useState('opacity-100');
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setFadeClass('opacity-0');
-      setTimeout(() => {
-        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-        setFadeClass('opacity-100');
-      }, 500); // Duration should match the fade-out time
-    }, 5000); // Change testimonial every 5 seconds
-
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
-  }, [testimonials.length]);
-
-  const goToNextTestimonial = () => {
-    setFadeClass('opacity-0');
-    setTimeout(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-      setFadeClass('opacity-100');
-    }, 500); // Duration should match the fade-out time
-  };
-
-  const goToPrevTestimonial = () => {
-    setFadeClass('opacity-0');
-    setTimeout(() => {
-      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-      setFadeClass('opacity-100');
-    }, 500); // Duration should match the fade-out time
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 6000,
+    cssEase: "linear",
   };
 
   return (
@@ -64,41 +47,28 @@ const TestimonialsSection: React.FC = () => {
         </div>
         <br />
         <div className="relative mx-auto px-4 py-12 mb-20 text-center bg-white rounded shadow md:px-20 md:py-20 dark:bg-gray-700">
-          <div className="z-20 p-8 flex flex-col items-center lg:flex-row">
-            <div className="w-full lg:w-2/3 pr-8 mb-8 lg:mb-0 lg:order-1">
-              <div className="flex gap-x-1">
-                <button onClick={goToPrevTestimonial} className="absolute p-3 text-white -translate-y-1/2 bg-purple-gray rounded -left-2 lg:-left-5 top-1/2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                  </svg>
-                </button>
-                <button onClick={goToNextTestimonial} className="absolute p-3 text-white -translate-y-1/2 bg-purple-gray rounded -right-2 lg:-right-5 top-1/2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                  </svg>
-                </button>
+          <Slider {...settings}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="relative overflow-hidden mb-8">
+                  <div className="text-center">
+                    <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
+                      {testimonial.content}
+                    </p>
+                    <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
+                      {testimonial.author}
+                    </h2>
+                    <span className="block text-xs font-semibold text-black uppercase">
+                      {testimonial.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="w-32 h-32 lg:w-64 lg:h-64 mb-3 text-xs text-white rounded-full transition-opacity duration-1000 ease-in-out">
+                  <img className="object-cover w-full h-full hover:scale-110 rounded-full" src={testimonial.imageSrc} alt={testimonial.author} />
+                </div>
               </div>
-              <div className={`transition-opacity duration-500 ease-in-out ${fadeClass}`}>
-                <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
-                  {testimonials[currentTestimonial].content}
-                </p>
-                <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
-                  {testimonials[currentTestimonial].author}
-                </h2>
-                <span className="block text-xs font-semibold text-black uppercase">
-                  {testimonials[currentTestimonial].role}
-                </span>
-              </div>
-            </div>
-            <div className="w-full lg:w-1/3 lg:pl-8 lg:flex lg:flex-col lg:items-center lg:order-2">
-              <div className={`inline-block w-32 h-32 lg:w-64 lg:h-64 mb-3 text-xs text-white rounded-full lg:relative lg:mb-0 transition-opacity duration-500 ease-in-out ${fadeClass}`}>
-                <img className="object-cover w-full h-full transition-all hover:scale-110 rounded-full" src={testimonials[currentTestimonial].imageSrc} alt="" />
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="absolute w-20 h-20 lg:w-24 lg:h-24 rotate-180 bottom-4 right-4 opacity-10 lg:static lg:block lg:mt-4">
-                <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
-              </svg>
-            </div>
-          </div>
+            ))}
+          </Slider>
         </div>
       </div>
     </section>
