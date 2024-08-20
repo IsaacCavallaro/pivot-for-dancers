@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const FAQ = () => {
-    const [showAnswer1, setShowAnswer1] = useState(false);
+    const [showAnswer1, setShowAnswer1] = useState(true);
     const [showAnswer2, setShowAnswer2] = useState(false);
     const [showAnswer3, setShowAnswer3] = useState(false);
     const [showAnswer4, setShowAnswer4] = useState(false);
@@ -38,24 +38,20 @@ const FAQ = () => {
                                             {showAnswer1 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    {showAnswer1 && (
-                                        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 answer">
-                                            Pivot for Dancers offers resources for professional dancers who are making a career change. We’re also a community of hundreds of dancers just like you and we hold events and workshops to help you connect with others who might be going through something similar to you. The best way to get involved is to join our email list where we share exclusive content and invitations.
-                                        </div>
-                                    )}
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer1 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                        Pivot for Dancers offers resources for professional dancers who are making a career change. We’re also a community of hundreds of dancers just like you and we hold events and workshops to help you connect with others who might be going through something similar to you. The best way to get involved is to join our email list where we share exclusive content and invitations.
+                                    </div>
                                 </div>
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
-                                        <span className="font-bold text-white"> What are Pivot Panels? </span>
+                                        <span className="font-bold dark:text-white"> What are Pivot Panels? </span>
                                         <button className="p-2 bg-purple-gray rounded" onClick={() => setShowAnswer2(!showAnswer2)}>
                                             {showAnswer2 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    {showAnswer2 && (
-                                        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 answer">
-                                            Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers. These valuable resources are available to help inspire you to take a leap of faith and may give you some ideas of how you may want to pivot your career.
-                                        </div>
-                                    )}
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer2 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                        Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers. These valuable resources are available to help inspire you to take a leap of faith and may give you some ideas of how you may want to pivot your career.
+                                    </div>
                                 </div>
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
@@ -64,11 +60,9 @@ const FAQ = () => {
                                             {showAnswer3 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    {showAnswer3 && (
-                                        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 answer">
-                                            Pivot for Dancers is run by former professional dancers who have made their own career transitions. Founded by Kaylee Randall in 2020 and supported by hundreds of dancers along the way, our team is passionate about helping dancers thrive long after taking their final bow.
-                                        </div>
-                                    )}
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer3 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                        Pivot for Dancers is run by former professional dancers who have made their own career transitions. Founded by Kaylee Randall in 2020 and supported by hundreds of dancers along the way, our team is passionate about helping dancers thrive long after taking their final bow.
+                                    </div>
                                 </div>
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
@@ -77,11 +71,9 @@ const FAQ = () => {
                                             {showAnswer4 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    {showAnswer4 && (
-                                        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 answer">
-                                            The schedule for Pivot Conversations varies depending on the availability of our panelists and the topics we're covering. We announce upcoming conversations through our email list and social media channels, so be sure to join our email list and follow us to stay updated on the latest events!
-                                        </div>
-                                    )}
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer4 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                        The schedule for Pivot Conversations varies depending on the availability of our panelists and the topics we're covering. We announce upcoming conversations through our email list and social media channels, so be sure to join our email list and follow us to stay updated on the latest events!
+                                    </div>
                                 </div>
                             </div>
                         </div>
