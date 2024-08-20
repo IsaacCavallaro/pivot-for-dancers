@@ -46,11 +46,14 @@ const Timeline: React.FC = () => {
                                         )}
                                     </div>
                                 </div>
-                                {visibleStage === 1 && (
+                                <div
+                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 1 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
+                                        }`}
+                                >
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
                                         You’ve trained to be a dancer since you were tiny. You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you’re truly living the dream.
                                     </p>
-                                )}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -83,11 +86,14 @@ const Timeline: React.FC = () => {
                                         )}
                                     </div>
                                 </div>
-                                {visibleStage === 2 && (
+                                <div
+                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 2 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
+                                        }`}
+                                >
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
                                         You’re still dancing professionally and loving it. You also teach four nights a week, take any extra gig you can get, but still struggle to make ends meet. You work nights and most holidays and sometimes feel like you’re missing out on other aspects of life. But you’re living the dream, so who cares?
                                     </p>
-                                )}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -106,9 +112,9 @@ const Timeline: React.FC = () => {
                             onClick={() => toggleStage(3)}
                         >
                             <div className="relative z-20 p-6">
-                                <div className="flex items-center">
+                                <div className="flex items-center justify-between">
                                     <h2 className="flex-1 text-lg font-semibold text-white text-center">
-                                        THE REALITY
+                                        {visibleStage === 3 ? 'THE REALITY' : 'THE REALITY'}
                                     </h2>
                                     <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
                                         {visibleStage === 3 ? (
@@ -118,11 +124,14 @@ const Timeline: React.FC = () => {
                                         )}
                                     </div>
                                 </div>
-                                {visibleStage === 3 && (
+                                <div
+                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 3 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
+                                        }`}
+                                >
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
                                         You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave stability but keep these thoughts to yourself because you’re living the dream, right?
                                     </p>
-                                )}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -145,7 +154,7 @@ const Timeline: React.FC = () => {
                             <div className="relative z-20 p-6">
                                 <div className="flex items-center justify-between">
                                     <h2 className="flex-1 text-lg font-semibold text-white text-center">
-                                        {visibleStage === 4 ? 'LOOK AT YOU' : 'THE PIVOT'}
+                                        {visibleStage === 4 ? 'THE PIVOT' : 'THE PIVOT'}
                                     </h2>
                                     <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
                                         {visibleStage === 4 ? (
@@ -155,11 +164,14 @@ const Timeline: React.FC = () => {
                                         )}
                                     </div>
                                 </div>
-                                {visibleStage === 4 && (
+                                <div
+                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 4 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
+                                        }`}
+                                >
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
-                                        You’ve pivoted to a new career where you’re excited to wake up every day! You’re challenged again and your hard work is paying off. Plus, you finally have that stability you’ve always craved. Sure, it’s taken you a while to get here, but you wouldn’t change a thing!
+                                        You take a step back and reassess your goals and what you want for the future. Maybe you start to explore different career options, find ways to balance your life and finances, and look for new ways to reignite your passion. This is the stage where you rethink and pivot, seeking a new direction.
                                     </p>
-                                )}
+                                </div>
                             </div>
                         </div>
                     </div>
