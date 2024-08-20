@@ -43,7 +43,6 @@ const Navbar: React.FC<NavbarProps> = () => {
             break;
           }
 
-          // Check if the section is within the threshold
           const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
 
           if (isInThreshold) {
@@ -61,6 +60,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
   }, []);
 
+  const joinUsClassName = `text-sm px-4 py-2 rounded-full bg-purple-gray text-white opacity-80 hover:opacity-100 hover:bg-purple-gray`;
 
   return (
     <section className="bg-dark-gray max-device-width">
@@ -107,7 +107,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <li>
                     <a
                       href="#contact"
-                      className={`text-sm ${activeSection === 'contact' ? 'bg-purple-gray text-white' : 'bg-purple-gray text-white'} px-4 py-2 rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100`}
+                      className={joinUsClassName}
                       onClick={(e) => handleNavLinkClick('contact', e)}
                     >
                       JOIN US
@@ -149,7 +149,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               </a>
             </li>
             <li className="pb-3">
-              <a href="#contact" className={`text-sm text-gray-200 dark:text-gray-300 hover:bg-purple-gray opacity-80 hover:opacity-100 ${activeSection === 'contact' ? 'tan-300' : ''}`} onClick={(e) => handleNavLinkClick('contact', e)}>
+              <a href="#contact" className={joinUsClassName} onClick={(e) => handleNavLinkClick('contact', e)}>
                 JOIN US
               </a>
             </li>
