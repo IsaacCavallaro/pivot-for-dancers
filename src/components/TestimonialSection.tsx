@@ -23,20 +23,35 @@ const TestimonialsSection: React.FC = () => {
   ];
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [fadeClass, setFadeClass] = useState('opacity-100');
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setFadeClass('opacity-0');
+      setTimeout(() => {
+        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+        setFadeClass('opacity-100');
+      }, 500); // Duration should match the fade-out time
+    }, 5000); // Change testimonial every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, [testimonials.length]);
 
   const goToNextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    setFadeClass('opacity-0');
+    setTimeout(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      setFadeClass('opacity-100');
+    }, 500); // Duration should match the fade-out time
   };
 
   const goToPrevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setFadeClass('opacity-0');
+    setTimeout(() => {
+      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setFadeClass('opacity-100');
+    }, 500); // Duration should match the fade-out time
   };
-
-  useEffect(() => {
-    const intervalId = setInterval(goToNextTestimonial, 5000); // Change testimonial every 5 seconds
-
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
-  }, []);
 
   return (
     <section className="bg-beige">
@@ -63,7 +78,7 @@ const TestimonialsSection: React.FC = () => {
                   </svg>
                 </button>
               </div>
-              <div className="transition-opacity duration-1000 ease-in-out opacity-0" style={{ opacity: 1 }}>
+              <div className={`transition-opacity duration-500 ease-in-out ${fadeClass}`}>
                 <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
                   {testimonials[currentTestimonial].content}
                 </p>
@@ -76,7 +91,7 @@ const TestimonialsSection: React.FC = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/3 lg:pl-8 lg:flex lg:flex-col lg:items-center lg:order-2">
-              <div className="inline-block w-32 h-32 lg:w-64 lg:h-64 mb-3 text-xs text-white rounded-full lg:relative lg:mb-0">
+              <div className={`inline-block w-32 h-32 lg:w-64 lg:h-64 mb-3 text-xs text-white rounded-full lg:relative lg:mb-0 transition-opacity duration-500 ease-in-out ${fadeClass}`}>
                 <img className="object-cover w-full h-full transition-all hover:scale-110 rounded-full" src={testimonials[currentTestimonial].imageSrc} alt="" />
               </div>
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="absolute w-20 h-20 lg:w-24 lg:h-24 rotate-180 bottom-4 right-4 opacity-10 lg:static lg:block lg:mt-4">
