@@ -120,7 +120,7 @@ const Timeline: React.FC = () => {
                                 </div>
                                 {visibleStage === 3 && (
                                     <p className="mt-4 leading-7 text-white font-montserrat text-lg">
-                                        You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave settling down but keep these thoughts to yourself because you’re living the dream, right?
+                                        You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave stability but keep these thoughts to yourself because you’re living the dream, right?
                                     </p>
                                 )}
                             </div>

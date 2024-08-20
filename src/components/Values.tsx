@@ -45,7 +45,7 @@ const Values: React.FC = () => {
     <section id="values" className="bg-beige font-poppins">
       <div className="max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
         <div className="px-4 pl-4 mb-6">
-          <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">What Drives Pivot For Dancers</span>
+          <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">What Drives Pivot For Dancers?</span>
           <h1 className="mt-2 text-3xl font-merriweather text-text-black md:text-5xl">
             Our Values
           </h1>

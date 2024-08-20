@@ -22,9 +22,9 @@ const FAQ = () => {
         <section className="bg-beige">
             <div className="max-w-6xl py-4 mx-auto md:px-6">
                 <div className="px-4 pl-4 mb-6">
-                    <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Join the Pivot for Dancers Community</span>
+                    <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">FEELING CURIOUS?</span>
                     <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
-                        FAQ's
+                        FAQs
                     </h1>
                 </div>
                 <div className="flex items-center h-auto">
@@ -66,7 +66,7 @@ const FAQ = () => {
                                     </div>
                                     {showAnswer3 && (
                                         <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 answer">
-                                            Pivot for Dancers is run by a team of professionals dedicated to supporting dancers in their career transitions. Our team includes former dancers, career coaches, and industry experts who are passionate about helping dancers thrive in their post-performance lives.
+                                            Pivot for Dancers is run by former professional dancers who have made their own career transitions. Founded by Kaylee Randall in 2020 and supported by hundreds of dancers along the way, our team is passionate about helping dancers thrive long after taking their final bow.
                                         </div>
                                     )}
                                 </div>
@@ -79,7 +79,7 @@ const FAQ = () => {
                                     </div>
                                     {showAnswer4 && (
                                         <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 answer">
-                                            The schedule for Pivot Conversations varies depending on the availability of our panelists and the topics we're covering. We announce upcoming conversations on our website and social media channels, so be sure to follow us to stay updated on the latest events!
+                                            The schedule for Pivot Conversations varies depending on the availability of our panelists and the topics we're covering. We announce upcoming conversations through our email list and social media channels, so be sure to join our email list and follow us to stay updated on the latest events!
                                         </div>
                                     )}
                                 </div>

@@ -19,9 +19,9 @@ const FeaturedProducts: React.FC = () => {
               <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer">
                 <img src="/assets/pivot-panels.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
               </a>
-              <span className="absolute top-0 left-0 px-4 py-2 lg:px-2 lg:py-1 text-sm font-bold text-gray-100 rounded-md bg-purple-gray">
+              {/* <span className="absolute top-0 left-0 px-4 py-2 lg:px-2 lg:py-1 text-sm font-bold text-gray-100 rounded-md bg-purple-gray">
                 Sale
-              </span>
+              </span> */}
             </div>
             <div className="p-6 bg-off-white">
               <h3 className="mb-2 text-xl font-merriweather text-center text-brown-gray">
@@ -30,7 +30,6 @@ const FeaturedProducts: React.FC = () => {
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-brown-gray">
                   <span className="text-brown-gray ">FREE</span>
-                  <span className="ml-2 line-through text-brown-gray">$50</span>
                 </p>
               </div>
             </div>
@@ -46,12 +45,11 @@ const FeaturedProducts: React.FC = () => {
             </div>
             <div className="p-6 bg-off-white">
               <h3 className="mb-2 text-xl font-merriweather text-center text-brown-gray">
-                <a href="#">How to Pivot ebook</a>
+                <a href="#">How to Pivot eBook</a>
               </h3>
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
                   <span className="text-brown-gray">COMING SOON</span>
-                  <span className="ml-2 line-through text-brown-gray"></span>
                 </p>
               </div>
             </div>
@@ -70,8 +68,7 @@ const FeaturedProducts: React.FC = () => {
               </h3>
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
-                  <span className="text-brown-gray">$800.00</span>
-                  <span className="ml-2 line-through text-brown-gray">1500</span>
+                  <span className="text-brown-gray">COMING SOON</span>
                 </p>
               </div>
             </div>
@@ -91,7 +88,6 @@ const FeaturedProducts: React.FC = () => {
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
                   <span className="text-brown-gray">ON REQUEST</span>
-                  <span className="ml-2 line-through text-brown-gray"></span>
                 </p>
               </div>
             </div>
