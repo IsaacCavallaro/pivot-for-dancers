@@ -38,7 +38,7 @@ const FAQ = () => {
                                             {showAnswer1 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white answer transition-opacity duration-1000 ease-in-out ${showAnswer1 ? 'opacity-100 max-h-full' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer1 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                                         Pivot for Dancers offers resources for professional dancers who are making a career change. We’re also a community of hundreds of dancers just like you and we hold events and workshops to help you connect with others who might be going through something similar to you. The best way to get involved is to join our email list where we share exclusive content and invitations.
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@ const FAQ = () => {
                                             {showAnswer2 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white answer transition-opacity duration-1000 ease-in-out ${showAnswer2 ? 'opacity-100 max-h-full' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer2 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                                         Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers. These valuable resources are available to help inspire you to take a leap of faith and may give you some ideas of how you may want to pivot your career.
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@ const FAQ = () => {
                                             {showAnswer3 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white answer transition-opacity duration-1000 ease-in-out ${showAnswer3 ? 'opacity-100 max-h-full' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer3 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                                         Pivot for Dancers is run by former professional dancers who have made their own career transitions. Founded by Kaylee Randall in 2020 and supported by hundreds of dancers along the way, our team is passionate about helping dancers thrive long after taking their final bow.
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@ const FAQ = () => {
                                             {showAnswer4 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white answer transition-opacity duration-1000 ease-in-out ${showAnswer4 ? 'opacity-100 max-h-full' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer4 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                                         The schedule for Pivot Conversations varies depending on the availability of our panelists and the topics we're covering. We announce upcoming conversations through our email list and social media channels, so be sure to join our email list and follow us to stay updated on the latest events!
                                     </div>
                                 </div>
