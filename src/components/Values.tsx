@@ -96,7 +96,7 @@ const values = [
     title: 'Curiosity',
     description: (
       <>
-        Pivot for Dancers <span className="text-lg font-bold">encourages</span> dancers to explore <span className="text-lg font-bold">other interests</span>  simultaneously with pursuing a dance career. It doesn&apos;t have to be one or the other.
+        Pivot for Dancers <span className="text-lg font-bold">encourages</span> dancers to explore <span className="text-lg font-bold">other interests</span>  while pursuing a dance career. It doesn&apos;t have to be one or the other.
       </>
     ),
   },
@@ -104,7 +104,7 @@ const values = [
     title: 'Empowerment',
     description: (
       <>
-        Let&apos;s ditch the idea that if we&apos;re not dancing, we&apos;re only merely surviving. Pivot is about finding <span className="text-lg font-bold">fulfilling work </span> for when times get tough or our passions change, instead of meaningless survival jobs that make us feel desperate.
+        Let&apos;s ditch the idea that if we&apos;re not dancing, we&apos;re only merely surviving. Pivot for Dancers is about finding <span className="text-lg font-bold">fulfilling work </span> for when times get tough or our passions change, not meaningless survival jobs that make us feel desperate.
       </>
     ),
   },
@@ -112,7 +112,7 @@ const values = [
     title: 'Resilience',
     description: (
       <>
-        You&apos;ve made the <span className="text-lg font-bold">courageous choice </span>to see what else is out there for you. It&apos;s that resilience you learned as an ambitious dancer that will help you through.
+        You&apos;ve made the <span className="text-lg font-bold">courageous choice </span>to see what else is out there. It&apos;s the resilience you learned as an ambitious dancer that will help you through.
       </>
     ),
   },
