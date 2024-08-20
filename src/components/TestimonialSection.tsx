@@ -49,22 +49,24 @@ const TestimonialsSection: React.FC = () => {
         <div className="relative mx-auto px-4 py-12 mb-20 text-center bg-white rounded shadow md:px-20 md:py-20 dark:bg-gray-700">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="relative overflow-hidden mb-8">
-                  <div className="text-center">
-                    <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
-                      {testimonial.content}
-                    </p>
-                    <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
-                      {testimonial.author}
-                    </h2>
-                    <span className="block text-xs font-semibold text-black uppercase">
-                      {testimonial.role}
-                    </span>
+              <div key={index} className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center mb-8">
+                  <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
+                    {testimonial.content}
+                  </p>
+                  <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
+                    {testimonial.author}
+                  </h2>
+                  <span className="block text-xs font-semibold text-black uppercase">
+                    {testimonial.role}
+                  </span>
+                  <div className="w-32 h-32 mt-4">
+                    <img
+                      className="object-cover w-full h-full rounded-full"
+                      src={testimonial.imageSrc}
+                      alt={testimonial.author}
+                    />
                   </div>
-                </div>
-                <div className="w-32 h-32 lg:w-64 lg:h-64 mb-3 text-xs text-white rounded-full transition-opacity duration-1000 ease-in-out">
-                  <img className="object-cover w-full h-full hover:scale-110 rounded-full" src={testimonial.imageSrc} alt={testimonial.author} />
                 </div>
               </div>
             ))}
