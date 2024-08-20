@@ -12,15 +12,13 @@ const FeaturedProducts: React.FC = () => {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {/* Product Card 1 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
+          <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
-              <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/pivot-panels.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
-              </a>
+              <img src="/assets/pivot-panels.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
             </div>
             <div className="p-6 bg-off-white">
               <h3 className="mb-2 text-xl font-merriweather text-center text-brown-gray">
-                <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer">Pivot Panels</a>
+                Pivot Panels
               </h3>
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-brown-gray">
@@ -28,18 +26,16 @@ const FeaturedProducts: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Product Card 2 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
+          <a href="#" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
-              <a href="#" className="">
-                <img src="/assets/how-to-pivot-ebook.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
-              </a>
+              <img src="/assets/how-to-pivot-ebook.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
             </div>
             <div className="p-6 bg-off-white">
               <h3 className="mb-2 text-xl font-merriweather text-center text-brown-gray">
-                <a href="#">How to Pivot eBook</a>
+                How to Pivot eBook
               </h3>
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
@@ -47,18 +43,16 @@ const FeaturedProducts: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Product Card 3 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
+          <a href="#" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
-              <a href="#" className="">
-                <img src="/assets/pivot-workshop.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
-              </a>
+              <img src="/assets/pivot-workshop.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
             </div>
             <div className="p-6 bg-off-white">
               <h3 className="mb-2 text-xl font-merriweather text-center text-brown-gray">
-                <a href="#">Pivot Workshops</a>
+                Pivot Workshops
               </h3>
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
@@ -66,18 +60,16 @@ const FeaturedProducts: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Product Card 4 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
+          <a href="#" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
-              <a href="#" className="">
-                <img src="/assets/pivot-mentorship.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
-              </a>
+              <img src="/assets/pivot-mentorship.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
             </div>
             <div className="p-6 bg-off-white">
               <h3 className="mb-2 text-xl font-merriweather text-center text-brown-gray">
-                <a href="#">Private Mentorship</a>
+                Private Mentorship
               </h3>
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
@@ -85,7 +77,7 @@ const FeaturedProducts: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
