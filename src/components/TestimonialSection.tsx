@@ -25,6 +25,36 @@ const TestimonialsSection: React.FC = () => {
     },
   ];
 
+  interface ArrowProps {
+    className?: string;
+    style?: React.CSSProperties;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
+  }
+
+  const NextArrow: React.FC<ArrowProps> = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={`${className} absolute top-1/2 transform -translate-y-1/2 right-0 p-2 rounded-full cursor-pointer z-10`}
+        style={{ ...style, display: "block", width: "30px", height: "30px", borderRadius: "50%" }}
+        onClick={onClick}
+      >
+      </div>
+    );
+  }
+
+  const PrevArrow: React.FC<ArrowProps> = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={`${className} absolute top-1/2 transform -translate-y-1/2 left-0 p-2 rounded-full cursor-pointer z-10`}
+        style={{ ...style, display: "block", width: "30px", height: "30px", borderRadius: "50%" }}
+        onClick={onClick}
+      >
+      </div>
+    );
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -34,6 +64,8 @@ const TestimonialsSection: React.FC = () => {
     speed: 1000,
     autoplaySpeed: 6000,
     cssEase: "linear",
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (
@@ -54,18 +86,22 @@ const TestimonialsSection: React.FC = () => {
                   <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
                     {testimonial.content}
                   </p>
-                  <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
-                    {testimonial.author}
-                  </h2>
-                  <span className="block text-xs font-semibold text-black uppercase">
-                    {testimonial.role}
-                  </span>
-                  <div className="w-32 h-32 mt-4">
-                    <img
-                      className="object-cover w-full h-full rounded-full"
-                      src={testimonial.imageSrc}
-                      alt={testimonial.author}
-                    />
+                  <div className="flex items-center justify-center space-x-4 mt-4">
+                    <div className="w-16 h-16">
+                      <img
+                        className="object-cover w-full h-full rounded-full"
+                        src={testimonial.imageSrc}
+                        alt={testimonial.author}
+                      />
+                    </div>
+                    <div className="text-left">
+                      <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
+                        {testimonial.author}
+                      </h2>
+                      <span className="block text-xs font-semibold text-black uppercase">
+                        {testimonial.role}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
