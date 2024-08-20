@@ -67,11 +67,11 @@ const Navbar: React.FC<NavbarProps> = () => {
       <div className="max-w-6xl px-4 mx-auto">
         <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
-            {/* Desktop Logo */}
-            <a href="/" className="lg:block hidden">
+            {/* Logo for both Desktop and Mobile */}
+            <a href="/" className="block pl-4 md:pl-6"> {/* Added padding here */}
               <img src="/assets/logo.png" alt="Logo" className="h-8" />
             </a>
-            <div className="lg:hidden flex items-center justify-end w-full">
+            <div className="lg:hidden flex items-center justify-end w-full pr-4 md:pr-6"> {/* Added padding here */}
               {/* Hamburger Button */}
               <button
                 className="text-gray-200 dark:text-gray-300 focus:outline-none"
@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </svg>
               </button>
             </div>
-            <ul className={`max-device-width lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
+            <ul className={`lg:w-auto lg:space-x-12 lg:items-center lg:flex ${!open ? 'hidden' : 'block'}`}>
               {!open && (
                 <>
                   <li>
@@ -126,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <a href="/" className="ml-auto">
               <img src="/assets/logo.png" alt="Logo" className="h-8" />
             </a>
-            {/* Hamburger Button */}
+            {/* Close Button */}
             <button className="rounded-md hover:text-blue-300 dark:text-gray-400" onClick={handleToggle}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-x-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
