@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 
 const FeaturedProducts: React.FC = () => {
@@ -14,30 +12,26 @@ const FeaturedProducts: React.FC = () => {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {/* Product Card 1 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4">
+          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
               <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer">
                 <img src="/assets/pivot-panels.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
               </a>
-              {/* <span className="absolute top-0 left-0 px-4 py-2 lg:px-2 lg:py-1 text-sm font-bold text-gray-100 rounded-md bg-purple-gray">
-                Sale
-              </span> */}
             </div>
             <div className="p-6 bg-off-white">
               <h3 className="mb-2 text-xl font-merriweather text-center text-brown-gray">
-                <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer">Pivot Panels </a>
+                <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer">Pivot Panels</a>
               </h3>
               <div className="flex justify-center mb-2 text-center">
                 <p className="text-lg font-merriweather text-brown-gray">
-                  <span className="text-brown-gray ">FREE</span>
+                  <span className="text-brown-gray">FREE</span>
                 </p>
               </div>
             </div>
           </div>
 
-
           {/* Product Card 2 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4">
+          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
               <a href="#" className="">
                 <img src="/assets/how-to-pivot-ebook.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
@@ -56,7 +50,7 @@ const FeaturedProducts: React.FC = () => {
           </div>
 
           {/* Product Card 3 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4">
+          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
               <a href="#" className="">
                 <img src="/assets/pivot-workshop.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
@@ -75,7 +69,7 @@ const FeaturedProducts: React.FC = () => {
           </div>
 
           {/* Product Card 4 */}
-          <div className="border border-gray-200 rounded-md dark:border-none p-4">
+          <div className="border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
             <div className="relative">
               <a href="#" className="">
                 <img src="/assets/pivot-mentorship.png" alt="" className="object-cover w-full mx-auto h-96 lg:h-56" />
