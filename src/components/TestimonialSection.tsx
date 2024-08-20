@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const TestimonialsSection: React.FC = () => {
   const testimonials = [
@@ -32,6 +32,12 @@ const TestimonialsSection: React.FC = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  useEffect(() => {
+    const intervalId = setInterval(goToNextTestimonial, 5000); // Change testimonial every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, []);
+
   return (
     <section className="bg-beige">
       <div className="max-w-6xl py-4 mx-auto md:px-6">
@@ -41,7 +47,7 @@ const TestimonialsSection: React.FC = () => {
             Testimonials
           </h1>
         </div>
-        <br></br>
+        <br />
         <div className="relative mx-auto px-4 py-12 mb-20 text-center bg-white rounded shadow md:px-20 md:py-20 dark:bg-gray-700">
           <div className="z-20 p-8 flex flex-col items-center lg:flex-row">
             <div className="w-full lg:w-2/3 pr-8 mb-8 lg:mb-0 lg:order-1">
@@ -57,8 +63,8 @@ const TestimonialsSection: React.FC = () => {
                   </svg>
                 </button>
               </div>
-              <div className="text-container">
-                <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl"> {/* Responsive text class */}
+              <div className="transition-opacity duration-1000 ease-in-out opacity-0" style={{ opacity: 1 }}>
+                <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
                   {testimonials[currentTestimonial].content}
                 </p>
                 <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
