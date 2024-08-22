@@ -19,7 +19,7 @@ const FAQ = () => {
     );
 
     return (
-        <section className="bg-beige">
+        <section id="faq-section" className="bg-beige">
             <div className="max-w-6xl py-4 mx-auto md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">FEELING CURIOUS?</span>

@@ -5,6 +5,15 @@ const FeaturedProducts: React.FC = () => {
   const ebookCheckoutUrl = process.env.REACT_APP_EBOOK_CHECKOUT_URL;
   const workshopBookingUrl = process.env.REACT_APP_WORKSHOP_URL;
   const mentorshipBookingUrl = process.env.REACT_APP_MENTORSHIP_URL;
+
+  // Scroll to the FAQ section smoothly
+  const scrollToFAQ = () => {
+    const faqSection = document.getElementById('faq-section');
+    if (faqSection) {
+      faqSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="flex items-center bg-beige">
       <div id="products" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-10 md:px-6">
@@ -16,72 +25,125 @@ const FeaturedProducts: React.FC = () => {
         </div>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {/* Product Card 1 */}
-          <a href={pivotPanelsUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a
+            href={pivotPanelsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+          >
             <div className="relative">
-              <img src="/assets/pivot-panels.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
+              <img
+                src="/assets/pivot-panels.png"
+                alt="Pivot Panels"
+                className="object-cover w-full h-auto max-h-48 mx-auto"
+              />
             </div>
-            <div className="p-6 bg-off-white">
-              <h3 className="mb-2 text-lg sm:text-xl font-merriweather text-center text-brown-gray">
+            <div className="p-6 bg-off-white text-center">
+              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
                 Pivot Panels
               </h3>
-              <div className="flex justify-center mb-2 text-center">
-                <p className="text-lg font-merriweather text-brown-gray">
-                  <span className="text-brown-gray">FREE</span>
-                </p>
-              </div>
+              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
+                Hear from the community
+              </p>
+              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
+                FREE
+              </span>
             </div>
           </a>
 
           {/* Product Card 2 */}
-          <a href={ebookCheckoutUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a
+            href={ebookCheckoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+          >
             <div className="relative">
-              <img src="/assets/how-to-pivot-ebook.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
+              <img
+                src="/assets/how-to-pivot-ebook.png"
+                alt="How to Pivot eBook"
+                className="object-cover w-full h-auto max-h-48 mx-auto"
+              />
             </div>
-            <div className="p-6 bg-off-white">
-              <h3 className="mb-2 text-lg sm:text-xl font-merriweather text-center text-brown-gray">
+            <div className="p-6 bg-off-white text-center">
+              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
                 How to Pivot eBook
               </h3>
-              <div className="flex justify-center mb-2 text-center">
-                <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
-                  <span className="text-brown-gray">COMING SOON</span>
-                </p>
-              </div>
+              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
+                Your guide to pivoting
+              </p>
+              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
+                BUY
+              </span>
             </div>
           </a>
 
           {/* Product Card 3 */}
-          <a href={workshopBookingUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a
+            href={workshopBookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+          >
             <div className="relative">
-              <img src="/assets/pivot-workshop.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
+              <img
+                src="/assets/pivot-workshop.png"
+                alt="Pivot Workshop"
+                className="object-cover w-full h-auto max-h-48 mx-auto"
+              />
             </div>
-            <div className="p-6 bg-off-white">
-              <h3 className="mb-2 text-lg sm:text-xl font-merriweather text-center text-brown-gray">
-                Pivot Workshops
+            <div className="p-6 bg-off-white text-center">
+              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
+                Pivot Workshop
               </h3>
-              <div className="flex justify-center mb-2 text-center">
-                <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
-                  <span className="text-brown-gray">COMING SOON</span>
-                </p>
-              </div>
+              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
+                Share at your studio
+              </p>
+              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
+                BOOK
+              </span>
             </div>
           </a>
 
           {/* Product Card 4 */}
-          <a href={mentorshipBookingUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a
+            href={mentorshipBookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+          >
             <div className="relative">
-              <img src="/assets/pivot-mentorship.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
+              <img
+                src="/assets/pivot-mentorship.png"
+                alt="Private Mentorship"
+                className="object-cover w-full h-auto max-h-48 mx-auto"
+              />
             </div>
-            <div className="p-6 bg-off-white">
-              <h3 className="mb-2 text-lg sm:text-xl font-merriweather text-center text-brown-gray">
+            <div className="p-6 bg-off-white text-center">
+              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
                 Private Mentorship
               </h3>
-              <div className="flex justify-center mb-2 text-center">
-                <p className="text-lg font-merriweather text-gray-600 text-brown-gray">
-                  <span className="text-brown-gray">ON REQUEST</span>
-                </p>
-              </div>
+              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
+                Personalised guidance
+              </p>
+              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
+                BOOK
+              </span>
             </div>
           </a>
+        </div>
+
+        {/* MORE INFO */}
+        <div className="mt-10 text-center">
+          <p className="text-lg sm:text-xl font-montserrat text-brown-gray">
+            Need more information on our products?{' '}
+            <button
+              onClick={scrollToFAQ}
+              className="text-purple-gray font-semibold hover:underline focus:outline-none"
+            >
+              See our Frequently Asked Questions
+            </button>
+          </p>
         </div>
       </div>
     </section>
