@@ -1,10 +1,10 @@
 import React from 'react';
 
 const FeaturedProducts: React.FC = () => {
-  const pivotPanelsUrl = process.env.REACT_APP_PIVOT_PANELS_URL;
-  const ebookCheckoutUrl = process.env.REACT_APP_EBOOK_CHECKOUT_URL;
-  const workshopBookingUrl = process.env.REACT_APP_WORKSHOP_URL;
-  const mentorshipBookingUrl = process.env.REACT_APP_MENTORSHIP_URL;
+  const pivotPanelsUrl = "https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6rL";
+  const ebookCheckoutUrl = "https://buy.stripe.com/cN28xlgSz5V2360000";
+  const workshopBookingUrl = "https://calendly.com/isaaccavallaro/30min";
+  const mentorshipBookingUrl = "https://calendly.com/isaaccavallaro/30min";
 
   // Scroll to the FAQ section smoothly
   const scrollToFAQ = () => {
