@@ -1,6 +1,10 @@
 import React from 'react';
 
 const FeaturedProducts: React.FC = () => {
+  const pivotPanelsUrl = process.env.REACT_APP_PIVOT_PANELS_URL;
+  const ebookCheckoutUrl = process.env.REACT_APP_EBOOK_CHECKOUT_URL;
+  const workshopBookingUrl = process.env.REACT_APP_WORKSHOP_URL;
+  const mentorshipBookingUrl = process.env.REACT_APP_MENTORSHIP_URL;
   return (
     <section className="flex items-center bg-beige">
       <div id="products" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-10 md:px-6">
@@ -12,7 +16,7 @@ const FeaturedProducts: React.FC = () => {
         </div>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {/* Product Card 1 */}
-          <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a href={pivotPanelsUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
             <div className="relative">
               <img src="/assets/pivot-panels.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
             </div>
@@ -29,7 +33,7 @@ const FeaturedProducts: React.FC = () => {
           </a>
 
           {/* Product Card 2 */}
-          <a href="#" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a href={ebookCheckoutUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
             <div className="relative">
               <img src="/assets/how-to-pivot-ebook.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
             </div>
@@ -46,7 +50,7 @@ const FeaturedProducts: React.FC = () => {
           </a>
 
           {/* Product Card 3 */}
-          <a href="#" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a href={workshopBookingUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
             <div className="relative">
               <img src="/assets/pivot-workshop.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
             </div>
@@ -63,7 +67,7 @@ const FeaturedProducts: React.FC = () => {
           </a>
 
           {/* Product Card 4 */}
-          <a href="#" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
+          <a href={mentorshipBookingUrl} target="_blank" rel="noopener noreferrer" className="block border border-gray-200 rounded-md dark:border-none p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto">
             <div className="relative">
               <img src="/assets/pivot-mentorship.png" alt="" className="object-cover w-full h-auto max-h-48 mx-auto" />
             </div>
