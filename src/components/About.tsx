@@ -48,44 +48,45 @@ const AboutUsSection: React.FC = () => {
             About Us
           </h1>
         </div>
-        {/* Two-Column Layout with Flexbox */}
-        <div className="flex flex-col md:flex-row gap-8 px-4">
-          {/* Text Section */}
-          <animated.div style={textAnimation} className="flex-1">
-            <div className="text-black font-montserrat">
-              <p className="mb-6 leading-7 pt-5 md:pt-0">
-                Pivot for Dancers is an online community, built to <span className="text-lg font-bold">support dancers</span> by welcoming uncomfortable career change conversations.
-              </p>
-              <p className="mb-6 leading-7">
-                Basically, we're talking about the stuff <span className="text-lg font-bold">no one tells you about</span> stepping away from your professional dance career.
-              </p>
-              <p className="mb-6 leading-7">
-                Created by dancers who've done it, we'll help you find <span className="text-lg font-bold">meaningful work</span> off the stage whether due to injuries, illness, or shifts in priorities.
-              </p>
-              <p className="mb-6 leading-7 mt-6 md:mt-0">
-                We've accepted the fact that dance careers are notoriously short. And while we're incredibly proud to be dancers, we realized there's <span className="text-lg font-bold">more to life than dance</span>.
-              </p>
-              <p className="mb-6 leading-7">
-                But by no means are we encouraging you to stop pursuing dancing professionally if it's still working for you. We're also not advocating that you get a "real job" or anything of the sort.
-              </p>
-              <p className="mb-6 leading-7">
-                Instead, we're acknowledging a dancer's ever-changing body, priorities, and goals while helping to change your mindset around dance, your career, and <span className="text-lg font-bold">what it means to pivot</span>.
-              </p>
-            </div>
-          </animated.div>
+        {/* Card Layout */}
+        <div className="dark:bg-gray-700 rounded-lg shadow-lg p-6 md:p-8">
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Text Column 1 */}
+            <animated.div style={textAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6">
+              <div className="text-black font-montserrat">
+                <p className="mb-6 leading-7">
+                  Pivot for Dancers is an online community, built to <span className="text-lg font-bold">support dancers</span> by welcoming uncomfortable career change conversations.
+                  Basically, we're talking about the stuff <span className="text-lg font-bold">no one tells you about</span> stepping away from your professional dance career.
+                  Created by dancers who've done it, we'll help you find <span className="text-lg font-bold">meaningful work</span> off the stage whether due to injuries, illness, or shifts in priorities.
+                  We've accepted the fact that dance careers are notoriously short.
+                </p>
+              </div>
+            </animated.div>
 
-          {/* Iframe Section */}
-          <animated.div style={iframeAnimation} className="flex-1">
-            <div className="relative w-full pt-[130%] sm:pt-[115%] bg-gray-100 rounded-lg shadow-md overflow-hidden">
-              <iframe
-                src="https://instagram.com/pivotfordancers/embed"
-                className="absolute top-0 left-0 w-full h-full"
-                allowFullScreen
-                frameBorder="0"
-                scrolling="no"
-              ></iframe>
-            </div>
-          </animated.div>
+            {/* Text Column 2 */}
+            <animated.div style={textAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6">
+              <div className="text-black font-montserrat">
+                <p className="mb-6 leading-7">
+                  And while we're incredibly proud to be dancers, we realized there's <span className="text-lg font-bold">more to life than dance</span>.
+                  But by no means are we encouraging you to stop pursuing dancing professionally if it's still working for you. We're also not advocating that you get a "real job" or anything of the sort.
+                  Instead, we're acknowledging a dancer's ever-changing body, priorities, and goals while helping to change your mindset around dance, your career, and <span className="text-lg font-bold">what it means to pivot</span>.
+                </p>
+              </div>
+            </animated.div>
+
+            {/* Iframe Section */}
+            <animated.div style={iframeAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6">
+              <div className="relative w-full pt-[140%] bg-gray-100 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://instagram.com/pivotfordancers/embed"
+                  className="absolute top-0 left-0 w-full h-full"
+                  allowFullScreen
+                  frameBorder="0"
+                  scrolling="no"
+                ></iframe>
+              </div>
+            </animated.div>
+          </div>
         </div>
       </div>
     </section>
