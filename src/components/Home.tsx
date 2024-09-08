@@ -1,27 +1,111 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Home: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const iconSize = 'h-8 w-8'; // Set the desired size
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    window.location.href = `https://pivotfordancers.us19.list-manage.com/subscribe/post?u=be8fecbf3f1babc7628da411c&amp;id=e5d51bd2a0&amp;f_id=00c396e4f0&EMAIL=${encodeURIComponent(
+      email
+    )}`;
+  };
+
   return (
-    <section
-      id="home"
-      className="min-h-screen bg-center bg-no-repeat bg-cover relative"
-      style={{ backgroundImage: `url('/assets/test-pic.jpeg')` }}
-    >
-      <div className="absolute inset-0">
-        <div className="overlay"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
-          <h1 className="mb-4 text-9xl font-merriweather tracking-tight leading-none shadow-lg md:text-7xl lg:text-9xl xl:text-9xl">
-            Pivot for Dancers
-          </h1>
-          <p className="mb-8 text-lg font-montserrat">
-            You're still part of the dance community, no matter how long it's been since your last bow.
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex justify-center items-center py-3 px-5 text-base text-center text-white bg-purple-gray hover:bg-purple-gray opacity-80 hover:opacity-100 text-white font-montserrat py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-light-gray mt-4"
-          >
-            JOIN OUR COMMUNITY
-          </a>
+    <section id="home" className="bg-beige pt-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Container with Border */}
+        <div className="border border-gray-300 rounded-lg p-8 bg-white shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Text Section */}
+          <div className="flex flex-col justify-center items-center md:items-start">
+            <h1 className="text-4xl md:text-5xl font-merriweather leading-tight text-gray-900 mb-5">
+              Pivot For Dancers
+            </h1>
+            <p className="mb-4 text-base leading-7 text-black">
+              Join our growing community of current and former professional dancers who are talking about career change.
+            </p>
+            {/* Form and Social Media Icons Section */}
+            <div className="flex flex-col items-center md:items-start justify-center w-full mt-6 space-y-4">
+              {/* Email Input and Button */}
+              <form
+                action="https://pivotfordancers.us19.list-manage.com/subscribe/post?u=be8fecbf3f1babc7628da411c&amp;id=e5d51bd2a0&amp;f_id=00c396e4f0"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                className="flex flex-col md:flex-row items-center w-full justify-center md:justify-start"
+                target="_self"
+                onSubmit={handleSubmit}
+                noValidate
+              >
+                <input
+                  className="w-full px-4 py-4 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 border border-gray-300 rounded-md dark:text-gray-400 lg:mr-3 dark:placeholder-gray-400 dark:bg-gray-700 dark:border-gray-700 md:mb-3 md:w-2/3"
+                  type="email"
+                  placeholder="Enter your e-mail"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+                <button
+                  type="submit"
+                  className="w-full md:w-auto px-6 py-4 text-sm font-semibold text-gray-100 bg-purple-gray rounded-md mt-4 md:mt-0 md:ml-2 hover:bg-purple-gray opacity-80 hover:opacity-100 md:mb-3"
+                >
+                  JOIN US
+                </button>
+              </form>
+              {/* Social Media Icons */}
+              <div className="flex space-x-4 justify-center md:justify-start">
+                <a
+                  href="https://www.facebook.com/pivotfordancers/"
+                  className={`text-white bg-blue-500 hover:bg-blue-400 p-2 rounded-full flex items-center justify-center ${iconSize}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/pivotfordancers/"
+                  className={`text-white bg-pink-500 hover:bg-pink-400 p-2 rounded-full flex items-center justify-center ${iconSize}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/pivotfordancers/"
+                  className={`text-white bg-blue-500 hover:bg-blue-400 p-2 rounded-full flex items-center justify-center ${iconSize}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/@pivotfordancers"
+                  className={`text-white bg-red-500 hover:bg-red-400 p-2 rounded-full flex items-center justify-center ${iconSize}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Video Section */}
+          <div className="flex justify-center items-center">
+            <iframe
+              width="100%"
+              height="315"
+              src="https://www.youtube.com/embed/tuBxpzNHWlU?si=k6vasI0aoAubcgLW"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded-lg shadow-lg"
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>
