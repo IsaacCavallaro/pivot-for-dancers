@@ -78,7 +78,7 @@ const TestimonialsSection: React.FC = () => {
           </h1> */}
         </div>
         <br />
-        <div className="relative mx-auto px-4 py-12 mb-20 text-center bg-white rounded shadow md:px-20 md:py-20 dark:bg-gray-700">
+        <div className="relative mx-auto px-4 pt-12 text-center bg-white rounded shadow md:px-20 md:py-20 dark:bg-gray-700">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className="flex flex-col items-center text-center">
