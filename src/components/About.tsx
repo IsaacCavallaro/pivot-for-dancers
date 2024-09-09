@@ -49,10 +49,10 @@ const AboutUsSection: React.FC = () => {
           </h1>
         </div>
         {/* Card Layout */}
-        <div className="dark:bg-gray-700 rounded-lg shadow-lg p-6 md:p-8">
-          <div className="flex flex-col md:flex-row gap-8">
+        <div className="dark:bg-gray-700 rounded-lg shadow-lg p-6 md:p-8 pt-2">
+          <div className="flex flex-col gap-8 md:flex-row pt-10">
             {/* Text Column 1 */}
-            <animated.div style={textAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6">
+            <animated.div style={textAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6 md:p-8">
               <div className="text-black font-montserrat">
                 <p className="mb-6 leading-7">
                   Pivot for Dancers is an online community, built to <span className="text-lg font-bold">support dancers</span> by welcoming uncomfortable career change conversations.
@@ -64,7 +64,7 @@ const AboutUsSection: React.FC = () => {
             </animated.div>
 
             {/* Text Column 2 */}
-            <animated.div style={textAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6">
+            <animated.div style={textAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6 md:p-8">
               <div className="text-black font-montserrat">
                 <p className="mb-6 leading-7">
                   And while we're incredibly proud to be dancers, we realized there's <span className="text-lg font-bold">more to life than dance</span>.
@@ -75,7 +75,7 @@ const AboutUsSection: React.FC = () => {
             </animated.div>
 
             {/* Iframe Section */}
-            <animated.div style={iframeAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6">
+            <animated.div style={iframeAnimation} className="flex-1 bg-white rounded-lg shadow-md p-6 md:p-8">
               <div className="relative w-full pt-[140%] bg-gray-100 rounded-lg overflow-hidden">
                 <iframe
                   src="https://instagram.com/pivotfordancers/embed"
