@@ -49,29 +49,26 @@ const AboutUsSection: React.FC = () => {
           </h1>
         </div>
         {/* Card Layout */}
-        <div className="dark:bg-gray-700 rounded-lg shadow-lg md:p-8 pt-2 my-6"> {/* Added vertical margin */}
-          <div className="flex flex-col gap-8 md:flex-row md:gap-8 px-4 md:px-0"> {/* Add padding on mobile and remove it on larger screens */}
-            {/* Text Column 1 */}
+        <div className="dark:bg-gray-700 rounded-lg shadow-lg md:p-8 pt-2 my-6">
+          <div className="flex flex-col gap-8 md:gap-8 px-4 md:px-0 lg:flex-row"> {/* Flex on larger screens, stacked on medium screens */}
+            {/* Text Column */}
             <animated.div
               style={textAnimation}
               className="mt-8 md:mt-0 flex-1 bg-white rounded-lg shadow-md p-6 md:p-8 mx-auto"
-
             >
               <div className="text-black font-montserrat">
-                <p className="mb-6 leading-7">
+                {/* Adjust text size to be responsive */}
+                <p className="mb-6 text-base md:text-lg lg:text-xl leading-tight text-justify">
                   Pivot for Dancers is an online community, built to <span className="font-bold">support dancers</span> by welcoming uncomfortable career change conversations.
                   Basically, we're talking about the stuff <span className="font-bold">no one tells you about</span> stepping away from your professional dance career.
                 </p>
-                <p className="mb-6 leading-7">
+                <p className="mb-6 text-base md:text-lg lg:text-xl leading-tight text-justify">
                   Created by dancers who've done it, we'll help you find <span className="font-bold">meaningful work</span> off the stage whether due to injuries, illness, or shifts in priorities.
                   We've accepted the fact that dance careers are notoriously short.
                 </p>
-                <p className="mb-6 leading-7">
+                <p className="mb-6 text-base md:text-lg lg:text-xl leading-tight text-justify">
                   And while we're incredibly proud to be dancers, we realized there's <span className="font-bold">more to life than dance</span>.
                   But by no means are we encouraging you to stop pursuing dancing professionally if it's still working for you. We're also not advocating that you get a "real job" or anything of the sort.
-                </p>
-                <p className="mb-6 leading-7">
-                  Instead, we're acknowledging a dancer's ever-changing body, priorities, and goals while helping to change your mindset around dance, your career, and <span className="font-bold">what it means to pivot</span>.
                 </p>
               </div>
             </animated.div>
@@ -83,10 +80,10 @@ const AboutUsSection: React.FC = () => {
             >
               {/* Video Section */}
               <div className="flex justify-center items-center">
-                <div className="w-full max-w-sm md:max-w-full mx-auto">
+                <div className="max-w-sm md:max-w-full mx-auto">
                   <iframe
                     width="100%"
-                    height="600px"
+                    height="500px"
                     src="https://www.instagram.com/p/C8x-Sp7SSCo/embed"
                     title="Instagram video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -99,7 +96,7 @@ const AboutUsSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
