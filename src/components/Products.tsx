@@ -4,7 +4,7 @@ const FeaturedProducts: React.FC = () => {
   const pivotPanelsUrl = "https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6rL";
   const ebookCheckoutUrl = "https://buy.stripe.com/cN28xlgSz5V2360000";
   const workshopBookingUrl = "https://calendly.com/isaaccavallaro/30min";
-  const mentorshipBookingUrl = "https://calendly.com/isaaccavallaro/30min";
+  const mentorshipBookingUrl = "https://mailchi.mp/85848784f317/pivot-mentorship-program";
 
   // Scroll to the FAQ section smoothly
   const scrollToFAQ = () => {

@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import TestimonialsSection from './components/TestimonialSection';
 import Faq from './components/Faq';
 import Timeline from './components/Timeline';
+import Banner from './components/Banner';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <TestimonialsSection />
       <About />
       <Timeline />
+      <Banner />
       <Values />
       {/* <Contact /> */}
       <Faq />
