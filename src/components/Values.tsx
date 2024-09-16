@@ -8,25 +8,15 @@ const Values: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const valuesSection = document.getElementById('values');
-
       if (valuesSection) {
         const rect = valuesSection.getBoundingClientRect();
         const isSectionVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-
-        if (isSectionVisible) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
+        setIsVisible(isSectionVisible);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Cleanup the event listener
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const valuesAnimation = useSpring({
@@ -41,53 +31,57 @@ const Values: React.FC = () => {
     config: { duration: 800 },
   });
 
+  const [email, setEmail] = useState('');
+  const iconSize = 'h-8 w-8'; // Set the desired size
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    window.location.href = `https://pivotfordancers.us19.list-manage.com/subscribe/post?u=be8fecbf3f1babc7628da411c&amp;id=e5d51bd2a0&amp;f_id=00c396e4f0&EMAIL=${encodeURIComponent(
+      email
+    )}`;
+  };
+
   return (
     <section id="values" className="bg-beige font-poppins">
       <div className="max-w-6xl py-4 mx-auto md:px-6">
-        <div className="px-4 pl-4 mb-6">
+        <div className="px-4 mb-6">
           <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">What Drives Pivot For Dancers?</span>
           <h1 className="mt-2 text-3xl font-merriweather text-text-black md:text-5xl">
             Our Values
           </h1>
         </div>
-        <div className="flex flex-wrap">
-          <div className="w-full lg:w-1/2 px-4 mb-10 opacity-70">
-            <animated.img
-              style={iconAnimation}
-              className="object-cover w-full h-full rounded-lg"
-              src="/assets/test-pic-three.jpeg"
-              alt="Female artistically reaching for the sky"
-            />
-          </div>
-          <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0 ">
-            <div className="flex flex-col space-y-8">
-              {values.map((value, index) => (
-                <animated.div
-                  key={index}
-                  style={valuesAnimation}
-                  className="flex mb-4 animate__animated animate__fadeIn"
-                >
-                  <animated.span style={iconAnimation} className="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 dark:bg-gray-700 text-white">
-                    {value.title === 'Curiosity' && <IoMdSearch className="w-6 h-6" />}
-                    {value.title === 'Empowerment' && <IoIosFitness className="w-6 h-6" />}
-                    {value.title === 'Resilience' && <IoMdHeartHalf className="w-6 h-6" />}
-                    {value.title === 'Humility' && <IoMdFlag className="w-6 h-6" />}
-                  </animated.span>
-                  <div>
-                    <animated.h2 style={valuesAnimation} className="mb-4 text-xl font-bold leading-tight text-text-black md:text-2xl">
-                      {value.title}
-                    </animated.h2>
-                    <animated.p style={valuesAnimation} className="text-base leading-loose text-black">
-                      {value.description}
-                    </animated.p>
-                  </div>
-                </animated.div>
-              ))}
-            </div>
-          </div>
+        {/* Two-column grid for larger screens */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
+          {values.map((value, index) => (
+            <animated.div
+              key={index}
+              style={valuesAnimation}
+              className="flex mb-4 animate__animated animate__fadeIn"
+            >
+              <animated.span style={iconAnimation} className="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 dark:bg-gray-700 text-white">
+                {value.title === 'Curiosity' && <IoMdSearch className="w-6 h-6" />}
+                {value.title === 'Empowerment' && <IoIosFitness className="w-6 h-6" />}
+                {value.title === 'Resilience' && <IoMdHeartHalf className="w-6 h-6" />}
+                {value.title === 'Humility' && <IoMdFlag className="w-6 h-6" />}
+              </animated.span>
+              <div>
+                <animated.h2 style={valuesAnimation} className="mb-4 text-xl font-bold leading-tight text-text-black md:text-2xl">
+                  {value.title}
+                </animated.h2>
+                <animated.p style={valuesAnimation} className="text-base leading-loose text-black">
+                  {value.description}
+                </animated.p>
+              </div>
+            </animated.div>
+          ))}
         </div>
       </div>
     </section>
+
   );
 };
 
@@ -96,7 +90,7 @@ const values = [
     title: 'Curiosity',
     description: (
       <>
-        Pivot for Dancers <span className="text-lg font-bold">encourages</span> dancers to explore <span className="text-lg font-bold">other interests</span>  while pursuing a dance career. It doesn&apos;t have to be one or the other.
+        Pivot for Dancers <span className="text-lg font-bold">encourages</span> dancers to explore <span className="text-lg font-bold">other interests</span> while pursuing a dance career. It doesn&apos;t have to be one or the other.
       </>
     ),
   },
