@@ -34,6 +34,7 @@ const Banner: React.FC = () => {
                             <a
                                 href="#"
                                 className="flex justify-center w-full md:w-auto px-6 py-4 text-sm font-semibold text-gray-100 bg-purple-gray rounded-md mt-4 md:mt-0 md:ml-2 hover:bg-purple-gray opacity-80 hover:opacity-100 md:mb-3"
+                                target="_blank"
                             >
                                 ORDER BOOK NOW
                             </a>
@@ -45,7 +46,7 @@ const Banner: React.FC = () => {
                         <iframe
                             width="100%"
                             height="315"
-                            src="https://read.amazon.com.au/kp/card?asin=B0D17KDM16&preview=inline&linkCode=kpe&ref_=kip_embed_taf_preview_XK3ZNG1BRN8HYZPD5BZY"
+                            src="https://read.amazon.com.au/kp/card?asin=B0CXL4F57D&preview=inline&linkCode=kpe&ref_=kip_embed_taf_preview_WP7PVP0JR6SW63ZPDGC6"
                             title="Book Preview"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
