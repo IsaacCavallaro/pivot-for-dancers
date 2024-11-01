@@ -32,7 +32,7 @@ const Banner: React.FC = () => {
                         {/* Call to Action */}
                         <div className="flex justify-center">
                             <a
-                                href="#"
+                                href="https://www.amazon.com/dp/B0CXL4F57D"
                                 className="flex justify-center w-full md:w-auto px-6 py-4 text-sm font-semibold text-gray-100 bg-purple-gray rounded-md mt-4 md:mt-0 md:ml-2 hover:bg-purple-gray opacity-80 hover:opacity-100 md:mb-3"
                                 target="_blank"
                             >
