@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FeaturedProducts: React.FC = () => {
-  const pivotPanelsUrl = "https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6rL";
+  const pivotPanelsUrl = "https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r";
   const ebookAmazonUrl = "https://www.amazon.com/dp/B0CXL4F57D";
   const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
   const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
@@ -33,7 +33,7 @@ const FeaturedProducts: React.FC = () => {
           >
             <div className="relative">
               <img
-                src="/assets/happy-trails-mini-course.png"
+                src="/assets/pivot-panels.png"
                 alt="Pivot Panels"
                 className="object-cover w-full h-auto max-h-48 mx-auto"
               />
