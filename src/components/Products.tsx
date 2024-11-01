@@ -2,9 +2,9 @@ import React from 'react';
 
 const FeaturedProducts: React.FC = () => {
   const pivotPanelsUrl = "https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6rL";
-  const ebookCheckoutUrl = "https://buy.stripe.com/cN28xlgSz5V2360000";
-  const workshopBookingUrl = "https://calendly.com/isaaccavallaro/30min";
-  const mentorshipBookingUrl = "https://mailchi.mp/85848784f317/pivot-mentorship-program";
+  const ebookAmazonUrl = "https://www.amazon.com/dp/B0CXL4F57D";
+  const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
+  const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
 
   // Scroll to the FAQ section smoothly
   const scrollToFAQ = () => {
@@ -33,7 +33,7 @@ const FeaturedProducts: React.FC = () => {
           >
             <div className="relative">
               <img
-                src="/assets/pivot-panels.png"
+                src="/assets/happy-trails-mini-course.png"
                 alt="Pivot Panels"
                 className="object-cover w-full h-auto max-h-48 mx-auto"
               />
@@ -53,7 +53,7 @@ const FeaturedProducts: React.FC = () => {
 
           {/* Product Card 2 */}
           <a
-            href={ebookCheckoutUrl}
+            href={ebookAmazonUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
@@ -80,21 +80,21 @@ const FeaturedProducts: React.FC = () => {
 
           {/* Product Card 3 */}
           <a
-            href={workshopBookingUrl}
+            href={coursePaymentUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
           >
             <div className="relative">
               <img
-                src="/assets/pivot-workshop.png"
-                alt="Pivot Workshop"
+                src="/assets/happy-trails-mini-course.png"
+                alt="Pivot Course"
                 className="object-cover w-full h-auto max-h-48 mx-auto"
               />
             </div>
             <div className="p-6 bg-off-white text-center">
               <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
-                Pivot Workshop
+                Pivot Course
               </h3>
               <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
                 Share at your studio
