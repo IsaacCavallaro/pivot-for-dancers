@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 
-const Banner: React.FC = () => {
+const EbookBanner: React.FC = () => {
     const fadeIn = useSpring({
         opacity: 1,
         from: { opacity: 0 },
@@ -60,4 +60,4 @@ const Banner: React.FC = () => {
     );
 };
 
-export default Banner;
+export default EbookBanner;
