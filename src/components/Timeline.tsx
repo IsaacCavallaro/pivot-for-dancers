@@ -1,12 +1,65 @@
 import React, { useState } from 'react';
 
 const Timeline: React.FC = () => {
-    // Set the initial visible stage to 1 (THE DREAM)
     const [visibleStage, setVisibleStage] = useState<number | null>(1);
 
     const toggleStage = (stageNumber: number) => {
         setVisibleStage(visibleStage === stageNumber ? null : stageNumber);
     };
+
+    // Common class variables
+    const baseContainerClasses = "relative flex justify-between";
+    const sideIconClasses = "flex flex-col items-center w-10 mr-4 md:w-24";
+    const iconContainerClasses = "flex items-center justify-center w-10 h-10 border border-black rounded-full";
+    const contentBoxClasses = "relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer";
+    const innerContentClasses = "relative z-20 p-6";
+    const titleClasses = "flex-1 text-lg font-semibold text-white text-center";
+    const toggleIconContainerClasses = "w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full";
+    const descriptionClasses = "mt-4 leading-7 text-white font-montserrat text-lg";
+    const transitionClasses = "overflow-hidden transition-all duration-1000 ease-in-out";
+
+    // content
+    const theDreamTxt = `You’ve trained to be a dancer since you were tiny. 
+                            You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. 
+                            You work consistently as a professional dancer and you feel like you’re truly living the dream.`;
+    const theGritTxt = `You’re still dancing professionally and loving it. You also teach four nights a week, 
+                            take any extra gig you can get, but still struggle to make ends meet. You work nights 
+                            and most holidays and sometimes feel like you’re missing out on other aspects of life. 
+                            But you’re living the dream, so who cares?`
+    const theRealityTxt = `You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored
+                             doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. 
+                             Plus, you crave stability but keep these thoughts to yourself because you’re living the dream, right?`
+
+    const thePivotTxt = `You take a step back and reassess your goals and what you want for the future. 
+                        Maybe you start to explore different career options, find ways to balance your life and finances, 
+                        and look for new ways to reignite your passion. This is the stage where you rethink and pivot, seeking a new direction.`
+
+    const stages = [
+        {
+            id: 1,
+            title: "THE DREAM",
+            content: theDreamTxt,
+            icon: "fas fa-5 text-black text-xl"
+        },
+        {
+            id: 2,
+            title: "THE GRIT",
+            content: theGritTxt,
+            icon: "fas fa-6 text-black text-xl"
+        },
+        {
+            id: 3,
+            title: "THE REALITY",
+            content: theRealityTxt,
+            icon: "fas fa-7 text-black text-xl"
+        },
+        {
+            id: 4,
+            title: "THE PIVOT",
+            content: thePivotTxt,
+            icon: "fas fa-8 text-black text-xl"
+        }
+    ];
 
     return (
         <section className="items-center bg-beige font-poppins">
@@ -18,163 +71,44 @@ const Timeline: React.FC = () => {
                     </h1>
                 </div>
                 <div className="w-full mx-auto lg:max-w-3xl">
-                    {/* STAGE 1 - THE DREAM */}
-                    <div className="relative flex justify-between">
-                        <div className="flex flex-col items-center w-10 mr-4 md:w-24">
-                            <div>
-                                <div className="flex items-center justify-center w-10 h-10 border border-black rounded-full">
-                                    <i className="fas fa-5 text-black text-xl"></i>
-                                </div>
-                            </div>
-                            <div className="w-px h-full dark:bg-gray-700"></div>
-                        </div>
-                        <div
-                            className={`relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer ${visibleStage === 1 ? 'bg-gray-200 dark:bg-gray-600' : ''
-                                }`}
-                            onClick={() => toggleStage(1)}
-                        >
-                            <div className="relative z-20 p-6">
-                                <div className="flex items-center justify-between">
-                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
-                                        {visibleStage === 1 ? 'THE DREAM' : 'THE DREAM'}
-                                    </h2>
-                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
-                                        {visibleStage === 1 ? (
-                                            <i className="fas fa-chevron-up text-white text-xl"></i>
-                                        ) : (
-                                            <i className="fas fa-chevron-down text-white text-xl"></i>
-                                        )}
+                    {stages.map(stage => (
+                        <div key={stage.id} className={baseContainerClasses}>
+                            <div className={sideIconClasses}>
+                                <div>
+                                    <div className={iconContainerClasses}>
+                                        <i className={stage.icon}></i>
                                     </div>
                                 </div>
-                                <div
-                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 1 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
-                                        }`}
-                                >
-                                    <p className="mt-4 leading-7 text-white font-montserrat text-lg">
-                                        You’ve trained to be a dancer since you were tiny. You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you’re truly living the dream.
-                                    </p>
-                                </div>
+                                <div className="w-px h-full dark:bg-gray-700"></div>
                             </div>
-                        </div>
-                    </div>
-
-                    {/* THE GRIT */}
-                    <div className="relative flex justify-between">
-                        <div className="flex flex-col items-center w-10 mr-4 md:w-24">
-                            <div>
-                                <div className="flex items-center justify-center w-10 h-10 border border-black rounded-full">
-                                    <i className="fas fa-6 text-black text-xl"></i>
-                                </div>
-                            </div>
-                            <div className="w-px h-full dark:bg-gray-700"></div>
-                        </div>
-                        <div
-                            className={`relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer ${visibleStage === 2 ? 'bg-gray-200 dark:bg-gray-600' : ''
-                                }`}
-                            onClick={() => toggleStage(2)}
-                        >
-                            <div className="relative z-20 p-6">
-                                <div className="flex items-center justify-between">
-                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
-                                        {visibleStage === 2 ? 'THE GRIT' : 'THE GRIT'}
-                                    </h2>
-                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
-                                        {visibleStage === 2 ? (
-                                            <i className="fas fa-chevron-up text-white text-xl"></i>
-                                        ) : (
-                                            <i className="fas fa-chevron-down text-white text-xl"></i>
-                                        )}
+                            <div
+                                className={`${contentBoxClasses} ${visibleStage === stage.id ? 'bg-gray-200 dark:bg-gray-600' : ''}`}
+                                onClick={() => toggleStage(stage.id)}
+                            >
+                                <div className={innerContentClasses}>
+                                    <div className="flex items-center justify-between">
+                                        <h2 className={titleClasses}>
+                                            {stage.title}
+                                        </h2>
+                                        <div className={toggleIconContainerClasses}>
+                                            {visibleStage === stage.id ? (
+                                                <i className="fas fa-chevron-up text-white text-xl"></i>
+                                            ) : (
+                                                <i className="fas fa-chevron-down text-white text-xl"></i>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div
+                                        className={`${transitionClasses} ${visibleStage === stage.id ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'}`}
+                                    >
+                                        <p className={descriptionClasses}>
+                                            {stage.content}
+                                        </p>
                                     </div>
                                 </div>
-                                <div
-                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 2 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
-                                        }`}
-                                >
-                                    <p className="mt-4 leading-7 text-white font-montserrat text-lg">
-                                        You’re still dancing professionally and loving it. You also teach four nights a week, take any extra gig you can get, but still struggle to make ends meet. You work nights and most holidays and sometimes feel like you’re missing out on other aspects of life. But you’re living the dream, so who cares?
-                                    </p>
-                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    {/* THE REALITY */}
-                    <div className="relative flex justify-between">
-                        <div className="flex flex-col items-center w-10 mr-4 md:w-24">
-                            <div className="flex items-center justify-center w-10 h-10 border border-black rounded-full">
-                                <i className="fas fa-7 text-black text-xl"></i>
-                            </div>
-                            <div className="w-px h-full dark:bg-gray-700"></div>
-                        </div>
-                        <div
-                            className={`relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer ${visibleStage === 3 ? 'bg-gray-200 dark:bg-gray-600' : ''
-                                }`}
-                            onClick={() => toggleStage(3)}
-                        >
-                            <div className="relative z-20 p-6">
-                                <div className="flex items-center justify-between">
-                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
-                                        {visibleStage === 3 ? 'THE REALITY' : 'THE REALITY'}
-                                    </h2>
-                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
-                                        {visibleStage === 3 ? (
-                                            <i className="fas fa-chevron-up text-white text-xl"></i>
-                                        ) : (
-                                            <i className="fas fa-chevron-down text-white text-xl"></i>
-                                        )}
-                                    </div>
-                                </div>
-                                <div
-                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 3 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
-                                        }`}
-                                >
-                                    <p className="mt-4 leading-7 text-white font-montserrat text-lg">
-                                        You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. Plus, you crave stability but keep these thoughts to yourself because you’re living the dream, right?
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* THE PIVOT */}
-                    <div className="relative flex justify-between">
-                        <div className="flex flex-col items-center w-10 mr-4 md:w-24">
-                            <div>
-                                <div className="flex items-center justify-center w-10 h-10 border border-black rounded-full">
-                                    <i className="fas fa-8 text-black"></i>
-                                </div>
-                            </div>
-                            <div className="w-px h-full dark:bg-gray-700"></div>
-                        </div>
-                        <div
-                            className={`relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer ${visibleStage === 4 ? 'bg-gray-200 dark:bg-gray-600' : ''
-                                }`}
-                            onClick={() => toggleStage(4)}
-                        >
-                            <div className="relative z-20 p-6">
-                                <div className="flex items-center justify-between">
-                                    <h2 className="flex-1 text-lg font-semibold text-white text-center">
-                                        {visibleStage === 4 ? 'THE PIVOT' : 'THE PIVOT'}
-                                    </h2>
-                                    <div className="w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full">
-                                        {visibleStage === 4 ? (
-                                            <i className="fas fa-chevron-up text-white text-xl"></i>
-                                        ) : (
-                                            <i className="fas fa-chevron-down text-white text-xl"></i>
-                                        )}
-                                    </div>
-                                </div>
-                                <div
-                                    className={`overflow-hidden transition-all duration-1000 ease-in-out ${visibleStage === 4 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
-                                        }`}
-                                >
-                                    <p className="mt-4 leading-7 text-white font-montserrat text-lg">
-                                        You take a step back and reassess your goals and what you want for the future. Maybe you start to explore different career options, find ways to balance your life and finances, and look for new ways to reignite your passion. This is the stage where you rethink and pivot, seeking a new direction.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
