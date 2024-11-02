@@ -1,6 +1,7 @@
 import React from 'react';
 
 const FeaturedProducts: React.FC = () => {
+  // Product urls
   const pivotPanelsUrl = "https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r";
   const ebookAmazonUrl = "https://www.amazon.com/dp/B0CXL4F57D";
   const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
@@ -14,133 +15,90 @@ const FeaturedProducts: React.FC = () => {
     }
   };
 
+  // Class variables
+  const sectionClasses = "flex items-center bg-beige";
+  const containerClasses = "justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-10 md:px-6";
+  const headingContainerClasses = "px-4 pl-4 mb-6";
+  const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
+  const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-5xl";
+  const gridClasses = "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-4";
+  const cardClasses = "flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full";
+  const imgWrapperClasses = "relative overflow-hidden";
+  const imgClasses = "object-cover w-full h-full";
+  const textContainerClasses = "p-6 bg-off-white text-center flex flex-col flex-grow justify-between";
+  const textTitleClasses = "text-lg sm:text-xl font-merriweather text-brown-gray";
+  const textDescriptionClasses = "mb-4 text-sm sm:text-base font-montserrat text-brown-gray";
+  const buttonClasses = "inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600";
+  const moreInfoClasses = "mt-10 text-center";
+  const moreInfoTextClasses = "text-lg sm:text-xl font-montserrat text-brown-gray";
+  const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
+
+  const products = [
+    {
+      url: pivotPanelsUrl,
+      img: "/assets/pivot-panels.png",
+      title: "Pivot Panels",
+      description: "Hear from the community",
+      buttonText: "FREE",
+    },
+    {
+      url: ebookAmazonUrl,
+      img: "/assets/how-to-pivot-ebook.png",
+      title: "How to Pivot eBook",
+      description: "Your guide to pivoting",
+      buttonText: "BUY",
+    },
+    {
+      url: coursePaymentUrl,
+      img: "/assets/happy-trails-mini-course.png",
+      title: "Pivot Course",
+      description: "Share at your studio",
+      buttonText: "BOOK",
+    },
+    {
+      url: mentorshipBookingUrl,
+      img: "/assets/pivot-mentorship.png",
+      title: "Private Mentorship",
+      description: "Personalised guidance",
+      buttonText: "BOOK",
+    },
+  ];
+
   return (
-    <section className="flex items-center bg-beige">
-      <div id="products" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-10 md:px-6">
-        <div className="px-4 pl-4 mb-6">
-          <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Dancer-Specific Career Change Resources</span>
-          <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
-            Products
-          </h1>
+    <section className={sectionClasses}>
+      <div id="products" className={containerClasses}>
+        <div className={headingContainerClasses}>
+          <span className={headingSpanClasses}>Dancer-Specific Career Change Resources</span>
+          <h1 className={headingTitleClasses}>Products</h1>
         </div>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-4">
-          {/* Product Card 1 */}
-          <a
-            href={pivotPanelsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
-          >
-            <div className="relative overflow-hidden">
-              <img
-                src="/assets/pivot-panels.png"
-                alt="Pivot Panels"
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
-              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
-                Pivot Panels
-              </h3>
-              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
-                Hear from the community
-              </p>
-              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
-                FREE
-              </span>
-            </div>
-          </a>
-
-          {/* Product Card 2 */}
-          <a
-            href={ebookAmazonUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
-          >
-            <div className="relative overflow-hidden">
-              <img
-                src="/assets/how-to-pivot-ebook.png"
-                alt="How to Pivot eBook"
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
-              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
-                How to Pivot eBook
-              </h3>
-              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
-                Your guide to pivoting
-              </p>
-              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
-                BUY
-              </span>
-            </div>
-          </a>
-
-          {/* Product Card 3 */}
-          <a
-            href={coursePaymentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
-          >
-            <div className="relative overflow-hidden">
-              <img
-                src="/assets/happy-trails-mini-course.png"
-                alt="Pivot Course"
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
-              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
-                Pivot Course
-              </h3>
-              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
-                Share at your studio
-              </p>
-              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
-                BOOK
-              </span>
-            </div>
-          </a>
-
-          {/* Product Card 4 */}
-          <a
-            href={mentorshipBookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
-          >
-            <div className="relative overflow-hidden">
-              <img
-                src="/assets/pivot-mentorship.png"
-                alt="Private Mentorship"
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
-              <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
-                Private Mentorship
-              </h3>
-              <p className="mb-4 text-sm sm:text-base font-montserrat text-brown-gray">
-                Personalised guidance
-              </p>
-              <span className="inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600">
-                BOOK
-              </span>
-            </div>
-          </a>
+        <div className={gridClasses}>
+          {products.map((product, index) => (
+            <a
+              key={index}
+              href={product.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cardClasses}
+            >
+              <div className={imgWrapperClasses}>
+                <img src={product.img} alt={product.title} className={imgClasses} />
+              </div>
+              <div className={textContainerClasses}>
+                <h3 className={textTitleClasses}>{product.title}</h3>
+                <p className={textDescriptionClasses}>{product.description}</p>
+                <span className={buttonClasses}>{product.buttonText}</span>
+              </div>
+            </a>
+          ))}
         </div>
-
 
         {/* MORE INFO */}
-        <div className="mt-10 text-center">
-          <p className="text-lg sm:text-xl font-montserrat text-brown-gray">
+        <div className={moreInfoClasses}>
+          <p className={moreInfoTextClasses}>
             Need more information on our products?{' '}
             <button
               onClick={scrollToFAQ}
-              className="text-purple-gray font-semibold hover:underline focus:outline-none"
+              className={faqButtonClasses}
             >
               See our Frequently Asked Questions
             </button>
