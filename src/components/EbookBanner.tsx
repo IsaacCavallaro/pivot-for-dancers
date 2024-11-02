@@ -19,12 +19,12 @@ const EbookBanner: React.FC = () => {
                             Your Next Chapter Awaits
                         </h2>
                         <p className="text-lg text-gray-700">
-                            Discover the inspiring stories of dancers who, <span className="font-bold">just like you</span>, found the courage to explore new passions and build fulfilling careers while staying connected to their love for dance.
+                            Unlock the tools you need to get out of your own way and step onto the next stage of your career. Discover real-life examples and <span className="font-bold">dancer-specific resources</span> to help you find fulfilment in your next career.
                         </p>
 
                         {/* Testimonial Quote */}
                         <blockquote className="italic text-gray-600">
-                            "A must-read for dancers looking to pivot without losing their passion. Full of actionable advice and heartfelt stories."
+                            "It's all the things I wish someone told me before I started my professional dance career. A must-read for dancers looking to pivot."
                             <br></br>
                             <span className="font-semibold text-gray-900">— Sarah M., Professional Dancer</span>
                         </blockquote>
