@@ -23,22 +23,22 @@ const FeaturedProducts: React.FC = () => {
             Products
           </h1>
         </div>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-4">
           {/* Product Card 1 */}
           <a
             href={pivotPanelsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
           >
-            <div className="relative">
+            <div className="relative overflow-hidden">
               <img
                 src="/assets/pivot-panels.png"
                 alt="Pivot Panels"
-                className="object-cover w-full h-auto max-h-48 mx-auto"
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="p-6 bg-off-white text-center">
+            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
               <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
                 Pivot Panels
               </h3>
@@ -56,16 +56,16 @@ const FeaturedProducts: React.FC = () => {
             href={ebookAmazonUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
           >
-            <div className="relative">
+            <div className="relative overflow-hidden">
               <img
                 src="/assets/how-to-pivot-ebook.png"
                 alt="How to Pivot eBook"
-                className="object-cover w-full h-auto max-h-48 mx-auto"
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="p-6 bg-off-white text-center">
+            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
               <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
                 How to Pivot eBook
               </h3>
@@ -83,16 +83,16 @@ const FeaturedProducts: React.FC = () => {
             href={coursePaymentUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
           >
-            <div className="relative">
+            <div className="relative overflow-hidden">
               <img
                 src="/assets/happy-trails-mini-course.png"
                 alt="Pivot Course"
-                className="object-cover w-full h-auto max-h-48 mx-auto"
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="p-6 bg-off-white text-center">
+            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
               <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
                 Pivot Course
               </h3>
@@ -110,16 +110,16 @@ const FeaturedProducts: React.FC = () => {
             href={mentorshipBookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block border border-gray-200 rounded-md p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 max-w-xs mx-auto"
+            className="flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full"
           >
-            <div className="relative">
+            <div className="relative overflow-hidden">
               <img
                 src="/assets/pivot-mentorship.png"
                 alt="Private Mentorship"
-                className="object-cover w-full h-auto max-h-48 mx-auto"
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="p-6 bg-off-white text-center">
+            <div className="p-6 bg-off-white text-center flex flex-col flex-grow justify-between">
               <h3 className="text-lg sm:text-xl font-merriweather text-brown-gray">
                 Private Mentorship
               </h3>
@@ -132,6 +132,7 @@ const FeaturedProducts: React.FC = () => {
             </div>
           </a>
         </div>
+
 
         {/* MORE INFO */}
         <div className="mt-10 text-center">

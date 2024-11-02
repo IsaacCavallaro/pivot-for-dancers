@@ -41,7 +41,7 @@ const AboutUsSection: React.FC = () => {
 
   return (
     <section id="about" className="bg-beige font-merriweather py-10">
-      <div id="contact" className="max-w-6xl py-4 mx-auto md:px-6">
+      <div className="max-w-6xl py-4 mx-auto md:px-6">
         {/* Heading section */}
         <div className="px-4 pl-4 mb-6">
           <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">
