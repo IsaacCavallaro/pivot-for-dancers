@@ -71,13 +71,6 @@ const TestimonialsSection: React.FC = () => {
   return (
     <section className="bg-beige">
       <div className="max-w-6xl py-4 mx-auto md:px-6">
-        <div className="px-4 pl-4 mb-6">
-          {/* <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Why Pivot For Dancers?</span> */}
-          {/* <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
-            Testimonials
-          </h1> */}
-        </div>
-        <br />
         <div className="relative mx-auto px-4 pt-12 text-center bg-white rounded shadow md:px-20 md:py-20 dark:bg-gray-700">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (

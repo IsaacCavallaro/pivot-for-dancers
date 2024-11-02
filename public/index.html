@@ -2,29 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <title>Pivot for Dancers - Empowering Career Transitions</title>
+    
+    <!-- SEO Meta Tags -->
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Pivot for Dancers offers resources and guidance for dancers seeking meaningful career transitions."
     />
+    <meta name="keywords" content="dancers, career transition, pivot, professional growth, dancer support" />
+    <meta name="author" content="Pivot for Dancers" />
+    <link rel="canonical" href="https://www.pivotfordancers.com/" />
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Pivot for Dancers - Empowering Career Transitions" />
+    <meta property="og:description" content="Guidance and resources for dancers at every career stage." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:url" content="https://www.pivotfordancers.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon and Theme Color -->
+    <link rel="icon" href="%PUBLIC_URL%/assets/logo.png" type="image/png" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Apple Touch Icon for Progressive Web App -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <!-- Font Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Brown+Sugar&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Brown+Sugar&display=swap"
-    />
-    <title>Pivot For Dancers</title>
+
+    <!-- Inline Styles for Initial Load Optimization -->
     <style>
       body {
         margin: 0;
         overflow-x: hidden;
       }
-
       #root {
         max-width: 100vw;
         overflow-x: hidden;
@@ -34,5 +51,20 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- JavaScript for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Pivot for Dancers",
+        "url": "https://www.pivotfordancers.com/",
+        "logo": "%PUBLIC_URL%/logo192.png",
+        "sameAs": [
+          "https://www.facebook.com/pivotfordancers",
+          "https://www.instagram.com/pivotfordancers"
+        ]
+      }
+    </script>
   </body>
 </html>
