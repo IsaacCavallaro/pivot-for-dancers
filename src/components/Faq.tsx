@@ -41,7 +41,7 @@ const FAQ = () => {
                                             {showAnswer1 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer1 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer1 ? 'opacity-100 max-h-120' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                                         Pivot for Dancers offers resources for professional dancers who are making a career change.
                                         We're also a community of hundreds of dancers just like you and we hold events and workshops to
                                         help you connect with others who might be going through something similar to you.
@@ -56,7 +56,7 @@ const FAQ = () => {
                                             {showAnswer2 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer2 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer2 ? 'opacity-100 max-h-120' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                                         Pivot for Dancers is run by former professional dancers who have made their own career transitions.
                                         Founded by Kaylee Randall in 2020 and supported by hundreds of dancers along the way,
                                         our team is passionate about helping dancers thrive long after taking their final bow.
@@ -70,7 +70,7 @@ const FAQ = () => {
                                             {showAnswer3 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer3 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer3 ? 'opacity-100 max-h-120' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                                         Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers.
                                         These valuable resources are available to help inspire you to take a leap of faith and
                                         may give you some ideas of how you may want to pivot your career.
@@ -84,8 +84,8 @@ const FAQ = () => {
                                             {showAnswer4 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer4 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                                        Written by our founder, Kaylee Randall, 'How to Pivot' is an actionable, dancer-specific guide to help
+                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer4 ? 'opacity-100 max-h-120' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                                        Written by our founder, Kaylee Randall, 'How to Pivot' is an <strong>actionable, dancer-specific</strong> guide to help
                                         you find meaningful work of the stage.In 10 chapters, Kaylee dives deep into psychological patterns that might
                                         be holding you back and step-by-step activities to help you actually move on to your next stage.
                                         With real-life examples from Kaylee's own career transition, 'How to Pivot' is essential reading for any dancer struggling with their next steps.
@@ -94,32 +94,92 @@ const FAQ = () => {
                                 {/* Course */}
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
-                                        <span className="font-bold dark:text-white"> What is the 'Happy Trails' Mini Course?</span>
-                                        <button className="p-2 bg-purple-gray rounded" onClick={() => setShowAnswer5(!showAnswer5)}>
+                                        <h3 className="font-bold dark:text-white">What is the 'Happy Trails' Mini Course?</h3>
+                                        <button
+                                            className="p-2 bg-purple-gray rounded"
+                                            aria-expanded={showAnswer5}
+                                            aria-controls="answer5"
+                                            onClick={() => setShowAnswer5(!showAnswer5)}
+                                        >
                                             {showAnswer5 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer5 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                                        If you're a professional dancer, you probably don't have a ton of time.
-                                        That's why we developed a quick but effective mini course to help you plan your pivot with an in-depth, career change roadmap.
-                                        We lay it all out for you and take the guesswork out of changing careers. Our 5-year career roadmap can help you stay on
-                                        track and finally feel confident about your next steps.
+                                    <div
+                                        id="answer5"
+                                        className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer5 ? 'opacity-100 max-h-120' : 'opacity-0 max-h-0 overflow-hidden'}`}
+                                        aria-hidden={!showAnswer5}
+                                    >
+                                        <p>
+                                            If you're a professional dancer, you probably don't have a ton of time.
+                                            That's why we developed a quick but effective mini course to help you plan your pivot with an
+                                            <strong> in-depth, career change roadmap</strong>.
+                                        </p>
+                                        <br></br>
+                                        <p>
+                                            We lay it all out for you and take the guesswork out of changing careers. Our 5-year career roadmap
+                                            can help you stay on track and finally feel confident about your next steps.
+                                        </p>
+                                        <br></br>
+                                        <p>
+                                            <strong>Tailored to professional dancers</strong>, the 'Happy Trails' mini course offers:
+                                        </p>
+                                        <br></br>
+                                        <ul className="list-disc pl-5 space-y-1">
+                                            <li>A clear, step-by-step career change plan</li>
+                                            <li>50+ non-dancer job ideas</li>
+                                            <li>Resume templates & interview script</li>
+                                        </ul>
+                                        <br></br>
+                                        <p>
+                                            For the dancers who want to make a plan for what's next but have no idea where to start, 'Happy Trails' is for you.
+                                        </p>
                                     </div>
                                 </div>
+
                                 {/* Mentorship */}
                                 <div className="flex flex-col justify-between w-full py-4 pl-4 pr-3 mb-3 bg-white rounded shadow dark:bg-gray-700">
                                     <div className="flex items-center justify-between">
-                                        <span className="font-bold dark:text-white"> What is the Pivot for Dancers Mentorship Program?</span>
-                                        <button className="p-2 bg-purple-gray rounded" onClick={() => setShowAnswer6(!showAnswer6)}>
+                                        <span className="font-bold dark:text-white">What is the Pivot for Dancers Mentorship Program?</span>
+                                        <button
+                                            className="p-2 bg-purple-gray rounded"
+                                            onClick={() => setShowAnswer6(!showAnswer6)}
+                                        >
                                             {showAnswer6 ? <MinusIcon /> : <PlusIcon />}
                                         </button>
                                     </div>
-                                    <div className={`mt-1 text-sm text-white transition-all duration-1000 ease-in-out ${showAnswer6 ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                                        The Pivot for Dancers Mentorship Program is private, one-on-one support for professional dancers to help you find meaningful work off the stage.
-                                        Structured with clear goal-setting and targeted reflection, our Mentorship Program is designed to offer actionable results.
-                                        You'll be paired with an experienced, former professional dancer to guide you through these challenging times.
+                                    <div
+                                        className={`overflow-hidden transition-all duration-[2000ms] ease-[cubic-bezier(0.25, 0.1, 0.25, 1)] ${showAnswer6 ? 'opacity-100 h-auto' : 'opacity-0 h-0'
+                                            }`}
+                                        style={{ transitionProperty: 'height, opacity' }}
+                                    >
+                                        <div className="mt-1 text-sm text-white">
+                                            <p>
+                                                The Pivot for Dancers Mentorship Program is private, one-on-one support for professional dancers to help you find meaningful work off the stage.
+                                            </p>
+                                            <br />
+                                            <p>
+                                                Structured with clear goal-setting and targeted reflection, our Mentorship Program is designed to offer actionable results.
+                                            </p>
+                                            <br />
+                                            <p>
+                                                You'll be paired with an experienced, former professional dancer to guide you through these challenging times.
+                                                As part of the program, you'll receive:
+                                            </p>
+                                            <ul className="list-disc pl-5 space-y-1">
+                                                <li>3x one-hour virtual sessions with an experienced, former professional dancer</li>
+                                                <li>Private and confidential conversations</li>
+                                                <li>Tailored resources for your unique journey</li>
+                                                <li>Networking opportunities</li>
+                                            </ul>
+                                            <br />
+                                            <p>
+                                                Whether you're just starting to plan your pivot or you're already retired but still feel a little lost, the Pivot for Dancers Mentorship Program is exactly what you've been looking for.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>

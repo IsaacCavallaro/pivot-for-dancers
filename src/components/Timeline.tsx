@@ -19,16 +19,16 @@ const Timeline: React.FC = () => {
     const transitionClasses = "overflow-hidden transition-all duration-1000 ease-in-out";
 
     // content
-    const theDreamTxt = `You’ve trained to be a dancer since you were tiny. 
-                            You graduate and finally book your first job. You’re buzzing and motivated, hungry for the next audition, ready for the next challenge. 
-                            You work consistently as a professional dancer and you feel like you’re truly living the dream.`;
-    const theGritTxt = `You’re still dancing professionally and loving it. You also teach four nights a week, 
+    const theDreamTxt = `You've trained to be a dancer since you were tiny. 
+                            You graduate and finally book your first job. You're buzzing and motivated, hungry for the next audition, ready for the next challenge. 
+                            You work consistently as a professional dancer and you feel like you're truly living the dream.`;
+    const theGritTxt = `You're still dancing professionally and loving it. You also teach four nights a week, 
                             take any extra gig you can get, but still struggle to make ends meet. You work nights 
-                            and most holidays and sometimes feel like you’re missing out on other aspects of life. 
-                            But you’re living the dream, so who cares?`
-    const theRealityTxt = `You’re older, achy, and unsure of where to. You’re no longer challenged and feel bored
-                             doing the same choreography day after day. You’re also broke and have no idea how to get ahead financially. 
-                             Plus, you crave stability but keep these thoughts to yourself because you’re living the dream, right?`
+                            and most holidays and sometimes feel like you're missing out on other aspects of life. 
+                            But you're living the dream, so who cares?`
+    const theRealityTxt = `You're older, achy, and unsure of where to. You're no longer challenged and feel bored
+                             doing the same choreography day after day. You're also broke and have no idea how to get ahead financially. 
+                             Plus, you crave stability but keep these thoughts to yourself because you're living the dream, right?`
 
     const thePivotTxt = `You take a step back and reassess your goals and what you want for the future. 
                         Maybe you start to explore different career options, find ways to balance your life and finances, 
