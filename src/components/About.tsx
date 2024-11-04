@@ -22,7 +22,7 @@ const AboutUsSection: React.FC = () => {
   const textTitleClasses = "mt-2 text-3xl font-semibold text-gray-800 md:text-4xl tracking-tight";
   const textBodyClasses = "text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xs";
   const iconsContainerClasses = "grid grid-cols-3 gap-6 justify-items-center";
-  const iconWrapperClasses = "text-center";
+  const iconWrapperClasses = "flex flex-col items-center";
   const iconClasses = "text-white bg-purple-gray p-3 rounded-full flex items-center justify-center w-12 h-12 shadow-sm";
   const iconTextClasses = "text-xs mt-2 text-gray-600";
 
