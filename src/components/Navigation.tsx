@@ -19,6 +19,8 @@ const Navbar: React.FC<NavbarProps> = () => {
     }
   };
 
+  const signUpUrl = 'https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up'
+
   const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     scrollToSection(id);
@@ -80,9 +82,10 @@ const Navbar: React.FC<NavbarProps> = () => {
               ))}
               <li>
                 <a
-                  href="#home"
+                  href={signUpUrl}
                   className={joinUsClassName}
-                  onClick={(e) => handleNavLinkClick('home', e)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   JOIN US
                 </a>
@@ -128,9 +131,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                 ))}
                 <li>
                   <a
-                    href="#home"
+                    href={signUpUrl}
                     className={joinUsClassName}
-                    onClick={(e) => handleNavLinkClick('home', e)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     JOIN US
                   </a>

@@ -33,34 +33,35 @@ const FeaturedProducts: React.FC = () => {
   const moreInfoTextClasses = "text-lg sm:text-xl font-montserrat text-brown-gray";
   const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
 
+
   const products = [
     {
       url: pivotPanelsUrl,
       img: "/assets/pivot-panels.png",
       title: "Pivot Panels",
-      description: "Hear from the community",
-      buttonText: "FREE",
+      description: "Career Change Interviews",
+      buttonText: "BUY $0.00",
     },
     {
       url: ebookAmazonUrl,
       img: "/assets/how-to-pivot-ebook.png",
       title: "How to Pivot eBook",
-      description: "Your guide to pivoting",
-      buttonText: "BUY",
+      description: "Your Guide to Pivoting",
+      buttonText: "BUY $6.99",
     },
     {
       url: coursePaymentUrl,
       img: "/assets/happy-trails-mini-course.png",
-      title: "Pivot Course",
-      description: "Share at your studio",
-      buttonText: "BOOK",
+      title: "Happy Trails Course",
+      description: "Career Roadmap Mini Course",
+      buttonText: "BUY $75.00",
     },
     {
       url: mentorshipBookingUrl,
       img: "/assets/pivot-mentorship.png",
       title: "Private Mentorship",
       description: "Personalised guidance",
-      buttonText: "BOOK",
+      buttonText: "BUY $150.00",
     },
   ];
 
@@ -85,7 +86,8 @@ const FeaturedProducts: React.FC = () => {
               </div>
               <div className={textContainerClasses}>
                 <h3 className={textTitleClasses}>{product.title}</h3>
-                <p className={textDescriptionClasses}>{product.description}</p>
+                <p className={textDescriptionClasses}>Podcast chats</p>
+                {/* <p className={textDescriptionClasses}>$50</p> */}
                 <span className={buttonClasses}>{product.buttonText}</span>
               </div>
             </a>
