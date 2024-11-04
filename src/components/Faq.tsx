@@ -40,7 +40,14 @@ const FAQ: React.FC = () => {
                     {isVisible ? <MinusIcon /> : <PlusIcon />}
                 </button>
             </div>
-            <div className={`${answerClasses} ${isVisible ? 'opacity-100 max-h-120' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+            <div
+                className={`${answerClasses}`}
+                style={{
+                    maxHeight: isVisible ? '500px' : '0px',
+                    opacity: isVisible ? 1 : 0,
+                    transition: 'max-height 0.7s ease, opacity 0.7s ease',
+                }}
+            >
                 {answer}
             </div>
         </div>
