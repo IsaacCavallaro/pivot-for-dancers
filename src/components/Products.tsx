@@ -26,7 +26,7 @@ const FeaturedProducts: React.FC = () => {
   const imgWrapperClasses = "relative overflow-hidden";
   const imgClasses = "object-cover w-full h-full";
   const textContainerClasses = "p-6 bg-off-white text-center flex flex-col flex-grow justify-between";
-  const textTitleClasses = "text-lg sm:text-xl font-merriweather text-brown-gray";
+  const textTitleClasses = "text-2xl sm:text-3xl font-merriweather text-brown-gray";
   const textDescriptionClasses = "mb-4 text-sm sm:text-base font-montserrat text-brown-gray";
   const buttonClasses = "inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600";
   const moreInfoClasses = "mt-10 text-center";
@@ -39,28 +39,28 @@ const FeaturedProducts: React.FC = () => {
       url: pivotPanelsUrl,
       img: "/assets/pivot-panels.png",
       title: "Pivot Panels",
-      description: "Career Change Interviews",
+      description: "Online Interviews",
       buttonText: "BUY $0.00",
     },
     {
       url: ebookAmazonUrl,
       img: "/assets/how-to-pivot-ebook.png",
-      title: "How to Pivot eBook",
-      description: "Your Guide to Pivoting",
+      title: "How to Pivot",
+      description: "Kindle eBook",
       buttonText: "BUY $6.99",
     },
     {
       url: coursePaymentUrl,
       img: "/assets/happy-trails-mini-course.png",
-      title: "Happy Trails Course",
-      description: "Career Roadmap Mini Course",
+      title: "Happy Trails",
+      description: "Digital Course",
       buttonText: "BUY $75.00",
     },
     {
       url: mentorshipBookingUrl,
       img: "/assets/pivot-mentorship.png",
-      title: "Private Mentorship",
-      description: "Personalised guidance",
+      title: "Mentorship",
+      description: "Private Program",
       buttonText: "BUY $150.00",
     },
   ];
@@ -86,8 +86,7 @@ const FeaturedProducts: React.FC = () => {
               </div>
               <div className={textContainerClasses}>
                 <h3 className={textTitleClasses}>{product.title}</h3>
-                <p className={textDescriptionClasses}>Podcast chats</p>
-                {/* <p className={textDescriptionClasses}>$50</p> */}
+                <p className={textDescriptionClasses}>{product.description}</p>
                 <span className={buttonClasses}>{product.buttonText}</span>
               </div>
             </a>
