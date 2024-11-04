@@ -78,9 +78,9 @@ const AboutUsSection: React.FC = () => {
               title: "Taboo Topics",
               description: "We're talking about the stuff no one tells you about stepping away from your professional dance career.",
               icons: [
-                { icon: "fa-graduation-cap", text: "Finance" },
-                { icon: "fa-masks-theater", text: "Grief" },
-                { icon: "fa-pause", text: "Shame" },
+                { icon: "fa-dollar-sign", text: "Finance" },
+                { icon: "fa-heart-broken", text: "Grief" },
+                { icon: "fa-sad-cry", text: "Shame" },
               ],
             },
             {
