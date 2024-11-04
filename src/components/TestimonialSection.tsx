@@ -76,7 +76,7 @@ const TestimonialsSection: React.FC = () => {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="flex flex-col items-center text-center">
                 <div className="flex flex-col items-center mb-8">
-                  <p className="mb-4 leading-7 text-gray-400 lg:text-lg xl:text-xl">
+                  <p className="mb-4 leading-7 text-white lg:text-lg xl:text-xl">
                     {testimonial.content}
                   </p>
                   <div className="flex items-center justify-center space-x-4 mt-4">
@@ -88,10 +88,10 @@ const TestimonialsSection: React.FC = () => {
                       />
                     </div>
                     <div className="text-left">
-                      <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-black dark:text-white">
+                      <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-white">
                         {testimonial.author}
                       </h2>
-                      <span className="block text-xs font-semibold text-black uppercase">
+                      <span className="block text-xs font-semibold text-white uppercase">
                         {testimonial.role}
                       </span>
                     </div>
