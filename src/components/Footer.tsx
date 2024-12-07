@@ -48,20 +48,42 @@ const Footer: React.FC = () => {
 
         {/* Top Section */}
         <section className="py-10 sm:pt-16 lg:pt-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-16 gap-x-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
             {/* Logo and Description */}
-            <div className="flex flex-col justify-between h-full">
-              <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase text-center lg:text-left">
+            <div className="flex flex-col items-center text-center h-full space-y-7">
+              <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
                 Pivot For Dancers
               </p>
-              <div className="w-full max-w-lg lg:text-left">
-                <p className="text-base leading-relaxed text-gray-600 mt-7">
-                  Discover inspiration, guidance, and community as we help you pivot towards a fulfilling and meaningful journey.
-                </p>
-              </div>
+              <p className="text-base leading-relaxed text-gray-600">
+                Discover inspiration, guidance, and community as we help you pivot towards a fulfilling and meaningful journey.
+              </p>
+            </div>
 
+            {/* Email Sign-Up Form */}
+            <div className="flex flex-col items-center text-center space-y-7">
+              <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+                Join our Community
+              </p>
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col space-y-4 w-full max-w-sm"
+              >
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  className={`${footerInputClass} h-12`}
+                />
+                <button
+                  type="submit"
+                  className={`${buttonClass} h-12 flex items-center justify-center`}
+                >
+                  JOIN US
+                </button>
+              </form>
               {/* Social Media Links */}
-              <ul className="flex items-center space-x-3 mt-9 justify-center lg:justify-start">
+              <ul className="flex items-center justify-center space-x-3">
                 <li>
                   <a
                     href="https://www.facebook.com/pivotfordancers/"
@@ -109,29 +131,23 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Email Sign Up Form */}
-            <div className="flex flex-col items-center lg:items-start lg:text-left space-y-4 lg:space-y-0">
-              <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase pb-5">
-                Join our Community
+            {/* Terms of Service */}
+            <div className="flex flex-col items-center text-center space-y-4">
+              <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+                Terms & Policies
               </p>
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col lg:flex-row lg:space-x-4 w-full lg:mt-0"
+              <a
+                href="/terms-of-service"
+                className="text-gray-400 hover:text-white transition-colors"
               >
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  className={`${footerInputClass} h-12`}
-                />
-                <button
-                  type="submit"
-                  className={`${buttonClass} h-12 flex items-center justify-center mt-4 lg:mt-0`}
-                >
-                  JOIN US
-                </button>
-              </form>
+                Terms of Service
+              </a>
+              <a
+                href="/privacy-policy"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Privacy Policy
+              </a>
             </div>
           </div>
         </section>
@@ -147,11 +163,8 @@ const Footer: React.FC = () => {
             </p>
           </div>
         </div>
-      </div >
-    </footer >
-
-
-
+      </div>
+    </footer>
   );
 };
 
