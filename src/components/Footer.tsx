@@ -45,22 +45,21 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-800 text-white">
       {/* Container for consistent width */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Top Section */}
         <section className="py-10 sm:pt-16 lg:pt-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 lg:gap-x-12 text-center">
             {/* Logo and Description */}
-            <div className="flex flex-col items-center text-center h-full space-y-7">
+            <div className="flex flex-col items-center h-full space-y-6">
               <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
                 Pivot For Dancers
               </p>
-              <p className="text-base leading-relaxed text-gray-600">
-                Discover inspiration, guidance, and community as we help you pivot towards a fulfilling and meaningful journey.
+              <p className="text-gray-300 leading-relaxed">
+                Discover inspiration, guidance, and a vibrant community to help you navigate your journey toward a fulfilling and meaningful future filled with purpose, growth, opportunities, and lasting connections.
               </p>
             </div>
 
             {/* Email Sign-Up Form */}
-            <div className="flex flex-col items-center text-center space-y-7">
+            <div className="flex flex-col items-center space-y-6 lg:px-6">
               <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
                 Join our Community
               </p>
@@ -82,7 +81,25 @@ const Footer: React.FC = () => {
                   JOIN US
                 </button>
               </form>
-              {/* Social Media Links */}
+            </div>
+
+            {/* Contact and Social Media */}
+            <div className="flex flex-col items-center space-y-6">
+              <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+                Contact
+              </p>
+              <a
+                href="mailto:pivotfordancers@gmail.com"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                pivotfordancers@gmail.com
+              </a>
+              <a
+                href="/terms-of-service"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                @pivotfordancers
+              </a>
               <ul className="flex items-center justify-center space-x-3">
                 <li>
                   <a
@@ -130,38 +147,23 @@ const Footer: React.FC = () => {
                 </li>
               </ul>
             </div>
-
-            {/* Terms of Service */}
-            <div className="flex flex-col items-center text-center space-y-4">
-              <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
-                Terms & Policies
-              </p>
-              <a
-                href="/terms-of-service"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="/privacy-policy"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </a>
-            </div>
           </div>
         </section>
 
         {/* Border Divider */}
-        <div className="border-t border-gray-600 my-6"></div>
+        <div className="border-t border-gray-600 my-1"></div>
 
         {/* Bottom Section */}
-        <div className="py-12">
-          <div className="flex flex-col items-center md:flex-row md:justify-center">
-            <p className="text-sm text-gray-400 text-center md:text-left">
-              &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
-            </p>
-          </div>
+        <div className="py-12 text-center">
+          <p className="text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
+          </p>
+          <a
+            href="/privacy-policy"
+            className="text-gray-400 hover:text-white transition-colors mt-2 block"
+          >
+            Privacy Policy
+          </a>
         </div>
       </div>
     </footer>
