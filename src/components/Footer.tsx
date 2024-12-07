@@ -44,71 +44,73 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-800 text-white">
       {/* Top Section */}
-      <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-center md:flex-row md:justify-between">
-        {/* Social Media Links */}
-        <div className="flex flex-row space-x-4 items-center pb-4 sm:pb-0">
-          <a
-            href="https://www.facebook.com/pivotfordancers/"
-            className={`${socialMediaIconClass} bg-blue-500 hover:bg-blue-400`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit us on Facebook"
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+        <div className="flex flex-col items-center md:flex-row md:justify-between">
+          {/* Social Media Links */}
+          <div className="flex flex-row gap-6 items-center pb-4 sm:pb-0">
+            <a
+              href="https://www.facebook.com/pivotfordancers/"
+              className={`${socialMediaIconClass} bg-blue-500 hover:bg-blue-400`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit us on Facebook"
+            >
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/pivotfordancers/"
+              className={`${socialMediaIconClass} bg-pink-500 hover:bg-pink-400`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit us on Instagram"
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/pivotfordancers/"
+              className={`${socialMediaIconClass} bg-blue-600 hover:bg-blue-500`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit us on LinkedIn"
+            >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/@pivotfordancers"
+              className={`${socialMediaIconClass} bg-red-600 hover:bg-red-500`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit us on YouTube"
+            >
+              <i className="fab fa-youtube"></i>
+            </a>
+          </div>
+
+          {/* Join Us Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col md:flex-row items-center md:space-x-4 space-y-4 md:space-y-0 w-full md:w-auto"
           >
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/pivotfordancers/"
-            className={`${socialMediaIconClass} bg-pink-500 hover:bg-pink-400`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit us on Instagram"
-          >
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/company/pivotfordancers/"
-            className={`${socialMediaIconClass} bg-blue-600 hover:bg-blue-500`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit us on LinkedIn"
-          >
-            <i className="fab fa-linkedin-in"></i>
-          </a>
-          <a
-            href="https://www.youtube.com/@pivotfordancers"
-            className={`${socialMediaIconClass} bg-red-600 hover:bg-red-500`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit us on YouTube"
-          >
-            <i className="fab fa-youtube"></i>
-          </a>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={handleEmailChange}
+              className={`${footerInputClass}`}
+            />
+
+            <button type="submit" className={`${buttonClass} max-w-md`}>
+              JOIN US
+            </button>
+          </form>
         </div>
-
-        {/* Join Us Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col md:flex-row items-center md:space-x-4 space-y-4 md:space-y-0 w-full md:w-auto"
-        >
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={handleEmailChange}
-            className={`${footerInputClass}`}
-          />
-
-          <button type="submit" className={`${buttonClass} max-w-md`}>
-            JOIN US
-          </button>
-        </form>
       </div>
 
       {/* Border Divider */}
-      <div className="border-t border-gray-600 mx-6"></div>
+      <div className="border-t border-gray-600 mx-6 my-6"></div> {/* Added vertical margin for spacing */}
 
       {/* Bottom Section */}
-      <div className="bg-gray-800">
+      <div className="bg-gray-800 py-12">
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-center md:flex-row md:justify-between">
           <p className="text-sm text-gray-400 text-center md:text-left">
             &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
