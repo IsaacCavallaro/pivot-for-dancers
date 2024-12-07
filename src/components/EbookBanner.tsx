@@ -16,10 +16,10 @@ const EbookBanner: React.FC = () => {
                     {/* Text Section */}
                     <div className="flex flex-col justify-center space-y-6">
                         <h2 className="text-4xl md:text-5xl font-merriweather leading-tight text-gray-900">
-                            Your Next Chapter Awaits
+                            Your Next Chapter
                         </h2>
                         <p className="text-lg text-gray-700">
-                            Unlock the tools you need to get out of your own way and step onto the next stage of your career. Discover real-life examples and <span className="font-bold">dancer-specific resources</span> to help you find fulfilment in your next career.
+                            Unlock the tools you need to get out of your own way and step onto the next stage of your career. Discover real-life examples and dancer-specific resources to help you find fulfilment in your next career.
                         </p>
 
                         {/* Testimonial Quote */}

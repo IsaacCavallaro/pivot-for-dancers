@@ -16,13 +16,13 @@ const AboutUsSection: React.FC = () => {
   const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
   const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-5xl";
   const gridClasses = "grid gap-6 md:grid-cols-2 lg:grid-cols-2 px-4";
-  const blockClasses = "flex flex-col items-center gap-6 p-8 rounded-lg border border-gray-200";
+  const blockClasses = "flex flex-col items-center gap-6 p-8 rounded-lg border-4 border-gray-200";
   const imgClasses = "object-cover w-32 h-32 rounded-full shadow-md transform transition-transform duration-300 hover:scale-105";
   const textContainerClasses = "flex flex-col items-center text-center";
   const textTitleClasses = "mt-2 text-3xl font-semibold text-gray-800 md:text-4xl tracking-tight";
   const textBodyClasses = "text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xs";
   const iconsContainerClasses = "grid grid-cols-3 gap-6 justify-items-center";
-  const iconWrapperClasses = "text-center";
+  const iconWrapperClasses = "flex flex-col items-center";
   const iconClasses = "text-white bg-purple-gray p-3 rounded-full flex items-center justify-center w-12 h-12 shadow-sm";
   const iconTextClasses = "text-xs mt-2 text-gray-600";
 
@@ -78,9 +78,9 @@ const AboutUsSection: React.FC = () => {
               title: "Taboo Topics",
               description: "We're talking about the stuff no one tells you about stepping away from your professional dance career.",
               icons: [
-                { icon: "fa-graduation-cap", text: "Finance" },
-                { icon: "fa-masks-theater", text: "Grief" },
-                { icon: "fa-pause", text: "Shame" },
+                { icon: "fa-dollar-sign", text: "Finance" },
+                { icon: "fa-heart-broken", text: "Grief" },
+                { icon: "fa-sad-cry", text: "Shame" },
               ],
             },
             {

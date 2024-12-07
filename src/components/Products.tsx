@@ -26,41 +26,42 @@ const FeaturedProducts: React.FC = () => {
   const imgWrapperClasses = "relative overflow-hidden";
   const imgClasses = "object-cover w-full h-full";
   const textContainerClasses = "p-6 bg-off-white text-center flex flex-col flex-grow justify-between";
-  const textTitleClasses = "text-lg sm:text-xl font-merriweather text-brown-gray";
+  const textTitleClasses = "text-2xl sm:text-3xl font-merriweather text-brown-gray";
   const textDescriptionClasses = "mb-4 text-sm sm:text-base font-montserrat text-brown-gray";
   const buttonClasses = "inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600";
   const moreInfoClasses = "mt-10 text-center";
   const moreInfoTextClasses = "text-lg sm:text-xl font-montserrat text-brown-gray";
   const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
 
+
   const products = [
     {
       url: pivotPanelsUrl,
       img: "/assets/pivot-panels.png",
       title: "Pivot Panels",
-      description: "Hear from the community",
-      buttonText: "FREE",
+      description: "Online Interviews",
+      buttonText: "BUY $0.00",
     },
     {
       url: ebookAmazonUrl,
       img: "/assets/how-to-pivot-ebook.png",
-      title: "How to Pivot eBook",
-      description: "Your guide to pivoting",
-      buttonText: "BUY",
+      title: "How to Pivot",
+      description: "Kindle eBook",
+      buttonText: "BUY $6.99",
     },
     {
       url: coursePaymentUrl,
       img: "/assets/happy-trails-mini-course.png",
-      title: "Pivot Course",
-      description: "Share at your studio",
-      buttonText: "BOOK",
+      title: "Happy Trails",
+      description: "Digital Course",
+      buttonText: "BUY $75.00",
     },
     {
       url: mentorshipBookingUrl,
       img: "/assets/pivot-mentorship.png",
-      title: "Private Mentorship",
-      description: "Personalised guidance",
-      buttonText: "BOOK",
+      title: "Mentorship",
+      description: "Private Program",
+      buttonText: "BUY $150.00",
     },
   ];
 

@@ -44,7 +44,7 @@ const Home: React.FC = () => {
           {/* Text Section */}
           <div className={textSectionClass}>
             <h1 className="text-4xl md:text-5xl font-merriweather leading-tight text-gray-900 mb-5">
-              Pivot For Dancers
+              Pivot for Dancers
             </h1>
             <p className="mb-4 text-base leading-7 text-black">
               Join our growing community of current and former professional dancers who are talking about career change.
@@ -65,7 +65,7 @@ const Home: React.FC = () => {
                 <input
                   className={`${inputClass} lg:mr-3 md:mb-3`}
                   type="email"
-                  placeholder="Enter your e-mail"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={handleEmailChange}
                 />
