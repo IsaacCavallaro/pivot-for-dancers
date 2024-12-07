@@ -43,18 +43,22 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gray-800 text-white">
-      {/* Top Section */}
-      <section className="py-10 sm:pt-16 lg:pt-24">
-        <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+      {/* Container for consistent width */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Top Section */}
+        <section className="py-10 sm:pt-16 lg:pt-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-16 gap-x-12">
             {/* Logo and Description */}
             <div className="flex flex-col justify-between h-full">
               <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase text-center lg:text-left">
                 Pivot For Dancers
               </p>
-              <p className="text-base leading-relaxed text-gray-600 mt-7 text-center lg:text-left">
-                Discover inspiration, guidance, and community as we help you pivot towards a fulfilling and meaningful journey.
-              </p>
+              <div className="w-full max-w-lg lg:text-left">
+                <p className="text-base leading-relaxed text-gray-600 mt-7">
+                  Discover inspiration, guidance, and community as we help you pivot towards a fulfilling and meaningful journey.
+                </p>
+              </div>
 
               {/* Social Media Links */}
               <ul className="flex items-center space-x-3 mt-9 justify-center lg:justify-start">
@@ -130,31 +134,24 @@ const Footer: React.FC = () => {
               </form>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+        {/* Border Divider */}
+        <div className="border-t border-gray-600 my-6"></div>
 
-      {/* Border Divider */}
-      <div className="border-t border-gray-600 mx-6 my-6"></div> {/* Added vertical margin for spacing */}
-
-      {/* Bottom Section */}
-      <div className="bg-gray-800 py-12">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-center md:flex-row md:justify-between">
-          <p className="text-sm text-gray-400 text-center md:text-left">
-            &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
-          </p>
-          <div className="text-sm text-gray-400 mt-4 md:mt-0">
-            <a href="/privacy-policy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <span className="mx-2">|</span>
-            <a href="/terms-of-service" className="hover:text-white transition-colors">
-              Terms of Service
-            </a>
+        {/* Bottom Section */}
+        <div className="py-12">
+          <div className="flex flex-col items-center md:flex-row md:justify-center">
+            <p className="text-sm text-gray-400 text-center md:text-left">
+              &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
+            </p>
           </div>
         </div>
-      </div>
-    </footer>
+      </div >
+    </footer >
+
+
+
   );
 };
 
