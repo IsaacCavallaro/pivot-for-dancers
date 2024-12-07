@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
-  const iconSize = 'h-8 w-8'; // Icon size for social media
+  const iconSize = 'h-8 w-8'; // for social media
   const socialMediaIconClass = `text-white p-2 rounded-full flex items-center justify-center ${iconSize} transition-transform transform hover:scale-110`;
   const signUpUrl = 'https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up';
   const joinUsClassName = 'px-6 py-3 text-sm rounded-md bg-purple-gray text-white opacity-80 hover:opacity-100 hover:bg-purple-gray';
@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-800 text-white">
       {/* Top Section */}
-      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center space-y-8 md:flex-row md:justify-between">
+      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center space-y-8 md:flex-row md:space-y-0 md:space-x-6 md:justify-center md:items-center">
         {/* Social Media Links */}
         <div className="flex space-x-4">
           <a
@@ -51,19 +51,17 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Join Us Button */}
-        <div>
-          <a
-            href={signUpUrl}
-            className={joinUsClassName}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            JOIN US
-          </a>
-        </div>
+        <a
+          href={signUpUrl}
+          className={joinUsClassName}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JOIN US
+        </a>
       </div>
 
-      {/* Divider */}
+      {/* Border divder */}
       <div className="border-t border-gray-600 mx-6"></div>
 
       {/* Bottom Section */}
