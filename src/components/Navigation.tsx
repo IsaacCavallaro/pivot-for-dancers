@@ -15,7 +15,13 @@ const Navbar: React.FC<NavbarProps> = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+      window.scrollTo({
+        top: topOffset,
+        behavior: 'smooth',
+      });
     }
   };
 
