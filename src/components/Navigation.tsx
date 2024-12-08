@@ -35,15 +35,24 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sectionIds = ['home', 'about', 'products'];
-      let threshold = 0.8;
+      const sectionIds = ['home', 'products', 'about'];
+      const threshold = 0.8;
 
-      if (window.scrollY === 0) {
-        // Highlight HOME when at the top of the page
-        setActiveSection('home');
-        return;
+      const homeSection = document.getElementById('home');
+      const productsSection = document.getElementById('products');
+
+      // Keep "HOME" active until "PRODUCTS" is in view
+      if (homeSection && productsSection) {
+        const productsTop = productsSection.getBoundingClientRect().top + window.scrollY;
+        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+
+        if (window.scrollY < productsTop - navbarHeight) {
+          setActiveSection('home');
+          return;
+        }
       }
 
+      // Check other sections as usual
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const id = sectionIds[i];
         const section = document.getElementById(id);
@@ -145,7 +154,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <li>
                   <a
                     href={signUpUrl}
-                    className={joinUsClassName}
+                    className={`text-2xl text-white bg-purple-gray px-4 py-2 rounded-full opacity-80 hover:opacity-100 hover:bg-purple-gray`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -171,6 +180,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               </button>
             </div>
           </div>
+
         </nav>
       </div>
     </section>
