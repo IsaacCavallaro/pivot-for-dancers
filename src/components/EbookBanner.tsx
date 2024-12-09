@@ -8,6 +8,10 @@ const EbookBanner: React.FC = () => {
         config: { duration: 1000 },
     });
 
+    const amazonEbookUrl = "https://www.amazon.com/dp/B0CXL4F57D"
+    const amazonPreviewLink = "https://read.amazon.com.au/kp/card?asin=B0CXL4F57D&preview=inline&linkCode=kpe&ref_=kip_embed_taf_preview_WP7PVP0JR6SW63ZPDGC6"
+    const orderNowClassName = "flex justify-center w-full md:w-auto px-6 py-4 text-sm font-semibold text-gray-100 bg-purple-gray rounded-md mt-4 md:mt-0 md:ml-2 hover:bg-purple-gray opacity-80 hover:opacity-100 md:mb-3"
+
     return (
         <section id="home" className="bg-beige relative">
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -19,12 +23,14 @@ const EbookBanner: React.FC = () => {
                             Your Next Chapter
                         </h2>
                         <p className="text-lg text-gray-700">
-                            Unlock the tools you need to get out of your own way and step onto the next stage of your career. Discover real-life examples and dancer-specific resources to help you find fulfilment in your next career.
+                            Unlock the tools you need to get out of your own way and step onto the next stage of your career.
+                            Discover real-life examples and dancer-specific resources to help you find fulfilment in your next career.
                         </p>
 
                         {/* Testimonial Quote */}
                         <blockquote className="italic text-gray-600">
-                            "It's all the things I wish someone told me before I started my professional dance career. A must-read for dancers looking to pivot."
+                            "It's all the things I wish someone told me before I started my professional dance career.
+                            A must-read for dancers looking to pivot."
                             <br></br>
                             <span className="font-semibold text-gray-900">— Sarah M., Professional Dancer</span>
                         </blockquote>
@@ -32,8 +38,8 @@ const EbookBanner: React.FC = () => {
                         {/* Call to Action */}
                         <div className="flex justify-center">
                             <a
-                                href="https://www.amazon.com/dp/B0CXL4F57D"
-                                className="flex justify-center w-full md:w-auto px-6 py-4 text-sm font-semibold text-gray-100 bg-purple-gray rounded-md mt-4 md:mt-0 md:ml-2 hover:bg-purple-gray opacity-80 hover:opacity-100 md:mb-3"
+                                href={amazonEbookUrl}
+                                className={orderNowClassName}
                                 target="_blank"
                             >
                                 ORDER BOOK NOW
@@ -46,7 +52,7 @@ const EbookBanner: React.FC = () => {
                         <iframe
                             width="100%"
                             height="315"
-                            src="https://read.amazon.com.au/kp/card?asin=B0CXL4F57D&preview=inline&linkCode=kpe&ref_=kip_embed_taf_preview_WP7PVP0JR6SW63ZPDGC6"
+                            src={amazonPreviewLink}
                             title="Book Preview"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
