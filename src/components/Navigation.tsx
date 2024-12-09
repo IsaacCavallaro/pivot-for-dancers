@@ -26,6 +26,10 @@ const Navbar: React.FC<NavbarProps> = () => {
   };
 
   const signUpUrl = 'https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up';
+  const joinUsClassNameDesktop =
+    'text-sm px-4 py-2 rounded-full bg-purple-gray text-white opacity-80 hover:opacity-100 hover:bg-purple-gray';
+  const joinUsClassNameMobile = 'text-2xl text-white bg-purple-gray px-4 py-2 rounded-full opacity-80 hover:opacity-100 hover:bg-purple-gray'
+  const exitHamburgerClassName = 'absolute top-4 right-4 text-gray-200 dark:text-gray-300 focus:outline-none'
 
   const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -76,9 +80,6 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
   }, []);
 
-  const joinUsClassName =
-    'text-sm px-4 py-2 rounded-full bg-purple-gray text-white opacity-80 hover:opacity-100 hover:bg-purple-gray';
-
   return (
     <section className="bg-dark-gray max-device-width">
       <div className="max-w-6xl px-4 mx-auto">
@@ -105,7 +106,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               <li>
                 <a
                   href={signUpUrl}
-                  className={joinUsClassName}
+                  className={joinUsClassNameDesktop}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -154,7 +155,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <li>
                   <a
                     href={signUpUrl}
-                    className={`text-2xl text-white bg-purple-gray px-4 py-2 rounded-full opacity-80 hover:opacity-100 hover:bg-purple-gray`}
+                    className={joinUsClassNameMobile}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -163,7 +164,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </li>
               </ul>
               <button
-                className="absolute top-4 right-4 text-gray-200 dark:text-gray-300 focus:outline-none"
+                className={exitHamburgerClassName}
                 onClick={handleToggle}
               >
                 <svg
