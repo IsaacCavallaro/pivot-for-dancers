@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react';
 
 const FAQ: FC = () => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0); // Default to the first FAQ being open
+    const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
     const PlusIcon = () => (
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
@@ -15,11 +15,10 @@ const FAQ: FC = () => {
         </svg>
     );
 
-    const containerClasses = "flex flex-col w-full py-4 px-4 mb-3 bg-white rounded shadow dark:bg-gray-700";
-    const buttonClasses = "p-2 bg-purple-gray rounded";
-    const answerClasses = "mt-1 text-sm text-white transition-all duration-500 ease-in-out";
-    const hiddenClasses = "opacity-0 max-h-0 overflow-hidden";
-    const visibleClasses = "opacity-100 max-h-120";
+    const containerClasses = "flex flex-col w-full py-4 px-4 mb-3 bg-white rounded shadow dark:bg-gray-700 cursor-pointer hover:shadow-md transition-shadow duration-300";
+    const answerClasses = "mt-1 text-sm text-white transition-all duration-500 ease-in-out overflow-hidden";
+    const hiddenClasses = "max-h-0 opacity-0";
+    const visibleClasses = "max-h-[500px] opacity-100";
 
     const faqItems = [
         {
@@ -141,15 +140,16 @@ const FAQ: FC = () => {
                 </header>
                 <div className="faq-items space-y-4">
                     {faqItems.map((item, index) => (
-                        <div key={index} className={containerClasses}>
+                        <div
+                            key={index}
+                            className={containerClasses}
+                            onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                        >
                             <div className="flex items-center justify-between">
                                 <span className="font-bold dark:text-white">{item.question}</span>
-                                <button
-                                    className={buttonClasses}
-                                    onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                                >
+                                <div className="p-2 bg-purple-gray rounded">
                                     {activeIndex === index ? <MinusIcon /> : <PlusIcon />}
-                                </button>
+                                </div>
                             </div>
                             <div
                                 className={`${answerClasses} ${activeIndex === index ? visibleClasses : hiddenClasses}`}
