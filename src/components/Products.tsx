@@ -33,32 +33,31 @@ const FeaturedProducts: React.FC = () => {
   const moreInfoTextClasses = "text-lg sm:text-xl font-montserrat text-brown-gray";
   const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
 
-
   const products = [
     {
       url: pivotPanelsUrl,
-      img: "/assets/pivot-panels.png",
+      img: `${process.env.PUBLIC_URL}/assets/pivot-panels.png`,
       title: "Pivot Panels",
       description: "Online Interviews",
       buttonText: "BUY $0.00",
     },
     {
       url: ebookAmazonUrl,
-      img: "/assets/how-to-pivot-ebook.png",
+      img: `${process.env.PUBLIC_URL}/assets/how-to-pivot-ebook.png`,
       title: "How to Pivot",
       description: "Kindle eBook",
       buttonText: "BUY $6.99",
     },
     {
       url: coursePaymentUrl,
-      img: "/assets/happy-trails-mini-course.png",
+      img: `${process.env.PUBLIC_URL}/assets/happy-trails-mini-course.png`,
       title: "Happy Trails",
       description: "Digital Course",
       buttonText: "BUY $75.00",
     },
     {
       url: mentorshipBookingUrl,
-      img: "/assets/pivot-mentorship.png",
+      img: `${process.env.PUBLIC_URL}/assets/pivot-mentorship.png`,
       title: "Mentorship",
       description: "Private Program",
       buttonText: "BUY $150.00",
