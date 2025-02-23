@@ -25,6 +25,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     }
   };
 
+  const BASE_PATH = process.env.PUBLIC_URL || "";
   const signUpUrl = 'https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up';
   const joinUsClassNameDesktop =
     'text-sm px-4 py-2 rounded-full bg-purple-gray text-white opacity-80 hover:opacity-100 hover:bg-purple-gray';
@@ -86,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
           <div className="max-w-6xl mx-auto flex items-center justify-between">
             <a href="/" className="block pl-4 md:pl-6">
-              <img src="/assets/logo.png" alt="Logo" className="h-8" />
+              <img src={`${BASE_PATH}/assets/logo.png`} alt="Logo" className="h-8" />
             </a>
 
             {/* Desktop Navigation Links */}
