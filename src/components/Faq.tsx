@@ -25,21 +25,11 @@ const FAQ: FC = () => {
             question: "What is Pivot for Dancers?",
             answer: (
                 <>
-                    <p>Pivot for Dancers offers resources for professional dancers who are making a career change.</p>
-                    <br />
-                    <p>We're a community of hundreds of dancers holding events and workshops to connect those going through similar transitions.</p>
-                    <br />
-                    <p>The best way to get involved is to join our email list where we share exclusive content and invitations.</p>
-                </>
-            ),
-        },
-        {
-            question: "Who runs Pivot for Dancers?",
-            answer: (
-                <>
-                    <p>Pivot for Dancers is run by former professional dancers who have made their own career transitions.</p>
-                    <br />
-                    <p>Founded by Kaylee Randall in 2020, our team is passionate about helping dancers thrive long after their final bow.</p>
+                    <p>
+                        Pivot for Dancers offers career change resources for professional dancers. Our mission is to help you find meaningful work off the stage.
+                        Run by former professional dancers who have successfully changed careers, we're here to share what we've learned about making a pivot with
+                        our growing community of fellow dancers.
+                    </p>
                 </>
             ),
         },
@@ -49,8 +39,10 @@ const FAQ: FC = () => {
                 <>
                     <p>Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers.</p>
                     <br></br>
-                    <p>These valuable resources are available to help inspire you to take a leap of faith and
-                        may give you some ideas of how you may want to pivot your career.</p>
+                    <p>
+                        These valuable resources are available to help inspire you to take a leap of faith and
+                        may give you some ideas of how you may want to pivot your career.
+                    </p>
                 </>
             ),
         },
@@ -136,7 +128,7 @@ const FAQ: FC = () => {
             <div className="max-w-6xl py-4 px-4 mx-auto md:px-6">
                 <header className="mb-6">
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Feeling Curious?</span>
-                    <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">FAQs</h1>
+                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">FAQs</h2>
                 </header>
                 <div className="faq-items space-y-4">
                     {faqItems.map((item, index) => (

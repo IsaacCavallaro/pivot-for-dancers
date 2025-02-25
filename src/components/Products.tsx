@@ -38,28 +38,28 @@ const FeaturedProducts: React.FC = () => {
       url: pivotPanelsUrl,
       img: `${process.env.PUBLIC_URL}/assets/pivot-panels.png`,
       title: "Pivot Panels",
-      description: "Online Interviews",
+      description: "ONLINE INTERVIEWS",
       buttonText: "BUY $0.00",
     },
     {
       url: ebookAmazonUrl,
       img: `${process.env.PUBLIC_URL}/assets/how-to-pivot-ebook.png`,
       title: "How to Pivot",
-      description: "Kindle eBook",
+      description: "KINDLE EBOOK",
       buttonText: "BUY $6.99",
     },
     {
       url: coursePaymentUrl,
       img: `${process.env.PUBLIC_URL}/assets/happy-trails-mini-course.png`,
       title: "Happy Trails",
-      description: "Digital Course",
+      description: "DIGITAL COURSE",
       buttonText: "BUY $75.00",
     },
     {
       url: mentorshipBookingUrl,
       img: `${process.env.PUBLIC_URL}/assets/pivot-mentorship.png`,
       title: "Mentorship",
-      description: "Private Program",
+      description: "PRIVATE SESSIONS",
       buttonText: "BUY $150.00",
     },
   ];
@@ -69,7 +69,7 @@ const FeaturedProducts: React.FC = () => {
       <div id="products" className={containerClasses}>
         <div className={headingContainerClasses}>
           <span className={headingSpanClasses}>Dancer-Specific Career Change Resources</span>
-          <h1 className={headingTitleClasses}>Products</h1>
+          <h2 className={headingTitleClasses}>Products</h2>
         </div>
         <div className={gridClasses}>
           {products.map((product, index) => (

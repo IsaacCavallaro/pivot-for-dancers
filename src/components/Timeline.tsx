@@ -66,9 +66,9 @@ const Timeline: React.FC = () => {
             <div className="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Does this sound familiar?</span>
-                    <h1 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
+                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
                         Pivot Stages
-                    </h1>
+                    </h2>
                 </div>
                 <div className="w-full mx-auto lg:max-w-3xl">
                     {stages.map(stage => (

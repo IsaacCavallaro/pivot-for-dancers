@@ -90,14 +90,14 @@ const AboutUsSection: React.FC = () => {
       <div className={containerClasses}>
         <div className={headingContainerClasses}>
           <span className={headingSpanClasses}>Who We Are & What We Do</span>
-          <h1 className={headingTitleClasses}>About Us</h1>
+          <h2 className={headingTitleClasses}>About Us</h2>
         </div>
         <animated.div style={textAnimation} className={gridClasses}>
           {blocks.map((block, index) => (
             <div key={index} className={blockClasses}>
               <img src={block.img} alt={block.title} className={imgClasses} />
               <div className={textContainerClasses}>
-                <h2 className={textTitleClasses}>{block.title}</h2>
+                <h3 className={textTitleClasses}>{block.title}</h3>
                 <p className={textBodyClasses}>{block.description}</p>
               </div>
               <div className={iconsContainerClasses}>
