@@ -34,7 +34,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What are Pivot Panels?",
+            question: "What are PIVOT PANELS?",
             answer: (
                 <>
                     <p>Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers.</p>
@@ -47,7 +47,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What is the 'How to Pivot' ebook?",
+            question: "What is the HOW TO PIVOT ebook?",
             answer: (
                 <>
                     <p>Written by our founder, Kaylee Randall, 'How to Pivot' is an <strong>actionable, dancer-specific</strong> guide to help
@@ -61,7 +61,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What is the 'Happy Trails' Mini Course?",
+            question: "What is the HAPPY TRAILS Mini Course?",
             answer: (
                 <>
                     <p>
@@ -92,7 +92,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What is the Pivot for Dancers Mentorship Program?",
+            question: "What is the PIVOT MENTORSHIP PROGRAM?",
             answer: (
                 <>
                     <p>
@@ -128,7 +128,7 @@ const FAQ: FC = () => {
             <div className="max-w-6xl py-4 px-4 mx-auto md:px-6">
                 <header className="mb-6">
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Feeling Curious?</span>
-                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">FAQs</h2>
+                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">FAQs</h2>
                 </header>
                 <div className="faq-items space-y-4">
                     {faqItems.map((item, index) => (
@@ -138,7 +138,7 @@ const FAQ: FC = () => {
                             onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                         >
                             <div className="flex items-center justify-between">
-                                <span className="font-bold dark:text-white">{item.question}</span>
+                                <span className="font-merriweather dark:text-white text-xl">{item.question}</span>
                                 <div className="p-2 bg-purple-gray rounded">
                                     {activeIndex === index ? <MinusIcon /> : <PlusIcon />}
                                 </div>

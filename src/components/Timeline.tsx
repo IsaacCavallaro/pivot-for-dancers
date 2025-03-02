@@ -13,7 +13,7 @@ const Timeline: React.FC = () => {
     const iconContainerClasses = "flex items-center justify-center w-10 h-10 border border-black rounded-full";
     const contentBoxClasses = "relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer";
     const innerContentClasses = "relative z-20 p-6";
-    const titleClasses = "flex-1 text-lg font-semibold text-white text-center";
+    const titleClasses = "flex-1 text-2xl font-merriweather text-white text-center";
     const toggleIconContainerClasses = "w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full";
     const descriptionClasses = "mt-4 leading-7 text-white font-montserrat text-lg";
     const transitionClasses = "overflow-hidden transition-all duration-1000 ease-in-out";
@@ -66,7 +66,7 @@ const Timeline: React.FC = () => {
             <div className="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">Does this sound familiar?</span>
-                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-5xl">
+                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">
                         Pivot Stages
                     </h2>
                 </div>

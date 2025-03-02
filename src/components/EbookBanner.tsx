@@ -29,12 +29,10 @@ const EbookBanner: React.FC = () => {
 
                         {/* Testimonial Quote */}
                         <blockquote className="italic text-gray-600">
-                            "It's all the things I wish someone told me before I stepped away from my professional dance career.
-                            A must-read for dancers at any stage of their careers, but especially for dancers who are ready to pivot.
-                            This ebook is exactly what I needed."
+                            "It's all the things I wish someone told me before I started my professional dance career. A must-read for dancers looking to pivot."
                             <br></br>
                             <br></br>
-                            <span className="font-semibold text-gray-900">— Robyne Campbell, Former Professional Dancer/Singer, Universal Singapore and Norwegian Cruise Lines</span>
+                            <span className="font-semibold text-gray-900">— Robyne Campbell, Former Professional Dancer</span>
                         </blockquote>
 
                         {/* Call to Action */}

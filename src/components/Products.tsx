@@ -20,17 +20,17 @@ const FeaturedProducts: React.FC = () => {
   const containerClasses = "justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-10 md:px-6";
   const headingContainerClasses = "px-4 pl-4 mb-6";
   const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
-  const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-5xl";
+  const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold";
   const gridClasses = "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-4";
   const cardClasses = "flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full";
   const imgWrapperClasses = "relative overflow-hidden";
   const imgClasses = "object-cover w-full h-full";
   const textContainerClasses = "p-6 bg-off-white text-center flex flex-col flex-grow justify-between";
-  const textTitleClasses = "text-2xl sm:text-3xl font-merriweather text-brown-gray";
+  const textTitleClasses = "text-2xl sm:text-3xl font-merriweather font-semibold text-brown-gray";
   const textDescriptionClasses = "mb-4 text-sm sm:text-base font-montserrat text-brown-gray";
   const buttonClasses = "inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600";
   const moreInfoClasses = "mt-10 text-center";
-  const moreInfoTextClasses = "text-lg sm:text-xl font-montserrat text-brown-gray";
+  const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
   const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
 
   const products = [
@@ -95,12 +95,12 @@ const FeaturedProducts: React.FC = () => {
         {/* MORE INFO */}
         <div className={moreInfoClasses}>
           <p className={moreInfoTextClasses}>
-            Need more information on our products?{' '}
+            Need more information on our products? {' '}
             <button
               onClick={scrollToFAQ}
               className={faqButtonClasses}
             >
-              See our Frequently Asked Questions
+              Frequently Asked Questions
             </button>
           </p>
         </div>

@@ -155,9 +155,6 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="py-12 text-center">
-          <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
-          </p>
           <a
             href="https://drive.google.com/file/d/1XiqWl5qiHd1xCGF62D300hyodmsCe5OC/view?usp=sharing"
             target="_blank"
@@ -182,6 +179,9 @@ const Footer: React.FC = () => {
           >
             Pivot Mentorship Program Terms and Conditions
           </a>
+          <p className="text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
