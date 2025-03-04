@@ -43,7 +43,7 @@ const Home: React.FC = () => {
         <div className={containerClass}>
           {/* Text Section */}
           <div className={textSectionClass}>
-            <h1 className="text-4xl md:text-5xl font-merriweather leading-tight text-gray-900 mb-5">
+            <h1 className="text-4xl md:text-5xl font-merriweather leading-tight text-gray-900 mb-5 font-semibold">
               Pivot for Dancers
             </h1>
             <p className="mb-4 text-base leading-7 text-black">

@@ -34,7 +34,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What are PIVOT PANELS?",
+            question: "What are Pivot Panels?",
             answer: (
                 <>
                     <p>Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers.</p>
@@ -47,7 +47,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What is the HOW TO PIVOT ebook?",
+            question: "What is the How to Pivot ebook?",
             answer: (
                 <>
                     <p>Written by our founder, Kaylee Randall, 'How to Pivot' is an <strong>actionable, dancer-specific</strong> guide to help
@@ -61,7 +61,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What is the HAPPY TRAILS Mini Course?",
+            question: "What is the Happy Trails Mini Course?",
             answer: (
                 <>
                     <p>
@@ -92,7 +92,7 @@ const FAQ: FC = () => {
             ),
         },
         {
-            question: "What is the PIVOT MENTORSHIP PROGRAM?",
+            question: "What is the Pivot Mentorship Program?",
             answer: (
                 <>
                     <p>

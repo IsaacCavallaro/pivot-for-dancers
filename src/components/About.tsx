@@ -1,30 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React from 'react';
 
 const AboutUsSection: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const textAnimation = useSpring({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translateX(0)' : 'translateX(-50px)',
-    config: { duration: 800 },
-  });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const aboutSection = document.getElementById('about');
-
-      if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect();
-        const isSectionVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-
-        setIsVisible(isSectionVisible);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const sectionClasses = "bg-beige font-merriweather py-10";
   const containerClasses = "max-w-6xl py-4 mx-auto md:px-6";
@@ -44,7 +20,7 @@ const AboutUsSection: React.FC = () => {
 
   const blocks = [
     {
-      img: `${process.env.PUBLIC_URL}/assets/ballet-femal.jpeg`,
+      img: `${process.env.PUBLIC_URL}/assets/ballet-female.jpeg`,
       title: "Career Changes",
       description: "Pivot for Dancers offers practical resources to support professional dancers in making a career change.",
       icons: [
@@ -92,7 +68,7 @@ const AboutUsSection: React.FC = () => {
           <span className={headingSpanClasses}>Who We Are & What We Do</span>
           <h2 className={headingTitleClasses}>About Us</h2>
         </div>
-        <animated.div style={textAnimation} className={gridClasses}>
+        <div className={gridClasses}>
           {blocks.map((block, index) => (
             <div key={index} className={blockClasses}>
               <img src={block.img} alt={block.title} className={imgClasses} />
@@ -112,7 +88,7 @@ const AboutUsSection: React.FC = () => {
               </div>
             </div>
           ))}
-        </animated.div>
+        </div>
       </div>
     </section>
   );
