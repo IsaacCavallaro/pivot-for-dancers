@@ -9,9 +9,15 @@ const FeaturedProducts: React.FC = () => {
 
   // Scroll to the FAQ section smoothly
   const scrollToFAQ = () => {
-    const faqSection = document.getElementById('faq-section');
-    if (faqSection) {
-      faqSection.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('faq-section');
+    if (element) {
+      const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+      window.scrollTo({
+        top: topOffset,
+        behavior: 'smooth',
+      });
     }
   };
 
