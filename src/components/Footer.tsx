@@ -154,35 +154,36 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-600 my-1"></div>
 
         {/* Bottom Section */}
-        <div className="py-12 text-center">
-          <a
-            href="https://drive.google.com/file/d/1XiqWl5qiHd1xCGF62D300hyodmsCe5OC/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 mt-2 block"
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="https://drive.google.com/file/d/1JVBQN7SZBSSup9E-avhsTXRxZ1Y_7Zeg/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 mt-2 block"
-          >
-            Happy Trails Terms and Conditions
-          </a>
-          <a
-            href="https://drive.google.com/file/d/11ssn_alwWa1K0IrgGQgE7Dt65TRmsXrH/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 mt-2 block"
-          >
-            Pivot Mentorship Program Terms and Conditions
-          </a>
-          <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
-          </p>
+        <div className="py-12 text-center space-y-4">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+            <a
+              href="https://drive.google.com/file/d/1XiqWl5qiHd1xCGF62D300hyodmsCe5OC/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-300 transition"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1JVBQN7SZBSSup9E-avhsTXRxZ1Y_7Zeg/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-300 transition"
+            >
+              Happy Trails Terms and Conditions
+            </a>
+            <a
+              href="https://drive.google.com/file/d/11ssn_alwWa1K0IrgGQgE7Dt65TRmsXrH/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-300 transition"
+            >
+              Pivot Mentorship Program Terms and Conditions
+            </a>
+          </div>
+          <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.</p>
         </div>
+
       </div>
     </footer>
   );
