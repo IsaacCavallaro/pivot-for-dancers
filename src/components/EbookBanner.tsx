@@ -19,7 +19,7 @@ const EbookBanner: React.FC = () => {
                 <animated.div style={fadeIn} className="border border-gray-300 rounded-lg p-8 bg-white shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                     {/* Text Section */}
                     <div className="flex flex-col justify-center space-y-6">
-                        <h2 className="text-4xl md:text-5xl font-merriweather leading-tight text-gray-900">
+                        <h2 className="text-4xl md:text-4xl font-merriweather leading-tight text-gray-900 font-semibold">
                             Your Next Chapter
                         </h2>
                         <p className="text-lg text-gray-700">
@@ -29,10 +29,10 @@ const EbookBanner: React.FC = () => {
 
                         {/* Testimonial Quote */}
                         <blockquote className="italic text-gray-600">
-                            "It's all the things I wish someone told me before I started my professional dance career.
-                            A must-read for dancers looking to pivot."
+                            "It's all the things I wish someone told me before I started my professional dance career. A must-read for dancers looking to pivot."
                             <br></br>
-                            <span className="font-semibold text-gray-900">— Sarah M., Professional Dancer</span>
+                            <br></br>
+                            <span className="font-semibold text-gray-900">— Robyne Campbell, Former Professional Dancer</span>
                         </blockquote>
 
                         {/* Call to Action */}
@@ -42,7 +42,7 @@ const EbookBanner: React.FC = () => {
                                 className={orderNowClassName}
                                 target="_blank"
                             >
-                                ORDER BOOK NOW
+                                ORDER EBOOK NOW
                             </a>
                         </div>
                     </div>

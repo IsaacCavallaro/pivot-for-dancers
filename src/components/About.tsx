@@ -1,42 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React from 'react';
 
 const AboutUsSection: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const textAnimation = useSpring({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translateX(0)' : 'translateX(-50px)',
-    config: { duration: 800 },
-  });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const aboutSection = document.getElementById('about');
-
-      if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect();
-        const isSectionVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-
-        setIsVisible(isSectionVisible);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const sectionClasses = "bg-beige font-merriweather py-10";
   const containerClasses = "max-w-6xl py-4 mx-auto md:px-6";
   const headingContainerClasses = "px-4 pl-4 mb-6";
   const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
-  const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-5xl";
+  const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold";
   const gridClasses = "grid gap-6 md:grid-cols-2 lg:grid-cols-2 px-4";
   const blockClasses = "flex flex-col items-center gap-6 p-8 rounded-lg border-2 border-gray-800";
   const imgClasses = "object-cover w-32 h-32 rounded-full shadow-md transform transition-transform duration-300 hover:scale-105";
   const textContainerClasses = "flex flex-col items-center text-center";
-  const textTitleClasses = "mt-2 text-3xl font-semibold text-gray-800 md:text-4xl tracking-tight";
-  const textBodyClasses = "text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xs";
+  const textTitleClasses = "mt-2 text-3xl font-semibold text-gray-800 md:text-3xl tracking-tight";
+  const textBodyClasses = "text-base md:text-lg lg:text-lg text-gray-600 font-montserrat leading-relaxed max-w-xs";
   const iconsContainerClasses = "grid grid-cols-3 gap-6 justify-items-center";
   const iconWrapperClasses = "flex flex-col items-center";
   const iconClasses = "text-white bg-purple-gray p-3 rounded-full flex items-center justify-center w-12 h-12 shadow-sm";
@@ -44,7 +20,7 @@ const AboutUsSection: React.FC = () => {
 
   const blocks = [
     {
-      img: `${process.env.PUBLIC_URL}/assets/ballet-femal.jpeg`,
+      img: `${process.env.PUBLIC_URL}/assets/ballet-female.jpeg`,
       title: "Career Changes",
       description: "Pivot for Dancers offers practical resources to support professional dancers in making a career change.",
       icons: [
@@ -90,14 +66,14 @@ const AboutUsSection: React.FC = () => {
       <div className={containerClasses}>
         <div className={headingContainerClasses}>
           <span className={headingSpanClasses}>Who We Are & What We Do</span>
-          <h1 className={headingTitleClasses}>About Us</h1>
+          <h2 className={headingTitleClasses}>About Us</h2>
         </div>
-        <animated.div style={textAnimation} className={gridClasses}>
+        <div className={gridClasses}>
           {blocks.map((block, index) => (
             <div key={index} className={blockClasses}>
               <img src={block.img} alt={block.title} className={imgClasses} />
               <div className={textContainerClasses}>
-                <h2 className={textTitleClasses}>{block.title}</h2>
+                <h3 className={textTitleClasses}>{block.title}</h3>
                 <p className={textBodyClasses}>{block.description}</p>
               </div>
               <div className={iconsContainerClasses}>
@@ -112,7 +88,7 @@ const AboutUsSection: React.FC = () => {
               </div>
             </div>
           ))}
-        </animated.div>
+        </div>
       </div>
     </section>
   );

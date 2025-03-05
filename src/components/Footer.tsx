@@ -155,15 +155,33 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="py-12 text-center">
-          <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
-          </p>
           <a
-            href="/privacy-policy"
-            className="text-gray-400 hover:text-white transition-colors mt-2 block"
+            href="https://drive.google.com/file/d/1XiqWl5qiHd1xCGF62D300hyodmsCe5OC/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 mt-2 block"
           >
             Privacy Policy
           </a>
+          <a
+            href="https://drive.google.com/file/d/1JVBQN7SZBSSup9E-avhsTXRxZ1Y_7Zeg/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 mt-2 block"
+          >
+            Happy Trails Terms and Conditions
+          </a>
+          <a
+            href="https://drive.google.com/file/d/11ssn_alwWa1K0IrgGQgE7Dt65TRmsXrH/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 mt-2 block"
+          >
+            Pivot Mentorship Program Terms and Conditions
+          </a>
+          <p className="text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} Pivot for Dancers. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
