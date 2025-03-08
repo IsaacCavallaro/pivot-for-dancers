@@ -44,10 +44,10 @@ const Home: React.FC = () => {
           {/* Text Section */}
           <div className={textSectionClass}>
             <h1 className="text-4xl md:text-5xl font-merriweather leading-tight text-gray-900 mb-5 font-semibold">
-              Pivot for Dancers
+              Career change resources made for dancers
             </h1>
             <p className="mb-4 text-base leading-7 text-black">
-              At Pivot for Dancers, we're helping professional dancers find meaningful work off the stage with our dancer-specific career change resources.
+              At Pivot for Dancers, we're helping professional dancers find meaningful work off the stage with our curated career change resources.
               {/* Join our growing community of current and former professional dancers who are talking about career change and stepping onto their next stage. */}
             </p>
             {/* Form and Social Media Icons Section */}
