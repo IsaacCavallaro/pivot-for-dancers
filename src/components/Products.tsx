@@ -98,7 +98,7 @@ const FeaturedProducts: React.FC = () => {
           ))}
         </div>
 
-        {/* MORE INFO */}
+        {/* GO TO FAQ*/}
         <div className={moreInfoClasses}>
           <p className={moreInfoTextClasses}>
             Need more information on our products? {' '}
