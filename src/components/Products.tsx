@@ -101,7 +101,7 @@ const FeaturedProducts: React.FC = () => {
         {/* GO TO FAQ*/}
         <div className={moreInfoClasses}>
           <p className={moreInfoTextClasses}>
-            Not seeing what you want? {' '}
+            Unsure of anything? See our {' '}
             <button
               onClick={scrollToFAQ}
               className={faqButtonClasses}

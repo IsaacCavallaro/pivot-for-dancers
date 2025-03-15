@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react';
 
 const FAQ: FC = () => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0);
+    const [activeIndex, setActiveIndex] = useState<number | null>();
 
     const containerClasses = "flex flex-col w-full py-4 px-4 mb-3 bg-white rounded shadow dark:bg-gray-700 cursor-pointer hover:shadow-md transition-shadow duration-300";
     const answerClasses = "mt-1 text-sm text-white transition-all duration-1000 ease-in-out overflow-hidden";

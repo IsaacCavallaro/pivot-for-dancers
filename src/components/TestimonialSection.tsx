@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,18 +6,9 @@ import { FaStar } from "react-icons/fa";
 
 const TestimonialsSection: React.FC = () => {
   const BASE_PATH = process.env.PUBLIC_URL || "";
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const testimonials = [
-    {
-      content: `
-        "A great community for dancers going through the difficult transition 
-        out of a full-time career in the performing arts, into a new career. 
-        Support, guidance, and self-exploration exercises—all in one place."
-      `,
-      author: "Kelsey Glennon",
-      role: "Former Dancer & Travel Journalist",
-      imageSrc: `${BASE_PATH}/assets/kelsey-glennon.jpeg`,
-    },
     {
       content: `
         "Finally a platform that says what we're all thinking! Offering a supportive space, 
@@ -30,8 +21,17 @@ const TestimonialsSection: React.FC = () => {
     },
     {
       content: `
-        Pivot for Dancers is a community full of educational resources that every professional dancer should learn about. 
-        It came to me at the perfect time when I was ending my performing career due to injury 
+        "A great community for dancers going through the difficult transition 
+        out of a full-time career in the performing arts, into a new career. 
+        Support, guidance, and self-exploration exercises—all in one place."
+      `,
+      author: "Kelsey Glennon",
+      role: "Former Dancer & Travel Journalist",
+      imageSrc: `${BASE_PATH}/assets/kelsey-glennon.jpeg`,
+    },
+    {
+      content: `
+        Pivot for Dancers came to me at the perfect time when I was ending my performing career due to injury 
         and burnout and helped me realize that I was not alone."
         `,
       author: "Mallory Gladman",
@@ -76,42 +76,45 @@ const TestimonialsSection: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 8000,
+    speed: 1500,
+    autoplaySpeed: 7800,
     cssEase: "linear",
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <section className="bg-beige">
-      <div className="max-w-6xl py-4 mx-auto md:px-6">
-        <div className="relative mx-auto px-4 pt-12 text-center bg-white rounded shadow md:px-20 md:py-20 dark:bg-gray-700">
+    <section className="bg-beige py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="dark:bg-gray-700 rounded-lg shadow-lg p-6 md:p-12">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className="flex flex-col items-center text-center">
                 <div className="flex flex-col items-center mb-8">
-                  <p className="mb-4 leading-7 text-white lg:text-lg xl:text-xl">
+                  <p className="mb-4 text-white leading-relaxed text-base md:text-lg lg:text-xl">
                     {testimonial.content}
                   </p>
-                  <div className="flex items-center justify-center space-x-4 mt-4">
-                    <div className="w-16 h-16">
+                  <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mt-4">
+                    <div className="w-20 h-20">
                       <img
                         className="object-cover w-full h-full rounded-full"
                         src={testimonial.imageSrc}
                         alt={testimonial.author}
                       />
                     </div>
-                    <div className="text-left">
-                      <h2 className="text-lg lg:text-xl xl:text-2xl font-bold leading-9 text-white">
+                    <div className="text-center md:text-left">
+                      <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white">
                         {testimonial.author}
                       </h2>
-                      <span className="block text-xs font-semibold text-white uppercase">
+                      <span className="block text-sm font-semibold text-white uppercase">
                         {testimonial.role}
                       </span>
                     </div>
                   </div>
-                  <div className="flex justify-center mb-2">
+                  <div className="flex justify-center mt-4">
                     {Array(5)
                       .fill(0)
                       .map((_, i) => (
@@ -122,8 +125,41 @@ const TestimonialsSection: React.FC = () => {
               </div>
             ))}
           </Slider>
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+            <button
+              onClick={openModal}
+              className="px-6 py-2 text-white bg-purple-gray rounded-lg hover:bg-purple-gray opacity-80 hover:opacity-100 transition duration-300"
+            >
+              Our Values
+            </button>
+            <a
+              href="https://g.page/r/CfHdX47gLCCXEAI/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 text-white bg-purple-gray rounded-lg transition duration-300 hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+            >
+              Add Review
+            </a>
+          </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg max-w-lg w-full mx-4">
+            <h2 className="text-xl font-bold mb-4 text-gray-900">Our Values</h2>
+            <p className="text-gray-700">
+              At Pivot for Dancers, we are committed to supporting dancers through their transitions with empathy, understanding, and practical guidance. We believe in the power of community and the importance of mental health and well-being in navigating career changes.
+            </p>
+            <button
+              onClick={closeModal}
+              className="mt-4 px-4 py-2 bg-purple-gray text-white rounded-lg transition duration-300"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
