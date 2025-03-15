@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Timeline: React.FC = () => {
-    const [visibleStage, setVisibleStage] = useState<number | null>(1);
+    const [visibleStage, setVisibleStage] = useState<number | null>();
 
     const toggleStage = (stageNumber: number) => {
         setVisibleStage(visibleStage === stageNumber ? null : stageNumber);
@@ -69,7 +69,6 @@ const Timeline: React.FC = () => {
     return (
         <section id="timeline" className={sectionClasses}>
             <div className={headingContainerClasses}>
-                <h2 className={headingTitleClasses}>Pivot Stages</h2>
                 <span className={headingSpanClasses}>Does this sound familiar?</span>
             </div>
             <div className="w-full mx-auto lg:max-w-3xl">

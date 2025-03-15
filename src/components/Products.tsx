@@ -22,7 +22,7 @@ const FeaturedProducts: React.FC = () => {
   };
 
   // Class variables
-  const sectionClasses = "flex items-center bg-beige";
+  const sectionClasses = "flex items-center bg-beige text-center";
   const containerClasses = "justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-10 md:px-6";
   const headingContainerClasses = "px-4 pl-4 mb-6";
   const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
@@ -74,8 +74,8 @@ const FeaturedProducts: React.FC = () => {
     <section className={sectionClasses}>
       <div id="products" className={containerClasses}>
         <div className={headingContainerClasses}>
-          <span className={headingSpanClasses}>Dancer-Specific Career Change Resources</span>
           <h2 className={headingTitleClasses}>Products</h2>
+          <span className={headingSpanClasses}>Dancer-Specific Career Change Resources</span>
         </div>
         <div className={gridClasses}>
           {products.map((product, index) => (
@@ -101,7 +101,7 @@ const FeaturedProducts: React.FC = () => {
         {/* GO TO FAQ*/}
         <div className={moreInfoClasses}>
           <p className={moreInfoTextClasses}>
-            Need more information on our products? {' '}
+            Not seeing what you want? {' '}
             <button
               onClick={scrollToFAQ}
               className={faqButtonClasses}

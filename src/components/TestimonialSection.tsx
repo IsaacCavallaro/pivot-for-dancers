@@ -2,28 +2,41 @@ import React from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FaStar } from "react-icons/fa";
 
 const TestimonialsSection: React.FC = () => {
   const BASE_PATH = process.env.PUBLIC_URL || "";
 
   const testimonials = [
     {
-      content: `"The most rewarding part of this transition was opening myself up to the possibility of loving another career just as much as dance."`,
-      author: "Alex Perry",
-      role: "Former Dancer",
-      imageSrc: `${BASE_PATH}/assets/alex-perry.jpeg`,
-    },
-    {
-      content: `"The lifestyle of a dancer stopped feeling good for me. I still love dancing, but the lifestyle you must lead in order to make performing work as a career didn't feel good anymore."`,
-      author: "Kelsey A Glennon",
-      role: "Former Dancer",
+      content: `
+        "A great community for dancers going through the difficult transition 
+        out of a full-time career in the performing arts, into a new career. 
+        Support, guidance, and self-exploration exercises—all in one place."
+      `,
+      author: "Kelsey Glennon",
+      role: "Former Dancer & Travel Journalist",
       imageSrc: `${BASE_PATH}/assets/kelsey-glennon.jpeg`,
     },
     {
-      content: `"Use the fire dancing gives you as the motivation to propel yourself into that new direction, rather than letting the struggle bring you down."`,
-      author: "Alexa Schmitt",
+      content: `
+        "Finally a platform that says what we're all thinking! Offering a supportive space, 
+        Founder, Kaylee, is a kind and empathetic mentor that wants dancers to 
+        understand they deserve to have joy in all aspects of life!"
+        `,
+      author: "Christie Bellish",
       role: "Former Dancer",
-      imageSrc: `${BASE_PATH}/assets/alexa-schmidt.jpeg`,
+      imageSrc: `${BASE_PATH}/assets/christie-bellish.jpeg`,
+    },
+    {
+      content: `
+        Pivot for Dancers is a community full of educational resources that every professional dancer should learn about. 
+        It came to me at the perfect time when I was ending my performing career due to injury 
+        and burnout and helped me realize that I was not alone."
+        `,
+      author: "Mallory Gladman",
+      role: "Former Dancer & Event Business Owner",
+      imageSrc: `${BASE_PATH}/assets/mallory-gladman.jpg`,
     },
   ];
 
@@ -63,8 +76,8 @@ const TestimonialsSection: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 6000,
+    speed: 2000,
+    autoplaySpeed: 8000,
     cssEase: "linear",
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -97,6 +110,13 @@ const TestimonialsSection: React.FC = () => {
                         {testimonial.role}
                       </span>
                     </div>
+                  </div>
+                  <div className="flex justify-center mb-2">
+                    {Array(5)
+                      .fill(0)
+                      .map((_, i) => (
+                        <FaStar key={i} className="text-yellow-500 text-lg mx-0.5" />
+                      ))}
                   </div>
                 </div>
               </div>
