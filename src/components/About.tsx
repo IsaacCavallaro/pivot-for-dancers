@@ -276,7 +276,7 @@ const StatCard: React.FC<StatCardProps> = ({
                 </div>
               </div>
             )}
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{label}</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{buttonText}</h3>
           </div>
 
           {/* Scrollable content area */}
@@ -358,7 +358,7 @@ const STATS_DATA: StatProps[] = [
         <br />
       </>
     ),
-    imageUrl: `${process.env.PUBLIC_URL}/assets/jazz-male.jpeg`,
+    imageUrl: `${process.env.PUBLIC_URL}/assets/lyrical-female.jpeg`,
     buttonText: "Learn About Us",
     modalButtonText: "Join Our Community",
   },
@@ -416,7 +416,7 @@ const STATS_DATA: StatProps[] = [
         <br />
       </>
     ),
-    imageUrl: `${process.env.PUBLIC_URL}/assets/jazz-male.jpeg`,
+    imageUrl: `${process.env.PUBLIC_URL}/assets/modern-male.jpeg`,
     buttonText: "Explore Our Workshops",
     modalButtonText: "Sign Up",
   },

@@ -3,34 +3,11 @@ import React, { useState, FC } from 'react';
 const FAQ: FC = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
-    const PlusIcon = () => (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-            <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-        </svg>
-    );
-
-    const MinusIcon = () => (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-        </svg>
-    );
-
     const containerClasses = "flex flex-col w-full py-4 px-4 mb-3 bg-white rounded shadow dark:bg-gray-700 cursor-pointer hover:shadow-md transition-shadow duration-300";
-    const answerClasses = "mt-1 text-sm text-white transition-all duration-500 ease-in-out overflow-hidden";
+    const answerClasses = "mt-1 text-sm text-white transition-all duration-1000 ease-in-out overflow-hidden";
     const hiddenClasses = "max-h-0 opacity-0";
     const visibleClasses = "max-h-[500px] opacity-100";
-    const buttonClass = `
-    px-6 md:px-4 py-4 md:py-2
-    text-sm font-semibold 
-    text-gray-100 
-    bg-purple-gray 
-    rounded-md 
-    hover:bg-purple-gray 
-    opacity-80 hover:opacity-100 
-    w-full md:w-auto
-    h-12 md:h-10
-  `.trim();
-
+    const toggleIconContainerClasses = "w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full";
 
     const faqItems = [
         {
@@ -172,8 +149,12 @@ const FAQ: FC = () => {
                         >
                             <div className="flex items-center justify-between">
                                 <span className="font-merriweather dark:text-white text-xl">{item.question}</span>
-                                <div className="p-2 bg-purple-gray rounded">
-                                    {activeIndex === index ? <MinusIcon /> : <PlusIcon />}
+                                <div className={toggleIconContainerClasses}>
+                                    {activeIndex === index ? (
+                                        <i className="fas fa-chevron-up text-white text-xl"></i>
+                                    ) : (
+                                        <i className="fas fa-chevron-down text-white text-xl"></i>
+                                    )}
                                 </div>
                             </div>
                             <div

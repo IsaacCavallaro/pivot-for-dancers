@@ -11,7 +11,7 @@ const Timeline: React.FC = () => {
     const baseContainerClasses = "relative flex justify-between";
     const sideIconClasses = "flex flex-col items-center w-10 mr-4 md:w-24";
     const iconContainerClasses = "flex items-center justify-center w-10 h-10 border border-black rounded-full";
-    const contentBoxClasses = "relative flex-1 mb-10 bg-white rounded shadow lg:mb-8 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer";
+    const contentBoxClasses = "relative flex-1 mb-10 bg-white rounded shadow lg:mb-6 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer";
     const innerContentClasses = "relative z-20 p-6";
     const titleClasses = "flex-1 text-2xl font-merriweather text-white text-center";
     const toggleIconContainerClasses = "w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full";
@@ -74,13 +74,12 @@ const Timeline: React.FC = () => {
             <div className="w-full mx-auto lg:max-w-3xl">
                 {stages.map(stage => (
                     <div key={stage.id} className={baseContainerClasses}>
+
                         <div className={sideIconClasses}>
-                            <div>
-                                <div className={iconContainerClasses}>
-                                    <i className={stage.icon}></i>
-                                </div>
+                            <div className={iconContainerClasses}>
+                                <i className={stage.icon}></i>
                             </div>
-                            <div className="w-px h-full dark:bg-gray-700"></div>
+                            <div className="w-px flex-grow dark:bg-gray-700"></div>
                         </div>
                         <div
                             className={`${contentBoxClasses} ${visibleStage === stage.id ? 'bg-gray-200 dark:bg-gray-600' : ''}`}
