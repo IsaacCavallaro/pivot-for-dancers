@@ -133,16 +133,16 @@ const TestimonialsSection: React.FC = () => {
 
   // Modal styling classes
   const modalSectionClasses = "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50";
-  const modalContainerClasses = "bg-beige rounded-lg max-w-4xl w-full mx-4 overflow-y-auto max-h-[90vh] relative";
+  const modalContainerClasses = "bg-white rounded-lg max-w-4xl w-full mx-4 overflow-y-auto max-h-[90vh] relative";
   const modalContentClasses = "p-6 pt-16"; // Added padding to top to account for sticky header
-  const modalHeaderClasses = "sticky top-0 dark:bg-gray-700 z-20 flex justify-between items-center px-6 py-4 border-b border-gray-200";
-  const modalHeadingClasses = "text-2xl font-bold text-white";
-  const modalCloseButtonClasses = "text-white rounded-full p-2 transition-colors duration-200 flex items-center justify-center";
+  const modalHeaderClasses = "sticky top-0 bg-beige z-20 flex justify-between items-center px-6 py-4 border-b border-gray-200";
+  const modalHeadingClasses = "text-2xl font-bold text-black font-merriweather";
+  const modalCloseButtonClasses = "text-purple-gray rounded-full p-2 transition-colors duration-200 flex items-center justify-center";
   const modalGridClasses = "grid gap-6 md:grid-cols-2 lg:grid-cols-2 px-4";
-  const modalBlockClasses = "flex flex-col items-center gap-6 p-8 rounded-lg border-2 border-gray-800";
-  const modalImgClasses = "object-cover w-32 h-32 rounded-full shadow-md transform transition-transform duration-300 hover:scale-105";
+  const modalBlockClasses = "flex flex-col items-center gap-6 p-8 rounded-lg border-2 border-purple-gray";
+  const modalImgClasses = "object-cover w-32 h-32 border-2 border-purple-gray rounded-full";
   const modalTextContainerClasses = "flex flex-col items-center text-center";
-  const modalTextTitleClasses = "mt-2 text-3xl font-semibold text-gray-800 md:text-3xl tracking-tight";
+  const modalTextTitleClasses = "mt-2 text-3xl font-merriweather font-semibold text-gray-800 md:text-3xl tracking-tight";
   const modalTextBodyClasses = "text-base md:text-lg lg:text-lg text-gray-600 font-montserrat leading-relaxed max-w-xs";
   const modalIconsContainerClasses = "grid grid-cols-3 gap-6 justify-items-center";
   const modalIconWrapperClasses = "flex flex-col items-center";
@@ -191,7 +191,7 @@ const TestimonialsSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
             <button
               onClick={openModal}
-              className="inline-block px-4 py-2 text-sm font-merriweather text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100"
+              className="inline-block px-4 py-2 text-sm font-montserrat text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100"
             >
               OUR VALUES
             </button>
@@ -199,7 +199,7 @@ const TestimonialsSection: React.FC = () => {
               href="https://g.page/r/CfHdX47gLCCXEAI/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-4 py-2 text-sm text-center font-merriweather text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100"
+              className="inline-block px-4 py-2 text-sm text-center font-montserrat text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100"
             >
               ADD REVIEW
             </a>

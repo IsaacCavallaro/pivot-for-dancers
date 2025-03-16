@@ -28,13 +28,13 @@ const FeaturedProducts: React.FC = () => {
   const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
   const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold";
   const gridClasses = "grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-4";
-  const cardClasses = "flex flex-col border border-gray-200 p-4 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 w-full h-full";
+  const cardClasses = "flex flex-col border border-gray-200 p-4 w-full h-full";
   const imgWrapperClasses = "relative overflow-hidden";
   const imgClasses = "object-cover w-full h-full";
   const textContainerClasses = "p-6 bg-off-white text-center flex flex-col flex-grow justify-between";
   const textTitleClasses = "text-2xl sm:text-3xl font-merriweather font-semibold text-brown-gray";
   const textDescriptionClasses = "mb-4 text-sm sm:text-base font-montserrat text-brown-gray";
-  const buttonClasses = "inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600";
+  const buttonClasses = "inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100";
   const moreInfoClasses = "mt-10 text-center";
   const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
   const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";

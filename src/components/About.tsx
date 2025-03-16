@@ -7,7 +7,7 @@ const STYLES = {
   headingContainer: "px-4 pl-4 mb-6",
   headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
   headingTitle: "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold",
-  button: "inline-block px-4 py-2 text-sm font-merriweather text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
+  button: "inline-block font-montserrat px-10 py-2 text-sm text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
   modalImageContainer: "flex justify-center mb-4",
   modalImage: "w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-full border-2 border-purple-gray",
   counter: "text-4xl font-bold"
@@ -194,10 +194,10 @@ const Modal: React.FC<ModalProps> = ({
           className={`bg-beige rounded-lg shadow-lg w-full max-w-2xl mx-auto my-8 flex flex-col transition-all duration-300 ease-in-out ${modalTransform}`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="dark:bg-gray-700 p-4 sm:p-6 md:p-8 flex justify-end">
+          <div className="p-4 sm:p-6 md:p-4 flex justify-end">
             <button
               onClick={onClose}
-              className="text-white hover:text-white-700 text-2xl transition-colors duration-200"
+              className="text-purple-gray hover:text-white-700 text-2xl transition-colors duration-200"
               aria-label="Close modal"
             >
               &times;
@@ -351,7 +351,7 @@ const StatCard: React.FC<StatCardProps> = ({
       >
         <div className="flex flex-col h-full">
           {/* Sticky header with image and title */}
-          <div className="sticky top-0 bg-beige z-10 p-4">
+          <div className="sticky top-0 bg-white z-10 p-4">
             {imageUrl && (
               <div className={STYLES.modalImageContainer}>
                 <div className={STYLES.modalImage}>
@@ -366,13 +366,13 @@ const StatCard: React.FC<StatCardProps> = ({
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{buttonText}</h3>
           </div>
           {/* Scrollable content area */}
-          <div className="p-4 sm:p-6 bg-beige overflow-y-auto max-h-[50vh]">
+          <div className="p-4 sm:p-6 bg-white overflow-y-auto max-h-[50vh]">
             <div className="text-gray-700 text-sm sm:text-base">
               {description || "No additional information available."}
             </div>
           </div>
           {/* Sticky footer with button */}
-          <div className="sticky bottom-0 dark:bg-gray-700 z-10 p-4 flex justify-center">
+          <div className="sticky bottom-0 bg-beige z-10 p-4 flex justify-center">
             <button
               onClick={handleModalButtonClick}
               className={STYLES.button}
@@ -389,7 +389,7 @@ const StatCard: React.FC<StatCardProps> = ({
 const STATS_DATA: StatProps[] = [
   {
     value: "25+",
-    label: "Years of Experience",
+    label: "Years of Dance Experience",
     description: (
       <>
         <p className="mt-4 leading-7 text-black font-montserrat text-lg">
@@ -451,7 +451,7 @@ const STATS_DATA: StatProps[] = [
   },
   {
     value: "17+",
-    label: "Nationalities Subscribed",
+    label: "COUNTRIES PARTICIPATING",
     description: (
       <>
         <p className="mt-4 leading-7 text-black font-montserrat text-lg">
