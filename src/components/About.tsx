@@ -1,5 +1,4 @@
 "use client"
-
 import type React from "react"
 import { useEffect, useState, useRef } from "react"
 
@@ -8,7 +7,7 @@ const STYLES = {
   headingContainer: "px-4 pl-4 mb-6",
   headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
   headingTitle: "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold",
-  button: "inline-block px-4 py-2 text-sm font-semibold text-white bg-purple-gray rounded-full hover:bg-purple-gray-600",
+  button: "inline-block px-4 py-2 text-sm font-merriweathe text-white bg-purple-gray rounded-full hover:bg-purple-gray-600",
   modalImageContainer: "flex justify-center mb-4",
   modalImage: "w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-full border-2 border-purple-gray",
   counter: "text-4xl font-bold"
@@ -81,33 +80,35 @@ const Counter: React.FC<CounterProps> = ({
 }) => {
   const [count, setCount] = useState(0)
   const completedRef = useRef(false)
-
+  const animationRef = useRef<number | null>(null)
   // Extract numeric value and check for suffix
   const finalValue = Number.parseInt(value.replace(/\D/g, ""))
   const hasSuffix = value.includes("+")
 
   useEffect(() => {
     let startTime: number | null = null
-    let animationFrame: number
 
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp
       const progress = Math.min((timestamp - startTime) / duration, 1)
       const currentCount = Math.floor(progress * finalValue)
-
       setCount(currentCount)
 
       if (progress < 1) {
-        animationFrame = requestAnimationFrame(step)
+        animationRef.current = requestAnimationFrame(step)
       } else if (!completedRef.current) {
         completedRef.current = true
         onComplete?.()
       }
     }
 
-    animationFrame = requestAnimationFrame(step)
+    animationRef.current = requestAnimationFrame(step)
 
-    return () => cancelAnimationFrame(animationFrame)
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
   }, [finalValue, duration, onComplete])
 
   return (
@@ -192,17 +193,25 @@ const StatCard: React.FC<StatCardProps> = ({
   modalButtonText,
   index
 }) => {
-  const [isAnimating, setIsAnimating] = useState(true)
+  // Animation state tracking
   const [isVisible, setIsVisible] = useState(false)
+  const [hasStartedAnimation, setHasStartedAnimation] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [hasCompletedAnimation, setHasCompletedAnimation] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Reference to the card element for intersection observer
   const cardRef = useRef<HTMLDivElement>(null)
 
   // Set up intersection observer to detect when card is visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && !hasStartedAnimation) {
           setIsVisible(true)
+          setHasStartedAnimation(true)
+          setIsAnimating(true)
+
           if (cardRef.current) {
             observer.unobserve(cardRef.current)
           }
@@ -211,7 +220,7 @@ const StatCard: React.FC<StatCardProps> = ({
       { threshold: 0.2 }
     )
 
-    if (cardRef.current) {
+    if (cardRef.current && !hasStartedAnimation) {
       observer.observe(cardRef.current)
     }
 
@@ -220,41 +229,63 @@ const StatCard: React.FC<StatCardProps> = ({
         observer.unobserve(cardRef.current)
       }
     }
-  }, [])
+  }, [hasStartedAnimation])
 
   const handleCounterComplete = () => {
-    // Once the counter is done, finish the tick animation
-    setTimeout(() => {
-      setIsAnimating(false)
-    }, 100) // Small delay for better visual effect
+    // Only handle counter completion if animation hasn't already completed
+    if (!hasCompletedAnimation) {
+      setTimeout(() => {
+        setIsAnimating(false)
+        setHasCompletedAnimation(true)
+      }, 100) // Small delay for better visual effect
+    }
   }
 
-  return (
-    <div
-      ref={cardRef}
-      className={`text-center bg-white p-6 rounded-lg shadow-md transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"
-        }`}
-    >
-      <div className="mb-4 h-14 flex items-center justify-center">
-        {isVisible && <AnimatedTickIcon animate={isAnimating} />}
-      </div>
-
-      {isVisible && (
+  // Pre-compute the display value for the counter
+  // If the animation is complete, show the final value directly
+  const displayCounter = () => {
+    if (hasCompletedAnimation) {
+      const numValue = Number.parseInt(value.replace(/\D/g, ""))
+      return (
+        <span className={STYLES.counter}>
+          {numValue}{value.includes("+") && "+"}
+        </span>
+      )
+    } else if (isVisible && !hasCompletedAnimation) {
+      return (
         <Counter
           value={value}
           duration={2000}
           onComplete={handleCounterComplete}
         />
-      )}
+      )
+    }
+    return <span className={STYLES.counter}>0</span>
+  }
 
-      <h2 className="text-gray-600 uppercase dark:text-gray-400 font-merriweather">{label}</h2>
+  return (
+    <div
+      ref={cardRef}
+      className={`text-center bg-white p-6 rounded-lg shadow-md transition-opacity duration-500 ease-in-out h-full flex flex-col ${isVisible ? "opacity-100" : "opacity-0"}`}
+    >
+      <div className="mb-4 h-14 flex items-center justify-center">
+        {isVisible && <AnimatedTickIcon animate={isAnimating} />}
+      </div>
 
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className={`${STYLES.button} mt-3`}
-      >
-        {buttonText}
-      </button>
+      <div className="mb-2">
+        {displayCounter()}
+      </div>
+
+      <h2 className="text-black text-2xl uppercase font-merriweather h-16 flex items-center justify-center">{label}</h2>
+
+      <div className="mt-auto">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className={`${STYLES.button} mt-3`}
+        >
+          {buttonText}
+        </button>
+      </div>
 
       {/* Modal with sticky header and scrollable content */}
       <Modal
@@ -278,14 +309,12 @@ const StatCard: React.FC<StatCardProps> = ({
             )}
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{buttonText}</h3>
           </div>
-
           {/* Scrollable content area */}
           <div className="p-4 sm:p-6 bg-beige overflow-y-auto max-h-[50vh]">
             <div className="text-gray-700 text-sm sm:text-base">
               {description || "No additional information available."}
             </div>
           </div>
-
           {/* Sticky footer with button */}
           <div className="sticky bottom-0 bg-beige z-10 p-4 flex justify-center">
             <button
@@ -430,7 +459,6 @@ const AboutUsSection: React.FC = () => {
         <h2 className={STYLES.headingTitle}>About Us</h2>
         <span className={STYLES.headingSpan}>Who We Are & What We Do</span>
       </div>
-
       {/* Stats Section - 2x2 grid on desktop, stacked on mobile */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 max-w-3xl mx-auto">
         {STATS_DATA.map((stat, index) => (
