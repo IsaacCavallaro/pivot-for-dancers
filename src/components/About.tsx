@@ -26,6 +26,7 @@ interface StatProps {
   imageUrl?: string
   buttonText: string
   modalButtonText: string
+  modalButtonLink?: string
 }
 
 interface StatCardProps extends StatProps {
@@ -36,6 +37,7 @@ interface ModalProps {
   isOpen: boolean
   onClose: () => void
   modalButtonText: string
+  modalButtonLink?: string
   children: React.ReactNode
 }
 
@@ -124,6 +126,7 @@ const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   modalButtonText,
+  modalButtonLink,
   children,
 }) => {
   const [animationState, setAnimationState] = useState<AnimationState>("closed")
@@ -154,6 +157,32 @@ const Modal: React.FC<ModalProps> = ({
   const modalTransform = animationState === "open"
     ? "opacity-100 scale-100 translate-y-0"
     : "opacity-0 scale-95 -translate-y-4"
+
+  const handleButtonClick = () => {
+    // Close the modal first
+    onClose()
+
+    // Handle different link types
+    if (modalButtonLink) {
+      if (modalButtonLink.startsWith('mailto:')) {
+        window.location.href = modalButtonLink
+      } else if (modalButtonLink.startsWith('http')) {
+        window.open(modalButtonLink, '_blank')
+      } else if (modalButtonLink.startsWith('#')) {
+        // Handle anchor link
+        const element = document.getElementById(modalButtonLink.substring(1))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      } else {
+        // For the "Products" heading case
+        const element = document.getElementById(modalButtonLink)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    }
+  }
 
   return (
     <div
@@ -191,6 +220,7 @@ const StatCard: React.FC<StatCardProps> = ({
   imageUrl,
   buttonText,
   modalButtonText,
+  modalButtonLink,
   index
 }) => {
   // Animation state tracking
@@ -263,6 +293,31 @@ const StatCard: React.FC<StatCardProps> = ({
     return <span className={STYLES.counter}>0</span>
   }
 
+  // Handle modal button click with link navigation
+  const handleModalButtonClick = () => {
+    setIsModalOpen(false)
+
+    if (modalButtonLink) {
+      if (modalButtonLink.startsWith('mailto:')) {
+        window.location.href = modalButtonLink
+      } else if (modalButtonLink.startsWith('http')) {
+        window.open(modalButtonLink, '_blank')
+      } else if (modalButtonLink.startsWith('#')) {
+        // Handle anchor link
+        const element = document.getElementById(modalButtonLink.substring(1))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      } else {
+        // For the "Products" heading case
+        const element = document.getElementById(modalButtonLink)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    }
+  }
+
   return (
     <div
       ref={cardRef}
@@ -292,6 +347,7 @@ const StatCard: React.FC<StatCardProps> = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         modalButtonText={modalButtonText}
+        modalButtonLink={modalButtonLink}
       >
         <div className="flex flex-col h-full">
           {/* Sticky header with image and title */}
@@ -318,7 +374,7 @@ const StatCard: React.FC<StatCardProps> = ({
           {/* Sticky footer with button */}
           <div className="sticky bottom-0 bg-beige z-10 p-4 flex justify-center">
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={handleModalButtonClick}
               className={STYLES.button}
             >
               {modalButtonText}
@@ -361,6 +417,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/kr-head-shot.jpg`,
     buttonText: "Meet Our Founder",
     modalButtonText: "Get In Touch",
+    modalButtonLink: "mailto:pivotfordancers@gmail.com"
   },
   {
     value: "1309+",
@@ -390,6 +447,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/lyrical-female.jpeg`,
     buttonText: "Learn About Us",
     modalButtonText: "Join Our Community",
+    modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
   },
   {
     value: "17+",
@@ -420,6 +478,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/jazz-male.jpeg`,
     buttonText: "Get Global Support",
     modalButtonText: "Discover Our Resources",
+    modalButtonLink: "products"
   },
   {
     value: "20+",
@@ -448,6 +507,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/modern-male.jpeg`,
     buttonText: "Explore Our Workshops",
     modalButtonText: "Sign Up",
+    modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
   },
 ]
 
