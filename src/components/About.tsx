@@ -7,7 +7,7 @@ const STYLES = {
   headingContainer: "px-4 pl-4 mb-6",
   headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
   headingTitle: "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold",
-  button: "inline-block px-4 py-2 text-sm font-merriweathe text-white bg-purple-gray rounded-full hover:bg-purple-gray-600",
+  button: "inline-block px-4 py-2 text-sm font-merriweather text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
   modalImageContainer: "flex justify-center mb-4",
   modalImage: "w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-full border-2 border-purple-gray",
   counter: "text-4xl font-bold"
@@ -197,7 +197,7 @@ const Modal: React.FC<ModalProps> = ({
           <div className="dark:bg-gray-700 p-4 sm:p-6 md:p-8 flex justify-end">
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 text-2xl transition-colors duration-200"
+              className="text-white hover:text-white-700 text-2xl transition-colors duration-200"
               aria-label="Close modal"
             >
               &times;
@@ -415,8 +415,8 @@ const STATS_DATA: StatProps[] = [
       </>
     ),
     imageUrl: `${process.env.PUBLIC_URL}/assets/kr-head-shot.jpg`,
-    buttonText: "Meet Our Founder",
-    modalButtonText: "Get In Touch",
+    buttonText: "MEET OUR FOUNDER",
+    modalButtonText: "GET IN TOUCH",
     modalButtonLink: "mailto:pivotfordancers@gmail.com"
   },
   {
@@ -445,8 +445,8 @@ const STATS_DATA: StatProps[] = [
       </>
     ),
     imageUrl: `${process.env.PUBLIC_URL}/assets/lyrical-female.jpeg`,
-    buttonText: "Learn About Us",
-    modalButtonText: "Join Our Community",
+    buttonText: "LEARN ABOUT US",
+    modalButtonText: "JOIN OUR COMMUNITY",
     modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
   },
   {
@@ -476,8 +476,8 @@ const STATS_DATA: StatProps[] = [
       </>
     ),
     imageUrl: `${process.env.PUBLIC_URL}/assets/jazz-male.jpeg`,
-    buttonText: "Get Global Support",
-    modalButtonText: "Discover Our Resources",
+    buttonText: "GET GLOBAL SUPPORT",
+    modalButtonText: "DISCOVER OUR RESOURCES",
     modalButtonLink: "products"
   },
   {
@@ -505,8 +505,8 @@ const STATS_DATA: StatProps[] = [
       </>
     ),
     imageUrl: `${process.env.PUBLIC_URL}/assets/modern-male.jpeg`,
-    buttonText: "Explore Our Workshops",
-    modalButtonText: "Sign Up",
+    buttonText: "EXPLORE OUR WORKSHOPS",
+    modalButtonText: "SIGN UP",
     modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
   },
 ]

@@ -135,9 +135,9 @@ const TestimonialsSection: React.FC = () => {
   const modalSectionClasses = "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50";
   const modalContainerClasses = "bg-beige rounded-lg max-w-4xl w-full mx-4 overflow-y-auto max-h-[90vh] relative";
   const modalContentClasses = "p-6 pt-16"; // Added padding to top to account for sticky header
-  const modalHeaderClasses = "sticky top-0 bg-beige z-20 flex justify-between items-center px-6 py-4 border-b border-gray-200";
-  const modalHeadingClasses = "text-2xl font-bold text-gray-900";
-  const modalCloseButtonClasses = "text-gray-600 rounded-full p-2 transition-colors duration-200 flex items-center justify-center";
+  const modalHeaderClasses = "sticky top-0 dark:bg-gray-700 z-20 flex justify-between items-center px-6 py-4 border-b border-gray-200";
+  const modalHeadingClasses = "text-2xl font-bold text-white";
+  const modalCloseButtonClasses = "text-white rounded-full p-2 transition-colors duration-200 flex items-center justify-center";
   const modalGridClasses = "grid gap-6 md:grid-cols-2 lg:grid-cols-2 px-4";
   const modalBlockClasses = "flex flex-col items-center gap-6 p-8 rounded-lg border-2 border-gray-800";
   const modalImgClasses = "object-cover w-32 h-32 rounded-full shadow-md transform transition-transform duration-300 hover:scale-105";
@@ -191,17 +191,17 @@ const TestimonialsSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
             <button
               onClick={openModal}
-              className="px-6 py-2 text-white bg-purple-gray rounded-lg hover:bg-purple-gray opacity-80 hover:opacity-100 transition duration-300"
+              className="inline-block px-4 py-2 text-sm font-merriweather text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100"
             >
-              Our Values
+              OUR VALUES
             </button>
             <a
               href="https://g.page/r/CfHdX47gLCCXEAI/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 text-white text-center bg-purple-gray rounded-lg hover:bg-purple-gray opacity-80 hover:opacity-100 transition duration-300"
+              className="inline-block px-4 py-2 text-sm text-center font-merriweather text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100"
             >
-              Add Review
+              ADD REVIEW
             </a>
           </div>
         </div>
