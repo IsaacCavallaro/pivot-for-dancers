@@ -392,21 +392,21 @@ const STATS_DATA: StatProps[] = [
     label: "Years of Experience",
     description: (
       <>
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           Kaylee Randall started dancing at age 3 in Florida, training on the competition circuit.
           Her professional dance career spanned almost a decade, performing full time with companies
           such as Universal Studios and Royal Caribbean. In 2018, when burnout set in and her
           priorities started to shift, she knew she was ready to take her last bow.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           Since then, Kaylee has started a freelance business, moved overseas to Australia, and now works
           full-time in the corporate tech world. But the transition didn't come without struggles,
           which is why Kaylee founded Pivot for Dancers in 2020 to help other dancers on their
           career change journey.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           Kaylee is a dancer who <em>actually</em> performed full time for many
           years and who still managed to build a fulfilling life beyond dance. She's here to share
           how you can too.
@@ -424,20 +424,20 @@ const STATS_DATA: StatProps[] = [
     label: "Dancers in Our Community",
     description: (
       <>
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           Over the years, Pivot for Dancers has built a thriving community of current and former
           professional dancers who are courageously building a life after dance. Having the tough
           conversations about the reality of a dance career and supporting each other through the
           ups and downs of navigating a pivot.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           There are thousands of other dancers just like you in our community. Whether you've suffered
           an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not
           alone in wanting to change careers as a professional dancer.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           Connect with the Pivot for Dancers community to feel part of something bigger and know you're
           on this journey with the support of your fellow dancers.
         </p>
@@ -454,20 +454,20 @@ const STATS_DATA: StatProps[] = [
     label: "Nationalities Subscribed",
     description: (
       <>
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           At Pivot for Dancers, we believe you shouldn't need to be based in New York or LA to
           access real career change support. And you shouldn't need to be part of a union,
           organization, or non-profit to find resources to help you.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           With us, there are no orientations, memberships, citizenships, or applications necessary.
           We offer global support for dancers all around the world. We've connected with dancers in
           the US, Canada, Australia, Brazil, Germany, France, the UK, Austria, China, South Africa,
           Spain, Ireland, Mexico, Paraguay, Portugal, New Zealand, the Netherlands, and more.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           Pivot for Dancers resources are accessible to all dancers — from expats between countries
           to touring artists between time zones to cruise ship dancers between oceans — you still
           deserve access to dancer-specific career change support.
@@ -485,18 +485,18 @@ const STATS_DATA: StatProps[] = [
     label: "Successful Live Workshops",
     description: (
       <>
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           Since launching Pivot for Dancers, we've hosted dozens of free online workshops for
           dancers focused on changing careers.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           We've covered topics such as caring for your mental health during your transition, how to
           write a resume and cover letter, preparing to pivot while you're still dancing, common job
           search mistakes, and more.
         </p>
         <br />
-        <p>
+        <p className="mt-4 leading-7 text-black font-montserrat text-lg">
           When you sign up for a live Pivot Workshop, you're not only learning valuable skills but
           you're also connecting with other dancers in the Pivot for Dancers community in real-time.
           It's the perfect way to network while upskilling for your career change.
