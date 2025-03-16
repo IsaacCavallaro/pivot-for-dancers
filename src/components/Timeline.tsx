@@ -18,10 +18,10 @@ const Timeline: React.FC = () => {
     const descriptionClasses = "mt-4 leading-7 text-white font-montserrat text-lg";
     const transitionClasses = "overflow-hidden transition-all duration-1000 ease-in-out";
 
-    const headingContainerClasses = "px-4 pl-4 mb-6";
-    const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
-    const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold";
-    const sectionClasses = "bg-beige font-merriweather py-10 px-5 text-center";
+    // const headingContainerClasses = "px-4 pl-4 mb-6";
+    // const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
+    // const headingTitleClasses = "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold";
+    const sectionClasses = "bg-beige font-merriweather py-3 px-5 text-center";
 
     // content
     const theDreamTxt = `You've trained to be a dancer since you were tiny. 
@@ -68,9 +68,9 @@ const Timeline: React.FC = () => {
 
     return (
         <section id="timeline" className={sectionClasses}>
-            <div className={headingContainerClasses}>
+            {/* <div className={headingContainerClasses}>
                 <span className={headingSpanClasses}>Does this sound familiar?</span>
-            </div>
+            </div> */}
             <div className="w-full mx-auto lg:max-w-3xl">
                 {stages.map(stage => (
                     <div key={stage.id} className={baseContainerClasses}>

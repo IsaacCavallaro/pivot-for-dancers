@@ -14,7 +14,7 @@ const EbookBanner: React.FC = () => {
 
     return (
         <section id="home" className="bg-beige relative">
-            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
                 {/* Container with Border */}
                 <animated.div style={fadeIn} className="border border-gray-300 rounded-lg p-8 bg-white shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                     {/* Text Section */}

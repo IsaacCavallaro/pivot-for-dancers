@@ -4,7 +4,7 @@ import type React from "react"
 import { useEffect, useState, useRef } from "react"
 
 const STYLES = {
-  section: "bg-beige font-merriweather py-10 px-5 text-center",
+  section: "bg-beige font-merriweather py-3 px-5 text-center",
   headingContainer: "px-4 pl-4 mb-6",
   headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
   headingTitle: "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold",
@@ -161,7 +161,7 @@ const Modal: React.FC<ModalProps> = ({
     >
       <div className="min-h-screen px-4 py-6 flex items-center justify-center">
         <div
-          className={`bg-white rounded-lg shadow-lg w-full max-w-2xl mx-auto my-8 flex flex-col transition-all duration-300 ease-in-out ${modalTransform}`}
+          className={`bg-beige rounded-lg shadow-lg w-full max-w-2xl mx-auto my-8 flex flex-col transition-all duration-300 ease-in-out ${modalTransform}`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-4 sm:p-6 md:p-8 flex justify-end">
@@ -247,7 +247,7 @@ const StatCard: React.FC<StatCardProps> = ({
         />
       )}
 
-      <p className="text-lg mt-2">{label}</p>
+      <h2 className="text-gray-600 uppercase dark:text-gray-400 font-merriweather">{label}</h2>
 
       <button
         onClick={() => setIsModalOpen(true)}
@@ -264,7 +264,7 @@ const StatCard: React.FC<StatCardProps> = ({
       >
         <div className="flex flex-col h-full">
           {/* Sticky header with image and title */}
-          <div className="sticky top-0 bg-white z-10 p-4">
+          <div className="sticky top-0 bg-beige z-10 p-4">
             {imageUrl && (
               <div className={STYLES.modalImageContainer}>
                 <div className={STYLES.modalImage}>
@@ -280,14 +280,14 @@ const StatCard: React.FC<StatCardProps> = ({
           </div>
 
           {/* Scrollable content area */}
-          <div className="p-4 sm:p-6 bg-white overflow-y-auto max-h-[50vh]">
+          <div className="p-4 sm:p-6 bg-beige overflow-y-auto max-h-[50vh]">
             <div className="text-gray-700 text-sm sm:text-base">
               {description || "No additional information available."}
             </div>
           </div>
 
           {/* Sticky footer with button */}
-          <div className="sticky bottom-0 bg-white z-10 p-4 flex justify-center">
+          <div className="sticky bottom-0 bg-beige z-10 p-4 flex justify-center">
             <button
               onClick={() => setIsModalOpen(false)}
               className={STYLES.button}
