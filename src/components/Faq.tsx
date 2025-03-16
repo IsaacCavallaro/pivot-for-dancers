@@ -1,24 +1,13 @@
 import React, { useState, FC } from 'react';
 
 const FAQ: FC = () => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0);
-
-    const PlusIcon = () => (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-            <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-        </svg>
-    );
-
-    const MinusIcon = () => (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-white" viewBox="0 0 16 16">
-            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-        </svg>
-    );
+    const [activeIndex, setActiveIndex] = useState<number | null>();
 
     const containerClasses = "flex flex-col w-full py-4 px-4 mb-3 bg-white rounded shadow dark:bg-gray-700 cursor-pointer hover:shadow-md transition-shadow duration-300";
-    const answerClasses = "mt-1 text-sm text-white transition-all duration-500 ease-in-out overflow-hidden";
+    const answerClasses = "mt-1 text-sm text-white transition-all duration-1000 ease-in-out overflow-hidden";
     const hiddenClasses = "max-h-0 opacity-0";
     const visibleClasses = "max-h-[500px] opacity-100";
+    const toggleIconContainerClasses = "w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full";
 
     const faqItems = [
         {
@@ -30,6 +19,10 @@ const FAQ: FC = () => {
                         Run by former professional dancers who have successfully changed careers, we're here to share what we've learned about making a pivot with
                         our growing community of fellow dancers.
                     </p>
+                    <br></br>
+                    <a href='https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up' target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        JOIN US
+                    </a>
                 </>
             ),
         },
@@ -43,6 +36,10 @@ const FAQ: FC = () => {
                         These valuable resources are available to help inspire you to take a leap of faith and
                         may give you some ideas of how you may want to pivot your career.
                     </p>
+                    <br></br>
+                    <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        WATCH NOW
+                    </a>
                 </>
             ),
         },
@@ -57,6 +54,14 @@ const FAQ: FC = () => {
                         be holding you back and step-by-step activities to help you actually move on to your next stage.</p>
                     <br></br>
                     <p>With real-life examples from Kaylee's own career transition, 'How to Pivot' is essential reading for any dancer struggling with their next steps.</p>
+                    <br></br>
+                    <div className="mt-4 mx-auto flex justify-center md:justify-start">
+                        <a href="https://www.amazon.com/dp/B0CXL4F57D" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                            ORDER NOW
+                        </a>
+                    </div>
+
+
                 </>
             ),
         },
@@ -88,6 +93,10 @@ const FAQ: FC = () => {
                     <p>
                         For the dancers who want to make a plan for what's next but have no idea where to start, 'Happy Trails' is for you.
                     </p>
+                    <br></br>
+                    <a href="https://buy.stripe.com/dR628qgYm750aek6oq" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        ORDER NOW
+                    </a>
                 </>
             ),
         },
@@ -115,9 +124,10 @@ const FAQ: FC = () => {
                         <li>Networking opportunities</li>
                     </ul>
                     <br />
-                    <p>
-                        Whether you're just starting to plan your pivot or you're already retired but still feel a little lost, the Pivot for Dancers Mentorship Program is exactly what you've been looking for.
-                    </p>
+                    <br></br>
+                    <a href="https://tidycal.com/pivotfordancers/mentorship-1" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        BOOK NOW
+                    </a>
                 </>
             ),
         },
@@ -126,9 +136,9 @@ const FAQ: FC = () => {
     return (
         <section id="faq-section" className="bg-beige">
             <div className="max-w-6xl py-4 px-4 mx-auto md:px-6">
-                <header className="mb-6">
-                    <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Feeling Curious?</span>
-                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">FAQs</h2>
+                <header className="mb-6 text-center">
+                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold text-center">FAQs</h2>
+                    <span className="text-sm text-gray-600 uppercase dark:text-gray-400 text-center">Feeling Curious?</span>
                 </header>
                 <div className="faq-items space-y-4">
                     {faqItems.map((item, index) => (
@@ -139,8 +149,12 @@ const FAQ: FC = () => {
                         >
                             <div className="flex items-center justify-between">
                                 <span className="font-merriweather dark:text-white text-xl">{item.question}</span>
-                                <div className="p-2 bg-purple-gray rounded">
-                                    {activeIndex === index ? <MinusIcon /> : <PlusIcon />}
+                                <div className={toggleIconContainerClasses}>
+                                    {activeIndex === index ? (
+                                        <i className="fas fa-chevron-up text-white text-xl"></i>
+                                    ) : (
+                                        <i className="fas fa-chevron-down text-white text-xl"></i>
+                                    )}
                                 </div>
                             </div>
                             <div
