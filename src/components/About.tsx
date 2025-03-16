@@ -194,7 +194,7 @@ const Modal: React.FC<ModalProps> = ({
           className={`bg-beige rounded-lg shadow-lg w-full max-w-2xl mx-auto my-8 flex flex-col transition-all duration-300 ease-in-out ${modalTransform}`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-4 sm:p-6 md:p-8 flex justify-end">
+          <div className="dark:bg-gray-700 p-4 sm:p-6 md:p-8 flex justify-end">
             <button
               onClick={onClose}
               className="text-gray-500 hover:text-gray-700 text-2xl transition-colors duration-200"
@@ -372,7 +372,7 @@ const StatCard: React.FC<StatCardProps> = ({
             </div>
           </div>
           {/* Sticky footer with button */}
-          <div className="sticky bottom-0 bg-beige z-10 p-4 flex justify-center">
+          <div className="sticky bottom-0 dark:bg-gray-700 z-10 p-4 flex justify-center">
             <button
               onClick={handleModalButtonClick}
               className={STYLES.button}
