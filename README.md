@@ -23,7 +23,6 @@ Pivot For Dancers is a static website developed using React and styled with Tail
 
 ## Getting Started
 
-
 ### Installation
 
 Follow these steps to set up and install the project on your local machine:
