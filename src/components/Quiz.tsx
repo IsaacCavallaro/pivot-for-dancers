@@ -45,7 +45,7 @@ const Quiz: React.FC = () => {
         return (
             <div className="space-y-6">
                 <h2 className="font-merriweather text-xl md:text-2xl text-dark-gray">
-                    {question.id}. {question.question}
+                    {question.question}
                 </h2>
 
                 <div className="space-y-3">
@@ -68,7 +68,7 @@ const Quiz: React.FC = () => {
                                     </div>
                                     <div>
                                         <span className="font-montserrat font-medium text-dark-gray">
-                                            {option.id}. {option.text}
+                                            {option.text}
                                         </span>
                                     </div>
                                 </div>
@@ -340,7 +340,7 @@ const Quiz: React.FC = () => {
     }
 
     return (
-        <section className="flex items-center bg-beige text-center">
+        <section className="flex items-center bg-beige text-center py-10">
             <div id="quiz" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">Pivot Quiz</h2>
@@ -408,10 +408,9 @@ const Quiz: React.FC = () => {
                                         <h2 className="font-merriweather text-2xl text-dark-gray mb-6">
                                             Almost there! Enter your details to see your results
                                         </h2>
-
                                         <div className="space-y-4">
                                             <div>
-                                                <label htmlFor="name" className="block font-montserrat text-light-gray mb-1">
+                                                <label htmlFor="name" className="sr-only">
                                                     Your Name
                                                 </label>
                                                 <input
@@ -426,7 +425,7 @@ const Quiz: React.FC = () => {
                                             </div>
 
                                             <div>
-                                                <label htmlFor="email" className="block font-montserrat text-light-gray mb-1">
+                                                <label htmlFor="email" className="sr-only">
                                                     Your Email
                                                 </label>
                                                 <input

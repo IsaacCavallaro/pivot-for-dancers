@@ -22,7 +22,7 @@ const FeaturedProducts: React.FC = () => {
   };
 
   // Class variables
-  const sectionClasses = "flex items-center bg-beige text-center";
+  const sectionClasses = "flex items-center bg-beige text-center py-10";
   const containerClasses = "justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6";
   const headingContainerClasses = "px-4 pl-4 mb-6";
   const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
