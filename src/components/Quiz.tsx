@@ -1,11 +1,48 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Loader2, Share2 } from "lucide-react"
 
 const Quiz: React.FC = () => {
+    // Add effect to handle hash navigation accounting for navbar height
+    useEffect(() => {
+        // Function to handle the scrolling with offset
+        const handleHashScroll = () => {
+            // Check if we have a hash in the URL that matches our section
+            if (window.location.hash === "#quiz") {
+                // Slight delay to ensure DOM is fully loaded
+                setTimeout(() => {
+                    const quizElement = document.getElementById("quiz");
+                    if (quizElement) {
+                        // Get navbar height
+                        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+                        // Calculate position accounting for navbar
+                        const topOffset = quizElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+                        // Scroll to the element with the offset
+                        window.scrollTo({
+                            top: topOffset,
+                            behavior: "smooth"
+                        });
+                    }
+                }, 100);
+            }
+        };
+
+        // Call the function when component mounts
+        handleHashScroll();
+
+        // Also add event listener for hash changes (in case user clicks different anchor links)
+        window.addEventListener("hashchange", handleHashScroll);
+
+        // Clean up event listener on component unmount
+        return () => {
+            window.removeEventListener("hashchange", handleHashScroll);
+        };
+    }, []);
+
     // ProgressBar Component
     type ProgressBarProps = {
         progress: number
@@ -133,10 +170,10 @@ const Quiz: React.FC = () => {
                                 <button className="flex items-center justify-center font-montserrat bg-brown-gray text-white hover:bg-dark-gray px-6 py-3 rounded-md transition-colors">
                                     Download Full Results
                                 </button>
-                                <button className="flex items-center justify-center font-montserrat border border-light-gray text-light-gray hover:text-dark-gray hover:border-dark-gray px-6 py-3 rounded-md transition-colors">
+                                {/* <button className="flex items-center justify-center font-montserrat border border-light-gray text-light-gray hover:text-dark-gray hover:border-dark-gray px-6 py-3 rounded-md transition-colors">
                                     <Share2 className="w-5 h-5 mr-2" />
                                     Share Your Results
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </motion.div>
@@ -334,6 +371,7 @@ const Quiz: React.FC = () => {
             if (response.ok) {
                 console.log("Successfully submitted user data to API")
                 setResult(personalityResult)
+
             } else {
                 const errorData = await response.json()
                 console.error("API error:", errorData)
@@ -364,7 +402,8 @@ const Quiz: React.FC = () => {
     }
 
     return (
-        <section className="flex items-center bg-beige text-center py-10">
+        // Add padding-top to account for navbar height 
+        <section className="flex items-center bg-beige text-center py-10 pt-16 md:pt-20">
             <div id="quiz" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">Pivot Quiz</h2>
