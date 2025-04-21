@@ -156,12 +156,10 @@ const Quiz: React.FC = () => {
                                 <h3 className="font-merriweather text-xl text-dark-gray mb-4">What This Means For Your Transition</h3>
                                 <div className="space-y-4 font-montserrat text-light-gray">
                                     <p>
-                                        Based on your answers, we've identified key strengths and potential challenges for your career transition.
-                                        Your personality type gives you unique advantages in navigating this change.
+                                        Based on your answers, we've identified key strengths and challenges that could come up during your transition.
                                     </p>
                                     <p>
-                                        We've sent a detailed breakdown to your email with personalized recommendations and resources tailored to
-                                        your pivot personality.
+                                        We've sent a detailed breakdown to your email with unique career change recommendations to suit your pivot personality.
                                     </p>
                                 </div>
                             </div>
@@ -188,73 +186,73 @@ const Quiz: React.FC = () => {
             id: 1,
             question: "When you think about life after dance, you feel…",
             options: [
-                { id: "A", text: "Excited about the possibilities, but unsure where to start." },
-                { id: "B", text: "Ready to make a plan but lacking clarity." },
-                { id: "C", text: "Nervous, I need stability and a backup plan." },
-                { id: "D", text: "Unsure, but I know I want something meaningful." },
+                { id: "A", text: "Hesitant. I'm not quite ready to let go." },
+                { id: "B", text: "Overwhelmed. I'm ready to make a plan but get stuck in the details." },
+                { id: "C", text: "Worried. I don't want to disrupt my current day-to-day." },
+                { id: "D", text: "Curious. I want to see what could be meaningful beyond dance." },
             ],
         },
         {
             id: 2,
             question: "How do you usually approach big changes?",
             options: [
-                { id: "A", text: "I follow my inspiration and figure it out as I go." },
-                { id: "B", text: "I do research, talk to people, and create a timeline." },
-                { id: "C", text: "I procrastinate, then usually make the safest choice." },
-                { id: "D", text: "I reflect deeply. I need to feel aligned before I act." },
+                { id: "A", text: "I avoid them until I absolutely have to do something." },
+                { id: "B", text: "I research everything and make a detailed plan." },
+                { id: "C", text: "I take small, low-risk steps that won't shake things up too much." },
+                { id: "D", text: "I ask deep questions and align with my feelings before deciding." },
             ],
         },
         {
             id: 3,
-            question: "What best describes your current dance career?",
+            question: "What best describes where you are now?",
             options: [
-                { id: "A", text: "I'm still performing, but thinking ahead." },
-                { id: "B", text: "I'm teaching and dabbling in a few dance projects." },
-                { id: "C", text: "I've slowed down or stopped, but don't have a clear path yet." },
-                { id: "D", text: "I've stepped back and I'm searching for a calling or purpose." },
+                { id: "A", text: "I haven't thought much about what's next after dance." },
+                { id: "B", text: "I'm ready to start thinking ahead and making a plan." },
+                { id: "C", text: "I want more stability but struggle to step into the unknown." },
+                { id: "D", text: "I'm searching for a new calling or purpose beyond dance." },
             ],
         },
         {
             id: 4,
             question: "What's your biggest fear about pivoting?",
             options: [
-                { id: "A", text: "Losing my identity as a dancer" },
-                { id: "B", text: "Making the wrong decision and wasting time" },
-                { id: "C", text: "Not having financial security or support" },
-                { id: "D", text: "Ending up in a job that feels meaningless" },
+                { id: "A", text: "Losing my identity as a dancer." },
+                { id: "B", text: "Making the wrong decision and wasting time." },
+                { id: "C", text: "Not having a secure or reliable next step." },
+                { id: "D", text: "Ending up in a job that feels meaningless." },
             ],
         },
         {
             id: 5,
             question: "What motivates you most?",
             options: [
-                { id: "A", text: "Freedom and creativity" },
-                { id: "B", text: "Accomplishing a clear goal" },
-                { id: "C", text: "Feeling safe and stable" },
-                { id: "D", text: "Purpose and personal growth" },
+                { id: "A", text: "Living the dream." },
+                { id: "B", text: "Accomplishing a clear goal." },
+                { id: "C", text: "Building something dependable and sustainable." },
+                { id: "D", text: "Finding purpose, connection, and meaning." },
             ],
         },
         {
             id: 6,
             question: "How do you feel about exploring other careers?",
             options: [
-                { id: "A", text: "I'm curious and open." },
+                { id: "A", text: "I know I'll need to someday… but I'm avoiding it." },
                 { id: "B", text: "I want structure and clear steps." },
-                { id: "C", text: "I'm hesitant, but I know I need to think about it." },
-                { id: "D", text: "I'm searching for something that feels right, but it's hard to define." },
+                { id: "C", text: "I'll try something if I feel it makes sense." },
+                { id: "D", text: "I'm searching for something that feels *right,* but it's hard to define." },
             ],
         },
         {
             id: 7,
             question: "What kind of support would feel most helpful right now?",
             options: [
-                { id: "A", text: "Inspiration and new ideas" },
-                { id: "B", text: "A clear plan or framework" },
-                { id: "C", text: "Someone to reassure me and guide me" },
-                { id: "D", text: "Space to reflect and talk things through" },
+                { id: "A", text: "Reassurance that I'm not alone." },
+                { id: "B", text: "A clear plan or framework." },
+                { id: "C", text: "Someone to guide me on a safe and smart path." },
+                { id: "D", text: "Space to reflect and understand what's meaningful to me." },
             ],
         },
-    ]
+    ];
 
     // Define personality types and their group IDs
     const personalityTypes = {
@@ -262,25 +260,25 @@ const Quiz: React.FC = () => {
             type: "The Dreamer",
             groupId: "bD6Xqy",
             description:
-                "You're creative, intuitive, and drawn to possibilities. You thrive on inspiration and prefer to follow your passion rather than rigid plans.",
+                "Thinking about life after dance feels like betraying a part of yourself. Deep down, you're hesitant to fully explore the future because naming a “Plan B” feels like giving up.",
         },
         B: {
             type: "The Perfectionist",
             groupId: "eE1YqY",
             description:
-                "You're organized, detail-oriented, and methodical. You prefer clear steps and frameworks to guide your transition journey.",
+                "You love a solid plan. The idea of winging it? No, thank you. You want clarity, options, and a reliable timeline so you can move forward with confidence.",
         },
         C: {
             type: "The Realist",
             groupId: "dGz1RL",
             description:
-                "You're practical, cautious, and value stability. You need reassurance and concrete options before making big changes.",
+                "You're thoughtful, careful, and you value real-world stability. You're not here to take huge leaps. You want to build something stable and real.",
         },
         D: {
             type: "The Seeker",
             groupId: "dL0jZX",
             description:
-                "You're reflective, purpose-driven, and searching for meaning. You need alignment with your values in any new path.",
+                "For you, it's not about a paycheck... you're pivoting for purpose. You crave connection, impact, and alignment. ",
         },
     }
 
