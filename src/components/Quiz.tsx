@@ -158,7 +158,7 @@ const Quiz: React.FC = () => {
                             </div>
 
                             <div className="bg-beige bg-opacity-50 rounded-lg p-6 md:p-8 mb-8">
-                                <h3 className="font-merriweather text-xl text-dark-gray mb-4">What This Means For Your Transition</h3>
+                                <h3 className="font-merriweather text-2xl text-dark-gray mb-4">What This Means For Your Transition</h3>
                                 <div className="space-y-4 font-montserrat text-light-gray">
                                     <p>
                                         Based on your answers, we've identified key strengths and challenges that could come up during your transition.
