@@ -8,6 +8,7 @@ import TestimonialsSection from './components/TestimonialSection';
 import Faq from './components/Faq';
 import Timeline from './components/Timeline';
 import EbookBanner from './components/EbookBanner';
+import Quiz from './components/Quiz';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Home />
       <FeaturedProducts />
       <TestimonialsSection />
+      <Quiz />
       <About />
       <Timeline />
       <EbookBanner />

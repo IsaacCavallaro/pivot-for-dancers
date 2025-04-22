@@ -3,7 +3,7 @@ import type React from "react"
 import { useEffect, useState, useRef } from "react"
 
 const STYLES = {
-  section: "bg-beige font-merriweather py-3 px-5 text-center",
+  section: "bg-beige font-merriweather py-10 px-5 text-center",
   headingContainer: "px-4 pl-4 mb-6",
   headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
   headingTitle: "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold",

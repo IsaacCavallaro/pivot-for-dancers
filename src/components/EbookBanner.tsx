@@ -15,7 +15,7 @@ const EbookBanner: React.FC = () => {
     const orderNowClassName = "flex justify-center w-full md:w-auto px-6 py-4 text-sm font-semibold text-gray-100 bg-purple-gray rounded-md mt-4 md:mt-0 md:ml-2 hover:bg-purple-gray opacity-80 hover:opacity-100 md:mb-3"
 
     return (
-        <section id="home" className="bg-beige relative">
+        <section id="home" className="bg-beige relative py-10">
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
                 {/* Container with Border */}
                 <animated.div style={fadeIn} className="border border-gray-300 rounded-lg p-8 bg-white shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">

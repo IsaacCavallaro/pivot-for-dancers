@@ -3,7 +3,7 @@ import React from 'react';
 const FeaturedProducts: React.FC = () => {
   // Product urls
   const pivotPanelsUrl = "https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r";
-  const ebookAmazonUrl = "https://www.amazon.com/dp/B0CXL4F57D";
+  const ebookSPaymentUrl = "https://buy.stripe.com/14k6oG8rQexsgCI147";
   const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
   const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
 
@@ -22,7 +22,7 @@ const FeaturedProducts: React.FC = () => {
   };
 
   // Class variables
-  const sectionClasses = "flex items-center bg-beige text-center";
+  const sectionClasses = "flex items-center bg-beige text-center py-10";
   const containerClasses = "justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6";
   const headingContainerClasses = "px-4 pl-4 mb-6";
   const headingSpanClasses = "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather";
@@ -48,7 +48,7 @@ const FeaturedProducts: React.FC = () => {
       buttonText: "BUY $0.00",
     },
     {
-      url: ebookAmazonUrl,
+      url: ebookSPaymentUrl,
       img: `${process.env.PUBLIC_URL}/assets/how-to-pivot-ebook.png`,
       title: "How to Pivot",
       description: "KINDLE EBOOK",
