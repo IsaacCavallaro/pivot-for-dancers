@@ -247,7 +247,7 @@ const Quiz: React.FC = () => {
                 { id: "A", text: "I know I'll need to someday… but I'm avoiding it." },
                 { id: "B", text: "I want structure and clear steps." },
                 { id: "C", text: "I'll try something if I feel it makes sense." },
-                { id: "D", text: "I'm searching for something that feels *right,* but it's hard to define." },
+                { id: "D", text: "I'm searching for something that feels right, but it's hard to define." },
             ],
         },
         {
