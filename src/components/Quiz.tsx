@@ -123,12 +123,17 @@ const Quiz: React.FC = () => {
             type: string
             groupId: string
             description: string
+            pdfLink: string
         }
     }
 
     function ResultCard({ personalityType }: ResultCardProps) {
+        const handleDownload = () => {
+            window.open(personalityType.pdfLink, '_blank');
+        };
+
         return (
-            <section className="flex items-center bg-beige text-center">
+            <section className="flex items-center bg-beige text-center px-4">
                 <div id="quiz-result" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
                     <div className="px-4 pl-4 mb-6">
                         <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">Pivot Quiz</h2>
@@ -165,7 +170,10 @@ const Quiz: React.FC = () => {
                             </div>
 
                             <div className="flex flex-col md:flex-row gap-4 justify-center">
-                                <button className="flex items-center justify-center font-montserrat bg-brown-gray text-white hover:bg-dark-gray px-6 py-3 rounded-md transition-colors">
+                                <button
+                                    onClick={handleDownload}
+                                    className="flex items-center justify-center font-montserrat bg-brown-gray text-white hover:bg-dark-gray px-6 py-3 rounded-md transition-colors"
+                                >
                                     Download Full Results
                                 </button>
                                 {/* <button className="flex items-center justify-center font-montserrat border border-light-gray text-light-gray hover:text-dark-gray hover:border-dark-gray px-6 py-3 rounded-md transition-colors">
@@ -259,28 +267,28 @@ const Quiz: React.FC = () => {
         A: {
             type: "The Dreamer",
             groupId: "bD6Xqy",
-            description:
-                "Thinking about life after dance feels like betraying a part of yourself. Deep down, you're hesitant to fully explore the future because naming a “Plan B” feels like giving up.",
+            description: "Thinking about life after dance feels like betraying a part of yourself. Deep down, you're hesitant to fully explore the future because naming a 'Plan B' feels like giving up.",
+            pdfLink: "https://drive.google.com/file/d/1V0x5pNvthPAG4YMaCyZm1RuyjlACpt2Y/view"
         },
         B: {
             type: "The Perfectionist",
             groupId: "eE1YqY",
-            description:
-                "You love a solid plan. The idea of winging it? No, thank you. You want clarity, options, and a reliable timeline so you can move forward with confidence.",
+            description: "You love a solid plan. The idea of winging it? No, thank you. You want clarity, options, and a reliable timeline so you can move forward with confidence.",
+            pdfLink: "https://drive.google.com/file/d/1OswjIaET42wSswwHG9ZXrc_T2k34NHhV/view"
         },
         C: {
             type: "The Realist",
             groupId: "dGz1RL",
-            description:
-                "You're thoughtful, careful, and you value real-world stability. You're not here to take huge leaps. You want to build something stable and real.",
+            description: "You're thoughtful, careful, and you value real-world stability. You're not here to take huge leaps. You want to build something stable and real.",
+            pdfLink: "https://drive.google.com/file/d/1MVxDPlfzsE0Neg3mfXuiTR6VMpPWf_Ik/view"
         },
         D: {
             type: "The Seeker",
             groupId: "dL0jZX",
-            description:
-                "For you, it's not about a paycheck... you're pivoting for purpose. You crave connection, impact, and alignment. ",
+            description: "For you, it's not about a paycheck... you're pivoting for purpose. You crave connection, impact, and alignment.",
+            pdfLink: "https://drive.google.com/file/d/1UR1FWS_L0p7hhSkA1554jZ796QQ6VThx/view"
         },
-    }
+    };
 
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [answers, setAnswers] = useState<Record<number, string>>({})
@@ -401,7 +409,7 @@ const Quiz: React.FC = () => {
 
     return (
         // Add padding-top to account for navbar height 
-        <section className="flex items-center bg-beige text-center py-10 pt-16 md:pt-20">
+        <section className="flex items-center bg-beige text-center py-10 pt-16 md:pt-20 px-4">
             <div id="quiz" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">Pivot Quiz</h2>
@@ -498,6 +506,11 @@ const Quiz: React.FC = () => {
                                                     placeholder="Enter your email"
                                                     required
                                                 />
+                                            </div>
+                                            <div className="flex flex-col items-center">
+                                                <p className="text-center w-full md:max-w-md px-4 py-2 font-montserrat text-sm text-gray-400 mb-2">
+                                                    By submitting your email you agree to receive communications from Pivot For Dancers.
+                                                </p>
                                             </div>
                                         </div>
 
