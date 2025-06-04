@@ -409,7 +409,7 @@ const Quiz: React.FC = () => {
 
     return (
         // Add padding-top to account for navbar height 
-        <section className="flex items-center bg-beige text-center py-10 pt-16 md:pt-20 px-4">
+        <section className="flex items-center bg-beige text-center py-10 pt-10 md:pt-20 px-4">
             <div id="quiz" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight">Pivot Quiz</h2>

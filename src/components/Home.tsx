@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, ArrowRight, CheckCircle, Users, Globe } from 'lucide-react';
-
-const BASE_PATH = process.env.PUBLIC_URL || "";
+import { Star, CheckCircle, Users, Globe } from 'lucide-react';
 
 // Counter animation component
 const Counter = ({ end, duration }: { end: number; duration: number }) => {
@@ -114,7 +112,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-beige pt-32 pb-20">
+    <section id="home" className="relative overflow-hidden bg-beige pt-32 pb-20">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left */}

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Star, Clock, BookOpen, Users, Video, Check } from "lucide-react";
 
 const pivotConverstationsUrl = "https://stats.sender.net/forms/bmZM4r/view";
 const ebookPaymentUrl = "https://buy.stripe.com/14k6oG8rQexsgCI147";
 const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
 const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
-const bundlePaymentUrl = "#"; // Add your bundle payment URL here
+const bundlePaymentUrl = "#"; // Need to update!  
 const moreInfoClasses = "mt-10 text-center";
 const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
 const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
@@ -119,35 +119,98 @@ const products: Product[] = [
 
 const FeaturedProducts: React.FC = () => {
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({
+    title: false,
+    products: false,
+    bundle: false,
+    faq: false
+  });
+
+  const titleRef = useRef<HTMLDivElement>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
+  const bundleRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.target === titleRef.current) {
+          setIsVisible(prev => ({ ...prev, title: entry.isIntersecting }));
+        } else if (entry.target === productsRef.current) {
+          setIsVisible(prev => ({ ...prev, products: entry.isIntersecting }));
+        } else if (entry.target === bundleRef.current) {
+          setIsVisible(prev => ({ ...prev, bundle: entry.isIntersecting }));
+        } else if (entry.target === faqRef.current) {
+          setIsVisible(prev => ({ ...prev, faq: entry.isIntersecting }));
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+      rootMargin: '0px'
+    });
+
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (productsRef.current) observer.observe(productsRef.current);
+    if (bundleRef.current) observer.observe(bundleRef.current);
+    if (faqRef.current) observer.observe(faqRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   // Calculate bundle pricing dynamically
-  const bundleProducts = products.filter(product => [2, 3, 4].includes(product.id)); // Ebook, Course, Mentorship
+  const bundleProducts = products.filter(product => [2, 3, 4].includes(product.id));
   const totalPrice = bundleProducts.reduce((sum, product) => sum + product.price, 0);
   const discountPercent = 30;
   const discountAmount = totalPrice * (discountPercent / 100);
   const bundlePrice = totalPrice - discountAmount;
 
   return (
-    <section id="products" className="bg-beige min-h-screen px-4 sm:px-6">
+    <section id="products" className="bg-beige min-h-screen px-4 sm:px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center">
-          <h1 className="font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight">Products</h1>
-          <span className="text-sm text-center text-gray-600 uppercase dark:text-gray-400 text-center">Dancer-Specific Career Change Resources</span>
+        <div
+          ref={titleRef}
+          className="text-center py-12 md:py-16"
+        >
+          <h1
+            className={`font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight transition-all duration-1000 ${isVisible.title
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform -translate-y-10'
+              }`}
+          >
+            Products
+          </h1>
+          <span
+            className={`text-sm text-center text-gray-600 uppercase dark:text-gray-400 transition-all duration-1000 delay-300 ${isVisible.title
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-10'
+              }`}
+          >
+            Dancer-Specific Career Change Resources
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mt-5">
-          {products.map((product) => {
+        <div
+          ref={productsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mt-5"
+        >
+          {products.map((product, index) => {
             const IconComponent = product.icon;
             return (
               <div
                 key={product.id}
-                className="group relative bg-white rounded-2xl shadow-lg transition-all duration-500 overflow-hidden border border-light-gray group-hover:border-2 group-hover:border-dark-gray"
+                className={`group relative bg-white rounded-2xl shadow-lg transition-all duration-500 overflow-hidden border border-light-gray hover:border-2 hover:border-dark-gray ${isVisible.products
+                  ? 'opacity-100 transform translate-y-0'
+                  : 'opacity-0 transform translate-y-16'
+                  }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
                 {/* Most Popular Ribbon */}
                 {product.id === 3 && (
-                  <div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md">
+                  <div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md animate-pulse">
                     Most Popular
                   </div>
                 )}
@@ -164,7 +227,7 @@ const FeaturedProducts: React.FC = () => {
                     alt={product.name}
                     className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 transition-transform duration-300 group-hover:rotate-12">
                     <IconComponent className="w-5 h-5 text-dark-gray" />
                   </div>
                 </div>
@@ -176,7 +239,9 @@ const FeaturedProducts: React.FC = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                          className={`w-4 h-4 transition-all duration-300 ${i < Math.floor(product.rating)
+                            ? "text-yellow-400 fill-current"
+                            : "text-gray-300"
                             }`}
                         />
                       ))}
@@ -396,7 +461,6 @@ const FeaturedProducts: React.FC = () => {
             </div>
           </div>
         </div>
-
 
         {/* GO TO FAQ*/}
         <div className={moreInfoClasses}>
