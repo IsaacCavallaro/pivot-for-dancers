@@ -135,12 +135,12 @@ const Quiz: React.FC = () => {
         return (
             <section className="flex items-center bg-beige text-center px-4">
                 <div id="quiz-result" className="max-w-7xl mx-auto">
-                    <div className="px-4 pl-4 mb-6">
-                        <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">Pivot Quiz</h2>
+                    {/* <div className="px-4 pl-4 mb-6">
+                        <h2 className="font-merriweather text-4xl md:text-5xl font-bold text-black mb-4">Pivot Quiz</h2>
                         <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">
                             Discover Your Pivot Personality
                         </span>
-                    </div>
+                    </div> */}
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -407,12 +407,12 @@ const Quiz: React.FC = () => {
         // Add padding-top to account for navbar height 
         <section className="flex items-center bg-beige text-center py-10 pt-16 md:pt-20 px-4">
             <div id="quiz" className="justify-center flex-1 max-w-7xl mx-auto">
-                <div className="px-4 pl-4 mb-6">
+                {/* <div className="px-4 pl-4 mb-6">
                     <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">Pivot Quiz</h2>
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">
                         Discover Your Pivot Personality
                     </span>
-                </div>
+                </div> */}
 
                 <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
                     <div className="p-6 md:p-8">
