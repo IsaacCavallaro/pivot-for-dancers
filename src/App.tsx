@@ -9,12 +9,14 @@ import Faq from './components/Faq';
 import Timeline from './components/Timeline';
 import EbookBanner from './components/EbookBanner';
 import Quiz from './components/Quiz';
+import DataSection from './components/Data';
 
 function App() {
   return (
     <div className="App">
       <Navigation />
       <Home />
+      <DataSection />
       <FeaturedProducts />
       <About />
       <TestimonialsSection />
