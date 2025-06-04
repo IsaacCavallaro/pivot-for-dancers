@@ -131,7 +131,7 @@ const FeaturedProducts: React.FC = () => {
     <section id="products" className="bg-beige min-h-screen px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <h1 className="font-merriweather text-5xl md:text-6xl lg:text-7xl font-bold text-dark-gray mb-6 leading-tight">Products</h1>
+          <h1 className="font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-dark-gray mb-6 leading-tight">Products</h1>
           {/* <p className="font-montserrat text-lg text-brown-gray max-w-3xl mx-auto leading-relaxed">
             Discover our curated collection of career transformation tools, from expert interviews to comprehensive
             courses, designed to help you pivot with confidence and purpose.
