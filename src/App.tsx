@@ -16,8 +16,8 @@ function App() {
       <Navigation />
       <Home />
       <FeaturedProducts />
-      <TestimonialsSection />
       <About />
+      <TestimonialsSection />
       <Quiz />
       <Timeline />
       <EbookBanner />

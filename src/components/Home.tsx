@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, ArrowRight, Play, CheckCircle, Users, Globe } from 'lucide-react';
+import { Star, ArrowRight, CheckCircle, Users, Globe } from 'lucide-react';
+
+const BASE_PATH = process.env.PUBLIC_URL || "";
 
 // Counter animation component
 const Counter = ({ end, duration }: { end: number; duration: number }) => {
@@ -112,13 +114,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-beige from-off-white via-beige/30 to-purple-gray/20 pt-20 pb-32">
-      {/* Background gradients */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-light-gray/20 to-purple-gray/20 rounded-full blur-3xl -translate-x-48 -translate-y-48"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-beige/30 to-brown-gray/20 rounded-full blur-3xl translate-x-48 translate-y-48"></div>
-      </div>
-
+    <section className="relative overflow-hidden bg-beige pt-32 pb-20">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
@@ -178,7 +174,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right */}
-          <div className={`relative transition-all duration-1000 delay-300 py-10 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <div className={`relative transition-all duration-1000 delay-300  pb-px-5 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <div className="relative aspect-video w-full">
               <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
                 <iframe
@@ -192,26 +188,9 @@ const HeroSection = () => {
                   className="absolute inset-0 w-full h-full"
                 ></iframe>
               </div>
-
-              <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-white rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-md sm:shadow-xl z-10">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="bg-blue-500 rounded-full p-1 sm:p-2">
-                    <Users className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-montserrat font-semibold text-dark-gray text-xs sm:text-sm">2,847+ Success Stories</p>
-                    <p className="font-montserrat text-brown-gray text-xxs sm:text-xs">Join the community</p>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12 px-10">
-              <button className="bg-gradient-to-r from-dark-gray to-brown-gray hover:from-brown-gray hover:to-dark-gray text-white font-montserrat font-semibold px-8 py-4 text-lg group rounded-md transition-all duration-300">
-                Start Your Transformation
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform inline" />
-              </button>
-            </div>
+            <br></br>
 
             {/* Animated Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
