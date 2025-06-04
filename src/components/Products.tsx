@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Star, Clock, BookOpen, Users, Video } from "lucide-react";
+import { Star, Clock, BookOpen, Users, Video, Check } from "lucide-react";
 
 const pivotConverstationsUrl = "https://stats.sender.net/forms/bmZM4r/view";
 const ebookPaymentUrl = "https://buy.stripe.com/14k6oG8rQexsgCI147";
 const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
 const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
+const bundlePaymentUrl = "#"; // Add your bundle payment URL here
 const moreInfoClasses = "mt-10 text-center";
 const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
 const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
@@ -118,6 +119,13 @@ const products: Product[] = [
 
 const FeaturedProducts: React.FC = () => {
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+
+  // Calculate bundle pricing dynamically
+  const bundleProducts = products.filter(product => [2, 3, 4].includes(product.id)); // Ebook, Course, Mentorship
+  const totalPrice = bundleProducts.reduce((sum, product) => sum + product.price, 0);
+  const discountPercent = 30;
+  const discountAmount = totalPrice * (discountPercent / 100);
+  const bundlePrice = totalPrice - discountAmount;
 
   return (
     <section id="products" className="bg-beige min-h-screen py-16 px-4 sm:px-6 lg:px-8">
@@ -276,19 +284,133 @@ const FeaturedProducts: React.FC = () => {
             );
           })}
         </div>
-      </div>
 
-      {/* GO TO FAQ*/}
-      <div className={moreInfoClasses}>
-        <p className={moreInfoTextClasses}>
-          Need More Information? See our {' '}
-          <button
-            onClick={scrollToFAQ}
-            className={faqButtonClasses}
-          >
-            Frequently Asked Questions
-          </button>
-        </p>
+        {/* Feature Bundle Section */}
+        <div className="mt-20 mb-16">
+          <div className="dark:bg-gray-700 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+            <div className="relative z-10">
+              {/* Bundle Header */}
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-yellow-400 text-dark-gray px-4 py-2 rounded-full font-montserrat font-semibold text-sm mb-4">
+                  <Star className="w-4 h-4 fill-current" />
+                  BEST VALUE BUNDLE
+                </div>
+                <h2 className="font-merriweather text-4xl md:text-5xl font-bold mb-4">
+                  Complete Career Transformation Bundle
+                </h2>
+                <p className="font-montserrat text-xl opacity-90 max-w-3xl mx-auto">
+                  Get everything you need for a successful career pivot: expert guidance, comprehensive learning, and
+                  personalised coaching all in one package.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Bundle Contents */}
+                <div>
+
+                  <div className="space-y-6">
+                    {bundleProducts.map((product) => {
+                      const IconComponent = product.icon;
+                      return (
+                        <div key={product.id} className="flex items-start gap-4 bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                          <div className={`rounded-full p-3 flex-shrink-0 ${product.id === 2 ? 'bg-purple-gray' :
+                            product.id === 3 ? 'bg-beige' :
+                              'bg-light-gray'
+                            }`}>
+                            <IconComponent className={`w-6 h-6 ${product.id === 3 ? 'text-dark-gray' : 'text-white'
+                              }`} />
+                          </div>
+                          <div>
+                            <h4 className="font-merriweather text-lg font-bold mb-2">{product.name}</h4>
+                            <p className="font-montserrat text-sm opacity-90 mb-2">
+                              {product.id === 2 ? "10 Chapters of comprehensive career transformation information" :
+                                product.id === 3 ? "Self paced course with video lessons & extras" :
+                                  "Specialised 1-on-1 coaching sessions"}
+                            </p>
+                            <div className="flex items-center gap-2">
+                              <span className="font-montserrat text-sm line-through opacity-75">
+                                ${product.originalPrice || product.price}
+                              </span>
+                              <span className={`font-montserrat text-xs px-2 py-1 rounded-full ${product.id === 2 ? 'bg-beige text-dark-gray' :
+                                product.id === 3 ? 'bg-brown-gray text-white' :
+                                  'bg-dark-gray text-white'
+                                }`}>
+                                {product.id === 2 ? 'Ebook' :
+                                  product.id === 3 ? 'Online Course' :
+                                    '1-1 private sessions'}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Pricing & CTA */}
+                <div className="bg-white rounded-3xl p-8 text-dark-gray">
+                  <div className="text-center mb-8">
+                    <div className="mb-4">
+                      <span className="font-montserrat text-sm text-brown-gray">Individual Price:</span>
+                      <div className="font-merriweather text-3xl text-brown-gray line-through mb-2">
+                        ${totalPrice}
+                      </div>
+                    </div>
+
+                    <div className="mb-6">
+                      <div className="flex items-center justify-center gap-3 mb-2">
+                        <span className="font-merriweather text-5xl font-bold text-dark-gray">
+                          ${Math.round(bundlePrice)}
+                        </span>
+                        <div className="bg-yellow-400 text-dark-gray px-3 py-1 rounded-full">
+                          <span className="font-montserrat font-bold text-sm">{discountPercent}% OFF</span>
+                        </div>
+                      </div>
+                      <p className="font-montserrat text-brown-gray">
+                        Save ${Math.round(discountAmount)} with this bundle
+                      </p>
+                    </div>
+
+                    <div className="space-y-3 mb-8">
+                      <div className="flex items-center justify-center gap-2 text-sm">
+                        <Check className="w-4 h-4 text-light-gray" />
+                        <span className="font-montserrat text-brown-gray">First access to pivot conversations</span>
+                      </div>
+                      <div className="flex items-center justify-center gap-2 text-sm">
+                        <Check className="w-4 h-4 text-light-gray" />
+                        <span className="font-montserrat text-brown-gray">Personalised support</span>
+                      </div>
+                      <div className="flex items-center justify-center gap-2 text-sm">
+                        <Check className="w-4 h-4 text-light-gray" />
+                        <span className="font-montserrat text-brown-gray">Dancer-specific career transformation system</span>
+                      </div>
+                    </div>
+
+                    <a
+                      href={bundlePaymentUrl}
+                      className="block w-full bg-dark-gray hover:bg-brown-gray text-white font-montserrat font-semibold py-4 text-lg mb-4 rounded-md transition-colors duration-300"
+                    >
+                      Get Complete Bundle - ${Math.round(bundlePrice)}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* GO TO FAQ*/}
+        <div className={moreInfoClasses}>
+          <p className={moreInfoTextClasses}>
+            Need More Information? See our {' '}
+            <button
+              onClick={scrollToFAQ}
+              className={faqButtonClasses}
+            >
+              Frequently Asked Questions
+            </button>
+          </p>
+        </div>
       </div>
     </section>
   );
