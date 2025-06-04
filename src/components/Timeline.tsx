@@ -71,7 +71,7 @@ const Timeline: React.FC = () => {
             {/* <div className={headingContainerClasses}>
                 <span className={headingSpanClasses}>Does this sound familiar?</span>
             </div> */}
-            <div className="w-full mx-auto lg:max-w-3xl">
+            <div className="w-full mx-auto lg:max-w-7xl">
                 {stages.map(stage => (
                     <div key={stage.id} className={baseContainerClasses}>
 

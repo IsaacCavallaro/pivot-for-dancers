@@ -135,7 +135,7 @@ const FAQ: FC = () => {
 
     return (
         <section id="faq-section" className="bg-beige py-5">
-            <div className="max-w-6xl py-4 px-4 mx-auto md:px-6">
+            <div className="max-w-7xl py-4 px-4 mx-auto md:px-6">
                 <header className="mb-6 text-center">
                     <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold text-center">FAQs</h2>
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400 text-center">Feeling Curious?</span>

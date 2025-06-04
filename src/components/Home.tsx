@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Home: React.FC = () => {
   const [email, setEmail] = useState('');
   const iconSize = 'h-8 w-8'; // Icon size for social media
-  const containerClass = 'border border-gray-300 rounded-lg p-8 bg-white shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8';
+  const containerClass = 'rounded-lg p-8 bg-white grid grid-cols-1 md:grid-cols-2 gap-8';
   const textSectionClass = 'flex flex-col justify-center items-center md:items-start';
   const formClass = 'flex flex-col md:flex-row items-center w-full justify-center md:justify-start';
   const inputClass = `
@@ -37,8 +37,8 @@ const Home: React.FC = () => {
   };
 
   return (
-    <section id="home" className="bg-beige pt-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="home" className="bg-beige py-16 px-4 sm:px-6 lg:px-8 pt-24">
+      <div className="max-w-7xl mx-auto">
         {/* Container with Border */}
         <div className={containerClass}>
           {/* Text Section */}
