@@ -116,24 +116,24 @@ const HeroSection = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
-          <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            <div className="flex items-center gap-2 mb-6">
+          <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
+            <div className="flex justify-center md:justify-start md:items-center gap-2 mb-6">
               <span className="bg-yellow-400 text-dark-gray font-montserrat font-semibold px-4 py-2 rounded-full">
                 <Star className="w-4 h-4 mr-1 fill-current inline" />
                 #1 Career Transformation Platform
               </span>
             </div>
 
-            <h1 className="font-merriweather text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight">
+            <h1 className="font-merriweather text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight mx-auto md:mx-0">
               Career change resources made for dancers
             </h1>
 
-            <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
+            <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl mx-auto">
               At Pivot for Dancers, we're helping professional dancers find meaningful work off the stage with our dancer-specific career change resources.
             </p>
 
             {/* Form */}
-            <div className="flex flex-col items-center md:items-start justify-center w-full mt-6 space-y-4">
+            <div className="flex flex-col items-center justify-center w-full mt-6 space-y-4">
               <form
                 method="post"
                 id="mc-embedded-subscribe-form"
@@ -155,7 +155,7 @@ const HeroSection = () => {
                 </button>
               </form>
 
-              <div className="flex space-x-4 justify-center md:justify-start">
+              <div className="flex space-x-4 justify-center">
                 {/* Social Icons */}
                 {[
                   ['facebook', 'https://www.facebook.com/pivotfordancers/', 'bg-blue-500'],

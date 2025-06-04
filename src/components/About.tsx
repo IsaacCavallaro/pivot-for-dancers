@@ -13,6 +13,10 @@ const STYLES = {
   counter: "text-4xl font-bold"
 }
 
+const moreInfoClasses = "mt-10 text-center";
+const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
+const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
+
 interface CounterProps {
   value: string
   duration?: number
@@ -528,6 +532,21 @@ const AboutUsSection: React.FC = () => {
             index={index}
           />
         ))}
+      </div>
+
+
+      <div className={moreInfoClasses}>
+        <p className={moreInfoTextClasses}>
+          Ready to join the waitlist for Pivot Conversations?{' '}
+          <a
+            href="https://stats.sender.net/forms/bmZM4r/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={faqButtonClasses}
+          >
+            Register Here
+          </a>
+        </p>
       </div>
     </section>
   )

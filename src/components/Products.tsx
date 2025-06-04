@@ -210,7 +210,7 @@ const FeaturedProducts: React.FC = () => {
               >
                 {/* Most Popular Ribbon */}
                 {product.id === 3 && (
-                  <div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md animate-pulse">
+                  <div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md">
                     Most Popular
                   </div>
                 )}
