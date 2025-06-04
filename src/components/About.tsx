@@ -6,7 +6,7 @@ const STYLES = {
   section: "bg-beige font-merriweather py-10 px-5 text-center",
   headingContainer: "px-4 pl-4 mb-6",
   headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
-  headingTitle: "font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-dark-gray mb-6 leading-tight",
+  headingTitle: "font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight",
   button: "inline-block font-montserrat px-10 py-2 text-sm text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
   modalImageContainer: "flex justify-center mb-4",
   modalImage: "w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-full border-2 border-purple-gray",

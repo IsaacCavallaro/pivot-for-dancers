@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
+import { ChevronLeft, ChevronRight, Loader2, Share2 } from "lucide-react"
 
 const Quiz: React.FC = () => {
     // Add effect to handle hash navigation accounting for navbar height
@@ -134,19 +134,19 @@ const Quiz: React.FC = () => {
 
         return (
             <section className="flex items-center bg-beige text-center px-4">
-                <div id="quiz-result" className="max-w-7xl mx-auto">
-                    {/* <div className="px-4 pl-4 mb-6">
-                        <h2 className="font-merriweather text-4xl md:text-5xl font-bold text-black mb-4">Pivot Quiz</h2>
+                <div id="quiz-result" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
+                    <div className="px-4 pl-4 mb-6">
+                        <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-dark-gray mb-6 leading-tight">Pivot Quiz</h2>
                         <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">
                             Discover Your Pivot Personality
                         </span>
-                    </div> */}
+                    </div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden"
+                        className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden"
                     >
                         <div className="p-6 md:p-10">
                             <div className="text-center mb-8">
@@ -154,7 +154,7 @@ const Quiz: React.FC = () => {
                                     Your Pivot Personality
                                 </div>
                                 <h2 className="font-merriweather text-3xl md:text-4xl text-dark-gray mb-4">{personalityType.type}</h2>
-                                <p className="font-montserrat text-light-gray text-lg max-w-7xl mx-auto">{personalityType.description}</p>
+                                <p className="font-montserrat text-light-gray text-lg max-w-2xl mx-auto">{personalityType.description}</p>
                             </div>
 
                             <div className="bg-beige bg-opacity-50 rounded-lg p-6 md:p-8 mb-8">
@@ -176,6 +176,10 @@ const Quiz: React.FC = () => {
                                 >
                                     Download Full Results
                                 </button>
+                                {/* <button className="flex items-center justify-center font-montserrat border border-light-gray text-light-gray hover:text-dark-gray hover:border-dark-gray px-6 py-3 rounded-md transition-colors">
+                                    <Share2 className="w-5 h-5 mr-2" />
+                                    Share Your Results
+                                </button> */}
                             </div>
                         </div>
                     </motion.div>
@@ -406,15 +410,15 @@ const Quiz: React.FC = () => {
     return (
         // Add padding-top to account for navbar height 
         <section className="flex items-center bg-beige text-center py-10 pt-16 md:pt-20 px-4">
-            <div id="quiz" className="justify-center flex-1 max-w-7xl mx-auto">
-                {/* <div className="px-4 pl-4 mb-6">
-                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold">Pivot Quiz</h2>
+            <div id="quiz" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
+                <div className="px-4 pl-4 mb-6">
+                    <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight">Pivot Quiz</h2>
                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">
                         Discover Your Pivot Personality
                     </span>
-                </div> */}
+                </div>
 
-                <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
                     <div className="p-6 md:p-8">
                         <ProgressBar progress={progress} />
 

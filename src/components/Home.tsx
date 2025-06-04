@@ -126,7 +126,7 @@ const HeroSection = () => {
               </span>
             </div>
 
-            <h1 className="font-merriweather text-5xl md:text-6xl lg:text-7xl font-bold text-dark-gray mb-6 leading-tight">
+            <h1 className="font-merriweather text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight">
               Career change resources made for dancers
             </h1>
 
