@@ -289,25 +289,24 @@ const FeaturedProducts: React.FC = () => {
         <div className="mt-20 mb-16">
           <div className="dark:bg-gray-700 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
             <div className="relative z-10">
+
               {/* Bundle Header */}
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 bg-yellow-400 text-dark-gray px-4 py-2 rounded-full font-montserrat font-semibold text-sm mb-4">
                   <Star className="w-4 h-4 fill-current" />
-                  BEST VALUE BUNDLE
+                  BEST VALUE
                 </div>
                 <h2 className="font-merriweather text-4xl md:text-5xl font-bold mb-4">
                   Complete Career Transformation Bundle
                 </h2>
                 <p className="font-montserrat text-xl opacity-90 max-w-3xl mx-auto">
-                  Get everything you need for a successful career pivot: expert guidance, comprehensive learning, and
-                  personalised coaching all in one package.
+                  Everything you need to confidently pivot into meaningful, fulfilling work — for less than the cost of one class a week.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Bundle Contents */}
                 <div>
-
                   <div className="space-y-6">
                     {bundleProducts.map((product) => {
                       const IconComponent = product.icon;
@@ -317,14 +316,13 @@ const FeaturedProducts: React.FC = () => {
                             product.id === 3 ? 'bg-beige' :
                               'bg-light-gray'
                             }`}>
-                            <IconComponent className={`w-6 h-6 ${product.id === 3 ? 'text-dark-gray' : 'text-white'
-                              }`} />
+                            <IconComponent className={`w-6 h-6 ${product.id === 3 ? 'text-dark-gray' : 'text-white'}`} />
                           </div>
                           <div>
                             <h4 className="font-merriweather text-lg font-bold mb-2">{product.name}</h4>
                             <p className="font-montserrat text-sm opacity-90 mb-2">
                               {product.id === 2 ? "10 Chapters of comprehensive career transformation information" :
-                                product.id === 3 ? "Self paced course with video lessons & extras" :
+                                product.id === 3 ? "Self-paced course with video lessons & extras" :
                                   "Specialised 1-on-1 coaching sessions"}
                             </p>
                             <div className="flex items-center gap-2">
@@ -351,7 +349,7 @@ const FeaturedProducts: React.FC = () => {
                 <div className="bg-white rounded-3xl p-8 text-dark-gray">
                   <div className="text-center mb-8">
                     <div className="mb-4">
-                      <span className="font-montserrat text-sm text-brown-gray">Individual Price:</span>
+                      <span className="font-montserrat text-sm text-brown-gray">Full Price Value:</span>
                       <div className="font-merriweather text-3xl text-brown-gray line-through mb-2">
                         ${totalPrice}
                       </div>
@@ -367,7 +365,10 @@ const FeaturedProducts: React.FC = () => {
                         </div>
                       </div>
                       <p className="font-montserrat text-brown-gray">
-                        Save ${Math.round(discountAmount)} with this bundle
+                        Save ${Math.round(discountAmount)} — invest in your next chapter today.
+                      </p>
+                      <p className="font-montserrat text-xs text-brown-gray mt-2 italic">
+                        Limited spots. Don't miss out.
                       </p>
                     </div>
 
@@ -378,7 +379,7 @@ const FeaturedProducts: React.FC = () => {
                       </div>
                       <div className="flex items-center justify-center gap-2 text-sm">
                         <Check className="w-4 h-4 text-light-gray" />
-                        <span className="font-montserrat text-brown-gray">Personalised support</span>
+                        <span className="font-montserrat text-brown-gray">Personalised support included</span>
                       </div>
                       <div className="flex items-center justify-center gap-2 text-sm">
                         <Check className="w-4 h-4 text-light-gray" />
@@ -388,9 +389,9 @@ const FeaturedProducts: React.FC = () => {
 
                     <a
                       href={bundlePaymentUrl}
-                      className="block w-full bg-dark-gray hover:bg-brown-gray text-white font-montserrat font-semibold py-4 text-lg mb-4 rounded-md transition-colors duration-300"
+                      className="block w-full py-3 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white"
                     >
-                      Get Complete Bundle - ${Math.round(bundlePrice)}
+                      Transform My Career
                     </a>
                   </div>
                 </div>
@@ -398,6 +399,7 @@ const FeaturedProducts: React.FC = () => {
             </div>
           </div>
         </div>
+
 
         {/* GO TO FAQ*/}
         <div className={moreInfoClasses}>
