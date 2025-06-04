@@ -171,7 +171,7 @@ const FeaturedProducts: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div
           ref={titleRef}
-          className="text-center py-12 md:py-16"
+          className="text-center md:py-4"
         >
           <h1
             className={`font-merriweather text-center text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight transition-all duration-1000 ${isVisible.title
