@@ -49,9 +49,9 @@ const StatCard = ({ number, label, icon: IconComponent }: any) => {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="bg-white rounded-2xl p-4 shadow-lg mb-2">
-        <IconComponent className="w-6 h-6 text-light-gray mx-auto mb-2" />
-        <div className="font-merriweather text-2xl font-bold text-dark-gray">
+      <div className="bg-white rounded-2xl p-6 shadow-lg flex flex-col items-center justify-center h-full">
+        <IconComponent className="w-6 h-6 text-light-gray mb-3" />
+        <div className="font-merriweather text-2xl font-bold text-dark-gray mb-1">
           {isVisible ? (
             <>
               <Counter end={numericValue} duration={2000} />
@@ -61,11 +61,12 @@ const StatCard = ({ number, label, icon: IconComponent }: any) => {
             '0'
           )}
         </div>
+        <p className="font-montserrat text-sm text-brown-gray">{label}</p>
       </div>
-      <p className="font-montserrat text-sm text-brown-gray">{label}</p>
     </div>
   );
 };
+
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -76,10 +77,10 @@ const HeroSection = () => {
   }, []);
 
   const stats = [
-    { number: '25+', label: 'Years of Dance Experience', icon: Star },
-    { number: '1309+', label: 'In Our Community', icon: Users },
-    { number: '17+', label: 'Countries Participating', icon: Globe },
-    { number: '20+', label: 'Successful Workshops', icon: CheckCircle }
+    { number: '25+', label: 'years of dance experience', icon: Star },
+    { number: '1309+', label: 'dancers in our community', icon: Users },
+    { number: '17+', label: 'countries participating', icon: Globe },
+    { number: '20+', label: 'successful workshops', icon: CheckCircle }
   ];
 
   const iconSize = 'h-8 w-8';
@@ -120,7 +121,7 @@ const HeroSection = () => {
             <div className="flex justify-center md:justify-start md:items-center gap-2 mb-6">
               <span className="bg-yellow-400 text-dark-gray font-montserrat font-semibold px-4 py-2 rounded-full">
                 <Star className="w-4 h-4 mr-1 fill-current inline" />
-                #1 Career Transformation Platform
+                Trusted by professional dancers worldwide
               </span>
             </div>
 

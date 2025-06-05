@@ -48,10 +48,10 @@ const getAgeStats = (countryAgeData: AgeData[]) => {
     const meanGap = expectedAge - actualAge;
 
     return [
-        { label: 'Years earlier than expected', value: `${meanGap.toFixed(1)}` },
-        { label: 'Expected retirement age', value: `${expectedAge}` },
-        { label: 'Actual retirement age', value: `${actualAge}` },
-        { label: 'Career ends in early 30s', value: 'Reality' },
+        { label: `Dancers retired ${meanGap.toFixed(1)} years earlier than expected`, value: `${meanGap.toFixed(1)} years` },
+        { label: `The average age dancers expected to retire was ${expectedAge}`, value: `${expectedAge}` },
+        { label: `The average age dancers actually retired was ${actualAge}`, value: `${actualAge} years` },
+        { label: 'Dance careers are much shorter than you expect', value: 'Reality' },
     ];
 };
 
@@ -65,11 +65,8 @@ const DataSection = () => {
                 <div className="block md:hidden space-y-8">
                     {/* Title and Content */}
                     <div className="space-y-6">
-                        <div className="inline-block rounded-full bg-brown-gray/20 px-4 py-1.5 text-sm font-medium text-brown-gray font-montserrat">
-                            Career Timeline
-                        </div>
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-merriweather text-dark-gray">
-                            Expectations vs Reality
+                            How long are you expecting to dance professionally?
                         </h2>
                         <p className="text-black text-base md:text-lg">
                             The impending end of a dance career brings with it a series of concerns about the future. Research shows
@@ -172,7 +169,7 @@ const DataSection = () => {
                                             />
                                             <Bar
                                                 dataKey="value"
-                                                name="Retirement Age"
+                                                name="Dance Career Retirement Age"
                                                 fill="#928490"
                                                 radius={[4, 4, 0, 0]}
                                             >
@@ -211,15 +208,11 @@ const DataSection = () => {
                 <div className="hidden md:block space-y-12">
                     {/* Header Section */}
                     <div className="text-center max-w-2xl mx-auto">
-                        <div className="inline-block rounded-full bg-brown-gray/20 px-4 py-1.5 text-sm font-medium text-brown-gray font-montserrat">
-                            Career Timeline
-                        </div>
-                        <h2 className="text-3xl lg:text-4xl font-bold font-merriweather text-dark-gray mt-4">
+                        <h2 className="text-3xl lg:text-4xl font-bold font-merriweather text-black mt-4">
                             Expectations vs Reality
                         </h2>
                         <p className="text-dark-gray text-lg font-montserrat mt-4">
-                            The impending end of a dance career brings with it a series of concerns about the future. Research shows
-                            a significant gap between when dancers expect to retire and when they actually do.
+                            Research shows a significant gap between when dancers expect to retire and when they actually do
                         </p>
                     </div>
 
@@ -230,8 +223,8 @@ const DataSection = () => {
                                 <button
                                     key={c}
                                     className={`px-6 py-2 rounded-full font-montserrat transition-all ${ageCountry === c
-                                            ? 'bg-purple-gray text-white shadow-md'
-                                            : 'text-dark-gray hover:bg-beige'
+                                        ? 'bg-purple-gray text-white shadow-md'
+                                        : 'text-dark-gray hover:bg-beige'
                                         }`}
                                     onClick={() => setAgeCountry(c)}
                                 >
@@ -245,7 +238,7 @@ const DataSection = () => {
                     <div className="border-none shadow-lg bg-off-white/80 backdrop-blur-sm overflow-hidden rounded-lg">
                         <div className="bg-light-gray p-6">
                             <h3 className="text-white font-merriweather text-xl text-center">
-                                Mean Ages of Transition for {countryDisplayNames[ageCountry]} Dancers
+                                Average Retirement Age for {countryDisplayNames[ageCountry]} Dancers
                             </h3>
                             <p className="text-white/80 font-montserrat text-sm text-center mt-2">
                                 <a
@@ -322,7 +315,7 @@ const DataSection = () => {
                                         />
                                         <Bar
                                             dataKey="value"
-                                            name="Retirement Age"
+                                            name="Dance Career Retirement Age"
                                             fill="#928490"
                                             radius={[4, 4, 0, 0]}
                                         >

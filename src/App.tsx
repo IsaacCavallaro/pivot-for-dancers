@@ -17,11 +17,12 @@ function App() {
       <Navigation />
       <Home />
       <DataSection />
+      <Timeline />
       <FeaturedProducts />
       <About />
       <TestimonialsSection />
       <Quiz />
-      <Timeline />
+      {/* <Timeline /> */}
       <EbookBanner />
       <Faq />
       <Footer />
