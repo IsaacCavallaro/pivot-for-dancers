@@ -33,7 +33,7 @@ const Timeline: React.FC = () => {
 
     const theUnkoownTxt = `You take a step back and reassess your goals and what you want for the future. 
         Maybe you start to explore different career options, find ways to balance your life and finances, 
-        and look for new ways to reignite your passion. This is the stage where you rethink and pivot, seeking a new direction.`;
+        and look for new ways to reignite your passion. This is the stage where you rethink and start to pivot, seeking a new direction`;
 
     const stages = [
         {
@@ -103,10 +103,10 @@ const Timeline: React.FC = () => {
                             <FaMusic className="mr-2" /> Dancer's Journey
                         </div>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-merriweather font-bold text-[#647C90] mb-4">
+                    <h1 className="text-4xl md:text-5xl font-merriweather font-bold text-black mb-4">
                         Does this sound familiar?
                     </h1>
-                    <p className="text-lg font-montserrat text-[#928490] max-w-2xl mx-auto">
+                    <p className="text-lg font-montserrat text-black max-w-2xl mx-auto">
                         The journey of a professional dancer - a story told in four chapters
                     </p>
                 </div>
@@ -141,11 +141,11 @@ const Timeline: React.FC = () => {
                                                 <h3 className={`font-merriweather font-bold text-lg transition-colors duration-300 ${activeStage === stage.id ? 'text-[#647C90]' : 'text-[#928490] group-hover:text-[#647C90]'}`}>
                                                     {stage.title}
                                                 </h3>
-                                                <div className="ml-2 opacity-70">
+                                                {/* <div className="ml-2 opacity-70">
                                                     {React.cloneElement(stage.icon, {
                                                         className: `text-lg ${activeStage === stage.id ? stage.textColor : 'text-[#928490]'}`,
                                                     })}
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <div className={`h-1 mt-2 transition-all duration-300 ${activeStage === stage.id ? `${stage.bgColor} w-16` : 'bg-[#928490] w-8 opacity-50'}`}></div>
                                         </div>

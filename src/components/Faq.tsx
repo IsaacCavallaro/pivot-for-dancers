@@ -30,15 +30,14 @@ const FAQ: FC = () => {
             question: "What are Pivot Conversations?",
             answer: (
                 <>
-                    <p>Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers.</p>
+                    <p>Pivot Conversations are free virtual meetups for dancers to have conversations about career change. </p>
                     <br></br>
                     <p>
-                        These valuable resources are available to help inspire you to take a leap of faith and
-                        may give you some ideas of how you may want to pivot your career.
+                        Connect with other dancers going through similar experiences and feel less alone on your career change journey.
                     </p>
                     <br></br>
-                    <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
-                        WATCH NOW
+                    <a href="https://stats.sender.net/forms/bmZM4r/view" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        SIGN UP
                     </a>
                 </>
             ),

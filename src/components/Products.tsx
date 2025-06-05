@@ -46,9 +46,9 @@ const products: Product[] = [
   {
     id: 1,
     name: "Pivot Conversations",
-    subtitle: "Virtual Meetups",
+    subtitle: "VIRTUAL MEETUPS",
     description:
-      "Master the art of online interviews with our comprehensive panel sessions. Get real-time feedback from industry experts.",
+      "Join your fellow dancers for a virtual career change conversation. No recordings, no pressure, just real talk.",
     price: 0,
     originalPrice: 0,
     url: pivotConverstationsUrl,
@@ -56,17 +56,17 @@ const products: Product[] = [
     category: "Interview Prep",
     duration: "1 hour",
     rating: 5.0,
-    reviews: 127,
-    features: ["Live 1-on-1 Sessions", "Expert Feedback", "Recording Included", "Follow-up Support"],
+    reviews: 43,
+    features: ["Live Group Sessions", "Community", "Follow-up Support"],
     icon: Video,
     gradient: "from-light-gray to-purple-gray",
   },
   {
     id: 2,
     name: "How to Pivot",
-    subtitle: "Ebook",
+    subtitle: "EBOOK",
     description:
-      "A comprehensive ebook that guides you through every step of making a successful career pivot with actionable strategies.",
+      "Get an actionable, dancer-specific career change guide with mindset shifts and steps for how to pivot. ",
     price: 6.99,
     originalPrice: 0,
     url: ebookPaymentUrl,
@@ -74,17 +74,17 @@ const products: Product[] = [
     category: "Digital Book",
     duration: "10 Chapters",
     rating: 5.0,
-    reviews: 342,
-    features: ["Instant Download", "Workbook Included", "Case Studies", "Lifetime Updates"],
+    reviews: 89,
+    features: ["Instant Download", "Interactive Exercises", "Case Studies", "Lifetime Updates"],
     icon: BookOpen,
     gradient: "from-purple-gray to-beige",
   },
   {
     id: 3,
     name: "Happy Trails",
-    subtitle: "Digital Course Experience",
+    subtitle: "DIGITAL COURSE",
     description:
-      "Transform your mindset and discover your path to happiness with this immersive digital course featuring video lessons and exercises.",
+      "Explore a 5-year career change roadmap to make a plan for before, during, and after your pivot.",
     price: 75,
     originalPrice: 199,
     url: coursePaymentUrl,
@@ -92,17 +92,17 @@ const products: Product[] = [
     category: "Online Course",
     duration: "Self Paced",
     rating: 5.0,
-    reviews: 89,
-    features: ["Video Lessons", "Interactive Exercises", "Community Access", "Certificate"],
+    reviews: 16,
+    features: ["Video Lessons", "Bonus Resources", "Community Access", "Certificate"],
     icon: Clock,
     gradient: "from-beige to-brown-gray",
   },
   {
     id: 4,
     name: "Mentorship",
-    subtitle: "Private Sessions",
+    subtitle: "PRIVATE SESSIONS",
     description:
-      "Get personalized guidance with one-on-one mentorship sessions tailored to your specific goals and challenges.",
+      "Need more support? Get personalized guidance tailored to your unique goals and experiences.",
     price: 150,
     originalPrice: 229,
     url: mentorshipBookingUrl,
@@ -110,8 +110,8 @@ const products: Product[] = [
     category: "Coaching",
     duration: "3 x Sessions",
     rating: 5.0,
-    reviews: 45,
-    features: ["1-on-1 Sessions", "Custom Strategy", "Email Support", "Progress Tracking"],
+    reviews: 3,
+    features: ["1-on-1 Sessions", "Bespoke Advice", "Email Support", "Progress Tracking"],
     icon: Users,
     gradient: "from-brown-gray to-dark-gray",
   },
@@ -315,10 +315,10 @@ const FeaturedProducts: React.FC = () => {
                         : "bg-light-gray hover:bg-purple-gray text-white"
                         }`}
                     >
-                      {product.id === 1 ? "Join Waitlist" :
-                        product.id === 2 ? "Download Now" :
-                          product.id === 3 ? "Download Now" :
-                            "Join Waitlist"}
+                      {product.id === 1 ? "REGISTER NOW" :
+                        product.id === 2 ? "DOWNLOAD NOW" :
+                          product.id === 3 ? "START NOW" :
+                            "BOOK NOW"}
                     </a>
                     {product.id === 1 && (
                       <p className="font-montserrat text-xs text-center text-brown-gray">
@@ -327,7 +327,7 @@ const FeaturedProducts: React.FC = () => {
                     )}
                     {product.id === 2 && (
                       <p className="font-montserrat text-xs text-center text-brown-gray">
-                        Downloaded by {product.reviews}+ professionals
+                        Low-cost, low-pressure
                       </p>
                     )}
                     {product.id === 3 && (
@@ -337,7 +337,7 @@ const FeaturedProducts: React.FC = () => {
                     )}
                     {product.id === 4 && (
                       <p className="font-montserrat text-xs text-center text-brown-gray">
-                        Limited availability - book your spot today
+                        Limited Availability
                       </p>
                     )}
                   </div>
@@ -359,10 +359,10 @@ const FeaturedProducts: React.FC = () => {
                   BEST VALUE
                 </div>
                 <h2 className="font-merriweather text-4xl md:text-5xl font-bold mb-4">
-                  Complete Career Transformation Bundle
+                  Dance Career Transition Suite
                 </h2>
                 <p className="font-montserrat text-xl opacity-90 max-w-3xl mx-auto">
-                  Everything you need to confidently pivot into meaningful, fulfilling work — for less than the cost of one class a week.
+                  Everything you need to confidently pivot into meaningful, fulfilling work — For less than the cost of new headshots.
                 </p>
               </div>
 
@@ -383,7 +383,7 @@ const FeaturedProducts: React.FC = () => {
                           <div>
                             <h4 className="font-merriweather text-lg font-bold mb-2">{product.name}</h4>
                             <p className="font-montserrat text-sm opacity-90 mb-2">
-                              {product.id === 2 ? "10 Chapters of comprehensive career transformation information" :
+                              {product.id === 2 ? "10 chapters of mindset shifts and step-by-step guides" :
                                 product.id === 3 ? "Self-paced course with video lessons & extras" :
                                   "Specialised 1-on-1 coaching sessions"}
                             </p>
@@ -397,7 +397,7 @@ const FeaturedProducts: React.FC = () => {
                                 }`}>
                                 {product.id === 2 ? 'Ebook' :
                                   product.id === 3 ? 'Online Course' :
-                                    '1-1 private sessions'}
+                                    'Private Sessions'}
                               </span>
                             </div>
                           </div>
@@ -427,21 +427,21 @@ const FeaturedProducts: React.FC = () => {
                         </div>
                       </div>
                       <p className="font-montserrat text-brown-gray">
-                        Save ${Math.round(discountAmount)} — invest in your next chapter today.
+                        Save ${Math.round(discountAmount)} — Invest in your next stage today
                       </p>
                       <p className="font-montserrat text-xs text-brown-gray mt-2 italic">
-                        Limited spots. Don't miss out.
+                        Limited time only. Don’t miss out.
                       </p>
                     </div>
 
                     <div className="space-y-3 mb-8">
                       <div className="flex items-center justify-center gap-2 text-sm">
                         <Check className="w-4 h-4 text-light-gray" />
-                        <span className="font-montserrat text-brown-gray">First access to pivot conversations</span>
+                        <span className="font-montserrat text-brown-gray">First access to Pivot Conversations</span>
                       </div>
                       <div className="flex items-center justify-center gap-2 text-sm">
                         <Check className="w-4 h-4 text-light-gray" />
-                        <span className="font-montserrat text-brown-gray">Personalised support included</span>
+                        <span className="font-montserrat text-brown-gray">Our complete suite of career change resources</span>
                       </div>
                       <div className="flex items-center justify-center gap-2 text-sm">
                         <Check className="w-4 h-4 text-light-gray" />
@@ -453,7 +453,7 @@ const FeaturedProducts: React.FC = () => {
                       href={bundlePaymentUrl}
                       className="block w-full py-3 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white"
                     >
-                      Transform My Career
+                      START MY PIVOT
                     </a>
                   </div>
                 </div>
