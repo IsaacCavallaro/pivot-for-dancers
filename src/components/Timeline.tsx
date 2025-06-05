@@ -95,15 +95,10 @@ const Timeline: React.FC = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#E2DED0]">
+        <div className="bg-beige pb-12">
             <div className="py-12 px-6">
                 <div className="max-w-6xl mx-auto text-center">
-                    <div className="flex justify-center mb-4">
-                        <div className="bg-[#928490] text-white px-4 py-2 rounded-full text-sm font-bold flex items-center">
-                            <FaMusic className="mr-2" /> Dancer's Journey
-                        </div>
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-merriweather font-bold text-black mb-4">
+                    <h1 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
                         Does this sound familiar?
                     </h1>
                     <p className="text-lg font-montserrat text-black max-w-2xl mx-auto">
@@ -141,11 +136,6 @@ const Timeline: React.FC = () => {
                                                 <h3 className={`font-merriweather font-bold text-lg transition-colors duration-300 ${activeStage === stage.id ? 'text-[#647C90]' : 'text-[#928490] group-hover:text-[#647C90]'}`}>
                                                     {stage.title}
                                                 </h3>
-                                                {/* <div className="ml-2 opacity-70">
-                                                    {React.cloneElement(stage.icon, {
-                                                        className: `text-lg ${activeStage === stage.id ? stage.textColor : 'text-[#928490]'}`,
-                                                    })}
-                                                </div> */}
                                             </div>
                                             <div className={`h-1 mt-2 transition-all duration-300 ${activeStage === stage.id ? `${stage.bgColor} w-16` : 'bg-[#928490] w-8 opacity-50'}`}></div>
                                         </div>

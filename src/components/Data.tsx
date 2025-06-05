@@ -49,8 +49,8 @@ const getAgeStats = (countryAgeData: AgeData[]) => {
 
     return [
         { label: `Dancers retired ${meanGap.toFixed(1)} years earlier than expected`, value: `${meanGap.toFixed(1)} years` },
-        { label: `The average age dancers expected to retire was ${expectedAge}`, value: `${expectedAge}` },
-        { label: `The average age dancers actually retired was ${actualAge}`, value: `${actualAge} years` },
+        { label: `The average age dancers expected to retire was ${expectedAge}`, value: `Age ${expectedAge}` },
+        { label: `The average age dancers actually retired was ${actualAge}`, value: `Age ${actualAge}` },
         { label: 'Dance careers are much shorter than you expect', value: 'Reality' },
     ];
 };
@@ -65,12 +65,11 @@ const DataSection = () => {
                 <div className="block md:hidden space-y-8">
                     {/* Title and Content */}
                     <div className="space-y-6">
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-merriweather text-dark-gray">
-                            How long are you expecting to dance professionally?
+                        <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+                            Expectations vs Reality
                         </h2>
                         <p className="text-black text-base md:text-lg">
-                            The impending end of a dance career brings with it a series of concerns about the future. Research shows
-                            a significant gap between when dancers expect to retire and when they actually do.
+                            Research shows a significant gap between when dancers expect to retire and when they actually do.
                         </p>
                     </div>
 
@@ -208,7 +207,7 @@ const DataSection = () => {
                 <div className="hidden md:block space-y-12">
                     {/* Header Section */}
                     <div className="text-center max-w-2xl mx-auto">
-                        <h2 className="text-3xl lg:text-4xl font-bold font-merriweather text-black mt-4">
+                        <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
                             Expectations vs Reality
                         </h2>
                         <p className="text-dark-gray text-lg font-montserrat mt-4">

@@ -19,11 +19,11 @@ function App() {
       <DataSection />
       <Timeline />
       <FeaturedProducts />
+      <EbookBanner />
       <About />
       <TestimonialsSection />
       <Quiz />
-      {/* <Timeline /> */}
-      <EbookBanner />
+      {/* <EbookBanner /> */}
       <Faq />
       <Footer />
     </div>

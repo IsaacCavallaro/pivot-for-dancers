@@ -29,6 +29,17 @@ const StatCard = ({ number, label, icon: IconComponent }: any) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  // Split label into two parts for two-line display
+  const splitLabel = (text: string) => {
+    const words = text.split(' ');
+    const midPoint = Math.ceil(words.length / 2);
+    return {
+      line1: words.slice(0, midPoint).join(' '),
+      line2: words.slice(midPoint).join(' ')
+    };
+  };
+
+  const { line1, line2 } = splitLabel(label);
   const numericValue = parseInt(number.replace(/\D/g, ''));
 
   useEffect(() => {
@@ -49,9 +60,9 @@ const StatCard = ({ number, label, icon: IconComponent }: any) => {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="bg-white rounded-2xl p-6 shadow-lg flex flex-col items-center justify-center h-full">
-        <IconComponent className="w-6 h-6 text-light-gray mb-3" />
-        <div className="font-merriweather text-2xl font-bold text-dark-gray mb-1">
+      <div className="bg-white rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full">
+        <IconComponent className="w-5 h-5 md:w-4 md:h-4 text-light-gray mb-2 md:mb-1" />
+        <div className="font-merriweather text-xl md:text-lg font-bold text-dark-gray mb-1">
           {isVisible ? (
             <>
               <Counter end={numericValue} duration={2000} />
@@ -61,7 +72,10 @@ const StatCard = ({ number, label, icon: IconComponent }: any) => {
             '0'
           )}
         </div>
-        <p className="font-montserrat text-sm text-brown-gray">{label}</p>
+        <div className="font-montserrat text-xs text-brown-gray leading-tight">
+          <div>{line1}</div>
+          <div>{line2}</div>
+        </div>
       </div>
     </div>
   );
@@ -114,7 +128,7 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative overflow-hidden bg-beige pt-32 pb-10">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
           <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
@@ -133,9 +147,11 @@ const HeroSection = () => {
               At Pivot for Dancers, we're helping professional dancers find meaningful work off the stage with our dancer-specific career change resources.
             </p>
 
-            {/* Form */}
-            <div className="flex flex-col items-center justify-center w-full mt-6 space-y-4">
+            {/* Form and Social Media Icons Section */}
+            <div className="flex flex-col items-center md:items-start justify-center w-full mt-6 space-y-4">
+              {/* Email Input and Button */}
               <form
+                action="https://pivotfordancers.us19.list-manage.com/subscribe/post?u=be8fecbf3f1babc7628da411c&amp;id=e5d51bd2a0&amp;f_id=00c396e4f0"
                 method="post"
                 id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form"
@@ -145,29 +161,53 @@ const HeroSection = () => {
                 noValidate
               >
                 <input
-                  className={inputClass}
+                  className={`${inputClass} lg:mr-3 md:mb-3`}
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={handleEmailChange}
                 />
-                <button type="submit" className={buttonClass}>
+                <button
+                  type="submit"
+                  className={`${buttonClass} md:mb-3`}
+                >
                   JOIN US
                 </button>
               </form>
-
-              <div className="flex space-x-4 justify-center">
-                {/* Social Icons */}
-                {[
-                  ['facebook', 'https://www.facebook.com/pivotfordancers/', 'bg-blue-500'],
-                  ['instagram', 'https://www.instagram.com/pivotfordancers/', 'bg-pink-500'],
-                  ['linkedin', 'https://www.linkedin.com/company/pivotfordancers/', 'bg-blue-500'],
-                  ['youtube', 'https://www.youtube.com/@pivotfordancers', 'bg-red-500']
-                ].map(([platform, href, color], i) => (
-                  <a key={i} href={href} className={`${socialMediaIconClass} ${color} hover:opacity-80`} target="_blank" rel="noopener noreferrer">
-                    <i className={`fab fa-${platform}`}></i>
-                  </a>
-                ))}
+              {/* Social Media Icons */}
+              <div className="flex space-x-4 justify-center md:justify-start">
+                <a
+                  href="https://www.facebook.com/pivotfordancers/"
+                  className={`${socialMediaIconClass} bg-blue-500 hover:bg-blue-400`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/pivotfordancers/"
+                  className={`${socialMediaIconClass} bg-pink-500 hover:bg-pink-400`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/pivotfordancers/"
+                  className={`${socialMediaIconClass} bg-blue-500 hover:bg-blue-400`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/@pivotfordancers"
+                  className={`${socialMediaIconClass} bg-red-500 hover:bg-red-400`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-youtube"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -192,7 +232,7 @@ const HeroSection = () => {
             <br></br>
 
             {/* Animated Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               {stats.map((stat, index) => (
                 <StatCard key={index} {...stat} />
               ))}
