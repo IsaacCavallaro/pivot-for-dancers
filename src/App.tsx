@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import TestimonialsSection from './components/TestimonialSection';
 import Faq from './components/Faq';
 import Timeline from './components/Timeline';
-import EbookBanner from './components/EbookBanner';
+// import EbookBanner from './components/EbookBanner';
 import Quiz from './components/Quiz';
 import DataSection from './components/Data';
 
@@ -19,7 +19,7 @@ function App() {
       <DataSection />
       <Timeline />
       <FeaturedProducts />
-      <EbookBanner />
+      {/* <EbookBanner /> */}
       <About />
       <TestimonialsSection />
       <Quiz />

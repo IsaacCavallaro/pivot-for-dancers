@@ -5,7 +5,7 @@ const pivotConverstationsUrl = "https://stats.sender.net/forms/bmZM4r/view";
 const ebookPaymentUrl = "https://buy.stripe.com/14k6oG8rQexsgCI147";
 const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
 const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
-const bundlePaymentUrl = "#"; // Need to update!  
+const bundlePaymentUrl = "https://buy.stripe.com/3cIcN79R24mAbeg4p4g3604";
 const moreInfoClasses = "mt-10 text-center";
 const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
 const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
@@ -451,6 +451,8 @@ const FeaturedProducts: React.FC = () => {
 
                     <a
                       href={bundlePaymentUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="block w-full py-3 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white"
                     >
                       START MY PIVOT
