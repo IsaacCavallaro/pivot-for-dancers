@@ -451,7 +451,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/lyrical-female.jpeg`,
     buttonText: "LEARN ABOUT US",
     modalButtonText: "JOIN OUR COMMUNITY",
-    modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
+    modalButtonLink: "https://stats.sender.net/forms/aKrmkz/view"
   },
   {
     value: "17+",
@@ -511,7 +511,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/modern-male.jpeg`,
     buttonText: "EXPLORE OUR WORKSHOPS",
     modalButtonText: "SIGN UP",
-    modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
+    modalButtonLink: "https://stats.sender.net/forms/aKrmkz/view"
   },
 ]
 

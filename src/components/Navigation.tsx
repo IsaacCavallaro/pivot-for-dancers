@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   };
 
   const BASE_PATH = process.env.PUBLIC_URL || "";
-  const signUpUrl = 'https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up';
+  const signUpUrl = 'https://stats.sender.net/forms/aKrmkz/view';
   const joinUsClassNameDesktop =
     'text-sm px-4 py-2 rounded-full bg-purple-gray text-white opacity-80 hover:opacity-100 hover:bg-purple-gray';
   const joinUsClassNameMobile = 'text-2xl text-white bg-purple-gray px-4 py-2 rounded-full opacity-80 hover:opacity-100 hover:bg-purple-gray'

@@ -20,7 +20,7 @@ const FAQ: FC = () => {
                         our growing community of fellow dancers.
                     </p>
                     <br></br>
-                    <a href='https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up' target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                    <a href='https://stats.sender.net/forms/aKrmkz/view' target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
                         JOIN US
                     </a>
                 </>
