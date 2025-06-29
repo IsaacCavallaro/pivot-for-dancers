@@ -150,8 +150,8 @@ const TestimonialsSection: React.FC = () => {
   const modalIconTextClasses = "text-xs mt-2 text-gray-600";
 
   return (
-    <section className="bg-beige py-3">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-beige px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="dark:bg-gray-700 rounded-lg shadow-lg p-6 md:p-12">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (

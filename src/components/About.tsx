@@ -5,13 +5,17 @@ import { useEffect, useState, useRef } from "react"
 const STYLES = {
   section: "bg-beige font-merriweather py-10 px-5 text-center",
   headingContainer: "px-4 pl-4 mb-6",
-  headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
-  headingTitle: "mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold",
+  headingSpan: "text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300",
+  headingTitle: "font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight",
   button: "inline-block font-montserrat px-10 py-2 text-sm text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
   modalImageContainer: "flex justify-center mb-4",
   modalImage: "w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-full border-2 border-purple-gray",
   counter: "text-4xl font-bold"
 }
+
+const moreInfoClasses = "mt-10 text-center";
+const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
+const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
 
 interface CounterProps {
   value: string
@@ -447,7 +451,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/lyrical-female.jpeg`,
     buttonText: "LEARN ABOUT US",
     modalButtonText: "JOIN OUR COMMUNITY",
-    modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
+    modalButtonLink: "https://stats.sender.net/forms/aKrmkz/view"
   },
   {
     value: "17+",
@@ -507,7 +511,7 @@ const STATS_DATA: StatProps[] = [
     imageUrl: `${process.env.PUBLIC_URL}/assets/modern-male.jpeg`,
     buttonText: "EXPLORE OUR WORKSHOPS",
     modalButtonText: "SIGN UP",
-    modalButtonLink: "https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up"
+    modalButtonLink: "https://stats.sender.net/forms/aKrmkz/view"
   },
 ]
 

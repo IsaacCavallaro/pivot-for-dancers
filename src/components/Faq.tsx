@@ -20,25 +20,24 @@ const FAQ: FC = () => {
                         our growing community of fellow dancers.
                     </p>
                     <br></br>
-                    <a href='https://mailchi.mp/2129c6018f7d/pivot-for-dancers-email-sign-up' target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                    <a href='https://stats.sender.net/forms/aKrmkz/view' target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
                         JOIN US
                     </a>
                 </>
             ),
         },
         {
-            question: "What are Pivot Panels?",
+            question: "What are Pivot Conversations?",
             answer: (
                 <>
-                    <p>Pivot Panels are panel-style interviews with professional dancers who have successfully changed careers.</p>
+                    <p>Pivot Conversations are free virtual meetups for dancers to have conversations about career change. </p>
                     <br></br>
                     <p>
-                        These valuable resources are available to help inspire you to take a leap of faith and
-                        may give you some ideas of how you may want to pivot your career.
+                        Connect with other dancers going through similar experiences and feel less alone on your career change journey.
                     </p>
                     <br></br>
-                    <a href="https://www.youtube.com/playlist?list=PLjTsov7LqGgI2Tc2tsi_aH-_ZF0MuFT6r" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
-                        WATCH NOW
+                    <a href="https://stats.sender.net/forms/bmZM4r/view" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        SIGN UP
                     </a>
                 </>
             ),
@@ -56,7 +55,7 @@ const FAQ: FC = () => {
                     <p>With real-life examples from Kaylee's own career transition, 'How to Pivot' is essential reading for any dancer struggling with their next steps.</p>
                     <br></br>
                     <div className="mt-4 mx-auto flex justify-center md:justify-start">
-                        <a href="https://www.amazon.com/dp/B0CXL4F57D" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        <a href="https://buy.stripe.com/14k6oG8rQexsgCI147" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
                             ORDER NOW
                         </a>
                     </div>
@@ -135,10 +134,10 @@ const FAQ: FC = () => {
 
     return (
         <section id="faq-section" className="bg-beige py-5">
-            <div className="max-w-6xl py-4 px-4 mx-auto md:px-6">
+            <div className="max-w-7xl py-4 px-4 mx-auto md:px-6">
                 <header className="mb-6 text-center">
-                    <h2 className="mt-2 text-3xl font-merriweather text-black md:text-4xl font-semibold text-center">FAQs</h2>
-                    <span className="text-sm text-gray-600 uppercase dark:text-gray-400 text-center">Feeling Curious?</span>
+                    <h2 className="mt-2 font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight text-center">FAQs</h2>
+                    <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300">Feeling Curious?</span>
                 </header>
                 <div className="faq-items space-y-4">
                     {faqItems.map((item, index) => (

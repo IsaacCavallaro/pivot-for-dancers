@@ -7,20 +7,23 @@ import Footer from './components/Footer';
 import TestimonialsSection from './components/TestimonialSection';
 import Faq from './components/Faq';
 import Timeline from './components/Timeline';
-import EbookBanner from './components/EbookBanner';
+// import EbookBanner from './components/EbookBanner';
 import Quiz from './components/Quiz';
+import DataSection from './components/Data';
 
 function App() {
   return (
     <div className="App">
       <Navigation />
       <Home />
+      <DataSection />
+      <Timeline />
       <FeaturedProducts />
+      {/* <EbookBanner /> */}
+      <About />
       <TestimonialsSection />
       <Quiz />
-      <About />
-      <Timeline />
-      <EbookBanner />
+      {/* <EbookBanner /> */}
       <Faq />
       <Footer />
     </div>
