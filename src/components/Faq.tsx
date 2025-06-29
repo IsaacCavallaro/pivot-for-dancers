@@ -55,7 +55,7 @@ const FAQ: FC = () => {
                     <p>With real-life examples from Kaylee's own career transition, 'How to Pivot' is essential reading for any dancer struggling with their next steps.</p>
                     <br></br>
                     <div className="mt-4 mx-auto flex justify-center md:justify-start">
-                        <a href="https://www.amazon.com/dp/B0CXL4F57D" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        <a href="https://buy.stripe.com/14k6oG8rQexsgCI147" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
                             ORDER NOW
                         </a>
                     </div>
@@ -137,7 +137,7 @@ const FAQ: FC = () => {
             <div className="max-w-7xl py-4 px-4 mx-auto md:px-6">
                 <header className="mb-6 text-center">
                     <h2 className="mt-2 font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight text-center">FAQs</h2>
-                    <span className="text-sm text-gray-600 uppercase dark:text-gray-400 text-center">Feeling Curious?</span>
+                    <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300">Feeling Curious?</span>
                 </header>
                 <div className="faq-items space-y-4">
                     {faqItems.map((item, index) => (

@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react"
 const STYLES = {
   section: "bg-beige font-merriweather py-10 px-5 text-center",
   headingContainer: "px-4 pl-4 mb-6",
-  headingSpan: "text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather",
+  headingSpan: "text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300",
   headingTitle: "font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight",
   button: "inline-block font-montserrat px-10 py-2 text-sm text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
   modalImageContainer: "flex justify-center mb-4",
@@ -532,21 +532,6 @@ const AboutUsSection: React.FC = () => {
             index={index}
           />
         ))}
-      </div>
-
-
-      <div className={moreInfoClasses}>
-        <p className={moreInfoTextClasses}>
-          Ready to join the waitlist for Pivot Conversations?{' '}
-          <a
-            href="https://stats.sender.net/forms/bmZM4r/view"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={faqButtonClasses}
-          >
-            Register Here
-          </a>
-        </p>
       </div>
     </section>
   )

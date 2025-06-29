@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Loader2, Share2 } from "lucide-react"
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
 
 const Quiz: React.FC = () => {
     // Add effect to handle hash navigation accounting for navbar height
@@ -413,7 +413,7 @@ const Quiz: React.FC = () => {
             <div id="quiz" className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-5 md:px-6">
                 <div className="px-4 pl-4 mb-6">
                     <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">Pivot Quiz</h2>
-                    <span className="text-sm text-gray-600 uppercase dark:text-gray-400 font-merriweather">
+                    <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300 ">
                         Discover Your Pivot Personality
                     </span>
                 </div>

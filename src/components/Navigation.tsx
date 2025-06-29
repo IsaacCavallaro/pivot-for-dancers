@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     <section className="bg-dark-gray max-device-width">
       <div className="max-w-6xl px-4 mx-auto">
         <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
-          <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
             <a href="/" className="block pl-4 md:pl-6">
               <img src={`${BASE_PATH}/assets/logo.png`} alt="Logo" className="h-8" />
             </a>

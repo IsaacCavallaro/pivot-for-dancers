@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {
-    FaStar, FaTrophy, FaHeart, FaLightbulb, FaRegArrowAltCircleRight,
-    FaMusic, FaUserAlt, FaBrain, FaBriefcase
+    FaStar, FaTrophy, FaHeart, FaRegArrowAltCircleRight,
+    FaUserAlt, FaBriefcase
 } from 'react-icons/fa';
 import {
-    MdEmojiEvents, MdWork, MdOutlineEmojiObjects
+    MdEmojiEvents, MdOutlineEmojiObjects
 } from 'react-icons/md';
 
 const Timeline: React.FC = () => {
@@ -45,7 +45,7 @@ const Timeline: React.FC = () => {
             textColor: "text-white",
             badges: [
                 { text: "New Artist", icon: <FaStar className="mr-1" />, color: "bg-[#928490] text-white" },
-                { text: "First Gig", icon: <MdEmojiEvents className="mr-1" />, color: "bg-[#E2DED0] text-[#647C90]" },
+                { text: "First Gig", icon: <MdEmojiEvents className="mr-1" />, color: "bg-[#928490] text-white" },
                 { text: "Passionate", icon: <FaHeart className="mr-1" />, color: "bg-[#928490] text-white" }
             ]
         },
@@ -58,7 +58,7 @@ const Timeline: React.FC = () => {
             textColor: "text-white",
             badges: [
                 { text: "Hustling", icon: <FaBriefcase className="mr-1" />, color: "bg-[#928490] text-white" },
-                { text: "Teaching", icon: <FaUserAlt className="mr-1" />, color: "bg-[#E2DED0] text-[#647C90]" },
+                { text: "Teaching", icon: <FaUserAlt className="mr-1" />, color: "bg-[#928490] text-white" },
                 { text: "Dedicated", icon: <FaTrophy className="mr-1" />, color: "bg-[#928490] text-white" }
             ]
         },
@@ -70,7 +70,7 @@ const Timeline: React.FC = () => {
             bgColor: "bg-[#647C90]",
             textColor: "text-white",
             badges: [
-                { text: "Burnout", icon: <FaHeart className="mr-1" />, color: "bg-[#E2DED0] text-[#647C90]" },
+                { text: "Burnout", icon: <FaHeart className="mr-1" />, color: "bg-[#928490] text-white" },
                 { text: "Questioning", icon: <MdOutlineEmojiObjects className="mr-1" />, color: "bg-[#928490] text-white" },
                 { text: "Transition", icon: <FaRegArrowAltCircleRight className="mr-1" />, color: "bg-[#928490] text-white" }
             ]
@@ -83,7 +83,7 @@ const Timeline: React.FC = () => {
             bgColor: "bg-[#647C90]",
             textColor: "text-white",
             badges: [
-                { text: "New Path", icon: <FaRegArrowAltCircleRight className="mr-1" />, color: "bg-[#E2DED0] text-[#647C90]" },
+                { text: "New Path", icon: <FaRegArrowAltCircleRight className="mr-1" />, color: "bg-[#928490] text-white" },
                 { text: "Growth", icon: <FaTrophy className="mr-1" />, color: "bg-[#928490] text-white" },
                 { text: "Opportunity", icon: <FaStar className="mr-1" />, color: "bg-[#928490] text-white" }
             ]
@@ -92,16 +92,15 @@ const Timeline: React.FC = () => {
 
     return (
         <div className="bg-beige pb-12">
-            <div className="py-8 md:py-12 px-4 sm:px-6">
-                <div className="max-w-6xl mx-auto text-center">
-                    <h1 className="font-merriweather text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 sm:mb-6 leading-tight">
-                        Does this sound familiar?
+            <div className="">
+                <div className="max-w-6xl mx-auto text-center pt-4 md:pb-0 pb-10">
+                    <h1 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight transition-all duration-1000 opacity-100 transform translate-y-0">
+                        Your Journey
                     </h1>
                     <span
-                        className={`text-xs sm:text-sm text-center text-gray-600 uppercase dark:text-gray-400 transition-all duration-1000 delay-300
-                            }`}
+                        className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300"
                     >
-                        The journey of a professional dancer
+                        Does this sound familiar?
                     </span>
                 </div>
             </div>

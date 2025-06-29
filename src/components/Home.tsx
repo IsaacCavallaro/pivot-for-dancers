@@ -181,8 +181,8 @@ const HeroSection = () => {
           {/* Left */}
           <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
             <div className="flex justify-center md:justify-start md:items-center gap-2 mb-6">
-              <span className="bg-yellow-400 text-dark-gray font-montserrat font-semibold px-4 py-2 rounded-full">
-                <Star className="w-4 h-4 mr-1 fill-current inline" />
+              <span className="bg-yellow-400 text-dark-gray font-montserrat font-semibold px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-base">
+                <Star className="w-3 h-3 md:w-4 md:h-4 mr-1 fill-current inline" />
                 Trusted by professional dancers worldwide
               </span>
             </div>
@@ -191,7 +191,7 @@ const HeroSection = () => {
               Career change resources made for dancers
             </h1>
 
-            <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl mx-auto">
+            <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
               At Pivot for Dancers, we're helping professional dancers find meaningful work off the stage with our dancer-specific career change resources.
             </p>
 

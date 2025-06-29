@@ -90,7 +90,7 @@ const products: Product[] = [
     url: coursePaymentUrl,
     img: "/assets/happy-trails-mini-course.png",
     category: "Online Course",
-    duration: "Self Paced",
+    duration: "Self-Paced",
     rating: 5.0,
     reviews: 16,
     features: ["Video Lessons", "Bonus Resources", "Community Access", "Certificate"],
@@ -188,7 +188,7 @@ const FeaturedProducts: React.FC = () => {
             Products
           </h1>
           <span
-            className={`text-sm text-center text-gray-600 uppercase dark:text-gray-400 transition-all duration-1000 delay-300 ${isVisible.title
+            className={`text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300 ${isVisible.title
               ? 'opacity-100 transform translate-y-0'
               : 'opacity-0 transform translate-y-10'
               }`}
@@ -267,13 +267,13 @@ const FeaturedProducts: React.FC = () => {
                       {product.features.slice(0, 2).map((feature, index) => (
                         <span
                           key={index}
-                          className="inline-block bg-amber-50 text-gray-800 text-xs px-2 py-1 rounded-full"
+                          className="inline-block bg-purple-gray text-white text-xs px-2 py-1 rounded-full"
                         >
                           {feature}
                         </span>
                       ))}
                       {product.features.length > 2 && (
-                        <span className="inline-block bg-light-gray text-white text-xs font-montserrat px-2 py-1 rounded-full">
+                        <span className="inline-block bg-purple-gray text-white text-xs font-montserrat px-2 py-1 rounded-full">
                           +{product.features.length - 2} more
                         </span>
                       )}
@@ -377,7 +377,7 @@ const FeaturedProducts: React.FC = () => {
                     {bundleProducts.map((product) => {
                       const IconComponent = product.icon;
                       return (
-                        <div key={product.id} className="flex items-start gap-4 bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                        <div key={product.id} className="flex items-center gap-4 bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
                           <div className={`rounded-full p-3 flex-shrink-0 ${product.id === 2 ? 'bg-purple-gray' :
                             product.id === 3 ? 'bg-beige' :
                               'bg-light-gray'
@@ -385,8 +385,10 @@ const FeaturedProducts: React.FC = () => {
                             <IconComponent className={`w-6 h-6 ${product.id === 3 ? 'text-dark-gray' : 'text-white'}`} />
                           </div>
                           <div>
-                            <h4 className="font-merriweather text-lg font-bold mb-2">{product.name}</h4>
-                            <p className="font-montserrat text-sm opacity-90 mb-2">
+                            <h4 className="font-merriweather text-xl md:text-2xl font-bold mb-2 md:mb-3">
+                              {product.name}
+                            </h4>
+                            <p className="font-montserrat text-md opacity-90 mb-2">
                               {product.id === 2 ? "10 chapters of mindset shifts and step-by-step guides" :
                                 product.id === 3 ? "Self-paced course with video lessons & extras" :
                                   "Specialised 1-on-1 coaching sessions"}
@@ -395,9 +397,9 @@ const FeaturedProducts: React.FC = () => {
                               <span className="font-montserrat text-sm line-through opacity-75">
                                 ${product.originalPrice || product.price}
                               </span>
-                              <span className={`font-montserrat text-xs px-2 py-1 rounded-full ${product.id === 2 ? 'bg-beige text-dark-gray' :
-                                product.id === 3 ? 'bg-brown-gray text-white' :
-                                  'bg-dark-gray text-white'
+                              <span className={`font-montserrat text-xs px-2 py-1 rounded-full ${product.id === 2 ? 'bg-purple-gray text-white' :
+                                product.id === 3 ? 'bg-purple-gray text-white' :
+                                  'bg-purple-gray text-white'
                                 }`}>
                                 {product.id === 2 ? 'Ebook' :
                                   product.id === 3 ? 'Online Course' :

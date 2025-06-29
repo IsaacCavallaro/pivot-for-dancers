@@ -12,7 +12,7 @@ import {
     LabelList,
 } from 'recharts';
 
-// Define types
+
 type Country = 'Australia' | 'UnitedStates' | 'Switzerland';
 type AgeData = {
     category: string;
@@ -48,7 +48,7 @@ const getAgeStats = (countryAgeData: AgeData[]) => {
     const meanGap = expectedAge - actualAge;
 
     return [
-        { label: `Dancers retired ${meanGap.toFixed(1)} years earlier than expected`, value: `${meanGap.toFixed(1)} years` },
+        { label: `Dancers retired ${meanGap.toFixed(1)} years earlier than expected`, value: `${meanGap.toFixed(1)} Years` },
         { label: `The average age dancers expected to retire was ${expectedAge}`, value: `Age ${expectedAge}` },
         { label: `The average age dancers actually retired was ${actualAge}`, value: `Age ${actualAge}` },
         { label: 'Dance careers are much shorter than you expect', value: 'Reality' },
@@ -68,7 +68,7 @@ const DataSection = () => {
                         <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
                             Expectations vs Reality
                         </h2>
-                        <p className="text-black text-base md:text-lg">
+                        <p className="font-montserrat text-xl text-center text-brown-gray mb-8 leading-relaxed max-w-xl mx-auto">
                             Research shows a significant gap between when dancers expect to retire and when they actually do.
                         </p>
                     </div>
@@ -195,8 +195,8 @@ const DataSection = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {getAgeStats(ageData[ageCountry]).map((stat, i) => (
                                 <div key={i} className="bg-off-white/80 backdrop-blur-sm rounded-lg p-4 shadow-md">
-                                    <div className="text-2xl font-bold text-brown-gray font-merriweather">{stat.value}</div>
-                                    <p className="text-dark-gray text-xs mt-1 font-montserrat">{stat.label}</p>
+                                    <div className="text-2xl text-center font-bold text-brown-gray font-merriweather">{stat.value}</div>
+                                    <p className="text-dark-gray text-center text-xs mt-1 font-montserrat">{stat.label}</p>
                                 </div>
                             ))}
                         </div>
@@ -210,8 +210,8 @@ const DataSection = () => {
                         <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
                             Expectations vs Reality
                         </h2>
-                        <p className="text-dark-gray text-lg font-montserrat mt-4">
-                            Research shows a significant gap between when dancers expect to retire and when they actually do
+                        <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl mx-auto">
+                            Research shows a significant gap between when dancers expect to retire and when they <em>actually</em> do
                         </p>
                     </div>
 
