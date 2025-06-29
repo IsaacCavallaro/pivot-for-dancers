@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+const API_URL = process.env.REACT_APP_API_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 const Footer: React.FC = () => {
   const iconSize = 'h-8 w-8'; // for social media
   const socialMediaIconClass = `text-white p-2 rounded-full flex items-center justify-center ${iconSize} transition-transform transform hover:scale-110`;
@@ -32,6 +35,7 @@ const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -39,36 +43,96 @@ const Footer: React.FC = () => {
     if (submitStatus !== 'idle') {
       setSubmitStatus('idle');
     }
+    if (error) {
+      setError(null);
+    }
+  };
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const handleSubmit = async () => {
-    if (!email.trim()) {
+    const trimmedEmail = email.trim();
+
+    if (!trimmedEmail) {
+      setError("Please provide your email to join us.");
+      setSubmitStatus('error');
+      return;
+    }
+
+    if (!validateEmail(trimmedEmail)) {
+      setError("Please enter a valid email address.");
+      setSubmitStatus('error');
       return;
     }
 
     setIsSubmitting(true);
+    setError(null);
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://stats.sender.net/forms/aKrmkz/subscribe', {
-        method: 'POST',
+      // Check if API configuration is available
+      if (!API_URL || !API_KEY || API_URL === "YOUR_API_URL_HERE" || API_KEY === "YOUR_API_KEY_HERE") {
+        console.log("API configuration not set, using fallback method");
+        throw new Error("API configuration is missing or not set");
+      }
+
+      // Make the API request to submit user data
+      const response = await fetch(API_URL, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
-          email: email.trim()
-        })
+          email: trimmedEmail,
+          groups: [], // Add specific group IDs if needed
+          trigger_automation: true, // Enable automation if you have one set up
+        }),
       });
 
       if (response.ok) {
+        console.log("Successfully submitted user data to API");
         setSubmitStatus('success');
-        setEmail(''); // Clear the form on success
+        setEmail('');
+        setError(null);
       } else {
+        const errorData = await response.json();
+        console.error("API error:", errorData);
+        setError("There was an error submitting your email. Please try again.");
         setSubmitStatus('error');
       }
-    } catch (error) {
-      console.error('Subscription error:', error);
-      setSubmitStatus('error');
+    } catch (err) {
+      console.error("Submission error:", err);
+
+      // Fallback to the original method if API fails
+      try {
+        const response = await fetch('https://stats.sender.net/forms/aKrmkz/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: trimmedEmail
+          })
+        });
+
+        if (response.ok) {
+          setSubmitStatus('success');
+          setEmail('');
+          setError(null);
+        } else {
+          setError("There was an error submitting your email. Please try again.");
+          setSubmitStatus('error');
+        }
+      } catch (fallbackError) {
+        console.error('Fallback subscription error:', fallbackError);
+        setError("There was an error submitting your email. Please try again.");
+        setSubmitStatus('error');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -132,12 +196,12 @@ const Footer: React.FC = () => {
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <p className="text-purple-gray text-sm font-medium">
-                  Successfully subscribed! Welcome to our community.
+                  Thank you! You should receive a confirmation shortly.
                 </p>
               )}
-              {submitStatus === 'error' && (
+              {error && (
                 <p className="text-red-400 text-sm font-medium">
-                  Something went wrong. Please try again.
+                  {error}
                 </p>
               )}
             </div>
