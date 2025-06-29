@@ -85,6 +85,8 @@ const StatCard = ({ number, label, icon: IconComponent }: any) => {
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     setIsVisible(true);
@@ -115,15 +117,61 @@ const HeroSection = () => {
     bg-purple-gray rounded-md 
     hover:bg-purple-gray opacity-80 hover:opacity-100 
     w-full md:w-auto
+    disabled:opacity-50 disabled:cursor-not-allowed
   `.trim();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
+    // Reset status when user starts typing again
+    if (submitStatus !== 'idle') {
+      setSubmitStatus('idle');
+    }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    window.location.href = `https://pivotfordancers.us19.list-manage.com/subscribe/post?u=be8fecbf3f1babc7628da411c&amp;id=e5d51bd2a0&amp;f_id=00c396e4f0&EMAIL=${encodeURIComponent(email)}`;
+  const handleSubmit = async () => {
+    if (!email.trim()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://stats.sender.net/forms/aKrmkz/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim()
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setEmail(''); // Clear the form on success
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
+  const getButtonText = () => {
+    if (isSubmitting) return 'JOINING...';
+    if (submitStatus === 'success') return 'JOINED!';
+    if (submitStatus === 'error') return 'TRY AGAIN';
+    return 'JOIN US';
   };
 
   return (
@@ -150,30 +198,38 @@ const HeroSection = () => {
             {/* Form and Social Media Icons Section */}
             <div className="flex flex-col items-center md:items-start justify-center w-full mt-6 space-y-4">
               {/* Email Input and Button */}
-              <form
-                action="https://pivotfordancers.us19.list-manage.com/subscribe/post?u=be8fecbf3f1babc7628da411c&amp;id=e5d51bd2a0&amp;f_id=00c396e4f0"
-                method="post"
-                id="mc-embedded-subscribe-form"
-                name="mc-embedded-subscribe-form"
-                className={formClass}
-                target="_self"
-                onSubmit={handleSubmit}
-                noValidate
-              >
+              <div className={formClass}>
                 <input
                   className={`${inputClass} lg:mr-3 md:mb-3`}
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={handleEmailChange}
+                  onKeyPress={handleKeyPress}
+                  disabled={isSubmitting}
                 />
                 <button
-                  type="submit"
+                  type="button"
                   className={`${buttonClass} md:mb-3`}
+                  onClick={handleSubmit}
+                  disabled={isSubmitting || !email.trim()}
                 >
-                  JOIN US
+                  {getButtonText()}
                 </button>
-              </form>
+              </div>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <p className="text-green-600 text-sm font-medium">
+                  Successfully subscribed! Welcome to our community.
+                </p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="text-red-600 text-sm font-medium">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+
               {/* Social Media Icons */}
               <div className="flex space-x-4 justify-center md:justify-start">
                 <a
