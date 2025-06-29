@@ -1,8 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { Star, CheckCircle, Users, Globe } from 'lucide-react';
 
-// Counter animation component
-const Counter = ({ end, duration }: { end: number; duration: number }) => {
+const API_URL = process.env.REACT_APP_API_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+interface CounterProps {
+  end: number;
+  duration: number;
+}
+
+const Counter = ({ end, duration }: CounterProps) => {
   const [count, setCount] = useState(0);
   const ref = useRef<number>(0);
 
@@ -25,11 +32,16 @@ const Counter = ({ end, duration }: { end: number; duration: number }) => {
   return <span>{count.toLocaleString()}</span>;
 };
 
-const StatCard = ({ number, label, icon: IconComponent }: any) => {
+interface StatCardProps {
+  number: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const StatCard = ({ number, label, icon: IconComponent }: StatCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Split label into two parts for two-line display
   const splitLabel = (text: string) => {
     const words = text.split(' ');
     const midPoint = Math.ceil(words.length / 2);
@@ -81,12 +93,12 @@ const StatCard = ({ number, label, icon: IconComponent }: any) => {
   );
 };
 
-
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -122,9 +134,11 @@ const HeroSection = () => {
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-    // Reset status when user starts typing again
     if (submitStatus !== 'idle') {
       setSubmitStatus('idle');
+    }
+    if (error) {
+      setError(null);
     }
   };
 
@@ -137,57 +151,94 @@ const HeroSection = () => {
     const trimmedEmail = email.trim();
 
     if (!trimmedEmail) {
+      setError("Please provide your email to join us.");
       setSubmitStatus('error');
       return;
     }
 
     if (!validateEmail(trimmedEmail)) {
+      setError("Please enter a valid email address.");
       setSubmitStatus('error');
       return;
     }
 
     setIsSubmitting(true);
+    setError(null);
     setSubmitStatus('idle');
 
-    // Create a hidden iframe and form for seamless submission
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.name = 'sender-frame';
-    document.body.appendChild(iframe);
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://stats.sender.net/forms/aKrmkz/subscribe';
-    form.target = 'sender-frame'; // Submit to hidden iframe
-    form.style.display = 'none';
-
-    const emailInput = document.createElement('input');
-    emailInput.type = 'email';
-    emailInput.name = 'email';
-    emailInput.value = trimmedEmail;
-
-    form.appendChild(emailInput);
-    document.body.appendChild(form);
-
     try {
-      form.submit();
+      // Check if API configuration is available
+      if (!API_URL || !API_KEY || API_URL === "YOUR_API_URL_HERE" || API_KEY === "YOUR_API_KEY_HERE") {
+        console.log("API configuration not set, using fallback method");
+        throw new Error("API configuration is missing or not set");
+      }
 
-      // Clean up after a delay
-      setTimeout(() => {
-        if (document.body.contains(form)) document.body.removeChild(form);
-        if (document.body.contains(iframe)) document.body.removeChild(iframe);
-      }, 1000);
+      // Make the API request to submit user data
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: trimmedEmail,
+          groups: [], // Add specific group IDs if needed
+          trigger_automation: true, // Enable automation if you have one set up
+        }),
+      });
 
-      // Assume success
-      setSubmitStatus('success');
-      setEmail('');
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
+      if (response.ok) {
+        console.log("Successfully submitted user data to API");
+        setSubmitStatus('success');
+        setEmail('');
+        setError(null);
+      } else {
+        const errorData = await response.json();
+        console.error("API error:", errorData);
+        setError("There was an error submitting your email. Please try again.");
+        setSubmitStatus('error');
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
 
-      // Clean up on error
-      if (document.body.contains(form)) document.body.removeChild(form);
-      if (document.body.contains(iframe)) document.body.removeChild(iframe);
+      // Fallback to the original method if API fails
+      try {
+        // Method 1: Traditional form submission with hidden iframe (fallback)
+        const iframe = document.createElement('iframe');
+        iframe.name = 'hidden-iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://stats.sender.net/forms/aKrmkz/subscribe';
+        form.target = 'hidden-iframe';
+        form.style.display = 'none';
+
+        const emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.name = 'email';
+        emailInput.value = trimmedEmail;
+
+        form.appendChild(emailInput);
+        document.body.appendChild(form);
+        form.submit();
+
+        // Clean up after submission
+        setTimeout(() => {
+          document.body.removeChild(form);
+          document.body.removeChild(iframe);
+        }, 1000);
+
+        setSubmitStatus('success');
+        setEmail('');
+        setError(null);
+      } catch (fallbackError) {
+        console.error("Fallback submission error:", fallbackError);
+        setError("There was an error submitting your email. Please try again.");
+        setSubmitStatus('error');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -195,7 +246,6 @@ const HeroSection = () => {
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      event.preventDefault();
       handleSubmit();
     }
   };
@@ -211,7 +261,7 @@ const HeroSection = () => {
     <section id="home" className="relative overflow-hidden bg-beige pt-32 pb-10">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left */}
+          {/* Left Column */}
           <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
             <div className="flex justify-center md:justify-start md:items-center gap-2 mb-6">
               <span className="bg-yellow-400 text-dark-gray font-montserrat font-semibold px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-base">
@@ -228,9 +278,8 @@ const HeroSection = () => {
               At Pivot for Dancers, we're helping professional dancers find meaningful work off the stage with our dancer-specific career change resources.
             </p>
 
-            {/* Form and Social Media Icons Section */}
+            {/* Form Section */}
             <div className="flex flex-col items-center md:items-start justify-center w-full mt-6 space-y-4">
-              {/* Email Input and Button */}
               <div className={formClass}>
                 <input
                   className={`${inputClass} lg:mr-3 md:mb-3`}
@@ -240,30 +289,29 @@ const HeroSection = () => {
                   onChange={handleEmailChange}
                   onKeyPress={handleKeyPress}
                   disabled={isSubmitting}
+                  required
                 />
                 <button
                   type="button"
-                  className={`${buttonClass} md:mb-3`}
                   onClick={handleSubmit}
+                  className={`${buttonClass} md:mb-3`}
                   disabled={isSubmitting || !email.trim()}
                 >
                   {getButtonText()}
                 </button>
               </div>
 
-              {/* Status Messages */}
               {submitStatus === 'success' && (
                 <p className="text-purple-gray text-sm font-medium">
-                  Successfully subscribed! Welcome to our community.
+                  Thank you! You should receive a confirmation shortly.
                 </p>
               )}
-              {submitStatus === 'error' && (
+              {error && (
                 <p className="text-red-600 text-sm font-medium">
-                  Something went wrong. Please check your email and try again.
+                  {error}
                 </p>
               )}
 
-              {/* Social Media Icons */}
               <div className="flex space-x-4 justify-center md:justify-start">
                 <a
                   href="https://www.facebook.com/pivotfordancers/"
@@ -301,8 +349,8 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right */}
-          <div className={`relative transition-all duration-1000 delay-300  pb-px-5 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          {/* Right Column */}
+          <div className={`relative transition-all duration-1000 delay-300 pb-px-5 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <div className="relative aspect-video w-full">
               <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
                 <iframe
@@ -318,9 +366,9 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <br></br>
+            <br />
 
-            {/* Animated Stats */}
+            {/* Stats Section */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               {stats.map((stat, index) => (
                 <StatCard key={index} {...stat} />
