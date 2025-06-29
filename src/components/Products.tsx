@@ -159,6 +159,12 @@ const FeaturedProducts: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Handle button clicks
+  const handleProductClick = (url: string, event: React.MouseEvent) => {
+    event.preventDefault();
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   // Calculate bundle pricing dynamically
   const bundleProducts = products.filter(product => [2, 3, 4].includes(product.id));
   const totalPrice = bundleProducts.reduce((sum, product) => sum + product.price, 0);
@@ -200,7 +206,7 @@ const FeaturedProducts: React.FC = () => {
             return (
               <div
                 key={product.id}
-                className={`group relative bg-white rounded-2xl shadow-lg transition-all duration-500 overflow-hidden border border-light-gray hover:border-2 hover:border-dark-gray ${isVisible.products
+                className={`group relative bg-white rounded-2xl shadow-lg transition-all duration-500 overflow-hidden border border-light-gray hover:opacity-90 ${isVisible.products
                   ? 'opacity-100 transform translate-y-0'
                   : 'opacity-0 transform translate-y-16'
                   }`}
@@ -261,7 +267,7 @@ const FeaturedProducts: React.FC = () => {
                       {product.features.slice(0, 2).map((feature, index) => (
                         <span
                           key={index}
-                          className="inline-block bg-beige text-dark-gray text-xs font-montserrat px-2 py-1 rounded-full"
+                          className="inline-block bg-amber-50 text-gray-800 text-xs px-2 py-1 rounded-full"
                         >
                           {feature}
                         </span>
@@ -306,12 +312,10 @@ const FeaturedProducts: React.FC = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <a
-                      href={product.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`block w-full py-2 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 ${hoveredProduct === product.id
-                        ? "bg-dark-gray hover:bg-brown-gray text-white transform scale-105"
+                    <button
+                      onClick={(e) => handleProductClick(product.url, e)}
+                      className={`block w-full py-2 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 cursor-pointer ${hoveredProduct === product.id
+                        ? "bg-light-gray hover:bg-purple-gray text-white transform scale-105"
                         : "bg-light-gray hover:bg-purple-gray text-white"
                         }`}
                     >
@@ -319,24 +323,24 @@ const FeaturedProducts: React.FC = () => {
                         product.id === 2 ? "DOWNLOAD NOW" :
                           product.id === 3 ? "START NOW" :
                             "BOOK NOW"}
-                    </a>
+                    </button>
                     {product.id === 1 && (
                       <p className="font-montserrat text-xs text-center text-brown-gray">
                         Limited spots available for live sessions
                       </p>
                     )}
                     {product.id === 2 && (
-                      <p className="font-montserrat text-xs text-center text-brown-gray">
+                      <p className="text-xs text-center text-stone-600">
                         Low-cost, low-pressure
                       </p>
                     )}
                     {product.id === 3 && (
-                      <p className="font-montserrat text-xs text-center text-brown-gray">
+                      <p className="text-xs text-center text-stone-600">
                         Downloaded by {product.reviews}+ professionals
                       </p>
                     )}
                     {product.id === 4 && (
-                      <p className="font-montserrat text-xs text-center text-brown-gray">
+                      <p className="text-xs text-center text-stone-600">
                         Limited Availability
                       </p>
                     )}
@@ -430,7 +434,7 @@ const FeaturedProducts: React.FC = () => {
                         Save ${Math.round(discountAmount)} — Invest in your next stage today
                       </p>
                       <p className="font-montserrat text-xs text-brown-gray mt-2 italic">
-                        Limited time only. Don’t miss out.
+                        Limited time only. Don't miss out.
                       </p>
                     </div>
 
@@ -449,14 +453,12 @@ const FeaturedProducts: React.FC = () => {
                       </div>
                     </div>
 
-                    <a
-                      href={bundlePaymentUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full py-3 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white"
+                    <button
+                      onClick={(e) => handleProductClick(bundlePaymentUrl, e)}
+                      className="block w-full py-3 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white cursor-pointer"
                     >
                       START MY PIVOT
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
