@@ -220,7 +220,7 @@ const HeroSection = () => {
 
               {/* Status Messages */}
               {submitStatus === 'success' && (
-                <p className="text-green-600 text-sm font-medium">
+                <p className="text-purple-gray text-sm font-medium">
                   Successfully subscribed! Welcome to our community.
                 </p>
               )}
