@@ -128,34 +128,66 @@ const HeroSection = () => {
     }
   };
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async () => {
-    if (!email.trim()) {
+    const trimmedEmail = email.trim();
+
+    if (!trimmedEmail) {
+      setSubmitStatus('error');
+      return;
+    }
+
+    if (!validateEmail(trimmedEmail)) {
+      setSubmitStatus('error');
       return;
     }
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    try {
-      const response = await fetch('https://stats.sender.net/forms/aKrmkz/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email.trim()
-        })
-      });
+    // Create a hidden iframe and form for seamless submission
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'sender-frame';
+    document.body.appendChild(iframe);
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        setEmail(''); // Clear the form on success
-      } else {
-        setSubmitStatus('error');
-      }
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://stats.sender.net/forms/aKrmkz/subscribe';
+    form.target = 'sender-frame'; // Submit to hidden iframe
+    form.style.display = 'none';
+
+    const emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.name = 'email';
+    emailInput.value = trimmedEmail;
+
+    form.appendChild(emailInput);
+    document.body.appendChild(form);
+
+    try {
+      form.submit();
+
+      // Clean up after a delay
+      setTimeout(() => {
+        if (document.body.contains(form)) document.body.removeChild(form);
+        if (document.body.contains(iframe)) document.body.removeChild(iframe);
+      }, 1000);
+
+      // Assume success
+      setSubmitStatus('success');
+      setEmail('');
     } catch (error) {
-      console.error('Subscription error:', error);
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
+
+      // Clean up on error
+      if (document.body.contains(form)) document.body.removeChild(form);
+      if (document.body.contains(iframe)) document.body.removeChild(iframe);
     } finally {
       setIsSubmitting(false);
     }
@@ -163,6 +195,7 @@ const HeroSection = () => {
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
+      event.preventDefault();
       handleSubmit();
     }
   };
@@ -226,7 +259,7 @@ const HeroSection = () => {
               )}
               {submitStatus === 'error' && (
                 <p className="text-red-600 text-sm font-medium">
-                  Something went wrong. Please try again.
+                  Something went wrong. Please check your email and try again.
                 </p>
               )}
 
