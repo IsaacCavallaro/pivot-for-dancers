@@ -2,7 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { Star, Clock, BookOpen, Users, Video, Check } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { products, Product, bundlePaymentUrl } from "../data/products";
+import { products, Product, bundlePaymentUrl } from "../../data/products";
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
 
 const moreInfoClasses = "mt-10 text-center";
 const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
@@ -444,4 +446,13 @@ const FeaturedProducts: React.FC = () => {
     );
 };
 
-export default FeaturedProducts;
+
+export default function ProductsPage() {
+    return (
+        <div>
+            <Navigation />
+            <FeaturedProducts />
+            <Footer />
+        </div>
+    );
+}

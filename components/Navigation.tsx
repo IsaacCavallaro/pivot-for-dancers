@@ -46,22 +46,10 @@ const Navbar: React.FC<NavbarProps> = () => {
     useEffect(() => {
         if (router.pathname === '/') {
             const handleScroll = () => {
-                const sectionIds = ['home', 'products'];
+                const sectionIds = ['home'];
                 const threshold = 0.8;
 
                 const homeSection = document.getElementById('home');
-                const productsSection = document.getElementById('products');
-
-                // Keep "HOME" active until "PRODUCTS" is in view
-                if (homeSection && productsSection) {
-                    const productsTop = productsSection.getBoundingClientRect().top + window.scrollY;
-                    const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
-
-                    if (window.scrollY < productsTop - navbarHeight) {
-                        setActiveSection('home');
-                        return;
-                    }
-                }
 
                 // Check other sections as usual
                 for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -99,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                         {/* Desktop Navigation Links */}
                         <ul className="hidden lg:flex lg:space-x-8 lg:items-center">
-                            {['home', 'products'].map((section) => (
+                            {['home'].map((section) => (
                                 <li key={section}>
                                     <a
                                         href={`/#${section}`}
@@ -110,6 +98,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     </a>
                                 </li>
                             ))}
+                            <li>
+                                <a href="/products" className={`text-sm ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    PRODUCTS
+                                </a>
+                            </li>
                             <li>
                                 <a href="/about" className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
                                     ABOUT
@@ -156,7 +149,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     >
                         <div className="flex flex-col justify-center items-center h-full">
                             <ul className="space-y-6 text-center">
-                                {['home', 'products'].map((section) => (
+                                {['home'].map((section) => (
                                     <li key={section}>
                                         <a
                                             href={`/#${section}`}
@@ -167,6 +160,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                         </a>
                                     </li>
                                 ))}
+                                <li>
+                                    <a href="/products" className={`text-2xl ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        PRODUCTS
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="/about" className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
                                         ABOUT

@@ -89,8 +89,8 @@ const ProductPage = () => {
                                             <Star
                                                 key={i}
                                                 className={`w-5 h-5 ${i < Math.floor(product.rating)
-                                                        ? "text-yellow-400 fill-current"
-                                                        : "text-gray-300"
+                                                    ? "text-yellow-400 fill-current"
+                                                    : "text-gray-300"
                                                     }`}
                                             />
                                         ))}

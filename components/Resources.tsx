@@ -16,10 +16,10 @@ const resources = [
         link: '/pivot-quiz'
     },
     {
-        title: 'Happy Trails Mini-Course',
-        description: 'A mini-course to help you find your path after dance.',
+        title: 'Expectations vs Reality',
+        description: 'A realistic look at career transitions for dancers.',
         image: '/assets/happy-trails-mini-course.png',
-        link: '#'
+        link: '/resources/data'
     },
     {
         title: 'Pivot Mentorship',
