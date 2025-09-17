@@ -1,4 +1,5 @@
 import React, { useState, FC } from 'react';
+import Link from 'next/link'; // Import Next.js Link component
 
 const FAQ: FC = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>();
@@ -19,8 +20,13 @@ const FAQ: FC = () => {
                         Run by former professional dancers who have successfully changed careers, we're here to share what we've learned about making a pivot with
                         our growing community of fellow dancers.
                     </p>
-                    <br></br>
-                    <a href='https://stats.sender.net/forms/aKrmkz/view' target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                    <br />
+                    <a
+                        href='https://stats.sender.net/forms/aKrmkz/view'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                    >
                         JOIN US
                     </a>
                 </>
@@ -31,12 +37,17 @@ const FAQ: FC = () => {
             answer: (
                 <>
                     <p>Pivot Conversations are free virtual meetups for dancers to have conversations about career change. </p>
-                    <br></br>
+                    <br />
                     <p>
                         Connect with other dancers going through similar experiences and feel less alone on your career change journey.
                     </p>
-                    <br></br>
-                    <a href="https://stats.sender.net/forms/bmZM4r/view" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                    <br />
+                    <a
+                        href="https://stats.sender.net/forms/bmZM4r/view"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                    >
                         SIGN UP
                     </a>
                 </>
@@ -47,20 +58,23 @@ const FAQ: FC = () => {
             answer: (
                 <>
                     <p>Written by our founder, Kaylee Randall, 'How to Pivot' is an <strong>actionable, dancer-specific</strong> guide to help
-                        you find meaningful work of the stage.</p>
-                    <br></br>
+                        you find meaningful work off the stage.</p>
+                    <br />
                     <p>In 10 chapters, Kaylee dives deep into psychological patterns that might
                         be holding you back and step-by-step activities to help you actually move on to your next stage.</p>
-                    <br></br>
+                    <br />
                     <p>With real-life examples from Kaylee's own career transition, 'How to Pivot' is essential reading for any dancer struggling with their next steps.</p>
-                    <br></br>
+                    <br />
                     <div className="mt-4 mx-auto flex justify-center md:justify-start">
-                        <a href="https://buy.stripe.com/14k6oG8rQexsgCI147" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                        <a
+                            href="https://buy.stripe.com/14k6oG8rQexsgCI147"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                        >
                             ORDER NOW
                         </a>
                     </div>
-
-
                 </>
             ),
         },
@@ -73,27 +87,32 @@ const FAQ: FC = () => {
                         That's why we developed a quick but effective mini course to help you plan your pivot with an
                         <strong> in-depth, career change roadmap</strong>.
                     </p>
-                    <br></br>
+                    <br />
                     <p>
                         We lay it all out for you and take the guesswork out of changing careers. Our 5-year career roadmap
                         can help you stay on track and finally feel confident about your next steps.
                     </p>
-                    <br></br>
+                    <br />
                     <p>
                         <strong>Tailored to professional dancers</strong>, the 'Happy Trails' mini course offers:
                     </p>
-                    <br></br>
+                    <br />
                     <ul className="list-disc pl-5 space-y-1">
                         <li>A clear, step-by-step career change plan</li>
                         <li>50+ non-dancer job ideas</li>
                         <li>Resume templates & interview script</li>
                     </ul>
-                    <br></br>
+                    <br />
                     <p>
                         For the dancers who want to make a plan for what's next but have no idea where to start, 'Happy Trails' is for you.
                     </p>
-                    <br></br>
-                    <a href="https://buy.stripe.com/dR628qgYm750aek6oq" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                    <br />
+                    <a
+                        href="https://buy.stripe.com/dR628qgYm750aek6oq"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                    >
                         ORDER NOW
                     </a>
                 </>
@@ -115,7 +134,7 @@ const FAQ: FC = () => {
                         You'll be paired with an experienced, former professional dancer to guide you through these challenging times.
                         As part of the program, you'll receive:
                     </p>
-                    <br></br>
+                    <br />
                     <ul className="list-disc pl-5 space-y-1">
                         <li>3x one-hour virtual sessions with an experienced, former professional dancer</li>
                         <li>Private and confidential conversations</li>
@@ -123,8 +142,12 @@ const FAQ: FC = () => {
                         <li>Networking opportunities</li>
                     </ul>
                     <br />
-                    <br></br>
-                    <a href="https://tidycal.com/pivotfordancers/mentorship-1" target="_blank" rel="noopener noreferrer" className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center">
+                    <a
+                        href="https://tidycal.com/pivotfordancers/mentorship-1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                    >
                         BOOK NOW
                     </a>
                 </>
@@ -136,8 +159,12 @@ const FAQ: FC = () => {
         <section id="faq-section" className="bg-beige py-5">
             <div className="max-w-7xl py-4 px-4 mx-auto md:px-6">
                 <header className="mb-6 text-center">
-                    <h2 className="mt-2 font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight text-center">FAQs</h2>
-                    <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300">Feeling Curious?</span>
+                    <h2 className="mt-2 font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+                        FAQs
+                    </h2>
+                    <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300">
+                        Feeling Curious?
+                    </span>
                 </header>
                 <div className="faq-items space-y-4">
                     {faqItems.map((item, index) => (
@@ -150,9 +177,13 @@ const FAQ: FC = () => {
                                 <span className="font-merriweather dark:text-white text-xl">{item.question}</span>
                                 <div className={toggleIconContainerClasses}>
                                     {activeIndex === index ? (
-                                        <i className="fas fa-chevron-up text-white text-xl"></i>
+                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                                        </svg>
                                     ) : (
-                                        <i className="fas fa-chevron-down text-white text-xl"></i>
+                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
                                     )}
                                 </div>
                             </div>

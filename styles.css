@@ -6,16 +6,16 @@
 @import 'tailwindcss/utilities';
 
 .invisible-placeholder {
-  height: 60px;
-  /* Adjust this value based on your navigation bar height */
-  visibility: hidden;
+    height: 60px;
+    /* Adjust this value based on your navigation bar height */
+    visibility: hidden;
 }
 
 
 /* home background image */
 #home .overlay {
-  position: absolute;
-  inset: 0;
-  background: black;
-  opacity: 0.7;
+    position: absolute;
+    inset: 0;
+    background: black;
+    opacity: 0.7;
 }

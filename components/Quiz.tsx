@@ -298,9 +298,9 @@ const Quiz: React.FC = () => {
     const [name, setName] = useState("")
     const [error, setError] = useState<string | null>(null)
 
-    // API configuration
-    const API_URL = process.env.REACT_APP_API_URL;
-    const API_KEY = process.env.REACT_APP_API_KEY;
+    // API configuration - using Next.js environment variables
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
     const handleAnswer = (questionId: number, optionId: string) => {
         setAnswers((prev) => ({
@@ -359,7 +359,7 @@ const Quiz: React.FC = () => {
 
         try {
             // Make the API request to submit user data with the correct group ID
-            const response = await fetch(API_URL, {
+            const response = await fetch(API_URL || "", {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${API_KEY}`,

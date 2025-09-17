@@ -1,6 +1,7 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -22,8 +23,8 @@ module.exports = {
         'brown-gray': '#746C70',
       },
       fontFamily: {
-        'merriweather': ['Merriweather', 'serif'], // Headings
-        'montserrat': ['Montserrat', 'sans-serif'],  // Paragraphs
+        'merriweather': ['Merriweather', 'serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
       },
       borderColor: {
         'light-gray': '#647C90',

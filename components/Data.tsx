@@ -12,7 +12,6 @@ import {
     LabelList,
 } from 'recharts';
 
-
 type Country = 'Australia' | 'UnitedStates' | 'Switzerland';
 type AgeData = {
     category: string;
@@ -95,8 +94,7 @@ const DataSection = () => {
                                     {(['Australia', 'UnitedStates', 'Switzerland'] as const).map((c) => (
                                         <button
                                             key={c}
-                                            className={`rounded-full px-3 py-1 text-sm font-montserrat ${ageCountry === c ? 'bg-purple-gray text-white' : 'bg-off-white border border-light-gray'
-                                                }`}
+                                            className={`rounded-full px-3 py-1 text-sm font-montserrat ${ageCountry === c ? 'bg-purple-gray text-white' : 'bg-off-white border border-light-gray'}`}
                                             onClick={() => setAgeCountry(c)}
                                         >
                                             {c === 'UnitedStates' ? 'USA' : c}
@@ -210,7 +208,7 @@ const DataSection = () => {
                         <h2 className="font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
                             Expectations vs Reality
                         </h2>
-                        <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl mx-auto">
+                        <p className="font-montserrat text-xl text-center text-brown-gray mb-8 leading-relaxed max-w-xl mx-auto">
                             Research shows a significant gap between when dancers expect to retire and when they <em>actually</em> do
                         </p>
                     </div>
@@ -223,8 +221,7 @@ const DataSection = () => {
                                     key={c}
                                     className={`px-6 py-2 rounded-full font-montserrat transition-all ${ageCountry === c
                                         ? 'bg-purple-gray text-white shadow-md'
-                                        : 'text-dark-gray hover:bg-beige'
-                                        }`}
+                                        : 'text-dark-gray hover:bg-beige'}`}
                                     onClick={() => setAgeCountry(c)}
                                 >
                                     {c === 'UnitedStates' ? 'USA' : c}
@@ -244,7 +241,7 @@ const DataSection = () => {
                                     href="http://neumann.hec.ca/aimac2005/PDF_Text/JeffriJ_ThrosbyD.pdf"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="underline hover:text-white inline-flex items-center justify-center"
+                                    className="underline hover:text-white inline-flex items-center"
                                 >
                                     Source: Making Changes: Facilitating the Transition of Dancers
                                     <ExternalLink className="h-3 w-3 ml-1" />
