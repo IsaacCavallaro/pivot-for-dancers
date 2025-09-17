@@ -469,7 +469,7 @@ const HeroSection = () => {
       }}
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start justify-between">
           {/* Left Column */}
           <div
             className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}
@@ -544,9 +544,9 @@ const HeroSection = () => {
 
           {/* Right Column - Mobile Phone Mockup */}
           <div
-            className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} flex justify-center`}
           >
-            <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col mt-[-1px]">
               <div className="relative">
                 {/* Phone Frame */}
                 <div className="relative w-80 h-[600px] bg-gray-900 rounded-[3rem] p-2 shadow-2xl overflow-hidden">
