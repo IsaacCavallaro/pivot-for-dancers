@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
-        if (router.pathname.startsWith('/resources') || router.pathname.startsWith('/pivot-quiz')) {
+        if (router.pathname !== '/') {
             router.push(`/#${id}`);
         } else {
             scrollToSection(id);
@@ -46,7 +46,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     useEffect(() => {
         if (router.pathname === '/') {
             const handleScroll = () => {
-                const sectionIds = ['home', 'products', 'about'];
+                const sectionIds = ['home', 'products'];
                 const threshold = 0.8;
 
                 const homeSection = document.getElementById('home');
@@ -99,7 +99,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                         {/* Desktop Navigation Links */}
                         <ul className="hidden lg:flex lg:space-x-8 lg:items-center">
-                            {['home', 'products', 'about'].map((section) => (
+                            {['home', 'products'].map((section) => (
                                 <li key={section}>
                                     <a
                                         href={`/#${section}`}
@@ -110,6 +110,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     </a>
                                 </li>
                             ))}
+                            <li>
+                                <a href="/about" className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    ABOUT
+                                </a>
+                            </li>
                             <li>
                                 <a href="/resources" className={`text-sm ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
                                     RESOURCES
@@ -151,7 +156,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     >
                         <div className="flex flex-col justify-center items-center h-full">
                             <ul className="space-y-6 text-center">
-                                {['home', 'products', 'about'].map((section) => (
+                                {['home', 'products'].map((section) => (
                                     <li key={section}>
                                         <a
                                             href={`/#${section}`}
@@ -162,6 +167,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                         </a>
                                     </li>
                                 ))}
+                                <li>
+                                    <a href="/about" className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        ABOUT
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="/resources" className={`text-2xl ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
                                         RESOURCES

@@ -488,7 +488,7 @@ const HeroSection = () => {
             </h1>
 
             <p className="font-montserrat text-xl mb-8 leading-relaxed max-w-xl" style={{ color: "#746C70" }}>
-              At Pivot for Dancers, we're helping professional dancers find meaningful work off the stage with our{" "}
+              We're helping professional dancers find meaningful work off the stage with our{" "}
               <span
                 className="px-2 py-1 rounded-lg font-semibold"
                 style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}

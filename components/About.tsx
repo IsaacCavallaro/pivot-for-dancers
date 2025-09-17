@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import Image from 'next/image'
 
 const STYLES = {
-    section: "bg-beige font-merriweather py-10 px-5 text-center",
+    section: "bg-beige font-merriweather py-12 md:py-20 px-5 text-center",
     headingContainer: "px-4 pl-4 mb-6",
     headingSpan: "text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300",
     headingTitle: "font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight",

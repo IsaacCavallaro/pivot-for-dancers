@@ -11,6 +11,7 @@ const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:o
 const FeaturedProducts: React.FC = () => {
     const router = useRouter();
     const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({
         title: false,
         products: false,
@@ -64,6 +65,9 @@ const FeaturedProducts: React.FC = () => {
 
         return () => observer.disconnect();
     }, []);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     // Handle button clicks
     const handleProductClick = (url: string, event: React.MouseEvent) => {
@@ -276,122 +280,152 @@ const FeaturedProducts: React.FC = () => {
                     })}
                 </div>
 
-                {/* Feature Bundle Section */}
-                <div className="mt-20 mb-16">
-                    <div className="dark:bg-gray-700 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
-                        <div className="relative z-10">
+                {/* Simple Pricing & CTA Callout */}
+                <div className="mt-16 mb-16">
+                    <div className="bg-white rounded-3xl p-8 md:p-10 text-center shadow-lg">
+                        <h3 className="font-merriweather text-2xl md:text-3xl font-bold text-dark-gray mb-4">
+                            Ready to Take the Leap?
+                        </h3>
+                        <p className="font-montserrat text-brown-gray mb-6 max-w-2xl mx-auto">
+                            Get{' '}
+                            <span className="bg-yellow-400 text-dark-gray px-2 py-1 rounded-full font-montserrat font-bold text-sm md:text-base mx-1">
+                                {discountPercent}% OFF
+                            </span>{' '}
+                            when you start your pivot with our complete suite of career change resources.
+                        </p>
 
-                            {/* Bundle Header */}
-                            <div className="text-center mb-12">
-                                <div className="inline-flex items-center gap-2 bg-yellow-400 text-dark-gray px-4 py-2 rounded-full font-montserrat font-semibold text-sm mb-4">
-                                    <Star className="w-4 h-4 fill-current" />
-                                    BEST VALUE
-                                </div>
-                                <h2 className="font-merriweather text-4xl md:text-5xl font-bold mb-4">
-                                    Dance Career Transition Suite
-                                </h2>
-                                <p className="font-montserrat text-xl opacity-90 max-w-3xl mx-auto">
-                                    Everything you need to confidently pivot into meaningful, fulfilling work — For less than the cost of new headshots.
-                                </p>
-                            </div>
+                        <button
+                            onClick={openModal}
+                            className="block w-full max-w-xs mx-auto py-3 px-6 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white cursor-pointer"
+                        >
+                            VIEW BUNDLE DEAL
+                        </button>
+                    </div>
+                </div>
 
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                                {/* Bundle Contents */}
-                                <div>
-                                    <div className="space-y-6">
-                                        {bundleProducts.map((product) => {
-                                            const IconComponent = product.icon;
-                                            return (
-                                                <div key={product.id} className="flex items-center gap-4 bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
-                                                    <div className={`rounded-full p-3 flex-shrink-0 ${product.id === 2 ? 'bg-purple-gray' :
-                                                        product.id === 3 ? 'bg-beige' :
-                                                            'bg-light-gray'
-                                                        }`}>
-                                                        <IconComponent className={`w-6 h-6 ${product.id === 3 ? 'text-dark-gray' : 'text-white'}`} />
-                                                    </div>
-                                                    <div>
-                                                        <h4 className="font-merriweather text-xl md:text-2xl font-bold mb-2 md:mb-3">
-                                                            {product.name}
-                                                        </h4>
-                                                        <p className="font-montserrat text-md opacity-90 mb-2">
-                                                            {product.id === 2 ? "10 chapters of mindset shifts and step-by-step guides" :
-                                                                product.id === 3 ? "Self-paced course with video lessons & extras" :
-                                                                    "Specialised 1-on-1 coaching sessions"}
-                                                        </p>
-                                                        <div className="flex items-center gap-2">
-                                                            <span className="font-montserrat text-sm line-through opacity-75">
-                                                                ${product.originalPrice || product.price}
-                                                            </span>
-                                                            <span className={`font-montserrat text-xs px-2 py-1 rounded-full ${product.id === 2 ? 'bg-purple-gray text-white' :
-                                                                product.id === 3 ? 'bg-purple-gray text-white' :
-                                                                    'bg-purple-gray text-white'
-                                                                }`}>
-                                                                {product.id === 2 ? 'Ebook' :
-                                                                    product.id === 3 ? 'Online Course' :
-                                                                        'Private Sessions'}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
+                {isModalOpen && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4 overflow-y-auto">
+                        <div className="bg-white rounded-3xl p-8 text-dark-gray max-w-4xl w-full relative my-8">
+                            <button onClick={closeModal} className="absolute top-6 right-6 text-gray-400 hover:text-gray-600 z-10">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+
+                            {/* Full Complex Bundle Section in Modal */}
+                            <div className="dark:bg-gray-700 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+                                <div className="relative z-10">
+                                    {/* Bundle Header */}
+                                    <div className="text-center mb-12">
+                                        <div className="inline-flex items-center gap-2 bg-yellow-400 text-dark-gray px-4 py-2 rounded-full font-montserrat font-semibold text-sm mb-4">
+                                            <Star className="w-4 h-4 fill-current" />
+                                            BEST VALUE
+                                        </div>
+                                        <h2 className="font-merriweather text-4xl md:text-5xl font-bold mb-4">
+                                            Dance Career Transition Suite
+                                        </h2>
+                                        <p className="font-montserrat text-xl opacity-90 max-w-3xl mx-auto">
+                                            Everything you need to confidently pivot into meaningful, fulfilling work — For less than the cost of new headshots.
+                                        </p>
                                     </div>
-                                </div>
 
-                                {/* Pricing & CTA */}
-                                <div className="bg-white rounded-3xl p-8 text-dark-gray">
-                                    <div className="text-center mb-8">
-                                        <div className="mb-4">
-                                            <span className="font-montserrat text-sm text-brown-gray">Full Price Value:</span>
-                                            <div className="font-merriweather text-3xl text-brown-gray line-through mb-2">
-                                                ${totalPrice}
+                                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                        {/* Bundle Contents */}
+                                        <div>
+                                            <div className="space-y-6">
+                                                {bundleProducts.map((product) => {
+                                                    const IconComponent = product.icon;
+                                                    return (
+                                                        <div key={product.id} className="flex items-center gap-4 bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                                                            <div className={`rounded-full p-3 flex-shrink-0 ${product.id === 2 ? 'bg-purple-gray' :
+                                                                product.id === 3 ? 'bg-beige' :
+                                                                    'bg-light-gray'
+                                                                }`}>
+                                                                <IconComponent className={`w-6 h-6 ${product.id === 3 ? 'text-dark-gray' : 'text-white'}`} />
+                                                            </div>
+                                                            <div>
+                                                                <h4 className="font-merriweather text-xl md:text-2xl font-bold mb-2 md:mb-3">
+                                                                    {product.name}
+                                                                </h4>
+                                                                <p className="font-montserrat text-md opacity-90 mb-2">
+                                                                    {product.id === 2 ? "10 chapters of mindset shifts and step-by-step guides" :
+                                                                        product.id === 3 ? "Self-paced course with video lessons & extras" :
+                                                                            "Specialised 1-on-1 coaching sessions"}
+                                                                </p>
+                                                                <div className="flex items-center gap-2">
+                                                                    <span className="font-montserrat text-sm line-through opacity-75">
+                                                                        ${product.originalPrice || product.price}
+                                                                    </span>
+                                                                    <span className={`font-montserrat text-xs px-2 py-1 rounded-full ${product.id === 2 ? 'bg-purple-gray text-white' :
+                                                                        product.id === 3 ? 'bg-purple-gray text-white' :
+                                                                            'bg-purple-gray text-white'
+                                                                        }`}>
+                                                                        {product.id === 2 ? 'Ebook' :
+                                                                            product.id === 3 ? 'Online Course' :
+                                                                                'Private Sessions'}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
                                             </div>
                                         </div>
 
-                                        <div className="mb-6">
-                                            <div className="flex items-center justify-center gap-3 mb-2">
-                                                <span className="font-merriweather text-5xl font-bold text-dark-gray">
-                                                    ${Math.round(bundlePrice)}
-                                                </span>
-                                                <div className="bg-yellow-400 text-dark-gray px-3 py-1 rounded-full">
-                                                    <span className="font-montserrat font-bold text-sm">{discountPercent}% OFF</span>
+                                        {/* Pricing & CTA */}
+                                        <div className="bg-white rounded-3xl p-8 text-dark-gray flex flex-col items-center justify-center">
+                                            <div className="mb-4 text-center">
+                                                <span className="font-montserrat text-sm text-brown-gray">Full Price Value:</span>
+                                                <div className="font-merriweather text-3xl text-brown-gray line-through mb-2">
+                                                    ${totalPrice}
                                                 </div>
                                             </div>
-                                            <p className="font-montserrat text-brown-gray">
-                                                Save ${Math.round(discountAmount)} — Invest in your next stage today
-                                            </p>
-                                            <p className="font-montserrat text-xs text-brown-gray mt-2 italic">
-                                                Limited time only. Don't miss out.
-                                            </p>
-                                        </div>
 
-                                        <div className="space-y-3 mb-8">
-                                            <div className="flex items-center justify-center gap-2 text-sm">
-                                                <Check className="w-4 h-4 text-light-gray" />
-                                                <span className="font-montserrat text-brown-gray">First access to Pivot Conversations</span>
+                                            <div className="mb-6 text-center">
+                                                <div className="flex items-center justify-center gap-3 mb-2">
+                                                    <span className="font-merriweather text-5xl font-bold text-dark-gray">
+                                                        ${Math.round(bundlePrice)}
+                                                    </span>
+                                                    <div className="bg-yellow-400 text-dark-gray px-3 py-1 rounded-full">
+                                                        <span className="font-montserrat font-bold text-sm">{discountPercent}% OFF</span>
+                                                    </div>
+                                                </div>
+                                                <p className="font-montserrat text-brown-gray">
+                                                    Save ${Math.round(discountAmount)} — Invest in your next stage today
+                                                </p>
+                                                <p className="font-montserrat text-xs text-brown-gray mt-2 italic">
+                                                    Limited time only. Don't miss out.
+                                                </p>
                                             </div>
-                                            <div className="flex items-center justify-center gap-2 text-sm">
-                                                <Check className="w-4 h-4 text-light-gray" />
-                                                <span className="font-montserrat text-brown-gray">Our complete suite of career change resources</span>
-                                            </div>
-                                            <div className="flex items-center justify-center gap-2 text-sm">
-                                                <Check className="w-4 h-4 text-light-gray" />
-                                                <span className="font-montserrat text-brown-gray">Dancer-specific career transformation system</span>
-                                            </div>
-                                        </div>
 
-                                        <button
-                                            onClick={(e) => handleProductClick(bundlePaymentUrl, e)}
-                                            className="block w-full py-3 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white cursor-pointer"
-                                        >
-                                            START MY PIVOT
-                                        </button>
+                                            <div className="space-y-3 mb-8 text-left w-full px-4">
+                                                <div className="flex items-center gap-2 text-sm">
+                                                    <Check className="w-4 h-4 text-light-gray flex-shrink-0" />
+                                                    <span className="font-montserrat text-brown-gray">First access to Pivot Conversations</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-sm">
+                                                    <Check className="w-4 h-4 text-light-gray flex-shrink-0" />
+                                                    <span className="font-montserrat text-brown-gray">Our complete suite of career change resources</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-sm">
+                                                    <Check className="w-4 h-4 text-light-gray flex-shrink-0" />
+                                                    <span className="font-montserrat text-brown-gray">Dancer-specific career transformation system</span>
+                                                </div>
+                                            </div>
+
+                                            <button
+                                                onClick={(e) => handleProductClick(bundlePaymentUrl, e)}
+                                                className="block w-full py-3 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 bg-light-gray hover:bg-purple-gray hover:transform hover:scale-105 text-white cursor-pointer"
+                                            >
+                                                START MY PIVOT
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                )}
 
                 {/* GO TO FAQ*/}
                 <div className={moreInfoClasses}>
