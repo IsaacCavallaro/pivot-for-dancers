@@ -1,9 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Star, CheckCircle, Users, Globe } from 'lucide-react';
 
-const API_URL = process.env.REACT_APP_API_URL;
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 interface CounterProps {
     end: number;
     duration: number;
@@ -95,10 +92,6 @@ const StatCard = ({ number, label, icon: IconComponent }: StatCardProps) => {
 
 const AboutUsSection = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [email, setEmail] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         setIsVisible(true);
@@ -110,152 +103,6 @@ const AboutUsSection = () => {
         { number: '17+', label: 'countries participating', icon: Globe },
         { number: '20+', label: 'successful workshops', icon: CheckCircle }
     ];
-
-    const iconSize = 'h-8 w-8';
-    const socialMediaIconClass = `text-white p-2 rounded-full flex items-center justify-center ${iconSize}`;
-    const formClass = 'flex flex-col md:flex-row items-center md:items-stretch w-full justify-center md:justify-start gap-3';
-    const inputClass = `
-    w-full px-4 py-4 
-    text-sm text-gray-900 placeholder-gray-400 
-    bg-gray-100 border border-gray-300 
-    rounded-md dark:text-gray-400 
-    dark:placeholder-gray-400 dark:bg-gray-700 
-    dark:border-gray-700 md:w-2/3
-  `.trim();
-
-    const buttonClass = `
-    px-6 py-4 
-    text-sm font-semibold text-gray-100 
-    bg-purple-gray rounded-md 
-    hover:bg-purple-gray opacity-80 hover:opacity-100 
-    w-full md:w-auto
-    disabled:opacity-50 disabled:cursor-not-allowed
-  `.trim();
-
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-        if (submitStatus !== 'idle') {
-            setSubmitStatus('idle');
-        }
-        if (error) {
-            setError(null);
-        }
-    };
-
-    const validateEmail = (email: string) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const handleSubmit = async () => {
-        const trimmedEmail = email.trim();
-
-        if (!trimmedEmail) {
-            setError("Please provide your email to join us.");
-            setSubmitStatus('error');
-            return;
-        }
-
-        if (!validateEmail(trimmedEmail)) {
-            setError("Please enter a valid email address.");
-            setSubmitStatus('error');
-            return;
-        }
-
-        setIsSubmitting(true);
-        setError(null);
-        setSubmitStatus('idle');
-
-        try {
-            // Check if API configuration is available
-            if (!API_URL || !API_KEY || API_URL === "YOUR_API_URL_HERE" || API_KEY === "YOUR_API_KEY_HERE") {
-                console.log("API configuration not set, using fallback method");
-                throw new Error("API configuration is missing or not set");
-            }
-
-            // Make the API request to submit user data
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${API_KEY}`,
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    email: trimmedEmail,
-                    groups: [], // Add specific group IDs if needed
-                    trigger_automation: true, // Enable automation if you have one set up
-                }),
-            });
-
-            if (response.ok) {
-                console.log("Successfully submitted user data to API");
-                setSubmitStatus('success');
-                setEmail('');
-                setError(null);
-            } else {
-                const errorData = await response.json();
-                console.error("API error:", errorData);
-                setError("There was an error submitting your email. Please try again.");
-                setSubmitStatus('error');
-            }
-        } catch (err) {
-            console.error("Submission error:", err);
-
-            // Fallback to the original method if API fails
-            try {
-                // Method 1: Traditional form submission with hidden iframe (fallback)
-                const iframe = document.createElement('iframe');
-                iframe.name = 'hidden-iframe';
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
-
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'https://stats.sender.net/forms/aKrmkz/subscribe';
-                form.target = 'hidden-iframe';
-                form.style.display = 'none';
-
-                const emailInput = document.createElement('input');
-                emailInput.type = 'email';
-                emailInput.name = 'email';
-                emailInput.value = trimmedEmail;
-
-                form.appendChild(emailInput);
-                document.body.appendChild(form);
-                form.submit();
-
-                // Clean up after submission
-                setTimeout(() => {
-                    document.body.removeChild(form);
-                    document.body.removeChild(iframe);
-                }, 1000);
-
-                setSubmitStatus('success');
-                setEmail('');
-                setError(null);
-            } catch (fallbackError) {
-                console.error("Fallback submission error:", fallbackError);
-                setError("There was an error submitting your email. Please try again.");
-                setSubmitStatus('error');
-            }
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            handleSubmit();
-        }
-    };
-
-    const getButtonText = () => {
-        if (isSubmitting) return 'JOINING...';
-        if (submitStatus === 'success') return 'JOINED!';
-        if (submitStatus === 'error') return 'TRY AGAIN';
-        return 'JOIN US';
-    };
 
     return (
         <section id="about" className="relative overflow-hidden bg-beige pt-24 pb-10">
@@ -279,76 +126,16 @@ const AboutUsSection = () => {
                         <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
                             Pivot for Dancers offers career change resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former professional dancers who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
                         </p>
-
-                        {/* Form Section */}
-                        <div className="flex flex-col items-center md:items-start justify-center w-full mt-6 space-y-4">
-                            <div className={formClass}>
-                                <input
-                                    className={`${inputClass} lg:mr-3 md:mb-3`}
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    value={email}
-                                    onChange={handleEmailChange}
-                                    onKeyPress={handleKeyPress}
-                                    disabled={isSubmitting}
-                                    required
-                                />
-                                <button
-                                    type="button"
-                                    onClick={handleSubmit}
-                                    className={`${buttonClass} md:mb-3`}
-                                    disabled={isSubmitting || !email.trim()}
-                                >
-                                    {getButtonText()}
-                                </button>
-                            </div>
-
-                            {submitStatus === 'success' && (
-                                <p className="text-purple-gray text-sm font-medium">
-                                    Thank you! You should receive a confirmation shortly.
-                                </p>
-                            )}
-                            {error && (
-                                <p className="text-red-600 text-sm font-medium">
-                                    {error}
-                                </p>
-                            )}
-
-                            <div className="flex space-x-4 justify-center md:justify-start">
-                                <a
-                                    href="https://www.facebook.com/pivotfordancers/"
-                                    className={`${socialMediaIconClass} bg-blue-500 hover:bg-blue-400`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                <a
-                                    href="https://www.instagram.com/pivotfordancers/"
-                                    className={`${socialMediaIconClass} bg-pink-500 hover:bg-pink-400`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <i className="fab fa-instagram"></i>
-                                </a>
-                                <a
-                                    href="https://www.linkedin.com/company/pivotfordancers/"
-                                    className={`${socialMediaIconClass} bg-blue-500 hover:bg-blue-400`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <i className="fab fa-linkedin-in"></i>
-                                </a>
-                                <a
-                                    href="https://www.youtube.com/@pivotfordancers"
-                                    className={`${socialMediaIconClass} bg-red-500 hover:bg-red-400`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <i className="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
+                            There are thousands of other dancers <span
+                                className="px-2 py-1 rounded-lg font-semibold"
+                                style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                            >
+                                just like you
+                            </span> in our community. Whether you've suffered
+                            an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not
+                            alone in wanting to change careers as a professional dancer.
+                        </p>
                     </div>
 
                     {/* Right Column */}
