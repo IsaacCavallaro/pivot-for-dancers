@@ -1,110 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import { Star, Clock, BookOpen, Users, Video, Check } from "lucide-react";
-import Image from "next/image"; // Import Next.js Image component
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { products, Product, bundlePaymentUrl } from "../data/products";
 
-const pivotConverstationsUrl = "https://stats.sender.net/forms/bmZM4r/view";
-const ebookPaymentUrl = "https://buy.stripe.com/14k6oG8rQexsgCI147";
-const coursePaymentUrl = "https://buy.stripe.com/dR628qgYm750aek6oq";
-const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
-const bundlePaymentUrl = "https://buy.stripe.com/3cIcN79R24mAbeg4p4g3604";
 const moreInfoClasses = "mt-10 text-center";
 const moreInfoTextClasses = "text-lg sm:text-lg font-montserrat text-brown-gray";
 const faqButtonClasses = "text-purple-gray font-semibold hover:underline focus:outline-none";
 
-interface Product {
-    id: number;
-    name: string;
-    subtitle: string;
-    description: string;
-    price: number;
-    originalPrice: number;
-    url: string;
-    img: string;
-    category: string;
-    duration: string;
-    rating: number;
-    reviews: number;
-    features: string[];
-    icon: React.ComponentType<{ className?: string }>;
-    gradient: string;
-}
-
-const products: Product[] = [
-    {
-        id: 1,
-        name: "Pivot Conversations",
-        subtitle: "VIRTUAL MEETUPS",
-        description:
-            "Join your fellow dancers for a virtual career change conversation. No recordings, no pressure, just real talk.",
-        price: 0,
-        originalPrice: 0,
-        url: pivotConverstationsUrl,
-        img: "/assets/pivot-panels.png",
-        category: "Interview Prep",
-        duration: "1 hour",
-        rating: 5.0,
-        reviews: 43,
-        features: ["Live Group Sessions", "Community", "Follow-up Support"],
-        icon: Video,
-        gradient: "from-light-gray to-purple-gray",
-    },
-    {
-        id: 2,
-        name: "How to Pivot",
-        subtitle: "EBOOK",
-        description:
-            "Get an actionable, dancer-specific career change guide with mindset shifts and steps for how to pivot. ",
-        price: 6.99,
-        originalPrice: 0,
-        url: ebookPaymentUrl,
-        img: "/assets/how-to-pivot-ebook.png",
-        category: "Digital Book",
-        duration: "10 Chapters",
-        rating: 5.0,
-        reviews: 89,
-        features: ["Instant Download", "Interactive Exercises", "Case Studies", "Lifetime Updates"],
-        icon: BookOpen,
-        gradient: "from-purple-gray to-beige",
-    },
-    {
-        id: 3,
-        name: "Happy Trails",
-        subtitle: "DIGITAL COURSE",
-        description:
-            "Explore a 5-year career change roadmap to make a plan for before, during, and after your pivot.",
-        price: 75,
-        originalPrice: 199,
-        url: coursePaymentUrl,
-        img: "/assets/happy-trails-mini-course.png",
-        category: "Online Course",
-        duration: "Self-Paced",
-        rating: 5.0,
-        reviews: 16,
-        features: ["Video Lessons", "Bonus Resources", "Community Access", "Certificate"],
-        icon: Clock,
-        gradient: "from-beige to-brown-gray",
-    },
-    {
-        id: 4,
-        name: "Mentorship",
-        subtitle: "PRIVATE SESSIONS",
-        description:
-            "Need more support? Get personalized guidance tailored to your unique goals and experiences.",
-        price: 150,
-        originalPrice: 229,
-        url: mentorshipBookingUrl,
-        img: "/assets/pivot-mentorship.png",
-        category: "Coaching",
-        duration: "3 x Sessions",
-        rating: 5.0,
-        reviews: 3,
-        features: ["1-on-1 Sessions", "Bespoke Advice", "Email Support", "Progress Tracking"],
-        icon: Users,
-        gradient: "from-brown-gray to-dark-gray",
-    },
-];
-
 const FeaturedProducts: React.FC = () => {
+    const router = useRouter();
     const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
     const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({
         title: false,
@@ -164,6 +69,13 @@ const FeaturedProducts: React.FC = () => {
     const handleProductClick = (url: string, event: React.MouseEvent) => {
         event.preventDefault();
         window.open(url, '_blank', 'noopener,noreferrer');
+    };
+
+    // Handle Learn More clicks - navigate to product page
+    const handleLearnMoreClick = (productName: string, event: React.MouseEvent) => {
+        event.preventDefault();
+        const slug = productName.toLowerCase().replace(/ /g, '-');
+        router.push(`/products/${slug}`);
     };
 
     // Calculate bundle pricing dynamically
@@ -227,7 +139,7 @@ const FeaturedProducts: React.FC = () => {
                                     className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                                 />
 
-                                {/* Product Image - Replaced with Next.js Image */}
+                                {/* Product Image */}
                                 <div className="relative overflow-hidden aspect-[4/3] bg-white flex items-center justify-center">
                                     <Image
                                         src={product.img}
@@ -235,7 +147,7 @@ const FeaturedProducts: React.FC = () => {
                                         width={400}
                                         height={300}
                                         className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
-                                        priority={index < 2} // Prioritize loading first two images
+                                        priority={index < 2}
                                     />
                                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 transition-transform duration-300 group-hover:rotate-12">
                                         <IconComponent className="w-5 h-5 text-dark-gray" />
@@ -327,6 +239,15 @@ const FeaturedProducts: React.FC = () => {
                                                 product.id === 2 ? "DOWNLOAD NOW" :
                                                     product.id === 3 ? "START NOW" :
                                                         "BOOK NOW"}
+                                        </button>
+                                        <button
+                                            onClick={(e) => handleLearnMoreClick(product.name, e)}
+                                            className={`block w-full py-2 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 cursor-pointer ${hoveredProduct === product.id
+                                                ? "bg-light-gray hover:bg-purple-gray text-white transform scale-105"
+                                                : "bg-light-gray hover:bg-purple-gray text-white"
+                                                }`}
+                                        >
+                                            Learn More
                                         </button>
                                         {product.id === 1 && (
                                             <p className="font-montserrat text-xs text-center text-brown-gray">
