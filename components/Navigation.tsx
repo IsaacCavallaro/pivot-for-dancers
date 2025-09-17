@@ -99,13 +99,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 </li>
                             ))}
                             <li>
-                                <a href="/products" className={`text-sm ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                    PRODUCTS
+                                <a href="/about" className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    ABOUT
                                 </a>
                             </li>
                             <li>
-                                <a href="/about" className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                    ABOUT
+                                <a href="/products" className={`text-sm ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    PRODUCTS
                                 </a>
                             </li>
                             <li>
@@ -161,13 +161,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     </li>
                                 ))}
                                 <li>
-                                    <a href="/products" className={`text-2xl ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                        PRODUCTS
+                                    <a href="/about" className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        ABOUT
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/about" className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                        ABOUT
+                                    <a href="/products" className={`text-2xl ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        PRODUCTS
                                     </a>
                                 </li>
                                 <li>

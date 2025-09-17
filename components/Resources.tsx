@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const STYLES = {
     section: 'bg-beige pt-24 pb-12',
@@ -57,14 +57,20 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ title, description, image, 
 
 
 const Resources = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
+
     return (
         <section id="resources" className={STYLES.section}>
             <div className="container mx-auto px-4">
                 <div className={STYLES.headingContainer}>
-                    <h2 className={STYLES.headingTitle}>Resources</h2>
-                    <span className={STYLES.headingSpan}>Tools and guides to help you pivot</span>
+                    <h2 className={`${STYLES.headingTitle} transition-all duration-1000 ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-10'}`}>Resources</h2>
+                    <span className={`${STYLES.headingSpan} ${isVisible ? 'opacity-100' : 'opacity-0'}`}>Tools and guides to help you pivot</span>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
                     {resources.map((resource, index) => (
                         <ResourceCard key={index} {...resource} />
                     ))}
