@@ -114,6 +114,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 </a>
                             </li>
                             <li>
+                                <a href="/faqs" className={`text-sm ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    FAQS
+                                </a>
+                            </li>
+                            <li>
                                 <a
                                     href={signUpUrl}
                                     className={joinUsClassNameDesktop}
@@ -173,6 +178,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 <li>
                                     <a href="/resources" className={`text-2xl ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
                                         RESOURCES
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/faqs" className={`text-2xl ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        FAQS
                                     </a>
                                 </li>
                                 <li>
