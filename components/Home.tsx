@@ -21,9 +21,9 @@ import {
   Facebook,
 } from "lucide-react"
 
-const Counter = ({ end, duration }) => {
+const Counter = ({ end, duration }: { end: number; duration: number }) => {
   const [count, setCount] = useState(0)
-  const ref = useRef(0)
+  const ref = useRef<number>(0)
 
   useEffect(() => {
     let start = 0
@@ -44,11 +44,11 @@ const Counter = ({ end, duration }) => {
   return <span>{count.toLocaleString()}</span>
 }
 
-const StatCard = ({ number, label, icon: IconComponent, index }) => {
+const StatCard = ({ number, label, icon: IconComponent, index }: { number: string; label: string; icon: React.ComponentType<any>; index: number }) => {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
 
-  const splitLabel = (text) => {
+  const splitLabel = (text: string) => {
     const words = text.split(" ")
     const midPoint = Math.ceil(words.length / 2)
     return {
@@ -57,7 +57,7 @@ const StatCard = ({ number, label, icon: IconComponent, index }) => {
     }
   }
 
-  const highlightKeyWords = (text) => {
+  const highlightKeyWords = (text: string) => {
     return text
   }
 
@@ -127,7 +127,7 @@ const HeroSection = () => {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     setIsVisible(true)
@@ -141,7 +141,7 @@ const HeroSection = () => {
     return () => clearInterval(interval)
   }, [])
 
-  const handleEmailChange = (event) => {
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
     if (submitStatus !== "idle") {
       setSubmitStatus("idle")
@@ -160,7 +160,7 @@ const HeroSection = () => {
     dark:border-gray-700 md:w-2/3
   `.trim()
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
   }
@@ -222,7 +222,7 @@ const HeroSection = () => {
     }
   }
 
-  const handleKeyPress = (event) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       handleSubmit()
     }
@@ -463,7 +463,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-15 pb-10"
+      className="relative overflow-hidden pt-32 pb-10"
       style={{
         backgroundColor: "#E2DED0",
       }}
