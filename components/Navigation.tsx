@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface NavbarProps {
     // Define any props if needed
@@ -7,6 +8,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = () => {
     const [activeSection, setActiveSection] = useState('');
     const [open, setOpen] = useState(false);
+    const router = useRouter();
 
     const handleToggle = () => {
         setOpen(!open);
@@ -33,52 +35,58 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
-        scrollToSection(id);
+        if (router.pathname.startsWith('/resources')) {
+            router.push(`/#${id}`);
+        } else {
+            scrollToSection(id);
+        }
         setOpen(false);
     };
 
     useEffect(() => {
-        const handleScroll = () => {
-            const sectionIds = ['home', 'products', 'about'];
-            const threshold = 0.8;
+        if (router.pathname === '/') {
+            const handleScroll = () => {
+                const sectionIds = ['home', 'products', 'about'];
+                const threshold = 0.8;
 
-            const homeSection = document.getElementById('home');
-            const productsSection = document.getElementById('products');
+                const homeSection = document.getElementById('home');
+                const productsSection = document.getElementById('products');
 
-            // Keep "HOME" active until "PRODUCTS" is in view
-            if (homeSection && productsSection) {
-                const productsTop = productsSection.getBoundingClientRect().top + window.scrollY;
-                const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+                // Keep "HOME" active until "PRODUCTS" is in view
+                if (homeSection && productsSection) {
+                    const productsTop = productsSection.getBoundingClientRect().top + window.scrollY;
+                    const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
 
-                if (window.scrollY < productsTop - navbarHeight) {
-                    setActiveSection('home');
-                    return;
-                }
-            }
-
-            // Check other sections as usual
-            for (let i = sectionIds.length - 1; i >= 0; i--) {
-                const id = sectionIds[i];
-                const section = document.getElementById(id);
-
-                if (section) {
-                    const rect = section.getBoundingClientRect();
-                    const isMidpointVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-                    const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
-
-                    if (isMidpointVisible || isInThreshold) {
-                        setActiveSection(id);
-                        break;
+                    if (window.scrollY < productsTop - navbarHeight) {
+                        setActiveSection('home');
+                        return;
                     }
                 }
-            }
-        };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+                // Check other sections as usual
+                for (let i = sectionIds.length - 1; i >= 0; i--) {
+                    const id = sectionIds[i];
+                    const section = document.getElementById(id);
+
+                    if (section) {
+                        const rect = section.getBoundingClientRect();
+                        const isMidpointVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+                        const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
+
+                        if (isMidpointVisible || isInThreshold) {
+                            setActiveSection(id);
+                            break;
+                        }
+                    }
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }
+    }, [router.pathname]);
 
     return (
         <section className="bg-dark-gray max-device-width">
@@ -94,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                             {['home', 'products', 'about'].map((section) => (
                                 <li key={section}>
                                     <a
-                                        href={`#${section}`}
+                                        href={`/#${section}`}
                                         className={`text-sm ${activeSection === section ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
                                         onClick={(e) => handleNavLinkClick(section, e)}
                                     >
@@ -102,6 +110,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     </a>
                                 </li>
                             ))}
+                            <li>
+                                <a href="/resources" className={`text-sm ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    RESOURCES
+                                </a>
+                            </li>
                             <li>
                                 <a
                                     href={signUpUrl}
@@ -141,7 +154,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 {['home', 'products', 'about'].map((section) => (
                                     <li key={section}>
                                         <a
-                                            href={`#${section}`}
+                                            href={`/#${section}`}
                                             className={`text-2xl ${activeSection === section ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
                                             onClick={(e) => handleNavLinkClick(section, e)}
                                         >
@@ -149,6 +162,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                         </a>
                                     </li>
                                 ))}
+                                <li>
+                                    <a href="/resources" className={`text-2xl ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        RESOURCES
+                                    </a>
+                                </li>
                                 <li>
                                     <a
                                         href={signUpUrl}
