@@ -34,6 +34,15 @@ module.exports = {
         'brown-gray': '#746C70',
         'off-white': '#FAF9F6',
       },
+      animation: {
+        'marquee-infinite': 'marquee 30s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
     },
   },
   plugins: [],

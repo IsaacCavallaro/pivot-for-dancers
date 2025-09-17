@@ -1,4 +1,5 @@
 import Home from '../components/Home';
+// import LogoMarquee from '@/components/LogoMarquee';
 import AboutUsSection from '@/components/About';
 import Navigation from '../components/Navigation';
 import Data from '../components/Data';
@@ -13,6 +14,7 @@ export default function HomePage() {
         <div>
             <Navigation />
             <Home />
+            {/* <LogoMarquee /> */}
             <Data />
             <FeaturedProducts />
             <AboutUsSection />
