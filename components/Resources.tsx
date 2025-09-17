@@ -1,51 +1,76 @@
 import React from 'react';
 
-const Resources = () => {
-    const resources = [
-        {
-            title: 'How to Pivot E-Book',
-            description: 'A comprehensive guide for dancers transitioning into new careers.',
-            image: '/assets/how-to-pivot-ebook.png',
-            link: '#'
-        },
-        {
-            title: 'Happy Trails Mini-Course',
-            description: 'A mini-course to help you find your path after dance.',
-            image: '/assets/happy-trails-mini-course.png',
-            link: '#'
-        },
-        {
-            title: 'Pivot Mentorship',
-            description: 'One-on-one mentorship for dancers in career transition.',
-            image: '/assets/pivot-mentorship.png',
-            link: '#'
-        },
-        {
-            title: 'Pivot Panels',
-            description: 'Panel discussions with former dancers who have successfully pivoted.',
-            image: '/assets/pivot-panels.png',
-            link: '#'
-        }
-    ];
+const STYLES = {
+    section: 'bg-beige pt-24 pb-12',
+    headingContainer: "px-4 mb-6 text-center",
+    headingTitle: "font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight",
+    headingSpan: "text-md uppercase dark:text-gray-500 transition-all duration-1000 delay-300",
+    button: "inline-block font-montserrat px-10 py-2 text-sm text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
+};
 
+const resources = [
+    {
+        title: 'Discover Your Pivot Personality',
+        description: 'A comprehensive guide for dancers transitioning into new careers.',
+        image: '/assets/how-to-pivot-ebook.png',
+        link: '/pivot-quiz'
+    },
+    {
+        title: 'Happy Trails Mini-Course',
+        description: 'A mini-course to help you find your path after dance.',
+        image: '/assets/happy-trails-mini-course.png',
+        link: '#'
+    },
+    {
+        title: 'Pivot Mentorship',
+        description: 'One-on-one mentorship for dancers in career transition.',
+        image: '/assets/pivot-mentorship.png',
+        link: '#'
+    },
+    {
+        title: 'Pivot Panels',
+        description: 'Panel discussions with former dancers who have successfully pivoted.',
+        image: '/assets/pivot-panels.png',
+        link: '#'
+    }
+];
+
+type ResourceCardProps = {
+    title: string;
+    description: string;
+    image: string;
+    link: string;
+};
+
+const ResourceCard: React.FC<ResourceCardProps> = ({ title, description, image, link }) => {
     return (
-        <div className="bg-beige py-12">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src={image} alt={title} className="w-full h-48 object-cover" />
+            <div className="p-6 text-center">
+                <h3 className="font-bold text-xl mb-2 text-dark-gray">{title}</h3>
+                <p className="text-brown-gray text-base mb-4">{description}</p>
+                <a href={link} className={STYLES.button}>Learn More</a>
+            </div>
+        </div>
+    );
+};
+
+
+const Resources = () => {
+    return (
+        <section id="resources" className={STYLES.section}>
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center text-dark-gray mb-8">Resources</h2>
+                <div className={STYLES.headingContainer}>
+                    <h2 className={STYLES.headingTitle}>Resources</h2>
+                    <span className={STYLES.headingSpan}>Tools and guides to help you pivot</span>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {resources.map((resource, index) => (
-                        <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img src={resource.image} alt={resource.title} className="w-full h-48 object-cover" />
-                            <div className="p-6">
-                                <h3 className="font-bold text-xl mb-2 text-dark-gray">{resource.title}</h3>
-                                <p className="text-brown-gray text-base mb-4">{resource.description}</p>
-                                <a href={resource.link} className="text-light-gray font-bold hover:underline">Learn More</a>
-                            </div>
-                        </div>
+                        <ResourceCard key={index} {...resource} />
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

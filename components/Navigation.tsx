@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
-        if (router.pathname.startsWith('/resources')) {
+        if (router.pathname.startsWith('/resources') || router.pathname.startsWith('/pivot-quiz')) {
             router.push(`/#${id}`);
         } else {
             scrollToSection(id);
