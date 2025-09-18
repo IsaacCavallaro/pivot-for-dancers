@@ -39,8 +39,9 @@ const Navbar: React.FC<NavbarProps> = () => {
     const handleMegaMenuLeave = () => {
         menuTimer.current = setTimeout(() => {
             setIsMegaMenuOpen(false);
-            setActiveMegaMenu(null);
-        }, 150);
+            // Delay setting activeMegaMenu to null to allow fade-out animation
+            setTimeout(() => setActiveMegaMenu(null), 300);
+        }, 300); // Increased delay for better UX
     };
 
     const handleToggle = () => {
@@ -68,14 +69,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                         <ul className="hidden lg:flex lg:space-x-8 lg:items-center">
                             <li>
                                 <Link href="/" legacyBehavior>
-                                    <a className={`text-sm ${router.pathname === '/' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    <a className={`text-sm ${router.pathname === '/' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}>
                                         HOME
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/about" legacyBehavior>
-                                    <a className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    <a className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}>
                                         ABOUT
                                     </a>
                                 </Link>
@@ -97,7 +98,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 onMouseLeave={handleMegaMenuLeave}
                             >
                                 <Link href="/services" legacyBehavior>
-                                    <a className={`text-sm ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    <a className={`text-sm ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}>
                                         SERVICES
                                     </a>
                                 </Link>
@@ -108,14 +109,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 onMouseLeave={handleMegaMenuLeave}
                             >
                                 <Link href="/resources" legacyBehavior>
-                                    <a className={`text-sm ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    <a className={`text-sm ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}>
                                         RESOURCES
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/faqs" legacyBehavior>
-                                    <a className={`text-sm ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    <a className={`text-sm ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}>
                                         FAQS
                                     </a>
                                 </Link>
@@ -123,7 +124,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                             <li>
                                 <a
                                     href={bookNowUrl}
-                                    className={joinUsClassNameDesktop}
+                                    className={`${joinUsClassNameDesktop} transition-all duration-200`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -135,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         {/* Mobile Hamburger Button */}
                         <div className="lg:hidden flex items-center justify-end w-full pr-4 md:pr-6">
                             <button
-                                className="text-gray-200 dark:text-gray-300 focus:outline-none"
+                                className="text-gray-200 dark:text-gray-300 focus:outline-none transition-transform duration-200 hover:scale-110"
                                 onClick={handleToggle}
                             >
                                 <svg
@@ -153,18 +154,20 @@ const Navbar: React.FC<NavbarProps> = () => {
                     {/* Shared Mega Menu */}
                     <div
                         className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isMegaMenuOpen
-                                ? 'opacity-100 translate-y-0 visible'
-                                : 'opacity-0 -translate-y-2 invisible'
+                            ? 'opacity-100 translate-y-0 visible'
+                            : 'opacity-0 -translate-y-4 invisible'
                             }`}
                         onMouseEnter={clearTimer}
                         onMouseLeave={handleMegaMenuLeave}
                         style={{
-                            transitionProperty: 'opacity, transform, visibility'
+                            transitionProperty: 'opacity, transform, visibility',
+                            transitionDuration: '300ms',
+                            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
                         }}
                     >
                         {/* Products Mega Menu Content */}
                         {activeMegaMenu === 'products' && (
-                            <div className="max-w-7xl mx-auto py-8 px-6">
+                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-300 ease-in-out">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {/* All Products Card */}
                                     <div className="group h-full">
@@ -257,7 +260,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                         {/* Services Mega Menu Content */}
                         {activeMegaMenu === 'services' && (
-                            <div className="max-w-7xl mx-auto py-8 px-6">
+                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-300 ease-in-out">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {/* All Services Card */}
                                     <div className="group h-full">
@@ -336,7 +339,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                         {/* Resources Mega Menu Content */}
                         {activeMegaMenu === 'resources' && (
-                            <div className="max-w-7xl mx-auto py-8 px-6">
+                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-300 ease-in-out">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {/* All Resources Card */}
                                     <div className="group h-full">
@@ -443,36 +446,36 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                     {/* Mobile Sidebar Menu */}
                     <div
-                        className={`lg:hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-90 transition-transform duration-300 ease-in-out ${open ? 'transform translate-x-0' : 'transform -translate-x-full'}`}
+                        className={`lg:hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-90 transition-all duration-500 ease-in-out ${open ? 'transform translate-x-0 opacity-100' : 'transform -translate-x-full opacity-0'}`}
                     >
                         <div className="flex flex-col justify-center items-center h-full">
                             <ul className="space-y-6 text-center">
                                 <li>
                                     <Link href="/" legacyBehavior>
-                                        <a className={`text-2xl ${router.pathname === '/' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
+                                        <a className={`text-2xl ${router.pathname === '/' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`} onClick={() => setOpen(false)}>
                                             HOME
                                         </a>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href="/about" legacyBehavior>
-                                        <a className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
+                                        <a className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`} onClick={() => setOpen(false)}>
                                             ABOUT
                                         </a>
                                     </Link>
                                 </li>
                                 <li>
                                     <button
-                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
+                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
                                         onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
                                     >
                                         PRODUCTS
                                     </button>
-                                    {isMobileProductsOpen && (
+                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileProductsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         <ul className="pl-4 mt-4 space-y-3">
                                             <li>
                                                 <Link href="/products" legacyBehavior>
-                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
                                                         All Products
                                                     </a>
                                                 </Link>
@@ -480,25 +483,25 @@ const Navbar: React.FC<NavbarProps> = () => {
                                             {products.map((product) => (
                                                 <li key={product.id}>
                                                     <Link href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
-                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>{`${product.name} - ${product.subtitle === 'EBOOK' ? 'Ebook' : 'Mini Course'}`}</a>
+                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>{`${product.name} - ${product.subtitle === 'EBOOK' ? 'Ebook' : 'Mini Course'}`}</a>
                                                     </Link>
                                                 </li>
                                             ))}
                                         </ul>
-                                    )}
+                                    </div>
                                 </li>
                                 <li>
                                     <button
-                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
+                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
                                         onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
                                     >
                                         SERVICES
                                     </button>
-                                    {isMobileServicesOpen && (
+                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         <ul className="pl-4 mt-4 space-y-3">
                                             <li>
                                                 <Link href="/services" legacyBehavior>
-                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
                                                         All Services
                                                     </a>
                                                 </Link>
@@ -506,25 +509,25 @@ const Navbar: React.FC<NavbarProps> = () => {
                                             {services.map((service) => (
                                                 <li key={service.id}>
                                                     <Link href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
-                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>{service.name}</a>
+                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>{service.name}</a>
                                                     </Link>
                                                 </li>
                                             ))}
                                         </ul>
-                                    )}
+                                    </div>
                                 </li>
                                 <li>
                                     <button
-                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
+                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
                                         onClick={() => setIsMobileResourcesOpen(!isMobileResourcesOpen)}
                                     >
                                         RESOURCES
                                     </button>
-                                    {isMobileResourcesOpen && (
+                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileResourcesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         <ul className="pl-4 mt-4 space-y-3">
                                             <li>
                                                 <Link href="/resources" legacyBehavior>
-                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
                                                         All Resources
                                                     </a>
                                                 </Link>
@@ -537,18 +540,18 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                             .replace(/\s+/g, '-')}`}
                                                         legacyBehavior
                                                     >
-                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
                                                             {resource.name || resource.title}
                                                         </a>
                                                     </Link>
                                                 </li>
                                             ))}
                                         </ul>
-                                    )}
+                                    </div>
                                 </li>
                                 <li>
                                     <Link href="/faqs" legacyBehavior>
-                                        <a className={`text-2xl ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
+                                        <a className={`text-2xl ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`} onClick={() => setOpen(false)}>
                                             FAQS
                                         </a>
                                     </Link>
@@ -556,7 +559,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 <li>
                                     <a
                                         href={bookNowUrl}
-                                        className={bookNowClassNameMobile}
+                                        className={`${bookNowClassNameMobile} transition-all duration-200 hover:scale-105`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -565,7 +568,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                 </li>
                             </ul>
                             <button
-                                className={exitHamburgerClassName}
+                                className={`${exitHamburgerClassName} transition-transform duration-200 hover:scale-110`}
                                 onClick={handleToggle}
                             >
                                 <svg
