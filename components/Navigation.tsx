@@ -152,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                     {/* Shared Mega Menu */}
                     <div
-                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isMegaMenuOpen
+                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-500 ease-in-out transform ${isMegaMenuOpen
                             ? 'opacity-100 translate-y-0 visible'
                             : 'opacity-0 -translate-y-4 invisible'
                             }`}
@@ -166,12 +166,12 @@ const Navbar: React.FC<NavbarProps> = () => {
                     >
                         {/* Products Mega Menu Content */}
                         {activeMegaMenu === 'products' && (
-                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-300 ease-in-out">
+                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-500 ease-in-out">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {/* All Products Card */}
                                     <div className="group h-full">
                                         <Link href="/products" legacyBehavior>
-                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-500 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
                                                 style={{
                                                     '--hover-bg': '#E2DED0',
                                                     '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
@@ -188,16 +188,16 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                 }}
                                             >
                                                 <div className="flex items-start mb-3">
-                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
-                                                        <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-500" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                        <svg className="w-5 h-5 transition-all duration-500" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                                         </svg>
                                                     </div>
-                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                         All Products
                                                     </h3>
                                                 </div>
-                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                     Browse our complete collection of resources and courses
                                                 </p>
                                             </a>
@@ -208,7 +208,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     {products.map((product) => (
                                         <div key={product.id} className="group h-full">
                                             <Link href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
-                                                <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-500 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
                                                     onMouseEnter={(e) => {
                                                         e.currentTarget.style.backgroundColor = '#E2DED0';
                                                         e.currentTarget.style.borderColor = '#928490';
@@ -221,29 +221,29 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                     }}
                                                 >
                                                     <div className="flex items-start mb-3">
-                                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-500 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
                                                             {product.subtitle === 'EBOOK' ? (
-                                                                <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <svg className="w-5 h-5 transition-all duration-500" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                                                 </svg>
                                                             ) : (
-                                                                <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <svg className="w-5 h-5 transition-all duration-500" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                                                 </svg>
                                                             )}
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center justify-between mb-2">
-                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                                     {product.name}
                                                                 </h3>
-                                                                <span className="inline-block px-2 py-1 text-xs font-medium rounded-full ml-2 flex-shrink-0 transition-all duration-300 group-hover:scale-105" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)', color: '#928490' }}>
+                                                                <span className="inline-block px-2 py-1 text-xs font-medium rounded-full ml-2 flex-shrink-0 transition-all duration-500 group-hover:scale-105" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)', color: '#928490' }}>
                                                                     {product.subtitle === 'EBOOK' ? 'Ebook' : 'Mini Course'}
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                         {product.subtitle === 'EBOOK'
                                                             ? 'Comprehensive guide to help you on your journey'
                                                             : 'Interactive course with practical lessons and exercises'
@@ -259,12 +259,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                         {/* Services Mega Menu Content */}
                         {activeMegaMenu === 'services' && (
-                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-300 ease-in-out">
+                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-500 ease-in-out">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {/* All Services Card */}
                                     <div className="group h-full">
                                         <Link href="/services" legacyBehavior>
-                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-500 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
                                                 style={{
                                                     '--hover-bg': '#E2DED0',
                                                     '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
@@ -281,16 +281,16 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                 }}
                                             >
                                                 <div className="flex items-start mb-3">
-                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
-                                                        <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-500" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                        <svg className="w-5 h-5 transition-all duration-500" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                                         </svg>
                                                     </div>
-                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                         All Services
                                                     </h3>
                                                 </div>
-                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                     Explore our personalized career services for dancers.
                                                 </p>
                                             </a>
@@ -301,7 +301,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     {services.map((service) => (
                                         <div key={service.id} className="group h-full">
                                             <Link href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
-                                                <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-500 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
                                                     onMouseEnter={(e) => {
                                                         e.currentTarget.style.backgroundColor = '#E2DED0';
                                                         e.currentTarget.style.borderColor = '#928490';
@@ -314,18 +314,18 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                     }}
                                                 >
                                                     <div className="flex items-start mb-3">
-                                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
-                                                            <service.icon className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} />
+                                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-500 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                            <service.icon className="w-5 h-5 transition-all duration-500" style={{ color: '#928490' }} />
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center justify-between mb-2">
-                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                                     {service.name}
                                                                 </h3>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                         {service.description}
                                                     </p>
                                                 </a>
@@ -338,13 +338,13 @@ const Navbar: React.FC<NavbarProps> = () => {
 
                         {/* Resources Mega Menu Content */}
                         {activeMegaMenu === 'resources' && (
-                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-300 ease-in-out">
+                            <div className="max-w-7xl mx-auto py-8 px-6 transition-opacity duration-500 ease-in-out">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {/* All Resources Card */}
                                     <div className="group h-full">
                                         <Link href="/resources" legacyBehavior>
                                             <a
-                                                className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-500 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
                                                 onMouseEnter={(e) => {
                                                     e.currentTarget.style.backgroundColor = '#E2DED0';
                                                     e.currentTarget.style.borderColor = '#928490';
@@ -359,11 +359,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                             >
                                                 <div className="flex items-start mb-3">
                                                     <div
-                                                        className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300"
+                                                        className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-500"
                                                         style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}
                                                     >
                                                         <svg
-                                                            className="w-5 h-5 transition-all duration-300"
+                                                            className="w-5 h-5 transition-all duration-500"
                                                             style={{ color: '#928490' }}
                                                             fill="none"
                                                             stroke="currentColor"
@@ -377,11 +377,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                             />
                                                         </svg>
                                                     </div>
-                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                         All Resources
                                                     </h3>
                                                 </div>
-                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                     Discover helpful articles, guides, and tools.
                                                 </p>
                                             </a>
@@ -398,7 +398,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                 legacyBehavior
                                             >
                                                 <a
-                                                    className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                    className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-500 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
                                                     onMouseEnter={(e) => {
                                                         e.currentTarget.style.backgroundColor = '#E2DED0';
                                                         e.currentTarget.style.borderColor = '#928490';
@@ -413,25 +413,25 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                 >
                                                     <div className="flex items-start mb-3">
                                                         <div
-                                                            className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                                                            className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-500 group-hover:scale-110"
                                                             style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}
                                                         >
                                                             {resource.icon && (
                                                                 <resource.icon
-                                                                    className="w-5 h-5 transition-all duration-300"
+                                                                    className="w-5 h-5 transition-all duration-500"
                                                                     style={{ color: '#928490' }}
                                                                 />
                                                             )}
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center justify-between mb-2">
-                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                                     {resource.name || resource.title}
                                                                 </h3>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                         {resource.description || 'Learn more about this resource.'}
                                                     </p>
                                                 </a>
@@ -470,7 +470,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     >
                                         PRODUCTS
                                     </button>
-                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileProductsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileProductsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         <ul className="pl-4 mt-4 space-y-3">
                                             <li>
                                                 <Link href="/products" legacyBehavior>
@@ -496,7 +496,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     >
                                         SERVICES
                                     </button>
-                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         <ul className="pl-4 mt-4 space-y-3">
                                             <li>
                                                 <Link href="/services" legacyBehavior>
@@ -522,7 +522,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     >
                                         RESOURCES
                                     </button>
-                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileResourcesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileResourcesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                         <ul className="pl-4 mt-4 space-y-3">
                                             <li>
                                                 <Link href="/resources" legacyBehavior>
