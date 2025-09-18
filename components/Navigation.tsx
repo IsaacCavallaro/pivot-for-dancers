@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { products } from '../data/products';
@@ -9,42 +9,42 @@ interface NavbarProps {
     // Define any props if needed
 }
 
+type MegaMenuType = 'products' | 'services' | 'resources' | null;
+
 const Navbar: React.FC<NavbarProps> = () => {
     const [open, setOpen] = useState(false);
     const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
     const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
     const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
-    const [isProductsMegaMenuOpen, setIsProductsMegaMenuOpen] = useState(false);
-    const [isServicesMegaMenuOpen, setIsServicesMegaMenuOpen] = useState(false);
-    const [isResourcesMegaMenuOpen, setIsResourcesMegaMenuOpen] = useState(false);
+    const [activeMegaMenu, setActiveMegaMenu] = useState<MegaMenuType>(null);
+    const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
     const router = useRouter();
+
+    // Hover close delay timer
+    const menuTimer = useRef<NodeJS.Timeout | null>(null);
+
+    const clearTimer = () => {
+        if (menuTimer.current) {
+            clearTimeout(menuTimer.current);
+            menuTimer.current = null;
+        }
+    };
+
+    const handleMegaMenuEnter = (type: MegaMenuType) => {
+        clearTimer();
+        setActiveMegaMenu(type);
+        setIsMegaMenuOpen(true);
+    };
+
+    const handleMegaMenuLeave = () => {
+        menuTimer.current = setTimeout(() => {
+            setIsMegaMenuOpen(false);
+            setActiveMegaMenu(null);
+        }, 150);
+    };
 
     const handleToggle = () => {
         setOpen(!open);
-    };
-
-    const handleProductsHover = () => {
-        setIsProductsMegaMenuOpen(true);
-    };
-
-    const handleProductsLeave = () => {
-        setIsProductsMegaMenuOpen(false);
-    };
-
-    const handleServicesHover = () => {
-        setIsServicesMegaMenuOpen(true);
-    };
-
-    const handleServicesLeave = () => {
-        setIsServicesMegaMenuOpen(false);
-    };
-
-    const handleResourcesHover = () => {
-        setIsResourcesMegaMenuOpen(true);
-    };
-
-    const handleResourcesLeave = () => {
-        setIsResourcesMegaMenuOpen(false);
     };
 
     const BASE_PATH = process.env.PUBLIC_URL || "";
@@ -82,8 +82,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                             </li>
                             <li
                                 className="relative"
-                                onMouseEnter={handleProductsHover}
-                                onMouseLeave={handleProductsLeave}
+                                onMouseEnter={() => handleMegaMenuEnter('products')}
+                                onMouseLeave={handleMegaMenuLeave}
                             >
                                 <Link href="/products" legacyBehavior>
                                     <a className={`text-sm ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}>
@@ -93,8 +93,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                             </li>
                             <li
                                 className="relative"
-                                onMouseEnter={handleServicesHover}
-                                onMouseLeave={handleServicesLeave}
+                                onMouseEnter={() => handleMegaMenuEnter('services')}
+                                onMouseLeave={handleMegaMenuLeave}
                             >
                                 <Link href="/services" legacyBehavior>
                                     <a className={`text-sm ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
@@ -104,8 +104,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                             </li>
                             <li
                                 className="relative"
-                                onMouseEnter={handleResourcesHover}
-                                onMouseLeave={handleResourcesLeave}
+                                onMouseEnter={() => handleMegaMenuEnter('resources')}
+                                onMouseLeave={handleMegaMenuLeave}
                             >
                                 <Link href="/resources" legacyBehavior>
                                     <a className={`text-sm ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
@@ -150,62 +150,30 @@ const Navbar: React.FC<NavbarProps> = () => {
                         </div>
                     </div>
 
-                    {/* Products Mega Menu */}
+                    {/* Shared Mega Menu */}
                     <div
-                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isProductsMegaMenuOpen
+                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isMegaMenuOpen
                                 ? 'opacity-100 translate-y-0 visible'
                                 : 'opacity-0 -translate-y-2 invisible'
                             }`}
-                        onMouseEnter={handleProductsHover}
-                        onMouseLeave={handleProductsLeave}
+                        onMouseEnter={clearTimer}
+                        onMouseLeave={handleMegaMenuLeave}
                         style={{
-                            transitionProperty: 'opacity, transform, visibility',
-                            transitionDelay: isProductsMegaMenuOpen ? '0ms' : '150ms'
+                            transitionProperty: 'opacity, transform, visibility'
                         }}
                     >
-                        <div className="max-w-7xl mx-auto py-8 px-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {/* All Products Card */}
-                                <div className="group h-full">
-                                    <Link href="/products" legacyBehavior>
-                                        <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
-                                            style={{
-                                                '--hover-bg': '#E2DED0',
-                                                '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.backgroundColor = '#E2DED0';
-                                                e.currentTarget.style.borderColor = '#928490';
-                                                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.backgroundColor = '';
-                                                e.currentTarget.style.borderColor = '';
-                                                e.currentTarget.style.boxShadow = '';
-                                            }}
-                                        >
-                                            <div className="flex items-start mb-3">
-                                                <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
-                                                    <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                                    </svg>
-                                                </div>
-                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                    All Products
-                                                </h3>
-                                            </div>
-                                            <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                Browse our complete collection of resources and courses
-                                            </p>
-                                        </a>
-                                    </Link>
-                                </div>
-
-                                {/* Individual Product Cards */}
-                                {products.map((product) => (
-                                    <div key={product.id} className="group h-full">
-                                        <Link href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
+                        {/* Products Mega Menu Content */}
+                        {activeMegaMenu === 'products' && (
+                            <div className="max-w-7xl mx-auto py-8 px-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {/* All Products Card */}
+                                    <div className="group h-full">
+                                        <Link href="/products" legacyBehavior>
                                             <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                style={{
+                                                    '--hover-bg': '#E2DED0',
+                                                    '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
+                                                }}
                                                 onMouseEnter={(e) => {
                                                     e.currentTarget.style.backgroundColor = '#E2DED0';
                                                     e.currentTarget.style.borderColor = '#928490';
@@ -218,204 +186,161 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                 }}
                                             >
                                                 <div className="flex items-start mb-3">
-                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
-                                                        {product.subtitle === 'EBOOK' ? (
-                                                            <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                                            </svg>
-                                                        ) : (
-                                                            <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                                            </svg>
-                                                        )}
+                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                        <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                                        </svg>
                                                     </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <div className="flex items-center justify-between mb-2">
-                                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                                {product.name}
-                                                            </h3>
-                                                            <span className="inline-block px-2 py-1 text-xs font-medium rounded-full ml-2 flex-shrink-0 transition-all duration-300 group-hover:scale-105" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)', color: '#928490' }}>
-                                                                {product.subtitle === 'EBOOK' ? 'Ebook' : 'Mini Course'}
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                        All Products
+                                                    </h3>
                                                 </div>
                                                 <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                    {product.subtitle === 'EBOOK'
-                                                        ? 'Comprehensive guide to help you on your journey'
-                                                        : 'Interactive course with practical lessons and exercises'
-                                                    }
+                                                    Browse our complete collection of resources and courses
                                                 </p>
                                             </a>
                                         </Link>
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
 
-                    {/* Services Mega Menu */}
-                    <div
-                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isServicesMegaMenuOpen
-                                ? 'opacity-100 translate-y-0 visible'
-                                : 'opacity-0 -translate-y-2 invisible'
-                            }`}
-                        onMouseEnter={handleServicesHover}
-                        onMouseLeave={handleServicesLeave}
-                        style={{
-                            transitionProperty: 'opacity, transform, visibility',
-                            transitionDelay: isServicesMegaMenuOpen ? '0ms' : '150ms'
-                        }}
-                    >
-                        <div className="max-w-7xl mx-auto py-8 px-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {/* All Services Card */}
-                                <div className="group h-full">
-                                    <Link href="/services" legacyBehavior>
-                                        <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
-                                            style={{
-                                                '--hover-bg': '#E2DED0',
-                                                '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.backgroundColor = '#E2DED0';
-                                                e.currentTarget.style.borderColor = '#928490';
-                                                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.backgroundColor = '';
-                                                e.currentTarget.style.borderColor = '';
-                                                e.currentTarget.style.boxShadow = '';
-                                            }}
-                                        >
-                                            <div className="flex items-start mb-3">
-                                                <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
-                                                    <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                                    </svg>
-                                                </div>
-                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                    All Services
-                                                </h3>
-                                            </div>
-                                            <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                Explore our personalized career services for dancers.
-                                            </p>
-                                        </a>
-                                    </Link>
-                                </div>
-
-                                {/* Individual Service Cards */}
-                                {services.map((service) => (
-                                    <div key={service.id} className="group h-full">
-                                        <Link href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
-                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.backgroundColor = '#E2DED0';
-                                                    e.currentTarget.style.borderColor = '#928490';
-                                                    e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.backgroundColor = '';
-                                                    e.currentTarget.style.borderColor = '';
-                                                    e.currentTarget.style.boxShadow = '';
-                                                }}
-                                            >
-                                                <div className="flex items-start mb-3">
-                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
-                                                        <service.icon className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} />
-                                                    </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <div className="flex items-center justify-between mb-2">
-                                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                                {service.name}
-                                                            </h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                    {service.description}
-                                                </p>
-                                            </a>
-                                        </Link>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Resources Mega Menu */}
-                    <div
-                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isResourcesMegaMenuOpen
-                                ? 'opacity-100 translate-y-0 visible'
-                                : 'opacity-0 -translate-y-2 invisible'
-                            }`}
-                        onMouseEnter={handleResourcesHover}
-                        onMouseLeave={handleResourcesLeave}
-                        style={{
-                            transitionProperty: 'opacity, transform, visibility',
-                            transitionDelay: isResourcesMegaMenuOpen ? '0ms' : '150ms'
-                        }}
-                    >
-                        <div className="max-w-7xl mx-auto py-8 px-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {/* All Resources Card */}
-                                <div className="group h-full">
-                                    <Link href="/resources" legacyBehavior>
-                                        <a
-                                            className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.backgroundColor = '#E2DED0';
-                                                e.currentTarget.style.borderColor = '#928490';
-                                                e.currentTarget.style.boxShadow =
-                                                    '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.backgroundColor = '';
-                                                e.currentTarget.style.borderColor = '';
-                                                e.currentTarget.style.boxShadow = '';
-                                            }}
-                                        >
-                                            <div className="flex items-start mb-3">
-                                                <div
-                                                    className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300"
-                                                    style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}
+                                    {/* Individual Product Cards */}
+                                    {products.map((product) => (
+                                        <div key={product.id} className="group h-full">
+                                            <Link href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
+                                                <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                        e.currentTarget.style.borderColor = '#928490';
+                                                        e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '';
+                                                        e.currentTarget.style.borderColor = '';
+                                                        e.currentTarget.style.boxShadow = '';
+                                                    }}
                                                 >
-                                                    <svg
-                                                        className="w-5 h-5 transition-all duration-300"
-                                                        style={{ color: '#928490' }}
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth={2}
-                                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                    All Resources
-                                                </h3>
-                                            </div>
-                                            <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                Discover helpful articles, guides, and tools.
-                                            </p>
-                                        </a>
-                                    </Link>
+                                                    <div className="flex items-start mb-3">
+                                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                            {product.subtitle === 'EBOOK' ? (
+                                                                <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                                </svg>
+                                                            ) : (
+                                                                <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                                                </svg>
+                                                            )}
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <div className="flex items-center justify-between mb-2">
+                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                    {product.name}
+                                                                </h3>
+                                                                <span className="inline-block px-2 py-1 text-xs font-medium rounded-full ml-2 flex-shrink-0 transition-all duration-300 group-hover:scale-105" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)', color: '#928490' }}>
+                                                                    {product.subtitle === 'EBOOK' ? 'Ebook' : 'Mini Course'}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                        {product.subtitle === 'EBOOK'
+                                                            ? 'Comprehensive guide to help you on your journey'
+                                                            : 'Interactive course with practical lessons and exercises'
+                                                        }
+                                                    </p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                    ))}
                                 </div>
+                            </div>
+                        )}
 
-                                {/* Individual Resource Cards */}
-                                {resources.map((resource) => (
-                                    <div key={resource.id} className="group h-full">
-                                        <Link
-                                            href={`/resources/${(resource.name || resource.title)
-                                                .toLowerCase()
-                                                .replace(/\s+/g, '-')}`}
-                                            legacyBehavior
-                                        >
+                        {/* Services Mega Menu Content */}
+                        {activeMegaMenu === 'services' && (
+                            <div className="max-w-7xl mx-auto py-8 px-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {/* All Services Card */}
+                                    <div className="group h-full">
+                                        <Link href="/services" legacyBehavior>
+                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                style={{
+                                                    '--hover-bg': '#E2DED0',
+                                                    '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                    e.currentTarget.style.borderColor = '#928490';
+                                                    e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '';
+                                                    e.currentTarget.style.borderColor = '';
+                                                    e.currentTarget.style.boxShadow = '';
+                                                }}
+                                            >
+                                                <div className="flex items-start mb-3">
+                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                        <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                                        </svg>
+                                                    </div>
+                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                        All Services
+                                                    </h3>
+                                                </div>
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    Explore our personalized career services for dancers.
+                                                </p>
+                                            </a>
+                                        </Link>
+                                    </div>
+
+                                    {/* Individual Service Cards */}
+                                    {services.map((service) => (
+                                        <div key={service.id} className="group h-full">
+                                            <Link href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
+                                                <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                        e.currentTarget.style.borderColor = '#928490';
+                                                        e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '';
+                                                        e.currentTarget.style.borderColor = '';
+                                                        e.currentTarget.style.boxShadow = '';
+                                                    }}
+                                                >
+                                                    <div className="flex items-start mb-3">
+                                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                            <service.icon className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <div className="flex items-center justify-between mb-2">
+                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                    {service.name}
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                        {service.description}
+                                                    </p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Resources Mega Menu Content */}
+                        {activeMegaMenu === 'resources' && (
+                            <div className="max-w-7xl mx-auto py-8 px-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {/* All Resources Card */}
+                                    <div className="group h-full">
+                                        <Link href="/resources" legacyBehavior>
                                             <a
                                                 className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
                                                 onMouseEnter={(e) => {
@@ -432,35 +357,89 @@ const Navbar: React.FC<NavbarProps> = () => {
                                             >
                                                 <div className="flex items-start mb-3">
                                                     <div
-                                                        className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                                                        className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300"
                                                         style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}
                                                     >
-                                                        {resource.icon && (
-                                                            <resource.icon
-                                                                className="w-5 h-5 transition-all duration-300"
-                                                                style={{ color: '#928490' }}
+                                                        <svg
+                                                            className="w-5 h-5 transition-all duration-300"
+                                                            style={{ color: '#928490' }}
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                strokeWidth={2}
+                                                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
                                                             />
-                                                        )}
+                                                        </svg>
                                                     </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <div className="flex items-center justify-between mb-2">
-                                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                                {resource.name || resource.title}
-                                                            </h3>
-                                                        </div>
-                                                    </div>
+                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                        All Resources
+                                                    </h3>
                                                 </div>
                                                 <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
-                                                    {resource.description || 'Learn more about this resource.'}
+                                                    Discover helpful articles, guides, and tools.
                                                 </p>
                                             </a>
                                         </Link>
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
 
+                                    {/* Individual Resource Cards */}
+                                    {resources.map((resource) => (
+                                        <div key={resource.id} className="group h-full">
+                                            <Link
+                                                href={`/resources/${(resource.name || resource.title)
+                                                    .toLowerCase()
+                                                    .replace(/\s+/g, '-')}`}
+                                                legacyBehavior
+                                            >
+                                                <a
+                                                    className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                        e.currentTarget.style.borderColor = '#928490';
+                                                        e.currentTarget.style.boxShadow =
+                                                            '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '';
+                                                        e.currentTarget.style.borderColor = '';
+                                                        e.currentTarget.style.boxShadow = '';
+                                                    }}
+                                                >
+                                                    <div className="flex items-start mb-3">
+                                                        <div
+                                                            className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                                                            style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}
+                                                        >
+                                                            {resource.icon && (
+                                                                <resource.icon
+                                                                    className="w-5 h-5 transition-all duration-300"
+                                                                    style={{ color: '#928490' }}
+                                                                />
+                                                            )}
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <div className="flex items-center justify-between mb-2">
+                                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                    {resource.name || resource.title}
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                        {resource.description || 'Learn more about this resource.'}
+                                                    </p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Mobile Sidebar Menu */}
                     <div
@@ -535,11 +514,37 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     )}
                                 </li>
                                 <li>
-                                    <Link href="/resources" legacyBehavior>
-                                        <a className={`text-2xl ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
-                                            RESOURCES
-                                        </a>
-                                    </Link>
+                                    <button
+                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
+                                        onClick={() => setIsMobileResourcesOpen(!isMobileResourcesOpen)}
+                                    >
+                                        RESOURCES
+                                    </button>
+                                    {isMobileResourcesOpen && (
+                                        <ul className="pl-4 mt-4 space-y-3">
+                                            <li>
+                                                <Link href="/resources" legacyBehavior>
+                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                        All Resources
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            {resources.map((resource) => (
+                                                <li key={resource.id}>
+                                                    <Link
+                                                        href={`/resources/${(resource.name || resource.title)
+                                                            .toLowerCase()
+                                                            .replace(/\s+/g, '-')}`}
+                                                        legacyBehavior
+                                                    >
+                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                            {resource.name || resource.title}
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </li>
                                 <li>
                                     <Link href="/faqs" legacyBehavior>
