@@ -313,16 +313,16 @@ const HappyTrailsPage = () => {
                                     <h2 className="text-bold text-5xl font-bold text-black">What is Happy Trails?</h2>
                                 </div>
                                 <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    Happy Trails is a <span className="font-bold" style={{ color: "#647C90" }}>self-paced, 4-part</span> mini course named after the famous Broadway send-off
+                                    Happy Trails is a <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>self-paced</span>, 4-part mini course named after the famous Broadway send-off
                                 </p>
                                 <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    It's an in-depth <span className="font-bold" style={{ color: "#647C90" }}>5-year career change</span> roadmap guided by former pro dancer and founder of Pivot for Dancers, Kaylee Randall
+                                    It's an <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>in depth</span> 5-year career change roadmap guided by former pro dancer and founder of Pivot for Dancers, Kaylee Randall
                                 </p>
                                 <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    You'll get a detailed, step-by-step plan for your career transition, <span className="font-bold" style={{ color: "#647C90" }}>tailored to your dance experience</span>
+                                    You'll get a <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>detailed</span>, step-by-step plan for your career transition, tailored to your dance experience
                                 </p>
                                 <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    Plus, the course gives you access to <span className="font-bold" style={{ color: "#647C90" }}>exclusive resources</span> including:
+                                    Plus, the course gives you access to <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>exclusive</span> resources including:
                                     <p className="list-disc pl-5 space-y-2 mt-2">
                                         <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />50 Non-Dance Job Ideas</p>
                                         <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Editable Canva Resume Template</p>
@@ -358,8 +358,7 @@ const HappyTrailsPage = () => {
                                 <div className="flex items-center justify-center mb-4">
                                     <h2 className="text-bold text-5xl font-bold text-black">What's Inside?</h2>
                                 </div>
-                                <p className="font-montserrat text-lg text-brown-gray mt-2">Happy Trails guides you through a dancer-focused roadmap to help you pivot with
-                                    confidence.</p>
+                                <p className="font-montserrat text-lg text-brown-gray mt-2">Happy Trails guides you through a dancer-focused <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>roadmap</span> to help you pivot with confidence.</p>
                             </div>
                         </ScrollAnimation>
                         <div className="grid md:grid-cols-3 gap-8">
