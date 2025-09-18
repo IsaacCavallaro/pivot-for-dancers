@@ -1,41 +1,60 @@
-import { Users, Video } from "lucide-react";
+import { Briefcase, MessageSquare } from 'lucide-react';
 
-export const mentorshipBookingUrl = "https://tidycal.com/pivotfordancers/mentorship-1";
+export interface Service {
+    id: number;
+    name: string;
+    subtitle: string;
+    description: string;
+    img: string;
+    icon: React.FC<any>;
+    rating: number;
+    reviews: number;
+    price: number;
+    originalPrice: number;
+    duration: string;
+    features: string[];
+    url: string;
+}
 
-export const services = [
+export const services: Service[] = [
     {
-        id: 4,
-        name: "Mentorship",
-        subtitle: "PRIVATE SESSIONS",
-        description:
-            "Need more support? Get personalized guidance tailored to your unique goals and experiences.",
+        id: 1,
+        name: 'Mentorship',
+        subtitle: '1-on-1 Career Guidance',
+        description: 'Personalized guidance to help you navigate your career transition with confidence.',
+        img: '/assets/mentorship.png',
+        icon: Briefcase,
+        rating: 5,
+        reviews: 25,
         price: 150,
-        originalPrice: 229,
-        url: mentorshipBookingUrl,
-        img: "/assets/pivot-mentorship.png",
-        category: "Coaching",
-        duration: "3 x Sessions",
-        rating: 5.0,
-        reviews: 3,
-        features: ["1-on-1 Sessions", "Bespoke Advice", "Email Support", "Progress Tracking"],
-        icon: Users,
-        gradient: "from-brown-gray to-dark-gray",
+        originalPrice: 200,
+        duration: '4 weeks',
+        features: [
+            '1-on-1 sessions',
+            'Personalized roadmap',
+            'Resume/CV review',
+            'LinkedIn profile optimization',
+        ],
+        url: 'https://tidycal.com/pivotfordancers/mentorship-1'
     },
     {
-        id: 5,
-        name: "Mock Interviews",
-        subtitle: "Practice and get feedback",
-        description: "Practice your interviewing skills in a safe and supportive environment. Get constructive feedback to help you feel confident and prepared for your next interview.",
-        img: "/assets/happy-trails-mini-course.png", // using existing image
-        icon: Video,
+        id: 2,
+        name: 'Mock Interviews',
+        subtitle: 'Practice Makes Perfect',
+        description: 'Sharpen your interview skills and get constructive feedback to land your dream job.',
+        img: '/assets/mock-interviews.png',
+        icon: MessageSquare,
         rating: 4.9,
-        reviews: 63,
-        features: ["Realistic Scenarios", "Constructive Feedback", "Confidence Building"],
-        duration: "1 hour session",
-        price: 100,
-        originalPrice: 0,
-        url: "#",
+        reviews: 18,
+        price: 75,
+        originalPrice: 100,
+        duration: '60 minutes',
+        features: [
+            'Behavioral and technical interview practice',
+            'Industry-specific scenarios',
+            'Actionable feedback',
+            'Confidence building',
+        ],
+        url: 'https://tidycal.com/pivotfordancers/mentorship-1'
     },
-].filter(Boolean);
-
-export type Service = typeof services[0];
+];

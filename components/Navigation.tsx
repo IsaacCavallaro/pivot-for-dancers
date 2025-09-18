@@ -1,30 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { products } from '../data/products';
+import { services } from '../data/services';
+import { resources } from '../data/resources';
 
 interface NavbarProps {
     // Define any props if needed
 }
 
 const Navbar: React.FC<NavbarProps> = () => {
-    const [activeSection, setActiveSection] = useState('');
     const [open, setOpen] = useState(false);
+    const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+    const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+    const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
+    const [isProductsMegaMenuOpen, setIsProductsMegaMenuOpen] = useState(false);
+    const [isServicesMegaMenuOpen, setIsServicesMegaMenuOpen] = useState(false);
+    const [isResourcesMegaMenuOpen, setIsResourcesMegaMenuOpen] = useState(false);
     const router = useRouter();
 
     const handleToggle = () => {
         setOpen(!open);
     };
 
-    const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
-            const topOffset = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+    const handleProductsHover = () => {
+        setIsProductsMegaMenuOpen(true);
+    };
 
-            window.scrollTo({
-                top: topOffset,
-                behavior: 'smooth',
-            });
-        }
+    const handleProductsLeave = () => {
+        setIsProductsMegaMenuOpen(false);
+    };
+
+    const handleServicesHover = () => {
+        setIsServicesMegaMenuOpen(true);
+    };
+
+    const handleServicesLeave = () => {
+        setIsServicesMegaMenuOpen(false);
+    };
+
+    const handleResourcesHover = () => {
+        setIsResourcesMegaMenuOpen(true);
+    };
+
+    const handleResourcesLeave = () => {
+        setIsResourcesMegaMenuOpen(false);
     };
 
     const BASE_PATH = process.env.PUBLIC_URL || "";
@@ -33,95 +53,72 @@ const Navbar: React.FC<NavbarProps> = () => {
     const bookNowClassNameMobile = 'text-2xl text-white bg-purple-gray px-4 py-2 rounded-full opacity-80 hover:opacity-100 hover:bg-purple-gray';
     const exitHamburgerClassName = 'absolute top-4 right-4 text-gray-200 dark:text-gray-300 focus:outline-none';
 
-    const handleNavLinkClick = (id: string, event: React.MouseEvent<HTMLAnchorElement>) => {
-        event.preventDefault();
-        if (router.pathname !== '/') {
-            router.push(`/#${id}`);
-        } else {
-            scrollToSection(id);
-        }
-        setOpen(false);
-    };
-
-    useEffect(() => {
-        if (router.pathname === '/') {
-            const handleScroll = () => {
-                const sectionIds = ['home'];
-                const threshold = 0.8;
-
-                const homeSection = document.getElementById('home');
-
-                // Check other sections as usual
-                for (let i = sectionIds.length - 1; i >= 0; i--) {
-                    const id = sectionIds[i];
-                    const section = document.getElementById(id);
-
-                    if (section) {
-                        const rect = section.getBoundingClientRect();
-                        const isMidpointVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-                        const isInThreshold = rect.top <= window.innerHeight * threshold && rect.bottom >= window.innerHeight * threshold;
-
-                        if (isMidpointVisible || isInThreshold) {
-                            setActiveSection(id);
-                            break;
-                        }
-                    }
-                }
-            };
-
-            window.addEventListener('scroll', handleScroll);
-            return () => {
-                window.removeEventListener('scroll', handleScroll);
-            };
-        }
-    }, [router.pathname]);
-
     return (
         <section className="bg-dark-gray max-device-width">
             <div className="max-w-6xl px-4 mx-auto">
                 <nav className="fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-800 py-4 z-50">
-                    <div className="max-w-7xl mx-auto flex items-center justify-between">
-                        <a href="/" className="block pl-4 md:pl-6">
-                            <img src={`${BASE_PATH}/assets/logo.png`} alt="Logo" className="h-8" />
-                        </a>
+                    <div className="max-w-7xl mx-auto flex items-center justify-between relative">
+                        <Link href="/" legacyBehavior>
+                            <a className="block pl-4 md:pl-6">
+                                <img src={`${BASE_PATH}/assets/logo.png`} alt="Logo" className="h-8" />
+                            </a>
+                        </Link>
 
                         {/* Desktop Navigation Links */}
                         <ul className="hidden lg:flex lg:space-x-8 lg:items-center">
-                            {['home'].map((section) => (
-                                <li key={section}>
-                                    <a
-                                        href={`/#${section}`}
-                                        className={`text-sm ${activeSection === section ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
-                                        onClick={(e) => handleNavLinkClick(section, e)}
-                                    >
-                                        {section.toUpperCase()}
+                            <li>
+                                <Link href="/" legacyBehavior>
+                                    <a className={`text-sm ${router.pathname === '/' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        HOME
                                     </a>
-                                </li>
-                            ))}
-                            <li>
-                                <a href="/about" className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                    ABOUT
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/products" className={`text-sm ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                    PRODUCTS
-                                </a>
+                                <Link href="/about" legacyBehavior>
+                                    <a className={`text-sm ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        ABOUT
+                                    </a>
+                                </Link>
+                            </li>
+                            <li
+                                className="relative"
+                                onMouseEnter={handleProductsHover}
+                                onMouseLeave={handleProductsLeave}
+                            >
+                                <Link href="/products" legacyBehavior>
+                                    <a className={`text-sm ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}>
+                                        PRODUCTS
+                                    </a>
+                                </Link>
+                            </li>
+                            <li
+                                className="relative"
+                                onMouseEnter={handleServicesHover}
+                                onMouseLeave={handleServicesLeave}
+                            >
+                                <Link href="/services" legacyBehavior>
+                                    <a className={`text-sm ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        SERVICES
+                                    </a>
+                                </Link>
+                            </li>
+                            <li
+                                className="relative"
+                                onMouseEnter={handleResourcesHover}
+                                onMouseLeave={handleResourcesLeave}
+                            >
+                                <Link href="/resources" legacyBehavior>
+                                    <a className={`text-sm ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        RESOURCES
+                                    </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/services" className={`text-sm ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                    SERVICES
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/resources" className={`text-sm ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                    RESOURCES
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/faqs" className={`text-sm ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                    FAQS
-                                </a>
+                                <Link href="/faqs" legacyBehavior>
+                                    <a className={`text-sm ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                        FAQS
+                                    </a>
+                                </Link>
                             </li>
                             <li>
                                 <a
@@ -153,47 +150,403 @@ const Navbar: React.FC<NavbarProps> = () => {
                         </div>
                     </div>
 
+                    {/* Products Mega Menu */}
+                    <div
+                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isProductsMegaMenuOpen
+                                ? 'opacity-100 translate-y-0 visible'
+                                : 'opacity-0 -translate-y-2 invisible'
+                            }`}
+                        onMouseEnter={handleProductsHover}
+                        onMouseLeave={handleProductsLeave}
+                        style={{
+                            transitionProperty: 'opacity, transform, visibility',
+                            transitionDelay: isProductsMegaMenuOpen ? '0ms' : '150ms'
+                        }}
+                    >
+                        <div className="max-w-7xl mx-auto py-8 px-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {/* All Products Card */}
+                                <div className="group h-full">
+                                    <Link href="/products" legacyBehavior>
+                                        <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                            style={{
+                                                '--hover-bg': '#E2DED0',
+                                                '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                e.currentTarget.style.borderColor = '#928490';
+                                                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.backgroundColor = '';
+                                                e.currentTarget.style.borderColor = '';
+                                                e.currentTarget.style.boxShadow = '';
+                                            }}
+                                        >
+                                            <div className="flex items-start mb-3">
+                                                <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                    <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                                    </svg>
+                                                </div>
+                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    All Products
+                                                </h3>
+                                            </div>
+                                            <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                Browse our complete collection of resources and courses
+                                            </p>
+                                        </a>
+                                    </Link>
+                                </div>
+
+                                {/* Individual Product Cards */}
+                                {products.map((product) => (
+                                    <div key={product.id} className="group h-full">
+                                        <Link href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
+                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                    e.currentTarget.style.borderColor = '#928490';
+                                                    e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '';
+                                                    e.currentTarget.style.borderColor = '';
+                                                    e.currentTarget.style.boxShadow = '';
+                                                }}
+                                            >
+                                                <div className="flex items-start mb-3">
+                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                        {product.subtitle === 'EBOOK' ? (
+                                                            <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                            </svg>
+                                                        ) : (
+                                                            <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                                            </svg>
+                                                        )}
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center justify-between mb-2">
+                                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                {product.name}
+                                                            </h3>
+                                                            <span className="inline-block px-2 py-1 text-xs font-medium rounded-full ml-2 flex-shrink-0 transition-all duration-300 group-hover:scale-105" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)', color: '#928490' }}>
+                                                                {product.subtitle === 'EBOOK' ? 'Ebook' : 'Mini Course'}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    {product.subtitle === 'EBOOK'
+                                                        ? 'Comprehensive guide to help you on your journey'
+                                                        : 'Interactive course with practical lessons and exercises'
+                                                    }
+                                                </p>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Services Mega Menu */}
+                    <div
+                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isServicesMegaMenuOpen
+                                ? 'opacity-100 translate-y-0 visible'
+                                : 'opacity-0 -translate-y-2 invisible'
+                            }`}
+                        onMouseEnter={handleServicesHover}
+                        onMouseLeave={handleServicesLeave}
+                        style={{
+                            transitionProperty: 'opacity, transform, visibility',
+                            transitionDelay: isServicesMegaMenuOpen ? '0ms' : '150ms'
+                        }}
+                    >
+                        <div className="max-w-7xl mx-auto py-8 px-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {/* All Services Card */}
+                                <div className="group h-full">
+                                    <Link href="/services" legacyBehavior>
+                                        <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                            style={{
+                                                '--hover-bg': '#E2DED0',
+                                                '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                e.currentTarget.style.borderColor = '#928490';
+                                                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.backgroundColor = '';
+                                                e.currentTarget.style.borderColor = '';
+                                                e.currentTarget.style.boxShadow = '';
+                                            }}
+                                        >
+                                            <div className="flex items-start mb-3">
+                                                <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                    <svg className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                                    </svg>
+                                                </div>
+                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    All Services
+                                                </h3>
+                                            </div>
+                                            <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                Explore our personalized career services for dancers.
+                                            </p>
+                                        </a>
+                                    </Link>
+                                </div>
+
+                                {/* Individual Service Cards */}
+                                {services.map((service) => (
+                                    <div key={service.id} className="group h-full">
+                                        <Link href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
+                                            <a className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                    e.currentTarget.style.borderColor = '#928490';
+                                                    e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '';
+                                                    e.currentTarget.style.borderColor = '';
+                                                    e.currentTarget.style.boxShadow = '';
+                                                }}
+                                            >
+                                                <div className="flex items-start mb-3">
+                                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}>
+                                                        <service.icon className="w-5 h-5 transition-all duration-300" style={{ color: '#928490' }} />
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center justify-between mb-2">
+                                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                {service.name}
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    {service.description}
+                                                </p>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Resources Mega Menu */}
+                    <div
+                        className={`hidden lg:block absolute left-0 right-0 top-full bg-gray-100 dark:bg-gray-800 shadow-lg border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out transform ${isResourcesMegaMenuOpen
+                                ? 'opacity-100 translate-y-0 visible'
+                                : 'opacity-0 -translate-y-2 invisible'
+                            }`}
+                        onMouseEnter={handleResourcesHover}
+                        onMouseLeave={handleResourcesLeave}
+                        style={{
+                            transitionProperty: 'opacity, transform, visibility',
+                            transitionDelay: isResourcesMegaMenuOpen ? '0ms' : '150ms'
+                        }}
+                    >
+                        <div className="max-w-7xl mx-auto py-8 px-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {/* All Resources Card */}
+                                <div className="group h-full">
+                                    <Link href="/resources" legacyBehavior>
+                                        <a
+                                            className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                e.currentTarget.style.borderColor = '#928490';
+                                                e.currentTarget.style.boxShadow =
+                                                    '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.backgroundColor = '';
+                                                e.currentTarget.style.borderColor = '';
+                                                e.currentTarget.style.boxShadow = '';
+                                            }}
+                                        >
+                                            <div className="flex items-start mb-3">
+                                                <div
+                                                    className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300"
+                                                    style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}
+                                                >
+                                                    <svg
+                                                        className="w-5 h-5 transition-all duration-300"
+                                                        style={{ color: '#928490' }}
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth={2}
+                                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    All Resources
+                                                </h3>
+                                            </div>
+                                            <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                Discover helpful articles, guides, and tools.
+                                            </p>
+                                        </a>
+                                    </Link>
+                                </div>
+
+                                {/* Individual Resource Cards */}
+                                {resources.map((resource) => (
+                                    <div key={resource.id} className="group h-full">
+                                        <Link
+                                            href={`/resources/${(resource.name || resource.title)
+                                                .toLowerCase()
+                                                .replace(/\s+/g, '-')}`}
+                                            legacyBehavior
+                                        >
+                                            <a
+                                                className="flex flex-col h-48 p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out border border-gray-200 dark:border-gray-600 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '#E2DED0';
+                                                    e.currentTarget.style.borderColor = '#928490';
+                                                    e.currentTarget.style.boxShadow =
+                                                        '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '';
+                                                    e.currentTarget.style.borderColor = '';
+                                                    e.currentTarget.style.boxShadow = '';
+                                                }}
+                                            >
+                                                <div className="flex items-start mb-3">
+                                                    <div
+                                                        className="w-10 h-10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                                                        style={{ backgroundColor: 'rgba(146, 132, 144, 0.1)' }}
+                                                    >
+                                                        {resource.icon && (
+                                                            <resource.icon
+                                                                className="w-5 h-5 transition-all duration-300"
+                                                                style={{ color: '#928490' }}
+                                                            />
+                                                        )}
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center justify-between mb-2">
+                                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                                {resource.name || resource.title}
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-300">
+                                                    {resource.description || 'Learn more about this resource.'}
+                                                </p>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+
                     {/* Mobile Sidebar Menu */}
                     <div
-                        className={`lg:hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-90 transition-transform duration-300 ease-in-out ${open ? 'transform translate-x-0' : 'transform translate-x-full'}`}
+                        className={`lg:hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-90 transition-transform duration-300 ease-in-out ${open ? 'transform translate-x-0' : 'transform -translate-x-full'}`}
                     >
                         <div className="flex flex-col justify-center items-center h-full">
                             <ul className="space-y-6 text-center">
-                                {['home'].map((section) => (
-                                    <li key={section}>
-                                        <a
-                                            href={`/#${section}`}
-                                            className={`text-2xl ${activeSection === section ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
-                                            onClick={(e) => handleNavLinkClick(section, e)}
-                                        >
-                                            {section.toUpperCase()}
+                                <li>
+                                    <Link href="/" legacyBehavior>
+                                        <a className={`text-2xl ${router.pathname === '/' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
+                                            HOME
                                         </a>
-                                    </li>
-                                ))}
-                                <li>
-                                    <a href="/about" className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                        ABOUT
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="/products" className={`text-2xl ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    <Link href="/about" legacyBehavior>
+                                        <a className={`text-2xl ${router.pathname === '/about' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
+                                            ABOUT
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <button
+                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
+                                        onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                                    >
                                         PRODUCTS
-                                    </a>
+                                    </button>
+                                    {isMobileProductsOpen && (
+                                        <ul className="pl-4 mt-4 space-y-3">
+                                            <li>
+                                                <Link href="/products" legacyBehavior>
+                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                        All Products
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            {products.map((product) => (
+                                                <li key={product.id}>
+                                                    <Link href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
+                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>{`${product.name} - ${product.subtitle === 'EBOOK' ? 'Ebook' : 'Mini Course'}`}</a>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </li>
                                 <li>
-                                    <a href="/services" className={`text-2xl ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
+                                    <button
+                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}
+                                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                                    >
                                         SERVICES
-                                    </a>
+                                    </button>
+                                    {isMobileServicesOpen && (
+                                        <ul className="pl-4 mt-4 space-y-3">
+                                            <li>
+                                                <Link href="/services" legacyBehavior>
+                                                    <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>
+                                                        All Services
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            {services.map((service) => (
+                                                <li key={service.id}>
+                                                    <Link href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}`} legacyBehavior>
+                                                        <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray" onClick={() => setOpen(false)}>{service.name}</a>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </li>
                                 <li>
-                                    <a href="/resources" className={`text-2xl ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                        RESOURCES
-                                    </a>
+                                    <Link href="/resources" legacyBehavior>
+                                        <a className={`text-2xl ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
+                                            RESOURCES
+                                        </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="/faqs" className={`text-2xl ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`}>
-                                        FAQS
-                                    </a>
+                                    <Link href="/faqs" legacyBehavior>
+                                        <a className={`text-2xl ${router.pathname.startsWith('/faqs') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray`} onClick={() => setOpen(false)}>
+                                            FAQS
+                                        </a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <a

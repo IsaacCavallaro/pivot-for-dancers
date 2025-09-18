@@ -1,50 +1,65 @@
-import { Star, Clock } from 'lucide-react';
+import { BookOpen, Film } from 'lucide-react';
 
-export const resources = [
+export interface Resource {
+    id: number;
+    title: string;
+    type: 'Blog' | 'Video';
+    description: string;
+    icon: React.FC<any>;
+    url: string;
+    features?: string[];
+    image: string;
+    gradient: string;
+    duration: string;
+}
+
+export const resources: Resource[] = [
     {
         id: 1,
         title: 'Pivot Paths',
-        description: 'A mobile app that is free and is structured around three main categories, each containing a set of paths.',
+        type: 'Blog',
+        description: 'A mobile app to help you find your path.',
+        icon: BookOpen,
+        url: '/resources/pivot-paths',
         image: '/assets/how-to-pivot-ebook.png',
-        link: '#',
-        features: ['Mobile App', 'Free'],
-        duration: 'Ongoing',
-        gradient: 'from-yellow-100 to-white',
-        icon: Star
+        gradient: 'from-blue-200 to-blue-300',
+        duration: 'Mobile App',
+        features: ['Career Transition', 'Mobile App']
     },
     {
         id: 2,
         title: 'Pivot Podcast',
-        description: 'Listen to inspiring stories and practical advice from dancers who have successfully navigated career changes.',
-        image: '/assets/pivot-panels.png',
-        link: '#',
-        features: ['Guest Interviews', 'Actionable Tips'],
-        duration: '45 min episodes',
-        gradient: 'from-blue-100 to-white',
-        icon: Clock
+        type: 'Video',
+        description: 'Listen to inspiring stories of career transition.',
+        icon: Film,
+        url: '/resources/pivot-podcast',
+        image: '/assets/happy-trails-mini-course.png',
+        gradient: 'from-purple-200 to-purple-300',
+        duration: 'Podcast',
+        features: ['Podcast', 'Career Stories']
     },
     {
         id: 3,
         title: 'Expectations vs Reality',
-        description: 'A realistic look at career transitions for dancers.',
-        image: '/assets/happy-trails-mini-course.png',
-        link: '#',
-        features: ['Data-driven', 'Infographics'],
-        duration: '15 min read',
-        gradient: 'from-green-100 to-white',
-        icon: Clock
+        type: 'Blog',
+        description: 'Data-driven insights into career transitions for dancers.',
+        icon: BookOpen,
+        url: '/resources/expectations-vs-reality',
+        image: '/assets/pivot-mentorship.png',
+        gradient: 'from-green-200 to-green-300',
+        duration: 'Data',
+        features: ['Data', 'Career Insights']
     },
     {
         id: 4,
-        title: 'Discover Your Pivot Personality',
-        description: 'A comprehensive guide for dancers transitioning into new careers.',
-        image: '/assets/how-to-pivot-ebook.png',
-        link: '#',
-        features: ['Quiz', 'Personalized Results'],
-        duration: '10 min',
-        gradient: 'from-purple-100 to-white',
-        icon: Star
+        title: 'Find your pivot personality',
+        type: 'Blog',
+        description: 'Take our quiz to discover your pivot personality and get personalized recommendations.',
+        icon: BookOpen,
+        url: '/resources/find-your-pivot-personality',
+        image: '/assets/pivot-panels.png',
+        gradient: 'from-yellow-200 to-yellow-300',
+        duration: 'Quiz',
+        features: ['Quiz', 'Self-discovery']
     },
 ];
-
-export type Resource = typeof resources[0];

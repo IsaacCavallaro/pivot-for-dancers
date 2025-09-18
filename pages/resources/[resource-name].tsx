@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { resources, Resource } from '../../data/resources';
-import { Clock, ArrowLeft } from 'lucide-react';
+import { Star, Clock, ArrowLeft } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import DataSection from '../../components/Data';
@@ -13,7 +13,7 @@ const ResourcePage = () => {
 
     // Find the resource based on the resource name
     const resource = resources.find((r: Resource) =>
-        r.title.toLowerCase().replace(/ /g, '-') === resourceName
+        r.url.split('/').pop() === resourceName
     );
 
     if (!resource) {
@@ -51,7 +51,7 @@ const ResourcePage = () => {
         );
     }
 
-    if (resource.title === 'Discover Your Pivot Personality') {
+    if (resource.title === 'Find your pivot personality') {
         return (
             <div>
                 <Navigation />
