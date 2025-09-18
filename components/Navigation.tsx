@@ -39,9 +39,8 @@ const Navbar: React.FC<NavbarProps> = () => {
     const handleMegaMenuLeave = () => {
         menuTimer.current = setTimeout(() => {
             setIsMegaMenuOpen(false);
-            // Delay setting activeMegaMenu to null to allow fade-out animation
-            setTimeout(() => setActiveMegaMenu(null), 300);
-        }, 300); // Increased delay for better UX
+            setActiveMegaMenu(null);
+        }, 300);
     };
 
     const handleToggle = () => {
