@@ -123,20 +123,23 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
     return (
         <div ref={ref} className="text-center">
             <div
-                className="rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group"
                 style={{
                     backgroundColor: backgroundColor,
                     border: `2px solid ${borderColor}`,
                 }}
             >
+                {/* Animated background effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+
                 <div
-                    className="w-8 h-8 md:w-7 md:h-7 rounded-full flex items-center justify-center mb-2 md:mb-1 relative z-10"
+                    className="w-8 h-8 md:w-7 md:h-7 rounded-full flex items-center justify-center mb-2 md:mb-1 relative z-10 group-hover:scale-110 transition-transform duration-300"
                     style={{ backgroundColor: iconColor }}
                 >
                     <IconComponent className="w-5 h-5 md:w-4 md:h-4 text-white" />
                 </div>
 
-                <div className="text-xl md:text-lg font-bold mb-1 relative z-10" style={{ color: textColor }}>
+                <div className="text-xl md:text-lg font-bold mb-1 relative z-10 font-merriweather" style={{ color: textColor }}>
                     {isVisible ? (
                         <>
                             <Counter end={numericValue} duration={2000} />
@@ -146,7 +149,7 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
                         "0"
                     )}
                 </div>
-                <div className="text-xs leading-tight relative z-10" style={{ color: textColor }}>
+                <div className="text-xs leading-tight relative z-10 font-montserrat" style={{ color: textColor }}>
                     {label}
                 </div>
             </div>
@@ -194,17 +197,51 @@ const HappyTrailsPage = () => {
     const timelineItems = [
         {
             title: "While Dancing",
-            description: "Happy Trails takes you through steps you can take while you're still working as a professional dancer for the first year of your pivot journey.",
+            description: (
+                <>
+                    Happy Trails takes you through steps <span className="font-bold" style={{ color: "#928490" }}>
+                        you can take
+                    </span> while you're still working as a professional dancer for the first year of{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        your pivot journey
+                    </span>
+                    .
+                </>
+            ),
             icon: Heart
         },
         {
             title: "Entry-Level",
-            description: "Once you land an entry-level role in your new career, we'll guide through how to cope and continue to grow in your job and in your life.",
+            description: (
+                <>
+                    Once you land an entry-level role in your new career,{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        we'll guide you
+                    </span>{" "}
+                    through how to cope and{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        continue to grow
+                    </span>{" "}
+                    in your job and in your life.
+                </>
+            ),
             icon: Target
         },
         {
             title: "Specialize",
-            description: "When you're able to start specializing in your new career, we'll guide you through mindsets, practicality, and how to rediscover your love of dance.",
+            description: (
+                <>
+                    When you're able to start specializing in your new career,{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        we'll guide you
+                    </span>{" "}
+                    through mindsets, practicality, and how to{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        rediscover your love of dance
+                    </span>
+                    .
+                </>
+            ),
             icon: TrendingUp
         }
     ];
@@ -235,7 +272,7 @@ const HappyTrailsPage = () => {
             <Navigation />
             <div className="bg-beige">
                 {/* Hero Section */}
-                <div className="text-center py-16 md:py-24 bg-beige">
+                <div className="text-center py-16 md:py-24 bg-beige relative overflow-hidden">
                     <ScrollAnimation delay={0}>
                         <div className="flex justify-center mb-6">
                             <Image
@@ -243,7 +280,7 @@ const HappyTrailsPage = () => {
                                 alt="Pivot for Dancers Logo"
                                 width={120}
                                 height={120}
-                                className="w-24 h-24 md:w-32 md:h-32"
+                                className="w-24 h-24 md:w-32 md:h-32 rounded-full drop-shadow-lg object-cover"
                             />
                         </div>
                     </ScrollAnimation>
@@ -271,15 +308,16 @@ const HappyTrailsPage = () => {
                     <ScrollAnimation delay={500}>
                         <button
                             onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                            className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg"
+                            className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                         >
-                            START NOW FOR $75
+                            <span className="relative z-10">BUY NOW</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </button>
                     </ScrollAnimation>
                 </div>
 
                 {/* Intro Section */}
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10" style={{ backgroundColor: '#E2DED0' }}>
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 rounded-3xl my-8" style={{ backgroundColor: '#E2DED0' }}>
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <ScrollAnimation delay={300}>
                             <div>
@@ -287,10 +325,10 @@ const HappyTrailsPage = () => {
                                     <h2 className="font-merriweather text-5xl font-bold text-dark-gray">What is Happy Trails?</h2>
                                 </div>
                                 <ul className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    <li>Happy Trails is a <span className="font-bold">self-paced, 4-part</span> mini course named after the famous Broadway send-off</li>
-                                    <li>It's an in-depth <span className="font-bold">5-year career change</span> roadmap guided by former pro dancer and founder of Pivot for Dancers, Kaylee Randall</li>
-                                    <li>You'll get a detailed, step-by-step plan for your career transition, <span className="font-bold">tailored to your dance experience</span></li>
-                                    <li>Plus, the course gives you access to <span className="font-bold">exclusive resources</span> including:
+                                    <li>Happy Trails is a <span className="font-bold" style={{ color: "#647C90" }}>self-paced, 4-part</span> mini course named after the famous Broadway send-off</li>
+                                    <li>It's an in-depth <span className="font-bold" style={{ color: "#647C90" }}>5-year career change</span> roadmap guided by former pro dancer and founder of Pivot for Dancers, Kaylee Randall</li>
+                                    <li>You'll get a detailed, step-by-step plan for your career transition, <span className="font-bold" style={{ color: "#647C90" }}>tailored to your dance experience</span></li>
+                                    <li>Plus, the course gives you access to <span className="font-bold" style={{ color: "#647C90" }}>exclusive resources</span> including:
                                         <ul className="list-disc pl-5 space-y-2 mt-2">
                                             <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-600 mr-2" />50 Non-Dance Job Ideas</li>
                                             <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-600 mr-2" />Editable Canva Resume Template</li>
@@ -327,48 +365,49 @@ const HappyTrailsPage = () => {
                                 <div className="flex items-center justify-center mb-4">
                                     <h2 className="font-merriweather text-5xl font-bold text-dark-gray">What's Inside?</h2>
                                 </div>
+                                <p className="font-montserrat text-lg text-brown-gray mt-2">Happy Trails guides you through a dancer-focused roadmap to help you pivot with
+                                    confidence.</p>
                             </div>
                         </ScrollAnimation>
                         <div className="grid md:grid-cols-3 gap-8">
                             {features.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-beige hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                        <div className="relative">
-                                            <Image src={feature.image} alt={feature.title} width={400} height={300} className="w-full h-48 object-cover" />
+                                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-beige hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+                                        <div className="relative overflow-hidden">
+                                            <Image src={feature.image} alt={feature.title} width={400} height={300} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         </div>
                                         <div className="p-6">
+                                            <div className="w-12 h-12 rounded-full bg-light-gray flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                                <feature.icon className="w-6 h-6 text-white" />
+                                            </div>
                                             <h3 className="font-merriweather text-2xl font-bold text-dark-gray mb-3">{feature.title}</h3>
                                             <p className="font-montserrat text-brown-gray text-center mb-4">
                                                 {feature.title === "Mindset Shifts" ? (
                                                     <>
                                                         A <span
-                                                            className="py-1 rounded-lg font-semibold"
-                                                            style={{ color: "#647C90" }}
+                                                            className="font-semibold py-1 px-2 rounded-md"
+                                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}
                                                         >huge part</span> of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.
                                                     </>
                                                 ) : feature.title === "Practical Knowledge" ? (
                                                     <>
                                                         From the <span
-                                                            className="py-1 rounded-lg font-semibold"
-                                                            style={{ color: "#647C90" }}
+                                                            className="font-semibold py-1 px-2 rounded-md"
+                                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}
                                                         >job search to finances</span>, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.
                                                     </>
                                                 ) : feature.title === "Tailored Resources" ? (
                                                     <>
                                                         More than your average career change course, Happy Trails is <span
-                                                            className="py-1 rounded-lg font-semibold"
-                                                            style={{ color: "#647C90" }}
+                                                            className="font-semibold py-1 px-2 rounded-md"
+                                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}
                                                         >dancer-specific</span> and tailored to the career needs of professional dancers.
                                                     </>
                                                 ) : (
                                                     feature.description
                                                 )}
                                             </p>
-                                            <div className="flex justify-center">
-                                                <div className="w-8 h-8 rounded-full bg-light-gray flex items-center justify-center">
-                                                    <feature.icon className="w-4 h-4 text-white" />
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </ScrollAnimation>
@@ -389,23 +428,25 @@ const HappyTrailsPage = () => {
                             </div>
                         </ScrollAnimation>
                         <div className="relative">
-                            <div className="hidden md:block absolute w-0.5 h-full bg-purple-gray top-0 left-1/2 transform -translate-x-1/2"></div>
+                            <div className="hidden md:block absolute w-0.5 h-full bg-purple-gray/50 top-0 left-1/2 transform -translate-x-1/2"></div>
                             {timelineItems.map((item, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
                                     <div className="mt-8 md:mt-0 md:flex md:items-center">
                                         {index % 2 === 0 ? (
                                             <>
                                                 <div className="md:w-1/2 md:pr-8">
-                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-beige text-center">
+                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-beige text-center hover:shadow-xl transition-all duration-300 group">
                                                         <div className="flex items-center justify-center mb-3">
-                                                            <item.icon className="w-6 h-6 text-purple-gray mr-2" />
+                                                            <div className="w-10 h-10 rounded-full bg-light-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                                                <item.icon className="w-5 h-5 text-white" />
+                                                            </div>
                                                             <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{item.title}</h3>
                                                         </div>
                                                         <p className="font-montserrat text-brown-gray">{item.description}</p>
                                                     </div>
                                                 </div>
                                                 <div className="hidden md:flex justify-center items-center w-16">
-                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center">
+                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
                                                         <div className="w-2 h-2 bg-white rounded-full"></div>
                                                     </div>
                                                 </div>
@@ -415,14 +456,16 @@ const HappyTrailsPage = () => {
                                             <>
                                                 <div className="md:w-1/2"></div>
                                                 <div className="hidden md:flex justify-center items-center w-16">
-                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center">
+                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
                                                         <div className="w-2 h-2 bg-white rounded-full"></div>
                                                     </div>
                                                 </div>
                                                 <div className="md:w-1/2 md:pl-8">
-                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-beige text-center">
+                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-beige text-center hover:shadow-xl transition-all duration-300 group">
                                                         <div className="flex items-center justify-center mb-3">
-                                                            <item.icon className="w-6 h-6 text-purple-gray mr-2" />
+                                                            <div className="w-10 h-10 rounded-full bg-light-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                                                <item.icon className="w-5 h-5 text-white" />
+                                                            </div>
                                                             <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{item.title}</h3>
                                                         </div>
                                                         <p className="font-montserrat text-brown-gray">{item.description}</p>
@@ -438,7 +481,7 @@ const HappyTrailsPage = () => {
                 </div>
 
                 {/* Final CTA Section */}
-                <div className="text-center py-16 bg-beige">
+                <div className="text-center py-16 bg-beige relative overflow-hidden">
                     <ScrollAnimation delay={0}>
                         <div className="flex items-center justify-center mb-4">
                             <h2 className="font-merriweather text-5xl font-bold text-dark-gray">
@@ -452,7 +495,7 @@ const HappyTrailsPage = () => {
                         </p>
                     </ScrollAnimation>
                     <ScrollAnimation delay={500}>
-                        <div className="extremely justify-center items-center gap-4 mb-8">
+                        <div className="flex justify-center items-center gap-4 mb-8">
                             <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
                             <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
                             <span className="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">
@@ -463,9 +506,10 @@ const HappyTrailsPage = () => {
                     <ScrollAnimation delay={700}>
                         <button
                             onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                            className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg"
+                            className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                         >
-                            START NOW
+                            <span className="relative z-10">START NOW</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </button>
                     </ScrollAnimation>
                 </div>
