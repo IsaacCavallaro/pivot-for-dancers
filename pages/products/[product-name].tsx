@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { products, Product } from '../../data/products';
 import { Star, Clock, ArrowLeft } from 'lucide-react';
-import ProductNavigation from '../../components/ProductNavigation';
+import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 
 const ProductPage = () => {
@@ -17,7 +17,7 @@ const ProductPage = () => {
     if (!product) {
         return (
             <div>
-                <ProductNavigation />
+                <Navigation />
                 <div className="min-h-screen flex items-center justify-center bg-beige">
                     <div className="text-center">
                         <h1 className="text-4xl font-merriweather font-bold text-dark-gray mb-4">
@@ -43,7 +43,7 @@ const ProductPage = () => {
 
     return (
         <div>
-            <ProductNavigation />
+            <Navigation />
             <div className="min-h-screen bg-beige py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6">
                     {/* Back Button */}

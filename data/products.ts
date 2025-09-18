@@ -26,24 +26,6 @@ export interface Product {
 
 export const products: Product[] = [
     {
-        id: 1,
-        name: "Pivot Conversations",
-        subtitle: "VIRTUAL MEETUPS",
-        description:
-            "Join your fellow dancers for a virtual career change conversation. No recordings, no pressure, just real talk.",
-        price: 0,
-        originalPrice: 0,
-        url: pivotConverstationsUrl,
-        img: "/assets/pivot-panels.png",
-        category: "Interview Prep",
-        duration: "1 hour",
-        rating: 5.0,
-        reviews: 43,
-        features: ["Live Group Sessions", "Community", "Follow-up Support"],
-        icon: Video,
-        gradient: "from-light-gray to-purple-gray",
-    },
-    {
         id: 2,
         name: "How to Pivot",
         subtitle: "EBOOK",
@@ -78,23 +60,5 @@ export const products: Product[] = [
         features: ["Video Lessons", "Bonus Resources", "Community Access", "Certificate"],
         icon: Clock,
         gradient: "from-beige to-brown-gray",
-    },
-    {
-        id: 4,
-        name: "Mentorship",
-        subtitle: "PRIVATE SESSIONS",
-        description:
-            "Need more support? Get personalized guidance tailored to your unique goals and experiences.",
-        price: 150,
-        originalPrice: 229,
-        url: mentorshipBookingUrl,
-        img: "/assets/pivot-mentorship.png",
-        category: "Coaching",
-        duration: "3 x Sessions",
-        rating: 5.0,
-        reviews: 3,
-        features: ["1-on-1 Sessions", "Bespoke Advice", "Email Support", "Progress Tracking"],
-        icon: Users,
-        gradient: "from-brown-gray to-dark-gray",
     },
 ];
