@@ -85,9 +85,9 @@ const FeaturedProducts: React.FC = () => {
     };
 
     // Calculate bundle pricing dynamically
-    const bundleProducts = products.filter(product => [2, 3, 4].includes(product.id));
+    const bundleProducts = products.filter(product => [2, 3].includes(product.id));
     const totalPrice = bundleProducts.reduce((sum, product) => sum + product.price, 0);
-    const discountPercent = 30;
+    const discountPercent = 20;
     const discountAmount = totalPrice * (discountPercent / 100);
     const bundlePrice = totalPrice - discountAmount;
 
@@ -118,7 +118,7 @@ const FeaturedProducts: React.FC = () => {
 
                 <div
                     ref={productsRef}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mt-5"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mt-5"
                 >
                     {products.map((product, index) => {
                         const IconComponent = product.icon;
@@ -241,10 +241,7 @@ const FeaturedProducts: React.FC = () => {
                                                 : "bg-light-gray hover:bg-purple-gray text-white"
                                                 }`}
                                         >
-                                            {product.id === 1 ? "REGISTER NOW" :
-                                                product.id === 2 ? "DOWNLOAD NOW" :
-                                                    product.id === 3 ? "START NOW" :
-                                                        "BOOK NOW"}
+                                            {product.id === 2 ? "DOWNLOAD NOW" : "START NOW"}
                                         </button>
                                         <button
                                             onClick={(e) => handleLearnMoreClick(product.name, e)}
@@ -255,11 +252,6 @@ const FeaturedProducts: React.FC = () => {
                                         >
                                             Learn More
                                         </button>
-                                        {product.id === 1 && (
-                                            <p className="font-montserrat text-xs text-center text-brown-gray">
-                                                Limited spots available for live sessions
-                                            </p>
-                                        )}
                                         {product.id === 2 && (
                                             <p className="text-xs text-center text-stone-600">
                                                 Low-cost, low-pressure
@@ -268,11 +260,6 @@ const FeaturedProducts: React.FC = () => {
                                         {product.id === 3 && (
                                             <p className="text-xs text-center text-stone-600">
                                                 Downloaded by {product.reviews}+ professionals
-                                            </p>
-                                        )}
-                                        {product.id === 4 && (
-                                            <p className="text-xs text-center text-stone-600">
-                                                Limited Availability
                                             </p>
                                         )}
                                     </div>

@@ -124,7 +124,17 @@ const AboutUsSection = () => {
                     {/* Left Column */}
                     <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
                         <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
-                            Pivot for Dancers offers career change resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former professional dancers who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
+                            Pivot for Dancers offers <span
+                                className="px-2 py-1 rounded-lg font-semibold"
+                                style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                            >
+                                career change
+                            </span> resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former <span
+                                className="px-2 py-1 rounded-lg font-semibold"
+                                style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                            >
+                                professional dancers
+                            </span> who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
                         </p>
                         <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
                             There are thousands of other dancers <span
