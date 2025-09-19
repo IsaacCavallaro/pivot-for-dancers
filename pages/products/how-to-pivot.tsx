@@ -1,161 +1,499 @@
 import Image from 'next/image';
-import { Product, ebookPaymentUrl } from '../../data/products';
-import { Star, Clock, ArrowLeft, BookOpen } from 'lucide-react';
+import { Product, coursePaymentUrl } from '../../data/products';
+import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, Book, Brain, Compass } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
+import { useState, useEffect, useRef } from 'react';
 
 const product: Product = {
-    id: 2,
+    id: 4,
     name: "How to Pivot",
     subtitle: "EBOOK",
     description:
-        `Feeling stuck in your dance career?\nNot sure what else is out there for you beyond the stage?\nReady to take the leap but unsure where to start?\n\nIntroducing \"How to Pivot: Navigating Career Change for Professional Dancers\".\n\nPart self-help book and part action-focused career resource, this ebook takes you through all the things you wish someone would\'ve told you before you started your career as a professional dancer.\n\nIf you already lived your dream and find yourself wondering \"what now?\", this dancer-specific guide is for you.\n\nBrought to you by the founder of Pivot for Dancers, \"How to Pivot\" is an actionable career change guide tailored specifically for professional dancers.\n\nKaylee Randall brings together concepts from psychology and philosophy, merging them with her own experience as a professional dancer who successfully changed careers.\n\nInside, you\'ll find:\n10 chapters of taboo, dancer-specific topics no one else is talking about\nDeep dive into the psychological and philosophical concepts that can guide you through a career change\nMindset shifts and taboo topics to connect to what you truly want in your next adventure\nTools and resources to help you understand your transferable skills and build a muggle resume\nA clear, focused action plan to help you step onto your next stage\nYou\'ll always be a dancer. No one can take that away. But if you\'re feeling pulled to something more, you\'re not alone. Get prepared for all the exciting things to come and reach your full potential with the help of \"How to Pivot\".`,
-    price: 6.99,
-    originalPrice: 0,
-    url: ebookPaymentUrl,
+        `Feeling stuck in your dance career?\n\nNot sure what else is out there for you beyond the stage?\n\nReady to take the leap but unsure where to start?\n\nIntroducing "How to Pivot: Navigating Career Change for Professional Dancers".\n\nPart self-help book and part action-focused career resource, this ebook takes you through all the things you wish someone would've told you before you started your career as a professional dancer.\n\nIf you already lived your dream and find yourself wondering "what now?", this dancer-specific guide is for you.\n\nBrought to you by the founder of Pivot for Dancers, "How to Pivot" is an actionable career change guide tailored specifically for professional dancers.\n\nKaylee Randall brings together concepts from psychology and philosophy, merging them with her own experience as a professional dancer who successfully changed careers.\n\nInside, you'll find:\n* 10 chapters of taboo, dancer-specific topics no one else is talking about\n* Deep dive into the psychological and philosophical concepts that can guide you through a career change\n* Mindset shifts and taboo topics to connect to what you truly want in your next adventure\n* Tools and resources to help you understand your transferable skills and build a muggle resume\n* A clear, focused action plan to help you step onto your next stage\n\nYou'll always be a dancer. No one can take that away. But if you're feeling pulled to something more, you're not alone. Get prepared for all the exciting things to come and reach your full potential with the help of "How to Pivot".`,
+    price: 50,
+    originalPrice: 125,
+    url: coursePaymentUrl,
     img: "/assets/how-to-pivot-ebook.png",
-    category: "Digital Book",
-    duration: "10 Chapters",
+    category: "Ebook",
+    duration: "Self-Paced",
     rating: 5.0,
-    reviews: 89,
-    features: ["Instant Download", "Interactive Exercises", "Case Studies", "Lifetime Updates"],
-    icon: BookOpen,
-    gradient: "from-purple-gray to-beige",
+    reviews: 24,
+    features: [
+        "10 Comprehensive Chapters",
+        "Psychology & Philosophy Concepts",
+        "Transferable Skills Assessment",
+        "Clear Action Plan"
+    ],
+    icon: Book,
+    gradient: "from-beige to-brown-gray",
+};
+
+// Counter component from reference code
+const Counter = ({ end, duration }: { end: number; duration: number }) => {
+    const [count, setCount] = useState(0)
+    const ref = useRef<number>(0)
+
+    useEffect(() => {
+        let start = 0
+        const increment = end / (duration / 16)
+        const step = () => {
+            start += increment
+            if (start < end) {
+                setCount(Math.floor(start))
+                ref.current = requestAnimationFrame(step)
+            } else {
+                setCount(end)
+            }
+        }
+        ref.current = requestAnimationFrame(step)
+        return () => cancelAnimationFrame(ref.current)
+    }, [end, duration])
+
+    return <span>{count.toLocaleString()}</span>
+}
+
+interface ScrollAnimationProps {
+    children: React.ReactNode;
+    delay?: number;
+    className?: string;
+}
+
+const ScrollAnimation = ({ children, delay = 0, className = '' }: ScrollAnimationProps) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    if (ref.current) observer.unobserve(ref.current);
+                }
+            },
+            { threshold: 0.3 }
+        );
+
+        if (ref.current) observer.observe(ref.current);
+        return () => {
+            if (ref.current) observer.unobserve(ref.current);
+        };
+    }, []);
+
+    return (
+        <div
+            ref={ref}
+            className={`transition-all duration-1000 ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'} ${className}`}
+            style={{ transitionDelay: isVisible ? `${delay}ms` : '0ms' }}
+        >
+            {children}
+        </div>
+    );
+};
+
+const StatCard = ({ number, label, icon: IconComponent, index }: { number: string; label: string; icon: React.ComponentType<any>; index: number }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    if (ref.current) observer.unobserve(ref.current);
+                }
+            },
+            { threshold: 0.3 }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => {
+            if (ref.current) observer.unobserve(ref.current);
+        };
+    }, []);
+
+    const backgroundColor = "#E2DED0";
+    const borderColor = index % 2 === 0 ? "#647C90" : "#928490";
+    const iconColor = index % 2 === 0 ? "#647C90" : "#928490";
+    const textColor = "#647C90";
+
+    // Extract numeric value from the number string (e.g., "50+" becomes 50)
+    const numericValue = Number.parseInt(number.replace(/\D/g, ""));
+
+    return (
+        <div ref={ref} className="text-center">
+            <div
+                className="rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                style={{
+                    backgroundColor: backgroundColor,
+                    border: `2px solid ${borderColor}`,
+                }}
+            >
+                {/* Animated background effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+
+                <div
+                    className="w-8 h-8 md:w-7 md:h-7 rounded-full flex items-center justify-center mb-2 md:mb-1 relative z-10 group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: iconColor }}
+                >
+                    <IconComponent className="w-5 h-5 md:w-4 md:h-4 text-white" />
+                </div>
+
+                <div className="text-xl md:text-lg font-bold mb-1 relative z-10 font-merriweather" style={{ color: textColor }}>
+                    {isVisible ? (
+                        <>
+                            <Counter end={numericValue} duration={2000} />
+                            {number.includes("+") && "+"}
+                        </>
+                    ) : (
+                        "0"
+                    )}
+                </div>
+                <div className="text-xs leading-tight relative z-10 font-montserrat" style={{ color: textColor }}>
+                    {label}
+                </div>
+            </div>
+        </div>
+    );
 };
 
 const HowToPivotPage = () => {
     const router = useRouter();
-    const IconComponent = product.icon;
+    const [isVisible, setIsVisible] = useState(false);
+    const BASE_PATH = process.env.PUBLIC_URL || "";
+
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
+
+    const stats = [
+        { number: "10", label: "Comprehensive Chapters", icon: Book },
+        { number: "24+", label: "5-Star Reviews", icon: Star },
+        { number: "100+", label: "Action Steps", icon: Target },
+        { number: "15+", label: "Tools & Resources", icon: Award }
+    ];
+
+    const testimonials = [
+        {
+            name: "Sarah Martinez",
+            title: "Former Principal Dancer",
+            avatar: "/assets/sarah-martinez.jpeg",
+            text: "This book gave me the clarity I needed to transition from principal dancer to arts administration. Kaylee's insights into the psychological aspects of career change were eye-opening and incredibly helpful."
+        },
+        {
+            name: "Marcus Chen",
+            title: "Ex-Broadway Performer",
+            avatar: "/assets/marcus-chen.jpeg",
+            text: "How to Pivot addresses all the taboo topics that dancers face but no one talks about. It's honest, practical, and gave me the confidence to pursue a career in tech. Highly recommend!"
+        },
+        {
+            name: "Emma Rodriguez",
+            title: "Dance Company Alum",
+            avatar: "/assets/emma-rodriguez.jpeg",
+            text: "The transferable skills section was a game-changer for me. I never realized how valuable my dance background was until I read this book. It helped me land my dream job in project management."
+        }
+    ];
+
+    const journeyItems = [
+        {
+            title: "Self-Discovery",
+            description: (
+                <>
+                    Explore the <span className="font-bold" style={{ color: "#928490" }}>
+                        psychological concepts
+                    </span> that guide career transitions and discover what truly drives you beyond the stage through{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        deep introspection
+                    </span>
+                    .
+                </>
+            ),
+            icon: Brain
+        },
+        {
+            title: "Skills Translation",
+            description: (
+                <>
+                    Learn how to{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        identify and articulate
+                    </span>{" "}
+                    your transferable skills and{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        build a compelling resume
+                    </span>{" "}
+                    that speaks to non-dance employers.
+                </>
+            ),
+            icon: Target
+        },
+        {
+            title: "Action Planning",
+            description: (
+                <>
+                    Get a{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        clear, focused action plan
+                    </span>{" "}
+                    with practical steps to help you transition confidently and{" "}
+                    <span className="font-bold" style={{ color: "#928490" }}>
+                        reach your full potential
+                    </span>{" "}
+                    in your next career.
+                </>
+            ),
+            icon: Compass
+        }
+    ];
+
+    const features = [
+        {
+            title: "Taboo Topics",
+            description: "10 chapters covering the dancer-specific topics no one else is talking about, including financial realities, identity beyond dance, and career transition fears.",
+            icon: Heart,
+            image: "/assets/ballet-female-no-bg.jpeg"
+        },
+        {
+            title: "Psychology & Philosophy",
+            description: "Deep dive into psychological and philosophical concepts that can guide you through a career change, merging academic insights with real-world experience.",
+            icon: Brain,
+            image: "/assets/contemporary-female-no-bg.jpeg"
+        },
+        {
+            title: "Practical Tools",
+            description: "Actionable tools and resources to help you understand your transferable skills, build a professional resume, and create a clear action plan.",
+            icon: Target,
+            image: "/assets/commercial-male-no-bg.jpeg"
+        }
+    ];
 
     return (
-        <div>
+        <div className="bg-beige min-h-screen">
             <Navigation />
-            <div className="min-h-screen bg-beige py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <button
-                        onClick={() => router.push('/products')}
-                        className="flex items-center gap-2 text-purple-gray hover:text-dark-gray font-montserrat font-semibold mb-8 transition-colors duration-300"
-                    >
-                        <ArrowLeft className="w-4 h-4" />
-                        Back to Products
-                    </button>
+            <div className="bg-beige">
+                {/* Hero Section */}
+                <div className="relative py-16 md:py-24 overflow-hidden">
 
-                    <div className="text-center py-4 mb-8">
-                        <p className="font-montserrat text-md uppercase text-purple-gray font-semibold tracking-wide">
-                            {product.subtitle}
-                        </p>
-                        <h1 className="font-merriweather text-5xl md:text-6xl font-bold text-dark-gray mb-4">
-                            {product.name}
-                        </h1>
-                    </div>
+                    <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="bg-white backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                        {/* Left Column - Product Image */}
-                        <div className="relative aspect-square bg-white rounded-2xl shadow-lg flex items-center justify-center p-8">
-                            <Image
-                                src={product.img}
-                                alt={product.name}
-                                width={500}
-                                height={500}
-                                className="max-w-full max-h-full object-contain"
-                            />
-                            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-3">
-                                <IconComponent className="w-6 h-6 text-dark-gray" />
+                            <div className="relative z-10 text-center">
+                                <ScrollAnimation delay={200}>
+                                    <div className="inline-flex items-center justify-center mb-4 px-4 py-2 bg-light-gray rounded-full border border-purple-gray/20">
+                                        <span className="text-sm font-semibold text-white tracking-wider uppercase">EBOOK</span>
+                                    </div>
+                                    <h1 className="text-5xl md:text-7xl font-bold text-black">
+                                        How to Pivot
+                                    </h1>
+                                </ScrollAnimation>
+                                <ScrollAnimation delay={300}>
+                                    <br></br>
+                                    <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
+                                        Navigating Career Change for Professional Dancers
+                                    </p>
+                                </ScrollAnimation>
+
+                                {/* Stats Section */}
+                                <ScrollAnimation delay={400}>
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-10">
+                                        {stats.map((stat, index) => (
+                                            <StatCard key={index} {...stat} index={index} />
+                                        ))}
+                                    </div>
+                                </ScrollAnimation>
+
+                                <ScrollAnimation delay={500}>
+                                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                                        <button
+                                            onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                            className="bg-purple-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                        >
+                                            <span className="relative z-10">BUY NOW</span>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        </button>
+                                    </div>
+                                </ScrollAnimation>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        {/* Right Column - Product Details */}
-                        <div className="bg-white rounded-2xl shadow-lg p-8">
-                            <div className="flex items-center gap-2 mb-6">
-                                <div className="flex items-center">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star
-                                            key={i}
-                                            className={`w-5 h-5 ${i < Math.floor(product.rating)
-                                                ? "text-yellow-400 fill-current"
-                                                : "text-gray-300"
-                                                }`}
-                                        />
-                                    ))}
+
+                {/* The Journey Section */}
+                <div className="py-16 bg-beige">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <ScrollAnimation>
+                            <div className="text-center mb-16">
+                                <div className="flex items-center justify-center mb-4">
+                                    <h2 className="text-bold text-5xl font-bold text-black">Your Career Change Journey</h2>
                                 </div>
-                                <span className="font-montserrat text-sm text-brown-gray">
-                                    {product.rating} ({product.reviews} reviews)
-                                </span>
+                                <p className="font-montserrat text-lg text-brown-gray mt-2">A comprehensive guide that takes you from feeling stuck to stepping confidently onto your next stage.</p>
                             </div>
-
-                            <p className="font-montserrat text-brown-gray mb-6 leading-relaxed whitespace-pre-line">
-                                {product.description}
-                            </p>
-
-                            <div className="mb-6">
-                                <h3 className="font-merriweather text-xl font-bold text-dark-gray mb-3">
-                                    What's Included:
-                                </h3>
-                                <div className="space-y-2">
-                                    {product.features.map((feature, index) => (
-                                        <div key={index} className="flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-light-gray rounded-full"></div>
-                                            <span className="font-montserrat text-brown-gray">
-                                                {feature}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-6 mb-6">
-                                <div className="flex items-center gap-2">
-                                    <Clock className="w-4 h-4 text-light-gray" />
-                                    <span className="font-montserrat text-sm text-brown-gray">
-                                        {product.duration}
-                                    </span>
-                                </div>
-                                <div className="bg-purple-gray text-white text-xs px-3 py-1 rounded-full font-montserrat">
-                                    {product.category}
-                                </div>
-                            </div>
-
-                            <div className="mb-8">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <span className="font-merriweather text-4xl font-bold text-dark-gray">
-                                        ${product.price}
-                                        {product.price === 0 && (
-                                            <span className="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full font-montserrat font-normal align-middle ml-3">
-                                                Free
-                                            </span>
+                        </ScrollAnimation>
+                        <div className="relative">
+                            <div className="hidden md:block absolute w-0.5 h-full bg-purple-gray/50 top-0 left-1/2 transform -translate-x-1/2"></div>
+                            {journeyItems.map((item, index) => (
+                                <ScrollAnimation key={index} delay={index * 300}>
+                                    <div className="mt-8 md:mt-0 md:flex md:items-center">
+                                        {index % 2 === 0 ? (
+                                            <>
+                                                <div className="md:w-1/2 md:pr-8">
+                                                    <div className="bg-beige p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
+                                                        <div className="flex items-center justify-center mb-3">
+                                                            <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                                                <item.icon className="w-5 h-5 text-white" />
+                                                            </div>
+                                                            <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{item.title}</h3>
+                                                        </div>
+                                                        <p className="font-montserrat text-brown-gray">{item.description}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="hidden md:flex justify-center items-center w-16">
+                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                                                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                                                    </div>
+                                                </div>
+                                                <div className="md:w-1/2"></div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div className="md:w-1/2"></div>
+                                                <div className="hidden md:flex justify-center items-center w-16">
+                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                                                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                                                    </div>
+                                                </div>
+                                                <div className="md:w-1/2 md:pl-8">
+                                                    <div className="bg-beige p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
+                                                        <div className="flex items-center justify-center mb-3">
+                                                            <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                                                <item.icon className="w-5 h-5 text-white" />
+                                                            </div>
+                                                            <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{item.title}</h3>
+                                                        </div>
+                                                        <p className="font-montserrat text-brown-gray">{item.description}</p>
+                                                    </div>
+                                                </div>
+                                            </>
                                         )}
-                                    </span>
-                                    {product.originalPrice !== 0 && (
-                                        <>
-                                            <span className="font-montserrat text-xl text-brown-gray line-through">
-                                                ${product.originalPrice}
-                                            </span>
-                                            <div className="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full font-montserrat">
-                                                Save ${product.originalPrice - product.price}
-                                            </div>
-                                        </>
-                                    )}
-                                </div>
-                            </div>
+                                    </div>
+                                </ScrollAnimation>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
+
+                {/* First CTA Section */}
+                <div className="text-center py-16 bg-light-gray relative overflow-hidden">
+                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
+                        <ScrollAnimation delay={0}>
+                            <div className="flex items-center justify-center mb-4">
+                                <h2 className="text-bold text-5xl font-bold text-black">
+                                    Ready to Step Onto Your Next Stage?
+                                </h2>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={300}>
+                            <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
+                                Get instant access to this comprehensive ebook and start your career transformation today. You'll always be a dancer, but you can be so much more.
+                            </p>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={500}>
+                            <div className="flex justify-center items-center gap-4 mb-8">
+                                <span className="font-merriweather text-5xl font-bold text-dark-gray">$6.99</span>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={700}>
                             <button
                                 onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                                className="w-full bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-6 rounded-md transition-all duration-300 hover:transform hover:scale-105 mb-4"
+                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                             >
-                                {product.id === 1 ? "REGISTER NOW" :
-                                    product.id === 2 ? "DOWNLOAD NOW" :
-                                        product.id === 3 ? "START NOW" :
-                                            "BOOK NOW"}
+                                <span className="relative z-10">GET THE EBOOK</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </button>
+                        </ScrollAnimation>
+                    </div>
+                </div>
 
-                            <div className="text-center text-sm text-brown-gray">
-                                {product.id === 1 && "Limited spots available for live sessions"}
-                                {product.id === 2 && "Low-cost, low-pressure"}
-                                {product.id === 3 && `Downloaded by ${product.reviews}+ professionals`}
-                                {product.id === 4 && "Limited Availability"}
+                <div className="bg-beige py-20 relative overflow-hidden">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <ScrollAnimation>
+                            <div className="text-center mb-16">
+                                <div className="flex items-center justify-center mb-6 relative">
+                                    <h2 className="text-bold text-5xl font-bold text-black tracking-tight relative inline-block">
+                                        What's Inside?
+                                    </h2>
+                                </div>
+                                <p className="font-montserrat text-xl text-brown-gray mt-4 max-w-3xl mx-auto leading-relaxed">
+                                    Part self-help book and part <span className="font-bold rounded-md px-2 py-1 mx-1" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>action-focused career resource</span>, tailored specifically for professional dancers.
+                                </p>
                             </div>
+                        </ScrollAnimation>
+                        <div className="grid md:grid-cols-3 gap-10">
+                            {features.map((feature, index) => (
+                                <ScrollAnimation key={index} delay={index * 300}>
+                                    <div className="group bg-beige rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 flex flex-col h-full">
+
+                                        {/* Icon with elegant background */}
+                                        <div className="relative pt-12 pb-6 z-20">
+                                            <div className="w-20 h-20 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-md border-4 border-white transition-transform duration-500 group-hover:scale-110">
+                                                <feature.icon className="w-9 h-9 text-white" />
+                                            </div>
+                                        </div>
+
+                                        <div className="px-7 pb-10 flex-1 flex flex-col">
+                                            <div className="flex-1">
+                                                <h3 className="font-bold text-2xl text-black mb-7 relative inline-block after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-14 after:h-1.5 after:bg-purple-gray after:rounded-full after:transition-all after:duration-500 group-hover:after:w-20">
+                                                    {feature.title}
+                                                </h3>
+
+                                                <p className="font-montserrat text-black text-center leading-relaxed text-lg mb-6">
+                                                    {feature.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Subtle badge at bottom of card */}
+                                            <div className="mt-auto pt-4 border-t border-light-gray border-opacity-30">
+                                                <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-3 py-1 rounded-full">
+                                                    Dancer-Specific
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ScrollAnimation>
+                            ))}
                         </div>
+                    </div>
+                </div>
+                {/* Final CTA Section */}
+                <div className="text-center py-16 bg-light-gray relative overflow-hidden">
+                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
+                        <ScrollAnimation delay={0}>
+                            <div className="flex items-center justify-center mb-4">
+                                <h2 className="text-bold text-5xl font-bold text-black">
+                                    You'll Always Be a Dancer
+                                </h2>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={300}>
+                            <p className="list-disc pl-5 space-y-2 mt-2">
+                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />10 Taboo Topics No One Talks About</p>
+                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Psychology & Philosophy Concepts</p>
+                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Transferable Skills Assessment</p>
+                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Professional Resume Building</p>
+                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Clear, Focused Action Plan</p>
+                            </p>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={700}>
+                            <button
+                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                            >
+                                <span className="relative z-10">GET THE EBOOK</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        </ScrollAnimation>
                     </div>
                 </div>
             </div>
