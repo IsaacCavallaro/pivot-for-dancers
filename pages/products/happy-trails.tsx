@@ -412,6 +412,42 @@ const HappyTrailsPage = () => {
                     </div>
                 </div>
 
+                {/* First CTA Section */}
+                <div className="text-center py-16 bg-beige relative overflow-hidden">
+                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
+                        <ScrollAnimation delay={0}>
+                            <div className="flex items-center justify-center mb-4">
+                                <h2 className="text-bold text-5xl font-bold text-black">
+                                    Take Your Next Step with Confidence
+                                </h2>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={300}>
+                            <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
+                                Happy Trails is the roadmap you've been waiting for. Get instant access to the course and all the resources for a one-time payment.
+                            </p>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={500}>
+                            <div className="flex justify-center items-center gap-4 mb-8">
+                                <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
+                                <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
+                                <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
+                                    62% OFF
+                                </span>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={700}>
+                            <button
+                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                            >
+                                <span className="relative z-10">START NOW</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        </ScrollAnimation>
+                    </div>
+                </div>
+
                 {/* The Pivot Journey Section */}
                 <div className="py-16 bg-beige">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -482,23 +518,19 @@ const HappyTrailsPage = () => {
                         <ScrollAnimation delay={0}>
                             <div className="flex items-center justify-center mb-4">
                                 <h2 className="text-bold text-5xl font-bold text-black">
-                                    Take Your Next Step with Confidence
+                                    Sing Happy Trails and move
+                                    on with confidence
                                 </h2>
                             </div>
                         </ScrollAnimation>
                         <ScrollAnimation delay={300}>
-                            <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
-                                Happy Trails is the roadmap you've been waiting for. Get instant access to the course and all the resources for a one-time payment.
+                            <p className="list-disc pl-5 space-y-2 mt-2">
+                                <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Self-Paced Online Course</p>
+                                <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />5-Year Career Change Roadmap</p>
+                                <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />50 Non-Dance Job Ideas</p>
+                                <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Canva Resume Template</p>
+                                <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Dancer-Specific Interview Script</p>
                             </p>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={500}>
-                            <div className="flex justify-center items-center gap-4 mb-8">
-                                <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
-                                <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
-                                <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
-                                    62% OFF
-                                </span>
-                            </div>
                         </ScrollAnimation>
                         <ScrollAnimation delay={700}>
                             <button
