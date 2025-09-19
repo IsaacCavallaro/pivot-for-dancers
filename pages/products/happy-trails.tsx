@@ -272,36 +272,54 @@ const HappyTrailsPage = () => {
             <Navigation />
             <div className="bg-beige">
                 {/* Hero Section */}
-                <div className="text-center py-16 md:py-24 bg-beige relative overflow-hidden">
-                    <ScrollAnimation delay={200}>
-                        <h1 className="pt-10 text-bold text-5xl md:text-7xl font-bold text-black mb-4">
-                            Happy Trails
-                        </h1>
-                    </ScrollAnimation>
-                    <ScrollAnimation delay={300}>
-                        <p className="font-montserrat text-lg md:text-xl text-brown-gray max-w-3xl mx-auto mb-8">
-                            A course to plan your pivot, brought to you by Pivot for Dancers
-                        </p>
-                    </ScrollAnimation>
+                <div className="relative py-16 md:py-24 overflow-hidden">
 
-                    {/* Stats Section */}
-                    <ScrollAnimation delay={400}>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
-                            {stats.map((stat, index) => (
-                                <StatCard key={index} {...stat} index={index} />
-                            ))}
+                    <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="bg-beige backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
+
+                            {/* Decorative corner elements */}
+                            <div className="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-purple-gray/70 rounded-tl-3xl"></div>
+                            <div className="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-purple-gray/70 rounded-br-3xl"></div>
+
+                            <div className="relative z-10 text-center">
+                                <ScrollAnimation delay={200}>
+                                    <div className="inline-flex items-center justify-center mb-4 px-4 py-2 bg-beige/80 rounded-full border border-purple-gray/20">
+                                        <span className="text-sm font-semibold text-purple-gray tracking-wider uppercase">DIGITAL COURSE</span>
+                                    </div>
+                                    <h1 className="text-5xl md:text-7xl font-bold text-black">
+                                        Happy Trails
+                                    </h1>
+                                </ScrollAnimation>
+                                <ScrollAnimation delay={300}>
+                                    <br></br>
+                                    <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
+                                        A course to plan your pivot, brought to you by Pivot for Dancers
+                                    </p>
+                                </ScrollAnimation>
+
+                                {/* Stats Section */}
+                                <ScrollAnimation delay={400}>
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-10">
+                                        {stats.map((stat, index) => (
+                                            <StatCard key={index} {...stat} index={index} />
+                                        ))}
+                                    </div>
+                                </ScrollAnimation>
+
+                                <ScrollAnimation delay={500}>
+                                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                                        <button
+                                            onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                            className="bg-purple-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                        >
+                                            <span className="relative z-10">BUY NOW</span>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        </button>
+                                    </div>
+                                </ScrollAnimation>
+                            </div>
                         </div>
-                    </ScrollAnimation>
-
-                    <ScrollAnimation delay={500}>
-                        <button
-                            onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                            className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                        >
-                            <span className="relative z-10">BUY NOW</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </button>
-                    </ScrollAnimation>
+                    </div>
                 </div>
 
                 {/* Intro Section */}
