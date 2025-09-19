@@ -275,16 +275,12 @@ const HappyTrailsPage = () => {
                 <div className="relative py-16 md:py-24 overflow-hidden">
 
                     <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="bg-beige backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
-
-                            {/* Decorative corner elements */}
-                            <div className="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-purple-gray/70 rounded-tl-3xl"></div>
-                            <div className="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-purple-gray/70 rounded-br-3xl"></div>
+                        <div className="bg-white backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
 
                             <div className="relative z-10 text-center">
                                 <ScrollAnimation delay={200}>
-                                    <div className="inline-flex items-center justify-center mb-4 px-4 py-2 bg-beige/80 rounded-full border border-purple-gray/20">
-                                        <span className="text-sm font-semibold text-purple-gray tracking-wider uppercase">DIGITAL COURSE</span>
+                                    <div className="inline-flex items-center justify-center mb-4 px-4 py-2 bg-light-gray rounded-full border border-purple-gray/20">
+                                        <span className="text-sm font-semibold text-white tracking-wider uppercase">DIGITAL COURSE</span>
                                     </div>
                                     <h1 className="text-5xl md:text-7xl font-bold text-black">
                                         Happy Trails
@@ -367,7 +363,6 @@ const HappyTrailsPage = () => {
                         </ScrollAnimation>
                     </div>
                 </div>
-
                 {/* What's Inside Section */}
                 <div className="bg-beige py-16">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -382,46 +377,39 @@ const HappyTrailsPage = () => {
                         <div className="grid md:grid-cols-3 gap-8">
                             {features.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="group bg-light-gray rounded-2xl shadow-xl overflow-hidden text-center border-2 border-beige transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-light-gray">
-                                        {/* Image container with gradient overlay */}
-                                        <div className="relative overflow-hidden bg-white mb-4 mx-4 mt-4 rounded-xl border border-black">
-                                            <Image
-                                                src={feature.image}
-                                                alt={feature.title}
-                                                width={400}
-                                                height={300}
-                                                className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
-                                            />
-                                        </div>
+                                    <div className="group bg-beige rounded-2xl shadow-xl overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 min-h-[300px] flex flex-col">
 
                                         {/* Icon with elegant background */}
-                                        <div className="relative -mt-10 z-20 mb-4">
-                                            <div className="w-14 h-14 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-lg border-4 border-white">
-                                                <feature.icon className="w-6 h-6 text-white" />
+                                        <div className="relative pt-8 pb-4 z-20">
+                                            <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-lg border-4 border-white">
+                                                <feature.icon className="w-7 h-7 text-white" />
                                             </div>
                                         </div>
-                                        <div className="px-6 pb-8">
-                                            <h3 className="font-bold text-2xl font-bold text-white mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-1 after:bg-purple-gray after:rounded-full">
-                                                {feature.title}
-                                            </h3>
 
-                                            <p className="font-montserrat text-white text-center leading-relaxed">
-                                                {feature.title === "Mindset Shifts" ? (
-                                                    <>
-                                                        A <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">huge part</span> of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.
-                                                    </>
-                                                ) : feature.title === "Practical Knowledge" ? (
-                                                    <>
-                                                        From the <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">job search to finances</span>, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.
-                                                    </>
-                                                ) : feature.title === "Tailored Resources" ? (
-                                                    <>
-                                                        More than your average career change course, Happy Trails is <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">dancer-specific</span> and tailored to the career needs of professional dancers.
-                                                    </>
-                                                ) : (
-                                                    feature.description
-                                                )}
-                                            </p>
+                                        <div className="px-6 pb-8 flex-1 flex flex-col justify-between">
+                                            <div>
+                                                <h3 className="font-bold text-2xl text-black mb-6 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-1 after:bg-purple-gray after:rounded-full">
+                                                    {feature.title}
+                                                </h3>
+
+                                                <p className="font-montserrat text-black text-center leading-relaxed">
+                                                    {feature.title === "Mindset Shifts" ? (
+                                                        <>
+                                                            A <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">huge part</span> of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.
+                                                        </>
+                                                    ) : feature.title === "Practical Knowledge" ? (
+                                                        <>
+                                                            From the <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">job search to finances</span>, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.
+                                                        </>
+                                                    ) : feature.title === "Tailored Resources" ? (
+                                                        <>
+                                                            More than your average career change course, Happy Trails is <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">dancer-specific</span> and tailored to the career needs of professional dancers.
+                                                        </>
+                                                    ) : (
+                                                        feature.description
+                                                    )}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </ScrollAnimation>
