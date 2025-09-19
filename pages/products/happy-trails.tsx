@@ -319,138 +319,50 @@ const HappyTrailsPage = () => {
                 </div>
 
                 {/* Intro Section */}
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 rounded-3xl my-8" style={{ backgroundColor: '#E2DED0' }}>
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <ScrollAnimation delay={300}>
-                            <div>
-                                <div className="flex items-center mb-4">
-                                    <h2 className="text-bold text-5xl font-bold text-black">What is Happy Trails?</h2>
-                                </div>
-                                <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    Happy Trails is a <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>self-paced</span>, 4-part mini course named after the famous Broadway send-off
-                                </p>
-                                <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    It's an <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>in depth</span> 5-year career change roadmap guided by former pro dancer and founder of Pivot for Dancers, Kaylee Randall
-                                </p>
-                                <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    You'll get a <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>detailed</span>, step-by-step plan for your career transition, tailored to your dance experience
-                                </p>
-                                <p className="font-montserrat text-xl text-brown-gray mb-4 list-disc pl-5 space-y-2">
-                                    Plus, the course gives you access to <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>exclusive</span> resources including:
-                                    <p className="list-disc pl-5 space-y-2 mt-2">
-                                        <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />50 Non-Dance Job Ideas</p>
-                                        <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Editable Canva Resume Template</p>
-                                        <p className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Dancer-Specific Interview Script</p>
-                                    </p>
-                                </p>
-                            </div>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={500}>
-                            <div className="relative aspect-video w-full">
-                                <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
-                                    <iframe
-                                        width="100%"
-                                        height="100%"
-                                        src="https://www.youtube.com/embed/I6wSSAMR3FY?si=rRy0U55jnBeqyRz1"
-                                        title="YouTube video player"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        className="absolute inset-0 w-full h-full"
-                                    ></iframe>
-                                </div>
-                            </div>
-                        </ScrollAnimation>
-                    </div>
-                </div>
-                {/* What's Inside Section */}
-                <div className="bg-beige py-16">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <ScrollAnimation>
-                            <div className="text-center mb-12">
-                                <div className="flex items-center justify-center mb-4">
-                                    <h2 className="text-bold text-5xl font-bold text-black">What's Inside?</h2>
-                                </div>
-                                <p className="font-montserrat text-lg text-brown-gray mt-2">Happy Trails guides you through a dancer-focused <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>roadmap</span> to help you pivot with confidence.</p>
-                            </div>
-                        </ScrollAnimation>
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {features.map((feature, index) => (
-                                <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="group bg-beige rounded-2xl shadow-xl overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 min-h-[300px] flex flex-col">
-
-                                        {/* Icon with elegant background */}
-                                        <div className="relative pt-8 pb-4 z-20">
-                                            <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-lg border-4 border-white">
-                                                <feature.icon className="w-7 h-7 text-white" />
-                                            </div>
-                                        </div>
-
-                                        <div className="px-6 pb-8 flex-1 flex flex-col justify-between">
-                                            <div>
-                                                <h3 className="font-bold text-2xl text-black mb-6 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-1 after:bg-purple-gray after:rounded-full">
-                                                    {feature.title}
-                                                </h3>
-
-                                                <p className="font-montserrat text-black text-center leading-relaxed">
-                                                    {feature.title === "Mindset Shifts" ? (
-                                                        <>
-                                                            A <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">huge part</span> of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.
-                                                        </>
-                                                    ) : feature.title === "Practical Knowledge" ? (
-                                                        <>
-                                                            From the <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">job search to finances</span>, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.
-                                                        </>
-                                                    ) : feature.title === "Tailored Resources" ? (
-                                                        <>
-                                                            More than your average career change course, Happy Trails is <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">dancer-specific</span> and tailored to the career needs of professional dancers.
-                                                        </>
-                                                    ) : (
-                                                        feature.description
-                                                    )}
-                                                </p>
-                                            </div>
-                                        </div>
+                <div className="bg-light-gray">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 rounded-3xl my-8">
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div className="opacity-100 transform translate-y-0">
+                                <div>
+                                    <div className="flex items-center mb-4">
+                                        <h2 className="text-bold text-5xl font-bold text-white">What is Happy Trails?</h2>
                                     </div>
-                                </ScrollAnimation>
-                            ))}
+                                    <p className="font-montserrat text-xl text-white mb-4 list-disc pl-5 space-y-2">
+                                        Happy Trails is a <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>self-paced</span>, 4-part mini course named after the famous Broadway send-off
+                                    </p>
+                                    <p className="font-montserrat text-xl text-white mb-4 list-disc pl-5 space-y-2">
+                                        It's an <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>in depth</span> 5-year career change roadmap guided by former pro dancer and founder of Pivot for Dancers, Kaylee Randall
+                                    </p>
+                                    <p className="font-montserrat text-xl text-white mb-4 list-disc pl-5 space-y-2">
+                                        You'll get a <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>detailed</span>, step-by-step plan for your career transition, tailored to your dance experience
+                                    </p>
+                                    <p className="font-montserrat text-xl text-white mb-4 list-disc pl-5 space-y-2">
+                                        Plus, the course gives you access to <span className="font-bold rounded-lg px-1 py-0.5 mx-0.5" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>exclusive</span> resources including:
+                                        <div className="list-disc pl-5 space-y-2 mt-2">
+                                            <div className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />50 Non-Dance Job Ideas</div>
+                                            <div className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Editable Canva Resume Template</div>
+                                            <div className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-gray mr-2" />Dancer-Specific Interview Script</div>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <ScrollAnimation delay={200}>
+                                <div className="relative aspect-video w-full">
+                                    <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
+                                        <iframe
+                                            width="100%"
+                                            height="100%"
+                                            src="https://www.youtube.com/embed/I6wSSAMR3FY?si=rRy0U55jnBeqyRz1"
+                                            title="YouTube video player"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            className="absolute inset-0 w-full h-full"
+                                        ></iframe>
+                                    </div>
+                                </div>
+                            </ScrollAnimation>
                         </div>
-                    </div>
-                </div>
-
-                {/* First CTA Section */}
-                <div className="text-center py-16 bg-beige relative overflow-hidden">
-                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
-                        <ScrollAnimation delay={0}>
-                            <div className="flex items-center justify-center mb-4">
-                                <h2 className="text-bold text-5xl font-bold text-black">
-                                    Take Your Next Step with Confidence
-                                </h2>
-                            </div>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={300}>
-                            <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
-                                Happy Trails is the roadmap you've been waiting for. Get instant access to the course and all the resources for a one-time payment.
-                            </p>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={500}>
-                            <div className="flex justify-center items-center gap-4 mb-8">
-                                <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
-                                <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
-                                <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
-                                    62% OFF
-                                </span>
-                            </div>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={700}>
-                            <button
-                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                            >
-                                <span className="relative z-10">START NOW</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </button>
-                        </ScrollAnimation>
                     </div>
                 </div>
 
@@ -518,8 +430,114 @@ const HappyTrailsPage = () => {
                     </div>
                 </div>
 
+
+                {/* First CTA Section */}
+                <div className="text-center py-16 bg-light-gray relative overflow-hidden">
+                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
+                        <ScrollAnimation delay={0}>
+                            <div className="flex items-center justify-center mb-4">
+                                <h2 className="text-bold text-5xl font-bold text-black">
+                                    Take Your Next Step with Confidence
+                                </h2>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={300}>
+                            <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
+                                Happy Trails is the roadmap you've been waiting for. Get instant access to the course and all the resources for a one-time payment.
+                            </p>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={500}>
+                            <div className="flex justify-center items-center gap-4 mb-8">
+                                <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
+                                <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
+                                <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
+                                    62% OFF
+                                </span>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={700}>
+                            <button
+                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                            >
+                                <span className="relative z-10">START NOW</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        </ScrollAnimation>
+                    </div>
+                </div>
+
+                {/* What's inside Section */}
+                <div className="bg-beige py-20 relative overflow-hidden">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <ScrollAnimation>
+                            <div className="text-center mb-16">
+                                <div className="flex items-center justify-center mb-6 relative">
+                                    <h2 className="text-bold text-5xl font-bold text-black tracking-tight relative inline-block">
+                                        What's Inside?
+                                    </h2>
+                                </div>
+                                <p className="font-montserrat text-xl text-brown-gray mt-4 max-w-3xl mx-auto leading-relaxed">
+                                    Happy Trails guides you through a dancer-focused <span className="font-bold rounded-md px-2 py-1 mx-1" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>roadmap</span> to help you pivot with confidence.
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+                        <div className="grid md:grid-cols-3 gap-10">
+                            {features.map((feature, index) => (
+                                <ScrollAnimation key={index} delay={index * 300}>
+                                    <div className="group bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 min-h-[360px] flex flex-col relative">
+
+
+                                        {/* Icon with elegant background */}
+                                        <div className="relative pt-12 pb-6 z-20">
+                                            <div className="w-20 h-20 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-md border-4 border-white transition-transform duration-500 group-hover:scale-110">
+                                                <feature.icon className="w-9 h-9 text-white" />
+                                            </div>
+                                        </div>
+
+                                        <div className="px-7 pb-10 flex-1 flex flex-col justify-between">
+                                            <div>
+                                                <h3 className="font-bold text-2xl text-black mb-7 relative inline-block after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-14 after:h-1.5 after:bg-purple-gray after:rounded-full after:transition-all after:duration-500 group-hover:after:w-20">
+                                                    {feature.title}
+                                                </h3>
+
+                                                <p className="font-montserrat text-black text-center leading-relaxed text-lg">
+                                                    {feature.title === "Mindset Shifts" ? (
+                                                        <>
+                                                            A <span className="font-semibold py-1 rounded-md px-1.5 bg-purple-gray text-white">huge part</span> of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.
+                                                        </>
+                                                    ) : feature.title === "Practical Knowledge" ? (
+                                                        <>
+                                                            From the <span className="font-semibold py-1 rounded-md px-1.5 bg-purple-gray text-white">job search to finances</span>, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.
+                                                        </>
+                                                    ) : feature.title === "Tailored Resources" ? (
+                                                        <>
+                                                            More than your average career change course, Happy Trails is <span className="font-semibold py-1 rounded-md px-1.5 bg-purple-gray text-white">dancer-specific</span> and tailored to the career needs of professional dancers.
+                                                        </>
+                                                    ) : (
+                                                        feature.description
+                                                    )}
+                                                </p>
+                                            </div>
+
+                                            {/* Subtle badge at bottom of card */}
+                                            <div className="mt-6 pt-4 border-t border-light-gray border-opacity-30">
+                                                <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-3 py-1 rounded-full">
+                                                    Dancer-Focused
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ScrollAnimation>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+
+
                 {/* Final CTA Section */}
-                <div className="text-center py-16 bg-beige relative overflow-hidden">
+                <div className="text-center py-16 bg-light-gray relative overflow-hidden">
                     <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
                         <ScrollAnimation delay={0}>
                             <div className="flex items-center justify-center mb-4">
