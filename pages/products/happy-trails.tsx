@@ -318,6 +318,61 @@ const HappyTrailsPage = () => {
                     </div>
                 </div>
 
+                {/* What is Happy trails sections */}
+                <div className="py-16 bg-light-gray">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="mb-4">
+                            <h2 className="text-bold text-5xl font-bold text-white">What is Happy Trails?</h2>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            {/* Left Column */}
+                            <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
+                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
+                                    Pivot for Dancers offers <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        career change
+                                    </span> resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        professional dancers
+                                    </span> who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
+                                </p>
+                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
+                                    There are thousands of other dancers <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        just like you
+                                    </span> in our community. Whether you've suffered
+                                    an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not
+                                    alone in wanting to change careers as a professional dancer.
+                                </p>
+                            </div>
+
+                            {/* Right Column */}
+                            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                                <div className="relative aspect-video w-full">
+                                    <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
+                                        <iframe
+                                            width="100%"
+                                            height="100%"
+                                            src="https://www.youtube.com/embed/I6wSSAMR3FY?si=rRy0U55jnBeqyRz1"
+                                            title="YouTube video player"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            className="absolute inset-0 w-full h-full"
+                                        ></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 {/* The Pivot Journey Section */}
                 <div className="py-16 bg-beige">
