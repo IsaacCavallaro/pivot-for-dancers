@@ -251,19 +251,19 @@ const HappyTrailsPage = () => {
             title: "Mindset Shifts",
             description: "A huge part of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.",
             icon: Heart,
-            image: "/assets/ballet-female.jpeg"
+            image: "/assets/ballet-female-no-bg.jpeg"
         },
         {
             title: "Practical Knowledge",
             description: "From the job search to finances, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.",
             icon: Shield,
-            image: "/assets/contemporary-female.jpeg"
+            image: "/assets/contemporary-female-no-bg.jpeg"
         },
         {
             title: "Tailored Resources",
             description: "More than your average career change course, Happy Trails is dancer-specific and tailored to the career needs of professional dancers.",
             icon: Award,
-            image: "/assets/commercial-male.jpeg"
+            image: "/assets/commercial-male-no-bg.jpeg"
         }
     ];
 
@@ -364,39 +364,41 @@ const HappyTrailsPage = () => {
                         <div className="grid md:grid-cols-3 gap-8">
                             {features.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-beige">
-                                        <div className="relative overflow-hidden">
-                                            <Image src={feature.image} alt={feature.title} width={400} height={300} className="w-full h-48 object-cover" />
+                                    <div className="group bg-light-gray rounded-2xl shadow-xl overflow-hidden text-center border-2 border-beige transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-light-gray">
+                                        {/* Image container with gradient overlay */}
+                                        <div className="relative overflow-hidden bg-white mb-4 mx-4 mt-4 rounded-xl border border-black">
+                                            <Image
+                                                src={feature.image}
+                                                alt={feature.title}
+                                                width={400}
+                                                height={300}
+                                                className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
                                         </div>
-                                        <div className="px-6 pt-4">
-                                            <div className="border-b border-black w-full"></div>
-                                        </div>
-                                        <div className="p-6">
-                                            <div className="w-12 h-12 rounded-full bg-light-gray flex items-center justify-center mx-auto mb-4">
+
+                                        {/* Icon with elegant background */}
+                                        <div className="relative -mt-10 z-20 mb-4">
+                                            <div className="w-14 h-14 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-lg border-4 border-white">
                                                 <feature.icon className="w-6 h-6 text-white" />
                                             </div>
-                                            <h3 className="font-merriweather text-2xl font-bold text-dark-gray mb-3">{feature.title}</h3>
-                                            <p className="font-montserrat text-brown-gray text-center mb-4">
+                                        </div>
+                                        <div className="px-6 pb-8">
+                                            <h3 className="font-bold text-2xl font-bold text-white mb-4 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-1 after:bg-purple-gray after:rounded-full">
+                                                {feature.title}
+                                            </h3>
+
+                                            <p className="font-montserrat text-white text-center leading-relaxed">
                                                 {feature.title === "Mindset Shifts" ? (
                                                     <>
-                                                        A <span
-                                                            className="font-semibold py-1 rounded-md"
-                                                            style={{ color: "#647C90" }}
-                                                        >huge part</span> of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.
+                                                        A <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">huge part</span> of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.
                                                     </>
                                                 ) : feature.title === "Practical Knowledge" ? (
                                                     <>
-                                                        From the <span
-                                                            className="font-semibold py-1 rounded-md"
-                                                            style={{ color: "#647C90" }}
-                                                        >job search to finances</span>, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.
+                                                        From the <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">job search to finances</span>, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.
                                                     </>
                                                 ) : feature.title === "Tailored Resources" ? (
                                                     <>
-                                                        More than your average career change course, Happy Trails is <span
-                                                            className="font-semibold py-1 rounded-md"
-                                                            style={{ color: "#647C90" }}
-                                                        >dancer-specific</span> and tailored to the career needs of professional dancers.
+                                                        More than your average career change course, Happy Trails is <span className="font-semibold py-1 rounded-md px-1 bg-purple-gray text-white">dancer-specific</span> and tailored to the career needs of professional dancers.
                                                     </>
                                                 ) : (
                                                     feature.description
@@ -476,36 +478,38 @@ const HappyTrailsPage = () => {
 
                 {/* Final CTA Section */}
                 <div className="text-center py-16 bg-beige relative overflow-hidden">
-                    <ScrollAnimation delay={0}>
-                        <div className="flex items-center justify-center mb-4">
-                            <h2 className="text-bold text-5xl font-bold text-black">
-                                Take Your Next Step with Confidence
-                            </h2>
-                        </div>
-                    </ScrollAnimation>
-                    <ScrollAnimation delay={300}>
-                        <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
-                            Happy Trails is the roadmap you've been waiting for. Get instant access to the course and all the resources for a one-time payment.
-                        </p>
-                    </ScrollAnimation>
-                    <ScrollAnimation delay={500}>
-                        <div className="flex justify-center items-center gap-4 mb-8">
-                            <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
-                            <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
-                            <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
-                                62% OFF
-                            </span>
-                        </div>
-                    </ScrollAnimation>
-                    <ScrollAnimation delay={700}>
-                        <button
-                            onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                            className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                        >
-                            <span className="relative z-10">START NOW</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </button>
-                    </ScrollAnimation>
+                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
+                        <ScrollAnimation delay={0}>
+                            <div className="flex items-center justify-center mb-4">
+                                <h2 className="text-bold text-5xl font-bold text-black">
+                                    Take Your Next Step with Confidence
+                                </h2>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={300}>
+                            <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
+                                Happy Trails is the roadmap you've been waiting for. Get instant access to the course and all the resources for a one-time payment.
+                            </p>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={500}>
+                            <div className="flex justify-center items-center gap-4 mb-8">
+                                <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
+                                <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
+                                <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
+                                    62% OFF
+                                </span>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={700}>
+                            <button
+                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                            >
+                                <span className="relative z-10">START NOW</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        </ScrollAnimation>
+                    </div>
                 </div>
             </div>
             <Footer />
