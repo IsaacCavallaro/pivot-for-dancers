@@ -1,32 +1,32 @@
 import Image from 'next/image';
 import { Product, coursePaymentUrl } from '../../data/products';
-import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen } from 'lucide-react';
+import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen, Smartphone, Lock, Brain, DollarSign, Briefcase } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 
-// Pivot Paths program data
+// Pivot Paths app data
 const product: Product = {
     id: 4,
-    name: "Pivot Paths Program",
-    subtitle: "ONE-ON-ONE SUPPORT",
-    description: "Private, one-on-one support to help you find meaningful work off the stage",
-    url: coursePaymentUrl, // Replace with actual pivot paths payment URL
-    img: "/assets/pivot-paths-program.png",
-    category: "Pivot Paths",
-    duration: "3 Sessions",
+    name: "Pivot Paths App",
+    subtitle: "MOBILE APP FOR DANCERS",
+    description: "Your private toolkit for career transition, mindset wellness, and financial planning",
+    url: "#", // Replace with actual app store URL
+    img: "/assets/pivot-paths-app.png",
+    category: "Mobile App",
+    duration: "Lifetime Access",
     rating: 5.0,
     reviews: 0,
     features: [
-        "3x One-Hour Virtual Sessions",
-        "Goal-Setting Activities",
-        "Guided Reflection",
-        "Tailored Resources",
-        "Action Plans",
-        "Networking Opportunities"
+        "Career Transition Resources",
+        "Mindset Wellness Tools",
+        "Financial Planning Guides",
+        "100% Local Data Storage",
+        "Skills Assessments",
+        "Personal Growth Games"
     ],
-    icon: Users,
+    icon: Smartphone,
     gradient: "from-beige to-brown-gray",
 };
 
@@ -117,7 +117,7 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
     const iconColor = index % 2 === 0 ? "#647C90" : "#928490";
     const textColor = "#647C90";
 
-    // Extract numeric value from the number string (e.g., "3x" becomes 3)
+    // Extract numeric value from the number string
     const numericValue = Number.parseInt(number.replace(/\D/g, ""));
 
     return (
@@ -145,6 +145,7 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
                             <Counter end={numericValue} duration={2000} />
                             {number.includes("x") && "x"}
                             {number.includes("$") && "$"}
+                            {number.includes("%") && "%"}
                         </>
                     ) : (
                         "0"
@@ -168,77 +169,74 @@ const PivotPathsPage = () => {
     }, []);
 
     const stats = [
-        { number: "3x", label: "Virtual Sessions", icon: MessageCircle },
-        { number: "1", label: "Hour Each", icon: Clock },
-        { number: "$150", label: "Total Investment", icon: Target },
-        { number: "1", label: "Dedicated Guide", icon: User }
+        { number: "3", label: "Main Categories", icon: Briefcase },
+        { number: "100", label: "Privacy Focused", icon: Lock },
+        { number: "0", label: "Data Shared", icon: Shield },
+        { number: "1", label: "Device Storage", icon: Smartphone }
     ];
 
-    const pivotPathsFeatures = [
-        "3x one-hour virtual sessions with an experienced former professional dancer",
-        "Private and confidential conversations",
-        "Guided goal-setting and reflection",
-        "Actionable resources",
-        "Networking opportunities",
-        "Investment in your future career"
+    const appFeatures = [
+        "Career Transition: Skills assessments and development resources",
+        "Mindset Wellness: Tools and games for personal growth",
+        "Finance: Financial literacy and planning resources",
+        "All data stored locally on your device",
+        "No cloud storage or external servers",
+        "Completely private and secure"
     ];
 
-    const dancerStages = [
+    const appCategories = [
         {
-            title: "Pre-Pro Dancers",
+            title: "Career Transition",
             description: (
                 <>
-                    Dance careers are notoriously short. <span className="font-bold" style={{ color: "#928490" }}>
-                        Prepare for the long term
-                    </span> before you pursue your career on the stage.
+                    Move beyond performance with <span className="font-bold" style={{ color: "#928490" }}>
+                        skills assessments and resources
+                    </span> for career development beyond the stage.
                 </>
             ),
-            icon: Heart
+            icon: Briefcase
         },
         {
-            title: "Current Pro Dancers",
+            title: "Mindset Wellness",
             description: (
                 <>
-                    Lived the dream and ready for a change? Take the leap with clear{" "}
+                    Nurture your mental health with{" "}
                     <span className="font-bold" style={{ color: "#928490" }}>
-                        goal-setting, action plans, and accountability
-                    </span>.
+                        tools and games for personal growth
+                    </span> and discovering your dream life.
                 </>
             ),
-            icon: Target
+            icon: Brain
         },
         {
-            title: "Former Pro Dancers",
+            title: "Finance",
             description: (
                 <>
-                    Even if you've already pivoted into a new career, it doesn't always mean you have it all figured out.{" "}
+                    Build financial stability with{" "}
                     <span className="font-bold" style={{ color: "#928490" }}>
-                        We can help
-                    </span>.
+                        resources and tools for financial literacy
+                    </span> tailored to dancers' unique needs.
                 </>
             ),
-            icon: TrendingUp
+            icon: DollarSign
         }
     ];
 
-    const processSteps = [
+    const privacyFeatures = [
         {
-            number: "1",
-            title: "Book Your 1st Session",
-            description: "When you book your 1st session, you'll receive an email with your Welcome Guide. We'll pair you with your guide and walk you through some goal-setting exercises.",
-            icon: null // Removed icon, will use number instead
+            icon: Lock,
+            title: "Local Storage Only",
+            description: "All your data stays on your device using AsyncStorage technology"
         },
         {
-            number: "2",
-            title: "Show Up for Yourself",
-            description: "You'll attend 3 sessions over the course of your pivot path. After each session, you'll receive reflection questions and action plans to make the most of your program.",
-            icon: null // Removed icon, will use number instead
+            icon: Shield,
+            title: "No Cloud Storage",
+            description: "We don't use external servers or cloud storage for your personal information"
         },
         {
-            number: "3",
-            title: "Take Action",
-            description: "After the pivot paths program, you'll have a clear plan of action, dancer-specific resources, and a new contact to add to your network. From now on, your guide will always be in your corner.",
-            icon: null // Removed icon, will use number instead
+            icon: User,
+            title: "Complete Control",
+            description: "You own your data - if you delete the app, your information is completely gone"
         }
     ];
 
@@ -253,16 +251,16 @@ const PivotPathsPage = () => {
                             <div className="relative z-10 text-center">
                                 <ScrollAnimation delay={200}>
                                     <div className="inline-flex items-center justify-center mb-4 px-4 py-2 bg-light-gray rounded-full border border-purple-gray/20">
-                                        <span className="text-sm font-semibold text-white tracking-wider uppercase">ONE-ON-ONE SUPPORT</span>
+                                        <span className="text-sm font-semibold text-white tracking-wider uppercase">MOBILE APP FOR DANCERS</span>
                                     </div>
                                     <h1 className="text-5xl md:text-7xl font-bold text-black">
-                                        Pivot Paths Program
+                                        Pivot Paths App
                                     </h1>
                                 </ScrollAnimation>
                                 <ScrollAnimation delay={300}>
                                     <br></br>
                                     <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
-                                        Private, one-on-one support to help you find meaningful work off the stage
+                                        Your private toolkit for career transition, mindset wellness, and financial planning
                                     </p>
                                 </ScrollAnimation>
 
@@ -281,7 +279,7 @@ const PivotPathsPage = () => {
                                             onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
                                             className="bg-purple-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                         >
-                                            <span className="relative z-10">BUY NOW</span>
+                                            <span className="relative z-10">DOWNLOAD NOW</span>
                                             <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         </button>
                                     </div>
@@ -291,17 +289,20 @@ const PivotPathsPage = () => {
                     </div>
                 </div>
 
-                {/* What is the pivot paths program section */}
+                {/* What is the pivot paths app section */}
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
                             <div className="text-center mb-12">
-                                <h2 className="text-bold text-5xl font-bold text-white mb-8">What is the pivot paths program?</h2>
+                                <h2 className="text-bold text-5xl font-bold text-white mb-8">What is the Pivot Paths App?</h2>
+                                <p className="font-montserrat text-xl text-white max-w-3xl mx-auto">
+                                    Your life, beyond the stage. Curated just for dancers. Navigate your next act with confidence with our all-in-one toolkit for career, mindset, and financial wellness.
+                                </p>
                             </div>
                         </ScrollAnimation>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {pivotPathsFeatures.map((feature, index) => (
+                            {appFeatures.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 200}>
                                     <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col">
                                         <div className="flex items-start flex-grow">
@@ -319,27 +320,27 @@ const PivotPathsPage = () => {
                     </div>
                 </div>
 
-                {/* Support for Dancers at Any Stage Section */}
+                {/* App Categories Section */}
                 <div className="py-16 bg-beige">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
                             <div className="text-center mb-16">
-                                <h2 className="text-bold text-5xl font-bold text-black mb-4">Support for Dancers at Any Stage</h2>
+                                <h2 className="text-bold text-5xl font-bold text-black mb-4">Your Personalized Roadmap</h2>
                                 <p className="font-montserrat text-xl text-brown-gray max-w-2xl mx-auto">
-                                    Step onto the next stage of your career. We'll help guide the way.
+                                    Explore curated "paths" designed to build your skills, confidence, and future—all in one place.
                                 </p>
                             </div>
                         </ScrollAnimation>
 
                         <div className="grid md:grid-cols-3 gap-8">
-                            {dancerStages.map((stage, index) => (
+                            {appCategories.map((category, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
                                     <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
                                         <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <stage.icon className="w-8 h-8 text-white" />
+                                            <category.icon className="w-8 h-8 text-white" />
                                         </div>
-                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{stage.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{stage.description}</p>
+                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{category.title}</h3>
+                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{category.description}</p>
                                     </div>
                                 </ScrollAnimation>
                             ))}
@@ -347,29 +348,39 @@ const PivotPathsPage = () => {
                     </div>
                 </div>
 
-                {/* How It Works Section */}
+                {/* Privacy Section */}
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
                             <div className="text-center mb-16">
-                                <h2 className="text-bold text-5xl font-bold text-white mb-4">How It Works</h2>
+                                <h2 className="text-bold text-5xl font-bold text-white mb-4">Your Journey. Your Data. Absolutely Private.</h2>
+                                <p className="font-montserrat text-xl text-white max-w-3xl mx-auto">
+                                    In a world where everything is tracked and sold, we built a sanctuary for your personal growth.
+                                </p>
                             </div>
                         </ScrollAnimation>
 
                         <div className="grid md:grid-cols-3 gap-8">
-                            {processSteps.map((step, index) => (
+                            {privacyFeatures.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
                                     <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group relative overflow-hidden flex flex-col h-full">
-                                        {/* Number circle instead of icon */}
                                         <div className="w-16 h-16 rounded-full bg-beige border-2 border-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <span className="text-purple-gray font-bold text-2xl">{step.number}</span>
+                                            <feature.icon className="w-8 h-8 text-purple-gray" />
                                         </div>
-                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{step.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{step.description}</p>
+                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{feature.title}</h3>
+                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{feature.description}</p>
                                     </div>
                                 </ScrollAnimation>
                             ))}
                         </div>
+
+                        <ScrollAnimation delay={600}>
+                            <div className="bg-white rounded-2xl p-8 mt-12 text-center border border-purple-gray">
+                                <p className="font-montserrat text-brown-gray italic">
+                                    "No data is saved to the cloud or transmitted to any external servers. This means you have complete control over your information, and your privacy is fully protected. Your progress is only accessible on this device."
+                                </p>
+                            </div>
+                        </ScrollAnimation>
                     </div>
                 </div>
 
@@ -379,12 +390,18 @@ const PivotPathsPage = () => {
                         <ScrollAnimation delay={0}>
                             <div className="flex items-center justify-center mb-4">
                                 <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
-                                    Take the leap and explore your career beyond the stage
+                                    Take the first step on your new path
                                 </h2>
                             </div>
                         </ScrollAnimation>
 
                         <ScrollAnimation delay={300}>
+                            <p className="font-montserrat text-brown-gray text-lg mb-8 max-w-2xl mx-auto">
+                                Download Pivot Paths and start building your future today—with complete privacy and purpose.
+                            </p>
+                        </ScrollAnimation>
+
+                        <ScrollAnimation delay={500}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 mb-8">
                                 {product.features.map((feature, index) => (
                                     <div key={index} className="flex items-center justify-center md:justify-start">
@@ -395,50 +412,38 @@ const PivotPathsPage = () => {
                             </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation delay={500}>
-                            <div className="flex justify-center items-center gap-4 mb-8">
-                                <span className="font-merriweather text-5xl font-bold text-dark-gray">${product.price}</span>
-                                <span className="font-montserrat text-lg text-brown-gray">USD</span>
+                        <ScrollAnimation delay={700}>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                                <button
+                                    onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                    className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                >
+                                    <span className="relative z-10">APP STORE</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </button>
+                                <button
+                                    onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                    className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                >
+                                    <span className="relative z-10">GOOGLE PLAY</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </button>
                             </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation delay={700}>
-                            <button
-                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group mb-8"
-                            >
-                                <span className="relative z-10">BUY NOW</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </button>
-                        </ScrollAnimation>
-
-                        {/* Questions and Cancellation Policy */}
+                        {/* Questions Section */}
                         <ScrollAnimation delay={900}>
                             <div className="border-t border-gray-200 pt-8 mt-8">
-                                <div className="grid md:grid-cols-2 gap-8 text-left">
-                                    <div>
-                                        <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center">
-                                            <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
-                                            Questions?
-                                        </h4>
-                                        <p className="font-montserrat text-brown-gray">
-                                            <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
-                                                kaylee@pivotfordancers.com
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center">
-                                            <Shield className="w-5 h-5 text-purple-gray mr-2" />
-                                            Cancellation Policy
-                                        </h4>
-                                        <p className="font-montserrat text-brown-gray text-sm">
-                                            24 hours notice is required for cancellations. No refunds.
-                                        </p>
-                                        <p className="font-montserrat text-brown-gray text-sm mt-1">
-                                            Terms and Conditions
-                                        </p>
-                                    </div>
+                                <div className="text-center">
+                                    <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
+                                        <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
+                                        Questions?
+                                    </h4>
+                                    <p className="font-montserrat text-brown-gray">
+                                        <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
+                                            kaylee@pivotfordancers.com
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
                         </ScrollAnimation>
