@@ -638,25 +638,63 @@ const PivotPathsPage = () => {
 
                 {/* App Categories Section */}
                 <div className="py-16 bg-beige">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
                             <div className="text-center mb-16">
-                                <h2 className="text-bold text-5xl font-bold text-black mb-4">Your Personalized Roadmap</h2>
-                                <p className="font-montserrat text-xl text-brown-gray max-w-2xl mx-auto">
+                                <div className="flex items-center justify-center mb-4">
+                                    <h2 className="text-bold text-5xl font-bold text-black">Your Personalized Roadmap</h2>
+                                </div>
+                                <p className="font-montserrat text-lg text-brown-gray mt-2">
                                     Explore curated "paths" designed to build your skills, confidence, and future—all in one place.
                                 </p>
                             </div>
                         </ScrollAnimation>
-
-                        <div className="grid md:grid-cols-3 gap-8">
+                        <div className="relative">
+                            <div className="hidden md:block absolute w-0.5 h-full bg-purple-gray/50 top-0 left-1/2 transform -translate-x-1/2"></div>
                             {appCategories.map((category, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
-                                        <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <category.icon className="w-8 h-8 text-white" />
-                                        </div>
-                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{category.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{category.description}</p>
+                                    <div className="mt-8 md:mt-0 md:flex md:items-center">
+                                        {index % 2 === 0 ? (
+                                            <>
+                                                <div className="md:w-1/2 md:pr-8">
+                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
+                                                        <div className="flex items-center justify-center mb-3">
+                                                            <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                                                <category.icon className="w-5 h-5 text-white" />
+                                                            </div>
+                                                            <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{category.title}</h3>
+                                                        </div>
+                                                        <p className="font-montserrat text-brown-gray">{category.description}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="hidden md:flex justify-center items-center w-16">
+                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                                                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                                                    </div>
+                                                </div>
+                                                <div className="md:w-1/2"></div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div className="md:w-1/2"></div>
+                                                <div className="hidden md:flex justify-center items-center w-16">
+                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                                                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                                                    </div>
+                                                </div>
+                                                <div className="md:w-1/2 md:pl-8">
+                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
+                                                        <div className="flex items-center justify-center mb-3">
+                                                            <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                                                <category.icon className="w-5 h-5 text-white" />
+                                                            </div>
+                                                            <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{category.title}</h3>
+                                                        </div>
+                                                        <p className="font-montserrat text-brown-gray">{category.description}</p>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
                                     </div>
                                 </ScrollAnimation>
                             ))}
