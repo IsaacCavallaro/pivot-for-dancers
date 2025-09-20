@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import { Star, Clock } from "lucide-react";
+import { Star, Clock, BookOpen, Users, Video, Check } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { services, Service } from "../../data/services";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-import { services, Service } from "../../data/services";
 
 const servicesTitle = "Services";
 const servicesSubtitle = "Expert Guidance for Your Career Pivot";
@@ -53,14 +53,14 @@ const ServicesSection: React.FC = () => {
     };
 
     return (
-        <section id="services" className="bg-beige min-h-screen py-12 md:py-20 px-4 sm:px-6 overflow-hidden">
+        <section id="services" className="bg-beige min-h-screen py-12 md:py-16 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div
                     ref={titleRef}
                     className="text-center md:py-4"
                 >
                     <h1
-                        className={`font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight transition-all duration-1000 ${isVisible.title
+                        className={`text-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight transition-all duration-1000 ${isVisible.title
                             ? 'opacity-100 transform translate-y-0'
                             : 'opacity-0 transform -translate-y-10'
                             }`}
@@ -79,7 +79,7 @@ const ServicesSection: React.FC = () => {
 
                 <div
                     ref={productsRef}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mt-5"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 mt-5"
                 >
                     {services.map((service, index) => {
                         if (!service) return null;
@@ -103,7 +103,7 @@ const ServicesSection: React.FC = () => {
 
                                 <div className={`absolute inset-0 bg-gradient-to-br from-purple-100 to-white opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
 
-                                <div className="relative overflow-hidden aspect-[4/3] bg-white flex items-center justify-center">
+                                <div className="relative overflow-hidden aspect-[5/3] md:aspect-[16/9] lg:aspect-[2/1] bg-white flex items-center justify-center">
                                     <Image
                                         src={service.img}
                                         alt={service.name}
@@ -117,8 +117,8 @@ const ServicesSection: React.FC = () => {
                                     </div>
                                 </div>
 
-                                <div className="p-6">
-                                    <div className="flex items-center gap-2 mb-3">
+                                <div className="p-4 md:p-5">
+                                    <div className="flex items-center gap-2 mb-2 md:mb-3">
                                         <div className="flex items-center">
                                             {[...Array(5)].map((_, i) => (
                                                 <Star
@@ -136,11 +136,11 @@ const ServicesSection: React.FC = () => {
                                     </div>
 
                                     <h3 className="font-merriweather text-xl font-bold text-dark-gray mb-1">{service.name}</h3>
-                                    <p className="font-montserrat text-sm text-purple-gray mb-3">{service.subtitle}</p>
+                                    <p className="font-montserrat text-sm text-purple-gray mb-2 md:mb-3">{service.subtitle}</p>
 
-                                    <p className="font-montserrat text-sm text-brown-gray mb-4 line-clamp-3">{service.description}</p>
+                                    <p className="font-montserrat text-sm text-brown-gray mb-3 md:mb-4 line-clamp-2 md:line-clamp-3">{service.description}</p>
 
-                                    <div className="mb-4">
+                                    <div className="mb-3 md:mb-4">
                                         <div className="flex flex-wrap gap-1">
                                             {service.features.slice(0, 2).map((feature, index) => (
                                                 <span
@@ -158,12 +158,12 @@ const ServicesSection: React.FC = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center gap-2 mb-4">
+                                    <div className="flex items-center gap-2 mb-3 md:mb-4">
                                         <Clock className="w-4 h-4 text-light-gray" />
                                         <span className="font-montserrat text-sm text-brown-gray">{service.duration}</span>
                                     </div>
 
-                                    <div className="flex items-center gap-2 mb-4">
+                                    <div className="flex items-center gap-2 mb-3 md:mb-4">
                                         <span className="font-merriweather text-2xl font-bold text-dark-gray">
                                             ${service.price}
                                         </span>
