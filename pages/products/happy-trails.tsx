@@ -541,40 +541,74 @@ const HappyTrailsPage = () => {
                         </div>
                     </div>
                 </div>
+                {/* Final CTA */}
+                <div className="relative overflow-hidden bg-light-gray py-20">
+                    <div className="mx-auto max-w-4xl rounded-3xl border-2 border-beige bg-white shadow-2xl overflow-hidden">
+                        <div className="flex flex-col items-center px-6 py-12 md:px-12">
 
-
-
-                {/* Final CTA Section */}
-                <div className="text-center py-16 bg-light-gray relative overflow-hidden">
-                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
-                        <ScrollAnimation delay={0}>
-                            <div className="flex items-center justify-center mb-4">
-                                <h2 className="text-bold text-5xl font-bold text-black">
-                                    Sing Happy Trails and move
-                                    on with confidence
+                            {/* Heading */}
+                            <ScrollAnimation delay={0}>
+                                <h2 className="mx-auto mb-8 max-w-2xl text-center text-4xl font-extrabold leading-tight text-black md:text-5xl">
+                                    Sing Happy Trails and move on with confidence
                                 </h2>
-                            </div>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={300}>
-                            <p className="list-disc pl-5 space-y-2 mt-2">
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Self-Paced Online Course</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />5-Year Career Change Roadmap</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />50 Non-Dance Job Ideas</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Canva Resume Template</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Dancer-Specific Interview Script</p>
-                            </p>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={700}>
-                            <button
-                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                            >
-                                <span className="relative z-10">START NOW</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </button>
-                        </ScrollAnimation>
+                            </ScrollAnimation>
+
+                            {/* Offer Image + Pricing */}
+                            <ScrollAnimation delay={300}>
+                                <div className="flex flex-col items-center text-center">
+                                    <h3 className="mb-2 text-2xl font-bold text-gray-800">Special Offer</h3>
+                                    <div className="flex items-center justify-center gap-4 mb-4">
+                                        <span className="text-4xl font-bold text-purple-gray">$75</span>
+                                        <span className="text-lg text-gray-500 line-through">$199</span>
+                                        <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
+                                            62% OFF
+                                        </span>
+                                    </div>
+                                    <p className="mb-8 text-gray-600">One-time payment, lifetime access</p>
+                                </div>
+                            </ScrollAnimation>
+
+                            {/* Checklist */}
+                            <ScrollAnimation delay={500}>
+                                <div className="mx-auto mb-10 max-w-xl space-y-4 text-left">
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        Self-Paced Online Course
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        5-Year Career Change Roadmap
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        50 Non-Dance Job Ideas
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        Canva Resume Template
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        Dancer-Specific Interview Script
+                                    </p>
+                                </div>
+                            </ScrollAnimation>
+
+                            {/* CTA Button */}
+                            <ScrollAnimation delay={700}>
+                                <button
+                                    onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                    className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                >
+                                    <span className="relative z-10">GET STARTED NOW</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </button>
+                            </ScrollAnimation>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
             <Footer />
         </div>
