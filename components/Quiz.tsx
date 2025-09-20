@@ -403,7 +403,7 @@ const Quiz: React.FC = () => {
 
     return (
         // Add padding-top to account for navbar height 
-        <section className="flex items-center bg-beige text-center md:pt-20 px-4">
+        <section className="flex items-center bg-beige text-center px-4">
             <div id="quiz" className="justify-center flex-1 max-w-6xl mx-auto lg:py-5 md:px-6">
                 <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
                     <div className="p-6 md:p-8">
