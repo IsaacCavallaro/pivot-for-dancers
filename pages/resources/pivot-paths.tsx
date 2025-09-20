@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Product, coursePaymentUrl } from '../../data/products';
-import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen, Smartphone, Lock, Brain, DollarSign, Briefcase } from 'lucide-react';
+import { Star, Apple, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen, Smartphone, Lock, Brain, DollarSign, Briefcase } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
@@ -162,10 +162,17 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
 const PivotPathsPage = () => {
     const router = useRouter();
     const [isVisible, setIsVisible] = useState(false);
+    const [currentScreen, setCurrentScreen] = useState(0);
     const BASE_PATH = process.env.PUBLIC_URL || "";
 
     useEffect(() => {
         setIsVisible(true);
+
+        const interval = setInterval(() => {
+            setCurrentScreen((prev) => (prev + 1) % 5);
+        }, 3000);
+
+        return () => clearInterval(interval);
     }, []);
 
     const stats = [
@@ -240,6 +247,224 @@ const PivotPathsPage = () => {
         }
     ];
 
+    const screens = [
+        {
+            title: "Pivot Paths",
+            subtitle: "Your Dance Career Companion",
+            content: (
+                <div className="flex-1 px-4 space-y-4">
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center mb-2">
+                            <MapPin className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Career Transition
+                            </span>
+                        </div>
+                        <div className="w-full rounded-full h-2" style={{ backgroundColor: "rgba(100, 124, 144, 0.3)" }}>
+                            <div style={{ backgroundColor: "#647C90" }} className="rounded-full h-2 w-3/4"></div>
+                        </div>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center mb-2">
+                            <Heart className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Mindset Wellness
+                            </span>
+                        </div>
+                        <div className="w-full rounded-full h-2" style={{ backgroundColor: "rgaws(100, 124, 144, 0.3)" }}>
+                            <div style={{ backgroundColor: "#647C90" }} className="rounded-full h-2 w-1/2"></div>
+                        </div>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center mb-2">
+                            <CheckCircle className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Financial Planning
+                            </span>
+                        </div>
+                        <div className="w-full rounded-full h-2" style={{ backgroundColor: "rgba(100, 124, 144, 0.3)" }}>
+                            <div style={{ backgroundColor: "#647C90" }} className="rounded-full h-2 w-1/4"></div>
+                        </div>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: "Career Transition",
+            subtitle: "Navigate Your Next Chapter",
+            content: (
+                <div className="flex-1 px-4 space-y-4">
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Skills Assessment
+                            </span>
+                            <Target className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Identify transferable skills from your dance background
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Industry Exploration
+                            </span>
+                            <Shield className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Discover career paths that value your unique experience
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Network Building
+                            </span>
+                            <Award className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Connect with professionals in your target industry
+                        </p>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: "Identify Transferable Skills",
+            subtitle: "Unlock Your Potential",
+            content: (
+                <div className="flex-1 px-4 space-y-4">
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Skill Mapping
+                            </span>
+                            <Users className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Identify transferable skills from your dance background
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Industry Exploration
+                            </span>
+                            <TrendingUp className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Discover career paths that value your unique experience
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Action Planning
+                            </span>
+                            <Calendar className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Create step-by-step transition roadmap
+                        </p>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: "Mindset Wellness",
+            subtitle: "Mental Health & Confidence",
+            content: (
+                <div className="flex-1 px-4 space-y-4">
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Daily Affirmations
+                            </span>
+                            <Heart className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Build confidence with personalized positive messaging
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Stress Management
+                            </span>
+                            <Shield className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Techniques to handle transition anxiety and uncertainty
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Community Support
+                            </span>
+                            <Users className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Connect with other dancers on similar journeys
+                        </p>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: "Financial Planning",
+            subtitle: "Secure Your Future",
+            content: (
+                <div className="flex-1 px-4 space-y-4">
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Budget Planning
+                            </span>
+                            <TrendingUp className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Manage finances during career transition periods
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Emergency Fund
+                            </span>
+                            <Shield className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Build financial security for unexpected changes
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                        <div className="flex items-center justify-between mb-3">
+                            <span style={{ color: "#647C90" }} className="font-semibold">
+                                Investment Basics
+                            </span>
+                            <Award className="w-5 h-5" style={{ color: "#647C90" }} />
+                        </div>
+                        <p style={{ color: "#647C90" }} className="text-sm opacity-90">
+                            Learn to grow wealth beyond your dance career
+                        </p>
+                    </div>
+                </div>
+            ),
+        },
+    ];
+
     return (
         <div className="bg-beige min-h-screen">
             <Navigation />
@@ -301,21 +526,112 @@ const PivotPathsPage = () => {
                             </div>
                         </ScrollAnimation>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {appFeatures.map((feature, index) => (
-                                <ScrollAnimation key={index} delay={index * 200}>
-                                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col">
-                                        <div className="flex items-start flex-grow">
-                                            <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                                <CheckCircle className="w-4 h-4 text-white" />
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            {/* Left Column - Features */}
+                            <div className="space-y-6">
+                                {appFeatures.map((feature, index) => (
+                                    <ScrollAnimation key={index} delay={index * 200}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col">
+                                            <div className="flex items-start flex-grow">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    {feature}
+                                                </p>
                                             </div>
-                                            <p className="font-montserrat text-black leading-relaxed">
-                                                {feature}
-                                            </p>
+                                        </div>
+                                    </ScrollAnimation>
+                                ))}
+                            </div>
+
+                            {/* Right Column - Mobile Mockup */}
+                            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} flex justify-center`}>
+                                <div className="relative flex flex-col">
+                                    <div className="relative">
+                                        {/* Phone Frame */}
+                                        <div className="relative w-80 h-[600px] bg-gray-900 rounded-[3rem] p-2 shadow-2xl overflow-hidden">
+                                            {/* Status Bar */}
+                                            <div className="bg-gray-50 h-8 flex items-center justify-between px-6 text-xs font-medium text-gray-900 rounded-t-[2.5rem]">
+                                                <span>9:41</span>
+                                                <div className="flex items-center space-x-1">
+                                                    <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                                                    <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                                                    <div className="w-6 h-3 bg-green-500 rounded-sm"></div>
+                                                </div>
+                                            </div>
+
+                                            {/* Screen Container with Proper Containment */}
+                                            <div
+                                                className="relative w-full overflow-hidden rounded-b-[2.5rem] bg-slate-600"
+                                                style={{ height: "calc(100% - 2rem)", backgroundColor: "#647C90" }}
+                                            >
+                                                <div className="relative w-full h-full">
+                                                    {screens.map((screen, index) => (
+                                                        <div
+                                                            key={index}
+                                                            className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out bg-slate-600 ${index === currentScreen
+                                                                ? "translate-x-0 opacity-100"
+                                                                : index < currentScreen
+                                                                    ? "-translate-x-full opacity-0"
+                                                                    : "translate-x-full opacity-0"
+                                                                }`}
+                                                            style={{
+                                                                backgroundColor: "#647C90",
+                                                            }}
+                                                        >
+                                                            <div className="flex flex-col h-full w-full">
+                                                                <div className="p-6 text-center flex-shrink-0" style={{ backgroundColor: "#647C90" }}>
+                                                                    <h2 className="text-2xl font-bold text-white mb-2">{screen.title}</h2>
+                                                                    <p className="text-white text-sm opacity-90">{screen.subtitle}</p>
+                                                                </div>
+
+                                                                {/* Screen Content */}
+                                                                <div className="flex-1 overflow-hidden">{screen.content}</div>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Home Indicator */}
+                                            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full"></div>
+                                        </div>
+
+                                        {/* Download Buttons - Made smaller */}
+                                        <div className="flex flex-col items-center mt-8 space-y-3 w-full max-w-xs">
+                                            {/* 5-star rating above download buttons */}
+                                            <div className="flex items-center mb-4">
+                                                {[...Array(5)].map((_, i) => (
+                                                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current transition-all duration-300" />
+                                                ))}
+                                            </div>
+
+                                            <button
+                                                className="flex items-center justify-center text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-all transform hover:scale-105 w-full shadow-lg"
+                                                style={{ backgroundColor: "#000000" }}
+                                            >
+                                                <Apple className="w-5 h-5 mr-2" />
+                                                <div className="text-left">
+                                                    <div className="text-xs opacity-80">Download on the</div>
+                                                    <div className="text-base font-bold">App Store</div>
+                                                </div>
+                                            </button>
+
+                                            <button
+                                                className="flex items-center justify-center text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-all transform hover:scale-105 w-full shadow-lg"
+                                                style={{ backgroundColor: "#000000" }}
+                                            >
+                                                <Play className="w-5 h-5 mr-2" />
+                                                <div className="text-left">
+                                                    <div className="text-xs opacity-80">GET IT ON</div>
+                                                    <div className="text-base font-bold">Google Play</div>
+                                                </div>
+                                            </button>
                                         </div>
                                     </div>
-                                </ScrollAnimation>
-                            ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
