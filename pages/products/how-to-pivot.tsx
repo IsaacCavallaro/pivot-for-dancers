@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Product, coursePaymentUrl } from '../../data/products';
+import { Product, ebookPaymentUrl } from '../../data/products';
 import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, Book, Brain, Compass } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
@@ -14,7 +14,7 @@ const product: Product = {
         `Feeling stuck in your dance career?\n\nNot sure what else is out there for you beyond the stage?\n\nReady to take the leap but unsure where to start?\n\nIntroducing "How to Pivot: Navigating Career Change for Professional Dancers".\n\nPart self-help book and part action-focused career resource, this ebook takes you through all the things you wish someone would've told you before you started your career as a professional dancer.\n\nIf you already lived your dream and find yourself wondering "what now?", this dancer-specific guide is for you.\n\nBrought to you by the founder of Pivot for Dancers, "How to Pivot" is an actionable career change guide tailored specifically for professional dancers.\n\nKaylee Randall brings together concepts from psychology and philosophy, merging them with her own experience as a professional dancer who successfully changed careers.\n\nInside, you'll find:\n* 10 chapters of taboo, dancer-specific topics no one else is talking about\n* Deep dive into the psychological and philosophical concepts that can guide you through a career change\n* Mindset shifts and taboo topics to connect to what you truly want in your next adventure\n* Tools and resources to help you understand your transferable skills and build a muggle resume\n* A clear, focused action plan to help you step onto your next stage\n\nYou'll always be a dancer. No one can take that away. But if you're feeling pulled to something more, you're not alone. Get prepared for all the exciting things to come and reach your full potential with the help of "How to Pivot".`,
     price: 50,
     originalPrice: 125,
-    url: coursePaymentUrl,
+    url: ebookPaymentUrl,
     img: "/assets/how-to-pivot-ebook.png",
     category: "Ebook",
     duration: "Self-Paced",
@@ -318,6 +318,61 @@ const HowToPivotPage = () => {
                     </div>
                 </div>
 
+                {/* What is How to Pivot section */}
+                <div className="py-16 bg-light-gray">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="mb-4">
+                            <h2 className="text-bold text-5xl font-bold text-white">What is the How To Pivot Ebook?</h2>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            {/* Left Column */}
+                            <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
+                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
+                                    Part  <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        self-help
+                                    </span>  book and part <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        action-focused
+                                    </span> career resource, this ebook takes you through all the things you wish someone would've told you before you started your career as a professional dancer.
+                                </p>
+                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
+                                    If you already lived your dream and find yourself wondering "what's now", this <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        dancer-specific
+                                    </span>  guide is for you.
+                                </p>
+                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
+                                    Brought to you by the founder of Pivot for Dancers, "How to Pivot" is an actionable career change guide tailored specifically for professional dancers.
+                                </p>
+                            </div>
+
+                            { /* Right Column */}
+                            <div
+                                className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                                    }`}
+                            >
+                                <div className="relative w-full h-[500px] rounded-3xl shadow-2xl overflow-hidden bg-white">
+                                    <Image
+                                        src="/assets/how-to-pivot-ebook.png"
+                                        alt="How to Pivot eBook"
+                                        fill
+                                        className="object-contain"
+                                        priority
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
 
                 {/* The Journey Section */}
                 <div className="py-16 bg-beige">
@@ -467,35 +522,75 @@ const HowToPivotPage = () => {
                     </div>
                 </div>
                 {/* Final CTA Section */}
-                <div className="text-center py-16 bg-light-gray relative overflow-hidden">
-                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
-                        <ScrollAnimation delay={0}>
-                            <div className="flex items-center justify-center mb-4">
-                                <h2 className="text-bold text-5xl font-bold text-black">
+                <div className="relative overflow-hidden bg-light-gray py-20">
+                    <div className="mx-auto max-w-4xl rounded-3xl border-2 border-beige bg-white shadow-2xl overflow-hidden">
+                        <div className="flex flex-col items-center px-6 py-12 md:px-12">
+
+                            {/* Heading */}
+                            <ScrollAnimation delay={0}>
+                                <h2 className="mx-auto mb-8 max-w-2xl text-center text-4xl font-extrabold leading-tight text-black md:text-5xl">
                                     You'll Always Be a Dancer
                                 </h2>
-                            </div>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={300}>
-                            <p className="list-disc pl-5 space-y-2 mt-2">
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />10 Taboo Topics No One Talks About</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Psychology & Philosophy Concepts</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Transferable Skills Assessment</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Professional Resume Building</p>
-                                <p className="flex items-center"><CheckCircle className="w-6 h-6 text-purple-gray mr-2" />Clear, Focused Action Plan</p>
-                            </p>
-                        </ScrollAnimation>
-                        <ScrollAnimation delay={700}>
-                            <button
-                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                            >
-                                <span className="relative z-10">GET THE EBOOK</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </button>
-                        </ScrollAnimation>
+                            </ScrollAnimation>
+
+                            {/* Offer Block */}
+                            <ScrollAnimation delay={300}>
+                                <div className="flex flex-col items-center text-center">
+                                    <h3 className="mb-2 text-2xl font-bold text-gray-800">Special Offer</h3>
+                                    <div className="flex items-center justify-center gap-4 mb-4">
+                                        <span className="text-4xl font-bold text-purple-gray">$6.00</span>
+                                        <span className="text-lg text-gray-500 line-through">$10.99</span>
+                                        <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
+                                            45% OFF
+                                        </span>
+                                    </div>
+                                    <p className="mb-8 text-gray-600">One-time payment, lifetime access</p>
+                                </div>
+                            </ScrollAnimation>
+
+                            {/* Checklist */}
+                            <ScrollAnimation delay={500}>
+                                <div className="mx-auto mb-10 max-w-xl space-y-4 text-left">
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        10 Taboo Topics No One Talks About
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        Psychology & Philosophy Concepts
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        Transferable Skills Assessment
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        Professional Resume Building
+                                    </p>
+                                    <p className="flex items-start text-lg">
+                                        <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-purple-gray" />
+                                        Clear, Focused Action Plan
+                                    </p>
+                                </div>
+                            </ScrollAnimation>
+
+                            {/* CTA Button */}
+                            <ScrollAnimation delay={700}>
+                                <button
+                                    onClick={() =>
+                                        window.open(product.url, "_blank", "noopener,noreferrer")
+                                    }
+                                    className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                >
+                                    <span className="relative z-10">GET THE EBOOK</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </button>
+                            </ScrollAnimation>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
             <Footer />
         </div>
