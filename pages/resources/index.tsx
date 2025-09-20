@@ -27,13 +27,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, isVisible, index 
 
     const handleLearnMoreClick = (resource: Resource, event: React.MouseEvent) => {
         event.preventDefault();
-        if (resource.link.startsWith('/')) {
-            router.push(resource.link);
-        } else if (resource.link !== '#') {
-            window.open(resource.link, '_blank', 'noopener,noreferrer');
-        } else {
-            router.push(`/resources/${resource.title.toLowerCase().replace(/ /g, '-')}`);
-        }
+        router.push(`/resources/${resource.title.toLowerCase().replace(/ /g, '-')}`);
     };
 
     return (
