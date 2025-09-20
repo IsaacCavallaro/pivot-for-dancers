@@ -228,19 +228,19 @@ const MentorshipPage = () => {
             number: "1",
             title: "Book Your 1st Session",
             description: "When you book your 1st session, you'll receive an email with your Welcome Guide. We'll pair you with your mentor and guide you through some goal-setting exercises.",
-            icon: Calendar
+            icon: null // Removed icon, will use number instead
         },
         {
             number: "2",
             title: "Show Up for Yourself",
             description: "You'll attend 3 sessions over the course of your mentorship. After each session, you'll receive reflection questions and action plans to make the most of your program.",
-            icon: Users
+            icon: null // Removed icon, will use number instead
         },
         {
             number: "3",
             title: "Take Action",
             description: "After the mentorship program, you'll have a clear plan of action, dancer-specific resources, and a new contact to add to your network. From now on, your mentor will always be in your corner.",
-            icon: Target
+            icon: null // Removed icon, will use number instead
         }
     ];
 
@@ -362,13 +362,9 @@ const MentorshipPage = () => {
                             {processSteps.map((step, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
                                     <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group relative overflow-hidden flex flex-col h-full">
-                                        {/* Step number */}
-                                        <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-purple-gray flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <span className="text-white font-bold text-xl">{step.number}</span>
-                                        </div>
-
+                                        {/* Number circle instead of icon */}
                                         <div className="w-16 h-16 rounded-full bg-beige border-2 border-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <step.icon className="w-8 h-8 text-purple-gray" />
+                                            <span className="text-purple-gray font-bold text-2xl">{step.number}</span>
                                         </div>
                                         <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{step.title}</h3>
                                         <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{step.description}</p>
