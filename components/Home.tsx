@@ -134,21 +134,21 @@ const SuiteCTASection = () => {
       description: "Your private toolkit for career transition, mindset wellness, and financial planning",
       icon: Smartphone,
       color: "#647C90",
-      link: "/pivot-paths-app"
+      link: "/products"
     },
     {
       title: "Services",
       description: "A comprehensive 5-year roadmap for dancers planning their career transition",
       icon: BookOpen,
       color: "#928490",
-      link: "/happy-trails"
+      link: "/services"
     },
     {
       title: "Resources",
       description: "Weekly conversations about career transition, mindset, and finding purpose",
       icon: Headphones,
       color: "#746C70",
-      link: "/pivot-podcast"
+      link: "/resources"
     },
   ];
 
@@ -157,10 +157,10 @@ const SuiteCTASection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Explore Our Complete Offerings
           </h2>
-          <p className="text-xl text-brown-gray max-w-2xl mx-auto">
+          <p className="text-xl text-white max-w-2xl mx-auto">
             Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions
           </p>
         </div>
@@ -190,13 +190,16 @@ const SuiteCTASection = () => {
                 {product.description}
               </p>
 
-              {/* Button */}
+              {/* Button - Updated text based on product type */}
               <a
                 href={product.link}
                 className="inline-flex items-center bg-purple-gray text-white font-semibold py-2 px-5 rounded-lg hover:bg-dark-gray transition-colors"
               >
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <span>
+                  {product.title === "Products" && "VIEW ALL PRODUCTS"}
+                  {product.title === "Services" && "VIEW ALL SERVICES"}
+                  {product.title === "Resources" && "VIEW ALL RESOURCES"}
+                </span>
               </a>
             </div>
           ))}
