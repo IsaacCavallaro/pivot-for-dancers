@@ -354,17 +354,18 @@ const PivotPodcastPage = () => {
                                 </p>
                             </div>
 
-                            {/* Right Column */}
+                            {/* Right Column - Updated with YouTube Playlist */}
                             <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                                 <div className="relative aspect-video w-full">
                                     <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
                                         <iframe
                                             width="100%"
                                             height="100%"
-                                            src="https://open.spotify.com/embed/show/example-podcast-id"
-                                            title="Pivot Podcast"
+                                            src="https://www.youtube.com/embed/videoseries?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
+                                            title="Pivot Podcast YouTube Playlist"
                                             frameBorder="0"
-                                            allow="encrypted-media"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
                                             className="absolute inset-0 w-full h-full"
                                         ></iframe>
                                     </div>
@@ -554,10 +555,10 @@ const PivotPodcastPage = () => {
                         <ScrollAnimation delay={700}>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                                 <button
-                                    onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                    onClick={() => window.open('https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm', '_blank', 'noopener,noreferrer')}
                                     className="bg-purple-gray hover:bg-light-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                 >
-                                    <span className="relative z-10">SPOTIFY</span>
+                                    <span className="relative z-10">YOUTUBE PLAYLIST</span>
                                     <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </button>
                                 <button
