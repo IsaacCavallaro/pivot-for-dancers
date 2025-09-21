@@ -65,9 +65,9 @@ const StatCard = ({ number, label, icon: IconComponent, index }: StatCardProps) 
     const numericValue = Number.parseInt(number.replace(/\D/g, ""));
 
     return (
-        <div ref={ref} className="text-center">
+        <div ref={ref} className="text-center h-full">
             <div
-                className="rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                className="rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group min-h-[140px]"
                 style={{
                     backgroundColor: backgroundColor,
                     border: `2px solid ${borderColor}`,
@@ -149,12 +149,6 @@ const AboutUsSection = () => {
         setIsVisible(true);
     }, []);
 
-    const stats = [
-        { number: '25+', label: 'years of dance experience', icon: Star },
-        { number: '1309+', label: 'dancers in our community', icon: Users },
-        { number: '17+', label: 'countries participating', icon: Globe },
-        { number: '20+', label: 'successful workshops', icon: CheckCircle }
-    ];
 
     return (
         <section id="about" className="relative overflow-hidden" style={{ backgroundColor: "#647C90" }}>
@@ -223,13 +217,6 @@ const AboutUsSection = () => {
                                         ></iframe>
                                     </div>
                                 </div>
-
-                                {/* Stats Section */}
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    {stats.map((stat, index) => (
-                                        <StatCard key={index} {...stat} index={index} />
-                                    ))}
-                                </div>
                             </div>
                         </ScrollAnimation>
                     </div>
@@ -267,12 +254,12 @@ const AboutUsSection = () => {
                             }
                         ].map((value, index) => (
                             <ScrollAnimation key={index} delay={index * 200}>
-                                <div className="bg-white rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group text-center" style={{ borderColor: "#647C90" }}>
+                                <div className="bg-white rounded-2xl p-8 shadow-lg border-2 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group text-center h-full flex flex-col" style={{ borderColor: "#647C90" }}>
                                     <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: "#647C90" }}>
                                         <value.icon className="w-8 h-8 text-white" />
                                     </div>
                                     <h3 className="text-2xl font-bold text-black mb-4">{value.title}</h3>
-                                    <p className="leading-relaxed" style={{ color: "#928490" }}>{value.description}</p>
+                                    <p className="leading-relaxed flex-grow" style={{ color: "#928490" }}>{value.description}</p>
                                 </div>
                             </ScrollAnimation>
                         ))}
@@ -365,7 +352,7 @@ const AboutUsSection = () => {
                             }
                         ].map((impact, index) => (
                             <ScrollAnimation key={index} delay={index * 150}>
-                                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group text-center border border-white/20">
+                                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group text-center border border-white/20 h-full flex flex-col">
                                     <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: "#647C90" }}>
                                         <impact.icon className="w-6 h-6 text-white" />
                                     </div>
@@ -373,7 +360,7 @@ const AboutUsSection = () => {
                                         {impact.number}
                                     </div>
                                     <h3 className="text-lg font-bold text-black mb-3">{impact.title}</h3>
-                                    <p className="text-sm leading-relaxed" style={{ color: "#928490" }}>{impact.description}</p>
+                                    <p className="text-sm leading-relaxed flex-grow" style={{ color: "#928490" }}>{impact.description}</p>
                                 </div>
                             </ScrollAnimation>
                         ))}

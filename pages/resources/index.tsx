@@ -9,7 +9,7 @@ import Footer from '../../components/Footer';
 const STYLES = {
     section: 'bg-beige pt-24 pb-12',
     headingContainer: "px-4 mb-6 text-center",
-    headingTitle: "text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight",
+    headingTitle: "text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-4 leading-tight",
     headingSpan: "text-md uppercase dark:text-gray-500 transition-all duration-1000 delay-300",
     button: "inline-block font-montserrat px-10 py-2 text-sm text-white bg-purple-gray rounded-full hover:bg-purple-gray opacity-80 hover:opacity-100",
 };

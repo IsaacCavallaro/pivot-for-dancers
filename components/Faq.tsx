@@ -158,8 +158,8 @@ const FAQ: FC = () => {
     return (
         <section id="faq-section" className="bg-beige py-5 pt-24 pb-1">
             <div className="max-w-7xl py-4 px-4 mx-auto md:px-6">
-                <header className="mb-6 text-center">
-                    <h2 className="mt-2 font-merriweather text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+                <header className="mb-4 text-center">
+                    <h2 className="mt-2 font-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-4 leading-tight">
                         FAQs
                     </h2>
                     <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300">

@@ -60,7 +60,7 @@ const ProductsSection: React.FC = () => {
                     className="text-center md:py-4"
                 >
                     <h1
-                        className={`text-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight transition-all duration-1000 ${isVisible.title
+                        className={`text-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-4 leading-tight transition-all duration-1000 ${isVisible.title
                             ? 'opacity-100 transform translate-y-0'
                             : 'opacity-0 transform -translate-y-10'
                             }`}
