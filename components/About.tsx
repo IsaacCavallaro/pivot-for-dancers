@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, CheckCircle, Users, Globe } from 'lucide-react';
+import { Star, CheckCircle, Users, Globe, ArrowRight, MessageCircle, Download, BookOpen } from 'lucide-react';
 
 interface CounterProps {
     end: number;
@@ -149,7 +149,6 @@ const AboutUsSection = () => {
         setIsVisible(true);
     }, []);
 
-
     return (
         <section id="about" className="relative overflow-hidden" style={{ backgroundColor: "#647C90" }}>
             {/* Main About Section */}
@@ -166,10 +165,10 @@ const AboutUsSection = () => {
                         </div>
                     </ScrollAnimation>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         {/* Left Column */}
                         <ScrollAnimation delay={200}>
-                            <div className="text-center lg:text-left">
+                            <div className="text-center lg:text-left lg:pt-2">
                                 <p className="text-xl text-white leading-relaxed mb-6">
                                     Pivot for Dancers offers{" "}
                                     <span
@@ -218,6 +217,17 @@ const AboutUsSection = () => {
                                     </div>
                                 </div>
                             </div>
+                            {/* First CTA - Join Community */}
+                            <ScrollAnimation delay={600}>
+                                <div className="mt-10 bg-white rounded-2xl p-6 shadow-lg border-2 border-white/20 hover:shadow-xl transition-all duration-300 group">
+                                    <h3 className="text-2xl font-bold mb-3" style={{ color: "#647C90" }}>Ready to Start Your Journey?</h3>
+                                    {/* <p className="mb-4" style={{ color: "#928490" }}>Join our community of dancers navigating career transitions together.</p> */}
+                                    <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg flex items-center justify-center gap-2"
+                                        style={{ backgroundColor: "#647C90", color: "white" }}>
+                                        Join Our Community <Users className="w-5 h-5" />
+                                    </button>
+                                </div>
+                            </ScrollAnimation>
                         </ScrollAnimation>
                     </div>
                 </div>
@@ -264,6 +274,23 @@ const AboutUsSection = () => {
                             </ScrollAnimation>
                         ))}
                     </div>
+
+                    {/* Second CTA - Free Resources */}
+                    <ScrollAnimation delay={600}>
+                        <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg border-2 border-white/20 text-center" style={{ borderColor: "#647C90" }}>
+                            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "#647C90" }}>
+                                <BookOpen className="w-8 h-8 text-white" />
+                            </div>
+                            <h3 className="text-3xl font-bold mb-4 text-black">Free Career Transition Guide</h3>
+                            <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: "#928490" }}>
+                                Download our free guide to discover the first steps in transitioning from dance to a fulfilling new career.
+                            </p>
+                            <button className="py-3 px-8 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
+                                style={{ backgroundColor: "#647C90", color: "white" }}>
+                                Download Free Guide <Download className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </ScrollAnimation>
                 </div>
             </div>
 
@@ -306,6 +333,19 @@ const AboutUsSection = () => {
                                     years and who still managed to build a fulfilling life beyond dance. She's here to share
                                     how you can too.
                                 </p>
+
+                                {/* Third CTA - Contact */}
+                                <ScrollAnimation delay={800}>
+                                    <div className="mt-10 p-6 rounded-2xl border-2 border-white/20 hover:shadow-lg transition-all duration-300 group"
+                                        style={{ backgroundColor: "rgba(226, 222, 208, 0.1)" }}>
+                                        <h3 className="text-xl font-bold mb-3 text-white">Have questions about your transition?</h3>
+                                        <p className="mb-4 text-white/90">Get personalized advice from someone who's been there.</p>
+                                        <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}>
+                                            Schedule a Consultation <MessageCircle className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                </ScrollAnimation>
                             </div>
                         </ScrollAnimation>
                     </div>
@@ -352,7 +392,7 @@ const AboutUsSection = () => {
                             }
                         ].map((impact, index) => (
                             <ScrollAnimation key={index} delay={index * 150}>
-                                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group text-center border border-white/20 h-full flex flex-col">
+                                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group text-center border border-white/20 h-full flex flex-col border-2" style={{ borderColor: "#647C90" }}>
                                     <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: "#647C90" }}>
                                         <impact.icon className="w-6 h-6 text-white" />
                                     </div>
@@ -365,6 +405,26 @@ const AboutUsSection = () => {
                             </ScrollAnimation>
                         ))}
                     </div>
+
+                    {/* Final CTA - Join Waiting List */}
+                    <ScrollAnimation delay={600}>
+                        <div className="mt-16 bg-white rounded-2xl p-10 text-center shadow-lg border-2" style={{ borderColor: "#647C90" }}>
+                            <h2 className="text-4xl font-bold mb-4 text-black">Ready to Pivot?</h2>
+                            <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: "#928490" }}>
+                                Join hundreds of dancers who are already building meaningful careers beyond the stage.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <button className="py-3 px-8 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                                    style={{ backgroundColor: "#647C90", color: "white" }}>
+                                    Join Waiting List <ArrowRight className="w-5 h-5" />
+                                </button>
+                                <button className="py-3 px-8 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 border-2 flex items-center justify-center gap-2"
+                                    style={{ borderColor: "#647C90", color: "#647C90" }}>
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </ScrollAnimation>
                 </div>
             </div>
         </section>
