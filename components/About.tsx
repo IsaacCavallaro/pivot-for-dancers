@@ -105,25 +105,25 @@ const AboutUsSection = () => {
     ];
 
     return (
-        <section id="about" className="relative overflow-hidden bg-beige pt-24 pb-10">
+        <section id="about" className="relative overflow-hidden bg-light-gray pt-24 pb-10">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
                 <div
                     className="text-center md:py-4"
                 >
                     <h1
-                        className={`font-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight transition-all duration-1000 ${isVisible
+                        className={`font-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-1000 ${isVisible
                             ? 'opacity-100 transform translate-y-0'
                             : 'opacity-0 transform -translate-y-10'
                             }`}
                     >
                         About Us
                     </h1>
-                    <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300">Who We Are & What We Do</span>
+                    <span className="text-md text-center uppercase text-white transition-all duration-1000 delay-300">Who We Are & What We Do</span>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Column */}
                     <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
-                        <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
+                        <p className="font-montserrat text-xl text-white leading-relaxed max-w-xl">
                             Pivot for Dancers offers <span
                                 className="px-2 py-1 rounded-lg font-semibold"
                                 style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
@@ -136,7 +136,7 @@ const AboutUsSection = () => {
                                 professional dancers
                             </span> who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
                         </p>
-                        <p className="font-montserrat text-xl text-brown-gray mb-8 leading-relaxed max-w-xl">
+                        <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
                             There are thousands of other dancers <span
                                 className="px-2 py-1 rounded-lg font-semibold"
                                 style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}

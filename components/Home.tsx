@@ -134,33 +134,50 @@ const SuiteCTASection = () => {
       description: "Your private toolkit for career transition, mindset wellness, and financial planning",
       icon: Smartphone,
       color: "#647C90",
-      link: "/products"
+      link: "/products",
+      badge: "Digital Resources",
+      highlight: "NEW",
+      items: ["E-books", "Mini Courses", "Templates"]
     },
     {
       title: "Services",
       description: "A comprehensive 5-year roadmap for dancers planning their career transition",
       icon: BookOpen,
       color: "#928490",
-      link: "/services"
+      link: "/services",
+      badge: "1-on-1 Support",
+      highlight: "POPULAR",
+      items: ["Mentorship", "Career Coaching", "Resume Review"]
     },
     {
       title: "Resources",
       description: "Weekly conversations about career transition, mindset, and finding purpose",
       icon: Headphones,
       color: "#746C70",
-      link: "/resources"
+      link: "/resources",
+      badge: "Free Content",
+      highlight: "FREE",
+      items: ["Articles", "Guides", "Tools"]
     },
   ];
 
   return (
-    <section className="py-16 bg-light-gray">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 bg-light-gray relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-light-gray via-light-gray to-purple-gray/10"></div>
+      <div className="absolute top-10 left-10 w-32 h-32 bg-purple-gray/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-10 w-48 h-48 bg-tan-300/10 rounded-full blur-3xl"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <div className="inline-flex items-center justify-center px-4 py-2 rounded-full mb-6 border border-purple-gray/20 bg-white/10 backdrop-blur-sm">
+            <span className="text-sm font-semibold text-white tracking-wide">COMPREHENSIVE SUITE</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 ">
             Explore Our Complete Offerings
           </h2>
-          <p className="text-xl text-white max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto font-montserrat leading-relaxed">
             Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions
           </p>
         </div>
@@ -170,39 +187,124 @@ const SuiteCTASection = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center max-w-sm w-full"
+              className="group bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center max-w-sm w-full relative overflow-hidden"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#928490';
+                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '';
+                e.currentTarget.style.boxShadow = '';
+              }}
             >
-              {/* Icon */}
+              {/* Highlight Badge */}
+              <div className="absolute top-4 right-4">
+                <span
+                  className="inline-block px-2 py-1 text-xs font-bold rounded-full transition-all duration-500 group-hover:scale-105"
+                  style={{
+                    backgroundColor: product.color === "#647C90" ? 'rgba(100, 124, 144, 0.1)' :
+                      product.color === "#928490" ? 'rgba(146, 132, 144, 0.1)' : 'rgba(116, 108, 112, 0.1)',
+                    color: product.color
+                  }}
+                >
+                  {product.highlight}
+                </span>
+              </div>
+
+              {/* Icon with enhanced styling */}
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 shadow-lg"
                 style={{ backgroundColor: product.color }}
               >
-                <product.icon className="w-6 h-6 text-white" />
+                <product.icon className="w-8 h-8 text-white transition-all duration-500" />
+              </div>
+
+              {/* Badge */}
+              <div className="mb-3">
+                <span
+                  className="inline-block px-3 py-1 text-xs font-semibold rounded-full transition-all duration-500 group-hover:scale-105"
+                  style={{
+                    backgroundColor: 'rgba(146, 132, 144, 0.1)',
+                    color: '#928490'
+                  }}
+                >
+                  {product.badge}
+                </span>
               </div>
 
               {/* Title */}
-              <h4 className="font-merriweather text-lg font-bold text-black mb-2">
+              <h4 className="font-bold text-xl font-bold text-black mb-3 group-hover:text-black transition-colors duration-500">
                 {product.title}
               </h4>
 
+              {/* Items list */}
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
+                {product.items.map((item, itemIndex) => (
+                  <span
+                    key={itemIndex}
+                    className="inline-block px-2 py-1 text-xs font-medium rounded-md transition-all duration-500 group-hover:scale-105"
+                    style={{
+                      backgroundColor: 'rgba(146, 132, 144, 0.05)',
+                      color: '#746C70',
+                      border: '1px solid rgba(146, 132, 144, 0.1)'
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
               {/* Description */}
-              <p className="font-montserrat text-brown-gray text-sm mb-6">
+              <p className="font-montserrat text-brown-gray text-sm mb-6 leading-relaxed group-hover:text-black transition-colors duration-500">
                 {product.description}
               </p>
 
-              {/* Button - Updated text based on product type */}
+              {/* Enhanced Button */}
               <a
                 href={product.link}
-                className="inline-flex items-center bg-purple-gray text-white font-semibold py-2 px-5 rounded-lg hover:bg-dark-gray transition-colors"
+                className="inline-flex items-center justify-center w-full bg-purple-gray text-white font-semibold py-3 px-6 rounded-xl hover:bg-light-gray transition-all duration-300 group-hover:scale-105 shadow-md hover:shadow-lg"
               >
-                <span>
-                  {product.title === "Products" && "VIEW ALL PRODUCTS"}
-                  {product.title === "Services" && "VIEW ALL SERVICES"}
-                  {product.title === "Resources" && "VIEW ALL RESOURCES"}
-                </span>
+                <span className="mr-2">LEARN MORE</span>
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </a>
+
+              {/* Decorative element */}
+              <div
+                className="absolute bottom-0 left-0 w-full h-1 rounded-b-2xl transition-all duration-500 group-hover:h-2"
+                style={{ backgroundColor: product.color }}
+              ></div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group">
+            <span className="text-white font-semibold mr-2">Ready to get started?</span>
+            <a
+              href="https://tidycal.com/pivotfordancers/mentorship-1"
+              className="text-tan-300 font-bold hover:text-white transition-colors duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a consultation
+            </a>
+            <svg
+              className="w-4 h-4 ml-2 text-tan-300 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>
