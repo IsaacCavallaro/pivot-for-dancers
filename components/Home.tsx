@@ -137,7 +137,7 @@ const SuiteCTASection = () => {
       link: "/products",
       badge: "Digital Resources",
       highlight: "NEW",
-      items: ["E-books", "Mini Courses", "Templates"]
+      items: ["E-book", "Mini Course"]
     },
     {
       title: "Services",
@@ -147,7 +147,7 @@ const SuiteCTASection = () => {
       link: "/services",
       badge: "1-on-1 Support",
       highlight: "POPULAR",
-      items: ["Mentorship", "Career Coaching", "Resume Review"]
+      items: ["Mentorship", "Mock Interviews"]
     },
     {
       title: "Resources",
@@ -155,9 +155,9 @@ const SuiteCTASection = () => {
       icon: Headphones,
       color: "#746C70",
       link: "/resources",
-      badge: "Free Content",
+      badge: "Tools",
       highlight: "FREE",
-      items: ["Articles", "Guides", "Tools"]
+      items: ["Mobile App", "Podcast", "Research"]
     },
   ];
 
@@ -290,14 +290,14 @@ const SuiteCTASection = () => {
             <span className="text-white font-semibold mr-2">Ready to get started?</span>
             <a
               href="https://tidycal.com/pivotfordancers/mentorship-1"
-              className="text-tan-300 font-bold hover:text-white transition-colors duration-300"
+              className="text-tan-300 font-bold text-white transition-colors duration-300"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Book a consultation
+              BOOK NOW
             </a>
             <svg
-              className="w-4 h-4 ml-2 text-tan-300 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"
+              className="w-4 h-4 ml-2 text-tan-300 text-white group-hover:translate-x-1 transition-all duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -775,7 +775,7 @@ const HeroSection = () => {
                               }`}
                             style={{ backgroundColor: "#647C90" }}
                           >
-                            <div className="flex flex-col h-full w-full opacity-30">
+                            <div className="flex flex-col h-full w-full">
                               <div className="p-6 text-center flex-shrink-0" style={{ backgroundColor: "#647C90" }}>
                                 <h2 className="text-2xl font-bold text-white mb-2">{screen.title}</h2>
                                 <p className="text-white text-sm opacity-90">{screen.subtitle}</p>
