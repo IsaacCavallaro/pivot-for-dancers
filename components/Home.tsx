@@ -244,7 +244,7 @@ const HeroSection = () => {
     text-sm text-gray-900 placeholder-gray-400 
     bg-gray-100 border border-gray-300 
     rounded-md dark:text-gray-400 
-    dark:placeholder-gray-400 dark:bg-gray-700 
+    dark:placeholder-gray-500 dark:bg-gray-700 
     dark:border-gray-700 md:w-2/3
   `.trim()
 
@@ -280,7 +280,7 @@ const HeroSection = () => {
 
       const form = document.createElement("form")
       form.method = "POST"
-      form.action = "https://stats.sender.net/forms/aKrmkz/subscribe"
+      form.action = "https://example.com/submit"
       form.target = "hidden-iframe"
       form.style.display = "none"
 
@@ -633,14 +633,21 @@ const HeroSection = () => {
 
             {/* Right Column - Mobile Phone Mockup */}
             <div
-              className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} flex justify-center`}
+              className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                } flex justify-center`}
             >
               <div className="relative flex flex-col mt-[-1px]">
                 <div className="relative">
                   {/* Phone Frame */}
                   <div className="relative w-80 h-[600px] bg-gray-900 rounded-[3rem] p-2 shadow-2xl overflow-hidden">
+
+                    {/* COMING SOON Ribbon - sits on top of the entire phone */}
+                    <div className="absolute -right-10 top-9 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold text-xs md:text-sm py-1 px-10 transform rotate-45 z-40 shadow-lg">
+                      COMING SOON
+                    </div>
+
                     {/* Status Bar */}
-                    <div className="bg-gray-50 h-8 flex items-center justify-between px-6 text-xs font-medium text-gray-900 rounded-t-[2.5rem]">
+                    <div className="bg-gray-50 h-8 flex items-center justify-between px-6 text-xs font-medium text-gray-900 rounded-t-[2.5rem] relative z-10">
                       <span>9:41</span>
                       <div className="flex items-center space-x-1">
                         <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
@@ -649,7 +656,7 @@ const HeroSection = () => {
                       </div>
                     </div>
 
-                    {/* Screen Container with Proper Containment */}
+                    {/* Screen Container */}
                     <div
                       className="relative w-full overflow-hidden rounded-b-[2.5rem] bg-slate-600"
                       style={{ height: "calc(100% - 2rem)", backgroundColor: "#647C90" }}
@@ -664,11 +671,9 @@ const HeroSection = () => {
                                 ? "-translate-x-full opacity-0"
                                 : "translate-x-full opacity-0"
                               }`}
-                            style={{
-                              backgroundColor: "#647C90",
-                            }}
+                            style={{ backgroundColor: "#647C90" }}
                           >
-                            <div className="flex flex-col h-full w-full">
+                            <div className="flex flex-col h-full w-full opacity-30">
                               <div className="p-6 text-center flex-shrink-0" style={{ backgroundColor: "#647C90" }}>
                                 <h2 className="text-2xl font-bold text-white mb-2">{screen.title}</h2>
                                 <p className="text-white text-sm opacity-90">{screen.subtitle}</p>
@@ -685,41 +690,11 @@ const HeroSection = () => {
                     {/* Home Indicator */}
                     <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full"></div>
                   </div>
-
-                  {/* Download Buttons - Made smaller */}
-                  <div className="flex flex-col items-center mt-8 space-y-3 w-full max-w-xs">
-                    {/* 5-star rating above download buttons */}
-                    <div className="flex items-center mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current transition-all duration-300" />
-                      ))}
-                    </div>
-
-                    <button
-                      className="flex items-center justify-center text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-all transform hover:scale-105 w-full shadow-lg"
-                      style={{ backgroundColor: "#000000" }}
-                    >
-                      <Apple className="w-5 h-5 mr-2" />
-                      <div className="text-left">
-                        <div className="text-xs opacity-80">Download on the</div>
-                        <div className="text-base font-bold">App Store</div>
-                      </div>
-                    </button>
-
-                    <button
-                      className="flex items-center justify-center text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-all transform hover:scale-105 w-full shadow-lg"
-                      style={{ backgroundColor: "#000000" }}
-                    >
-                      <Play className="w-5 h-5 mr-2" />
-                      <div className="text-left">
-                        <div className="text-xs opacity-80">GET IT ON</div>
-                        <div className="text-base font-bold">Google Play</div>
-                      </div>
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
+
+
           </div>
         </div>
       </section>

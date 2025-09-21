@@ -43,7 +43,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, isVisible, index 
             {/* Most Popular Ribbon */}
             {resource.id === 1 && (
                 <div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md">
-                    Most Popular
+                    Coming Soon
                 </div>
             )}
 
