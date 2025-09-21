@@ -32,7 +32,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, isVisible, index 
 
     return (
         <div
-            className={`group relative bg-white rounded-2xl shadow-lg transition-all duration-500 overflow-hidden border border-light-gray hover:opacity-90 ${isVisible
+            className={`group relative bg-white rounded-2xl shadow-lg transition-all duration-500 overflow-hidden border border-light-gray hover:opacity-90 flex flex-col h-full ${isVisible
                 ? 'opacity-100 transform translate-y-0'
                 : 'opacity-0 transform translate-y-16'
                 }`}
@@ -53,7 +53,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, isVisible, index 
             />
 
             {/* Product Image */}
-            <div className="relative overflow-hidden aspect-[4/3] bg-white flex items-center justify-center">
+            <div className="relative overflow-hidden aspect-[4/3] bg-white flex items-center justify-center flex-shrink-0">
                 <Image
                     src={resource.image}
                     alt={resource.title}
@@ -68,23 +68,23 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, isVisible, index 
             </div>
 
             {/* Product Content */}
-            <div className="p-6">
-                <h3 className="font-merriweather text-xl font-bold text-dark-gray mb-1">{resource.title}</h3>
+            <div className="p-6 flex flex-col flex-grow">
+                <h3 className="font-merriweather text-xl font-bold text-dark-gray mb-2">{resource.title}</h3>
 
-                <p className="font-montserrat text-sm text-brown-gray mb-4 line-clamp-3">{resource.description}</p>
+                <p className="font-montserrat text-sm text-brown-gray mb-4 line-clamp-3 flex-grow">{resource.description}</p>
 
                 <div className="mb-4">
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-2 min-h-[2.5rem] items-start">
                         {resource.features.slice(0, 2).map((feature, index) => (
                             <span
                                 key={index}
-                                className="inline-block bg-purple-gray text-white text-xs px-2 py-1 rounded-full"
+                                className="inline-block bg-purple-gray text-white text-xs px-3 py-1 rounded-full whitespace-nowrap"
                             >
                                 {feature}
                             </span>
                         ))}
                         {resource.features.length > 2 && (
-                            <span className="inline-block bg-purple-gray text-white text-xs font-montserrat px-2 py-1 rounded-full">
+                            <span className="inline-block bg-purple-gray text-white text-xs font-montserrat px-3 py-1 rounded-full whitespace-nowrap">
                                 +{resource.features.length - 2} more
                             </span>
                         )}
@@ -96,7 +96,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, isVisible, index 
                     <span className="font-montserrat text-sm text-brown-gray">{resource.duration}</span>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 mt-auto">
                     <button
                         onClick={(e) => handleLearnMoreClick(resource, e)}
                         className={`block w-full py-2 px-4 text-center font-montserrat font-semibold rounded-md transition-all duration-300 cursor-pointer ${hoveredProduct === resource.id
