@@ -294,6 +294,7 @@ const MentorshipPage = () => {
                 </div>
 
                 {/* What is the mentorship program section */}
+                {/* What is the mentorship program section */}
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
@@ -302,21 +303,51 @@ const MentorshipPage = () => {
                             </div>
                         </ScrollAnimation>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {mentorshipFeatures.map((feature, index) => (
-                                <ScrollAnimation key={index} delay={index * 200}>
-                                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col">
-                                        <div className="flex items-start flex-grow">
-                                            <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            {/* Left Column */}
+                            <div className="text-center md:text-left">
+                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
+                                    Private, one-on-one support to help you find meaningful work off the stage. Our mentorship program provides personalized guidance from experienced former professional dancers who understand your unique journey.
+                                </p>
+                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
+                                    Through <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        tailored sessions
+                                    </span> and <span
+                                        className="px-2 py-1 rounded-lg font-semibold"
+                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                                    >
+                                        actionable resources
+                                    </span>, we help you navigate career transition with confidence and clarity.
+                                </p>
+                                <div className="grid gap-4">
+                                    {mentorshipFeatures.map((feature, index) => (
+                                        <div key={index} className="flex items-start">
+                                            <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                                                 <CheckCircle className="w-4 h-4 text-white" />
                                             </div>
-                                            <p className="font-montserrat text-black leading-relaxed">
+                                            <p className="font-montserrat text-white leading-relaxed">
                                                 {feature}
                                             </p>
                                         </div>
-                                    </div>
-                                </ScrollAnimation>
-                            ))}
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Right Column - Image */}
+                            <div className="relative">
+                                <div className="relative w-full h-[500px] rounded-3xl shadow-2xl overflow-hidden bg-white">
+                                    <Image
+                                        src="/assets/pivot-mentorship.png"
+                                        alt="Mentorship Program"
+                                        fill
+                                        className="object-contain"
+                                        priority
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
