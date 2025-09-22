@@ -249,7 +249,7 @@ const MentorshipPage = () => {
             <Navigation />
             <div className="bg-beige">
                 {/* Hero Section */}
-                <div className="relative py-16 md:py-24 overflow-hidden">
+                <div className="relative pt-24 pb-16 md:py-24 overflow-hidden">
                     <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="bg-white backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
                             <div className="relative z-10 text-center">
