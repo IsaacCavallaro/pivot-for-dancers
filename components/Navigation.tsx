@@ -448,7 +448,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         className={`lg:hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-90 transition-all duration-500 ease-in-out ${open ? 'transform translate-x-0 opacity-100' : 'transform -translate-x-full opacity-0'}`}
                     >
                         <div className="flex flex-col justify-center items-center h-full">
-                            <ul className="space-y-6 text-center">
+                            <ul className="space-y-6 text-center w-full">
                                 <li>
                                     <Link href="/" legacyBehavior>
                                         <a className={`text-2xl ${router.pathname === '/' ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`} onClick={() => setOpen(false)}>
@@ -463,15 +463,15 @@ const Navbar: React.FC<NavbarProps> = () => {
                                         </a>
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="w-full flex flex-col items-center">
                                     <button
-                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
+                                        className={`text-2xl ${router.pathname.startsWith('/products') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
                                         onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
                                     >
                                         PRODUCTS
                                     </button>
-                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileProductsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                        <ul className="pl-4 mt-4 space-y-3">
+                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileProductsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} w-full`}>
+                                        <ul className="mt-4 space-y-3">
                                             <li>
                                                 <Link href="/products" legacyBehavior>
                                                     <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
@@ -489,15 +489,15 @@ const Navbar: React.FC<NavbarProps> = () => {
                                         </ul>
                                     </div>
                                 </li>
-                                <li>
+                                <li className="w-full flex flex-col items-center">
                                     <button
-                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
+                                        className={`text-2xl ${router.pathname.startsWith('/services') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
                                         onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
                                     >
                                         SERVICES
                                     </button>
-                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                        <ul className="pl-4 mt-4 space-y-3">
+                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} w-full`}>
+                                        <ul className="mt-4 space-y-3">
                                             <li>
                                                 <Link href="/services" legacyBehavior>
                                                     <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
@@ -515,15 +515,15 @@ const Navbar: React.FC<NavbarProps> = () => {
                                         </ul>
                                     </div>
                                 </li>
-                                <li>
+                                <li className="w-full flex flex-col items-center">
                                     <button
-                                        className={`text-2xl w-full text-left ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
+                                        className={`text-2xl ${router.pathname.startsWith('/resources') ? 'tan-300' : 'text-gray-200 dark:text-gray-300'} hover:text-light-gray transition-colors duration-200`}
                                         onClick={() => setIsMobileResourcesOpen(!isMobileResourcesOpen)}
                                     >
                                         RESOURCES
                                     </button>
-                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileResourcesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                        <ul className="pl-4 mt-4 space-y-3">
+                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileResourcesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} w-full`}>
+                                        <ul className="mt-4 space-y-3">
                                             <li>
                                                 <Link href="/resources" legacyBehavior>
                                                     <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
