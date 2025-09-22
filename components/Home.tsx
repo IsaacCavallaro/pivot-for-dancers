@@ -26,6 +26,74 @@ import {
   BarChart,
 } from "lucide-react"
 
+// ScrollAnimation component to mimic Next.js scroll animations
+const ScrollAnimation = ({
+  children,
+  className = "",
+  delay = 0,
+  direction = "up",
+  duration = 0.6,
+  threshold = 0.1,
+  ...props
+}) => {
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setIsVisible(true)
+          }, delay)
+          observer.unobserve(entry.target)
+        }
+      },
+      { threshold }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [delay, threshold])
+
+  const getTransform = () => {
+    if (!isVisible) {
+      switch (direction) {
+        case 'up': return 'translateY(60px)'
+        case 'down': return 'translateY(-60px)'
+        case 'left': return 'translateX(60px)'
+        case 'right': return 'translateX(-60px)'
+        case 'scale': return 'scale(0.8)'
+        default: return 'translateY(60px)'
+      }
+    }
+    return 'translateY(0) translateX(0) scale(1)'
+  }
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: getTransform(),
+        transition: `all ${duration}s cubic-bezier(0.16, 1, 0.3, 1)`,
+        ...props.style
+      }}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
+
 const Counter = ({ end, duration }: { end: number; duration: number }) => {
   const [count, setCount] = useState(0)
   const ref = useRef<number>(0)
@@ -126,17 +194,16 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
   )
 }
 
-// New Suite CTA Section Component
+// New Suite CTA Section Component with ScrollAnimation
 const SuiteCTASection = () => {
   const products = [
     {
       title: "Products",
       description: "Your private toolkit for career transition, mindset wellness, and financial planning",
       icon: Smartphone,
-      color: "#647C90",
+      color: "#928490",
       link: "/products",
-      badge: "Digital Resources",
-      highlight: "NEW",
+      badge: "Digital Guides",
       items: ["E-book", "Mini Course"]
     },
     {
@@ -145,169 +212,240 @@ const SuiteCTASection = () => {
       icon: BookOpen,
       color: "#928490",
       link: "/services",
-      badge: "1-on-1 Support",
-      highlight: "POPULAR",
+      badge: "Personalized Support",
       items: ["Mentorship", "Mock Interviews"]
     },
     {
       title: "Resources",
       description: "Weekly conversations about career transition, mindset, and finding purpose",
       icon: Headphones,
-      color: "#746C70",
+      color: "#928490",
       link: "/resources",
-      badge: "Tools",
-      highlight: "FREE",
+      badge: "Free Tools",
       items: ["Mobile App", "Podcast", "Research"]
     },
   ];
 
   return (
-    <section className="py-16 bg-light-gray relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-light-gray via-light-gray to-purple-gray/10"></div>
-      <div className="absolute top-10 left-10 w-32 h-32 bg-purple-gray/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 right-10 w-48 h-48 bg-tan-300/10 rounded-full blur-3xl"></div>
+    <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#647C90' }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Enhanced Heading with ScrollAnimation */}
+        <ScrollAnimation
+          className="text-center mb-20"
+          direction="up"
+          duration={0.8}
+        >
+          <ScrollAnimation
+            delay={200}
+            direction="scale"
+            duration={0.6}
+          >
+            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+              <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
+              <span className="text-sm font-bold text-white tracking-widest">COMPREHENSIVE SUITE</span>
+              <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
+            </div>
+          </ScrollAnimation>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center px-4 py-2 rounded-full mb-6 border border-purple-gray/20 bg-white/10 backdrop-blur-sm">
-            <span className="text-sm font-semibold text-white tracking-wide">COMPREHENSIVE SUITE</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 ">
-            Explore Our Complete Offerings
-          </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto font-montserrat leading-relaxed">
-            Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions
-          </p>
-        </div>
+          <ScrollAnimation
+            delay={400}
+            direction="up"
+            duration={0.8}
+          >
+            <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+              Explore Our Complete Offerings
+            </h2>
+          </ScrollAnimation>
 
-        {/* Products Grid */}
+          <ScrollAnimation
+            delay={600}
+            direction="up"
+            duration={0.8}
+          >
+            <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+              Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions
+            </p>
+          </ScrollAnimation>
+        </ScrollAnimation>
+
+        {/* Enhanced Products Grid with ScrollAnimation */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
           {products.map((product, index) => (
-            <div
+            <ScrollAnimation
               key={index}
-              className="group bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center max-w-sm w-full relative overflow-hidden"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#928490';
-                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '';
-                e.currentTarget.style.boxShadow = '';
-              }}
+              delay={index * 200}
+              direction="up"
+              duration={0.7}
+              threshold={0.2}
             >
-              {/* Highlight Badge */}
-              <div className="absolute top-4 right-4">
-                <span
-                  className="inline-block px-2 py-1 text-xs font-bold rounded-full transition-all duration-500 group-hover:scale-105"
-                  style={{
-                    backgroundColor: product.color === "#647C90" ? 'rgba(100, 124, 144, 0.1)' :
-                      product.color === "#928490" ? 'rgba(146, 132, 144, 0.1)' : 'rgba(116, 108, 112, 0.1)',
-                    color: product.color
-                  }}
-                >
-                  {product.highlight}
-                </span>
-              </div>
-
-              {/* Icon with enhanced styling */}
               <div
-                className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 shadow-lg"
-                style={{ backgroundColor: product.color }}
+                className="group relative backdrop-blur-xl rounded-3xl p-8 shadow-2xl border transition-all duration-700 hover:-translate-y-4 flex flex-col items-center text-center max-w-sm w-full overflow-hidden"
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                  borderColor: 'rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+                }}
               >
-                <product.icon className="w-8 h-8 text-white transition-all duration-500" />
-              </div>
+                {/* Animated background gradient on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-3xl" style={{ backgroundColor: 'rgba(226, 222, 208, 0.1)' }}></div>
 
-              {/* Badge */}
-              <div className="mb-3">
-                <span
-                  className="inline-block px-3 py-1 text-xs font-semibold rounded-full transition-all duration-500 group-hover:scale-105"
-                  style={{
-                    backgroundColor: 'rgba(146, 132, 144, 0.1)',
-                    color: '#928490'
-                  }}
+                {/* Most Popular badge for Services card only */}
+                {product.title === "Services" && (
+                  < div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md">
+                    Most Popular
+                  </div>
+                )}
+
+                {/* Enhanced Icon with 3D effect and ScrollAnimation */}
+                <ScrollAnimation
+                  delay={index * 200 + 300}
+                  direction="scale"
+                  duration={0.6}
                 >
-                  {product.badge}
-                </span>
-              </div>
+                  <div className="relative mb-6">
+                    <div
+                      className="absolute inset-0 opacity-20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-700 group-hover:bg-[#647C90]"
+                      style={{ backgroundColor: `${product.color}40` }}
+                    ></div>
+                    <div
+                      className="relative w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-700 shadow-2xl group-hover:bg-[#647C90]"
+                      style={{ backgroundColor: product.color }}
+                    >
+                      <product.icon className="w-10 h-10 text-white transition-all duration-700 group-hover:scale-110" />
+                    </div>
+                  </div>
+                </ScrollAnimation>
 
-              {/* Title */}
-              <h4 className="font-bold text-xl font-bold text-black mb-3 group-hover:text-black transition-colors duration-500">
-                {product.title}
-              </h4>
+                {/* Enhanced Badge with ScrollAnimation */}
+                <ScrollAnimation
+                  delay={index * 200 + 500}
+                  direction="up"
+                  duration={0.5}
+                >
+                  <div className="mb-4">
+                    <span
+                      className="inline-block px-4 py-2 text-xs font-bold rounded-full transition-all duration-500 group-hover:scale-105 shadow-lg border group-hover:bg-[#647C90] group-hover:bg-opacity-20 group-hover:border-[#647C90] group-hover:border-opacity-30 group-hover:text-[#647C90]"
+                      style={{
+                        backgroundColor: 'rgba(226, 222, 208, 0.2)',
+                        color: '#928490',
+                        borderColor: 'rgba(146, 132, 144, 0.3)'
+                      }}
+                    >
+                      {product.badge}
+                    </span>
+                  </div>
+                </ScrollAnimation>
 
-              {/* Items list */}
-              <div className="flex flex-wrap justify-center gap-2 mb-4">
-                {product.items.map((item, itemIndex) => (
-                  <span
-                    key={itemIndex}
-                    className="inline-block px-2 py-1 text-xs font-medium rounded-md transition-all duration-500 group-hover:scale-105"
-                    style={{
-                      backgroundColor: 'rgba(146, 132, 144, 0.05)',
-                      color: '#746C70',
-                      border: '1px solid rgba(146, 132, 144, 0.1)'
-                    }}
+                {/* Enhanced Title with gradient and ScrollAnimation */}
+                <ScrollAnimation
+                  delay={index * 200 + 600}
+                  direction="up"
+                  duration={0.6}
+                >
+                  <h4 className="font-black text-3xl mb-4 transition-colors duration-500 relative z-10 group-hover:text-[#647C90]" style={{ color: '#647C90' }}>
+                    <span className="group-hover:opacity-80 transition-opacity duration-500">
+                      {product.title}
+                    </span>
+                  </h4>
+                </ScrollAnimation>
+
+                {/* Enhanced Items list with better spacing and ScrollAnimation */}
+                <ScrollAnimation
+                  delay={index * 200 + 700}
+                  direction="up"
+                  duration={0.5}
+                >
+                  <div className="flex flex-wrap justify-center gap-3 mb-6">
+                    {product.items.map((item, itemIndex) => (
+                      <span
+                        key={itemIndex}
+                        className="inline-block px-3 py-2 text-xs font-semibold rounded-xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-md border group-hover:bg-[#647C90] group-hover:bg-opacity-15 group-hover:border-[#647C90] group-hover:border-opacity-20 group-hover:text-[#647C90]"
+                        style={{
+                          backgroundColor: 'rgba(226, 222, 208, 0.15)',
+                          color: '#647C90',
+                          borderColor: 'rgba(146, 132, 144, 0.2)'
+                        }}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </ScrollAnimation>
+
+                {/* Enhanced Description with ScrollAnimation */}
+                <ScrollAnimation
+                  delay={index * 200 + 800}
+                  direction="up"
+                  duration={0.5}
+                >
+                  <p className="text-gray-600 text-sm mb-8 leading-relaxed group-hover:text-gray-800 transition-colors duration-500 relative z-10 font-medium">
+                    {product.description}
+                  </p>
+                </ScrollAnimation>
+
+                {/* Enhanced Button with gradient and glow and ScrollAnimation */}
+                <ScrollAnimation
+                  delay={index * 200 + 900}
+                  direction="up"
+                  duration={0.6}
+                >
+                  <a
+                    href={product.link}
+                    className="relative inline-flex items-center justify-center w-full font-bold py-4 px-8 rounded-2xl transition-all duration-700 group-hover:scale-105 shadow-xl group-hover:shadow-2xl overflow-hidden group/button text-white group-hover:bg-[#647C90]"
+                    style={{ backgroundColor: product.color }}
                   >
-                    {item}
-                  </span>
-                ))}
+                    {/* Button background glow effect */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover/button:opacity-30 transition-opacity duration-700 rounded-2xl group-hover:bg-[#647C90]"
+                      style={{ backgroundColor: '#E2DED0' }}
+                    ></div>
+
+                    {/* Button content */}
+                    <span className="relative mr-3 tracking-wider">LEARN MORE</span>
+                    <svg
+                      className="relative w-5 h-5 transition-transform duration-700 group-hover/button:translate-x-2 group-hover/button:scale-110"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </ScrollAnimation>
               </div>
-
-              {/* Description */}
-              <p className="font-montserrat text-brown-gray text-sm mb-6 leading-relaxed group-hover:text-black transition-colors duration-500">
-                {product.description}
-              </p>
-
-              {/* Enhanced Button */}
-              <a
-                href={product.link}
-                className="inline-flex items-center justify-center w-full bg-purple-gray text-white font-semibold py-3 px-6 rounded-xl hover:bg-light-gray transition-all duration-300 group-hover:scale-105 shadow-md hover:shadow-lg"
-              >
-                <span className="mr-2">LEARN MORE</span>
-                <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-
-              {/* Decorative element */}
-              <div
-                className="absolute bottom-0 left-0 w-full h-1 rounded-b-2xl transition-all duration-500 group-hover:h-2"
-                style={{ backgroundColor: product.color }}
-              ></div>
-            </div>
+            </ScrollAnimation>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-            <span className="text-white font-semibold mr-2">Ready to get started?</span>
+        {/* Enhanced Bottom CTA with ScrollAnimation */}
+        <ScrollAnimation
+          className="text-center mt-20"
+          delay={800}
+          direction="up"
+          duration={0.8}
+        >
+          <div className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
+            <span className="text-white font-bold mr-3 text-lg">Ready to get started?</span>
             <a
               href="https://tidycal.com/pivotfordancers/mentorship-1"
-              className="text-tan-300 font-bold text-white transition-colors duration-300"
+              className="font-black text-lg transition-colors duration-300 text-white"
               target="_blank"
               rel="noopener noreferrer"
             >
               BOOK NOW
             </a>
             <svg
-              className="w-4 h-4 ml-2 text-tan-300 text-white group-hover:translate-x-1 transition-all duration-300"
+              className="w-5 h-5 ml-3 text-white group-hover:translate-x-2 group-hover:scale-110 transition-all duration-500"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
             </svg>
           </div>
-        </div>
+        </ScrollAnimation>
       </div>
-    </section>
+    </section >
   );
 };
 
