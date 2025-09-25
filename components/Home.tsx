@@ -268,18 +268,18 @@ const SuiteCTASection = () => {
           </ScrollAnimation>
         </ScrollAnimation>
 
-        {/* Enhanced Products Grid with ScrollAnimation */}
+        {/* Enhanced Products Grid with Slower Animations */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
           {products.map((product, index) => (
             <ScrollAnimation
               key={index}
-              delay={index * 200}
+              delay={index * 300} // Increased delay for slower staggered effect
               direction="up"
-              duration={0.7}
-              threshold={0.2}
+              duration={1.2} // Increased duration for slower animation
+              threshold={0.1} // Lower threshold for earlier trigger
             >
               <div
-                className="group relative backdrop-blur-xl rounded-3xl p-8 shadow-2xl border transition-all duration-700 hover:-translate-y-4 flex flex-col items-center text-center max-w-sm w-full overflow-hidden"
+                className="group relative backdrop-blur-xl rounded-3xl p-8 shadow-2xl border transition-all duration-1000 hover:-translate-y-4 flex flex-col items-center text-center max-w-sm w-full overflow-hidden"
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   borderColor: 'rgba(255, 255, 255, 0.2)',
@@ -287,131 +287,95 @@ const SuiteCTASection = () => {
                 }}
               >
                 {/* Animated background gradient on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-3xl" style={{ backgroundColor: 'rgba(226, 222, 208, 0.1)' }}></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-1000 rounded-3xl" style={{ backgroundColor: 'rgba(226, 222, 208, 0.1)' }}></div>
 
                 {/* Most Popular badge for Services card only */}
                 {product.title === "Services" && (
-                  < div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md">
+                  <div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md">
                     Most Popular
                   </div>
                 )}
 
-                {/* Enhanced Icon with 3D effect and ScrollAnimation */}
-                <ScrollAnimation
-                  delay={index * 200 + 300}
-                  direction="scale"
-                  duration={0.6}
-                >
-                  <div className="relative mb-6">
-                    <div
-                      className="absolute inset-0 opacity-20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-700 group-hover:bg-[#647C90]"
-                      style={{ backgroundColor: `${product.color}40` }}
-                    ></div>
-                    <div
-                      className="relative w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-700 shadow-2xl group-hover:bg-[#647C90]"
-                      style={{ backgroundColor: product.color }}
-                    >
-                      <product.icon className="w-10 h-10 text-white transition-all duration-700 group-hover:scale-110" />
-                    </div>
-                  </div>
-                </ScrollAnimation>
-
-                {/* Enhanced Badge with ScrollAnimation */}
-                <ScrollAnimation
-                  delay={index * 200 + 500}
-                  direction="up"
-                  duration={0.5}
-                >
-                  <div className="mb-4">
-                    <span
-                      className="inline-block px-4 py-2 text-xs font-bold rounded-full transition-all duration-500 group-hover:scale-105 shadow-lg border group-hover:bg-[#647C90] group-hover:bg-opacity-20 group-hover:border-[#647C90] group-hover:border-opacity-30 group-hover:text-[#647C90]"
-                      style={{
-                        backgroundColor: 'rgba(226, 222, 208, 0.2)',
-                        color: '#928490',
-                        borderColor: 'rgba(146, 132, 144, 0.3)'
-                      }}
-                    >
-                      {product.badge}
-                    </span>
-                  </div>
-                </ScrollAnimation>
-
-                {/* Enhanced Title with gradient and ScrollAnimation */}
-                <ScrollAnimation
-                  delay={index * 200 + 600}
-                  direction="up"
-                  duration={0.6}
-                >
-                  <h4 className="font-black text-3xl mb-4 transition-colors duration-500 relative z-10 group-hover:text-[#647C90]" style={{ color: '#647C90' }}>
-                    <span className="group-hover:opacity-80 transition-opacity duration-500">
-                      {product.title}
-                    </span>
-                  </h4>
-                </ScrollAnimation>
-
-                {/* Enhanced Items list with better spacing and ScrollAnimation */}
-                <ScrollAnimation
-                  delay={index * 200 + 700}
-                  direction="up"
-                  duration={0.5}
-                >
-                  <div className="flex flex-wrap justify-center gap-3 mb-6">
-                    {product.items.map((item, itemIndex) => (
-                      <span
-                        key={itemIndex}
-                        className="inline-block px-3 py-2 text-xs font-semibold rounded-xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-md border group-hover:bg-[#647C90] group-hover:bg-opacity-15 group-hover:border-[#647C90] group-hover:border-opacity-20 group-hover:text-[#647C90]"
-                        style={{
-                          backgroundColor: 'rgba(226, 222, 208, 0.15)',
-                          color: '#647C90',
-                          borderColor: 'rgba(146, 132, 144, 0.2)'
-                        }}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </ScrollAnimation>
-
-                {/* Enhanced Description with ScrollAnimation */}
-                <ScrollAnimation
-                  delay={index * 200 + 800}
-                  direction="up"
-                  duration={0.5}
-                >
-                  <p className="text-gray-600 text-sm mb-8 leading-relaxed group-hover:text-gray-800 transition-colors duration-500 relative z-10 font-medium">
-                    {product.description}
-                  </p>
-                </ScrollAnimation>
-
-                {/* Enhanced Button with gradient and glow and ScrollAnimation */}
-                <ScrollAnimation
-                  delay={index * 200 + 900}
-                  direction="up"
-                  duration={0.6}
-                >
-                  <a
-                    href={product.link}
-                    className="relative inline-flex items-center justify-center w-full font-bold py-4 px-8 rounded-2xl transition-all duration-700 group-hover:scale-105 shadow-xl group-hover:shadow-2xl overflow-hidden group/button text-white group-hover:bg-[#647C90]"
+                {/* Enhanced Icon with 3D effect - No ScrollAnimation */}
+                <div className="relative mb-6">
+                  <div
+                    className="absolute inset-0 opacity-20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-1000 group-hover:bg-[#647C90]"
+                    style={{ backgroundColor: `${product.color}40` }}
+                  ></div>
+                  <div
+                    className="relative w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-1000 shadow-2xl group-hover:bg-[#647C90]"
                     style={{ backgroundColor: product.color }}
                   >
-                    {/* Button background glow effect */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover/button:opacity-30 transition-opacity duration-700 rounded-2xl group-hover:bg-[#647C90]"
-                      style={{ backgroundColor: '#E2DED0' }}
-                    ></div>
+                    <product.icon className="w-10 h-10 text-white transition-all duration-1000 group-hover:scale-110" />
+                  </div>
+                </div>
 
-                    {/* Button content */}
-                    <span className="relative mr-3 tracking-wider">LEARN MORE</span>
-                    <svg
-                      className="relative w-5 h-5 transition-transform duration-700 group-hover/button:translate-x-2 group-hover/button:scale-110"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                {/* Enhanced Badge - No ScrollAnimation */}
+                <div className="mb-4">
+                  <span
+                    className="inline-block px-4 py-2 text-xs font-bold rounded-full transition-all duration-700 group-hover:scale-105 shadow-lg border group-hover:bg-[#647C90] group-hover:bg-opacity-20 group-hover:border-[#647C90] group-hover:border-opacity-30 group-hover:text-[#647C90]"
+                    style={{
+                      backgroundColor: 'rgba(226, 222, 208, 0.2)',
+                      color: '#928490',
+                      borderColor: 'rgba(146, 132, 144, 0.3)'
+                    }}
+                  >
+                    {product.badge}
+                  </span>
+                </div>
+
+                {/* Enhanced Title with gradient - No ScrollAnimation */}
+                <h4 className="font-black text-3xl mb-4 transition-colors duration-700 relative z-10 group-hover:text-[#647C90]" style={{ color: '#647C90' }}>
+                  <span className="group-hover:opacity-80 transition-opacity duration-700">
+                    {product.title}
+                  </span>
+                </h4>
+
+                {/* Enhanced Items list with better spacing - No ScrollAnimation */}
+                <div className="flex flex-wrap justify-center gap-3 mb-6">
+                  {product.items.map((item, itemIndex) => (
+                    <span
+                      key={itemIndex}
+                      className="inline-block px-3 py-2 text-xs font-semibold rounded-xl transition-all duration-700 group-hover:scale-105 group-hover:shadow-md border group-hover:bg-[#647C90] group-hover:bg-opacity-15 group-hover:border-[#647C90] group-hover:border-opacity-20 group-hover:text-[#647C90]"
+                      style={{
+                        backgroundColor: 'rgba(226, 222, 208, 0.15)',
+                        color: '#647C90',
+                        borderColor: 'rgba(146, 132, 144, 0.2)'
+                      }}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                </ScrollAnimation>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Enhanced Description - No ScrollAnimation */}
+                <p className="text-gray-600 text-sm mb-8 leading-relaxed group-hover:text-gray-800 transition-colors duration-700 relative z-10 font-medium">
+                  {product.description}
+                </p>
+
+                {/* Enhanced Button with gradient and glow - No ScrollAnimation */}
+                <a
+                  href={product.link}
+                  className="relative inline-flex items-center justify-center w-full font-bold py-4 px-8 rounded-2xl transition-all duration-1000 group-hover:scale-105 shadow-xl group-hover:shadow-2xl overflow-hidden group/button text-white group-hover:bg-[#647C90]"
+                  style={{ backgroundColor: product.color }}
+                >
+                  {/* Button background glow effect */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover/button:opacity-30 transition-opacity duration-1000 rounded-2xl group-hover:bg-[#647C90]"
+                    style={{ backgroundColor: '#E2DED0' }}
+                  ></div>
+
+                  {/* Button content */}
+                  <span className="relative mr-3 tracking-wider">LEARN MORE</span>
+                  <svg
+                    className="relative w-5 h-5 transition-transform duration-1000 group-hover/button:translate-x-2 group-hover/button:scale-110"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             </ScrollAnimation>
           ))}
