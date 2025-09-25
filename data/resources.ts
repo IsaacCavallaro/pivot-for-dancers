@@ -33,7 +33,7 @@ export const resources: Resource[] = [
         description: 'Listen to inspiring stories of career transition.',
         icon: Film,
         url: '/resources/pivot-podcast',
-        image: '/assets/happy-trails-mini-course.png',
+        image: '/assets/pivot-podcast.png',
         gradient: 'from-purple-200 to-purple-300',
         duration: 'Podcast',
         features: ['Podcast', 'Career Stories']

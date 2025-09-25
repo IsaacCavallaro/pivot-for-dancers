@@ -42,7 +42,7 @@ export const services: Service[] = [
         name: 'Mock Interviews',
         subtitle: 'Practice Makes Perfect',
         description: 'Sharpen your interview skills and get constructive feedback to land your dream job.',
-        img: '/assets/pivot-panels.png',
+        img: '/assets/mock-interview.png',
         icon: MessageSquare,
         rating: 4.9,
         reviews: 18,
@@ -55,6 +55,6 @@ export const services: Service[] = [
             'Actionable feedback',
             'Confidence building',
         ],
-        url: 'https://tidycal.com/pivotfordancers/mentorship-1'
+        url: 'https://tidycal.com/pivotfordancers/mock-interview'
     },
 ];

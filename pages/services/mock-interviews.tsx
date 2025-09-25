@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Product, coursePaymentUrl } from '../../data/products';
+import { Service } from '../../data/services';
 import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen, Mic, Video, FileText, Briefcase } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
@@ -7,14 +7,14 @@ import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 
 // Mock Interview service data
-const product: Product = {
+const product: Service = {
     id: 5,
     name: "Mock Interview",
     subtitle: "INTERVIEW PREPARATION",
     description: "Professional interview practice sessions designed specifically for dancers transitioning to new careers",
     price: 75,
     originalPrice: null,
-    url: coursePaymentUrl, // Replace with actual mock interview payment URL
+    url: 'https://tidycal.com/pivotfordancers/mock-interview',
     img: "/assets/mock-interview.png",
     category: "Interview Prep",
     duration: "60 Minutes",
