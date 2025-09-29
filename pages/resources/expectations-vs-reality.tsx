@@ -599,6 +599,76 @@ const ExpectationsVsRealityPage = () => {
                     </div>
                 </div>
 
+                {/* How to use Section */}
+                <div className="py-16 bg-light-gray">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <ScrollAnimation>
+                            <div className="text-center mb-16">
+                                <h2 className="text-bold text-5xl font-bold text-white mb-4">How to Read and Use This Data</h2>
+                                <p className="font-montserrat text-xl text-white max-w-2xl mx-auto">
+                                    Learn how to interpret the research findings and apply them to your career planning
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            <ScrollAnimation delay={0}>
+                                <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
+                                    <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                        <TrendingUp className="w-8 h-8 text-white" />
+                                    </div>
+                                    <h3 className="font-merriweather text-2xl font-bold text-black mb-4">Understand the Gap</h3>
+                                    <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">
+                                        The bar chart shows the difference between when dancers expect to retire (Expectations) and when they actually do (Reality). The gap represents how much earlier careers typically end compared to expectations.
+                                    </p>
+                                    {/* Badge added here */}
+                                    <div className="mt-4 pt-4 border-t border-light-gray border-opacity-30 flex justify-center">
+                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
+                                            Step 1
+                                        </span>
+                                    </div>
+                                </div>
+                            </ScrollAnimation>
+
+                            <ScrollAnimation delay={300}>
+                                <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
+                                    <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                        <Globe className="w-8 h-8 text-white" />
+                                    </div>
+                                    <h3 className="font-merriweather text-2xl font-bold text-black mb-4">Compare Countries</h3>
+                                    <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">
+                                        Use the country buttons to see how retirement patterns vary across different regions. This helps you understand the global context of dance career transitions and identify relevant benchmarks for your situation.
+                                    </p>
+                                    {/* Badge added here */}
+                                    <div className="mt-4 pt-4 border-t border-light-gray border-opacity-30 flex justify-center">
+                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
+                                            Step 2
+                                        </span>
+                                    </div>
+                                </div>
+                            </ScrollAnimation>
+
+                            <ScrollAnimation delay={600}>
+                                <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
+                                    <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                        <Calendar className="w-8 h-8 text-white" />
+                                    </div>
+                                    <h3 className="font-merriweather text-2xl font-bold text-black mb-4">Plan Your Timeline</h3>
+                                    <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">
+                                        Use the statistics to create a realistic transition timeline. If the data shows dancers retire 7 years earlier than expected, start planning your career pivot at least 7 years before your anticipated retirement age.
+                                    </p>
+                                    {/* Badge added here */}
+                                    <div className="mt-4 pt-4 border-t border-light-gray border-opacity-30 flex justify-center">
+                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
+                                            Step 3
+                                        </span>
+                                    </div>
+                                </div>
+                            </ScrollAnimation>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Data Visualization Section */}
                 <DataSection />
 
