@@ -442,69 +442,71 @@ const MockInterviewPage = () => {
 
                 {/* Final CTA Section */}
                 <div className="text-center py-16 bg-beige relative overflow-hidden">
-                    <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-light-gray">
-                        <ScrollAnimation delay={0}>
-                            <div className="flex items-center justify-center mb-4">
-                                <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
-                                    Ready to Ace Your Next Interview?
-                                </h2>
-                            </div>
-                        </ScrollAnimation>
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-light-gray">
+                            <ScrollAnimation delay={0}>
+                                <div className="flex items-center justify-center mb-4">
+                                    <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
+                                        Ready to Ace Your Next Interview?
+                                    </h2>
+                                </div>
+                            </ScrollAnimation>
 
-                        <ScrollAnimation delay={300}>
-                            <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
-                                Don't let interview nerves hold you back from your dream career. Practice with confidence and land the job you want.
-                            </p>
-                        </ScrollAnimation>
+                            <ScrollAnimation delay={300}>
+                                <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
+                                    Don't let interview nerves hold you back from your dream career. Practice with confidence and land the job you want.
+                                </p>
+                            </ScrollAnimation>
 
-                        <ScrollAnimation delay={400}>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 mb-8">
-                                {product.features.map((feature, index) => (
-                                    <div key={index} className="flex items-center justify-center md:justify-start">
-                                        <CheckCircle className="w-6 h-6 text-purple-gray mr-3 flex-shrink-0" />
-                                        <span className="font-montserrat text-black">{feature}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </ScrollAnimation>
+                            <ScrollAnimation delay={400}>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 mb-8">
+                                    {product.features.map((feature, index) => (
+                                        <div key={index} className="flex items-center justify-start">
+                                            <CheckCircle className="w-6 h-6 text-purple-gray mr-3 flex-shrink-0" />
+                                            <span className="font-montserrat text-black">{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </ScrollAnimation>
 
-                        <ScrollAnimation delay={500}>
-                            <div className="flex justify-center items-center gap-4 mb-8">
-                                <span className="font-merriweather text-5xl font-bold text-dark-gray">${product.price}</span>
-                                <span className="font-montserrat text-lg text-brown-gray">for 60-minute session</span>
-                            </div>
-                        </ScrollAnimation>
+                            <ScrollAnimation delay={500}>
+                                <div className="flex justify-center items-center gap-4 mb-8">
+                                    <span className="font-merriweather text-5xl font-bold text-dark-gray">${product.price}</span>
+                                    <span className="font-montserrat text-lg text-brown-gray">for 60-minute session</span>
+                                </div>
+                            </ScrollAnimation>
 
-                        <ScrollAnimation delay={700}>
-                            <button
-                                onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
-                                className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group mb-8"
-                            >
-                                <span className="relative z-10">BOOK NOW</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </button>
-                        </ScrollAnimation>
+                            <ScrollAnimation delay={700}>
+                                <button
+                                    onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
+                                    className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group mb-8"
+                                >
+                                    <span className="relative z-10">BOOK NOW</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </button>
+                            </ScrollAnimation>
 
-                        {/* Questions and Cancellation Policy */}
-                        <ScrollAnimation delay={900}>
-                            <div className="border-t border-gray-200 pt-8 mt-8">
-                                <div className="flex justify-center">
-                                    <div className="text-center max-w-md">
-                                        <div>
-                                            <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
-                                                <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
-                                                Questions?
-                                            </h4>
-                                            <p className="font-montserrat text-brown-gray">
-                                                <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
-                                                    kaylee@pivotfordancers.com
-                                                </a>
-                                            </p>
+                            {/* Questions and Cancellation Policy */}
+                            <ScrollAnimation delay={900}>
+                                <div className="border-t border-gray-200 pt-8 mt-8">
+                                    <div className="flex justify-center">
+                                        <div className="text-center max-w-md">
+                                            <div>
+                                                <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
+                                                    <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
+                                                    Questions?
+                                                </h4>
+                                                <p className="font-montserrat text-brown-gray">
+                                                    <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
+                                                        kaylee@pivotfordancers.com
+                                                    </a>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ScrollAnimation>
+                            </ScrollAnimation>
+                        </div>
                     </div>
                 </div>
             </div>
