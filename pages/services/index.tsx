@@ -196,7 +196,7 @@ const ServicesSection: React.FC = () => {
                                                 : "bg-light-gray hover:bg-purple-gray text-white"
                                                 }`}
                                         >
-                                            Learn More
+                                            LEARN MORE
                                         </button>
                                     </div>
                                 </div>

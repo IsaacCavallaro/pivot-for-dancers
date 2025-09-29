@@ -239,7 +239,7 @@ const FindYourPivotPersonalityPage = () => {
                                 </ScrollAnimation>
                                 <ScrollAnimation delay={300}>
                                     <br></br>
-                                    <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
+                                    <p className="font-montserrat text-xl text-brown-gray max-w-3xl mx-auto mb-8 px-4 md:px-0">
                                         Take our 2-minute quiz to uncover your unique approach to career transition and get personalized guidance
                                     </p>
                                 </ScrollAnimation>
@@ -309,7 +309,7 @@ const FindYourPivotPersonalityPage = () => {
                         <ScrollAnimation>
                             <div className="text-center mb-12">
                                 <h2 className="text-bold text-5xl font-bold text-black mb-8">Ready to Discover Your Pivot Personality?</h2>
-                                <p className="font-montserrat text-xl text-black max-w-2xl mx-auto">
+                                <p className="font-montserrat text-xl text-brown-gray max-w-2xl mx-auto">
                                     Take our quick 7-question quiz and receive personalized guidance for your career transition journey
                                 </p>
                             </div>

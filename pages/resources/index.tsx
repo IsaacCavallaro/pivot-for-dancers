@@ -104,7 +104,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, isVisible, index 
                             : "bg-light-gray hover:bg-purple-gray text-white"
                             }`}
                     >
-                        Learn More
+                        LEARN MORE
                     </button>
                 </div>
             </div>
