@@ -490,7 +490,7 @@ const PivotPodcastPage = () => {
                         <div className="grid md:grid-cols-3 gap-10">
                             {features.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="group bg-beige rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 min-h-[360px] flex flex-col relative">
+                                    <div className="group bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 min-h-[360px] flex flex-col relative">
                                         {/* Icon with elegant background */}
                                         <div className="relative pt-12 pb-6 z-20">
                                             <div className="w-20 h-20 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-md border-4 border-white transition-transform duration-500 group-hover:scale-110">
