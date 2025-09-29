@@ -155,7 +155,7 @@ const AboutUsSection = () => {
             <div className="pt-24 pb-16">
                 <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollAnimation>
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-8">
                             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                                 About Us
                             </h1>
@@ -165,7 +165,7 @@ const AboutUsSection = () => {
                         </div>
                     </ScrollAnimation>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         {/* Left Column */}
                         <ScrollAnimation delay={200}>
                             <div className="text-center lg:text-left lg:pt-2">
@@ -217,17 +217,6 @@ const AboutUsSection = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* First CTA - Join Community */}
-                            <ScrollAnimation delay={600}>
-                                <div className="mt-10 bg-white rounded-2xl p-6 shadow-lg border-2 border-white/20 hover:shadow-xl transition-all duration-300 group">
-                                    <h3 className="text-2xl font-bold mb-3" style={{ color: "#647C90" }}>Ready to Start Your Journey?</h3>
-                                    {/* <p className="mb-4" style={{ color: "#928490" }}>Join our community of dancers navigating career transitions together.</p> */}
-                                    <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg flex items-center justify-center gap-2"
-                                        style={{ backgroundColor: "#647C90", color: "white" }}>
-                                        Join Our Community <Users className="w-5 h-5" />
-                                    </button>
-                                </div>
-                            </ScrollAnimation>
                         </ScrollAnimation>
                     </div>
                 </div>
@@ -274,23 +263,6 @@ const AboutUsSection = () => {
                             </ScrollAnimation>
                         ))}
                     </div>
-
-                    {/* Second CTA - Free Resources */}
-                    <ScrollAnimation delay={600}>
-                        <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg border-2 border-white/20 text-center" style={{ borderColor: "#647C90" }}>
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "#647C90" }}>
-                                <BookOpen className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-4 text-black">Free Career Transition Guide</h3>
-                            <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: "#928490" }}>
-                                Download our free guide to discover the first steps in transitioning from dance to a fulfilling new career.
-                            </p>
-                            <button className="py-3 px-8 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
-                                style={{ backgroundColor: "#647C90", color: "white" }}>
-                                Download Free Guide <Download className="w-5 h-5" />
-                            </button>
-                        </div>
-                    </ScrollAnimation>
                 </div>
             </div>
 
@@ -308,6 +280,18 @@ const AboutUsSection = () => {
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
+                                {/* Third CTA - Contact */}
+                                <ScrollAnimation delay={800}>
+                                    <div className="mt-10 p-6 rounded-2xl border-2 border-white/20 hover:shadow-lg transition-all duration-300 group"
+                                        style={{ backgroundColor: "rgba(226, 222, 208, 0.1)" }}>
+                                        <h3 className="text-xl font-bold mb-3 text-white">Have questions about your transition?</h3>
+                                        <p className="mb-4 text-white/90">Get personalized advice from someone who's been there.</p>
+                                        <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}>
+                                            Schedule a Consultation <MessageCircle className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                </ScrollAnimation>
                             </div>
                         </ScrollAnimation>
 
@@ -333,19 +317,6 @@ const AboutUsSection = () => {
                                     years and who still managed to build a fulfilling life beyond dance. She's here to share
                                     how you can too.
                                 </p>
-
-                                {/* Third CTA - Contact */}
-                                <ScrollAnimation delay={800}>
-                                    <div className="mt-10 p-6 rounded-2xl border-2 border-white/20 hover:shadow-lg transition-all duration-300 group"
-                                        style={{ backgroundColor: "rgba(226, 222, 208, 0.1)" }}>
-                                        <h3 className="text-xl font-bold mb-3 text-white">Have questions about your transition?</h3>
-                                        <p className="mb-4 text-white/90">Get personalized advice from someone who's been there.</p>
-                                        <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}>
-                                            Schedule a Consultation <MessageCircle className="w-5 h-5" />
-                                        </button>
-                                    </div>
-                                </ScrollAnimation>
                             </div>
                         </ScrollAnimation>
                     </div>
