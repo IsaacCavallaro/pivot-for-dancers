@@ -352,21 +352,17 @@ const HappyTrailsPage = () => {
                                 </p>
                             </div>
 
-                            {/* Right Column */}
-                            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                                <div className="relative aspect-video w-full">
-                                    <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
-                                        <iframe
-                                            width="100%"
-                                            height="100%"
-                                            src="https://www.youtube.com/embed/I6wSSAMR3FY?si=rRy0U55jnBeqyRz1"
-                                            title="YouTube video player"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                            className="absolute inset-0 w-full h-full"
-                                        ></iframe>
-                                    </div>
+                            {/* Right Column - Updated to use Image instead of Video */}
+                            <div className="relative w-full max-w-md mx-auto">
+                                <div className="relative w-full rounded-3xl shadow-2xl overflow-hidden">
+                                    <Image
+                                        src="/assets/happy-trails-mini-course.png"
+                                        alt="Happy Trails Mini Course"
+                                        width={500}
+                                        height={600}
+                                        className="w-full h-auto object-cover"
+                                        priority
+                                    />
                                 </div>
                             </div>
                         </div>
