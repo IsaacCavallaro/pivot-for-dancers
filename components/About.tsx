@@ -239,17 +239,20 @@ const AboutUsSection = () => {
                             {
                                 title: "Empowerment",
                                 description: "We believe every dancer has valuable skills that translate beyond the stage. Our mission is to help you recognize and leverage these talents in your new career path.",
-                                icon: Star
+                                icon: Star,
+                                badge: "Core Value"
                             },
                             {
                                 title: "Community",
                                 description: "No dancer should navigate career change alone. We foster a supportive community where dancers share experiences, advice, and encouragement throughout their transitions.",
-                                icon: Users
+                                icon: Users,
+                                badge: "Core Value"
                             },
                             {
                                 title: "Authenticity",
                                 description: "Our guidance comes from real experience. As former professional dancers ourselves, we understand the unique challenges and opportunities that come with career pivoting.",
-                                icon: CheckCircle
+                                icon: CheckCircle,
+                                badge: "Core Value"
                             }
                         ].map((value, index) => (
                             <ScrollAnimation key={index} delay={index * 200}>
@@ -259,6 +262,12 @@ const AboutUsSection = () => {
                                     </div>
                                     <h3 className="text-2xl font-bold text-black mb-4">{value.title}</h3>
                                     <p className="leading-relaxed flex-grow" style={{ color: "#928490" }}>{value.description}</p>
+                                    {/* Badge */}
+                                    <div className="mt-6">
+                                        <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full" style={{ backgroundColor: "#928490", color: "#fff" }}>
+                                            {value.badge}
+                                        </span>
+                                    </div>
                                 </div>
                             </ScrollAnimation>
                         ))}
@@ -272,8 +281,8 @@ const AboutUsSection = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         {/* Left Column - Founder Image */}
                         <ScrollAnimation>
-                            <div className="relative aspect-square w-full max-w-md mx-auto">
-                                <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden bg-white border-4 border-white">
+                            <div className="relative aspect-square w-full max-w-md mx-auto flex flex-col items-center">
+                                <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden bg-white border-2 border-white max-w-xs lg:max-w-sm">
                                     <img
                                         src="/assets/kr-head-shot.jpg"
                                         alt="Kaylee Randall"
@@ -285,7 +294,6 @@ const AboutUsSection = () => {
                                     <div className="mt-10 p-6 rounded-2xl border-2 border-white/20 hover:shadow-lg transition-all duration-300 group"
                                         style={{ backgroundColor: "rgba(226, 222, 208, 0.1)" }}>
                                         <h3 className="text-xl font-bold mb-3 text-white">Have questions about your transition?</h3>
-                                        <p className="mb-4 text-white/90">Get personalized advice from someone who's been there.</p>
                                         <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
                                             style={{ backgroundColor: "#E2DED0", color: "#647C90" }}>
                                             Schedule a Consultation <MessageCircle className="w-5 h-5" />
@@ -294,7 +302,6 @@ const AboutUsSection = () => {
                                 </ScrollAnimation>
                             </div>
                         </ScrollAnimation>
-
                         {/* Right Column - Founder Story */}
                         <ScrollAnimation delay={300}>
                             <div className="text-center lg:text-left">
@@ -341,25 +348,29 @@ const AboutUsSection = () => {
                                 title: "Success Stories",
                                 description: "Dancers who have successfully transitioned to fulfilling careers in tech, education, business, and more",
                                 number: "500+",
-                                icon: CheckCircle
+                                icon: CheckCircle,
+                                badge: "Verified"
                             },
                             {
                                 title: "Global Reach",
                                 description: "Countries where our community members are located, creating a worldwide support network",
                                 number: "25+",
-                                icon: Globe
+                                icon: Globe,
+                                badge: "Worldwide"
                             },
                             {
                                 title: "Career Paths",
                                 description: "Different industries our dancers have successfully transitioned into",
                                 number: "40+",
-                                icon: Star
+                                icon: Star,
+                                badge: "Diverse"
                             },
                             {
                                 title: "Community Growth",
                                 description: "Monthly increase in new dancers joining our supportive community",
                                 number: "15%",
-                                icon: Users
+                                icon: Users,
+                                badge: "Growing"
                             }
                         ].map((impact, index) => (
                             <ScrollAnimation key={index} delay={index * 150}>
@@ -372,33 +383,19 @@ const AboutUsSection = () => {
                                     </div>
                                     <h3 className="text-lg font-bold text-black mb-3">{impact.title}</h3>
                                     <p className="text-sm leading-relaxed flex-grow" style={{ color: "#928490" }}>{impact.description}</p>
+                                    {/* Badge */}
+                                    <div className="mt-4">
+                                        <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full" style={{ backgroundColor: "#928490", color: "#fff" }}>
+                                            {impact.badge}
+                                        </span>
+                                    </div>
                                 </div>
                             </ScrollAnimation>
                         ))}
                     </div>
-
-                    {/* Final CTA - Join Waiting List */}
-                    <ScrollAnimation delay={600}>
-                        <div className="mt-16 bg-white rounded-2xl p-10 text-center shadow-lg border-2" style={{ borderColor: "#647C90" }}>
-                            <h2 className="text-4xl font-bold mb-4 text-black">Ready to Pivot?</h2>
-                            <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: "#928490" }}>
-                                Join hundreds of dancers who are already building meaningful careers beyond the stage.
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <button className="py-3 px-8 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-                                    style={{ backgroundColor: "#647C90", color: "white" }}>
-                                    Join Waiting List <ArrowRight className="w-5 h-5" />
-                                </button>
-                                <button className="py-3 px-8 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 border-2 flex items-center justify-center gap-2"
-                                    style={{ borderColor: "#647C90", color: "#647C90" }}>
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
-                    </ScrollAnimation>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 
