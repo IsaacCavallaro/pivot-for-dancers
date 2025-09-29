@@ -214,7 +214,7 @@ const DataSection = () => {
     const [ageCountry, setAgeCountry] = useState<Country>('Australia');
 
     return (
-        <section className="py-12 md:py-20 bg-beige">
+        <section id="data-section" className="py-12 md:py-20 bg-beige">
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Mobile Layout (Stacked) */}
                 <div className="block md:hidden space-y-8">
@@ -567,7 +567,12 @@ const ExpectationsVsRealityPage = () => {
                                 <ScrollAnimation delay={500}>
                                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                                         <button
-                                            onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                            onClick={() => {
+                                                const dataSection = document.getElementById('data-section');
+                                                if (dataSection) {
+                                                    dataSection.scrollIntoView({ behavior: 'smooth' });
+                                                }
+                                            }}
                                             className="bg-purple-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                         >
                                             <span className="relative z-10">EXPLORE DATA</span>
@@ -642,7 +647,12 @@ const ExpectationsVsRealityPage = () => {
                         <ScrollAnimation delay={700}>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                                 <button
-                                    onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                    onClick={() => {
+                                        const dataSection = document.getElementById('data-section');
+                                        if (dataSection) {
+                                            dataSection.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }}
                                     className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                 >
                                     <span className="relative z-10">GET STARTED</span>
