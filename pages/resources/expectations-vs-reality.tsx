@@ -227,7 +227,7 @@ const DataSection = () => {
 
                     {/* Chart */}
                     <div>
-                        <div className="border-none shadow-lg bg-off-white/80 backdrop-blur-sm overflow-hidden rounded-lg">
+                        <div className="border-none shadow-lg bg-white backdrop-blur-sm overflow-hidden rounded-lg">
                             <div className="bg-light-gray p-4">
                                 <h3 className="text-white font-merriweather text-lg">Mean Ages of Transition</h3>
                                 <p className="text-white/80 font-montserrat text-xs">
@@ -345,7 +345,7 @@ const DataSection = () => {
                     <div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {getAgeStats(ageData[ageCountry]).map((stat, i) => (
-                                <div key={i} className="bg-off-white/80 backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
+                                <div key={i} className="bg-white backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
                                     <div className="text-2xl text-center font-bold text-brown-gray font-merriweather">{stat.value}</div>
                                     <p className="text-dark-gray text-center text-xs mt-1 font-montserrat flex-grow">{stat.label}</p>
                                     {/* Badge added here */}
@@ -371,7 +371,7 @@ const DataSection = () => {
 
                     {/* Country Selector */}
                     <div className="flex justify-center">
-                        <div className="inline-flex rounded-full bg-off-white p-1 shadow-inner">
+                        <div className="inline-flex rounded-full bg-white p-1 shadow-inner">
                             {(['Australia', 'UnitedStates', 'Switzerland'] as const).map((c) => (
                                 <button
                                     key={c}
@@ -387,7 +387,7 @@ const DataSection = () => {
                     </div>
 
                     {/* Chart Section */}
-                    <div className="border-none shadow-lg bg-off-white/80 backdrop-blur-sm overflow-hidden rounded-lg">
+                    <div className="border-none shadow-lg bg-white backdrop-blur-sm overflow-hidden rounded-lg">
                         <div className="bg-light-gray p-6">
                             <h3 className="text-white font-merriweather text-xl text-center">
                                 Average Retirement Age for {countryDisplayNames[ageCountry]} Dancers
@@ -492,7 +492,7 @@ const DataSection = () => {
                     <div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {getAgeStats(ageData[ageCountry]).map((stat, i) => (
-                                <div key={i} className="bg-off-white/80 backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
+                                <div key={i} className="bg-white backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
                                     <div className="text-2xl text-center font-bold text-brown-gray font-merriweather">{stat.value}</div>
                                     <p className="text-dark-gray text-center text-1xl mt-1 font-montserrat flex-grow">{stat.label}</p>
                                     {/* Badge added here */}
@@ -721,7 +721,7 @@ const ExpectationsVsRealityPage = () => {
                             <ScrollAnimation delay={500}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 mb-8">
                                     {product.features.map((feature, index) => (
-                                        <div key={index} className="flex items-center justify-center md:justify-start">
+                                        <div key={index} className="flex items-center justify-start">
                                             <CheckCircle className="w-6 h-6 text-purple-gray mr-3 flex-shrink-0" />
                                             <span className="font-montserrat text-black">{feature}</span>
                                         </div>
