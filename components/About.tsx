@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, CheckCircle, Users, Globe, ArrowRight, MessageCircle, Download, BookOpen } from 'lucide-react';
+import { Star, CheckCircle, Users, Globe, ArrowRight, MessageCircle, Download, BookOpen, Linkedin, Youtube, Instagram, Facebook } from 'lucide-react';
 
 interface CounterProps {
     end: number;
@@ -144,10 +144,75 @@ const ScrollAnimation = ({ children, delay = 0, className = '' }: ScrollAnimatio
 
 const AboutUsSection = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [email, setEmail] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         setIsVisible(true);
     }, []);
+
+    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value);
+        if (submitStatus !== 'idle') {
+            setSubmitStatus('idle');
+        }
+        if (error) {
+            setError(null);
+        }
+    };
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const handleSubmit = async () => {
+        const trimmedEmail = email.trim();
+
+        if (!trimmedEmail) {
+            setError("Please provide your email to join us.");
+            setSubmitStatus('error');
+            return;
+        }
+
+        if (!validateEmail(trimmedEmail)) {
+            setError("Please enter a valid email address.");
+            setSubmitStatus('error');
+            return;
+        }
+
+        setIsSubmitting(true);
+        setError(null);
+        setSubmitStatus('idle');
+
+        // Simulate API call
+        try {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setSubmitStatus('success');
+            setEmail('');
+        } catch {
+            setSubmitStatus('error');
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            handleSubmit();
+        }
+    };
+
+    const getButtonText = () => {
+        if (isSubmitting) return 'Joining...';
+        return 'Join Community';
+    };
+
+    const footerInputClass = "w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:border-white/40 transition-all duration-300";
+    const buttonClass = "w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none";
 
     return (
         <section id="about" className="relative overflow-hidden" style={{ backgroundColor: "#647C90" }}>
@@ -215,6 +280,41 @@ const AboutUsSection = () => {
                                             className="absolute inset-0 w-full h-full"
                                         ></iframe>
                                     </div>
+                                </div>
+
+                                {/* Email Signup Form */}
+                                <div className="flex flex-col items-center space-y-6 lg:px-6">
+                                    <div className="flex flex-col space-y-4 w-full max-w-sm">
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            value={email}
+                                            onChange={handleEmailChange}
+                                            onKeyPress={handleKeyPress}
+                                            disabled={isSubmitting}
+                                            className={`${footerInputClass} h-12`}
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={handleSubmit}
+                                            disabled={isSubmitting || !email.trim()}
+                                            className={`${buttonClass} h-12 flex items-center justify-center`}
+                                            style={{ backgroundColor: "#928490", color: "#fff" }}
+                                        >
+                                            {getButtonText()}
+                                        </button>
+                                    </div>
+
+                                    {submitStatus === 'success' && (
+                                        <p className="text-gray-200 text-sm font-medium">
+                                            Thank you! You should receive a confirmation shortly.
+                                        </p>
+                                    )}
+                                    {error && (
+                                        <p className="text-red-300 text-sm font-medium">
+                                            {error}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </ScrollAnimation>
@@ -295,7 +395,7 @@ const AboutUsSection = () => {
                                         style={{ backgroundColor: "rgba(226, 222, 208, 0.1)" }}>
                                         <h3 className="text-xl font-bold mb-3 text-white">Have questions about your transition?</h3>
                                         <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}>
+                                            style={{ backgroundColor: "#928490", color: "#fff" }}>
                                             Schedule a Consultation <MessageCircle className="w-5 h-5" />
                                         </button>
                                     </div>
