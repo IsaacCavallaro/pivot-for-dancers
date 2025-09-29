@@ -345,9 +345,15 @@ const DataSection = () => {
                     <div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {getAgeStats(ageData[ageCountry]).map((stat, i) => (
-                                <div key={i} className="bg-off-white/80 backdrop-blur-sm rounded-lg p-4 shadow-md">
+                                <div key={i} className="bg-off-white/80 backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
                                     <div className="text-2xl text-center font-bold text-brown-gray font-merriweather">{stat.value}</div>
-                                    <p className="text-dark-gray text-center text-xs mt-1 font-montserrat">{stat.label}</p>
+                                    <p className="text-dark-gray text-center text-xs mt-1 font-montserrat flex-grow">{stat.label}</p>
+                                    {/* Badge added here */}
+                                    <div className="mt-2 pt-2 border-t border-light-gray border-opacity-30 flex justify-center">
+                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
+                                            Data Insight
+                                        </span>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -483,13 +489,21 @@ const DataSection = () => {
                     </div>
 
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-                        {getAgeStats(ageData[ageCountry]).map((stat, i) => (
-                            <div key={i} className="bg-off-white/80 backdrop-blur-sm rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-                                <div className="text-3xl font-bold text-brown-gray font-merriweather text-center">{stat.value}</div>
-                                <p className="text-dark-gray text-sm mt-3 font-montserrat text-center">{stat.label}</p>
-                            </div>
-                        ))}
+                    <div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {getAgeStats(ageData[ageCountry]).map((stat, i) => (
+                                <div key={i} className="bg-off-white/80 backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
+                                    <div className="text-2xl text-center font-bold text-brown-gray font-merriweather">{stat.value}</div>
+                                    <p className="text-dark-gray text-center text-1xl mt-1 font-montserrat flex-grow">{stat.label}</p>
+                                    {/* Badge added here */}
+                                    <div className="mt-2 pt-2 border-t border-light-gray border-opacity-30 flex justify-center">
+                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray   px-2 py-1 rounded-full">
+                                            Data Insight
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

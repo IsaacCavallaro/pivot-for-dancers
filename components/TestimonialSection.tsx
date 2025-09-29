@@ -76,7 +76,7 @@ const TestimonialsSection: React.FC = () => {
     return (
         <section className="bg-beige py-12 sm:py-16 lg:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden relative">
+                <div className="bg-purple-gray rounded-2xl shadow-2xl overflow-hidden relative">
                     <Slider {...settings}>
                         {testimonials.map((testimonial, index) => (
                             <div key={index} className="px-6 py-12 sm:p-12 lg:p-16">
@@ -111,7 +111,7 @@ const TestimonialsSection: React.FC = () => {
                             href="https://g.page/r/CfHdX47gLCCXEAI/review"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 text-base font-semibold text-white bg-gray-700 rounded-full hover:bg-gray-600 transition-all duration-300"
+                            className="px-6 py-3 text-base font-semibold text-white bg-light-gray rounded-full hover:bg-gray-600 transition-all duration-300"
                         >
                             Add Review
                         </a>
