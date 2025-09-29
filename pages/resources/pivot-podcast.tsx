@@ -314,7 +314,7 @@ const PivotPodcastPage = () => {
                                 <ScrollAnimation delay={500}>
                                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                                         <button
-                                            onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                            onClick={() => window.open('https://www.youtube.com/watch?v=16JMiSPzlBE&list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm', '_blank', 'noopener,noreferrer')}
                                             className="bg-purple-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                         >
                                             <span className="relative z-10">LISTEN NOW</span>
@@ -354,21 +354,17 @@ const PivotPodcastPage = () => {
                                 </p>
                             </div>
 
-                            {/* Right Column - Updated with YouTube Playlist */}
-                            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                                <div className="relative aspect-video w-full">
-                                    <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
-                                        <iframe
-                                            width="100%"
-                                            height="100%"
-                                            src="https://www.youtube.com/embed/videoseries?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
-                                            title="Pivot Podcast YouTube Playlist"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                            className="absolute inset-0 w-full h-full"
-                                        ></iframe>
-                                    </div>
+                            {/* Right Column - Updated to use Image instead of Video */}
+                            <div className="relative w-full max-w-md mx-auto">
+                                <div className="relative w-full rounded-3xl shadow-2xl overflow-hidden">
+                                    <Image
+                                        src="/assets/pivot-podcast.png"
+                                        alt="Happy Trails Mini Course"
+                                        width={500}
+                                        height={600}
+                                        className="w-full h-auto object-cover"
+                                        priority
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -462,7 +458,10 @@ const PivotPodcastPage = () => {
                                         <h3 className="font-merriweather text-xl font-bold text-black mb-2">{episode.title}</h3>
                                         <p className="text-sm text-brown-gray mb-3">with {episode.guest}</p>
                                         <p className="font-montserrat text-brown-gray text-sm mb-4">{episode.description}</p>
-                                        <button className="w-full bg-purple-gray text-white py-2 rounded-lg hover:bg-light-gray transition-colors duration-300 flex items-center justify-center">
+                                        <button
+                                            onClick={() => window.open('https://www.youtube.com/watch?v=16JMiSPzlBE&list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm', '_blank', 'noopener,noreferrer')}
+                                            className="w-full bg-purple-gray text-white py-2 rounded-lg hover:bg-light-gray transition-colors duration-300 flex items-center justify-center"
+                                        >
                                             <Play className="w-4 h-4 mr-2" />
                                             Listen Now
                                         </button>
