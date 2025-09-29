@@ -182,7 +182,6 @@ const MockInterviewPage = () => {
         "Confidence-building techniques tailored for career-changing dancers",
         "Body language and communication coaching",
         "Industry-specific preparation for your target field",
-        "Recording of session available for review and practice"
     ];
 
     const interviewTypes = [
@@ -321,49 +320,39 @@ const MockInterviewPage = () => {
                             </div>
                         </ScrollAnimation>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {mockInterviewFeatures.map((feature, index) => (
-                                <ScrollAnimation key={index} delay={index * 200}>
-                                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
-                                        <div className="flex items-start">
-                                            <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                                <CheckCircle className="w-4 h-4 text-white" />
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            {/* Text Content - Left Column */}
+                            <div>
+                                <div className="space-y-6">
+                                    {mockInterviewFeatures.map((feature, index) => (
+                                        <ScrollAnimation key={index} delay={index * 200}>
+                                            <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                                <div className="flex items-start">
+                                                    <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                        <CheckCircle className="w-4 h-4 text-white" />
+                                                    </div>
+                                                    <p className="font-montserrat text-black leading-relaxed">
+                                                        {feature}
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <p className="font-montserrat text-black leading-relaxed">
-                                                {feature}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </ScrollAnimation>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Interview Types Section */}
-                <div className="py-16 bg-beige">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <ScrollAnimation>
-                            <div className="text-center mb-16">
-                                <h2 className="text-bold text-5xl font-bold text-black mb-4">Interview Types We Cover</h2>
-                                <p className="font-montserrat text-xl text-brown-gray max-w-2xl mx-auto">
-                                    Whether you're targeting corporate roles, creative industries, or making a complete career change, we've got you covered.
-                                </p>
+                                        </ScrollAnimation>
+                                    ))}
+                                </div>
                             </div>
-                        </ScrollAnimation>
 
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {interviewTypes.map((type, index) => (
-                                <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
-                                        <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <type.icon className="w-8 h-8 text-white" />
-                                        </div>
-                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{type.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed">{type.description}</p>
+                            {/* Image - Right Column */}
+                            <ScrollAnimation>
+                                <div className="flex justify-center">
+                                    <div className="relative">
+                                        <img
+                                            src="/assets/mock-interview.png"
+                                            alt="Mock Interview Session"
+                                            className="rounded-2xl shadow-lg max-w-full h-auto"
+                                        />
                                     </div>
-                                </ScrollAnimation>
-                            ))}
+                                </div>
+                            </ScrollAnimation>
                         </div>
                     </div>
                 </div>
@@ -379,14 +368,14 @@ const MockInterviewPage = () => {
                                     </h2>
                                 </div>
                                 <p className="font-montserrat text-xl text-brown-gray mt-4 max-w-3xl mx-auto leading-relaxed">
-                                    Practice makes perfect. Our mock interviews help you <span className="font-bold rounded-md px-2 py-1 mx-1" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>build confidence</span> and master the skills needed to land your dream job.
+                                    Practice makes perfect. Our mock interviews help you build confidence and master the skills needed to land your dream job.
                                 </p>
                             </div>
                         </ScrollAnimation>
                         <div className="grid md:grid-cols-3 gap-10">
                             {benefits.map((benefit, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="group bg-beige rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 min-h-[360px] flex flex-col relative">
+                                    <div className="group bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 flex flex-col h-full">
                                         {/* Icon with elegant background */}
                                         <div className="relative pt-12 pb-6 z-20">
                                             <div className="w-20 h-20 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-md border-4 border-white transition-transform duration-500 group-hover:scale-110">
@@ -394,8 +383,8 @@ const MockInterviewPage = () => {
                                             </div>
                                         </div>
 
-                                        <div className="px-7 pb-10 flex-1 flex flex-col justify-between">
-                                            <div>
+                                        <div className="px-7 pb-10 flex-1 flex flex-col">
+                                            <div className="flex-1">
                                                 <h3 className="font-bold text-2xl text-black mb-7 relative inline-block after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-14 after:h-1.5 after:bg-purple-gray after:rounded-full after:transition-all after:duration-500 group-hover:after:w-20">
                                                     {benefit.title}
                                                 </h3>
@@ -418,7 +407,6 @@ const MockInterviewPage = () => {
                         </div>
                     </div>
                 </div>
-
                 {/* How It Works Section */}
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -431,17 +419,20 @@ const MockInterviewPage = () => {
                         <div className="grid md:grid-cols-3 gap-8">
                             {processSteps.map((step, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
-                                        {/* Step number */}
-                                        <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-purple-gray flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <span className="text-white font-bold text-xl">{step.number}</span>
-                                        </div>
+                                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group relative overflow-hidden flex flex-col h-full">
 
                                         <div className="w-16 h-16 rounded-full bg-beige border-2 border-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <step.icon className="w-8 h-8 text-purple-gray" />
+                                            <span className="text-purple-gray font-bold text-2xl">{index + 1}</span>
                                         </div>
                                         <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{step.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed">{step.description}</p>
+                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow mb-6">{step.description}</p>
+
+                                        {/* Badge added here */}
+                                        <div className="mt-auto pt-4 border-t border-light-gray border-opacity-30">
+                                            <span className="inline-block text-xs font-montserrat text-white bg-purple-gray px-3 py-1 rounded-full">
+                                                Step {index + 1}
+                                            </span>
+                                        </div>
                                     </div>
                                 </ScrollAnimation>
                             ))}
@@ -497,29 +488,19 @@ const MockInterviewPage = () => {
                         {/* Questions and Cancellation Policy */}
                         <ScrollAnimation delay={900}>
                             <div className="border-t border-gray-200 pt-8 mt-8">
-                                <div className="grid md:grid-cols-2 gap-8 text-left">
-                                    <div>
-                                        <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center">
-                                            <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
-                                            Questions?
-                                        </h4>
-                                        <p className="font-montserrat text-brown-gray">
-                                            <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
-                                                kaylee@pivotfordancers.com
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center">
-                                            <Shield className="w-5 h-5 text-purple-gray mr-2" />
-                                            Cancellation Policy
-                                        </h4>
-                                        <p className="font-montserrat text-brown-gray text-sm">
-                                            24 hours notice is required for cancellations. Rescheduling available.
-                                        </p>
-                                        <p className="font-montserrat text-brown-gray text-sm mt-1">
-                                            Terms and Conditions
-                                        </p>
+                                <div className="flex justify-center">
+                                    <div className="text-center max-w-md">
+                                        <div>
+                                            <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
+                                                <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
+                                                Questions?
+                                            </h4>
+                                            <p className="font-montserrat text-brown-gray">
+                                                <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
+                                                    kaylee@pivotfordancers.com
+                                                </a>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
