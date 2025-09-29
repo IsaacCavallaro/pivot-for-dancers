@@ -393,7 +393,7 @@ const HowToPivotPage = () => {
                                         {index % 2 === 0 ? (
                                             <>
                                                 <div className="md:w-1/2 md:pr-8">
-                                                    <div className="bg-beige p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
+                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
                                                         <div className="flex items-center justify-center mb-3">
                                                             <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
                                                                 <item.icon className="w-5 h-5 text-white" />
@@ -419,7 +419,7 @@ const HowToPivotPage = () => {
                                                     </div>
                                                 </div>
                                                 <div className="md:w-1/2 md:pl-8">
-                                                    <div className="bg-beige p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
+                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
                                                         <div className="flex items-center justify-center mb-3">
                                                             <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
                                                                 <item.icon className="w-5 h-5 text-white" />
@@ -481,14 +481,14 @@ const HowToPivotPage = () => {
                                     </h2>
                                 </div>
                                 <p className="font-montserrat text-xl text-brown-gray mt-4 max-w-3xl mx-auto leading-relaxed">
-                                    Part self-help book and part <span className="font-bold rounded-md px-2 py-1 mx-1" style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}>action-focused career resource</span>, tailored specifically for professional dancers.
+                                    Part self-help book and part, action-focused career resource tailored specifically for professional dancers.
                                 </p>
                             </div>
                         </ScrollAnimation>
                         <div className="grid md:grid-cols-3 gap-10">
                             {features.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="group bg-beige rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 flex flex-col h-full">
+                                    <div className="group bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 flex flex-col h-full">
 
                                         {/* Icon with elegant background */}
                                         <div className="relative pt-12 pb-6 z-20">
