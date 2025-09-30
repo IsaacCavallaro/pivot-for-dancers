@@ -196,6 +196,34 @@ const HowToPivotPage = () => {
 
     const journeyItems = [
         {
+            title: "Early Dance Career",
+            description: "Started dancing at age 3 in Florida, training on the competition circuit",
+            icon: Star
+        },
+        {
+            title: "Professional Dancer",
+            description: "Almost a decade performing full time with Universal Studios and Royal Caribbean",
+            icon: Award
+        },
+        {
+            title: "The Pivot",
+            description: "In 2018, when burnout set in and priorities shifted, took the last bow",
+            icon: TrendingUp
+        },
+        {
+            title: "New Beginnings",
+            description: "Started freelance business, moved to Australia, and transitioned to corporate tech",
+            icon: TrendingUp
+        },
+        {
+            title: "Founded Pivot for Dancers",
+            description: "Launched in 2020 to help other dancers navigate their career transitions",
+            icon: Users
+        }
+    ];
+
+    const newJourney = [
+        {
             title: "Self-Discovery",
             description: (
                 <>
@@ -373,10 +401,9 @@ const HowToPivotPage = () => {
                     </div>
                 </div>
 
-
                 {/* The Journey Section */}
                 <div className="py-16 bg-beige">
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
                             <div className="text-center mb-16">
                                 <div className="flex items-center justify-center mb-4">
@@ -385,59 +412,65 @@ const HowToPivotPage = () => {
                                 <p className="font-montserrat text-lg text-brown-gray mt-2">A comprehensive guide that takes you from feeling stuck to stepping confidently onto your next stage.</p>
                             </div>
                         </ScrollAnimation>
+                        {/* Timeline */}
                         <div className="relative">
-                            <div className="hidden md:block absolute w-0.5 h-full bg-purple-gray/50 top-0 left-1/2 transform -translate-x-1/2"></div>
-                            {journeyItems.map((item, index) => (
-                                <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="mt-8 md:mt-0 md:flex md:items-center">
-                                        {index % 2 === 0 ? (
-                                            <>
-                                                <div className="md:w-1/2 md:pr-8">
-                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
-                                                        <div className="flex items-center justify-center mb-3">
-                                                            <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                                                                <item.icon className="w-5 h-5 text-white" />
-                                                            </div>
-                                                            <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{item.title}</h3>
+                            {/* Vertical line */}
+                            <div className="absolute w-0.5 h-full bg-white/40 top-0 left-1/2 transform -translate-x-1/2"></div>
+
+                            {newJourney.map((item, index) => (
+                                <ScrollAnimation key={index} delay={index * 200}>
+                                    <div className="relative mb-12 md:mb-16">
+                                        {/* Timeline Card */}
+                                        <div
+                                            className={`relative flex items-center ${index % 2 === 0
+                                                ? 'flex-row md:justify-start'
+                                                : 'flex-row-reverse md:justify-end'
+                                                }`}
+                                        >
+                                            <div className="w-full md:w-1/2 px-4 md:px-8 flex items-center">
+                                                <div
+                                                    className="bg-white p-6 rounded-2xl shadow-lg border text-center hover:shadow-xl transition-all duration-300 group relative z-10 w-full"
+                                                    style={{ borderColor: "#E2DED0" }}
+                                                >
+                                                    <div className="flex flex-col items-center mb-3">
+                                                        <div
+                                                            className="w-12 h-12 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300"
+                                                            style={{ backgroundColor: "#928490" }}
+                                                        >
+                                                            <item.icon className="w-6 h-6 text-white" />
                                                         </div>
-                                                        <p className="font-montserrat text-brown-gray">{item.description}</p>
+                                                        <h3
+                                                            className="text-xl font-bold"
+                                                            style={{ color: "#647C90" }}
+                                                        >
+                                                            {item.title}
+                                                        </h3>
                                                     </div>
+                                                    <p className="text-sm" style={{ color: "#647C90" }}>
+                                                        {item.description}
+                                                    </p>
                                                 </div>
-                                                <div className="hidden md:flex justify-center items-center w-16">
-                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
-                                                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                                                    </div>
+                                            </div>
+                                            {/* Timeline Dot and Connector */}
+                                            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
+                                                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-20">
+                                                    <div className="w-2 h-2 bg-[#647C90] rounded-full"></div>
                                                 </div>
-                                                <div className="md:w-1/2"></div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <div className="md:w-1/2"></div>
-                                                <div className="hidden md:flex justify-center items-center w-16">
-                                                    <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
-                                                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="md:w-1/2 md:pl-8">
-                                                    <div className="bg-white p-8 rounded-2xl shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group">
-                                                        <div className="flex items-center justify-center mb-3">
-                                                            <div className="w-10 h-10 rounded-full bg-purple-gray flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                                                                <item.icon className="w-5 h-5 text-white" />
-                                                            </div>
-                                                            <h3 className="font-merriweather text-2xl font-bold text-dark-gray">{item.title}</h3>
-                                                        </div>
-                                                        <p className="font-montserrat text-brown-gray">{item.description}</p>
-                                                    </div>
-                                                </div>
-                                            </>
-                                        )}
+                                                {/* Connector Line */}
+                                                <div
+                                                    className={`hidden md:block absolute h-0.5 bg-white/40 z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
+                                                        } w-[calc(50%-2rem)]`}
+                                                ></div>
+                                            </div>
+                                            {/* Empty Space for Desktop Alternating Layout */}
+                                            <div className="hidden md:block w-1/2"></div>
+                                        </div>
                                     </div>
                                 </ScrollAnimation>
                             ))}
                         </div>
                     </div>
                 </div>
-
 
                 {/* First CTA Section */}
                 <div className="text-center py-16 bg-light-gray relative overflow-hidden">
@@ -589,8 +622,6 @@ const HowToPivotPage = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <Footer />
         </div>
