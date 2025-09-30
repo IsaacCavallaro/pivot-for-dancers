@@ -415,7 +415,7 @@ const HowToPivotPage = () => {
                         {/* Timeline */}
                         <div className="relative">
                             {/* Vertical line */}
-                            <div className="absolute w-0.5 h-full bg-white/40 top-0 left-1/2 transform -translate-x-1/2"></div>
+                            <div className="absolute w-0.5 h-full bg-[#928490] top-0 left-1/2 transform -translate-x-1/2"></div>
 
                             {newJourney.map((item, index) => (
                                 <ScrollAnimation key={index} delay={index * 200}>
@@ -458,7 +458,7 @@ const HowToPivotPage = () => {
                                                 </div>
                                                 {/* Connector Line */}
                                                 <div
-                                                    className={`hidden md:block absolute h-0.5 bg-white/40 z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
+                                                    className={`hidden md:block absolute h-0.5 bg-[#928490] z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
                                                         } w-[calc(50%-2rem)]`}
                                                 ></div>
                                             </div>

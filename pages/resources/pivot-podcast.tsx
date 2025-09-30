@@ -385,7 +385,7 @@ const PivotPodcastPage = () => {
                         {/* Timeline */}
                         <div className="relative">
                             {/* Vertical line */}
-                            <div className="absolute w-0.5 h-full bg-white/40 top-0 left-1/2 transform -translate-x-1/2"></div>
+                            <div className="absolute w-0.5 h-full bg-purple-gray top-0 left-1/2 transform -translate-x-1/2"></div>
 
                             {episodeCategories.map((item, index) => (
                                 <ScrollAnimation key={index} delay={index * 200}>
@@ -423,12 +423,12 @@ const PivotPodcastPage = () => {
                                             </div>
                                             {/* Timeline Dot and Connector */}
                                             <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
-                                                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-20">
-                                                    <div className="w-2 h-2 bg-[#647C90] rounded-full"></div>
+                                                <div className="w-6 h-6 bg-purple-gray rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-20">
+                                                    <div className="w-2 h-2 bg-white rounded-full"></div>
                                                 </div>
                                                 {/* Connector Line */}
                                                 <div
-                                                    className={`hidden md:block absolute h-0.5 bg-white/40 z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
+                                                    className={`hidden md:block absolute h-0.5 bg-purple-gray z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
                                                         } w-[calc(50%-2rem)]`}
                                                 ></div>
                                             </div>

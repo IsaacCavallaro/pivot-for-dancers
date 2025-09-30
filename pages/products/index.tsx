@@ -187,7 +187,7 @@ const ProductsSection: React.FC = () => {
                                                 : "bg-light-gray hover:bg-purple-gray text-white"
                                                 }`}
                                         >
-                                            BOOK NOW
+                                            BUY NOW
                                         </button>
                                         <button
                                             onClick={(e) => handleLearnMoreClick(product, e)}
