@@ -221,7 +221,7 @@ const AboutUsSection = () => {
                 <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollAnimation>
                         <div className="text-center mb-8">
-                            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                            <h1 className="text-5xl md:text-6xl font-bold text-white mb-2 leading-tight">
                                 About Us
                             </h1>
                             <span className="text-md uppercase text-white opacity-90 tracking-wider">
@@ -326,7 +326,7 @@ const AboutUsSection = () => {
             <div className="py-16" style={{ backgroundColor: "#E2DED0" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollAnimation>
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-10">
                             <h2 className="text-5xl font-bold text-black mb-4">Our Mission & Values</h2>
                             <p className="text-lg" style={{ color: "#928490" }}>
                                 What drives us to support dancers through their career transitions
