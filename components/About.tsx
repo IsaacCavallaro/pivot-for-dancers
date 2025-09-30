@@ -210,169 +210,125 @@ const AboutUsSection = () => {
 
     return (
         <section id="about" className="relative overflow-hidden" style={{ backgroundColor: "#647C90" }}>
-            {/* Main About Section */}
-            <div className="pt-24 pb-16">
+            {/* Hero Section */}
+            <div className="relative pt-24 pb-16 md:py-24 overflow-hidden">
                 <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <ScrollAnimation>
-                        <div className="text-center mb-10">
-                            <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
-                                About Us
-                            </h1>
-                            <p className="text-xl font-light text-white opacity-90 tracking-wider uppercase">
-                                Who We Are & What We Do
-                            </p>
+                    <div className="bg-white backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
+                        <div className="relative z-10 text-center">
+                            <ScrollAnimation delay={200}>
+                                <div className="inline-flex items-center justify-center mb-4 px-4 py-2 rounded-full border" style={{ backgroundColor: "#647C90", borderColor: "#647C90" }}>
+                                    <span className="text-sm font-semibold text-white tracking-wider uppercase">Who We Are & What We Do</span>
+                                </div>
+                                <h1 className="text-5xl md:text-7xl font-bold text-black mb-6">
+                                    About Us
+                                </h1>
+                                <p className="text-xl leading-relaxed max-w-3xl mx-auto font-medium" style={{ color: "#647C90" }}>
+                                    Career transition resources for professional dancers, run by former dancers who have successfully changed careers
+                                </p>
+                            </ScrollAnimation>
                         </div>
-                    </ScrollAnimation>
+                    </div>
+                </div>
+            </div>
 
-                    {/* White Card Container */}
-                    <ScrollAnimation delay={200}>
-                        <div className="bg-white rounded-3xl p-10 md:p-12 lg:p-16 shadow-2xl border-2" style={{ borderColor: "#647C90" }}>
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                                {/* Left Column */}
-                                <div className="text-center lg:text-left">
-                                    <p className="text-xl leading-relaxed mb-6 font-medium" style={{ color: "#647C90" }}>
-                                        Pivot for Dancers offers{" "}
-                                        <span
-                                            className="px-3 py-1 rounded-lg font-bold shadow-sm"
-                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}
-                                        >
-                                            career change
-                                        </span>{" "}
-                                        resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former professional{" "}
-                                        <span
-                                            className="px-3 py-1 rounded-lg font-bold shadow-sm"
-                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}
-                                        >
-                                            dancers
-                                        </span>{" "}
-                                        who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
-                                    </p>
-                                    <p className="text-xl leading-relaxed font-medium" style={{ color: "#647C90" }}>
-                                        There are thousands of other dancers{" "}
-                                        <span
-                                            className="px-3 py-1 rounded-lg font-bold shadow-sm"
-                                            style={{ backgroundColor: "#E2DED0", color: "#647C90" }}
-                                        >
-                                            just like you
-                                        </span>{" "}
-                                        in our community. Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not alone in wanting to change careers as a professional dancer.
-                                    </p>
+            {/* Main Content Section */}
+            <div className="py-20" style={{ backgroundColor: "#E2DED0" }}>
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <ScrollAnimation>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            {/* Left Column */}
+                            <div className="text-center lg:text-left">
+                                <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight" style={{ color: "#647C90" }}>
+                                    Our Story
+                                </h2>
+                                <p className="text-xl leading-relaxed mb-6 font-medium" style={{ color: "#647C90" }}>
+                                    Pivot for Dancers offers{" "}
+                                    <span
+                                        className="px-3 py-1 rounded-lg font-bold shadow-sm"
+                                        style={{ backgroundColor: "#fff", color: "#647C90" }}
+                                    >
+                                        career change
+                                    </span>{" "}
+                                    resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former professional{" "}
+                                    <span
+                                        className="px-3 py-1 rounded-lg font-bold shadow-sm"
+                                        style={{ backgroundColor: "#fff", color: "#647C90" }}
+                                    >
+                                        dancers
+                                    </span>{" "}
+                                    who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
+                                </p>
+                                <p className="text-xl leading-relaxed font-medium" style={{ color: "#647C90" }}>
+                                    There are thousands of other dancers{" "}
+                                    <span
+                                        className="px-3 py-1 rounded-lg font-bold shadow-sm"
+                                        style={{ backgroundColor: "#fff", color: "#647C90" }}
+                                    >
+                                        just like you
+                                    </span>{" "}
+                                    in our community. Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not alone in wanting to change careers as a professional dancer.
+                                </p>
+                            </div>
+
+                            {/* Right Column */}
+                            <div className="relative">
+                                <div className="relative aspect-video w-full mb-8">
+                                    <div className="relative w-full h-full rounded-2xl shadow-xl overflow-hidden border-2" style={{ borderColor: "#928490" }}>
+                                        <iframe
+                                            width="100%"
+                                            height="100%"
+                                            src="https://www.youtube.com/embed/I6wSSAMR3FY?si=rRy0U55jnBeqyRz1"
+                                            title="YouTube video player"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            className="absolute inset-0 w-full h-full"
+                                        ></iframe>
+                                    </div>
                                 </div>
 
-                                {/* Right Column */}
-                                <div className="relative">
-                                    <div className="relative aspect-video w-full mb-8">
-                                        <div className="relative w-full h-full rounded-2xl shadow-xl overflow-hidden border-2" style={{ borderColor: "#928490" }}>
-                                            <iframe
-                                                width="100%"
-                                                height="100%"
-                                                src="https://www.youtube.com/embed/I6wSSAMR3FY?si=rRy0U55jnBeqyRz1"
-                                                title="YouTube video player"
-                                                frameBorder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowFullScreen
-                                                className="absolute inset-0 w-full h-full"
-                                            ></iframe>
-                                        </div>
+                                {/* Email Signup Form */}
+                                <div className="flex flex-col items-center space-y-4">
+                                    <div className="flex flex-col space-y-4 w-full">
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            value={email}
+                                            onChange={handleEmailChange}
+                                            onKeyPress={handleKeyPress}
+                                            disabled={isSubmitting}
+                                            className="w-full px-4 py-4 rounded-2xl border-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 shadow-sm"
+                                            style={{
+                                                backgroundColor: '#fff',
+                                                borderColor: '#647C90',
+                                                focusRingColor: '#928490'
+                                            }}
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={handleSubmit}
+                                            disabled={isSubmitting || !email.trim()}
+                                            className="w-full px-6 py-4 rounded-2xl font-bold transition-all duration-500 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-xl tracking-wider text-white"
+                                            style={{ backgroundColor: "#928490" }}
+                                        >
+                                            {getButtonText()}
+                                        </button>
                                     </div>
 
-                                    {/* Email Signup Form */}
-                                    <div className="flex flex-col items-center space-y-4">
-                                        <div className="flex flex-col space-y-4 w-full">
-                                            <input
-                                                type="email"
-                                                placeholder="Enter your email"
-                                                value={email}
-                                                onChange={handleEmailChange}
-                                                onKeyPress={handleKeyPress}
-                                                disabled={isSubmitting}
-                                                className="w-full px-4 py-4 rounded-2xl border-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 shadow-sm"
-                                                style={{
-                                                    backgroundColor: '#f9fafb',
-                                                    borderColor: '#647C90',
-                                                    focusRingColor: '#928490'
-                                                }}
-                                            />
-                                            <button
-                                                type="button"
-                                                onClick={handleSubmit}
-                                                disabled={isSubmitting || !email.trim()}
-                                                className="w-full px-6 py-4 rounded-2xl font-bold transition-all duration-500 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-xl tracking-wider text-white"
-                                                style={{ backgroundColor: "#928490" }}
-                                            >
-                                                {getButtonText()}
-                                            </button>
-                                        </div>
-
-                                        {submitStatus === 'success' && (
-                                            <p className="text-green-600 text-sm font-medium">
-                                                Thank you! You should receive a confirmation shortly.
-                                            </p>
-                                        )}
-                                        {error && (
-                                            <p className="text-red-600 text-sm font-medium">
-                                                {error}
-                                            </p>
-                                        )}
-                                    </div>
+                                    {submitStatus === 'success' && (
+                                        <p className="text-green-600 text-sm font-medium">
+                                            Thank you! You should receive a confirmation shortly.
+                                        </p>
+                                    )}
+                                    {error && (
+                                        <p className="text-red-600 text-sm font-medium">
+                                            {error}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </ScrollAnimation>
-                </div>
-            </div>
-
-            {/* Mission & Values Section */}
-            <div className="py-20" style={{ backgroundColor: "#E2DED0" }}>
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <ScrollAnimation>
-                        <div className="text-center mb-10">
-                            <h2 className="text-5xl md:text-6xl font-extrabold mb-2 leading-tight" style={{ color: "#647C90" }}>
-                                Our Mission & Values
-                            </h2>
-                            <p className="text-xl font-light leading-relaxed" style={{ color: "#928490" }}>
-                                What drives us to support dancers through their career transitions
-                            </p>
-                        </div>
-                    </ScrollAnimation>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                title: "Empowerment",
-                                description: "We believe every dancer has valuable skills that translate beyond the stage. Our mission is to help you recognize and leverage these talents in your new career path.",
-                                icon: Star,
-                                badge: "Core Value"
-                            },
-                            {
-                                title: "Community",
-                                description: "No dancer should navigate career change alone. We foster a supportive community where dancers share experiences, advice, and encouragement throughout their transitions.",
-                                icon: Users,
-                                badge: "Core Value"
-                            },
-                            {
-                                title: "Authenticity",
-                                description: "Our guidance comes from real experience. As former professional dancers ourselves, we understand the unique challenges and opportunities that come with career pivoting.",
-                                icon: CheckCircle,
-                                badge: "Core Value"
-                            }
-                        ].map((value, index) => (
-                            <ScrollAnimation key={index} delay={index * 200}>
-                                <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-4 group text-center h-full flex flex-col" style={{ borderColor: "#647C90" }}>
-                                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-2xl" style={{ backgroundColor: "#647C90" }}>
-                                        <value.icon className="w-10 h-10 text-white" />
-                                    </div>
-                                    <h3 className="text-3xl font-black mb-4" style={{ color: "#647C90" }}>{value.title}</h3>
-                                    <p className="text-sm leading-relaxed flex-grow font-medium" style={{ color: "#928490" }}>{value.description}</p>
-                                    <div className="mt-6">
-                                        <span className="inline-block px-4 py-2 text-xs font-bold rounded-full shadow-lg" style={{ backgroundColor: "#928490", color: "#fff" }}>
-                                            {value.badge}
-                                        </span>
-                                    </div>
-                                </div>
-                            </ScrollAnimation>
-                        ))}
-                    </div>
                 </div>
             </div>
 
@@ -434,15 +390,70 @@ const AboutUsSection = () => {
                 </div>
             </div>
 
-            {/* Community Impact Section */}
+
+            {/* Mission & Values Section */}
             <div className="py-20" style={{ backgroundColor: "#E2DED0" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollAnimation>
+                        <div className="text-center mb-10">
+                            <h2 className="text-5xl md:text-6xl font-extrabold mb-2 leading-tight" style={{ color: "#647C90" }}>
+                                Our Mission & Values
+                            </h2>
+                            <p className="text-xl font-light leading-relaxed" style={{ color: "#647C90" }}>
+                                What drives us to support dancers through their career transitions
+                            </p>
+                        </div>
+                    </ScrollAnimation>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            {
+                                title: "Empowerment",
+                                description: "We believe every dancer has valuable skills that translate beyond the stage. Our mission is to help you recognize and leverage these talents in your new career path.",
+                                icon: Star,
+                                badge: "Core Value"
+                            },
+                            {
+                                title: "Community",
+                                description: "No dancer should navigate career change alone. We foster a supportive community where dancers share experiences, advice, and encouragement throughout their transitions.",
+                                icon: Users,
+                                badge: "Core Value"
+                            },
+                            {
+                                title: "Authenticity",
+                                description: "Our guidance comes from real experience. As former professional dancers ourselves, we understand the unique challenges and opportunities that come with career pivoting.",
+                                icon: CheckCircle,
+                                badge: "Core Value"
+                            }
+                        ].map((value, index) => (
+                            <ScrollAnimation key={index} delay={index * 200}>
+                                <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-4 group text-center h-full flex flex-col" style={{ borderColor: "#647C90" }}>
+                                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-2xl" style={{ backgroundColor: "#647C90" }}>
+                                        <value.icon className="w-10 h-10 text-white" />
+                                    </div>
+                                    <h3 className="text-3xl font-black mb-4" style={{ color: "#647C90" }}>{value.title}</h3>
+                                    <p className="text-sm leading-relaxed flex-grow font-medium" style={{ color: "#928490" }}>{value.description}</p>
+                                    <div className="mt-6">
+                                        <span className="inline-block px-4 py-2 text-xs font-bold rounded-full shadow-lg" style={{ backgroundColor: "#928490", color: "#fff" }}>
+                                            {value.badge}
+                                        </span>
+                                    </div>
+                                </div>
+                            </ScrollAnimation>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Community Impact Section */}
+            <div className="py-20" style={{ backgroundColor: "#647C90" }}>
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <ScrollAnimation>
                         <div className="text-center mb-16">
-                            <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight" style={{ color: "#647C90" }}>
+                            <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight" style={{ color: "#fff" }}>
                                 Our Growing Impact
                             </h2>
-                            <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: "#928490" }}>
+                            <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: "#fff" }}>
                                 See how we're making a difference in the lives of dancers worldwide
                             </p>
                         </div>
