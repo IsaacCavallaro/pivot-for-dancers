@@ -335,23 +335,50 @@ const PivotPodcastPage = () => {
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             {/* Left Column */}
-                            <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
-                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
-                                    Pivot Podcast is a weekly show dedicated to helping dancers navigate{" "}
-                                    <span className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        career transitions
-                                    </span> with confidence and clarity. Each episode features real stories, expert advice, and practical strategies for building a fulfilling life beyond the stage.
-                                </p>
-                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
-                                    Whether you're considering a change, in the middle of transition, or looking to support fellow dancers, this podcast offers{" "}
-                                    <span className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        valuable insights
-                                    </span> and community support for every step of your journey.
-                                </p>
+                            <div>
+                                <div className="space-y-6">
+                                    <ScrollAnimation delay={0}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Pivot Podcast is a weekly show dedicated to helping dancers navigate{" "}
+                                                    <span className="font-bold" style={{ color: "#647C90" }}>career transitions</span> with confidence and clarity. Each episode features real stories, expert advice, and practical strategies for building a fulfilling life beyond the stage.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={200}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Whether you're considering a change, in the middle of transition, or looking to support fellow dancers, this podcast offers{" "}
+                                                    <span className="font-bold" style={{ color: "#647C90" }}>valuable insights and community support</span> for every step of your journey.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Join our growing community of dancers who are successfully{" "}
+                                                    <span className="font-bold" style={{ color: "#647C90" }}>building fulfilling careers</span> beyond performance while honoring their dance background.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+                                </div>
                             </div>
 
                             {/* Right Column - Updated to use Image instead of Video */}
