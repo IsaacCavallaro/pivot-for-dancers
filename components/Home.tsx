@@ -784,9 +784,9 @@ const HeroSection = () => {
                 We're helping professional dancers find meaningful work off the stage with our{" "}
                 <span
                   className="px-2 py-1 rounded-lg font-semibold"
-                  style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
+                  style={{ backgroundColor: "#647C90", color: "#fff", border: "2px solid #647C90" }}
                 >
-                  dancer-specific
+                  dancer specfic
                 </span>{" "}
                 career change resources.
               </p>

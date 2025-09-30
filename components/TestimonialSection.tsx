@@ -116,11 +116,11 @@ const TestimonialsSection: React.FC = () => {
         const { onClick } = props;
         return (
             <div
-                className="absolute top-1/2 -translate-y-1/2 right-4 z-10 cursor-pointer rounded-full p-2 transition-all duration-300 hover:scale-110 shadow-lg"
+                className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 z-20 cursor-pointer rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
                 style={{ backgroundColor: '#928490' }}
                 onClick={onClick}
             >
-                <FontAwesomeIcon icon={faChevronRight} className="text-white text-2xl" />
+                <FontAwesomeIcon icon={faChevronRight} className="text-white text-xl sm:text-2xl" />
             </div>
         );
     }
@@ -129,11 +129,11 @@ const TestimonialsSection: React.FC = () => {
         const { onClick } = props;
         return (
             <div
-                className="absolute top-1/2 -translate-y-1/2 left-4 z-10 cursor-pointer rounded-full p-2 transition-all duration-300 hover:scale-110 shadow-lg"
+                className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 z-20 cursor-pointer rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
                 style={{ backgroundColor: '#928490' }}
                 onClick={onClick}
             >
-                <FontAwesomeIcon icon={faChevronLeft} className="text-white text-2xl" />
+                <FontAwesomeIcon icon={faChevronLeft} className="text-white text-xl sm:text-2xl" />
             </div>
         );
     }
@@ -190,76 +190,79 @@ const TestimonialsSection: React.FC = () => {
                     duration={1.0}
                     threshold={0.1}
                 >
-                    <div
-                        className="backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden relative border transition-all duration-1000 hover:shadow-3xl"
-                        style={{
-                            backgroundColor: 'rgba(100, 124, 144, 0.95)',
-                            borderColor: 'rgba(255, 255, 255, 0.2)',
-                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-                        }}
-                    >
-                        <Slider {...settings}>
-                            {testimonials.map((testimonial, index) => (
-                                <div key={index} className="px-6 py-12 sm:p-12 lg:p-16">
-                                    <div className="text-center">
-                                        <div className="flex justify-center items-center mb-8">
-                                            <div className="relative">
-                                                <div
-                                                    className="absolute inset-0 opacity-20 rounded-full blur-xl"
-                                                    style={{ backgroundColor: '#E2DED0' }}
-                                                ></div>
-                                                <Image
-                                                    src={testimonial.imageSrc}
-                                                    alt={testimonial.author}
-                                                    width={100}
-                                                    height={100}
-                                                    className="relative rounded-full shadow-2xl border-4 border-white/20 transition-all duration-300 hover:scale-105"
-                                                />
+                    {/* Main container with relative positioning for arrows */}
+                    <div className="relative">
+                        <div
+                            className="backdrop-blur-xl rounded-3xl shadow-2xl overflow-visible relative border transition-all duration-1000 hover:shadow-3xl"
+                            style={{
+                                backgroundColor: 'rgba(100, 124, 144, 0.95)',
+                                borderColor: 'rgba(255, 255, 255, 0.2)',
+                                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+                            }}
+                        >
+                            <Slider {...settings}>
+                                {testimonials.map((testimonial, index) => (
+                                    <div key={index} className="px-6 py-12 sm:p-12 lg:p-16">
+                                        <div className="text-center">
+                                            <div className="flex justify-center items-center mb-8">
+                                                <div className="relative">
+                                                    <div
+                                                        className="absolute inset-0 opacity-20 rounded-full blur-xl"
+                                                        style={{ backgroundColor: '#E2DED0' }}
+                                                    ></div>
+                                                    <Image
+                                                        src={testimonial.imageSrc}
+                                                        alt={testimonial.author}
+                                                        width={100}
+                                                        height={100}
+                                                        className="relative rounded-full shadow-2xl border-4 border-white/20 transition-all duration-300 hover:scale-105"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <p className="font-medium text-xl text-white leading-relaxed max-w-3xl mx-auto mb-8 opacity-95">
+                                                {testimonial.content}
+                                            </p>
+                                            <div className="mb-6">
+                                                <h3 className="text-2xl font-bold text-white mb-2">{testimonial.author}</h3>
+                                                <p className="text-lg font-medium" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{testimonial.role}</p>
+                                            </div>
+                                            <div className="flex justify-center gap-1">
+                                                {[...Array(5)].map((_, i) => (
+                                                    <FaStar key={i} className="text-yellow-400 text-2xl transition-all duration-300 hover:scale-110" />
+                                                ))}
                                             </div>
                                         </div>
-                                        <p className="font-medium text-xl text-white leading-relaxed max-w-3xl mx-auto mb-8 opacity-95">
-                                            {testimonial.content}
-                                        </p>
-                                        <div className="mb-6">
-                                            <h3 className="text-2xl font-bold text-white mb-2">{testimonial.author}</h3>
-                                            <p className="text-lg font-medium" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{testimonial.role}</p>
-                                        </div>
-                                        <div className="flex justify-center gap-1">
-                                            {[...Array(5)].map((_, i) => (
-                                                <FaStar key={i} className="text-yellow-400 text-2xl transition-all duration-300 hover:scale-110" />
-                                            ))}
-                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </Slider>
+                                ))}
+                            </Slider>
 
-                        {/* Enhanced Bottom CTA */}
-                        <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 pb-12">
-                            <a
-                                href="https://g.page/r/CfHdX47gLCCXEAI/review"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="relative inline-flex items-center justify-center font-bold py-4 px-8 rounded-2xl transition-all duration-1000 hover:scale-105 shadow-xl hover:shadow-2xl overflow-hidden group/button text-white"
-                                style={{ backgroundColor: '#928490' }}
-                            >
-                                {/* Button background glow effect */}
-                                <div
-                                    className="absolute inset-0 opacity-0 group-hover/button:opacity-30 transition-opacity duration-1000 rounded-2xl"
-                                    style={{ backgroundColor: '#E2DED0' }}
-                                ></div>
-
-                                {/* Button content */}
-                                <span className="relative mr-3 tracking-wider">ADD REVIEW</span>
-                                <svg
-                                    className="relative w-5 h-5 transition-transform duration-1000 group-hover/button:translate-x-2 group-hover/button:scale-110"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
+                            {/* Enhanced Bottom CTA */}
+                            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 pb-12">
+                                <a
+                                    href="https://g.page/r/CfHdX47gLCCXEAI/review"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="relative inline-flex items-center justify-center font-bold py-4 px-8 rounded-2xl transition-all duration-1000 hover:scale-105 shadow-xl hover:shadow-2xl overflow-hidden group/button text-white"
+                                    style={{ backgroundColor: '#928490' }}
                                 >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </a>
+                                    {/* Button background glow effect */}
+                                    <div
+                                        className="absolute inset-0 opacity-0 group-hover/button:opacity-30 transition-opacity duration-1000 rounded-2xl"
+                                        style={{ backgroundColor: '#E2DED0' }}
+                                    ></div>
+
+                                    {/* Button content */}
+                                    <span className="relative mr-3 tracking-wider">ADD REVIEW</span>
+                                    <svg
+                                        className="relative w-5 h-5 transition-transform duration-1000 group-hover/button:translate-x-2 group-hover/button:scale-110"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </ScrollAnimation>
