@@ -331,7 +331,7 @@ const PivotPodcastPage = () => {
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="mb-4">
-                            <h2 className="text-bold text-5xl font-bold text-white">What is the Pivot Podcast?</h2>
+                            <h2 className="text-bold text-center text-5xl font-bold text-white">What is the Pivot Podcast?</h2>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             {/* Left Column */}
