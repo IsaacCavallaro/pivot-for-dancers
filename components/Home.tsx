@@ -767,7 +767,7 @@ const HeroSection = () => {
             <div
               className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}
             >
-              <div className="relative flex justify-center md:justify-start mt-0 mb-4 md:mb-6">
+              <div className="relative flex justify-center md:justify-start -mt-8 mb-4 md:mb-6">
                 <div className="flex flex-col items-center gap-3">
                   <span className="text-white font-semibold px-4 py-2 rounded-full text-sm md:text-base flex items-center bg-gray-900/20 backdrop-blur-sm border border-white/20">
                     <Shield className="w-4 h-4 mr-2" />
