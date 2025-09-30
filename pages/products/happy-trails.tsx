@@ -326,30 +326,47 @@ const HappyTrailsPage = () => {
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             {/* Left Column */}
-                            <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
-                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
-                                    Pivot for Dancers offers <span
-                                        className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        career change
-                                    </span> resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former <span
-                                        className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        professional dancers
-                                    </span> who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
-                                </p>
-                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
-                                    There are thousands of other dancers <span
-                                        className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        just like you
-                                    </span> in our community. Whether you've suffered
-                                    an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not
-                                    alone in wanting to change careers as a professional dancer.
-                                </p>
+                            <div>
+                                <div className="space-y-6">
+                                    <ScrollAnimation delay={0}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Pivot for Dancers offers <span className="font-bold" style={{ color: "#647C90" }}>career change resources</span> for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former <span className="font-bold" style={{ color: "#647C90" }}>professional dancers</span> who have successfully changed careers.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={200}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    We're here to share what we've learned about making a pivot with our growing community of <span className="font-bold" style={{ color: "#647C90" }}>thousands of fellow dancers</span> just like you.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're <span className="font-bold" style={{ color: "#647C90" }}>not alone</span> in wanting to change careers as a professional dancer.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+                                </div>
                             </div>
 
                             {/* Right Column - Updated to use Image instead of Video */}
