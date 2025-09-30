@@ -379,32 +379,9 @@ const AboutUsSection = () => {
             <div className="py-16" style={{ backgroundColor: "#647C90" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        {/* Left Column - Founder Image */}
-                        <ScrollAnimation>
-                            <div className="relative aspect-square w-full max-w-md mx-auto flex flex-col items-center">
-                                <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden bg-white border-2 border-white max-w-xs lg:max-w-sm">
-                                    <img
-                                        src="/assets/kr-head-shot.jpg"
-                                        alt="Kaylee Randall"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                {/* Third CTA - Contact */}
-                                <ScrollAnimation delay={800}>
-                                    <div className="mt-10 p-6 rounded-2xl border-2 border-white/20 hover:shadow-lg transition-all duration-300 group"
-                                        style={{ backgroundColor: "rgba(226, 222, 208, 0.1)" }}>
-                                        <h3 className="text-xl font-bold mb-3 text-white">Have questions about your transition?</h3>
-                                        <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-                                            style={{ backgroundColor: "#928490", color: "#fff" }}>
-                                            Schedule a Consultation <MessageCircle className="w-5 h-5" />
-                                        </button>
-                                    </div>
-                                </ScrollAnimation>
-                            </div>
-                        </ScrollAnimation>
-                        {/* Right Column - Founder Story */}
+                        {/* Founder Story - First on mobile, Second on desktop */}
                         <ScrollAnimation delay={300}>
-                            <div className="text-center lg:text-left">
+                            <div className="text-center lg:text-left lg:order-2">
                                 <h2 className="text-5xl font-bold text-white mb-6">Meet Our Founder</h2>
                                 <h3 className="text-2xl font-semibold text-white mb-6">Kaylee Randall</h3>
                                 <p className="text-lg text-white leading-relaxed mb-6">
@@ -426,6 +403,29 @@ const AboutUsSection = () => {
                                 </p>
                             </div>
                         </ScrollAnimation>
+                        {/* Founder Image - Second on mobile, First on desktop */}
+                        <ScrollAnimation>
+                            <div className="relative aspect-square w-full max-w-md mx-auto flex flex-col items-center lg:order-1">
+                                <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden bg-white border-2 border-white max-w-xs lg:max-w-sm">
+                                    <img
+                                        src="/assets/kr-head-shot.jpg"
+                                        alt="Kaylee Randall"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                {/* Third CTA - Contact */}
+                                <ScrollAnimation delay={800}>
+                                    <div className="mt-10 p-6 rounded-2xl border-2 border-white/20 hover:shadow-lg transition-all duration-300 group"
+                                        style={{ backgroundColor: "rgba(226, 222, 208, 0.1)" }}>
+                                        <h3 className="text-xl font-bold mb-3 text-white">Have questions about your transition?</h3>
+                                        <button className="w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                                            style={{ backgroundColor: "#928490", color: "#fff" }}>
+                                            Schedule a Consultation <MessageCircle className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                </ScrollAnimation>
+                            </div>
+                        </ScrollAnimation>
                     </div>
                 </div>
             </div>
@@ -434,7 +434,7 @@ const AboutUsSection = () => {
             <div className="py-16" style={{ backgroundColor: "#E2DED0" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollAnimation>
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-10">
                             <h2 className="text-5xl font-bold text-black mb-4">Our Growing Impact</h2>
                             <p className="text-lg max-w-3xl mx-auto" style={{ color: "#928490" }}>
                                 See how we're making a difference in the lives of dancers worldwide
