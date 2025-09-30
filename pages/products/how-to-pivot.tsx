@@ -349,36 +349,58 @@ const HowToPivotPage = () => {
                 {/* What is How to Pivot section */}
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="mb-4">
-                            <h2 className="text-bold text-center text-5xl font-bold text-white">How To Pivot</h2>
-                        </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            {/* Left Column */}
-                            <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}>
-                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
-                                    Part  <span
-                                        className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        self-help
-                                    </span>  book and part <span
-                                        className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        action-focused
-                                    </span> career resource, this ebook takes you through all the things you wish someone would've told you before you started your career as a professional dancer.
+                        <ScrollAnimation>
+                            <div className="text-center mb-12">
+                                <h2 className="text-bold text-5xl font-bold text-white mb-8">What is How to Pivot?</h2>
+                                <p className="font-montserrat text-xl text-white max-w-3xl mx-auto">
+                                    A comprehensive career change guide tailored specifically for professional dancers navigating their next chapter.
                                 </p>
-                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
-                                    If you already lived your dream and find yourself wondering "what's now", this <span
-                                        className="px-2 py-1 rounded-lg font-semibold"
-                                        style={{ backgroundColor: "#E2DED0", color: "#647C90", border: "2px solid #647C90" }}
-                                    >
-                                        dancer-specific
-                                    </span>  guide is for you.
-                                </p>
-                                <p className="font-montserrat text-xl text-white mb-8 leading-relaxed max-w-xl">
-                                    Brought to you by the founder of Pivot for Dancers, "How to Pivot" is an actionable career change guide tailored specifically for professional dancers.
-                                </p>
+                            </div>
+                        </ScrollAnimation>
+
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            {/* Text Content - Left Column */}
+                            <div>
+                                <div className="space-y-6">
+                                    <ScrollAnimation delay={0}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Part <span className="font-bold" style={{ color: "#647C90" }}>self-help book</span> and part <span className="font-bold" style={{ color: "#647C90" }}>action-focused career resource</span>, this ebook takes you through all the things you wish someone would've told you before you started your career as a professional dancer.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={200}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    If you already lived your dream and find yourself wondering "what now?", this <span className="font-bold" style={{ color: "#647C90" }}>dancer-specific guide</span> is for you.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Brought to you by the founder of Pivot for Dancers, "How to Pivot" is an <span className="font-bold" style={{ color: "#647C90" }}>actionable career change guide</span> tailored specifically for professional dancers.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+                                </div>
                             </div>
 
                             { /* Right Column */}
@@ -396,7 +418,6 @@ const HowToPivotPage = () => {
                                     />
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
