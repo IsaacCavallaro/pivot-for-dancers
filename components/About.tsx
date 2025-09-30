@@ -1,15 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, CheckCircle, Users, Globe, MessageCircle } from 'lucide-react';
+import { Star, CheckCircle, Users, Globe, MessageCircle, Award, Briefcase, TrendingUp } from 'lucide-react';
 
 interface CounterProps {
     end: number;
     duration: number;
 }
-
 const Counter = ({ end, duration }: CounterProps) => {
     const [count, setCount] = useState(0);
     const ref = useRef<number>(0);
-
     useEffect(() => {
         let start = 0;
         const increment = end / (duration / 16);
@@ -25,7 +23,6 @@ const Counter = ({ end, duration }: CounterProps) => {
         ref.current = requestAnimationFrame(step);
         return () => cancelAnimationFrame(ref.current);
     }, [end, duration]);
-
     return <span>{count.toLocaleString()}</span>;
 };
 
@@ -35,11 +32,9 @@ interface StatCardProps {
     icon: React.ComponentType<{ className?: string }>;
     index: number;
 }
-
 const StatCard = ({ number, label, icon: IconComponent, index }: StatCardProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -55,14 +50,11 @@ const StatCard = ({ number, label, icon: IconComponent, index }: StatCardProps) 
             if (ref.current) observer.unobserve(ref.current);
         };
     }, []);
-
     const backgroundColor = "#fff";
     const borderColor = index % 2 === 0 ? "#647C90" : "#928490";
     const iconColor = index % 2 === 0 ? "#647C90" : "#928490";
     const textColor = "#647C90";
-
     const numericValue = Number.parseInt(number.replace(/\D/g, ""));
-
     return (
         <div ref={ref} className="text-center h-full">
             <div
@@ -78,7 +70,6 @@ const StatCard = ({ number, label, icon: IconComponent, index }: StatCardProps) 
                 >
                     <IconComponent className="w-5 h-5 md:w-4 md:h-4 text-white" />
                 </div>
-
                 <div className="text-xl md:text-lg font-bold mb-1 relative z-10" style={{ color: textColor }}>
                     {isVisible ? (
                         <>
@@ -105,11 +96,9 @@ interface ScrollAnimationProps {
     delay?: number;
     className?: string;
 }
-
 const ScrollAnimation = ({ children, delay = 0, className = '' }: ScrollAnimationProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -122,13 +111,11 @@ const ScrollAnimation = ({ children, delay = 0, className = '' }: ScrollAnimatio
             },
             { threshold: 0.1 }
         );
-
         if (ref.current) observer.observe(ref.current);
         return () => {
             if (ref.current) observer.unobserve(ref.current);
         };
     }, [delay]);
-
     return (
         <div
             ref={ref}
@@ -145,11 +132,9 @@ const AboutUsSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [error, setError] = useState<string | null>(null);
-
     useEffect(() => {
         setIsVisible(true);
     }, []);
-
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
         if (submitStatus !== 'idle') {
@@ -159,31 +144,25 @@ const AboutUsSection = () => {
             setError(null);
         }
     };
-
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
-
     const handleSubmit = async () => {
         const trimmedEmail = email.trim();
-
         if (!trimmedEmail) {
             setError("Please provide your email to join us.");
             setSubmitStatus('error');
             return;
         }
-
         if (!validateEmail(trimmedEmail)) {
             setError("Please enter a valid email address.");
             setSubmitStatus('error');
             return;
         }
-
         setIsSubmitting(true);
         setError(null);
         setSubmitStatus('idle');
-
         try {
             await new Promise(resolve => setTimeout(resolve, 1000));
             setSubmitStatus('success');
@@ -195,18 +174,51 @@ const AboutUsSection = () => {
             setIsSubmitting(false);
         }
     };
-
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             handleSubmit();
         }
     };
-
     const getButtonText = () => {
         if (isSubmitting) return 'JOINING...';
         if (submitStatus === 'success') return 'JOINED!';
         return 'JOIN COMMUNITY';
     };
+
+    const stats = [
+        { number: "500+", label: "Success Stories", icon: CheckCircle },
+        { number: "25+", label: "Countries", icon: Globe },
+        { number: "40+", label: "Career Paths", icon: Briefcase },
+        { number: "15%", label: "Monthly Growth", icon: TrendingUp }
+    ];
+
+    const founderTimeline = [
+        {
+            title: "Early Dance Career",
+            description: "Started dancing at age 3 in Florida, training on the competition circuit",
+            icon: Star
+        },
+        {
+            title: "Professional Dancer",
+            description: "Almost a decade performing full time with Universal Studios and Royal Caribbean",
+            icon: Award
+        },
+        {
+            title: "The Pivot",
+            description: "In 2018, when burnout set in and priorities shifted, took the last bow",
+            icon: TrendingUp
+        },
+        {
+            title: "New Beginnings",
+            description: "Started freelance business, moved to Australia, and transitioned to corporate tech",
+            icon: Briefcase
+        },
+        {
+            title: "Founded Pivot for Dancers",
+            description: "Launched in 2020 to help other dancers navigate their career transitions",
+            icon: Users
+        }
+    ];
 
     return (
         <section id="about" className="relative overflow-hidden" style={{ backgroundColor: "#647C90" }}>
@@ -222,15 +234,36 @@ const AboutUsSection = () => {
                                 <h1 className="text-5xl md:text-7xl font-bold text-black mb-6">
                                     About Us
                                 </h1>
-                                <p className="text-xl leading-relaxed max-w-3xl mx-auto font-medium" style={{ color: "#647C90" }}>
+                                <p className="text-xl leading-relaxed max-w-3xl mx-auto font-medium mb-8" style={{ color: "#647C90" }}>
                                     Career transition resources for professional dancers, run by former dancers who have successfully changed careers
                                 </p>
+                            </ScrollAnimation>
+
+                            {/* Stats Section */}
+                            <ScrollAnimation delay={400}>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-10">
+                                    {stats.map((stat, index) => (
+                                        <StatCard key={index} {...stat} index={index} />
+                                    ))}
+                                </div>
+                            </ScrollAnimation>
+
+                            <ScrollAnimation delay={500}>
+                                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                                    <button
+                                        onClick={handleSubmit}
+                                        className="bg-purple-gray hover:bg-purple-gray text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                        style={{ backgroundColor: "#928490" }}
+                                    >
+                                        <span className="relative z-10">JOIN OUR COMMUNITY</span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </button>
+                                </div>
                             </ScrollAnimation>
                         </div>
                     </div>
                 </div>
             </div>
-
             {/* Main Content Section */}
             <div className="py-20" style={{ backgroundColor: "#E2DED0" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -269,7 +302,6 @@ const AboutUsSection = () => {
                                     in our community. Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not alone in wanting to change careers as a professional dancer.
                                 </p>
                             </div>
-
                             {/* Right Column */}
                             <div className="relative">
                                 <div className="relative aspect-video w-full mb-8">
@@ -286,7 +318,6 @@ const AboutUsSection = () => {
                                         ></iframe>
                                     </div>
                                 </div>
-
                                 {/* Email Signup Form */}
                                 <div className="flex flex-col items-center space-y-4">
                                     <div className="flex flex-col space-y-4 w-full">
@@ -314,7 +345,6 @@ const AboutUsSection = () => {
                                             {getButtonText()}
                                         </button>
                                     </div>
-
                                     {submitStatus === 'success' && (
                                         <p className="text-green-600 text-sm font-medium">
                                             Thank you! You should receive a confirmation shortly.
@@ -331,66 +361,110 @@ const AboutUsSection = () => {
                     </ScrollAnimation>
                 </div>
             </div>
-
-            {/* Founder Section */}
+            {/* Founder Section - Timeline */}
             <div className="py-20" style={{ backgroundColor: "#647C90" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        {/* Founder Story */}
-                        <ScrollAnimation delay={300}>
-                            <div className="text-center lg:text-left lg:order-2">
-                                <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">Meet Our Founder</h2>
-                                <h3 className="text-3xl font-black text-white mb-8">Kaylee Randall</h3>
-                                <p className="text-lg text-white leading-relaxed mb-6 font-light">
-                                    Kaylee Randall started dancing at age 3 in Florida, training on the competition circuit.
-                                    Her professional dance career spanned almost a decade, performing full time with companies
-                                    such as Universal Studios and Royal Caribbean. In 2018, when burnout set in and her
-                                    priorities started to shift, she knew she was ready to take her last bow.
-                                </p>
-                                <p className="text-lg text-white leading-relaxed mb-6 font-light">
-                                    Since then, Kaylee has started a freelance business, moved overseas to Australia, and now works
-                                    full-time in the corporate tech world. But the transition didn't come without struggles,
-                                    which is why Kaylee founded Pivot for Dancers in 2020 to help other dancers on their
-                                    career change journey.
-                                </p>
-                                <p className="text-lg text-white leading-relaxed font-light">
-                                    Kaylee is a dancer who <em>actually</em> performed full time for many
-                                    years and who still managed to build a fulfilling life beyond dance. She's here to share
-                                    how you can too.
-                                </p>
+                    <ScrollAnimation>
+                        <div className="text-center mb-16">
+                            <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                                Meet Our Founder
+                            </h2>
+                            <h3 className="text-3xl font-black text-white mb-6">Kaylee Randall</h3>
+                            <div className="relative w-40 h-40 mx-auto mb-8">
+                                <img
+                                    src="/assets/kr-head-shot.jpg"
+                                    alt="Kaylee Randall"
+                                    className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-white"
+                                />
                             </div>
-                        </ScrollAnimation>
-                        {/* Founder Image */}
-                        <ScrollAnimation>
-                            <div className="relative aspect-square w-full max-w-md mx-auto flex flex-col items-center lg:order-1">
-                                <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden bg-white border-2 border-white max-w-xs lg:max-w-sm">
-                                    <img
-                                        src="/assets/kr-head-shot.jpg"
-                                        alt="Kaylee Randall"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                {/* Contact CTA */}
-                                <ScrollAnimation delay={800}>
-                                    <div className="mt-10 p-6 rounded-3xl border-2 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-xl group"
-                                        style={{
-                                            backgroundColor: 'rgba(226, 222, 208, 0.1)',
-                                            borderColor: 'rgba(255, 255, 255, 0.3)'
-                                        }}>
-                                        <h3 className="text-xl font-bold mb-4 text-white leading-tight">Have questions about your transition?</h3>
-                                        <button className="w-full py-4 px-8 rounded-2xl font-bold transition-all duration-500 transform hover:scale-105 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl tracking-wider text-white"
-                                            style={{ backgroundColor: "#928490" }}>
-                                            SCHEDULE A CONSULTATION <MessageCircle className="w-5 h-5" />
-                                        </button>
+                            <p className="text-lg text-white max-w-3xl mx-auto">
+                                Kaylee is a dancer who <em>actually</em> performed full time for many
+                                years and who still managed to build a fulfilling life beyond dance.
+                                She's here to share how you can too.
+                            </p>
+                        </div>
+                    </ScrollAnimation>
+
+                    {/* Timeline */}
+                    <div className="relative">
+                        {/* Vertical line */}
+                        <div className="absolute w-0.5 h-full bg-white/40 top-0 left-1/2 transform -translate-x-1/2"></div>
+
+                        {founderTimeline.map((item, index) => (
+                            <ScrollAnimation key={index} delay={index * 200}>
+                                <div className="relative mb-12 md:mb-16">
+                                    {/* Timeline Card */}
+                                    <div
+                                        className={`relative flex items-center ${index % 2 === 0
+                                                ? 'flex-row md:justify-start'
+                                                : 'flex-row-reverse md:justify-end'
+                                            }`}
+                                    >
+                                        <div className="w-full md:w-1/2 px-4 md:px-8 flex items-center">
+                                            <div
+                                                className="bg-white p-6 rounded-2xl shadow-lg border text-center hover:shadow-xl transition-all duration-300 group relative z-10 w-full"
+                                                style={{ borderColor: "#E2DED0" }}
+                                            >
+                                                <div className="flex flex-col items-center mb-3">
+                                                    <div
+                                                        className="w-12 h-12 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300"
+                                                        style={{ backgroundColor: "#928490" }}
+                                                    >
+                                                        <item.icon className="w-6 h-6 text-white" />
+                                                    </div>
+                                                    <h3
+                                                        className="text-xl font-bold"
+                                                        style={{ color: "#647C90" }}
+                                                    >
+                                                        {item.title}
+                                                    </h3>
+                                                </div>
+                                                <p className="text-sm" style={{ color: "#647C90" }}>
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {/* Timeline Dot and Connector */}
+                                        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
+                                            <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-20">
+                                                <div className="w-2 h-2 bg-[#647C90] rounded-full"></div>
+                                            </div>
+                                            {/* Connector Line */}
+                                            <div
+                                                className={`hidden md:block absolute h-0.5 bg-white/40 z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
+                                                    } w-[calc(50%-2rem)]`}
+                                            ></div>
+                                        </div>
+                                        {/* Empty Space for Desktop Alternating Layout */}
+                                        <div className="hidden md:block w-1/2"></div>
                                     </div>
-                                </ScrollAnimation>
-                            </div>
-                        </ScrollAnimation>
+                                </div>
+                            </ScrollAnimation>
+                        ))}
                     </div>
+
+                    {/* Contact CTA */}
+                    <ScrollAnimation delay={800}>
+                        <div
+                            className="mt-16 p-6 rounded-3xl border-2 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-xl group max-w-xl mx-auto text-center"
+                            style={{
+                                backgroundColor: "rgba(226, 222, 208, 0.1)",
+                                borderColor: "rgba(255, 255, 255, 0.3)",
+                            }}
+                        >
+                            <h3 className="text-xl font-bold mb-4 text-white leading-tight">
+                                Have questions about your transition?
+                            </h3>
+                            <button
+                                className="w-full py-4 px-8 rounded-2xl font-bold transition-all duration-500 transform hover:scale-105 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl tracking-wider text-white"
+                                style={{ backgroundColor: "#928490" }}
+                            >
+                                SCHEDULE A CONSULTATION <MessageCircle className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </ScrollAnimation>
                 </div>
             </div>
-
-
             {/* Mission & Values Section */}
             <div className="py-20" style={{ backgroundColor: "#E2DED0" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -404,7 +478,6 @@ const AboutUsSection = () => {
                             </p>
                         </div>
                     </ScrollAnimation>
-
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
                             {
@@ -444,7 +517,6 @@ const AboutUsSection = () => {
                     </div>
                 </div>
             </div>
-
             {/* Community Impact Section */}
             <div className="py-20" style={{ backgroundColor: "#647C90" }}>
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -458,7 +530,6 @@ const AboutUsSection = () => {
                             </p>
                         </div>
                     </ScrollAnimation>
-
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
                             {
