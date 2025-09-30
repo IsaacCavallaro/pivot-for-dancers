@@ -396,8 +396,8 @@ const AboutUsSection = () => {
                                     {/* Timeline Card */}
                                     <div
                                         className={`relative flex items-center ${index % 2 === 0
-                                                ? 'flex-row md:justify-start'
-                                                : 'flex-row-reverse md:justify-end'
+                                            ? 'flex-row md:justify-start'
+                                            : 'flex-row-reverse md:justify-end'
                                             }`}
                                     >
                                         <div className="w-full md:w-1/2 px-4 md:px-8 flex items-center">

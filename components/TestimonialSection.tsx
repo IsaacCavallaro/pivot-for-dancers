@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
-// ScrollAnimation component to match Home.tsx design
+// ScrollAnimation component (unchanged, matches home.tsx)
 const ScrollAnimation = ({
     children,
     className = "",
@@ -116,11 +116,25 @@ const TestimonialsSection: React.FC = () => {
         const { onClick } = props;
         return (
             <div
-                className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 z-20 cursor-pointer rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
-                style={{ backgroundColor: '#928490' }}
+                className="
+                    absolute top-1/2 -translate-y-1/2 
+                    -right-2 md:right-4 lg:right-8
+                    z-20 cursor-pointer 
+                    rounded-full p-2 sm:p-3 md:p-4 
+                    backdrop-blur-xl border shadow-xl 
+                    transition-all duration-500 
+                    hover:scale-110 hover:shadow-2xl
+                "
+                style={{
+                    backgroundColor: '#fff',
+                    borderColor: 'rgba(100, 124, 144, 0.3)',
+                }}
                 onClick={onClick}
             >
-                <FontAwesomeIcon icon={faChevronRight} className="text-white text-xl sm:text-2xl" />
+                <FontAwesomeIcon
+                    icon={faChevronRight}
+                    className="text-[#647C90] text-base sm:text-lg md:text-xl"
+                />
             </div>
         );
     }
@@ -129,106 +143,114 @@ const TestimonialsSection: React.FC = () => {
         const { onClick } = props;
         return (
             <div
-                className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 z-20 cursor-pointer rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
-                style={{ backgroundColor: '#928490' }}
+                className="
+                    absolute top-1/2 -translate-y-1/2 
+                    -left-2 md:left-4 lg:left-8
+                    z-20 cursor-pointer 
+                    rounded-full p-2 sm:p-3 md:p-4 
+                    backdrop-blur-xl border shadow-xl 
+                    transition-all duration-500 
+                    hover:scale-110 hover:shadow-2xl
+                "
+                style={{
+                    backgroundColor: '#fff',
+                    borderColor: 'rgba(100, 124, 144, 0.3)',
+                }}
                 onClick={onClick}
             >
-                <FontAwesomeIcon icon={faChevronLeft} className="text-white text-xl sm:text-2xl" />
+                <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    className="text-[#647C90] text-base sm:text-lg md:text-xl"
+                />
             </div>
         );
     }
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-
     return (
-        <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#E2DED0' }}>
+        <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#647C90' }}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Enhanced Heading with ScrollAnimation */}
+                {/* Heading */}
                 <ScrollAnimation
                     className="text-center mb-20"
                     direction="up"
                     duration={0.8}
                 >
-                    <ScrollAnimation
-                        delay={200}
-                        direction="scale"
-                        duration={0.6}
-                    >
-                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.1)' }}>
-                            <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#647C90' }}></div>
-                            <span className="text-sm font-bold tracking-widest" style={{ color: '#647C90' }}>TESTIMONIALS</span>
-                            <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#647C90' }}></div>
+                    <ScrollAnimation delay={200} direction="scale" duration={0.6}>
+                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+                            <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
+                            <span className="text-sm font-bold text-white tracking-widest">TESTIMONIALS</span>
+                            <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
                         </div>
                     </ScrollAnimation>
 
-                    <ScrollAnimation
-                        delay={400}
-                        direction="up"
-                        duration={0.8}
-                    >
-                        <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight" style={{ color: '#647C90' }}>
-                            What others are saying
+                    <ScrollAnimation delay={400} direction="up" duration={0.8}>
+                        <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                            What Others Are Saying
                         </h2>
                     </ScrollAnimation>
 
-                    <ScrollAnimation
-                        delay={600}
-                        direction="up"
-                        duration={0.8}
-                    >
-                        <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: 'rgba(116, 108, 112, 0.9)' }}>
+                    <ScrollAnimation delay={600} direction="up" duration={0.8}>
+                        <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                             Real stories from dancers who have successfully navigated their career transitions with our support
                         </p>
                     </ScrollAnimation>
                 </ScrollAnimation>
 
-                {/* Enhanced Testimonial Slider */}
-                <ScrollAnimation
-                    delay={800}
-                    direction="up"
-                    duration={1.0}
-                    threshold={0.1}
-                >
-                    {/* Main container with relative positioning for arrows */}
-                    <div className="relative">
+                {/* Testimonial Slider */}
+                <ScrollAnimation delay={800} direction="up" duration={1.2} threshold={0.1}>
+                    <div className="relative group">
                         <div
-                            className="backdrop-blur-xl rounded-3xl shadow-2xl overflow-visible relative border transition-all duration-1000 hover:shadow-3xl"
+                            className="backdrop-blur-xl rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl border transition-all duration-1000 hover:-translate-y-4 hover:shadow-3xl"
                             style={{
-                                backgroundColor: 'rgba(100, 124, 144, 0.95)',
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
                                 borderColor: 'rgba(255, 255, 255, 0.2)',
                                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
                             }}
                         >
+                            {/* Animated background gradient on hover */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-1000 rounded-3xl" style={{ backgroundColor: 'rgba(226, 222, 208, 0.1)' }}></div>
+
                             <Slider {...settings}>
                                 {testimonials.map((testimonial, index) => (
                                     <div key={index} className="px-6 py-12 sm:p-12 lg:p-16">
-                                        <div className="text-center">
+                                        <div className="text-center relative z-10">
+                                            {/* Avatar */}
                                             <div className="flex justify-center items-center mb-8">
                                                 <div className="relative">
                                                     <div
-                                                        className="absolute inset-0 opacity-20 rounded-full blur-xl"
-                                                        style={{ backgroundColor: '#E2DED0' }}
+                                                        className="absolute inset-0 opacity-20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-1000"
+                                                        style={{ backgroundColor: '#647C90' }}
                                                     ></div>
                                                     <Image
                                                         src={testimonial.imageSrc}
                                                         alt={testimonial.author}
                                                         width={100}
                                                         height={100}
-                                                        className="relative rounded-full shadow-2xl border-4 border-white/20 transition-all duration-300 hover:scale-105"
+                                                        className="relative rounded-full shadow-2xl border transition-all duration-1000 group-hover:scale-110"
+                                                        style={{ borderColor: 'rgba(100, 124, 144, 0.3)' }}
                                                     />
                                                 </div>
                                             </div>
-                                            <p className="font-medium text-xl text-white leading-relaxed max-w-3xl mx-auto mb-8 opacity-95">
+
+                                            {/* Quote */}
+                                            <p className="font-light italic text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto mb-8 transition-colors duration-700 group-hover:text-[#647C90]" style={{ color: '#647C90' }}>
                                                 {testimonial.content}
                                             </p>
+
+                                            {/* Author */}
                                             <div className="mb-6">
-                                                <h3 className="text-2xl font-bold text-white mb-2">{testimonial.author}</h3>
-                                                <p className="text-lg font-medium" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{testimonial.role}</p>
+                                                <h3 className="text-2xl font-black transition-colors duration-700 group-hover:text-[#647C90]" style={{ color: '#647C90' }}>
+                                                    {testimonial.author}
+                                                </h3>
+                                                <p className="text-lg font-medium transition-colors duration-700 group-hover:text-[#647C90]" style={{ color: '#928490' }}>
+                                                    {testimonial.role}
+                                                </p>
                                             </div>
-                                            <div className="flex justify-center gap-1">
+
+                                            {/* Stars */}
+                                            <div className="flex justify-center gap-1.5">
                                                 {[...Array(5)].map((_, i) => (
-                                                    <FaStar key={i} className="text-yellow-400 text-2xl transition-all duration-300 hover:scale-110" />
+                                                    <FaStar key={i} className="text-yellow-400 text-xl transition-all duration-500 group-hover:scale-110" />
                                                 ))}
                                             </div>
                                         </div>
@@ -236,22 +258,19 @@ const TestimonialsSection: React.FC = () => {
                                 ))}
                             </Slider>
 
-                            {/* Enhanced Bottom CTA */}
-                            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 pb-12">
+                            {/* Bottom CTA */}
+                            <div className="flex justify-center items-center pb-12">
                                 <a
                                     href="https://g.page/r/CfHdX47gLCCXEAI/review"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="relative inline-flex items-center justify-center font-bold py-4 px-8 rounded-2xl transition-all duration-1000 hover:scale-105 shadow-xl hover:shadow-2xl overflow-hidden group/button text-white"
-                                    style={{ backgroundColor: '#928490' }}
+                                    className="relative inline-flex items-center justify-center font-bold py-4 px-8 rounded-2xl transition-all duration-1000 group-hover:scale-105 shadow-xl group-hover:shadow-2xl overflow-hidden group/button text-white"
+                                    style={{ backgroundColor: '#647C90' }}
                                 >
-                                    {/* Button background glow effect */}
                                     <div
                                         className="absolute inset-0 opacity-0 group-hover/button:opacity-30 transition-opacity duration-1000 rounded-2xl"
                                         style={{ backgroundColor: '#E2DED0' }}
                                     ></div>
-
-                                    {/* Button content */}
                                     <span className="relative mr-3 tracking-wider">ADD REVIEW</span>
                                     <svg
                                         className="relative w-5 h-5 transition-transform duration-1000 group-hover/button:translate-x-2 group-hover/button:scale-110"

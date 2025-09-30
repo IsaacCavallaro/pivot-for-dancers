@@ -279,7 +279,7 @@ const SuiteCTASection = () => {
               threshold={0.1} // Lower threshold for earlier trigger
             >
               <div
-                className="group relative backdrop-blur-xl rounded-3xl p-8 shadow-2xl border transition-all duration-1000 hover:-translate-y-4 flex flex-col items-center text-center max-w-sm w-full overflow-hidden"
+                className="group relative backdrop bl rounded-3xl p-8 shadow-2xl border transition-all duration-1000 hover:-translate-y-4 flex flex-col items-center text-center max-w-sm w-full overflow-hidden"
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   borderColor: 'rgba(255, 255, 255, 0.2)',
@@ -388,11 +388,11 @@ const SuiteCTASection = () => {
           direction="up"
           duration={0.8}
         >
-          <div className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
+          <div className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105" style={{ backgroundColor: '#928490', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
             <span className="text-white font-bold mr-3 text-lg">Ready to get started?</span>
             <a
               href="https://tidycal.com/pivotfordancers/mentorship-1"
-              className="font-black text-lg transition-colors duration-300 text-white"
+              className="font-black text-lg transition-all duration-300 text-white hover:opacity-80"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -409,10 +409,187 @@ const SuiteCTASection = () => {
           </div>
         </ScrollAnimation>
       </div>
-    </section >
+    </section>
   );
 };
 
+const CommunitySection = () => {
+  const [shuffledVideos, setShuffledVideos] = useState([])
+
+  const playlistVideos = [
+    {
+      id: "FJRbh7AI9HQ",
+      title: "Are we done telling dancers not to have a backup plan? Rachel's story",
+      description: "Rachel is proof that you can successfully transition from dance while maintaining your passion and finding new purpose",
+      duration: "14:22"
+    },
+    {
+      id: "16JMiSPzlBE",
+      title: "How a ski mountain helped Elise let go of her dance career",
+      description: "Elise shares her journey of finding closure and new beginnings through outdoor adventure",
+      duration: "12:34"
+    },
+    {
+      id: "7EUfZS8mQtk",
+      title: "How Demi's roller skating hobby turned into 500K followers",
+      description: "From dancer to social media influencer - Demi's unexpected career pivot success story",
+      duration: "15:22"
+    },
+    {
+      id: "ZsvNvXLtcC4",
+      title: "Will you regret being a dancer? How Monica turned guilt into growth",
+      description: "Monica discusses overcoming post-career doubts and finding value in her dance journey",
+      duration: "18:45"
+    },
+    {
+      id: "tnPkI_ezUto",
+      title: "Finding meaning beyond ballet: Ali's journey after the stage",
+      description: "Ali explores how she's discovering new purpose and magic outside her ballet career",
+      duration: "14:30"
+    }
+  ];
+
+  // Shuffle function using Fisher-Yates algorithm
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  useEffect(() => {
+    // Shuffle videos when component mounts
+    setShuffledVideos(shuffleArray(playlistVideos));
+  }, []);
+
+  return (
+    <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden" style={{ backgroundColor: '#E2DED0' }}>
+      <div className="absolute inset-0 bg-[radial-gradient(#d5d1c5_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <ScrollAnimation className="text-center mb-10 sm:mb-16 lg:mb-20" direction="up" duration={0.8}>
+          <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 sm:mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.1)' }}>
+            <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#647C90' }}></div>
+            <span className="text-sm font-bold tracking-widest" style={{ color: '#647C90' }}>COMMUNITY STORIES</span>
+            <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#647C90' }}></div>
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight" style={{ color: '#647C90' }}>
+            Real Dancers, Real Transitions
+          </h2>
+          <p className="text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: '#746C70' }}>
+            Watch inspiring stories from dancers who successfully navigated career changes and found new paths.
+          </p>
+        </ScrollAnimation>
+
+        {/* Main YouTube Player and Playlist */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          {/* Main Video Player */}
+          <div className="lg:col-span-2">
+            <ScrollAnimation delay={400} direction="up" duration={1}>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border" style={{ borderColor: 'rgba(100, 124, 144, 0.2)' }}>
+                <div className="aspect-video bg-gray-900 relative">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${shuffledVideos[0]?.id || 'FJRbh7AI9HQ'}?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm`}
+                    title={shuffledVideos[0]?.title || "Rachel's Story - Are we done telling dancers not to have a backup plan?"}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+
+          {/* Playlist Sidebar */}
+          <div className="lg:col-span-1">
+            <ScrollAnimation delay={600} direction="up" duration={1}>
+              <div className="bg-white rounded-3xl p-6 shadow-2xl border h-full" style={{ borderColor: 'rgba(100, 124, 144, 0.2)' }}>
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-bold text-xl" style={{ color: '#647C90' }}>Success Stories</h3>
+                  <div className="flex items-center text-sm" style={{ color: '#928490' }}>
+                    <Play className="w-4 h-4 mr-1" />
+                    <span>{playlistVideos.length} videos</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 max-h-96 overflow-y-auto">
+                  {shuffledVideos.map((video, index) => (
+                    <div
+                      key={video.id}
+                      className="flex gap-4 p-4 rounded-2xl transition-all duration-300 hover:shadow-lg cursor-pointer group border"
+                      style={{
+                        borderColor: 'rgba(100, 124, 144, 0.1)',
+                        backgroundColor: index === 0 ? 'rgba(100, 124, 144, 0.05)' : 'transparent'
+                      }}
+                      onClick={() => {
+                        // This would update the main video in a real implementation
+                        const iframe = document.querySelector('iframe');
+                        if (iframe) {
+                          iframe.src = `https://www.youtube.com/embed/${video.id}?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm&autoplay=1`;
+                        }
+                      }}
+                    >
+                      <div className="relative flex-shrink-0">
+                        <div className="w-20 h-12 rounded-lg bg-gray-300 overflow-hidden">
+                          <img
+                            src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                            alt={video.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="absolute bottom-1 right-1 bg-black bg-opacity-80 text-white text-xs px-1 rounded">
+                          {video.duration}
+                        </div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-sm mb-1 line-clamp-2 group-hover:text-[#647C90] transition-colors" style={{ color: '#647C90' }}>
+                          {video.title}
+                        </h4>
+                        <p className="text-xs text-gray-600 line-clamp-2">
+                          {video.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+
+        {/* CTA Buttons */}
+        <ScrollAnimation className="text-center" delay={1000} direction="up" duration={0.8}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105"
+              style={{ backgroundColor: '#928490', borderColor: 'rgba(100, 124, 144, 0.3)' }}
+            >
+              <Youtube className="w-6 h-6 mr-3 text-white" />
+              <span className="font-bold text-lg mr-3 text-white">Watch Full Playlist</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-white" />
+            </a>
+
+            <a
+              href="https://stats.sender.net/forms/aKrmkz/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105"
+              style={{ backgroundColor: '#928490', borderColor: 'rgba(100, 124, 144, 0.3)' }}
+            >
+              <Users className="w-5 h-5 mr-3 text-white" />
+              <span className="font-bold text-lg mr-3 text-white">Share Your Story</span>
+              <Heart className="w-5 h-5 group-hover:scale-110 transition-transform text-white" />
+            </a>
+          </div>
+        </ScrollAnimation>
+      </div>
+    </section>
+  );
+};
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [currentScreen, setCurrentScreen] = useState(0)
@@ -905,6 +1082,9 @@ const HeroSection = () => {
 
       {/* New Suite CTA Section */}
       <SuiteCTASection />
+
+      {/* New Community Section */}
+      <CommunitySection />
     </>
   )
 }
