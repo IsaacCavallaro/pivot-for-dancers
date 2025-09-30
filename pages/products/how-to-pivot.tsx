@@ -350,7 +350,7 @@ const HowToPivotPage = () => {
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="mb-4">
-                            <h2 className="text-bold text-5xl font-bold text-white">What is the How To Pivot Ebook?</h2>
+                            <h2 className="text-bold text-center text-5xl font-bold text-white">How To Pivot</h2>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             {/* Left Column */}
@@ -473,7 +473,7 @@ const HowToPivotPage = () => {
                 </div>
 
                 {/* First CTA Section */}
-                <div className="text-center py-16 bg-light-gray relative overflow-hidden">
+                <div className="text-center py-16 bg-light-gray relative overflow-hidden px-4 sm:px-6 lg:px-8">
                     <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-beige">
                         <ScrollAnimation delay={0}>
                             <div className="flex items-center justify-center mb-4">
@@ -555,7 +555,7 @@ const HowToPivotPage = () => {
                     </div>
                 </div>
                 {/* Final CTA Section */}
-                <div className="relative overflow-hidden bg-light-gray py-20">
+                <div className="relative overflow-hidden bg-light-gray py-20 px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-4xl rounded-3xl border-2 border-beige bg-white shadow-2xl overflow-hidden">
                         <div className="flex flex-col items-center px-6 py-12 md:px-12">
 
