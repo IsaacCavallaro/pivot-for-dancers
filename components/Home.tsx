@@ -153,7 +153,7 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
     }
   }, [])
 
-  const backgroundColor = "#E2DED0"
+  const backgroundColor = "#fff"
   const borderColor = index % 2 === 0 ? "#647C90" : "#928490"
   const iconColor = index % 2 === 0 ? "#647C90" : "#928490"
   const textColor = "#647C90"
