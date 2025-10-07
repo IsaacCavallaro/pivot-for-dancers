@@ -50,7 +50,7 @@ const StatCard = ({ number, label, icon: IconComponent, index }: StatCardProps) 
             if (ref.current) observer.unobserve(ref.current);
         };
     }, []);
-    const backgroundColor = "#fff";
+    const backgroundColor = "#E2DED0"; // Changed from "#fff" to "#E2DED0"
     const borderColor = index % 2 === 0 ? "#647C90" : "#928490";
     const iconColor = index % 2 === 0 ? "#647C90" : "#928490";
     const textColor = "#647C90";

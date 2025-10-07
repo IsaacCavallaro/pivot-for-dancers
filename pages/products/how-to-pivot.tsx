@@ -467,7 +467,7 @@ const HowToPivotPage = () => {
                                                             {item.title}
                                                         </h3>
                                                     </div>
-                                                    <p className="text-sm" style={{ color: "#647C90" }}>
+                                                    <p className="text-sm" style={{ color: "#746C70" }}>
                                                         {item.description}
                                                     </p>
                                                 </div>
