@@ -222,16 +222,19 @@ const AboutUsSection = () => {
 
     return (
         <section id="about" className="relative overflow-hidden" style={{ backgroundColor: "#647C90" }}>
-            {/* Hero Section */}
-            <div className="relative pt-24 pb-16 md:py-24 overflow-hidden">
-                <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Hero Section - Updated to match Home.tsx styling */}
+            <div className="relative pt-32 pb-16 md:py-24 overflow-hidden">
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="bg-white backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
                         <div className="relative z-10 text-center">
                             <ScrollAnimation delay={200}>
-                                <div className="inline-flex items-center justify-center mb-4 px-4 py-2 rounded-full border" style={{ backgroundColor: "#647C90", borderColor: "#647C90" }}>
-                                    <span className="text-sm font-semibold text-white tracking-wider uppercase">Who We Are & What We Do</span>
+                                <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                                    style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: '#647C90' }}>
+                                    <div className="w-2 h-2 rounded-full mr-3 " style={{ backgroundColor: '#E2DED0' }}></div>
+                                    <span className="text-sm font-bold tracking-widest text-white">WHO WE ARE & WHAT WE DO</span>
+                                    <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
                                 </div>
-                                <h1 className="text-5xl md:text-7xl font-bold text-black mb-6">
+                                <h1 className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight">
                                     About Us
                                 </h1>
                                 <p className="text-xl leading-relaxed max-w-3xl mx-auto font-medium mb-8" style={{ color: "#647C90" }}>
@@ -252,11 +255,11 @@ const AboutUsSection = () => {
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                                     <button
                                         onClick={handleSubmit}
-                                        className="bg-purple-gray hover:bg-purple-gray text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                                        style={{ backgroundColor: "#928490" }}
+                                        className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105 text-white font-bold text-lg"
+                                        style={{ backgroundColor: "#928490", borderColor: 'rgba(100, 124, 144, 0.3)' }}
                                     >
-                                        <span className="relative z-10">JOIN OUR COMMUNITY</span>
-                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <span className="mr-3">JOIN OUR COMMUNITY</span>
+                                        <Users className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                     </button>
                                 </div>
                             </ScrollAnimation>
@@ -265,47 +268,85 @@ const AboutUsSection = () => {
                 </div>
             </div>
             {/* Main Content Section */}
-            <div className="py-20" style={{ backgroundColor: "#E2DED0" }}>
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="py-20 relative overflow-hidden" style={{ backgroundColor: "#E2DED0" }}>
+                <div className="absolute inset-0 bg-[radial-gradient(#d5d1c5_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="flex justify-center mb-6">
+                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full border backdrop-blur-xl shadow-xl"
+                            style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: '#647C90' }}>
+                            <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#E2DED0' }}></div>
+                            <span className="text-sm font-bold tracking-widest text-white">OUR STORY</span>
+                            <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
+                        </div>
+                    </div>
                     <ScrollAnimation>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            {/* Left Column */}
-                            <div className="text-center lg:text-left">
-                                <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight" style={{ color: "#647C90" }}>
-                                    Our Story
-                                </h2>
-                                <p className="text-xl leading-relaxed mb-6 font-medium" style={{ color: "#647C90" }}>
-                                    Pivot for Dancers offers{" "}
-                                    <span
-                                        className="px-3 py-1 rounded-lg font-bold shadow-sm"
-                                        style={{ backgroundColor: "#fff", color: "#647C90" }}
-                                    >
-                                        career change
-                                    </span>{" "}
-                                    resources for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former professional{" "}
-                                    <span
-                                        className="px-3 py-1 rounded-lg font-bold shadow-sm"
-                                        style={{ backgroundColor: "#fff", color: "#647C90" }}
-                                    >
-                                        dancers
-                                    </span>{" "}
-                                    who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
-                                </p>
-                                <p className="text-xl leading-relaxed font-medium" style={{ color: "#647C90" }}>
-                                    There are thousands of other dancers{" "}
-                                    <span
-                                        className="px-3 py-1 rounded-lg font-bold shadow-sm"
-                                        style={{ backgroundColor: "#fff", color: "#647C90" }}
-                                    >
-                                        just like you
-                                    </span>{" "}
-                                    in our community. Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not alone in wanting to change careers as a professional dancer.
-                                </p>
+                            {/* Left Column - Updated to match Home.tsx design */}
+                            <div>
+                                <div className="space-y-6">
+                                    <ScrollAnimation delay={0}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+                                            style={{ borderColor: "#647C90" }}>
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                                                    style={{ backgroundColor: "#647C90" }}>
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
+                                                    Pivot for Dancers offers{" "}
+                                                    <span className="font-bold">
+                                                        career change
+                                                    </span>{" "}
+                                                    resources for professional dancers. Our mission is to help you find meaningful work off the stage.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={200}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+                                            style={{ borderColor: "#647C90" }}>
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                                                    style={{ backgroundColor: "#647C90" }}>
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
+                                                    Run by former professional{" "}
+                                                    <span className="font-bold">
+                                                        dancers
+                                                    </span>{" "}
+                                                    who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+                                            style={{ borderColor: "#647C90" }}>
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                                                    style={{ backgroundColor: "#647C90" }}>
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
+                                                    There are thousands of other dancers{" "}
+                                                    <span className="font-bold">
+                                                        just like you
+                                                    </span>{" "}
+                                                    in our community. Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not alone.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+                                </div>
                             </div>
+
                             {/* Right Column */}
                             <div className="relative">
                                 <div className="relative aspect-video w-full mb-8">
-                                    <div className="relative w-full h-full rounded-2xl shadow-xl overflow-hidden border-2" style={{ borderColor: "#928490" }}>
+                                    <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden border-2" style={{ borderColor: "#647C90" }}>
                                         <iframe
                                             width="100%"
                                             height="100%"
@@ -318,6 +359,7 @@ const AboutUsSection = () => {
                                         ></iframe>
                                     </div>
                                 </div>
+
                                 {/* Email Signup Form */}
                                 <div className="flex flex-col items-center space-y-4">
                                     <div className="flex flex-col space-y-4 w-full">
@@ -328,18 +370,17 @@ const AboutUsSection = () => {
                                             onChange={handleEmailChange}
                                             onKeyPress={handleKeyPress}
                                             disabled={isSubmitting}
-                                            className="w-full px-4 py-4 rounded-2xl border-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 shadow-sm"
+                                            className="w-full px-6 py-4 rounded-2xl border-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 shadow-lg text-sm"
                                             style={{
                                                 backgroundColor: '#fff',
                                                 borderColor: '#647C90',
-                                                focusRingColor: '#928490'
                                             }}
                                         />
                                         <button
                                             type="button"
                                             onClick={handleSubmit}
                                             disabled={isSubmitting || !email.trim()}
-                                            className="w-full px-6 py-4 rounded-2xl font-bold transition-all duration-500 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-xl tracking-wider text-white"
+                                            className="w-full px-6 py-4 rounded-2xl font-bold transition-all duration-500 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl hover:shadow-2xl tracking-wider text-white"
                                             style={{ backgroundColor: "#928490" }}
                                         >
                                             {getButtonText()}
@@ -361,15 +402,21 @@ const AboutUsSection = () => {
                     </ScrollAnimation>
                 </div>
             </div>
+
             {/* Founder Section - Timeline */}
-            <div className="py-20" style={{ backgroundColor: "#647C90" }}>
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="py-20 relative overflow-hidden" style={{ backgroundColor: "#647C90" }}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <ScrollAnimation>
                         <div className="text-center mb-16">
+                            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                                style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+                                <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
+                                <span className="text-sm font-bold tracking-widest text-white">MEET OUR FOUNDER</span>
+                                <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
+                            </div>
                             <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                                Meet Our Founder
+                                Kaylee Randall
                             </h2>
-                            <h3 className="text-3xl font-black text-white mb-6">Kaylee Randall</h3>
                             <div className="relative w-40 h-40 mx-auto mb-8">
                                 <img
                                     src="/assets/kr-head-shot.jpg"
@@ -377,7 +424,7 @@ const AboutUsSection = () => {
                                     className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-white"
                                 />
                             </div>
-                            <p className="text-lg text-white max-w-3xl mx-auto">
+                            <p className="text-lg text-white max-w-3xl mx-auto font-light">
                                 Kaylee is a dancer who <em>actually</em> performed full time for many
                                 years and who still managed to build a fulfilling life beyond dance.
                                 She's here to share how you can too.
@@ -402,32 +449,32 @@ const AboutUsSection = () => {
                                     >
                                         <div className="w-full md:w-1/2 px-4 md:px-8 flex items-center">
                                             <div
-                                                className="bg-white p-6 rounded-2xl shadow-lg border text-center hover:shadow-xl transition-all duration-300 group relative z-10 w-full"
-                                                style={{ borderColor: "#E2DED0" }}
+                                                className="bg-white p-6 rounded-3xl shadow-2xl border text-center hover:shadow-xl transition-all duration-500 group relative z-10 w-full hover:-translate-y-2"
+                                                style={{ borderColor: "#647C90" }}
                                             >
                                                 <div className="flex flex-col items-center mb-3">
                                                     <div
-                                                        className="w-12 h-12 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300"
+                                                        className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500 shadow-2xl"
                                                         style={{ backgroundColor: "#928490" }}
                                                     >
                                                         <item.icon className="w-6 h-6 text-white" />
                                                     </div>
                                                     <h3
-                                                        className="text-xl font-bold"
+                                                        className="text-xl font-black"
                                                         style={{ color: "#647C90" }}
                                                     >
                                                         {item.title}
                                                     </h3>
                                                 </div>
-                                                <p className="text-sm" style={{ color: "#647C90" }}>
+                                                <p className="text-sm font-medium" style={{ color: "#647C90" }}>
                                                     {item.description}
                                                 </p>
                                             </div>
                                         </div>
                                         {/* Timeline Dot and Connector */}
                                         <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
-                                            <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-20">
-                                                <div className="w-2 h-2 bg-[#647C90] rounded-full"></div>
+                                            <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-500 z-20 shadow-lg">
+                                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#647C90" }}></div>
                                             </div>
                                             {/* Connector Line */}
                                             <div
@@ -446,7 +493,7 @@ const AboutUsSection = () => {
                     {/* Contact CTA */}
                     <ScrollAnimation delay={800}>
                         <div
-                            className="mt-16 p-6 rounded-3xl border-2 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-xl group max-w-xl mx-auto text-center"
+                            className="mt-16 p-8 rounded-3xl border-2 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-xl group max-w-xl mx-auto text-center"
                             style={{
                                 backgroundColor: "rgba(226, 222, 208, 0.1)",
                                 borderColor: "rgba(255, 255, 255, 0.3)",
@@ -465,13 +512,21 @@ const AboutUsSection = () => {
                     </ScrollAnimation>
                 </div>
             </div>
+
             {/* Mission & Values Section */}
-            <div className="py-20" style={{ backgroundColor: "#E2DED0" }}>
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="py-20 relative overflow-hidden" style={{ backgroundColor: "#E2DED0" }}>
+                <div className="absolute inset-0 bg-[radial-gradient(#d5d1c5_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <ScrollAnimation>
-                        <div className="text-center mb-10">
+                        <div className="text-center mb-16">
+                            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                                style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.1)' }}>
+                                <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#647C90' }}></div>
+                                <span className="text-sm font-bold tracking-widest" style={{ color: '#647C90' }}>OUR MISSION & VALUES</span>
+                                <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#647C90' }}></div>
+                            </div>
                             <h2 className="text-5xl md:text-6xl font-extrabold mb-2 leading-tight" style={{ color: "#647C90" }}>
-                                Our Mission & Values
+                                What Drives Us
                             </h2>
                             <p className="text-xl font-light leading-relaxed" style={{ color: "#647C90" }}>
                                 What drives us to support dancers through their career transitions
@@ -517,13 +572,20 @@ const AboutUsSection = () => {
                     </div>
                 </div>
             </div>
+
             {/* Community Impact Section */}
             <div className="py-20" style={{ backgroundColor: "#647C90" }}>
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollAnimation>
                         <div className="text-center mb-16">
+                            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                                style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+                                <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
+                                <span className="text-sm font-bold tracking-widest text-white">OUR GROWING IMPACT</span>
+                                <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
+                            </div>
                             <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight" style={{ color: "#fff" }}>
-                                Our Growing Impact
+                                Making a Difference
                             </h2>
                             <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: "#fff" }}>
                                 See how we're making a difference in the lives of dancers worldwide
