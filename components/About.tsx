@@ -370,9 +370,9 @@ const AboutUsSection = () => {
                                             onChange={handleEmailChange}
                                             onKeyPress={handleKeyPress}
                                             disabled={isSubmitting}
-                                            className="w-full px-6 py-4 rounded-2xl border-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all duration-300 shadow-lg text-sm"
+                                            className="w-full px-6 py-4 rounded-2xl border-2 text-white placeholder-white focus:outline-none focus:ring-2 transition-all duration-300 shadow-lg text-sm"
                                             style={{
-                                                backgroundColor: '#fff',
+                                                backgroundColor: '#647C90',
                                                 borderColor: '#647C90',
                                             }}
                                         />

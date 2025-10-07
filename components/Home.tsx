@@ -235,37 +235,20 @@ const SuiteCTASection = () => {
           direction="up"
           duration={0.8}
         >
-          <ScrollAnimation
-            delay={200}
-            direction="scale"
-            duration={0.6}
-          >
-            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
-              <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
-              <span className="text-sm font-bold text-white tracking-widest">COMPREHENSIVE SUITE</span>
-              <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
-            </div>
-          </ScrollAnimation>
+          <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+            <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
+            <span className="text-sm font-bold text-white tracking-widest">COMPREHENSIVE SUITE</span>
+            <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
+          </div>
 
-          <ScrollAnimation
-            delay={400}
-            direction="up"
-            duration={0.8}
-          >
-            <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-              Explore Our Complete Offerings
-            </h2>
-          </ScrollAnimation>
+          <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+            Explore Our Complete Offerings
+          </h2>
 
-          <ScrollAnimation
-            delay={600}
-            direction="up"
-            duration={0.8}
-          >
-            <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-              Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions
-            </p>
-          </ScrollAnimation>
+
+          <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+            Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions
+          </p>
         </ScrollAnimation>
 
         {/* Enhanced Products Grid with Slower Animations */}
