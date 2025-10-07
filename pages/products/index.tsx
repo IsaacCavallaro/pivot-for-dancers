@@ -89,8 +89,8 @@ const ProductsSection: React.FC = () => {
                                     onMouseEnter={() => setHoveredProduct(product.id)}
                                     onMouseLeave={() => setHoveredProduct(null)}
                                 >
-                                    {product.id === 4 && (
-                                        <div className="absolute -right-8 top-4 font-bold text-xs py-1 px-8 transform rotate-45 z-10 shadow-md text-white" style={{ backgroundColor: "#928490" }}>
+                                    {product.id === 3 && (
+                                        <div className="absolute -right-10 top-9 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold text-xs md:text-sm py-1 px-10 transform rotate-45 z-40 shadow-lg">
                                             Most Popular
                                         </div>
                                     )}
