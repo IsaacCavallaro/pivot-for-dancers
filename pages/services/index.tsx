@@ -56,9 +56,10 @@ const ServicesSection: React.FC = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(#d5d1c5_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
 
                 <div className="flex justify-center">
-                    <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: '#647C90' }}>
+                    <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                        style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.7)' }}>
                         <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#E2DED0' }}></div>
-                        <h1 className="text-sm font-bold text-white tracking-widest">SERVICES</h1>
+                        <h1 className="text-sm font-bold tracking-widest text-white">SERVICES</h1>
                         <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
                     </div>
                 </div>

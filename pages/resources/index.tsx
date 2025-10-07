@@ -127,10 +127,11 @@ const ResourcesPage = () => {
 
                     {/* Centered RESOURCES Badge */}
                     <div className="flex justify-center mb-8">
-                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: '#647C90' }}>
-                            <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
-                            <h1 className="text-sm font-bold text-white tracking-widest">RESOURCES</h1>
-                            <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
+                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                            style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.7)' }}>
+                            <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#E2DED0' }}></div>
+                            <h1 className="text-sm font-bold tracking-widest text-white">RESOURCES</h1>
+                            <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
                         </div>
                     </div>
 
