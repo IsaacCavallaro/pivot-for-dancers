@@ -555,8 +555,11 @@ const ExpectationsVsRealityPage = () => {
                         <div className="bg-white backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
                             <div className="relative z-10 text-center">
                                 <ScrollAnimation delay={200}>
-                                    <div className="inline-flex items-center justify-center mb-4 px-4 py-2 bg-light-gray rounded-full border border-purple-gray/20">
-                                        <span className="text-sm font-semibold text-white tracking-wider uppercase">DATA-DRIVEN GUIDANCE</span>
+                                    <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                                        style={{ borderColor: 'rgba(100, 124, 144,0.3)', backgroundColor: 'rgba(100, 124, 144, 0.7)' }}>
+                                        <div className="w-2 h-2 rounded-full mr-3 " style={{ backgroundColor: '#E2DED0' }}></div>
+                                        <span className="text-sm font-bold tracking-widest text-white">DATA-DRIVEN GUIDENCE</span>
+                                        <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
                                     </div>
                                     <h1 className="text-5xl md:text-7xl font-bold text-black">
                                         Career Transition Insights
