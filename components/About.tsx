@@ -237,7 +237,7 @@ const AboutUsSection = () => {
                                 <h1 className="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight">
                                     About Us
                                 </h1>
-                                <p className="text-xl leading-relaxed max-w-3xl mx-auto font-medium mb-8" style={{ color: "#647C90" }}>
+                                <p className="text-xl leading-relaxed max-w-3xl mx-auto font-medium mb-8 text-brown-gray">
                                     Career transition resources for professional dancers, run by former dancers who have successfully changed careers
                                 </p>
                             </ScrollAnimation>
@@ -644,7 +644,7 @@ const AboutUsSection = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

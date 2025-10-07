@@ -484,7 +484,7 @@ const PivotPathsPage = () => {
                                 </ScrollAnimation>
                                 <ScrollAnimation delay={300}>
                                     <br></br>
-                                    <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
+                                    <p className="font-montserrat text-xl text-brown-gray max-w-3xl mx-auto mb-8 px-4 md:px-0">
                                         Your private toolkit for career transition, mindset wellness, and financial planning
                                     </p>
                                 </ScrollAnimation>

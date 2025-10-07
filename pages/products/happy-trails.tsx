@@ -288,7 +288,7 @@ const HappyTrailsPage = () => {
                                 </ScrollAnimation>
                                 <ScrollAnimation delay={300}>
                                     <br></br>
-                                    <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
+                                    <p className="font-montserrat text-xl text-brown-gray max-w-3xl mx-auto mb-8 px-4 md:px-0">
                                         A course to plan your pivot, brought to you by Pivot for Dancers
                                     </p>
                                 </ScrollAnimation>

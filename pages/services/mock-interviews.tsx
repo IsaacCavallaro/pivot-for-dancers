@@ -278,7 +278,7 @@ const MockInterviewPage = () => {
                                 </ScrollAnimation>
                                 <ScrollAnimation delay={300}>
                                     <br></br>
-                                    <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
+                                    <p className="font-montserrat text-xl text-brown-gray max-w-3xl mx-auto mb-8 px-4 md:px-0">
                                         Professional interview practice sessions designed specifically for dancers transitioning to new careers
                                     </p>
                                 </ScrollAnimation>

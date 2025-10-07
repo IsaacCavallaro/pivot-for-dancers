@@ -262,7 +262,7 @@ const MentorshipPage = () => {
                                 </ScrollAnimation>
                                 <ScrollAnimation delay={300}>
                                     <br></br>
-                                    <p className="font-montserrat text-xl text-black max-w-3xl mx-auto mb-8 px-4 md:px-0">
+                                    <p className="font-montserrat text-xl text-brown-gray max-w-3xl mx-auto mb-8 px-4 md:px-0">
                                         Private, one-on-one support to help you find meaningful work off the stage
                                     </p>
                                 </ScrollAnimation>
