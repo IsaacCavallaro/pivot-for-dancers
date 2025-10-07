@@ -229,7 +229,7 @@ const AboutUsSection = () => {
                         <div className="relative z-10 text-center">
                             <ScrollAnimation delay={200}>
                                 <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
-                                    style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: '#647C90' }}>
+                                    style={{ borderColor: 'rgba(100, 124, 144,0.3)', backgroundColor: 'rgba(100, 124, 144, 0.7)' }}>
                                     <div className="w-2 h-2 rounded-full mr-3 " style={{ backgroundColor: '#E2DED0' }}></div>
                                     <span className="text-sm font-bold tracking-widest text-white">WHO WE ARE & WHAT WE DO</span>
                                     <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
@@ -272,9 +272,9 @@ const AboutUsSection = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(#d5d1c5_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="flex justify-center mb-6">
-                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full border backdrop-blur-xl shadow-xl"
-                            style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: '#647C90' }}>
-                            <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#E2DED0' }}></div>
+                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                            style={{ borderColor: 'rgba(100, 124, 144, c)', backgroundColor: 'rgba(100, 124, 144, 0.7)' }}>
+                            <div className="w-2 h-2 rounded-full mr-3 " style={{ backgroundColor: '#E2DED0' }}></div>
                             <span className="text-sm font-bold tracking-widest text-white">OUR STORY</span>
                             <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
                         </div>
@@ -466,7 +466,7 @@ const AboutUsSection = () => {
                                                         {item.title}
                                                     </h3>
                                                 </div>
-                                                <p className="text-sm font-medium" style={{ color: "#647C90" }}>
+                                                <p className="text-sm font-medium" style={{ color: "#746C70" }}>
                                                     {item.description}
                                                 </p>
                                             </div>
@@ -521,9 +521,9 @@ const AboutUsSection = () => {
                         <div className="text-center mb-16">
                             <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
                                 style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.1)' }}>
-                                <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#647C90' }}></div>
+                                <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#647C90' }}></div>
                                 <span className="text-sm font-bold tracking-widest" style={{ color: '#647C90' }}>OUR MISSION & VALUES</span>
-                                <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#647C90' }}></div>
+                                <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#647C90' }}></div>
                             </div>
                             <h2 className="text-5xl md:text-6xl font-extrabold mb-2 leading-tight" style={{ color: "#647C90" }}>
                                 What Drives Us
