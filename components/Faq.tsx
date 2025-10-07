@@ -1,14 +1,8 @@
 import React, { useState, FC } from 'react';
-import Link from 'next/link'; // Import Next.js Link component
+import Link from 'next/link';
 
 const FAQ: FC = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
-
-    const containerClasses = "flex flex-col w-full py-4 px-4 mb-3 bg-white rounded shadow dark:bg-gray-700 cursor-pointer hover:shadow-md transition-shadow duration-300";
-    const answerClasses = "mt-1 text-sm text-white transition-all duration-1000 ease-in-out overflow-hidden";
-    const hiddenClasses = "max-h-0 opacity-0";
-    const visibleClasses = "max-h-[500px] opacity-100";
-    const toggleIconContainerClasses = "w-8 h-8 flex items-center justify-center border-2 border-purple-gray rounded-full";
 
     const faqItems = [
         {
@@ -25,7 +19,8 @@ const FAQ: FC = () => {
                         href='https://stats.sender.net/forms/aKrmkz/view'
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                        className="block w-full max-w-xs px-6 py-3 text-white rounded-2xl hover:opacity-90 text-center font-bold shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+                        style={{ backgroundColor: "#928490" }}
                     >
                         JOIN US
                     </a>
@@ -46,7 +41,8 @@ const FAQ: FC = () => {
                         href="https://stats.sender.net/forms/bmZM4r/view"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                        className="block w-full max-w-xs px-6 py-3 text-white rounded-2xl hover:opacity-90 text-center font-bold shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+                        style={{ backgroundColor: "#928490" }}
                     >
                         SIGN UP
                     </a>
@@ -65,12 +61,13 @@ const FAQ: FC = () => {
                     <br />
                     <p>With real-life examples from Kaylee's own career transition, 'How to Pivot' is essential reading for any dancer struggling with their next steps.</p>
                     <br />
-                    <div className="mt-4 mx-auto flex justify-center md:justify-start">
+                    <div className="mt-4 flex justify-center md:justify-start">
                         <a
                             href="https://buy.stripe.com/14k6oG8rQexsgCI147"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                            className="block w-full max-w-xs px-6 py-3 text-white rounded-2xl hover:opacity-90 text-center font-bold shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+                            style={{ backgroundColor: "#928490" }}
                         >
                             ORDER NOW
                         </a>
@@ -111,7 +108,8 @@ const FAQ: FC = () => {
                         href="https://buy.stripe.com/dR628qgYm750aek6oq"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                        className="block w-full max-w-xs px-6 py-3 text-white rounded-2xl hover:opacity-90 text-center font-bold shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+                        style={{ backgroundColor: "#928490" }}
                     >
                         ORDER NOW
                     </a>
@@ -146,7 +144,8 @@ const FAQ: FC = () => {
                         href="https://tidycal.com/pivotfordancers/mentorship-1"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full max-w-xs md:max-w-xs px-4 py-2 text-white bg-purple-gray rounded-md hover:bg-purple-gray opacity-80 hover:opacity-100 text-center"
+                        className="block w-full max-w-xs px-6 py-3 text-white rounded-2xl hover:opacity-90 text-center font-bold shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+                        style={{ backgroundColor: "#928490" }}
                     >
                         BOOK NOW
                     </a>
@@ -156,44 +155,56 @@ const FAQ: FC = () => {
     ];
 
     return (
-        <section id="faq-section" className="bg-beige py-5 pt-24 pb-1">
-            <div className="max-w-7xl py-4 px-4 mx-auto md:px-6">
-                <header className="mb-4 text-center">
-                    <h2 className="mt-2 font-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-4 leading-tight">
-                        FAQs
-                    </h2>
-                    <span className="text-md text-center uppercase dark:text-gray-500 transition-all duration-1000 delay-300">
-                        Feeling Curious?
-                    </span>
-                </header>
-                <div className="faq-items space-y-4">
-                    {faqItems.map((item, index) => (
-                        <div
-                            key={index}
-                            className={containerClasses}
-                            onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                        >
-                            <div className="flex items-center justify-between">
-                                <span className="font-merriweather dark:text-white text-xl">{item.question}</span>
-                                <div className={toggleIconContainerClasses}>
-                                    {activeIndex === index ? (
-                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                                        </svg>
-                                    ) : (
-                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    )}
+        <section id="faq-section" className="relative overflow-hidden" style={{ backgroundColor: "#E2DED0" }}>
+            <div className="absolute inset-0 bg-[radial-gradient(#d5d1c5_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
+
+            <div className="relative py-20 pt-32">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <header className="mb-4 text-center">
+                        <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
+                            style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.7)' }}>
+                            <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#E2DED0' }}></div>
+                            <span className="text-sm font-bold tracking-widest text-white">FAQS</span>
+                            <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
+                        </div>
+                    </header>
+
+                    <div className="faq-items space-y-6 max-w-4xl mx-auto">
+                        {faqItems.map((item, index) => (
+                            <div
+                                key={index}
+                                className="bg-white rounded-3xl shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer overflow-hidden"
+                                style={{ borderColor: "#647C90" }}
+                                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                            >
+                                <div className="flex items-center justify-between p-6">
+                                    <span className="font-bold text-xl pr-4" style={{ color: "#647C90" }}>
+                                        {item.question}
+                                    </span>
+                                    <div className="w-10 h-10 flex items-center justify-center rounded-full flex-shrink-0 shadow-lg transition-all duration-300"
+                                        style={{ backgroundColor: activeIndex === index ? "#928490" : "#647C90" }}>
+                                        {activeIndex === index ? (
+                                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                                            </svg>
+                                        ) : (
+                                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        )}
+                                    </div>
+                                </div>
+                                <div
+                                    className={`transition-all duration-500 ease-in-out overflow-hidden ${activeIndex === index ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+                                        }`}
+                                >
+                                    <div className="px-6 pb-6 text-base leading-relaxed font-medium" style={{ color: "#746C70" }}>
+                                        {item.answer}
+                                    </div>
                                 </div>
                             </div>
-                            <div
-                                className={`${answerClasses} ${activeIndex === index ? visibleClasses : hiddenClasses}`}
-                            >
-                                {item.answer}
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
