@@ -50,7 +50,7 @@ export const services: Service[] = [
         originalPrice: 100,
         duration: '60 minutes',
         features: [
-            'Behavioral and technical interview practice',
+            'Interview practice',
             'Industry-specific scenarios',
             'Actionable feedback',
             'Confidence building',

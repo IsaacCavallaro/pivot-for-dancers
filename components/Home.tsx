@@ -958,13 +958,7 @@ const HeroSection = () => {
               </h1>
 
               <p className="font-montserrat text-xl mb-8 leading-relaxed max-w-xl" style={{ color: "#746C70" }}>
-                We're helping professional dancers find meaningful work off the stage with our{" "}
-                <span
-                  className="px-2 py-1 rounded-lg font-semibold"
-                  style={{ backgroundColor: "#647C90", color: "#fff", border: "2px solid #647C90" }}
-                >
-                  dancer specfic
-                </span>{" "}
+                We're helping professional dancers find meaningful work off the stage with our  dancer specfic
                 career change resources.
               </p>
 
