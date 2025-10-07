@@ -253,7 +253,7 @@ const PivotPathsPage = () => {
             subtitle: "Your Dance Career Companion",
             content: (
                 <div className="flex-1 px-4 space-y-4">
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center mb-2">
                             <MapPin className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
                             <span style={{ color: "#647C90" }} className="font-semibold">
@@ -265,7 +265,7 @@ const PivotPathsPage = () => {
                         </div>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center mb-2">
                             <Heart className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
                             <span style={{ color: "#647C90" }} className="font-semibold">
@@ -277,7 +277,7 @@ const PivotPathsPage = () => {
                         </div>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center mb-2">
                             <CheckCircle className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
                             <span style={{ color: "#647C90" }} className="font-semibold">
@@ -296,7 +296,7 @@ const PivotPathsPage = () => {
             subtitle: "Navigate Your Next Chapter",
             content: (
                 <div className="flex-1 px-4 space-y-4">
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Skills Assessment
@@ -308,7 +308,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Industry Exploration
@@ -320,7 +320,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Network Building
@@ -339,7 +339,7 @@ const PivotPathsPage = () => {
             subtitle: "Unlock Your Potential",
             content: (
                 <div className="flex-1 px-4 space-y-4">
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Skill Mapping
@@ -351,7 +351,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Industry Exploration
@@ -363,7 +363,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Action Planning
@@ -382,7 +382,7 @@ const PivotPathsPage = () => {
             subtitle: "Mental Health & Confidence",
             content: (
                 <div className="flex-1 px-4 space-y-4">
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Daily Affirmations
@@ -394,7 +394,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Stress Management
@@ -406,7 +406,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Community Support
@@ -425,7 +425,7 @@ const PivotPathsPage = () => {
             subtitle: "Secure Your Future",
             content: (
                 <div className="flex-1 px-4 space-y-4">
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Budget Planning
@@ -437,7 +437,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Emergency Fund
@@ -449,7 +449,7 @@ const PivotPathsPage = () => {
                         </p>
                     </div>
 
-                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+                    <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
                         <div className="flex items-center justify-between mb-3">
                             <span style={{ color: "#647C90" }} className="font-semibold">
                                 Investment Basics

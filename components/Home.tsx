@@ -717,7 +717,7 @@ const HeroSection = () => {
       subtitle: "Your Dance Career Companion",
       content: (
         <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center mb-2">
               <MapPin className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
               <span style={{ color: "#647C90" }} className="font-semibold">
@@ -729,7 +729,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center mb-2">
               <Heart className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
               <span style={{ color: "#647C90" }} className="font-semibold">
@@ -741,7 +741,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center mb-2">
               <CheckCircle className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
               <span style={{ color: "#647C90" }} className="font-semibold">
@@ -760,7 +760,7 @@ const HeroSection = () => {
       subtitle: "Navigate Your Next Chapter",
       content: (
         <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Skills Assessment
@@ -772,7 +772,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Industry Exploration
@@ -784,7 +784,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Network Building
@@ -803,7 +803,7 @@ const HeroSection = () => {
       subtitle: "Unlock Your Potential",
       content: (
         <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Skill Mapping
@@ -815,7 +815,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Industry Exploration
@@ -827,7 +827,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Action Planning
@@ -846,7 +846,7 @@ const HeroSection = () => {
       subtitle: "Mental Health & Confidence",
       content: (
         <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Daily Affirmations
@@ -858,7 +858,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Stress Management
@@ -870,7 +870,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Community Support
@@ -889,7 +889,7 @@ const HeroSection = () => {
       subtitle: "Secure Your Future",
       content: (
         <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Budget Planning
@@ -901,7 +901,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Emergency Fund
@@ -913,7 +913,7 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#E2DED0" }}>
+          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
             <div className="flex items-center justify-between mb-3">
               <span style={{ color: "#647C90" }} className="font-semibold">
                 Investment Basics
