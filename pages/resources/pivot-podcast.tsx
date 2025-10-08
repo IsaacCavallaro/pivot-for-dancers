@@ -484,7 +484,6 @@ const PivotPodcastPage = () => {
                         </div>
                     </div>
                 </div>
-
                 {/* Popular Episodes Section */}
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -500,20 +499,22 @@ const PivotPodcastPage = () => {
                         <div className="grid md:grid-cols-3 gap-8">
                             {popularEpisodes.map((episode, index) => (
                                 <ScrollAnimation key={index} delay={index * 200}>
-                                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col">
                                         <div className="flex items-center justify-between mb-4">
                                             <span className="text-sm font-semibold text-purple-gray">{episode.episode}</span>
                                             <span className="text-sm text-brown-gray">{episode.duration}</span>
                                         </div>
                                         <h3 className="font-merriweather text-xl font-bold text-black mb-2">{episode.title}</h3>
                                         <p className="text-sm text-brown-gray mb-3">with {episode.guest}</p>
-                                        <button
-                                            onClick={() => window.open(episode.url, '_blank', 'noopener,noreferrer')}
-                                            className="w-full bg-purple-gray text-white py-2 rounded-lg hover:bg-light-gray transition-colors duration-300 flex items-center justify-center"
-                                        >
-                                            <Play className="w-4 h-4 mr-2" />
-                                            Listen Now
-                                        </button>
+                                        <div className="mt-auto">
+                                            <button
+                                                onClick={() => window.open(episode.url, '_blank', 'noopener,noreferrer')}
+                                                className="w-full bg-purple-gray text-white py-2 rounded-lg hover:bg-light-gray transition-colors duration-300 flex items-center justify-center"
+                                            >
+                                                <Play className="w-4 h-4 mr-2" />
+                                                Listen Now
+                                            </button>
+                                        </div>
                                     </div>
                                 </ScrollAnimation>
                             ))}
@@ -539,7 +540,7 @@ const PivotPodcastPage = () => {
                         <div className="grid md:grid-cols-3 gap-10">
                             {features.map((feature, index) => (
                                 <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="group bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 min-h-[360px] flex flex-col relative">
+                                    <div className="group bg-white rounded-2xl shadow-lg overflow-hidden text-center border-2 border-purple-gray transition-all duration-500 hover:shadow-xl hover:-translate-y-3 min-h-[360px] flex flex-col relative h-full">
                                         {/* Icon with elegant background */}
                                         <div className="relative pt-12 pb-6 z-20">
                                             <div className="w-20 h-20 rounded-full bg-purple-gray flex items-center justify-center mx-auto shadow-md border-4 border-white transition-transform duration-500 group-hover:scale-110">
@@ -559,7 +560,7 @@ const PivotPodcastPage = () => {
                                             </div>
 
                                             {/* Subtle badge at bottom of card */}
-                                            <div className="mt-6 pt-4 border-t border-light-gray border-opacity-30">
+                                            <div className="mt-auto pt-6 border-t border-light-gray border-opacity-30">
                                                 <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-3 py-1 rounded-full">
                                                     {feature.badge}
                                                 </span>
