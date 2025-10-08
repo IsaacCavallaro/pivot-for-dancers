@@ -1,11 +1,10 @@
 import Image from 'next/image';
-import { Product, coursePaymentUrl } from '../../data/products';
-import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, Mic, Headphones, Music, Podcast, DollarSign } from 'lucide-react';
+import { Product } from '../../data/products';
+import { Star, CheckCircle, Users, Award, Heart, TrendingUp, Calendar, Play, Mic, Podcast, DollarSign } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
-import { url } from 'inspector';
 
 const product: Product = {
     id: 5,
@@ -13,6 +12,7 @@ const product: Product = {
     subtitle: "FOR DANCERS IN TRANSITION",
     description: "Weekly conversations about career transition, mindset, and finding purpose beyond the stage",
     price: 0,
+    originalPrice: 0,
     url: "#", // Replace with actual podcast URL
     img: "/assets/pivot-podcast.png",
     category: "Podcast",
