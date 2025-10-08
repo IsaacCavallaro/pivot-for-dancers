@@ -21,11 +21,10 @@ const product: Product = {
     reviews: 47,
     features: [
         "Career Transition Stories",
-        "Mindset & Wellness Tips",
-        "Financial Guidance",
-        "Industry Expert Interviews",
+        "Taboo Topics",
+        "Interviews with Real Dancers",
         "Dancer Community Insights",
-        "Actionable Advice"
+        "Relatable Conversations"
     ],
     icon: Mic,
     gradient: "from-beige to-brown-gray",
@@ -239,19 +238,22 @@ const PivotPodcastPage = () => {
             title: "Weekly Episodes",
             description: "Fresh content every week featuring inspiring stories, expert interviews, and practical advice for dancers in transition.",
             icon: Calendar,
-            image: "/assets/podcast-recording.jpeg"
+            image: "/assets/podcast-recording.jpeg",
+            badge: "Free Access",
         },
         {
-            title: "Expert Interviews",
-            description: "Learn from career coaches, financial advisors, mental health professionals, and successful dancers who've made the pivot.",
+            title: "Dancer Interviews",
+            description: "Our guests are real dancer who performed full-time and successfully changed careers and have found meaning off the stage.",
             icon: Users,
-            image: "/assets/expert-interview.jpeg"
+            image: "/assets/expert-interview.jpeg",
+            badge: "Real Stories",
         },
         {
-            title: "Community Support",
-            description: "Join a growing community of dancers supporting each other through career transitions and life changes.",
+            title: "Real Conversations",
+            description: "No one wants to talk about changing careers after dance, so we’re starting the conversation. These are honest chats about the realities of life beyond dance.",
             icon: Award,
-            image: "/assets/community-support.jpeg"
+            image: "/assets/community-support.jpeg",
+            badge: "Taboo Topics",
         }
     ];
 
@@ -526,11 +528,11 @@ const PivotPodcastPage = () => {
                             <div className="text-center mb-16">
                                 <div className="flex items-center justify-center mb-6 relative">
                                     <h2 className="text-bold text-5xl font-bold text-black tracking-tight relative inline-block">
-                                        Why Listen to Pivot Podcast?
+                                        Listen to the Pivot Podcast
                                     </h2>
                                 </div>
                                 <p className="font-montserrat text-xl text-brown-gray mt-4 max-w-3xl mx-auto leading-relaxed">
-                                    Get the support and guidance you need through every stage of your career transition journey
+                                    Hear from real dancers who have successfully pivoted away from dance
                                 </p>
                             </div>
                         </ScrollAnimation>
@@ -559,7 +561,7 @@ const PivotPodcastPage = () => {
                                             {/* Subtle badge at bottom of card */}
                                             <div className="mt-6 pt-4 border-t border-light-gray border-opacity-30">
                                                 <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-3 py-1 rounded-full">
-                                                    Free Access
+                                                    {feature.badge}
                                                 </span>
                                             </div>
                                         </div>
@@ -577,15 +579,9 @@ const PivotPodcastPage = () => {
                             <ScrollAnimation delay={0}>
                                 <div className="flex items-center justify-center mb-4">
                                     <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
-                                        Start Your Listening Journey Today
+                                        Start Listening Today
                                     </h2>
                                 </div>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={300}>
-                                <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
-                                    Join thousands of dancers who have found guidance, inspiration, and community through the Pivot Podcast. Completely free.
-                                </p>
                             </ScrollAnimation>
 
                             <ScrollAnimation delay={500}>
@@ -605,14 +601,14 @@ const PivotPodcastPage = () => {
                                         onClick={() => window.open('https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm', '_blank', 'noopener,noreferrer')}
                                         className="bg-purple-gray hover:bg-light-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                     >
-                                        <span className="relative z-10">YOUTUBE PLAYLIST</span>
+                                        <span className="relative z-10">LISTEN ON YOUTUBE</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     </button>
                                     <button
-                                        onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                        onClick={() => window.open('https://open.spotify.com/show/4PfCp7OJWQCaqfGsbjbDZW?si=731ca82e254c43bd ', '_blank', 'noopener,noreferrer')}
                                         className="bg-purple-gray hover:bg-light-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                     >
-                                        <span className="relative z-10">APPLE PODCASTS</span>
+                                        <span className="relative z-10">LISTEN ON SPOTIFY</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     </button>
                                 </div>
