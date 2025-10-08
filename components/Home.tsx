@@ -6,7 +6,6 @@ import {
   CheckCircle,
   Users,
   Play,
-  Apple,
   Shield,
   MapPin,
   Heart,
@@ -23,10 +22,19 @@ import {
   Smartphone,
   Headphones,
   BookOpen,
-  BarChart,
 } from "lucide-react"
 
-// ScrollAnimation component to mimic Next.js scroll animations
+interface ScrollAnimationProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  direction?: "up" | "down" | "left" | "right" | "scale";
+  duration?: number;
+  threshold?: number;
+  style?: React.CSSProperties;
+  [key: string]: any;
+}
+
 const ScrollAnimation = ({
   children,
   className = "",
@@ -35,7 +43,7 @@ const ScrollAnimation = ({
   duration = 0.6,
   threshold = 0.1,
   ...props
-}) => {
+}: ScrollAnimationProps) => {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef(null)
 
@@ -377,7 +385,7 @@ const SuiteCTASection = () => {
 };
 
 const CommunitySection = () => {
-  const [shuffledVideos, setShuffledVideos] = useState([])
+  const [shuffledVideos, setShuffledVideos] = useState<any[]>([]);
 
   const playlistVideos = [
     {
@@ -413,7 +421,7 @@ const CommunitySection = () => {
   ];
 
   // Shuffle function using Fisher-Yates algorithm
-  const shuffleArray = (array) => {
+  const shuffleArray = (array: any[]) => {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -552,10 +560,6 @@ const CommunitySection = () => {
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [currentScreen, setCurrentScreen] = useState(0)
-  const [email, setEmail] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState("idle")
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     setIsVisible(true)
@@ -568,100 +572,6 @@ const HeroSection = () => {
 
     return () => clearInterval(interval)
   }, [])
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value)
-    if (submitStatus !== "idle") {
-      setSubmitStatus("idle")
-    }
-    if (error) {
-      setError(null)
-    }
-  }
-
-  const inputClass = `
-    w-full px-4 py-4 
-    text-sm text-gray-900 placeholder-gray-400 
-    bg-gray-100 border border-gray-300 
-    rounded-md dark:text-gray-400 
-    dark:placeholder-gray-500 dark:bg-gray-700 
-    dark:border-gray-700 md:w-2/3
-  `.trim()
-
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
-  const handleSubmit = async () => {
-    const trimmedEmail = email.trim()
-
-    if (!trimmedEmail) {
-      setError("Please provide your email to join us.")
-      setSubmitStatus("error")
-      return
-    }
-
-    if (!validateEmail(trimmedEmail)) {
-      setError("Please enter a valid email address.")
-      setSubmitStatus("error")
-      return
-    }
-
-    setIsSubmitting(true)
-    setError(null)
-    setSubmitStatus("idle")
-
-    try {
-      const iframe = document.createElement("iframe")
-      iframe.name = "hidden-iframe"
-      iframe.style.display = "none"
-      document.body.appendChild(iframe)
-
-      const form = document.createElement("form")
-      form.method = "POST"
-      form.action = "https://example.com/submit"
-      form.target = "hidden-iframe"
-      form.style.display = "none"
-
-      const emailInput = document.createElement("input")
-      emailInput.type = "email"
-      emailInput.name = "email"
-      emailInput.value = trimmedEmail
-
-      form.appendChild(emailInput)
-      document.body.appendChild(form)
-      form.submit()
-
-      setTimeout(() => {
-        document.body.removeChild(form)
-        document.body.removeChild(iframe)
-      }, 1000)
-
-      setSubmitStatus("success")
-      setEmail("")
-      setError(null)
-    } catch (fallbackError) {
-      console.error("Submission error:", fallbackError)
-      setError("There was an error submitting your email. Please try again.")
-      setSubmitStatus("error")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleSubmit()
-    }
-  }
-
-  const getButtonText = () => {
-    if (isSubmitting) return "JOINING..."
-    if (submitStatus === "success") return "JOINED!"
-    if (submitStatus === "error") return "TRY AGAIN"
-    return "JOIN US"
-  }
 
   const stats = [
     { number: "25+", label: "years of dance experience", icon: Star },
