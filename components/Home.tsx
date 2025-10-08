@@ -199,30 +199,27 @@ const SuiteCTASection = () => {
   const products = [
     {
       title: "Products",
-      description: "Your private toolkit for career transition, mindset wellness, and financial planning",
+      description: "Dancer-focused digital products to guide you through your career transition",
       icon: Smartphone,
       color: "#928490",
       link: "/products",
       badge: "Digital Guides",
-      items: ["E-book", "Mini Course"]
     },
     {
       title: "Services",
-      description: "A comprehensive 5-year roadmap for dancers planning their career transition",
+      description: "Bespoke career change services tailored to your unique experience and goals",
       icon: BookOpen,
       color: "#928490",
       link: "/services",
       badge: "Personalized Support",
-      items: ["Mentorship", "Mock Interviews"]
     },
     {
       title: "Resources",
-      description: "Weekly conversations about career transition, mindset, and finding purpose",
+      description: "Countless hours of free, accessible content to help you feel less alone on your pivot journe",
       icon: Headphones,
       color: "#928490",
       link: "/resources",
       badge: "Free Tools",
-      items: ["Mobile App", "Podcast", "Research"]
     },
   ];
 
@@ -313,23 +310,6 @@ const SuiteCTASection = () => {
                     {product.title}
                   </span>
                 </h4>
-
-                {/* Enhanced Items list with better spacing - No ScrollAnimation */}
-                <div className="flex flex-wrap justify-center gap-3 mb-6">
-                  {product.items.map((item, itemIndex) => (
-                    <span
-                      key={itemIndex}
-                      className="inline-block px-3 py-2 text-xs font-semibold rounded-xl transition-all duration-700 group-hover:scale-105 group-hover:shadow-md border group-hover:bg-[#647C90] group-hover:bg-opacity-15 group-hover:border-[#647C90] group-hover:border-opacity-20 group-hover:text-[#647C90]"
-                      style={{
-                        backgroundColor: 'rgba(226, 222, 208, 0.15)',
-                        color: '#647C90',
-                        borderColor: 'rgba(146, 132, 144, 0.2)'
-                      }}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
 
                 {/* Enhanced Description - No ScrollAnimation */}
                 <p className="text-gray-600 text-sm mb-8 leading-relaxed group-hover:text-gray-800 transition-colors duration-700 relative z-10 font-medium">
@@ -937,8 +917,7 @@ const HeroSection = () => {
               </h1>
 
               <p className="font-montserrat text-xl mb-8 leading-relaxed max-w-xl" style={{ color: "#746C70" }}>
-                We're helping professional dancers find meaningful work off the stage with our  dancer specfic
-                career change resources.
+                We’re helping professional dancers find meaning off the stage through dancer-specific career change resources.
               </p>
 
               <div className="mt-12">
