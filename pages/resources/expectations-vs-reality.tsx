@@ -1,7 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { Product, coursePaymentUrl } from '../../data/products';
-import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, ExternalLink } from 'lucide-react';
+import { Users, Globe, Award, Heart, Shield, TrendingUp, Calendar, ExternalLink } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
@@ -17,31 +15,6 @@ import {
     ResponsiveContainer,
     LabelList,
 } from 'recharts';
-
-// Product data for the page
-const product: Product = {
-    id: 6,
-    name: "Career Transition Insights",
-    subtitle: "DATA-DRIVEN GUIDANCE",
-    description: "Research shows a significant gap between when dancers expect to retire and when they actually do",
-    price: 0,
-    url: "#",
-    img: "/assets/career-insights.png",
-    category: "Research",
-    duration: "Lifetime Access",
-    rating: 4.9,
-    reviews: 28,
-    features: [
-        "Data-Driven Career Insights",
-        "Retirement Age Statistics",
-        "Country-Specific Analysis",
-        "Actionable Transition Planning",
-        "Expert Research Findings",
-        "Free Access"
-    ],
-    icon: TrendingUp,
-    gradient: "from-beige to-brown-gray",
-};
 
 // Counter component from reference code
 const Counter = ({ end, duration }: { end: number; duration: number }) => {
