@@ -25,7 +25,6 @@ const product: Service = {
         "Industry-Specific Questions",
         "Personalized Feedback",
         "Confidence Building Techniques",
-        "Follow-Up Resources",
         "Recording Available"
     ],
     icon: Mic,
@@ -249,7 +248,7 @@ const MockInterviewPage = () => {
         },
         {
             title: "Highlight Transferable Skills",
-            description: "Learn how to effectively communicate the valuable skills you've gained as a dancer - discipline, teamwork, adaptability, and performance under pressure.",
+            description: "Learn how to effectively communicate the valuable skills you've gained as a dancer such as discipline, teamwork, adaptability, and performance under pressure. ",
             icon: Award,
         },
         {
@@ -396,13 +395,6 @@ const MockInterviewPage = () => {
                                                     {benefit.description}
                                                 </p>
                                             </div>
-
-                                            {/* Subtle badge at bottom of card */}
-                                            <div className="mt-6 pt-4 border-t border-light-gray border-opacity-30">
-                                                <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-3 py-1 rounded-full">
-                                                    Professional Preparation
-                                                </span>
-                                            </div>
                                         </div>
                                     </div>
                                 </ScrollAnimation>
@@ -419,22 +411,58 @@ const MockInterviewPage = () => {
                             </div>
                         </ScrollAnimation>
 
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {processSteps.map((step, index) => (
-                                <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group relative overflow-hidden flex flex-col h-full">
+                        {/* Timeline */}
+                        <div className="relative">
+                            {/* Vertical line */}
+                            <div className="absolute w-0.5 h-full bg-[#928490] top-0 left-1/2 transform -translate-x-1/2"></div>
 
-                                        <div className="w-16 h-16 rounded-full bg-beige border-2 border-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <span className="text-purple-gray font-bold text-2xl">{index + 1}</span>
-                                        </div>
-                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{step.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow mb-6">{step.description}</p>
-
-                                        {/* Badge added here */}
-                                        <div className="mt-auto pt-4 border-t border-light-gray border-opacity-30">
-                                            <span className="inline-block text-xs font-montserrat text-white bg-purple-gray px-3 py-1 rounded-full">
-                                                Step {index + 1}
-                                            </span>
+                            {processSteps.map((item, index) => (
+                                <ScrollAnimation key={index} delay={index * 200}>
+                                    <div className="relative mb-12 md:mb-16">
+                                        {/* Timeline Card */}
+                                        <div
+                                            className={`relative flex items-center ${index % 2 === 0
+                                                ? 'flex-row md:justify-start'
+                                                : 'flex-row-reverse md:justify-end'
+                                                }`}
+                                        >
+                                            <div className="w-full md:w-1/2 px-4 md:px-8 flex items-center">
+                                                <div
+                                                    className="bg-white p-6 rounded-2xl shadow-lg border text-center hover:shadow-xl transition-all duration-300 group relative z-10 w-full"
+                                                    style={{ borderColor: "#E2DED0" }}
+                                                >
+                                                    <div className="flex flex-col items-center mb-3">
+                                                        <div
+                                                            className="w-12 h-12 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300"
+                                                            style={{ backgroundColor: "#928490" }}
+                                                        >
+                                                            <item.icon className="w-6 h-6 text-white" />
+                                                        </div>
+                                                        <h3
+                                                            className="text-xl font-bold"
+                                                            style={{ color: "#647C90" }}
+                                                        >
+                                                            {item.title}
+                                                        </h3>
+                                                    </div>
+                                                    <p className="text-sm" style={{ color: "#746C70" }}>
+                                                        {item.description}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            {/* Timeline Dot and Connector */}
+                                            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
+                                                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-20">
+                                                    <div className="w-2 h-2 bg-[#647C90] rounded-full"></div>
+                                                </div>
+                                                {/* Connector Line */}
+                                                <div
+                                                    className={`hidden md:block absolute h-0.5 bg-[#928490] z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
+                                                        } w-[calc(50%-2rem)]`}
+                                                ></div>
+                                            </div>
+                                            {/* Empty Space for Desktop Alternating Layout */}
+                                            <div className="hidden md:block w-1/2"></div>
                                         </div>
                                     </div>
                                 </ScrollAnimation>
@@ -450,15 +478,9 @@ const MockInterviewPage = () => {
                             <ScrollAnimation delay={0}>
                                 <div className="flex items-center justify-center mb-4">
                                     <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
-                                        Ready to Ace Your Next Interview?
+                                        Ready to ace your muggle interview?
                                     </h2>
                                 </div>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={300}>
-                                <p className="font-montserrat text-lg text-brown-gray max-w-2xl mx-auto mb-8">
-                                    Don't let interview nerves hold you back from your dream career. Practice with confidence and land the job you want.
-                                </p>
                             </ScrollAnimation>
 
                             <ScrollAnimation delay={400}>
@@ -490,27 +512,6 @@ const MockInterviewPage = () => {
                                     <span className="relative z-10">BOOK NOW</span>
                                     <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </button>
-                            </ScrollAnimation>
-
-                            {/* Questions and Cancellation Policy */}
-                            <ScrollAnimation delay={900}>
-                                <div className="border-t border-gray-200 pt-8 mt-8">
-                                    <div className="flex justify-center">
-                                        <div className="text-center max-w-md">
-                                            <div>
-                                                <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
-                                                    <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
-                                                    Questions?
-                                                </h4>
-                                                <p className="font-montserrat text-brown-gray">
-                                                    <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
-                                                        kaylee@pivotfordancers.com
-                                                    </a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </ScrollAnimation>
                         </div>
                     </div>
