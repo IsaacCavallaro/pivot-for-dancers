@@ -12,8 +12,8 @@ const product: Service = {
     name: "Mock Interview",
     subtitle: "INTERVIEW PREPARATION",
     description: "Professional interview practice sessions designed specifically for dancers transitioning to new careers",
-    price: 75,
-    originalPrice: null,
+    price: 29.99,
+    originalPrice: 75,
     url: 'https://tidycal.com/pivotfordancers/mock-interview',
     img: "/assets/mock-interview.png",
     category: "Interview Prep",
@@ -172,7 +172,7 @@ const MockInterviewPage = () => {
     const stats = [
         { number: "60min", label: "Practice Session", icon: Clock },
         { number: "1-on-1", label: "Personalized", icon: User },
-        { number: "$75", label: "Investment", icon: Target },
+        { number: "$29", label: "Investment", icon: Target },
         { number: "100%", label: "Dancer-Focused", icon: Heart }
     ];
 
@@ -473,9 +473,12 @@ const MockInterviewPage = () => {
                             </ScrollAnimation>
 
                             <ScrollAnimation delay={500}>
-                                <div className="flex justify-center items-center gap-4 mb-8">
+                                <div className="flex items-center justify-center gap-4 mb-4">
                                     <span className="font-merriweather text-5xl font-bold text-dark-gray">${product.price}</span>
-                                    <span className="font-montserrat text-lg text-brown-gray">for 60-minute session</span>
+                                    <span className="text-lg text-gray-500 line-through">${product.originalPrice}</span>
+                                    <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
+                                        Save $40
+                                    </span>
                                 </div>
                             </ScrollAnimation>
 

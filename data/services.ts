@@ -40,8 +40,8 @@ export const services: Service[] = [
     {
         id: 2,
         name: 'Mock Interviews',
-        subtitle: 'Practice Makes Perfect',
-        description: 'Sharpen your interview skills and get constructive feedback to land your dream job',
+        subtitle: 'Your Interview Dress Rehearsal',
+        description: 'Sharpen your interview skills and talk about your dance experience in a way employers understand',
         img: '/assets/mock-interview.png',
         icon: MessageSquare,
         rating: 4.9,
