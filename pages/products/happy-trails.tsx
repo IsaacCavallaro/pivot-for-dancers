@@ -167,10 +167,10 @@ const HappyTrailsPage = () => {
     }, []);
 
     const stats = [
-        { number: "4", label: "Comprehensive Modules", icon: Award },
+        { number: "4", label: "Guided Modules", icon: Award },
         { number: "50+", label: "Job Ideas", icon: Target },
         { number: "5", label: "Year Roadmap", icon: MapPin },
-        { number: "16+", label: "5-Star Reviews", icon: Star }
+        { number: "3", label: "Exclusive Resources", icon: Star }
     ];
 
     const testimonials = [
@@ -324,9 +324,15 @@ const HappyTrailsPage = () => {
                 {/* What is Happy trails sections */}
                 <div className="py-16 bg-light-gray">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="mb-4">
-                            <h2 className="text-bold text-center text-5xl font-bold text-white">What is Happy Trails?</h2>
-                        </div>
+                        <ScrollAnimation>
+                            <div className="text-center mb-12">
+                                <h2 className="text-bold text-center text-5xl font-bold text-white pb-10">What is Happy Trails?</h2>
+                                <p className="font-montserrat text-xl text-white max-w-3xl mx-auto">
+                                    Happy Trails is a self-paced, 4-part mini course named after the famous Broadway send-off to help you make a plan for before, during, and after your pivot.
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             {/* Left Column */}
                             <div>
@@ -338,7 +344,7 @@ const HappyTrailsPage = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    Pivot for Dancers offers <span className="font-bold" style={{ color: "#647C90" }}>career change resources</span> for professional dancers. Our mission is to help you find meaningful work off the stage. Run by former <span className="font-bold" style={{ color: "#647C90" }}>professional dancers</span> who have successfully changed careers.
+                                                    5-year career change roadmap
                                                 </p>
                                             </div>
                                         </div>
@@ -351,7 +357,7 @@ const HappyTrailsPage = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    We're here to share what we've learned about making a pivot with our growing community of <span className="font-bold" style={{ color: "#647C90" }}>thousands of fellow dancers</span> just like you.
+                                                    Self-paced, 4-part course
                                                 </p>
                                             </div>
                                         </div>
@@ -364,7 +370,33 @@ const HappyTrailsPage = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're <span className="font-bold" style={{ color: "#647C90" }}>not alone</span> in wanting to change careers as a professional dancer.
+                                                    Roadmap for before, during, and after your pivot
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Tailored to your dance experience
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Exclusive Happy Trails resources
                                                 </p>
                                             </div>
                                         </div>
