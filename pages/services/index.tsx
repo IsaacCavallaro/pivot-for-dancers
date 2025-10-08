@@ -181,6 +181,9 @@ const ServicesSection: React.FC = () => {
                                                     <span className="text-sm line-through font-medium" style={{ color: "#928490" }}>
                                                         ${service.originalPrice}
                                                     </span>
+                                                    <span className="text-sm font-medium" style={{ color: "#928490" }}>
+                                                        USD
+                                                    </span>
                                                     <div className="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full font-bold shadow-lg">
                                                         Save ${service.originalPrice - service.price}
                                                     </div>
