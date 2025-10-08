@@ -192,31 +192,26 @@ const AboutUsSection = () => {
         { number: "15%", label: "Monthly Growth", icon: TrendingUp }
     ];
 
-    const founderTimeline = [
+    const journeyTimeline = [
         {
-            title: "Early Dance Career",
-            description: "Started dancing at age 3 in Florida, training on the competition circuit",
+            title: "The Dream",
+            description: "You've trained to be a dancer since you were tiny. You graduate and finally book your first job. You're buzzing and motivated, hungry for the next audition, ready for the next challenge. You work consistently as a professional dancer and you feel like you're truly living the dream.",
             icon: Star
         },
         {
-            title: "Professional Dancer",
-            description: "Almost a decade performing full time with Universal Studios and Royal Caribbean",
+            title: "The Grit",
+            description: "You're still dancing professionally and loving it. You also teach four nights a week,take any extra gig you can get, but still struggle to make ends meet.You work nights and most holidays and sometimes feel like you're missing out on other aspects of life. But you're living the dream, so who cares?",
             icon: Award
         },
         {
-            title: "The Pivot",
-            description: "In 2018, when burnout set in and priorities shifted, took the last bow",
+            title: "The Reality",
+            description: "You're older, achy, and unsure of where to go. You're no longer challenged and feel bored doing the same choreography day after day. You're also broke and have no idea how to get ahead financially. Plus, you crave stability but keep these thoughts to yourself because you're living the dream, right?",
             icon: TrendingUp
         },
         {
-            title: "New Beginnings",
-            description: "Started freelance business, moved to Australia, and transitioned to corporate tech",
+            title: "The Unknown",
+            description: "You take a step back and reassess your goals and what you want for the future. Maybe you start to explore different career options, find ways to balance your life and finances, and look for new ways to reignite your passion. This is the stage where you rethink and start to pivot, seeking a new direction",
             icon: Briefcase
-        },
-        {
-            title: "Founded Pivot for Dancers",
-            description: "Launched in 2020 to help other dancers navigate their career transitions",
-            icon: Users
         }
     ];
 
@@ -293,11 +288,7 @@ const AboutUsSection = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
-                                                    Pivot for Dancers offers{" "}
-                                                    <span className="font-bold">
-                                                        career change
-                                                    </span>{" "}
-                                                    resources for professional dancers. Our mission is to help you find meaningful work off the stage.
+                                                    Career change resources for professional dancers
                                                 </p>
                                             </div>
                                         </div>
@@ -312,17 +303,14 @@ const AboutUsSection = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
-                                                    Run by former professional{" "}
-                                                    <span className="font-bold">
-                                                        dancers
-                                                    </span>{" "}
-                                                    who have successfully changed careers, we're here to share what we've learned about making a pivot with our growing community of fellow dancers.
+                                                    We help dancers find meaning off the stage
                                                 </p>
                                             </div>
                                         </div>
                                     </ScrollAnimation>
 
-                                    <ScrollAnimation delay={400}>
+
+                                    <ScrollAnimation delay={200}>
                                         <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
                                             style={{ borderColor: "#647C90" }}>
                                             <div className="flex items-start">
@@ -331,15 +319,44 @@ const AboutUsSection = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
-                                                    There are thousands of other dancers{" "}
-                                                    <span className="font-bold">
-                                                        just like you
-                                                    </span>{" "}
-                                                    in our community. Whether you've suffered an injury, been diagnosed with an illness, or simply found new dreams to pursue, you're not alone.
+                                                    Run by a former professional dancer
                                                 </p>
                                             </div>
                                         </div>
                                     </ScrollAnimation>
+
+
+                                    <ScrollAnimation delay={200}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+                                            style={{ borderColor: "#647C90" }}>
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                                                    style={{ backgroundColor: "#647C90" }}>
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
+                                                    Structured tools, mindset shifts, and taboo conversations
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+
+                                    <ScrollAnimation delay={200}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-2xl border-2 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group"
+                                            style={{ borderColor: "#647C90" }}>
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                                                    style={{ backgroundColor: "#647C90" }}>
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="text-lg leading-relaxed font-medium" style={{ color: "#647C90" }}>
+                                                    What to do next whether you’re injured, unwell, or your priorities have changed
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
                                 </div>
                             </div>
 
@@ -411,24 +428,9 @@ const AboutUsSection = () => {
                             <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
                                 style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
                                 <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
-                                <span className="text-sm font-bold tracking-widest text-white">MEET OUR FOUNDER</span>
+                                <span className="text-sm font-bold tracking-widest text-white">Your Journey</span>
                                 <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
                             </div>
-                            <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                                Kaylee Randall
-                            </h2>
-                            <div className="relative w-40 h-40 mx-auto mb-8">
-                                <img
-                                    src="/assets/kr-head-shot.jpg"
-                                    alt="Kaylee Randall"
-                                    className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-white"
-                                />
-                            </div>
-                            <p className="text-lg text-white max-w-3xl mx-auto font-light">
-                                Kaylee is a dancer who <em>actually</em> performed full time for many
-                                years and who still managed to build a fulfilling life beyond dance.
-                                She's here to share how you can too.
-                            </p>
                         </div>
                     </ScrollAnimation>
 
@@ -437,7 +439,7 @@ const AboutUsSection = () => {
                         {/* Vertical line */}
                         <div className="absolute w-0.5 h-full bg-white/40 top-0 left-1/2 transform -translate-x-1/2"></div>
 
-                        {founderTimeline.map((item, index) => (
+                        {journeyTimeline.map((item, index) => (
                             <ScrollAnimation key={index} delay={index * 200}>
                                 <div className="relative mb-12 md:mb-16">
                                     {/* Timeline Card */}
@@ -529,7 +531,7 @@ const AboutUsSection = () => {
                                 What Drives Us
                             </h2>
                             <p className="text-xl font-light leading-relaxed" style={{ color: "#647C90" }}>
-                                What drives us to support dancers through their career transitions
+                                Our mission is to foster empowerment, community, and authenticity within the dance industry to support dancers as they step onto their next stage of life.
                             </p>
                         </div>
                     </ScrollAnimation>
@@ -539,19 +541,19 @@ const AboutUsSection = () => {
                                 title: "Empowerment",
                                 description: "We believe every dancer has valuable skills that translate beyond the stage. Our mission is to help you recognize and leverage these talents in your new career path.",
                                 icon: Star,
-                                badge: "Core Value"
+                                badge: "Permission"
                             },
                             {
                                 title: "Community",
                                 description: "No dancer should navigate career change alone. We foster a supportive community where dancers share experiences, advice, and encouragement throughout their transitions.",
                                 icon: Users,
-                                badge: "Core Value"
+                                badge: "Belonging"
                             },
                             {
                                 title: "Authenticity",
                                 description: "Our guidance comes from real experience. As former professional dancers ourselves, we understand the unique challenges and opportunities that come with career pivoting.",
                                 icon: CheckCircle,
-                                badge: "Core Value"
+                                badge: "Real"
                             }
                         ].map((value, index) => (
                             <ScrollAnimation key={index} delay={index * 200}>
@@ -597,30 +599,26 @@ const AboutUsSection = () => {
                             {
                                 title: "Success Stories",
                                 description: "Dancers who have successfully transitioned to fulfilling careers in tech, education, business, and more",
-                                number: "500+",
                                 icon: CheckCircle,
-                                badge: "Verified"
+                                href: "https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
                             },
                             {
                                 title: "Global Reach",
-                                description: "Countries where our community members are located, creating a worldwide support network",
-                                number: "25+",
+                                description: "No need to be in New York or London to take advantage of our career change resources",
                                 icon: Globe,
-                                badge: "Worldwide"
+                                href: "/products"
                             },
                             {
                                 title: "Career Paths",
-                                description: "Different industries our dancers have successfully transitioned into",
-                                number: "40+",
+                                description: "Dancers can be successful in so many other industries when you give yourself permission to step onto your next stage",
                                 icon: Star,
-                                badge: "Diverse"
+                                href: "/products/happy-trails"
                             },
                             {
                                 title: "Community Growth",
-                                description: "Monthly increase in new dancers joining our supportive community",
-                                number: "15%",
+                                description: "We talk about all the things no one told you about life after dance, including the hard truths you’d probably rather ignore",
                                 icon: Users,
-                                badge: "Growing"
+                                href: "https://www.youtube.com/playlist?list=PLjTsov7LqGgKSPEHwyLlToRdNi2tQvPvH"
                             }
                         ].map((impact, index) => (
                             <ScrollAnimation key={index} delay={index * 150}>
@@ -628,16 +626,17 @@ const AboutUsSection = () => {
                                     <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-500 shadow-2xl" style={{ backgroundColor: "#647C90" }}>
                                         <impact.icon className="w-8 h-8 text-white" />
                                     </div>
-                                    <div className="text-4xl font-black mb-3" style={{ color: "#647C90" }}>
-                                        {impact.number}
-                                    </div>
                                     <h3 className="text-lg font-black mb-3" style={{ color: "#647C90" }}>{impact.title}</h3>
-                                    <p className="text-sm leading-relaxed flex-grow font-medium" style={{ color: "#928490" }}>{impact.description}</p>
-                                    <div className="mt-4">
-                                        <span className="inline-block px-4 py-2 text-xs font-bold rounded-full shadow-lg" style={{ backgroundColor: "#928490", color: "#fff" }}>
-                                            {impact.badge}
-                                        </span>
-                                    </div>
+                                    <p className="text-sm leading-relaxed flex-grow font-medium mb-5" style={{ color: "#928490" }}>{impact.description}</p>
+
+                                    {/* LEARN MORE Button */}
+                                    <a
+                                        href={impact.href}
+                                        className="inline-flex items-center justify-center px-6 py-3 rounded-full backdrop-blur-xl border shadow-lg transition-all duration-500 group-hover:scale-105 text-white font-bold text-sm mt-auto"
+                                        style={{ backgroundColor: "#928490", borderColor: 'rgba(100, 124, 144, 0.3)' }}
+                                    >
+                                        LEARN MORE
+                                    </a>
                                 </div>
                             </ScrollAnimation>
                         ))}
