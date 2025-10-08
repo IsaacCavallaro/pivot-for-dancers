@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from 'react';
 // Mock Interview service data
 const product: Service = {
     id: 5,
-    name: "Mock Interview",
+    name: "Mock Interviews",
     subtitle: "INTERVIEW PREPARATION",
     description: "Professional interview practice sessions designed specifically for dancers transitioning to new careers",
     price: 29.99,
@@ -170,9 +170,9 @@ const MockInterviewPage = () => {
     }, []);
 
     const stats = [
-        { number: "60min", label: "Practice Session", icon: Clock },
-        { number: "1-on-1", label: "Personalized", icon: User },
-        { number: "$29", label: "Investment", icon: Target },
+        { number: "60", label: "Minute Sessions", icon: Clock },
+        { number: "1", label: "Dedicated Mentor", icon: User },
+        { number: "9", label: "Structured Questions", icon: Target },
         { number: "100%", label: "Dancer-Focused", icon: Heart }
     ];
 
@@ -276,7 +276,7 @@ const MockInterviewPage = () => {
                                         <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
                                     </div>
                                     <h1 className="text-5xl md:text-7xl font-bold text-black">
-                                        Mock Interview
+                                        Mock Interviews
                                     </h1>
                                 </ScrollAnimation>
                                 <ScrollAnimation delay={300}>

@@ -21,10 +21,9 @@ const product: Product = {
     rating: 5.0,
     reviews: 0,
     features: [
-        "3x One-Hour Virtual Sessions",
+        "3 Virtual Sessions",
         "Goal-Setting Activities",
         "Guided Reflection",
-        "Tailored Resources",
         "Action Plans",
         "Networking Opportunities"
     ],
@@ -170,9 +169,9 @@ const MentorshipPage = () => {
     }, []);
 
     const stats = [
-        { number: "3x", label: "Virtual Sessions", icon: MessageCircle },
-        { number: "1", label: "Hour Each", icon: Clock },
-        { number: "$150", label: "Total Investment", icon: Target },
+        { number: "3", label: "Virtual Sessions", icon: MessageCircle },
+        { number: "180", label: "Minutes of Support", icon: Clock },
+        { number: "6", label: "Focus Areas", icon: Target },
         { number: "1", label: "Dedicated Mentor", icon: User }
     ];
 
@@ -285,7 +284,7 @@ const MentorshipPage = () => {
                                             onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
                                             className="bg-purple-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                         >
-                                            <span className="relative z-10">BUY NOW</span>
+                                            <span className="relative z-10">BOOK NOW</span>
                                             <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         </button>
                                     </div>
@@ -299,7 +298,7 @@ const MentorshipPage = () => {
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
                             <div className="text-center mb-12">
-                                <h2 className="text-bold text-5xl font-bold text-white mb-8">What is the mentorship program?</h2>
+                                <h2 className="text-bold text-5xl font-bold text-white mb-8">What is the Mentorship Program?</h2>
                                 <p className="font-montserrat text-xl text-white max-w-3xl mx-auto">
                                     Private, one-on-one support to help you find meaningful work off the stage. Our mentorship program provides personalized guidance from experienced former professional dancers who understand your unique journey.
                                 </p>
@@ -355,15 +354,59 @@ const MentorshipPage = () => {
                             </div>
                         </ScrollAnimation>
 
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {dancerStages.map((stage, index) => (
-                                <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
-                                        <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <stage.icon className="w-8 h-8 text-white" />
+                        {/* Timeline */}
+                        <div className="relative">
+                            {/* Vertical line */}
+                            <div className="absolute w-0.5 h-full bg-[#928490] top-0 left-1/2 transform -translate-x-1/2"></div>
+
+                            {dancerStages.map((item, index) => (
+                                <ScrollAnimation key={index} delay={index * 200}>
+                                    <div className="relative mb-12 md:mb-16">
+                                        {/* Timeline Card */}
+                                        <div
+                                            className={`relative flex items-center ${index % 2 === 0
+                                                ? 'flex-row md:justify-start'
+                                                : 'flex-row-reverse md:justify-end'
+                                                }`}
+                                        >
+                                            <div className="w-full md:w-1/2 px-4 md:px-8 flex items-center">
+                                                <div
+                                                    className="bg-white p-6 rounded-2xl shadow-lg border text-center hover:shadow-xl transition-all duration-300 group relative z-10 w-full"
+                                                    style={{ borderColor: "#E2DED0" }}
+                                                >
+                                                    <div className="flex flex-col items-center mb-3">
+                                                        <div
+                                                            className="w-12 h-12 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300"
+                                                            style={{ backgroundColor: "#928490" }}
+                                                        >
+                                                            <item.icon className="w-6 h-6 text-white" />
+                                                        </div>
+                                                        <h3
+                                                            className="text-xl font-bold"
+                                                            style={{ color: "#647C90" }}
+                                                        >
+                                                            {item.title}
+                                                        </h3>
+                                                    </div>
+                                                    <p className="text-sm" style={{ color: "#746C70" }}>
+                                                        {item.description}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            {/* Timeline Dot and Connector */}
+                                            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
+                                                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-20">
+                                                    <div className="w-2 h-2 bg-[#647C90] rounded-full"></div>
+                                                </div>
+                                                {/* Connector Line */}
+                                                <div
+                                                    className={`hidden md:block absolute h-0.5 bg-[#928490] z-10 top-1/2 ${index % 2 === 0 ? 'left-full' : 'right-full'
+                                                        } w-[calc(50%-2rem)]`}
+                                                ></div>
+                                            </div>
+                                            {/* Empty Space for Desktop Alternating Layout */}
+                                            <div className="hidden md:block w-1/2"></div>
                                         </div>
-                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{stage.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{stage.description}</p>
                                     </div>
                                 </ScrollAnimation>
                             ))}
@@ -431,28 +474,9 @@ const MentorshipPage = () => {
                                     onClick={() => window.open(product.url, '_blank', 'noopener,noreferrer')}
                                     className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group mb-8"
                                 >
-                                    <span className="relative z-10">BUY NOW</span>
+                                    <span className="relative z-10">BOOK NOW</span>
                                     <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </button>
-                            </ScrollAnimation>
-
-                            {/* Questions Section*/}
-                            <ScrollAnimation delay={900}>
-                                <div className="border-t border-gray-200 pt-8 mt-8">
-                                    <div className="flex justify-center">
-                                        <div className="text-center max-w-md">
-                                            <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
-                                                <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
-                                                Questions?
-                                            </h4>
-                                            <p className="font-montserrat text-brown-gray">
-                                                <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
-                                                    kaylee@pivotfordancers.com
-                                                </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
                             </ScrollAnimation>
                         </div>
                     </div>
