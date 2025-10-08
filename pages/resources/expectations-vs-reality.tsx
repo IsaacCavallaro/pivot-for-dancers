@@ -204,10 +204,26 @@ const getAgeStats = (countryAgeData: AgeData[]) => {
     const meanGap = expectedAge - actualAge;
 
     return [
-        { label: `Dancers retired ${meanGap.toFixed(1)} years earlier than expected`, value: `${meanGap.toFixed(1)} Years` },
-        { label: `The average age dancers expected to retire was ${expectedAge}`, value: `Age ${expectedAge}` },
-        { label: `The average age dancers actually retired was ${actualAge}`, value: `Age ${actualAge}` },
-        { label: 'Dance careers are much shorter than you expect', value: 'Reality' },
+        {
+            label: `Dancers retired ${meanGap.toFixed(1)} years earlier than expected`,
+            value: `${meanGap.toFixed(1)} Years`,
+            badge: "The Gap"
+        },
+        {
+            label: `The average age dancers expected to retire was ${expectedAge}`,
+            value: `Age ${expectedAge}`,
+            badge: "Expectations"
+        },
+        {
+            label: `The average age dancers actually retired was ${actualAge}`,
+            value: `Age ${actualAge}`,
+            badge: "Reality"
+        },
+        {
+            label: 'Dance careers are much shorter than you expect',
+            value: 'Reality',
+            badge: "Insight"
+        },
     ];
 };
 
@@ -498,8 +514,8 @@ const DataSection = () => {
                                     <p className="text-dark-gray text-center text-1xl mt-1 font-montserrat flex-grow">{stat.label}</p>
                                     {/* Badge added here */}
                                     <div className="mt-2 pt-2 border-t border-light-gray border-opacity-30 flex justify-center">
-                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray   px-2 py-1 rounded-full">
-                                            Data Insight
+                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
+                                            {stat.badge}
                                         </span>
                                     </div>
                                 </div>
