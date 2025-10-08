@@ -11,7 +11,7 @@ const product: Product = {
     id: 4,
     name: "Pivot Paths App",
     subtitle: "MOBILE APP FOR DANCERS",
-    description: "Your private toolkit for career transition, mindset wellness, and financial planning",
+    description: "Your private dancer-focused toolkit for mindset shifts, career transitions, and financial planning",
     url: "#", // Replace with actual app store URL
     img: "/assets/pivot-paths-app.png",
     category: "Mobile App",
@@ -176,33 +176,22 @@ const PivotPathsPage = () => {
     }, []);
 
     const stats = [
-        { number: "3", label: "Main Categories", icon: Briefcase },
-        { number: "100", label: "Privacy Focused", icon: Lock },
-        { number: "0", label: "Data Shared", icon: Shield },
-        { number: "1", label: "Device Storage", icon: Smartphone }
+        { number: "3", label: "Pivot Categories", icon: Briefcase },
+        { number: "100%", label: "Anonymous", icon: Lock },
+        { number: "$0", label: "Download Costs", icon: Shield },
+        { number: "9", label: "Weeks of Content", icon: Smartphone }
     ];
 
     const appFeatures = [
-        "Career Transition: Skills assessments and development resources",
-        "Mindset Wellness: Tools and games for personal growth",
-        "Finance: Financial literacy and planning resources",
-        "All data stored locally on your device",
-        "No cloud storage or external servers",
-        "Completely private and secure"
+        "9 weeks of structured career change content for dancers",
+        "Daily prompts, exercises, and games",
+        "Mindset tools and wellness experiments",
+        "Career transition assessments and development resources",
+        "Financial literacy exercises and money planning",
+        "100% free, private, and secure"
     ];
 
     const appCategories = [
-        {
-            title: "Career Transition",
-            description: (
-                <>
-                    Move beyond performance with <span className="font-bold" style={{ color: "#928490" }}>
-                        skills assessments and resources
-                    </span> for career development beyond the stage.
-                </>
-            ),
-            icon: Briefcase
-        },
         {
             title: "Mindset Wellness",
             description: (
@@ -214,6 +203,17 @@ const PivotPathsPage = () => {
                 </>
             ),
             icon: Brain
+        },
+        {
+            title: "Career Transition",
+            description: (
+                <>
+                    Move beyond performance with <span className="font-bold" style={{ color: "#928490" }}>
+                        skills assessments and resources
+                    </span> for career development beyond the stage.
+                </>
+            ),
+            icon: Briefcase
         },
         {
             title: "Finance",
