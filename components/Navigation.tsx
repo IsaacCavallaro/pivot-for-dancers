@@ -245,7 +245,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                     </div>
                                                     <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
                                                         {product.subtitle === 'EBOOK'
-                                                            ? 'Comprehensive guide to help you on your journey'
+                                                            ? 'Dancer-specific guide to help on your career change journey'
                                                             : 'Interactive course with practical lessons and exercises'
                                                         }
                                                     </p>
