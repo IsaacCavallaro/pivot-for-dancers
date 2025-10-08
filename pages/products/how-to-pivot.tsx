@@ -239,18 +239,18 @@ const HowToPivotPage = () => {
             icon: Brain
         },
         {
-            title: "Skills Translation",
+            title: "Future Career Paths",
             description: (
                 <>
-                    Learn how to{" "}
+                    Unlock your{" "}
                     <span className="font-bold" style={{ color: "#928490" }}>
-                        identify and articulate
+                        curiosity
                     </span>{" "}
-                    your transferable skills and{" "}
+                    and identify{" "}
                     <span className="font-bold" style={{ color: "#928490" }}>
-                        build a compelling resume
+                        future career
                     </span>{" "}
-                    that speaks to non-dance employers.
+                    paths. Figure out how to find meaningful work off the stage and cultivate a life beyond dance.
                 </>
             ),
             icon: Target
@@ -279,19 +279,19 @@ const HowToPivotPage = () => {
             title: "Taboo Topics",
             description: "10 chapters covering the dancer-specific topics no one else is talking about, including financial realities, identity beyond dance, and career transition fears.",
             icon: Heart,
-            image: "/assets/ballet-female-no-bg.jpeg"
+            badge: "Open to Change"
         },
         {
             title: "Psychology & Philosophy",
             description: "Deep dive into psychological and philosophical concepts that can guide you through a career change, merging academic insights with real-world experience.",
             icon: Brain,
-            image: "/assets/contemporary-female-no-bg.jpeg"
+            badge: "Dive Deeper"
         },
         {
             title: "Practical Tools",
             description: "Actionable tools and resources to help you understand your transferable skills, build a professional resume, and create a clear action plan.",
             icon: Target,
-            image: "/assets/commercial-male-no-bg.jpeg"
+            badge: "Dancer Specific"
         }
     ];
 
@@ -356,7 +356,7 @@ const HowToPivotPage = () => {
                             <div className="text-center mb-12">
                                 <h2 className="text-bold text-5xl font-bold text-white mb-8">What is How to Pivot?</h2>
                                 <p className="font-montserrat text-xl text-white max-w-3xl mx-auto">
-                                    A comprehensive career change guide tailored specifically for professional dancers navigating their next chapter.
+                                    How to Pivot is an actionable, dancer-specific career change guide to help on your career change journey with all the things you wish someone would’ve told you before you started your dance career.
                                 </p>
                             </div>
                         </ScrollAnimation>
@@ -372,7 +372,7 @@ const HowToPivotPage = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    Part <span className="font-bold" style={{ color: "#647C90" }}>self-help book</span> and part <span className="font-bold" style={{ color: "#647C90" }}>action-focused career resource</span>, this ebook takes you through all the things you wish someone would've told you before you started your career as a professional dancer.
+                                                    Part self-help book part action-focused career resource
                                                 </p>
                                             </div>
                                         </div>
@@ -385,7 +385,7 @@ const HowToPivotPage = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    If you already lived your dream and find yourself wondering "what now?", this <span className="font-bold" style={{ color: "#647C90" }}>dancer-specific guide</span> is for you.
+                                                    Dancer-specific career change guide
                                                 </p>
                                             </div>
                                         </div>
@@ -398,7 +398,33 @@ const HowToPivotPage = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    Brought to you by the founder of Pivot for Dancers, "How to Pivot" is an <span className="font-bold" style={{ color: "#647C90" }}>actionable career change guide</span> tailored specifically for professional dancers.
+                                                    More than your average ebook with 10 detailed chapters
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Mindset shifts and actionable activities
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={400}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Written by a dancer who’s done it
                                                 </p>
                                             </div>
                                         </div>
@@ -502,7 +528,7 @@ const HowToPivotPage = () => {
                         <ScrollAnimation delay={0}>
                             <div className="flex items-center justify-center mb-4">
                                 <h2 className="text-bold text-5xl font-bold text-black">
-                                    Ready to Step Onto Your Next Stage?
+                                    Ready to step onto your next stage?
                                 </h2>
                             </div>
                         </ScrollAnimation>
@@ -535,11 +561,11 @@ const HowToPivotPage = () => {
                             <div className="text-center mb-16">
                                 <div className="flex items-center justify-center mb-6 relative">
                                     <h2 className="text-bold text-5xl font-bold text-black tracking-tight relative inline-block">
-                                        What's Inside?
+                                        What's inside?
                                     </h2>
                                 </div>
                                 <p className="font-montserrat text-xl text-brown-gray mt-4 max-w-3xl mx-auto leading-relaxed">
-                                    Part self-help book and part, action-focused career resource tailored specifically for professional dancers.
+                                    Part self-help book and part action-focused career resource tailored specifically for professional dancers.
                                 </p>
                             </div>
                         </ScrollAnimation>
@@ -569,7 +595,7 @@ const HowToPivotPage = () => {
                                             {/* Subtle badge at bottom of card */}
                                             <div className="mt-auto pt-4 border-t border-light-gray border-opacity-30">
                                                 <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-3 py-1 rounded-full">
-                                                    Dancer-Specific
+                                                    {feature.badge}
                                                 </span>
                                             </div>
                                         </div>
