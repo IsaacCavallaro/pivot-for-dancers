@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Product, coursePaymentUrl } from '../../data/products';
 import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, ExternalLink } from 'lucide-react';
 import Navigation from '../../components/Navigation';
@@ -717,35 +718,19 @@ const ExpectationsVsRealityPage = () => {
 
                             <ScrollAnimation delay={300}>
                                 <p className="font-montserrat text-brown-gray text-lg mb-8 max-w-2xl mx-auto">
-                                    Use data-driven insights to make informed decisions about your career transition journey
+                                    Start planning for before, during, and after your pivot with the Happy Trails course. This 5-year career change roadmap helps guide you through your career change journey — step by step.
                                 </p>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={500}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 mb-8">
-                                    {product.features.map((feature, index) => (
-                                        <div key={index} className="flex items-center justify-start">
-                                            <CheckCircle className="w-6 h-6 text-purple-gray mr-3 flex-shrink-0" />
-                                            <span className="font-montserrat text-black">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
                             </ScrollAnimation>
 
                             <ScrollAnimation delay={700}>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                                    <button
-                                        onClick={() => {
-                                            const dataSection = document.getElementById('data-section');
-                                            if (dataSection) {
-                                                dataSection.scrollIntoView({ behavior: 'smooth' });
-                                            }
-                                        }}
+                                    <Link
+                                        href="/products/happy-trails"
                                         className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                     >
                                         <span className="relative z-10">GET STARTED</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    </button>
+                                    </Link>
                                 </div>
                             </ScrollAnimation>
 
