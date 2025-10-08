@@ -521,26 +521,26 @@ const ExpectationsVsRealityPage = () => {
     }, []);
 
     const stats = [
-        { number: "7.4", label: "Year Gap Average", icon: TrendingUp },
+        { number: "9", label: "Year Gap Average", icon: TrendingUp },
         { number: "3", label: "Countries Studied", icon: Globe },
-        { number: "28+", label: "Research Studies", icon: Award },
+        { number: "33", label: "Average Retirement Age", icon: Award },
         { number: "100", label: "Free Access", icon: Heart }
     ];
 
     const insights = [
         {
             title: "Early Planning Matters",
-            description: "Dancers who plan their transition 3-5 years before expected retirement have significantly better outcomes in their new careers.",
+            description: "Dancers who understand that they need to plan for retirement sooner than they might want to, have significantly better outcomes in their next career.",
             icon: Calendar
         },
         {
-            title: "Financial Preparedness",
-            description: "Those who save specifically for career transition have 60% less financial stress during their pivot period.",
+            title: "Dancers Aren’t Prepared",
+            description: "Unfortunately, due to pressures of the industry and unhelpful narratives, professional dancers are often unprepared for life after dance.",
             icon: Shield
         },
         {
-            title: "Community Support",
-            description: "Dancers with strong support networks transition more successfully and report higher satisfaction in new careers.",
+            title: "Unrealistic Expectations",
+            description: "We all know dance careers are short but we don’t think our dance careers will be short. Facing this reality head on will help you both as a dancer and in your life off the stage.",
             icon: Users
         }
     ];
@@ -658,7 +658,7 @@ const ExpectationsVsRealityPage = () => {
                                     </div>
                                     <h3 className="font-merriweather text-2xl font-bold text-black mb-4">Plan Your Timeline</h3>
                                     <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">
-                                        Use the statistics to create a realistic transition timeline. If the data shows dancers retire 7 years earlier than expected, start planning your career pivot at least 7 years before your anticipated retirement age.
+                                        Use the statistics to create a realistic transition timeline. If the data shows dancers retire 7 years earlier than expected, it’s important to start planning your career change sooner than you think.
                                     </p>
                                     {/* Badge added here */}
                                     <div className="mt-4 pt-4 border-t border-light-gray border-opacity-30 flex justify-center">
@@ -680,7 +680,7 @@ const ExpectationsVsRealityPage = () => {
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <ScrollAnimation>
                             <div className="text-center mb-16">
-                                <h2 className="text-bold text-5xl font-bold text-white mb-4">Key Insights from Research</h2>
+                                <h2 className="text-bold text-5xl font-bold text-white mb-4">Key Insights from the Research</h2>
                                 <p className="font-montserrat text-xl text-white max-w-2xl mx-auto">
                                     Understanding the data can help you make better decisions about your career transition
                                 </p>
