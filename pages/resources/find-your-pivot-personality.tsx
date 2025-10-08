@@ -1,37 +1,10 @@
-import Image from 'next/image';
-import { Product, coursePaymentUrl } from '../../data/products';
-import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, Brain, Zap, UserCheck, Search } from 'lucide-react';
+import { Star, Clock, Users, Heart, Brain, Zap, UserCheck, Search } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import Quiz from '../../components/Quiz'; // Import the Quiz component
 import Link from 'next/link';
-
-// Product data for the page
-const product: Product = {
-    id: 7,
-    name: "Pivot Personality Quiz",
-    subtitle: "DISCOVER YOUR TRANSITION STYLE",
-    description: "Take our 2-minute quiz to uncover your unique approach to career transition and get personalized guidance",
-    price: 0,
-    url: "#",
-    img: "/assets/pivot-quiz.png",
-    category: "Assessment",
-    duration: "2 Minutes",
-    rating: 4.8,
-    reviews: 156,
-    features: [
-        "Personalized Results",
-        "Actionable Insights",
-        "Career Recommendations",
-        "Free Assessment",
-        "Detailed PDF Report",
-        "Expert Guidance"
-    ],
-    icon: Brain,
-    gradient: "from-beige to-brown-gray",
-};
 
 // Counter component from reference code
 const Counter = ({ end, duration }: { end: number; duration: number }) => {
@@ -161,14 +134,6 @@ const StatCard = ({ number, label, icon: IconComponent, index }: { number: strin
 };
 
 const FindYourPivotPersonalityPage = () => {
-    const router = useRouter();
-    const [isVisible, setIsVisible] = useState(false);
-    const BASE_PATH = process.env.PUBLIC_URL || "";
-
-    useEffect(() => {
-        setIsVisible(true);
-    }, []);
-
     const stats = [
         { number: "2", label: "Minute Quiz", icon: Clock },
         { number: "4", label: "Personality Types", icon: Users },
@@ -200,24 +165,6 @@ const FindYourPivotPersonalityPage = () => {
             description: "For you, it's not about a paycheck—you're pivoting for purpose. You crave connection, impact, and alignment.",
             icon: Search,
             color: "#647C90"
-        }
-    ];
-
-    const benefits = [
-        {
-            title: "Personalized Guidance",
-            description: "Get tailored recommendations based on your unique transition style and preferences",
-            icon: Award
-        },
-        {
-            title: "Clear Next Steps",
-            description: "Receive actionable advice that matches your personality and approach to change",
-            icon: Target
-        },
-        {
-            title: "Deeper Self-Understanding",
-            description: "Gain insights into your strengths and challenges during career transitions",
-            icon: Shield
         }
     ];
 
