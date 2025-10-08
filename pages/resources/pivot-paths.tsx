@@ -20,11 +20,11 @@ const product: Product = {
     reviews: 0,
     features: [
         "Career Transition Resources",
-        "Mindset Wellness Tools",
+        "Mindset & Wellness Tools",
         "Financial Planning Guides",
         "100% Local Data Storage",
-        "Skills Assessments",
-        "Personal Growth Games"
+        "Personal Growth Games",
+        "Free Forever"
     ],
     icon: Smartphone,
     gradient: "from-beige to-brown-gray",
@@ -232,18 +232,18 @@ const PivotPathsPage = () => {
     const privacyFeatures = [
         {
             icon: Lock,
-            title: "Local Storage Only",
-            description: "All your data stays on your device using AsyncStorage technology"
+            title: "No Usernames",
+            description: "You don’t need to log in to use the Pivot Paths app. All your data stays on your device so you can explore each path privately."
         },
         {
             icon: Shield,
-            title: "No Cloud Storage",
-            description: "We don't use external servers or cloud storage for your personal information"
+            title: "Totally Free",
+            description: "We’ll never sell your data and you can complete each path as many times as you’d like, completely free of charge. There’s nothing holding you back from exploring!"
         },
         {
             icon: User,
             title: "Complete Control",
-            description: "You own your data - if you delete the app, your information is completely gone"
+            description: "You own your data and if you delete the app, your information is won’t be stored on our end. Learn more about yourself without anyone over your shoulder. "
         }
     ];
 
@@ -694,7 +694,7 @@ const PivotPathsPage = () => {
                             <div className="text-center mb-16">
                                 <h2 className="text-bold text-5xl font-bold text-white mb-4">Your Journey. Your Data. Absolutely Private.</h2>
                                 <p className="font-montserrat text-xl text-white max-w-3xl mx-auto">
-                                    In a world where everything is tracked and sold, we built a sanctuary for your personal growth.
+                                    We get it. You probably don’t want to advertise that you’re thinking about a career change. Our app offers total anonymity, allowing you to explore life beyond dance privately and discreetly.
                                 </p>
                             </div>
                         </ScrollAnimation>
@@ -712,14 +712,6 @@ const PivotPathsPage = () => {
                                 </ScrollAnimation>
                             ))}
                         </div>
-
-                        <ScrollAnimation delay={600}>
-                            <div className="bg-white rounded-2xl p-8 mt-12 text-center border border-purple-gray">
-                                <p className="font-montserrat text-brown-gray italic">
-                                    "No data is saved to the cloud or transmitted to any external servers. This means you have complete control over your information, and your privacy is fully protected. Your progress is only accessible on your device."
-                                </p>
-                            </div>
-                        </ScrollAnimation>
                     </div>
                 </div>
 
@@ -730,15 +722,9 @@ const PivotPathsPage = () => {
                             <ScrollAnimation delay={0}>
                                 <div className="flex items-center justify-center mb-4">
                                     <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
-                                        Take the first step on your new path
+                                        Take the First Step on Your New Path
                                     </h2>
                                 </div>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={300}>
-                                <p className="font-montserrat text-brown-gray text-lg mb-8 max-w-2xl mx-auto">
-                                    Download Pivot Paths and start building your future today—with complete privacy and purpose.
-                                </p>
                             </ScrollAnimation>
 
                             <ScrollAnimation delay={500}>
@@ -761,23 +747,6 @@ const PivotPathsPage = () => {
                                         <span className="relative z-10">JOIN THE WAITING LIST</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     </button>
-                                </div>
-                            </ScrollAnimation>
-
-                            {/* Questions Section */}
-                            <ScrollAnimation delay={900}>
-                                <div className="border-t border-gray-200 pt-8 mt-8">
-                                    <div className="text-center">
-                                        <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
-                                            <MessageCircle className="w-5 h-5 text-purple-gray mr-2" />
-                                            Questions?
-                                        </h4>
-                                        <p className="font-montserrat text-brown-gray">
-                                            <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
-                                                kaylee@pivotfordancers.com
-                                            </a>
-                                        </p>
-                                    </div>
                                 </div>
                             </ScrollAnimation>
                         </div>
