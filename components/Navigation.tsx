@@ -382,7 +382,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                     </h3>
                                                 </div>
                                                 <p className="text-gray-600 dark:text-gray-300 text-sm flex-1 group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
-                                                    Discover helpful articles, guides, and tools.
+                                                    Discover dancer-specific tools, guides, and research to help with your career change
                                                 </p>
                                             </a>
                                         </Link>
