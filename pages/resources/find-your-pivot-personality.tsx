@@ -6,6 +6,7 @@ import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import Quiz from '../../components/Quiz'; // Import the Quiz component
+import Link from 'next/link';
 
 // Product data for the page
 const product: Product = {
@@ -330,41 +331,27 @@ const FindYourPivotPersonalityPage = () => {
                             <ScrollAnimation delay={0}>
                                 <div className="flex items-center justify-center mb-4">
                                     <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
-                                        Start Your Transition Journey Today
+                                        Start Your Pivot Today
                                     </h2>
                                 </div>
                             </ScrollAnimation>
 
                             <ScrollAnimation delay={300}>
                                 <p className="font-montserrat text-brown-gray text-lg mb-8 max-w-2xl mx-auto">
-                                    Join thousands of dancers who have discovered their pivot personality and found clarity in their career transition
+                                    For more personalized support for your career change, join our Mentorship Program. You’ll be paired one-on-one with a former professional dancer guiding you through a tailored program to help meet your unique goals.
                                 </p>
                             </ScrollAnimation>
 
-                            <ScrollAnimation delay={500}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 mb-8">
-                                    {product.features.map((feature, index) => (
-                                        <div key={index} className="flex items-center justify-start">
-                                            <CheckCircle className="w-6 h-6 text-purple-gray mr-3 flex-shrink-0" />
-                                            <span className="font-montserrat text-black">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </ScrollAnimation>
-
                             <ScrollAnimation delay={700}>
-                                <button
-                                    onClick={() => {
-                                        const quizSection = document.getElementById('quiz-section');
-                                        if (quizSection) {
-                                            quizSection.scrollIntoView({ behavior: 'smooth' });
-                                        }
-                                    }}
-                                    className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                                >
-                                    <span className="relative z-10">TAKE THE QUIZ</span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                </button>
+                                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                                    <Link
+                                        href="/services/mentorship"
+                                        className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                                    >
+                                        <span className="relative z-10">BOOK NOW</span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </Link>
+                                </div>
                             </ScrollAnimation>
 
                             {/* Questions Section */}
