@@ -480,7 +480,7 @@ const HappyTrailsPage = () => {
                         <ScrollAnimation delay={500}>
                             <div className="flex justify-center items-center gap-4 mb-8">
                                 <span className="font-merriweather text-5xl font-bold text-dark-gray">$75</span>
-                                <span className="font-merriweather text-2xl text-brown-gray line-through">$199</span>
+                                <span className="font-montserrat text-lg text-brown-gray">USD</span>
                                 <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
                                     62% OFF
                                 </span>

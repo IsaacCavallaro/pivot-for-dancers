@@ -514,6 +514,7 @@ const HowToPivotPage = () => {
                         <ScrollAnimation delay={500}>
                             <div className="flex justify-center items-center gap-4 mb-8">
                                 <span className="font-merriweather text-5xl font-bold text-dark-gray">$6.99</span>
+                                <span className="font-montserrat text-lg text-brown-gray">USD</span>
                             </div>
                         </ScrollAnimation>
                         <ScrollAnimation delay={700}>
