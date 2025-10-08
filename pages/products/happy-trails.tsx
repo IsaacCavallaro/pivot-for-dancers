@@ -537,7 +537,7 @@ const HappyTrailsPage = () => {
                             <div className="text-center mb-16">
                                 <div className="flex items-center justify-center mb-6 relative">
                                     <h2 className="text-bold text-5xl font-bold text-black tracking-tight relative inline-block">
-                                        What's Inside?
+                                        What's inside?
                                     </h2>
                                 </div>
                                 <p className="font-montserrat text-xl text-brown-gray mt-4 max-w-3xl mx-auto leading-relaxed">
@@ -604,7 +604,7 @@ const HappyTrailsPage = () => {
                             {/* Heading */}
                             <ScrollAnimation delay={0}>
                                 <h2 className="mx-auto mb-8 max-w-2xl text-center text-4xl font-extrabold leading-tight text-black md:text-5xl">
-                                    Sing Happy Trails and move on with confidence
+                                    Sing Happy Trails and Move On with Confidence
                                 </h2>
                             </ScrollAnimation>
 
