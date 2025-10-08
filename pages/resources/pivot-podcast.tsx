@@ -5,6 +5,7 @@ import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
+import { url } from 'inspector';
 
 const product: Product = {
     id: 5,
@@ -167,9 +168,9 @@ const PivotPodcastPage = () => {
     }, []);
 
     const stats = [
-        { number: "50+", label: "Episodes", icon: Podcast },
-        { number: "4.9", label: "Star Rating", icon: Star },
-        { number: "47+", label: "Reviews", icon: Users },
+        { number: "500+", label: "Listens", icon: Podcast },
+        { number: "5", label: "Podcast Platforms", icon: Star },
+        { number: "1", label: "Weekly Episode", icon: Users },
         { number: "100", label: "Free Access", icon: Heart }
     ];
 
@@ -208,25 +209,25 @@ const PivotPodcastPage = () => {
             icon: TrendingUp
         },
         {
-            title: "Mindset & Wellness",
+            title: "Honest Conversations",
             description: (
                 <>
-                    Explore the mental and emotional aspects of transition with{" "}
+                    Our guests open up about all the things {" "}
                     <span className="font-bold" style={{ color: "#928490" }}>
-                        expert guidance
-                    </span> on maintaining well-being during change.
+                        no one tells you
+                    </span> when changing careers after dance. We’re getting real and raw!
                 </>
             ),
             icon: Heart
         },
         {
-            title: "Financial Guidance",
+            title: "Community & Inspiration",
             description: (
                 <>
-                    Practical advice on managing finances, budgeting, and{" "}
+                    As a dancer changing careers,{" "}
                     <span className="font-bold" style={{ color: "#928490" }}>
-                        building financial security
-                    </span> during career transitions.
+                        you’re in good company.
+                    </span> When you listen to these stories, you’ll get inspiration for what’s possible in your life after dance.
                 </>
             ),
             icon: DollarSign
@@ -256,25 +257,25 @@ const PivotPodcastPage = () => {
 
     const popularEpisodes = [
         {
-            title: "From Ballet to Tech",
-            guest: "Jessica Williams",
-            description: "How a professional ballerina transitioned into a successful UX designer",
-            duration: "45 min",
-            episode: "EP 23"
+            title: "How Demi’s roller skating hobby turned into 500K followers on Instagram",
+            guest: "Demi Jenkins",
+            duration: "23 min",
+            episode: "EP 04",
+            url: "https://open.spotify.com/episode/5fdb0koSHkDYXFzP8rFjNH?si=aec61c7441064528&nd=1&dlsi=d8c9432002594cc8"
         },
         {
-            title: "Financial Planning for Dancers",
-            guest: "Michael Chen, CFA",
-            description: "Essential money management strategies for career transitions",
-            duration: "52 min",
-            episode: "EP 34"
+            title: "Missing the magic of the stage? Here's how Ali is finding meaning beyond her ballet career ",
+            guest: "Ali Block",
+            duration: "28 min",
+            episode: "EP 03",
+            url: "https://open.spotify.com/episode/1dpY9nKHk6oBVcpOieodSA?si=98326958322e40f0"
         },
         {
-            title: "Mindset Shifts for Success",
-            guest: "Dr. Sarah Johnson",
-            description: "Psychology techniques to navigate career change with confidence",
-            duration: "38 min",
-            episode: "EP 41"
+            title: "How a ski mountain helped Elise let go of her dance career",
+            guest: "Elise MacDonald",
+            duration: "33 min",
+            episode: "EP 05",
+            url: "https://open.spotify.com/episode/7eW8KrFIGM2B94vJEbdq07?si=fXQEDUUVTYu2FRUOGlAcvQ"
         }
     ];
 
@@ -347,36 +348,46 @@ const PivotPodcastPage = () => {
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    Pivot Podcast is a weekly show dedicated to helping dancers navigate{" "}
-                                                    <span className="font-bold" style={{ color: "#647C90" }}>career transitions</span> with confidence and clarity. Each episode features real stories, expert advice, and practical strategies for building a fulfilling life beyond the stage.
+                                                    Weekly interviews with former professional dancers
                                                 </p>
                                             </div>
                                         </div>
                                     </ScrollAnimation>
 
-                                    <ScrollAnimation delay={200}>
+                                    <ScrollAnimation delay={0}>
                                         <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
                                             <div className="flex items-start">
                                                 <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    Whether you're considering a change, in the middle of transition, or looking to support fellow dancers, this podcast offers{" "}
-                                                    <span className="font-bold" style={{ color: "#647C90" }}>valuable insights and community support</span> for every step of your journey.
+                                                    Mindset shifts, taboo conversations, and career change journeys
                                                 </p>
                                             </div>
                                         </div>
                                     </ScrollAnimation>
 
-                                    <ScrollAnimation delay={400}>
+                                    <ScrollAnimation delay={0}>
                                         <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
                                             <div className="flex items-start">
                                                 <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                                                     <CheckCircle className="w-4 h-4 text-white" />
                                                 </div>
                                                 <p className="font-montserrat text-black leading-relaxed">
-                                                    Join our growing community of dancers who are successfully{" "}
-                                                    <span className="font-bold" style={{ color: "#647C90" }}>building fulfilling careers</span> beyond performance while honoring their dance background.
+                                                    Relatable stories and inspirational transitions
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
+
+                                    <ScrollAnimation delay={0}>
+                                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-gray/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                                            <div className="flex items-start">
+                                                <div className="w-6 h-6 rounded-full bg-purple-gray flex items-center justify-center mr-4 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle className="w-4 h-4 text-white" />
+                                                </div>
+                                                <p className="font-montserrat text-black leading-relaxed">
+                                                    Honest chats with dancers who’ve done it
                                                 </p>
                                             </div>
                                         </div>
@@ -407,9 +418,9 @@ const PivotPodcastPage = () => {
                         <ScrollAnimation>
                             <div className="text-center mb-16">
                                 <div className="flex items-center justify-center mb-4">
-                                    <h2 className="text-bold text-5xl font-bold text-black">What You'll Learn</h2>
+                                    <h2 className="text-bold text-5xl font-bold text-black">What's Inside?</h2>
                                 </div>
-                                <p className="font-montserrat text-lg text-brown-gray mt-2">Explore different aspects of career transition through our curated episode categories</p>
+                                <p className="font-montserrat text-lg text-brown-gray mt-2">You’re not alone. Every professional dancer goes through this transition… and it’s tough. Listen to real stories, from real dancers and what they did next.</p>
                             </div>
                         </ScrollAnimation>
                         {/* Timeline */}
@@ -494,9 +505,8 @@ const PivotPodcastPage = () => {
                                         </div>
                                         <h3 className="font-merriweather text-xl font-bold text-black mb-2">{episode.title}</h3>
                                         <p className="text-sm text-brown-gray mb-3">with {episode.guest}</p>
-                                        <p className="font-montserrat text-brown-gray text-sm mb-4">{episode.description}</p>
                                         <button
-                                            onClick={() => window.open('https://www.youtube.com/watch?v=16JMiSPzlBE&list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm', '_blank', 'noopener,noreferrer')}
+                                            onClick={() => window.open(episode.url, '_blank', 'noopener,noreferrer')}
                                             className="w-full bg-purple-gray text-white py-2 rounded-lg hover:bg-light-gray transition-colors duration-300 flex items-center justify-center"
                                         >
                                             <Play className="w-4 h-4 mr-2" />
