@@ -251,19 +251,22 @@ const HappyTrailsPage = () => {
             title: "Mindset Shifts",
             description: "A huge part of your career change will be changing your mindset. We help you prepare for the mental shifts required to successfully pivot.",
             icon: Heart,
-            image: "/assets/ballet-female-no-bg.jpeg"
+            image: "/assets/ballet-female-no-bg.jpeg",
+            badge: "Look Inward"
         },
         {
             title: "Practical Knowledge",
             description: "From the job search to finances, we offer the practical knowledge that no one likes to talk about in the arts and entertainment industries.",
             icon: Shield,
-            image: "/assets/contemporary-female-no-bg.jpeg"
+            image: "/assets/contemporary-female-no-bg.jpeg",
+            badge: "Step-by-Step"
         },
         {
             title: "Tailored Resources",
             description: "More than your average career change course, Happy Trails is dancer-specific and tailored to the career needs of professional dancers.",
             icon: Award,
-            image: "/assets/commercial-male-no-bg.jpeg"
+            image: "/assets/commercial-male-no-bg.jpeg",
+            badge: "Dancer Focused"
         }
     ];
 
@@ -586,7 +589,7 @@ const HappyTrailsPage = () => {
                                             {/* Subtle badge at bottom of card */}
                                             <div className="mt-6 pt-4 border-t border-light-gray border-opacity-30">
                                                 <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-3 py-1 rounded-full">
-                                                    Dancer-Focused
+                                                    {feature.badge}
                                                 </span>
                                             </div>
                                         </div>
