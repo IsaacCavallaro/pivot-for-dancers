@@ -21,7 +21,7 @@ const product: Product = {
     rating: 5.0,
     reviews: 24,
     features: [
-        "10 Comprehensive Chapters",
+        "10 Chapters",
         "Psychology & Philosophy Concepts",
         "Transferable Skills Assessment",
         "Clear Action Plan"
@@ -169,8 +169,8 @@ const HowToPivotPage = () => {
     const stats = [
         { number: "10", label: "Comprehensive Chapters", icon: Book },
         { number: "24+", label: "5-Star Reviews", icon: Star },
-        { number: "100+", label: "Action Steps", icon: Target },
-        { number: "15+", label: "Tools & Resources", icon: Award }
+        { number: "15", label: "Actionable Activities", icon: Target },
+        { number: "5", label: "Week Action Plan", icon: Award }
     ];
 
     const testimonials = [
