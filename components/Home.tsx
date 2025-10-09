@@ -542,9 +542,7 @@ const CommunitySection = () => {
           </a>
 
           <a
-            href="https://stats.sender.net/forms/aKrmkz/view"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:kaylee@pivotfordancers.com"
             className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105"
             style={{ backgroundColor: '#928490', borderColor: 'rgba(100, 124, 144, 0.3)' }}
           >

@@ -248,14 +248,16 @@ const AboutUsSection = () => {
 
                             <ScrollAnimation delay={500}>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                                    <button
-                                        onClick={handleSubmit}
+                                    <a
+                                        href="https://stats.sender.net/forms/aKrmkz/view"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105 text-white font-bold text-lg"
                                         style={{ backgroundColor: "#928490", borderColor: 'rgba(100, 124, 144, 0.3)' }}
                                     >
                                         <span className="mr-3">JOIN OUR COMMUNITY</span>
                                         <Users className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                    </button>
+                                    </a>
                                 </div>
                             </ScrollAnimation>
                         </div>
@@ -616,7 +618,7 @@ const AboutUsSection = () => {
                             },
                             {
                                 title: "Community Growth",
-                                description: "We talk about all the things no one told you about life after dance, including the hard truths you’d probably rather ignore",
+                                description: "We talk about all the things no one told you about life after dance, including the hard truths you'd probably rather ignore",
                                 icon: Users,
                                 href: "https://www.youtube.com/playlist?list=PLjTsov7LqGgKSPEHwyLlToRdNi2tQvPvH"
                             }
@@ -632,6 +634,8 @@ const AboutUsSection = () => {
                                     {/* LEARN MORE Button */}
                                     <a
                                         href={impact.href}
+                                        target={impact.href.startsWith('http') ? "_blank" : "_self"}
+                                        rel={impact.href.startsWith('http') ? "noopener noreferrer" : undefined}
                                         className="inline-flex items-center justify-center px-6 py-3 rounded-full backdrop-blur-xl border shadow-lg transition-all duration-500 group-hover:scale-105 text-white font-bold text-sm mt-auto"
                                         style={{ backgroundColor: "#928490", borderColor: 'rgba(100, 124, 144, 0.3)' }}
                                     >

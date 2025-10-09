@@ -1,4 +1,4 @@
-import { Product, coursePaymentUrl } from '../../data/products';
+import { Product } from '../../data/products';
 import { Clock, CheckCircle, Users, Target, Heart, TrendingUp, MessageCircle, User, } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
@@ -13,7 +13,7 @@ const product: Product = {
     description: "Private, one-on-one support to help you find meaningful work off the stage",
     price: 150,
     originalPrice: 0,
-    url: coursePaymentUrl, // Replace with actual mentorship payment URL
+    url: "https://tidycal.com/pivotfordancers/mentorship-1",
     img: "/assets/mentorship-program.png",
     category: "Mentorship",
     duration: "3 Sessions",
