@@ -1,6 +1,7 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -22,8 +23,8 @@ module.exports = {
         'brown-gray': '#746C70',
       },
       fontFamily: {
-        'merriweather': ['Merriweather', 'serif'], // Headings
-        'montserrat': ['Montserrat', 'sans-serif'],  // Paragraphs
+        'merriweather': ['Merriweather', 'serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
       },
       borderColor: {
         'light-gray': '#647C90',
@@ -32,6 +33,15 @@ module.exports = {
         'dark-gray': '#4E4F50',
         'brown-gray': '#746C70',
         'off-white': '#FAF9F6',
+      },
+      animation: {
+        'marquee-infinite': 'marquee 30s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
     },
   },
