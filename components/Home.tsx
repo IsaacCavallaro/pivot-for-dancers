@@ -392,31 +392,31 @@ const CommunitySection = () => {
       id: "FJRbh7AI9HQ",
       title: "Are we done telling dancers not to have a backup plan? Rachel's story",
       description: "Rachel is proof that you can successfully transition from dance while maintaining your passion and finding new purpose",
-      duration: "14:22"
+      duration: "30:29"
     },
     {
       id: "16JMiSPzlBE",
       title: "How a ski mountain helped Elise let go of her dance career",
       description: "Elise shares her journey of finding closure and new beginnings through outdoor adventure",
-      duration: "12:34"
+      duration: "32:22"
     },
     {
       id: "7EUfZS8mQtk",
       title: "How Demi's roller skating hobby turned into 500K followers",
       description: "From dancer to social media influencer - Demi's unexpected career pivot success story",
-      duration: "15:22"
+      duration: "22:37"
     },
     {
       id: "ZsvNvXLtcC4",
       title: "Will you regret being a dancer? How Monica turned guilt into growth",
       description: "Monica discusses overcoming post-career doubts and finding value in her dance journey",
-      duration: "18:45"
+      duration: "26:03"
     },
     {
       id: "tnPkI_ezUto",
       title: "Finding meaning beyond ballet: Ali's journey after the stage",
       description: "Ali explores how she's discovering new purpose and magic outside her ballet career",
-      duration: "14:30"
+      duration: "27:28"
     }
   ];
 
