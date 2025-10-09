@@ -7,7 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 
-// ScrollAnimation component (unchanged, matches home.tsx)
+interface ScrollAnimationProps {
+    children: React.ReactNode;
+    className?: string;
+    delay?: number;
+    direction?: 'up' | 'down' | 'left' | 'right' | 'scale';
+    duration?: number;
+    threshold?: number;
+    style?: React.CSSProperties;
+    [key: string]: any;
+}
+
 const ScrollAnimation = ({
     children,
     className = "",
@@ -16,7 +26,7 @@ const ScrollAnimation = ({
     duration = 0.6,
     threshold = 0.1,
     ...props
-}) => {
+}: ScrollAnimationProps) => {
     const [isVisible, setIsVisible] = useState(false)
     const ref = useRef(null)
 
@@ -76,8 +86,6 @@ const ScrollAnimation = ({
 }
 
 const TestimonialsSection: React.FC = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     const testimonials = [
         {
             content: `"Finally a platform that says what we\'re all thinking! Offering a supportive space, Founder, Kaylee, is a kind and empathetic mentor that wants dancers to understand they deserve to have joy in all aspects of life!"`,
