@@ -842,28 +842,28 @@ const HeroSection = () => {
                 <div className="flex justify-center items-center gap-4 mt-8">
                   <div className="flex items-center gap-3">
                     <a
-                      href="#"
+                      href="https://www.linkedin.com/company/pivotfordancers/"
                       className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
                       style={{ backgroundColor: "#647C90" }}
                     >
                       <Linkedin className="w-5 h-5 text-white" />
                     </a>
                     <a
-                      href="#"
+                      href="https://www.youtube.com/@pivotfordancers"
                       className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
                       style={{ backgroundColor: "#928490" }}
                     >
                       <Youtube className="w-5 h-5 text-white" />
                     </a>
                     <a
-                      href="#"
+                      href="https://www.instagram.com/pivotfordancers/"
                       className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
                       style={{ backgroundColor: "#647C90" }}
                     >
                       <Instagram className="w-5 h-5 text-white" />
                     </a>
                     <a
-                      href="#"
+                      href="https://www.facebook.com/pivotfordancers/"
                       className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
                       style={{ backgroundColor: "#928490" }}
                     >
