@@ -908,12 +908,15 @@ const HeroSection = () => {
                           <div
                             key={index}
                             className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out bg-slate-600 ${index === currentScreen
-                              ? "translate-x-0 opacity-100"
-                              : index < currentScreen
-                                ? "-translate-x-full opacity-0"
-                                : "translate-x-full opacity-0"
+                                ? "translate-x-0 opacity-100"
+                                : index < currentScreen
+                                  ? "-translate-x-full opacity-0"
+                                  : "translate-x-full opacity-0"
                               }`}
-                            style={{ backgroundColor: "#647C90", clipPath: "inset(0 0 0 0 round 0 0 2.5rem 2.5rem)" }}
+                            style={{
+                              backgroundColor: "#647C90",
+                              clipPath: "inset(0 0 0 0 round 0 0 2.5rem 2.5rem)",
+                            }}
                           >
                             <div className="flex flex-col h-full w-full">
                               <div className="p-6 text-center flex-shrink-0" style={{ backgroundColor: "#647C90" }}>
@@ -922,7 +925,9 @@ const HeroSection = () => {
                               </div>
 
                               {/* Screen Content */}
-                              <div className="flex-1 overflow-hidden">{screen.content}</div>
+                              <div className="flex-1 overflow-y-auto overflow-x-hidden rounded-b-[2.5rem]">
+                                {screen.content}
+                              </div>
                             </div>
                           </div>
                         ))}
