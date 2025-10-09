@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import TestimonialsSection from '@/components/TestimonialSection';
 
 export default function HomePage() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pivotfordancers.com';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pivotfordancers.com/';
 
     return (
         <>
