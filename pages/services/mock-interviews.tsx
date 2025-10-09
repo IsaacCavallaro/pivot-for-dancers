@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import { Service } from '../../data/services';
-import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen, Mic, Video, FileText, Briefcase } from 'lucide-react';
+import { Clock, CheckCircle, Award, Target, Heart, Shield, TrendingUp, Calendar, User, Mic, Video, FileText, Briefcase } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
@@ -28,7 +27,6 @@ const product: Service = {
         "Recording Available"
     ],
     icon: Mic,
-    gradient: "from-beige to-brown-gray",
 };
 
 // Counter component from reference code

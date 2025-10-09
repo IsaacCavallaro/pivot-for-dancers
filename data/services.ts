@@ -14,6 +14,7 @@ export interface Service {
     duration: string;
     features: string[];
     url: string;
+    category: string;
 }
 
 export const services: Service[] = [
@@ -35,7 +36,8 @@ export const services: Service[] = [
             'Resume/CV review',
             'LinkedIn profile optimization',
         ],
-        url: 'https://tidycal.com/pivotfordancers/mentorship-1'
+        url: 'https://tidycal.com/pivotfordancers/mentorship-1',
+        category: "",
     },
     {
         id: 2,
@@ -55,6 +57,7 @@ export const services: Service[] = [
             'Actionable feedback',
             'Confidence building',
         ],
-        url: 'https://tidycal.com/pivotfordancers/mock-interview'
+        url: 'https://tidycal.com/pivotfordancers/mock-interview',
+        category: "",
     },
 ];
