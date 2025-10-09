@@ -897,25 +897,26 @@ const HeroSection = () => {
                         <div className="w-6 h-3 bg-green-500 rounded-sm"></div>
                       </div>
                     </div>
-
                     {/* Screen Container */}
                     <div
                       className="relative w-full overflow-hidden rounded-b-[2.5rem] bg-slate-600"
-                      style={{ height: "calc(100% - 2rem)", backgroundColor: "#647C90" }}
+                      style={{ height: "calc(100% - 2rem)", backgroundColor: "#647C90", isolation: "isolate" }}
                     >
                       <div className="relative w-full h-full overflow-hidden rounded-b-[2.5rem]">
                         {screens.map((screen, index) => (
                           <div
                             key={index}
                             className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out bg-slate-600 ${index === currentScreen
-                                ? "translate-x-0 opacity-100"
-                                : index < currentScreen
-                                  ? "-translate-x-full opacity-0"
-                                  : "translate-x-full opacity-0"
+                              ? "translate-x-0 opacity-100"
+                              : index < currentScreen
+                                ? "-translate-x-full opacity-0"
+                                : "translate-x-full opacity-0"
                               }`}
                             style={{
                               backgroundColor: "#647C90",
                               clipPath: "inset(0 0 0 0 round 0 0 2.5rem 2.5rem)",
+                              willChange: "transform",
+                              backfaceVisibility: "hidden",
                             }}
                           >
                             <div className="flex flex-col h-full w-full">

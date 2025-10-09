@@ -622,7 +622,7 @@ const HowToPivotPage = () => {
                                 <div className="flex flex-col items-center text-center">
                                     <h3 className="mb-2 text-2xl font-bold text-gray-800">Special Offer</h3>
                                     <div className="flex items-center justify-center gap-4 mb-4">
-                                        <span className="text-4xl font-bold text-purple-gray">$6.00</span>
+                                        <span className="text-4xl font-bold text-purple-gray">$6.99</span>
                                         <span className="text-lg text-gray-500 line-through">$10.99</span>
                                         <span className="bg-purple-gray text-white text-sm font-semibold px-3 py-1 rounded-full">
                                             45% OFF
