@@ -904,7 +904,7 @@ const HeroSection = () => {
                       className="relative w-full overflow-hidden rounded-b-[2.5rem] bg-slate-600"
                       style={{ height: "calc(100% - 2rem)", backgroundColor: "#647C90" }}
                     >
-                      <div className="relative w-full h-full">
+                      <div className="relative w-full h-full overflow-hidden">
                         {screens.map((screen, index) => (
                           <div
                             key={index}
