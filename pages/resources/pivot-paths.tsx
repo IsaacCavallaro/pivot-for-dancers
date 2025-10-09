@@ -742,7 +742,7 @@ const PivotPathsPage = () => {
                             <ScrollAnimation delay={700}>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                                     <button
-                                        onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
+                                        onClick={() => window.open('https://stats.sender.net/forms/bkRKWX/view ', '_blank', 'noopener,noreferrer')}
                                         className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
                                     >
                                         <span className="relative z-10">JOIN THE WAITING LIST</span>

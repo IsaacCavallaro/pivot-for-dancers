@@ -48,8 +48,8 @@ export const services: Service[] = [
         icon: MessageSquare,
         rating: 4.9,
         reviews: 18,
-        price: 75,
-        originalPrice: 100,
+        price: 29.99,
+        originalPrice: 75,
         duration: '60 minutes',
         features: [
             'Interview practice',
