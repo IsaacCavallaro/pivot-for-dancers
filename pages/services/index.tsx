@@ -185,7 +185,7 @@ const ServicesSection: React.FC = () => {
                                                         USD
                                                     </span>
                                                     <div className="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full font-bold shadow-lg">
-                                                        Save ${service.originalPrice - service.price}
+                                                        Save ${Math.ceil(service.originalPrice - service.price)}
                                                     </div>
                                                 </>
                                             )}
