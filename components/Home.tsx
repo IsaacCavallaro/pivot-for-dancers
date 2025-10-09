@@ -925,8 +925,10 @@ const HeroSection = () => {
                               </div>
 
                               {/* Screen Content */}
-                              <div className="flex-1 overflow-y-auto overflow-x-hidden rounded-b-[2.5rem]">
-                                {screen.content}
+                              <div className="flex-1 overflow-y-auto overflow-x-hidden rounded-b-[2.5rem] px-4">
+                                <div className="h-full w-full" style={{ contain: "strict" }}>
+                                  {screen.content}
+                                </div>
                               </div>
                             </div>
                           </div>
