@@ -7,7 +7,7 @@ export interface Resource {
     description: string;
     icon: React.FC<any>;
     url: string;
-    features?: string[];
+    features: string[];
     image: string;
     gradient: string;
     duration: string;
