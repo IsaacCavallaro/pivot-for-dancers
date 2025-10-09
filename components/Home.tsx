@@ -883,7 +883,6 @@ const HeroSection = () => {
                 <div className="relative">
                   {/* Phone Frame */}
                   <div className="relative w-80 h-[600px] bg-gray-900 rounded-[3rem] p-2 shadow-2xl overflow-hidden">
-
                     {/* COMING SOON Ribbon - sits on top of the entire phone */}
                     <div className="absolute -right-10 top-9 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold text-xs md:text-sm py-1 px-10 transform rotate-45 z-40 shadow-lg">
                       COMING SOON
@@ -904,7 +903,7 @@ const HeroSection = () => {
                       className="relative w-full overflow-hidden rounded-b-[2.5rem] bg-slate-600"
                       style={{ height: "calc(100% - 2rem)", backgroundColor: "#647C90" }}
                     >
-                      <div className="relative w-full h-full overflow-hidden">
+                      <div className="relative w-full h-full overflow-hidden rounded-b-[2.5rem]">
                         {screens.map((screen, index) => (
                           <div
                             key={index}
@@ -914,7 +913,7 @@ const HeroSection = () => {
                                 ? "-translate-x-full opacity-0"
                                 : "translate-x-full opacity-0"
                               }`}
-                            style={{ backgroundColor: "#647C90" }}
+                            style={{ backgroundColor: "#647C90", clipPath: "inset(0 0 0 0 round 0 0 2.5rem 2.5rem)" }}
                           >
                             <div className="flex flex-col h-full w-full">
                               <div className="p-6 text-center flex-shrink-0" style={{ backgroundColor: "#647C90" }}>
@@ -936,8 +935,6 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </section>
