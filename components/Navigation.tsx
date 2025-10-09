@@ -175,7 +175,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                 style={{
                                                     '--hover-bg': '#E2DED0',
                                                     '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
-                                                }}
+                                                } as React.CSSProperties}
                                                 onMouseEnter={(e) => {
                                                     e.currentTarget.style.backgroundColor = '#E2DED0';
                                                     e.currentTarget.style.borderColor = '#928490';
@@ -268,7 +268,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                 style={{
                                                     '--hover-bg': '#E2DED0',
                                                     '--hover-shadow': '0 20px 25px -5px rgba(146, 132, 144, 0.3), 0 10px 10px -5px rgba(146, 132, 144, 0.1)'
-                                                }}
+                                                } as React.CSSProperties}
                                                 onMouseEnter={(e) => {
                                                     e.currentTarget.style.backgroundColor = '#E2DED0';
                                                     e.currentTarget.style.borderColor = '#928490';
@@ -392,7 +392,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     {resources.map((resource) => (
                                         <div key={resource.id} className="group h-full">
                                             <Link
-                                                href={`/resources/${(resource.name || resource.title)
+                                                href={`/resources/${(resource.title)
                                                     .toLowerCase()
                                                     .replace(/\s+/g, '-')}`}
                                                 legacyBehavior
@@ -426,7 +426,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center justify-between mb-2">
                                                                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-black transition-colors duration-500">
-                                                                    {resource.name || resource.title}
+                                                                    {resource.title}
                                                                 </h3>
                                                             </div>
                                                         </div>
@@ -534,13 +534,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                                             {resources.map((resource) => (
                                                 <li key={resource.id}>
                                                     <Link
-                                                        href={`/resources/${(resource.name || resource.title)
+                                                        href={`/resources/${(resource.title)
                                                             .toLowerCase()
                                                             .replace(/\s+/g, '-')}`}
                                                         legacyBehavior
                                                     >
                                                         <a className="text-xl text-gray-200 dark:text-gray-300 hover:text-light-gray transition-colors duration-200" onClick={() => setOpen(false)}>
-                                                            {resource.name || resource.title}
+                                                            {resource.title}
                                                         </a>
                                                     </Link>
                                                 </li>
