@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import { Product, coursePaymentUrl } from '../../data/products';
-import { Star, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen } from 'lucide-react';
+import { Clock, CheckCircle, Users, Target, Heart, TrendingUp, MessageCircle, User, } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
@@ -13,7 +12,7 @@ const product: Product = {
     subtitle: "ONE-ON-ONE SUPPORT",
     description: "Private, one-on-one support to help you find meaningful work off the stage",
     price: 150,
-    originalPrice: null,
+    originalPrice: 0,
     url: coursePaymentUrl, // Replace with actual mentorship payment URL
     img: "/assets/mentorship-program.png",
     category: "Mentorship",
