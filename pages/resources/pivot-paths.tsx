@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import { Product, coursePaymentUrl } from '../../data/products';
-import { Star, Apple, Clock, ArrowLeft, CheckCircle, Users, Globe, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, Play, MessageCircle, User, BookOpen, Smartphone, Lock, Brain, DollarSign, Briefcase } from 'lucide-react';
+import { Product } from '../../data/products';
+import { CheckCircle, Users, Award, Target, Heart, Shield, TrendingUp, Calendar, MapPin, User, Smartphone, Lock, Brain, DollarSign, Briefcase } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
@@ -12,7 +11,9 @@ const product: Product = {
     name: "Pivot Paths App",
     subtitle: "MOBILE APP FOR DANCERS",
     description: "Your private dancer-focused toolkit for mindset shifts, career transitions, and financial planning",
-    url: "#", // Replace with actual app store URL
+    price: 0,
+    originalPrice: 0,
+    url: "https://stats.sender.net/forms/bkRKWX/view ",
     img: "/assets/pivot-paths-app.png",
     category: "Mobile App",
     duration: "Lifetime Access",
