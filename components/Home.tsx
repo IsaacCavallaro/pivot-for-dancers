@@ -257,7 +257,7 @@ const SuiteCTASection = () => {
         </ScrollAnimation>
 
         {/* Enhanced Products Grid with Slower Animations */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-stretch">
           {products.map((product, index) => (
             <ScrollAnimation
               key={index}
@@ -265,9 +265,10 @@ const SuiteCTASection = () => {
               direction="up"
               duration={1.2} // Increased duration for slower animation
               threshold={0.1} // Lower threshold for earlier trigger
+              className="flex w-full"
             >
               <div
-                className="group relative backdrop bl rounded-3xl p-8 shadow-2xl border transition-all duration-1000 hover:-translate-y-4 flex flex-col items-center text-center max-w-sm w-full overflow-hidden"
+                className="group relative backdrop bl rounded-3xl p-8 shadow-2xl border transition-all duration-1000 hover:-translate-y-4 flex flex-col items-center text-center w-full overflow-hidden"
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   borderColor: 'rgba(255, 255, 255, 0.2)',
