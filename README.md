@@ -20,29 +20,3 @@ Pivot For Dancers is a static website developed using React and styled with Tail
 ## Features
 
 - Responsive Design
-
-## Getting Started
-
-### Installation
-
-Follow these steps to set up and install the project on your local machine:
-
-1. Clone the repository to your local environment:
-
-    ```bash
-    git clone https://github.com/your-username/your-project.git
-    ```
-
-2. Change into the project directory:
-
-    ```bash
-    cd your-project
-    ```
-
-3. Install the necessary dependencies using npm:
-
-    ```bash
-    npm install
-    ```
-
-Make sure to replace "your-username" and "your-project" with your actual GitHub username and project name
