@@ -95,7 +95,11 @@ const Navigation = () => {
             <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
                 <div className="flex items-center gap-8">
                     <Link href="/" className="flex items-center gap-3">
-                        <img src="/assets/logo.png" alt="Pivot For Dancers" className="h-10 w-auto" />
+                        <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-[2.5px] border-[#647C90]/20 bg-white p-[2px] shadow-[0_8px_18px_rgba(17,24,39,0.08)]">
+                            <span className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-black/8 bg-[#E2DED0]">
+                                <img src="/assets/logo.png" alt="Pivot For Dancers" className="h-full w-full object-cover" />
+                            </span>
+                        </span>
                         <span className="hidden text-[13px] font-semibold uppercase tracking-[0.22em] text-[#111827] md:inline-block">
                             Pivot For Dancers
                         </span>

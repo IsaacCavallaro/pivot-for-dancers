@@ -89,7 +89,11 @@ const Footer = () => {
 
                 <div className="grid gap-10 pt-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
                     <div>
-                        <img src="/assets/logo.png" alt="Pivot For Dancers" className="h-12 w-auto" />
+                        <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#647C90]/20 bg-white p-[3px] shadow-[0_10px_24px_rgba(17,24,39,0.08)]">
+                            <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-black/8 bg-[#E2DED0]">
+                                <img src="/assets/logo.png" alt="Pivot For Dancers" className="h-full w-full object-cover" />
+                            </div>
+                        </div>
                         <p className="mt-5 max-w-sm text-sm leading-7 text-[#60636B]">
                             Career change resources for professional dancers, built to support the identity shift, practical decisions, and emotional reality of life beyond the stage.
                         </p>
