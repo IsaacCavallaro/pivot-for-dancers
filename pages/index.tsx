@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 export default function HomePage() {
     // Remove trailing slash from base URL to avoid double slashes
     const siteUrl = 'https://pivotfordancers.com';
-    const ogImage = `${siteUrl}/assets/logo.png`;
+    const ogImage = `${siteUrl}/assets/logo-share.png`;
 
     return (
         <>
@@ -24,13 +24,14 @@ export default function HomePage() {
                 <meta property="og:image:type" content="image/png" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
-                <meta property="og:image:alt" content="Pivot For Dancers Logo" />
+                <meta property="og:image:alt" content="Pivot For Dancers social preview" />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Pivot For Dancers" />
                 <meta name="twitter:description" content="We're helping professional dancers find meaning off the stage through dancer-specific career change resources." />
                 <meta name="twitter:image" content={ogImage} />
+                <meta name="twitter:image:alt" content="Pivot For Dancers social preview" />
             </Head>
 
             <div>
