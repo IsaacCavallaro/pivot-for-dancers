@@ -1739,9 +1739,10 @@ export const DeviceMockup = ({
     const ActiveIntroIcon = activeIntro.icon;
 
     return (
-        <div className="relative mx-auto aspect-[318/640] w-full max-w-[312px] sm:max-w-[340px] md:max-w-[380px]">
+        <div className="relative mx-auto h-[460px] w-[228px] sm:h-[544px] sm:w-[270px] md:h-[640px] md:w-[318px] lg:h-[584px] lg:w-[290px] xl:h-[624px] xl:w-[310px]">
+            <div className="absolute left-1/2 top-0 h-[640px] w-[318px] -translate-x-1/2 origin-top transform-gpu scale-[0.72] sm:scale-[0.85] md:scale-100 lg:scale-[0.912] xl:scale-[0.975]">
             <div
-                className="absolute inset-0 z-10 rounded-[36px] border-[8px] border-[#111827] bg-[#111827] p-1.5 shadow-[0_32px_72px_rgba(17,24,39,0.18)] sm:rounded-[42px] sm:border-[10px] sm:p-2 sm:shadow-[0_42px_96px_rgba(17,24,39,0.18)]"
+                className="absolute inset-0 z-10 rounded-[42px] border-[10px] border-[#111827] bg-[#111827] p-2 shadow-[0_42px_96px_rgba(17,24,39,0.18)]"
             >
                 <div className="h-full rounded-[28px] bg-[#FAF9F5] p-2.5 sm:rounded-[32px] sm:p-3">
                     <div className="mb-2.5 flex items-center justify-between px-1.5 text-[10px] font-semibold text-[#111827] sm:mb-3 sm:px-2 sm:text-[11px]">
@@ -1826,6 +1827,7 @@ export const DeviceMockup = ({
                         ))}
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );

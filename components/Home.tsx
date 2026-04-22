@@ -238,7 +238,7 @@ const Home = () => {
                                     </div>
                                     <div className="rounded-[24px] bg-[radial-gradient(circle_at_top,rgba(100,124,144,0.12),transparent_58%),linear-gradient(180deg,#FCFAF6_0%,#F5F6F2_100%)] p-4">
                                     <div className="lg:flex lg:flex-1 lg:items-center lg:justify-center">
-                                        <div className="mx-auto w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[290px] xl:max-w-[310px]">
+                                        <div className="mx-auto w-full">
                                             <DeviceMockup screens={screens} />
                                         </div>
                                     </div>
