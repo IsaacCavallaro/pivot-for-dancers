@@ -1,4 +1,4 @@
-import { Brain, Compass, Heart, Target } from 'lucide-react';
+import { Brain, Compass, Heart, Shield, Target } from 'lucide-react';
 import { ebookPaymentUrl } from '../../data/products';
 import {
     Checklist,
@@ -9,20 +9,64 @@ import {
     SiteChrome,
 } from '../../components/site/MarketingPrimitives';
 
+const insideTheEbook = [
+    '10 chapters of taboo, dancer-specific topics no one else is talking about.',
+    'Psychology and philosophy concepts that help guide career change with more self-understanding.',
+    'Mindset shifts to reconnect with what you truly want in your next chapter.',
+    'Tools to understand your transferable skills and build a stronger muggle resume.',
+    'A clear, focused action plan to help you step onto your next stage.',
+];
+
+const pathwayCards = [
+    {
+        title: 'Self-discovery',
+        description: 'Explore the psychological concepts behind career transition and discover what truly drives you beyond the stage through deeper introspection.',
+        icon: Brain,
+    },
+    {
+        title: 'Future career paths',
+        description: 'Unlock your curiosity, identify meaningful work off the stage, and start naming the kinds of roles that actually fit your strengths.',
+        icon: Target,
+    },
+    {
+        title: 'Action planning',
+        description: 'Move from reflection into motion with practical next steps, clearer language, and a plan that feels realistic to begin.',
+        icon: Compass,
+    },
+];
+
+const whyReadersConnect = [
+    {
+        title: 'Taboo topics',
+        description: 'It names the financial, emotional, and identity questions dancers often carry quietly through the transition.',
+        icon: Heart,
+    },
+    {
+        title: 'Mindset shifts',
+        description: 'It helps dancers notice the patterns that keep them stuck so the pivot becomes emotionally possible, not just strategically possible.',
+        icon: Brain,
+    },
+    {
+        title: 'Practical tools',
+        description: 'It translates dance experience into language, transferable skills, and a resume story employers can understand.',
+        icon: Shield,
+    },
+];
+
 export default function HowToPivotPage() {
     return (
         <SiteChrome>
             <PageHero
                 eyebrow="EBOOK"
                 title="How to Pivot"
-                description="An actionable, dancer-specific guide for professional dancers who are ready to move beyond the stage but need clearer language, stronger mindset shifts, and a practical first plan."
+                description="Feeling stuck in your dance career or unsure what else is out there beyond the stage? How to Pivot is an actionable, dancer-specific guide to help you find meaningful work off the stage."
                 primaryCta={{ label: 'Buy the ebook', href: ebookPaymentUrl, external: true, dark: true }}
                 secondaryCta={{ label: 'See all products', href: '/products' }}
                 metrics={[
                     { value: '10', label: 'chapters of dancer-specific guidance' },
                     { value: '24+', label: 'five-star reviews' },
                     { value: '15', label: 'activities and prompts' },
-                    { value: '1', label: 'clear action plan to begin with' },
+                    { value: '1', label: 'clear action plan for what comes next' },
                 ]}
                 media={
                     <div className="rounded-[40px] border border-[#E6DED2] bg-white p-5 shadow-[0_34px_80px_rgba(45,49,56,0.08)]">
@@ -33,73 +77,39 @@ export default function HowToPivotPage() {
 
             <SectionBlock
                 label="WHAT'S INSIDE"
-                title="A deeper guide for the part of the transition nobody prepared you for"
-                description="The value of this product is not generic career advice. It is the combination of self-understanding, dancer-specific context, and practical action."
+                title="Everything you wish someone had told you before the pivot"
+                description="Part self-help book and part action-focused career resource, this guide helps dancers make sense of the identity shift, the practical decisions, and the possibilities beyond performance."
                 background="#FFFFFF"
+                aside={
+                    <a
+                        href={ebookPaymentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                    >
+                        Order now
+                    </a>
+                }
             >
                 <div className="grid gap-8 lg:grid-cols-[0.96fr_1.04fr] lg:items-start">
-                    <Checklist
-                        items={[
-                            'Ten chapters on the taboo questions dancers ask quietly.',
-                            'Psychology and philosophy concepts to help reframe the transition.',
-                            'Tools for understanding transferable skills and building a stronger non-dance narrative.',
-                            'A focused action plan to move from thought spirals into motion.',
-                        ]}
-                    />
-                    <InfoGrid
-                        columns={1}
-                        cards={[
-                            {
-                                title: 'Self-discovery',
-                                description: 'Explore the deeper emotional patterns shaping your pivot instead of only focusing on jobs and applications.',
-                                icon: Brain,
-                            },
-                            {
-                                title: 'Future career paths',
-                                description: 'Use curiosity and reflection to identify options that actually fit your strengths and values beyond performance.',
-                                icon: Target,
-                            },
-                            {
-                                title: 'Action planning',
-                                description: 'Turn insight into a clearer plan with realistic next steps for your next stage.',
-                                icon: Compass,
-                            },
-                        ]}
-                    />
+                    <Checklist items={insideTheEbook} />
+                    <InfoGrid columns={1} cards={pathwayCards} />
                 </div>
             </SectionBlock>
 
             <SectionBlock
-                label="WHY IT WORKS"
-                title="Made for dancers, not retrofitted for dancers"
-                description="The product hits harder when it feels like a precise, premium answer to a very specific identity and career transition moment."
+                label="WHY IT MATTERS"
+                title="Written for the real questions dancers ask in private"
+                description="Kaylee Randall brings together her own pivot story with concepts from psychology and philosophy, so the guidance feels both grounded and specific to a dancer’s life."
                 background="#F7F2EA"
             >
-                <InfoGrid
-                    cards={[
-                        {
-                            title: 'Taboo topics',
-                            description: 'Covers the financial, emotional, and identity questions that often get ignored in the arts.',
-                            icon: Heart,
-                        },
-                        {
-                            title: 'Psychology + philosophy',
-                            description: 'Brings deeper reflection into the process so the pivot is not only tactical but also meaningful.',
-                            icon: Brain,
-                        },
-                        {
-                            title: 'Practical tools',
-                            description: 'Helps dancers translate their experience into resumes, language, and real-world next steps.',
-                            icon: Target,
-                        },
-                    ]}
-                />
+                <InfoGrid cards={whyReadersConnect} />
             </SectionBlock>
 
             <SectionBlock
                 label="SOCIAL PROOF"
-                title="A product dancers can actually see themselves in"
-                description="The inner product pages should feel as polished as the homepage while keeping the offer simple."
+                title="A guide dancers can actually see themselves in"
+                description="Real feedback from dancers who felt seen, supported, and more prepared for what comes next."
                 background="#FFFFFF"
             >
                 <QuotePanel

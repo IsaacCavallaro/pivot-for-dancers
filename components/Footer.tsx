@@ -39,13 +39,13 @@ const Footer = () => {
                 <div className="grid gap-10 border-b border-black/8 pb-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
                     <div>
                         <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
-                            Stay connected
+                            Join our Community
                         </div>
                         <h2 className="mt-5 max-w-2xl text-4xl font-bold leading-tight text-[#111827] md:text-5xl">
-                            Start free with Pivot Paths, then move deeper into the Pivot for Dancers ecosystem.
+                            Discover inspiration, guidance, and a vibrant community to help you navigate your journey toward a fulfilling and meaningful future.
                         </h2>
                         <p className="mt-5 max-w-xl text-lg leading-8 text-[#60636B]">
-                            Join for free tools, real stories, and updates on the products and services helping dancers build what comes next.
+                            Join our mailing list for updates, support, and resources designed for dancers navigating career change.
                         </p>
                     </div>
 
@@ -95,7 +95,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <p className="mt-5 max-w-sm text-sm leading-7 text-[#60636B]">
-                            Career change resources for professional dancers, built to support the identity shift, practical decisions, and emotional reality of life beyond the stage.
+                            We’re helping professional dancers find meaning off the stage through dancer-specific career change resources.
                         </p>
                     </div>
 

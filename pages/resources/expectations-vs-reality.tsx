@@ -99,7 +99,7 @@ export default function ExpectationsVsRealityPage() {
             <PageHero
                 eyebrow="RESEARCH"
                 title="Expectations vs Reality"
-                description="Research-backed context for one of the hardest truths in dance: careers often end earlier than dancers expect. This page restores the original data view in a cleaner, more professional format."
+                description="Research shows a significant gap between when dancers expect to retire and when they actually do."
                 primaryCta={{ label: 'Explore the data', href: '#data', dark: true }}
                 secondaryCta={{ label: 'Browse all resources', href: '/resources' }}
                 metrics={[
@@ -118,7 +118,7 @@ export default function ExpectationsVsRealityPage() {
             <SectionBlock
                 label="WHY THIS MATTERS"
                 title="The data makes the emotional reality easier to name"
-                description="When dancers see that the gap between expectation and reality is structural, not just personal, it becomes easier to plan earlier and carry less shame about the pivot."
+                description="When dancers see the expectation gap in the research, it becomes easier to understand that early retirement is a structural part of the profession rather than a personal failure."
                 background="#FFFFFF"
             >
                 <InfoGrid
@@ -343,25 +343,25 @@ export default function ExpectationsVsRealityPage() {
 
             <SectionBlock
                 label="HOW TO USE THIS"
-                title="What this research helps dancers do"
-                description="The value of the page is not just the data itself, but how it reframes planning, expectations, and the emotional story dancers tell themselves about transition."
+                title="How to read and use the research"
+                description="The point of the data is not just to inform. It is to help dancers plan earlier, interpret their own timeline more honestly, and make stronger transition decisions."
                 background="#FFFFFF"
             >
                 <InfoGrid
                     cards={[
                         {
                             title: 'Understand the gap',
-                            description: 'The difference between expectation and reality helps explain why the pivot can feel abrupt even when dancers know careers are short.',
+                            description: 'The chart shows the difference between when dancers expect to retire and when they actually do, making the gap much easier to understand.',
                             icon: TrendingUp,
                         },
                         {
                             title: 'Compare contexts',
-                            description: 'The country selector gives dancers a broader frame for how retirement timing varies, while still showing a consistent pattern overall.',
+                            description: 'Use the country selector to see how retirement patterns vary across regions while still revealing a broader global pattern.',
                             icon: Globe,
                         },
                         {
-                            title: 'Plan with more honesty',
-                            description: 'The findings support earlier conversations about skill-building, money, identity, and what comes next beyond the stage.',
+                            title: 'Plan your timeline',
+                            description: 'If the data shows dancers retire years earlier than expected, it becomes much easier to see why planning sooner matters.',
                             icon: Users,
                         },
                     ]}

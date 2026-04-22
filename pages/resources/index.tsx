@@ -1,6 +1,6 @@
 import { ArrowRight, BookOpen, Clock3, Sparkles } from 'lucide-react';
 import { resources } from '../../data/resources';
-import { SectionBlock, SiteChrome } from '../../components/site/MarketingPrimitives';
+import { SiteChrome } from '../../components/site/MarketingPrimitives';
 
 export default function ResourcesPage() {
     return (
@@ -9,32 +9,28 @@ export default function ResourcesPage() {
                 <div className="mx-auto max-w-[1280px]">
                     <div className="max-w-3xl">
                         <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
-                            RESOURCES
+                            FREE TOOLS
                         </div>
                         <h1 className="mt-5 text-[48px] font-bold leading-[0.95] tracking-[-0.04em] text-[#111827] md:text-[64px] lg:text-[76px]">
-                            Resource Library
+                            Resources
                         </h1>
                         <p className="mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B]">
-                            Browse the free resources designed to help dancers feel less stuck, more informed, and more supported through the pivot.
+                            Countless hours of free, accessible content to help you feel less alone on your pivot journey.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <SectionBlock
-                label="CATALOGUE"
-                title="See what is available at a glance"
-                description="Each resource offers a different entry point into the Pivot for Dancers ecosystem, depending on what kind of support feels most useful right now."
-                background="#F7F2EA"
-            >
-                <div id="resources" className="grid gap-6 lg:grid-cols-2">
+            <section className="bg-[#F7F2EA] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+                <div className="mx-auto max-w-[1280px]">
+                    <div id="resources" className="grid gap-6 lg:grid-cols-2">
                     {resources.map((resource) => (
                         <div
                             key={resource.id}
                             className="flex h-full rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]"
                         >
                             <div className="flex h-full w-full flex-col rounded-[28px] border border-black/8 bg-white p-6">
-                                <div className="mb-6 flex min-h-[280px] items-center justify-center rounded-[24px] border border-[#E8E0D4] bg-[#FCFAF6] p-6">
+                                <div className="mb-6 flex min-h-[280px] items-center justify-center rounded-[24px] border border-black/6 bg-white p-6">
                                     <img
                                         src={resource.image}
                                         alt={resource.title}
@@ -128,8 +124,9 @@ export default function ResourcesPage() {
                             </div>
                         </div>
                     ))}
+                    </div>
                 </div>
-            </SectionBlock>
+            </section>
         </SiteChrome>
     );
 }

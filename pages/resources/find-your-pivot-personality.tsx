@@ -1,4 +1,4 @@
-import { Compass, Flame, Heart, Lightbulb } from 'lucide-react';
+import { Brain, Search, UserCheck, Zap } from 'lucide-react';
 import Quiz from '../../components/Quiz';
 import {
     InfoGrid,
@@ -9,24 +9,24 @@ import {
 
 const personalityTypes = [
     {
-        title: 'The Explorer',
-        description: 'You are energised by possibilities and need permission to test paths before locking one in.',
-        icon: Compass,
+        title: 'The Dreamer',
+        description: 'Thinking about life after dance feels like betraying a part of yourself. Naming a plan B can feel like giving up.',
+        icon: Brain,
     },
     {
-        title: 'The Rebuilder',
-        description: 'You are trying to create stability after burnout, uncertainty, or the pressure of performance life.',
-        icon: Heart,
+        title: 'The Perfectionist',
+        description: 'You love a solid plan and want clarity, options, and a reliable timeline so you can move forward with confidence.',
+        icon: Zap,
     },
     {
-        title: 'The Strategist',
-        description: 'You want a more deliberate plan, clearer decisions, and a roadmap that makes the pivot feel less vague.',
-        icon: Lightbulb,
+        title: 'The Realist',
+        description: 'You are thoughtful, careful, and grounded in real-world stability. You want to build something solid without huge leaps.',
+        icon: UserCheck,
     },
     {
-        title: 'The Spark',
-        description: 'You want to reconnect with excitement and possibility instead of only thinking about escape.',
-        icon: Flame,
+        title: 'The Seeker',
+        description: 'For you, the pivot is about purpose. You want work that feels aligned, connected, and meaningful beyond the paycheck.',
+        icon: Search,
     },
 ];
 
@@ -36,7 +36,7 @@ export default function FindYourPivotPersonalityPage() {
             <PageHero
                 eyebrow="QUIZ"
                 title="Find Your Pivot Personality"
-                description="A short quiz that helps dancers understand how they naturally approach career change, giving them a more personal starting point for the next step."
+                description="Take our 2-minute quiz to uncover your unique approach to career transition and get personalized guidance."
                 primaryCta={{ label: 'Take the quiz', href: '#quiz-section', dark: true }}
                 secondaryCta={{ label: 'See all resources', href: '/resources' }}
                 media={
@@ -48,8 +48,8 @@ export default function FindYourPivotPersonalityPage() {
 
             <SectionBlock
                 label="PERSONALITY TYPES"
-                title="Different dancers need different kinds of support"
-                description="The quiz becomes more valuable when it is framed as a way to personalise the entry into the ecosystem."
+                title="Four common ways dancers approach the pivot"
+                description="The quiz helps you recognise your starting point so the next step can feel more personal, more specific, and more useful."
                 background="#FFFFFF"
             >
                 <InfoGrid cards={personalityTypes} columns={4} />
@@ -57,8 +57,8 @@ export default function FindYourPivotPersonalityPage() {
 
             <SectionBlock
                 label="TAKE THE QUIZ"
-                title="Get a clearer read on how you approach the pivot"
-                description="Keep the actual quiz interaction, but place it within the cleaner new system."
+                title="Ready to discover your pivot personality?"
+                description="Take the quick 7-question quiz and get a clearer read on how you naturally approach career change."
                 background="#F7F2EA"
             >
                 <div id="quiz-section" className="rounded-[40px] border border-[#E5DDCF] bg-white p-5 shadow-[0_32px_76px_rgba(45,49,56,0.08)] md:p-8">
@@ -68,8 +68,8 @@ export default function FindYourPivotPersonalityPage() {
 
             <SectionBlock
                 label="NEXT STEP"
-                title="Use the result to choose what kind of support fits best"
-                description="The quiz should not end in isolation. It should direct users onward into the right next offer."
+                title="Use your result to choose what support fits best"
+                description="Your result is a starting point, not a label. Use it to decide whether you need deeper reflection, more structure, or direct support."
                 background="#FFFFFF"
                 aside={
                     <a

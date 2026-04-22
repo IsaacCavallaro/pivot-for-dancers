@@ -27,7 +27,7 @@ const screens = [
         lines: [
             '7 day journeys designed specifically for professional dancers.',
             'Real experiences from dancers who have already pivoted.',
-            'A direct path into mentorship and deeper support.',
+            'Career, mindset, and finance support in one place.',
         ],
         ctaLabel: 'Continue Path',
     },
@@ -38,7 +38,7 @@ const screens = [
         lines: [
             'Journal entries stay inside your own personal record.',
             'Career, mindset, and finance prompts live in one place.',
-            'Free first steps can lead naturally into the wider ecosystem.',
+            'Free, private, and easy to come back to.',
         ],
         ctaLabel: 'Explore the app',
     },
@@ -130,19 +130,24 @@ const StatCard = ({ value, label }: { value: string; label: string }) => {
     }, []);
 
     return (
-        <div ref={ref} className="rounded-[20px] border border-black/8 bg-[#F5F6F2] px-4 py-4 shadow-[0_10px_24px_rgba(17,24,39,0.04)]">
-            <div className="text-[26px] font-bold leading-none text-[#111827]">
-                {isNumeric ? (
-                    <>
-                        {prefix}
-                        {isVisible ? <Counter end={numericValue} duration={1800} /> : 0}
-                        {hasPlus ? '+' : ''}
-                    </>
-                ) : (
-                    value
-                )}
+        <div
+            ref={ref}
+            className="rounded-[24px] border border-[#E8E0D4] bg-[#F5F6F2] p-3 shadow-[0_22px_50px_rgba(45,49,56,0.08)]"
+        >
+            <div className="rounded-[18px] border border-black/8 bg-white px-4 py-4">
+                <div className="text-[26px] font-bold leading-none text-[#111827]">
+                    {isNumeric ? (
+                        <>
+                            {prefix}
+                            {isVisible ? <Counter end={numericValue} duration={1800} /> : 0}
+                            {hasPlus ? '+' : ''}
+                        </>
+                    ) : (
+                        value
+                    )}
+                </div>
+                <div className="mt-2 whitespace-pre-line text-[14px] leading-6 text-[#60636B]">{label}</div>
             </div>
-            <div className="mt-2 whitespace-pre-line text-[14px] leading-6 text-[#60636B]">{label}</div>
         </div>
     );
 };
@@ -152,8 +157,12 @@ const Home = () => {
 
     return (
         <>
-            <section className="px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
-                <div className="mx-auto max-w-[1280px]">
+            <section className="relative overflow-hidden bg-[#F7F2EA] px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
+                <div className="pointer-events-none absolute inset-0 opacity-60">
+                    <div className="absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(247,242,234,0.92),rgba(247,242,234,0))]" />
+                    <div className="absolute inset-y-0 right-0 w-[32rem] bg-[radial-gradient(circle_at_center,rgba(100,124,144,0.08),transparent_70%)]" />
+                </div>
+                <div className="relative mx-auto max-w-[1280px]">
                     <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
                         <Reveal className="lg:flex lg:h-full lg:flex-col lg:justify-between lg:pt-10">
                             <div>
@@ -192,7 +201,8 @@ const Home = () => {
                                     ))}
                                 </div>
 
-                                <div className="mt-5 max-w-xl rounded-[26px] border border-black/8 bg-[#F5F6F2] p-5">
+                                <div className="mt-5 max-w-xl rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_24px_56px_rgba(45,49,56,0.08)]">
+                                    <div className="rounded-[24px] border border-black/8 bg-white px-5 py-5">
                                     <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
                                         Founder-led support
                                     </div>
@@ -202,31 +212,34 @@ const Home = () => {
                                     <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
                                         The emotional side of the transition is treated as seriously as the practical side.
                                     </p>
+                                    </div>
                                 </div>
                             </div>
                         </Reveal>
 
                         <Reveal delay={120} className="lg:flex lg:h-full lg:flex-col">
-                            <div className="rounded-[30px] border border-black/8 bg-[#F5F6F2] p-5 md:p-6 lg:flex lg:h-full lg:flex-col">
-                                <div className="mb-5 flex items-start justify-between gap-4">
-                                    <div>
-                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
-                                            Pivot Paths preview
+                            <div className="rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)] md:p-5 lg:flex lg:h-full lg:flex-col">
+                                <div className="rounded-[28px] border border-black/8 bg-white p-5 md:p-6 lg:flex lg:h-full lg:flex-col">
+                                    <div className="mb-5 flex items-start justify-between gap-4">
+                                        <div>
+                                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                                Pivot Paths preview
+                                            </div>
+                                            <div className="mt-2 max-w-sm text-[18px] font-semibold leading-7 text-[#111827]">
+                                                Your private toolkit for career transition, mindset wellness, and financial planning
+                                            </div>
                                         </div>
-                                        <div className="mt-2 max-w-sm text-[18px] font-semibold leading-7 text-[#111827]">
-                                            Your private toolkit for career transition, mindset wellness, and financial planning
-                                        </div>
+                                        <a
+                                            href="/resources/pivot-paths"
+                                            className="hidden items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-[12px] font-bold uppercase tracking-[0.16em] text-[#111827] md:inline-flex"
+                                        >
+                                            Explore
+                                            <ArrowRight className="h-4 w-4" />
+                                        </a>
                                     </div>
-                                    <a
-                                        href="/resources/pivot-paths"
-                                        className="hidden items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-[12px] font-bold uppercase tracking-[0.16em] text-[#111827] md:inline-flex"
-                                    >
-                                        Explore
-                                        <ArrowRight className="h-4 w-4" />
-                                    </a>
-                                </div>
-                                <div className="lg:flex lg:flex-1 lg:items-center">
-                                    <DeviceMockup screens={screens} />
+                                    <div className="lg:flex lg:flex-1 lg:items-center">
+                                        <DeviceMockup screens={screens} />
+                                    </div>
                                 </div>
                             </div>
                         </Reveal>
@@ -235,16 +248,16 @@ const Home = () => {
             </section>
 
             <SectionBlock
-                label="ONE ECOSYSTEM"
-                title="Different levels of support, one clearer journey"
-                description="Products, services, and free resources designed to support dancers at every stage of the pivot."
-                background="#F5F6F2"
+                label="COMPREHENSIVE SUITE"
+                title="Explore Our Complete Offerings"
+                description="Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions."
+                background="#F3EEE6"
             >
                 <ShowcaseGrid
                     cards={[
                         {
                             title: 'Products',
-                            description: 'Digital guides and courses that give dancers more structure, more depth, and a stronger roadmap.',
+                            description: 'Dancer-focused digital products to guide you through your career transition.',
                             href: '/products',
                             ctaLabel: 'Browse products',
                             image: '/assets/how-to-pivot-ebook.png',
@@ -252,7 +265,7 @@ const Home = () => {
                         },
                         {
                             title: 'Services',
-                            description: 'Direct support for dancers who want one-to-one guidance and a more personalised next move.',
+                            description: 'Bespoke career change services tailored to your unique experience and goals.',
                             href: '/services',
                             ctaLabel: 'View services',
                             image: '/assets/pivot-mentorship.png',
@@ -260,7 +273,7 @@ const Home = () => {
                         },
                         {
                             title: 'Resources',
-                            description: 'Free tools, podcast conversations, and research-backed content that help dancers feel less alone as they pivot.',
+                            description: 'Countless hours of free, accessible content to help you feel less alone on your pivot journey.',
                             href: '/resources',
                             ctaLabel: 'Explore resources',
                             image: '/assets/data.png',

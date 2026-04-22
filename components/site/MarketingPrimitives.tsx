@@ -167,56 +167,63 @@ export const InfoGrid = ({ cards, columns = 3 }: { cards: InfoCard[]; columns?: 
 export const ShowcaseGrid = ({ cards }: { cards: ShowcaseCard[] }) => (
     <div className="grid gap-5 lg:grid-cols-3">
         {cards.map((card, index) => {
-            const bg =
-                card.tone === 'dark' ? '#111827' : card.tone === 'brand' ? '#647C90' : '#F5F6F2';
-            const fg = card.tone === 'light' || !card.tone ? '#111827' : '#FFFFFF';
-            const subtle = card.tone === 'light' || !card.tone ? '#60636B' : 'rgba(255,255,255,0.76)';
+            const accent =
+                card.tone === 'dark' ? '#111827' : card.tone === 'brand' ? '#647C90' : '#928490';
+            const accentSurface =
+                card.tone === 'dark' ? '#EEF2F5' : card.tone === 'brand' ? '#EEF2F5' : '#F8F6F0';
             return (
                 <Reveal key={card.title} delay={index * 90}>
                     <a
                         href={card.href ?? '#'}
-                        className="group block h-full rounded-[30px] border border-black/8 p-4 transition hover:-translate-y-1"
-                        style={{ backgroundColor: bg }}
+                        className="group block h-full rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_24px_56px_rgba(45,49,56,0.08)] transition hover:-translate-y-1"
                     >
-                        {(card.image || card.icon) && (
-                            <div
-                                className="flex min-h-[220px] items-center justify-center rounded-[24px] border p-4 md:min-h-[240px]"
-                                style={{
-                                    backgroundColor: card.tone === 'light' || !card.tone ? '#FFFFFF' : 'rgba(255,255,255,0.08)',
-                                    borderColor: card.tone === 'light' || !card.tone ? 'rgba(17,24,39,0.08)' : 'rgba(255,255,255,0.08)',
-                                }}
-                            >
-                                {card.image ? (
-                                    <Image
-                                        src={card.image}
-                                        alt={card.title}
-                                        width={720}
-                                        height={720}
-                                        className="h-[220px] w-full object-contain"
-                                    />
-                                ) : card.icon ? (
-                                    <span style={{ color: fg }}>
-                                        <card.icon className="h-16 w-16" />
-                                    </span>
-                                ) : null}
-                            </div>
-                        )}
-                        <div className="px-3 pb-3 pt-6">
-                            <h3 className="text-[30px] font-bold leading-tight tracking-[-0.02em]" style={{ color: fg }}>
-                                {card.title}
-                            </h3>
-                            <p className="mt-4 text-[15px] leading-8" style={{ color: subtle }}>
-                                {card.description}
-                            </p>
-                            {card.ctaLabel && (
+                        <div className="flex h-full flex-col rounded-[28px] border border-black/8 bg-white p-5">
+                            {(card.image || card.icon) && (
                                 <div
-                                    className="mt-6 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em]"
-                                    style={{ color: fg }}
+                                    className="flex min-h-[220px] items-center justify-center rounded-[24px] border p-4 md:min-h-[240px]"
+                                    style={{
+                                        backgroundColor: '#FFFFFF',
+                                        borderColor: 'rgba(17,24,39,0.08)',
+                                    }}
                                 >
-                                    {card.ctaLabel}
-                                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                                    {card.image ? (
+                                        <Image
+                                            src={card.image}
+                                            alt={card.title}
+                                            width={720}
+                                            height={720}
+                                            className="h-[220px] w-full object-contain"
+                                        />
+                                    ) : card.icon ? (
+                                        <span style={{ color: accent }}>
+                                            <card.icon className="h-16 w-16" />
+                                        </span>
+                                    ) : null}
                                 </div>
                             )}
+                            <div className="flex flex-1 flex-col px-1 pb-1 pt-6">
+                                <div
+                                    className="inline-flex w-fit rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em]"
+                                    style={{ backgroundColor: accentSurface, color: accent }}
+                                >
+                                    {card.title}
+                                </div>
+                                <h3 className="mt-4 text-[30px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
+                                    {card.title}
+                                </h3>
+                                <p className="mt-4 flex-1 text-[15px] leading-8 text-[#60636B]">
+                                    {card.description}
+                                </p>
+                                {card.ctaLabel && (
+                                    <div
+                                        className="mt-6 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em]"
+                                        style={{ color: accent }}
+                                    >
+                                        {card.ctaLabel}
+                                        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </a>
                 </Reveal>

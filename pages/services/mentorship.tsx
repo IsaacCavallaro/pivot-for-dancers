@@ -1,4 +1,4 @@
-import { MessageCircle, Target, User, Users } from 'lucide-react';
+import { Heart, MessageCircle, Target, TrendingUp, Users } from 'lucide-react';
 import {
     Checklist,
     InfoGrid,
@@ -10,20 +10,63 @@ import {
 
 const bookMentorshipUrl = 'https://tidycal.com/pivotfordancers/mentorship-1';
 
+const mentorshipFeatures = [
+    '3 virtual sessions with an experienced, former professional dancer.',
+    'Private and confidential conversations focused on your goals and current season of change.',
+    'Guided goal-setting, reflection exercises, and actionable next steps between sessions.',
+    'Tailored resources and networking opportunities to support your unique journey.',
+];
+
+const dancerStages = [
+    {
+        title: 'Pre-pro dancers',
+        description: 'Prepare for the long term before you pursue your career on the stage and build a wider sense of what your future can hold.',
+        icon: Heart,
+    },
+    {
+        title: 'Current pro dancers',
+        description: 'Take the leap with clearer goal-setting, action plans, and accountability while you are still navigating dance professionally.',
+        icon: Target,
+    },
+    {
+        title: 'Former pro dancers',
+        description: 'Even after the first pivot, it does not always mean everything is figured out. Mentorship can help with what comes after that too.',
+        icon: TrendingUp,
+    },
+];
+
+const processCards = [
+    {
+        title: 'Book your first session',
+        description: 'You will receive a welcome guide, get paired with your mentor, and begin with goal-setting exercises before the first call.',
+        icon: MessageCircle,
+    },
+    {
+        title: 'Show up for yourself',
+        description: 'Attend 3 sessions across the program, then use the reflection questions and action plans to keep momentum between meetings.',
+        icon: Users,
+    },
+    {
+        title: 'Take action',
+        description: 'Finish with a clearer plan, dancer-specific resources, and a new contact in your corner as you keep moving forward.',
+        icon: Target,
+    },
+];
+
 export default function MentorshipPage() {
     return (
         <SiteChrome>
             <PageHero
                 eyebrow="ONE-TO-ONE SUPPORT"
                 title="Mentorship Program"
-                description="Private support for dancers who want meaningful work off the stage and need guidance, reflection, and accountability from someone who understands the transition."
+                description="Private, one-on-one support to help you find meaningful work off the stage with guidance from someone who understands the transition firsthand."
                 primaryCta={{ label: 'Book mentorship', href: bookMentorshipUrl, external: true, dark: true }}
                 secondaryCta={{ label: 'See all services', href: '/services' }}
                 metrics={[
                     { value: '3', label: 'virtual sessions included' },
-                    { value: '180', label: 'minutes of direct support' },
-                    { value: '6', label: 'focus areas across the program' },
-                    { value: '1', label: 'dedicated mentor in your corner' },
+                    { value: '1:1', label: 'private support throughout' },
+                    { value: 'Tailored', label: 'resources for your journey' },
+                    { value: 'Direct', label: 'goal-setting and accountability' },
                 ]}
                 media={
                     <div className="rounded-[40px] border border-[#E6DED2] bg-white p-5 shadow-[0_34px_80px_rgba(45,49,56,0.08)]">
@@ -34,73 +77,39 @@ export default function MentorshipPage() {
 
             <SectionBlock
                 label="WHAT IT IS"
-                title="Support that is personal, dancer-specific, and action-oriented"
-                description="The offer should feel closer to a premium coaching product, but still warm and brand-specific."
+                title="Private support that keeps the emotional and practical sides together"
+                description="The mentorship is structured to offer actionable results while still giving dancers space for the harder identity, confidence, and decision-making parts of the pivot."
                 background="#FFFFFF"
+                aside={
+                    <a
+                        href={bookMentorshipUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                    >
+                        Book now
+                    </a>
+                }
             >
                 <div className="grid gap-8 lg:grid-cols-[0.96fr_1.04fr] lg:items-start">
-                    <Checklist
-                        items={[
-                            'Three one-hour virtual sessions with an experienced former professional dancer.',
-                            'Private and confidential conversations shaped around your real goals.',
-                            'Guided reflection, tailored resources, and momentum between sessions.',
-                            'Action plans and networking support so the work continues after the calls.',
-                        ]}
-                    />
-                    <InfoGrid
-                        columns={1}
-                        cards={[
-                            {
-                                title: 'Pre-pro dancers',
-                                description: 'Build a longer-view plan before the career on stage becomes the only identity available.',
-                                icon: Users,
-                            },
-                            {
-                                title: 'Current professionals',
-                                description: 'Create direction, accountability, and courage while you are still in the thick of dance work.',
-                                icon: Target,
-                            },
-                            {
-                                title: 'Former professionals',
-                                description: 'Keep building after the first pivot if the new career still does not feel fully right.',
-                                icon: User,
-                            },
-                        ]}
-                    />
+                    <Checklist items={mentorshipFeatures} />
+                    <InfoGrid columns={1} cards={dancerStages} />
                 </div>
             </SectionBlock>
 
             <SectionBlock
                 label="PROCESS"
-                title="A cleaner, simpler service journey"
-                description="The steps should feel obvious and low-friction: book, reflect, attend, act."
+                title="How the mentorship works"
+                description="The process is simple on purpose so the focus stays on the conversations, the reflection, and the follow-through."
                 background="#F7F2EA"
             >
-                <InfoGrid
-                    cards={[
-                        {
-                            title: 'Book your first session',
-                            description: 'Receive a welcome guide, meet your mentor pairing, and begin goal-setting before the first call.',
-                            icon: MessageCircle,
-                        },
-                        {
-                            title: 'Show up for yourself',
-                            description: 'Attend the three sessions and work through reflection questions and action plans between them.',
-                            icon: Users,
-                        },
-                        {
-                            title: 'Leave with momentum',
-                            description: 'Finish with a clearer plan, stronger perspective, and a new person in your network.',
-                            icon: Target,
-                        },
-                    ]}
-                />
+                <InfoGrid cards={processCards} />
             </SectionBlock>
 
             <SectionBlock
                 label="SOCIAL PROOF"
-                title="The service should feel high-trust from the first screen"
-                description="This is where the Future influence matters most: cleaner framing, less clutter, more confidence."
+                title="Support that feels honest, specific, and useful"
+                description="Guidance, support, and self-exploration all in one place."
                 background="#FFFFFF"
             >
                 <QuotePanel

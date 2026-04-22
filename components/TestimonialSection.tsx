@@ -42,8 +42,12 @@ const TestimonialsSection = () => {
     const active = testimonials[index];
 
     return (
-        <section className="bg-[#F7F2EA] px-4 py-16 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl">
+        <section className="relative overflow-hidden bg-[#F7F2EA] px-4 py-16 sm:px-6 lg:px-8">
+            <div className="pointer-events-none absolute inset-0 opacity-55">
+                <div className="absolute inset-y-0 left-0 w-[30rem] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_72%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(0deg,rgba(247,242,234,0.9),rgba(247,242,234,0))]" />
+            </div>
+            <div className="relative mx-auto max-w-7xl">
                 <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch lg:gap-10">
                     <div className="flex h-full flex-col gap-6 pt-2">
                         <div className="max-w-xl">

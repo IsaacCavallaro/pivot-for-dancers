@@ -1,19 +1,26 @@
-import { FAQAccordion, PageHero, SectionBlock, SiteChrome } from '../components/site/MarketingPrimitives';
+import { FAQAccordion, SectionBlock, SiteChrome } from '../components/site/MarketingPrimitives';
+
+const answerCtaClassName =
+    'mt-6 inline-flex items-center justify-center rounded-full bg-[#647C90] px-6 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f]';
 
 const faqItems = [
     {
         question: 'What is Pivot for Dancers?',
         answer: (
             <>
-                Pivot for Dancers offers career change resources for professional dancers. The goal is to help dancers find meaningful work off the stage through free tools, products, services, and community support.
-            </>
-        ),
-    },
-    {
-        question: 'What is Pivot Paths?',
-        answer: (
-            <>
-                Pivot Paths is the free guided app built for dancers exploring career, mindset, and financial next steps. It is designed to be the easiest way into the wider Pivot for Dancers ecosystem.
+                <p>
+                    Pivot for Dancers offers career change resources for professional dancers. Our mission is to help you find meaningful work off the stage.
+                    Run by former professional dancers who have successfully changed careers, we&apos;re here to share what we&apos;ve learned about making a pivot with
+                    our growing community of fellow dancers.
+                </p>
+                <a
+                    href="https://stats.sender.net/forms/aKrmkz/view"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={answerCtaClassName}
+                >
+                    Join us
+                </a>
             </>
         ),
     },
@@ -21,7 +28,18 @@ const faqItems = [
         question: 'What are Pivot Conversations?',
         answer: (
             <>
-                Pivot Conversations are free virtual meetups for dancers to talk honestly about career change, feel less alone, and hear from others navigating similar questions.
+                <p>Pivot Conversations are free virtual meetups for dancers to have conversations about career change.</p>
+                <p className="mt-4">
+                    Connect with other dancers going through similar experiences and feel less alone on your career change journey.
+                </p>
+                <a
+                    href="https://stats.sender.net/forms/bmZM4r/view"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={answerCtaClassName}
+                >
+                    Sign up
+                </a>
             </>
         ),
     },
@@ -29,23 +47,87 @@ const faqItems = [
         question: 'What is the How to Pivot ebook?',
         answer: (
             <>
-                It is an actionable, dancer-specific guide written by founder Kaylee Randall. It combines mindset work, transition reflection, and practical exercises to help dancers move toward their next chapter.
+                <p>
+                    Written by our founder, Kaylee Randall, &apos;How to Pivot&apos; is an <strong>actionable, dancer-specific</strong> guide to help
+                    you find meaningful work off the stage.
+                </p>
+                <p className="mt-4">
+                    In 10 chapters, Kaylee dives deep into psychological patterns that might be holding you back and step-by-step activities to help you actually move on to your next stage.
+                </p>
+                <p className="mt-4">
+                    With real-life examples from Kaylee&apos;s own career transition, &apos;How to Pivot&apos; is essential reading for any dancer struggling with their next steps.
+                </p>
+                <a
+                    href="https://buy.stripe.com/14k6oG8rQexsgCI147"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={answerCtaClassName}
+                >
+                    Order now
+                </a>
             </>
         ),
     },
     {
-        question: 'What is the Happy Trails course?',
+        question: 'What is the Happy Trails Mini Course?',
         answer: (
             <>
-                Happy Trails is a digital course that lays out a longer-term roadmap for career change, helping dancers make a clearer plan for before, during, and after the pivot.
+                <p>
+                    If you&apos;re a professional dancer, you probably don&apos;t have a ton of time. That&apos;s why we developed a quick but effective mini course to help you plan your pivot with an
+                    <strong> in-depth, career change roadmap</strong>.
+                </p>
+                <p className="mt-4">
+                    We lay it all out for you and take the guesswork out of changing careers. Our 5-year career roadmap can help you stay on track and finally feel confident about your next steps.
+                </p>
+                <p className="mt-4">
+                    <strong>Tailored to professional dancers</strong>, the &apos;Happy Trails&apos; mini course offers:
+                </p>
+                <ul className="mt-4 list-disc space-y-1 pl-5">
+                    <li>A clear, step-by-step career change plan</li>
+                    <li>50+ non-dancer job ideas</li>
+                    <li>Resume templates &amp; interview script</li>
+                </ul>
+                <p className="mt-4">
+                    For the dancers who want to make a plan for what&apos;s next but have no idea where to start, &apos;Happy Trails&apos; is for you.
+                </p>
+                <a
+                    href="https://buy.stripe.com/dR628qgYm750aek6oq"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={answerCtaClassName}
+                >
+                    Order now
+                </a>
             </>
         ),
     },
     {
-        question: 'What is the mentorship service?',
+        question: 'What is the Pivot Mentorship Program?',
         answer: (
             <>
-                The mentorship offer is one-to-one support for dancers who want direct guidance, reflection, and accountability as they work toward more meaningful work off the stage.
+                <p>
+                    The Pivot for Dancers Mentorship Program is private, one-on-one support for professional dancers to help you find meaningful work off the stage.
+                </p>
+                <p className="mt-4">
+                    Structured with clear goal-setting and targeted reflection, our Mentorship Program is designed to offer actionable results.
+                </p>
+                <p className="mt-4">
+                    You&apos;ll be paired with an experienced, former professional dancer to guide you through these challenging times. As part of the program, you&apos;ll receive:
+                </p>
+                <ul className="mt-4 list-disc space-y-1 pl-5">
+                    <li>3x one-hour virtual sessions with an experienced, former professional dancer</li>
+                    <li>Private and confidential conversations</li>
+                    <li>Tailored resources for your unique journey</li>
+                    <li>Networking opportunities</li>
+                </ul>
+                <a
+                    href="https://tidycal.com/pivotfordancers/mentorship-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={answerCtaClassName}
+                >
+                    Book now
+                </a>
             </>
         ),
     },
@@ -54,29 +136,26 @@ const faqItems = [
 export default function FaqsPage() {
     return (
         <SiteChrome>
-            <PageHero
-                eyebrow="FAQS"
-                title="Answers for dancers figuring out their next chapter"
-                description="Use this page as a cleaner trust layer: explain what each part of the ecosystem is, how the free and paid offers connect, and where someone should start."
-                primaryCta={{ label: 'Start with Pivot Paths', href: '/resources/pivot-paths', dark: true }}
-                secondaryCta={{ label: 'Join the community', href: 'https://stats.sender.net/forms/aKrmkz/view', external: true }}
-                media={
-                    <div className="rounded-[40px] bg-[#111827] p-6 text-white shadow-[0_36px_84px_rgba(17,24,39,0.24)]">
-                        <div className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
-                            Best place to begin
+            <section className="px-4 pb-10 pt-28 sm:px-6 lg:px-8 lg:pb-12 lg:pt-32">
+                <div className="mx-auto max-w-[1280px]">
+                    <div className="max-w-3xl">
+                        <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
+                            FAQS
                         </div>
-                        <div className="mt-4 text-3xl font-bold">Start free, then go deeper</div>
-                        <p className="mt-4 text-sm leading-8 text-white/76">
-                            Users do not need to decide everything on day one. Start with Pivot Paths or the free resources, then move into products or services when the fit becomes clearer.
+                        <h1 className="mt-5 text-[48px] font-bold leading-[0.95] tracking-[-0.04em] text-[#111827] md:text-[64px] lg:text-[76px]">
+                            Frequently Asked Questions
+                        </h1>
+                        <p className="mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B]">
+                            Answers to common questions about Pivot for Dancers.
                         </p>
                     </div>
-                }
-            />
+                </div>
+            </section>
 
             <SectionBlock
-                label="COMMON QUESTIONS"
-                title="Make the ecosystem easy to understand"
-                description="This should feel clearer, calmer, and more premium than a standard FAQ page."
+                label="QUESTIONS"
+                title="Answers at a glance"
+                description="Find more information about our community, products, services, and support for dancers navigating career change."
                 background="#F7F2EA"
             >
                 <FAQAccordion items={faqItems} />
