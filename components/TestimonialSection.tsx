@@ -26,6 +26,8 @@ const testimonials = [
     },
 ];
 
+const reviewUrl = 'https://g.page/r/CfHdX47gLCCXEAI/review';
+
 const TestimonialsSection = () => {
     const [index, setIndex] = useState(0);
 
@@ -40,80 +42,133 @@ const TestimonialsSection = () => {
     const active = testimonials[index];
 
     return (
-        <section className="bg-[#F7F2EA] px-4 py-20 sm:px-6 lg:px-8">
+        <section className="bg-[#F7F2EA] px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
-                <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-                    <div>
-                        <span className="text-xs font-bold uppercase tracking-[0.24em] text-[#928490]">
-                            TESTIMONIALS
-                        </span>
-                        <h2 className="mt-4 text-4xl font-bold leading-tight text-[#111827] md:text-5xl">
-                            What dancers say after finding Pivot for Dancers
-                        </h2>
-                        <p className="mt-5 max-w-md text-lg leading-8 text-[#5E6167]">
-                            The proof should feel calm and confident: strong stories, clear outcomes, and emotional resonance.
-                        </p>
-                    </div>
-
-                    <div
-                        className="rounded-[40px] border border-[#E5DDCF] bg-white p-6 shadow-[0_32px_76px_rgba(45,49,56,0.08)] md:p-8"
-                    >
-                        <div className="flex items-center gap-1">
-                            {Array.from({ length: 5 }).map((_, starIndex) => (
-                                <Star key={starIndex} className="h-4 w-4 fill-[#F4B740] text-[#F4B740]" />
-                            ))}
+                <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch lg:gap-10">
+                    <div className="flex h-full flex-col gap-6 pt-2">
+                        <div className="max-w-xl">
+                            <span className="text-xs font-bold uppercase tracking-[0.24em] text-[#928490]">
+                                TESTIMONIALS
+                            </span>
+                            <h2 className="mt-4 text-4xl font-bold leading-tight text-[#111827] md:text-5xl">
+                                Real Stories from Dancers
+                            </h2>
+                            <p className="mt-4 max-w-md text-lg leading-8 text-[#5E6167]">
+                                Honest feedback from dancers finding clarity, confidence, and a stronger sense of what comes next.
+                            </p>
                         </div>
 
-                        <p className="mt-6 text-2xl font-semibold leading-[1.7] text-[#111827] md:text-[30px]">
-                            “{active.content}”
-                        </p>
-
-                        <div className="mt-8 flex flex-col gap-6 border-t border-[#EEE5DA] pt-6 sm:flex-row sm:items-center sm:justify-between">
-                            <div className="flex items-center gap-4">
-                                <Image
-                                    src={active.imageSrc}
-                                    alt={active.author}
-                                    width={96}
-                                    height={96}
-                                    className="h-16 w-16 rounded-full object-cover"
-                                />
-                                <div>
-                                    <div className="text-lg font-bold text-[#111827]">{active.author}</div>
-                                    <div className="text-sm text-[#5E6167]">{active.role}</div>
+                        <div className="flex flex-1 flex-col rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]">
+                            <div className="flex items-center justify-between gap-4 rounded-[24px] border border-black/8 bg-white px-5 py-4">
+                                <div className="flex items-center gap-1">
+                                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                                        <Star key={starIndex} className="h-4 w-4 fill-[#F4B740] text-[#F4B740]" />
+                                    ))}
+                                </div>
+                                <div className="rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
+                                    Google review
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-3">
-                                {testimonials.map((item, dotIndex) => (
-                                    <button
-                                        key={item.author}
-                                        type="button"
-                                        onClick={() => setIndex(dotIndex)}
-                                        aria-label={`Show testimonial from ${item.author}`}
-                                        className="h-2.5 rounded-full transition-all"
-                                        style={{
-                                            width: index === dotIndex ? 30 : 10,
-                                            backgroundColor: index === dotIndex ? '#111827' : '#D6CDC1',
-                                        }}
-                                    />
+                            <div className="mt-4 flex flex-1 flex-col justify-between rounded-[26px] border border-black/8 bg-white px-5 py-5 md:px-6">
+                                <div>
+                                    <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                        Share your experience
+                                    </p>
+                                    <h3 className="mt-3 max-w-[15ch] text-[24px] font-bold leading-[1.08] tracking-[-0.03em] text-[#111827] md:text-[26px]">
+                                        Help another dancer feel less alone
+                                    </h3>
+                                    <p className="mt-3 max-w-sm text-[14px] leading-6 text-[#5E6167]">
+                                        A short review can help the next dancer trust their next step.
+                                    </p>
+                                </div>
+
+                                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                    <div className="rounded-full border border-black/8 bg-[#F8F6F0] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#5E6167]">
+                                        2 minutes or less
+                                    </div>
+                                    <a
+                                        href={reviewUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-3 rounded-full bg-[#647C90] px-6 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f]"
+                                    >
+                                        Add review
+                                        <ArrowRight className="h-4 w-4" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        className="flex h-full flex-col rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]"
+                    >
+                        <div className="flex flex-wrap items-center justify-between gap-4 rounded-[24px] border border-black/8 bg-white px-5 py-4">
+                            <div className="flex items-center gap-1">
+                                {Array.from({ length: 5 }).map((_, starIndex) => (
+                                    <Star key={starIndex} className="h-4 w-4 fill-[#F4B740] text-[#F4B740]" />
                                 ))}
                             </div>
+                            <div className="rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#5E6167]">
+                                {String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+                            </div>
+                        </div>
 
-                            <div className="flex gap-3">
-                                <button
-                                    type="button"
-                                    onClick={() => setIndex((value) => (value - 1 + testimonials.length) % testimonials.length)}
-                                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#E5DDCF] bg-[#FCFAF6] text-[#111827]"
-                                >
-                                    <ArrowLeft className="h-4 w-4" />
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => setIndex((value) => (value + 1) % testimonials.length)}
-                                    className="flex h-12 w-12 items-center justify-center rounded-full bg-[#111827] text-white"
-                                >
-                                    <ArrowRight className="h-4 w-4" />
-                                </button>
+                        <div className="mt-4 flex flex-1 flex-col gap-4">
+                            <div className="flex flex-1 items-center rounded-[26px] border border-black/8 bg-white px-5 py-6 md:px-6">
+                                <p className="text-[22px] font-semibold leading-[1.55] text-[#111827] md:text-[28px]">
+                                    “{active.content}”
+                                </p>
+                            </div>
+
+                            <div className="flex flex-col gap-5 rounded-[26px] border border-black/8 bg-white px-5 py-5 xl:flex-row xl:items-center xl:justify-between">
+                                <div className="flex items-center gap-4">
+                                    <Image
+                                        src={active.imageSrc}
+                                        alt={active.author}
+                                        width={96}
+                                        height={96}
+                                        className="h-16 w-16 rounded-full border border-black/8 object-cover"
+                                    />
+                                    <div>
+                                        <div className="text-lg font-bold text-[#111827]">{active.author}</div>
+                                        <div className="text-sm text-[#5E6167]">{active.role}</div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-3 xl:ml-auto">
+                                    {testimonials.map((item, dotIndex) => (
+                                        <button
+                                            key={item.author}
+                                            type="button"
+                                            onClick={() => setIndex(dotIndex)}
+                                            aria-label={`Show testimonial from ${item.author}`}
+                                            className="h-2.5 rounded-full transition-all"
+                                            style={{
+                                                width: index === dotIndex ? 30 : 10,
+                                                backgroundColor: index === dotIndex ? '#111827' : '#D6CDC1',
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+
+                                <div className="flex gap-3">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIndex((value) => (value - 1 + testimonials.length) % testimonials.length)}
+                                        className="flex h-12 w-12 items-center justify-center rounded-full border border-[#E5DDCF] bg-[#FCFAF6] text-[#111827]"
+                                    >
+                                        <ArrowLeft className="h-4 w-4" />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => setIndex((value) => (value + 1) % testimonials.length)}
+                                        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#111827] text-white"
+                                    >
+                                        <ArrowRight className="h-4 w-4" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import { ArrowRight, Brain, Briefcase, DollarSign, Play } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import {
     DeviceMockup,
-    InfoGrid,
     Reveal,
     SectionBlock,
     ShowcaseGrid,
@@ -14,7 +12,7 @@ const screens = [
     {
         variant: 'welcome' as const,
         eyebrow: 'Day 3 of 7',
-        title: 'Welcome Back John',
+        title: 'Welcome Back',
         lines: [
             'How today\'s scenario reveals your priorities.',
             'What your instincts say about the future you want.',
@@ -47,28 +45,32 @@ const screens = [
 ];
 
 const youtubePlaylistUrl = 'https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm';
-const spotifyUrl = 'https://open.spotify.com/show/4PfCp7OJWQCaqfGsbjbDZW?si=731ca82e254c43bd';
 
 const featuredEpisodes = [
     {
         title: 'How Demi’s roller skating hobby turned into 500K followers on Instagram',
         guest: 'Demi Jenkins',
-        duration: '23 min',
-        url: 'https://open.spotify.com/episode/5fdb0koSHkDYXFzP8rFjNH?si=aec61c7441064528&nd=1&dlsi=d8c9432002594cc8',
+        duration: '22:37',
+        videoId: '7EUfZS8mQtk',
+        description: 'From dancer to social media creator, Demi shares how an unexpected interest became a whole new path.',
     },
     {
         title: 'Missing the magic of the stage? Here’s how Ali is finding meaning beyond her ballet career',
         guest: 'Ali Block',
-        duration: '28 min',
-        url: 'https://open.spotify.com/episode/1dpY9nKHk6oBVcpOieodSA?si=98326958322e40f0',
+        duration: '27:28',
+        videoId: 'tnPkI_ezUto',
+        description: 'Ali reflects on grief, identity, and the process of building purpose beyond ballet.',
     },
     {
         title: 'How a ski mountain helped Elise let go of her dance career',
         guest: 'Elise MacDonald',
-        duration: '33 min',
-        url: 'https://open.spotify.com/episode/7eW8KrFIGM2B94vJEbdq07?si=fXQEDUUVTYu2FRUOGlAcvQ',
+        duration: '32:22',
+        videoId: '16JMiSPzlBE',
+        description: 'Elise shares how space away from dance helped her release an old identity and imagine a new chapter.',
     },
 ];
+
+const podcastGuestCtaUrl = 'mailto:pivotfordancers@gmail.com?subject=Pivot%20Podcast%20Guest%20Request';
 
 const heroStats = [
     { value: '25+', label: 'years of\ndance experience' },
@@ -146,6 +148,8 @@ const StatCard = ({ value, label }: { value: string; label: string }) => {
 };
 
 const Home = () => {
+    const [selectedEpisode, setSelectedEpisode] = useState(featuredEpisodes[0]);
+
     return (
         <>
             <section className="px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
@@ -231,47 +235,9 @@ const Home = () => {
             </section>
 
             <SectionBlock
-                label="START WITH THE APP"
-                title="Pivot Paths is the front door into the ecosystem"
-                description="The homepage should make the free app feel like the obvious first step, then clearly show how users move deeper when they are ready."
-                background="#111827"
-                dark
-            >
-                <div className="grid gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
-                    <Reveal>
-                        <div className="overflow-hidden rounded-[34px] border border-white/10 bg-white/5 p-5">
-                            <div className="rounded-[28px] bg-[#647C90] p-5">
-                                <Image
-                                    src="/assets/pivot-mentorship.png"
-                                    alt="Pivot Paths preview"
-                                    width={768}
-                                    height={768}
-                                    className="h-auto w-full rounded-[20px]"
-                                />
-                            </div>
-                        </div>
-                    </Reveal>
-                    <Reveal delay={120}>
-                        <div className="space-y-4">
-                            {[
-                                'Warm welcome screens and journal prompts.',
-                                'Roleplay flows and decision-based reflection.',
-                                'Mindset, career, and finance paths built for dancers.',
-                                'A free starting point that naturally feeds into products and services.',
-                            ].map((item) => (
-                                <div key={item} className="rounded-[26px] border border-white/10 bg-white/6 px-5 py-5 text-[16px] leading-8 text-white/80">
-                                    {item}
-                                </div>
-                            ))}
-                        </div>
-                    </Reveal>
-                </div>
-            </SectionBlock>
-
-            <SectionBlock
                 label="ONE ECOSYSTEM"
                 title="Different levels of support, one clearer journey"
-                description="This is where the site should behave like Future: one flagship entry point, then simple paths into the next offer."
+                description="Products, services, and free resources designed to support dancers at every stage of the pivot."
                 background="#F5F6F2"
             >
                 <ShowcaseGrid
@@ -305,100 +271,103 @@ const Home = () => {
             </SectionBlock>
 
             <SectionBlock
-                label="WHY IT WORKS"
-                title="Built around the real shape of a dancer’s pivot"
-                description="The support has to combine practical direction with emotional intelligence. That is the brand’s real advantage."
-                background="#FFFFFF"
-            >
-                <InfoGrid
-                    cards={[
-                        {
-                            title: 'Mindset support',
-                            description: 'Help dancers process the identity shift instead of pretending the pivot is purely tactical.',
-                            icon: Brain,
-                        },
-                        {
-                            title: 'Career direction',
-                            description: 'Turn dance experience into language, options, and practical next moves beyond the stage.',
-                            icon: Briefcase,
-                        },
-                        {
-                            title: 'Financial clarity',
-                            description: 'Bring the money conversation into the support rather than leaving it out of the transition story.',
-                            icon: DollarSign,
-                        },
-                    ]}
-                />
-            </SectionBlock>
-
-            <SectionBlock
                 label="WATCH + LISTEN"
                 title="Real stories, not generic career advice"
-                description="Bring the playlist and episode discovery back onto the homepage so the site immediately shows the voices, stories, and lived experience behind the brand."
+                description="Podcast conversations and dancer stories that make career transition feel more human, specific, and possible."
                 background="#FFFFFF"
             >
-                <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-                    <Reveal>
-                        <div className="overflow-hidden rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]">
+                <div className="grid gap-8 md:grid-cols-[1.04fr_0.96fr] md:items-stretch">
+                    <Reveal className="h-full">
+                        <div className="flex h-full flex-col overflow-hidden rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]">
                             <div className="overflow-hidden rounded-[26px] border border-black/8 bg-white">
                                 <iframe
-                                    src="https://www.youtube.com/embed/16JMiSPzlBE?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
-                                    title="Pivot Podcast playlist"
-                                    className="aspect-video w-full"
+                                    src={`https://www.youtube.com/embed/${selectedEpisode.videoId}?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm`}
+                                    title={selectedEpisode.title}
+                                    className="aspect-video w-full md:min-h-[320px] lg:min-h-[360px]"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
                                 />
                             </div>
-                            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                                <a
-                                    href={youtubePlaylistUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
-                                >
-                                    Watch Playlist
-                                    <ArrowRight className="h-4 w-4" />
-                                </a>
-                                <a
-                                    href={spotifyUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
-                                >
-                                    Listen on Spotify
-                                </a>
+                            <div className="mt-5 flex flex-1 flex-col justify-between gap-5 rounded-[26px] border border-[#E8E0D4] bg-white px-5 py-5">
+                                <div className="flex flex-wrap items-center gap-3">
+                                    <span className="rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
+                                        Now Playing
+                                    </span>
+                                    <span className="rounded-full border border-black/8 bg-[#F8F6F0] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#111827]">
+                                        {selectedEpisode.duration}
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                        Share your story
+                                    </p>
+                                    <h3 className="mt-3 max-w-[16ch] text-[28px] font-bold leading-[1.05] tracking-[-0.03em] text-[#111827] lg:text-[32px]">
+                                        Want to be interviewed for the podcast?
+                                    </h3>
+                                    <p className="mt-4 max-w-[60ch] text-[14px] leading-7 text-[#60636B]">
+                                        If you have navigated a career pivot, identity shift, or unexpected transition beyond dance,
+                                        we would love to hear your story and explore featuring it on Pivot Podcast.
+                                    </p>
+                                </div>
+
+                                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                    <a
+                                        href={youtubePlaylistUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                                    >
+                                        Watch Playlist
+                                        <ArrowRight className="h-4 w-4" />
+                                    </a>
+                                    <a
+                                        href={podcastGuestCtaUrl}
+                                        className="inline-flex items-center justify-center rounded-full border border-black/10 bg-[#F8F6F0] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
+                                    >
+                                        Submit a guest request
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </Reveal>
 
-                    <div className="space-y-4">
+                    <div className="flex h-full flex-col gap-4">
                         {featuredEpisodes.map((episode, index) => (
-                            <Reveal key={episode.title} delay={index * 90}>
-                                <a
-                                    href={episode.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-6 shadow-[0_22px_50px_rgba(45,49,56,0.06)] transition hover:-translate-y-1"
+                            <Reveal key={episode.title} delay={index * 90} className="flex-1">
+                                <button
+                                    type="button"
+                                    onClick={() => setSelectedEpisode(episode)}
+                                    className="flex h-full w-full flex-col justify-between rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-6 text-left shadow-[0_22px_50px_rgba(45,49,56,0.06)] transition hover:-translate-y-1"
+                                    style={{
+                                        backgroundColor: selectedEpisode.videoId === episode.videoId ? '#EEF2F5' : '#F5F6F2',
+                                        borderColor: selectedEpisode.videoId === episode.videoId ? '#647C90' : '#E8E0D4',
+                                    }}
                                 >
-                                    <div className="flex items-center justify-between gap-4">
-                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
-                                            Featured episode
+                                    <div>
+                                        <div className="flex items-center justify-between gap-4">
+                                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                                {selectedEpisode.videoId === episode.videoId ? 'Now playing' : 'Featured episode'}
+                                            </div>
+                                            <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#647C90]">
+                                                {episode.duration}
+                                            </span>
                                         </div>
-                                        <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#647C90]">
-                                            {episode.duration}
-                                        </span>
+                                        <h3 className="mt-4 text-[24px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
+                                            {episode.title}
+                                        </h3>
+                                        <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                            {episode.description}
+                                        </p>
                                     </div>
-                                    <h3 className="mt-4 text-[24px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
-                                        {episode.title}
-                                    </h3>
-                                    <div className="mt-4 flex items-center justify-between gap-4">
+                                    <div className="mt-5 flex items-center justify-between gap-4">
                                         <p className="text-[14px] leading-7 text-[#60636B]">{episode.guest}</p>
                                         <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]">
                                             Play
                                             <Play className="h-4 w-4" />
                                         </span>
                                     </div>
-                                </a>
+                                </button>
                             </Reveal>
                         ))}
                     </div>

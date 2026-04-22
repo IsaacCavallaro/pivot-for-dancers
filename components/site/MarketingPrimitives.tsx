@@ -550,8 +550,8 @@ export const DeviceMockup = ({
     return (
         <div className="relative mx-auto w-full max-w-[380px]">
             <div className="relative mx-auto aspect-[318/640] w-full rounded-[42px] border-[10px] border-[#111827] bg-[#111827] p-2 shadow-[0_42px_96px_rgba(17,24,39,0.18)]">
-                <div className="pointer-events-none absolute right-[-10px] top-[-10px] z-20 h-24 w-24 overflow-hidden">
-                    <div className="absolute right-[-30px] top-[17px] w-[136px] rotate-45 bg-[#E2DED0] py-1.5 text-center text-[9px] font-bold uppercase tracking-[0.16em] text-[#4F6272] shadow-[0_10px_22px_rgba(17,24,39,0.24)]">
+                <div className="pointer-events-none absolute right-[8px] top-[8px] z-20 h-24 w-24 overflow-hidden rounded-tr-[28px]">
+                    <div className="absolute right-[-30px] top-[18px] w-[136px] rotate-45 bg-[#E2DED0] py-2 text-center text-[9px] font-bold uppercase tracking-[0.16em] text-[#4F6272]">
                         Coming Soon
                     </div>
                 </div>
