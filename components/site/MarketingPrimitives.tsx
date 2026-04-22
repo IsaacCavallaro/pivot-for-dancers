@@ -381,6 +381,79 @@ export const QuotePanel = ({
     </div>
 );
 
+const deviceMockTabs = [
+    { icon: House, label: 'Home' },
+    { icon: BookOpen, label: 'Paths' },
+    { icon: Play, label: 'Learn' },
+    { icon: User, label: 'Progress' },
+    { icon: NotebookPen, label: 'Journal' },
+    { icon: BarChart3, label: 'Reports' },
+] as const;
+
+const demoPhases = [
+    { key: 'game', label: 'Game', tab: 'Paths' },
+    { key: 'reports', label: 'Reports', tab: 'Reports' },
+    { key: 'journal', label: 'Journal', tab: 'Journal' },
+] as const;
+
+type DemoPhaseKey = (typeof demoPhases)[number]['key'];
+
+const phaseMarketing: Record<DemoPhaseKey, { eyebrow: string; title: string; description: string }> = {
+    game: {
+        eyebrow: 'Mindset shift',
+        title: 'Untangle the stories dancers were taught to believe',
+        description: 'Gentle interactive moments help users question old beliefs and imagine a future that feels more honest and more expansive.',
+    },
+    reports: {
+        eyebrow: 'Patterns you can feel',
+        title: 'Notice what is giving you energy back',
+        description: 'The app gathers your reflections into a calmer view of what is changing, what is recurring, and what wants more attention.',
+    },
+    journal: {
+        eyebrow: 'Private reflection',
+        title: 'Catch the thought while it is still honest',
+        description: 'A simple journal space helps users write what they are noticing in real time and return to it later.',
+    },
+};
+
+const phaseIntroMeta: Record<DemoPhaseKey, { icon: React.ComponentType<{ className?: string }>; stat: string; note: string }> = {
+    game: {
+        icon: CheckCircle2,
+        stat: 'A gentle mindset reset',
+        note: 'A moment inside the app',
+    },
+    reports: {
+        icon: BarChart3,
+        stat: 'See your patterns clearly',
+        note: 'A moment inside the app',
+    },
+    journal: {
+        icon: NotebookPen,
+        stat: 'Write in real time',
+        note: 'A moment inside the app',
+    },
+};
+
+const getIntroHoldMs = (phaseKey: DemoPhaseKey) => (phaseKey === 'game' ? 5000 : 5400);
+
+function getTargetScrollOffset(
+    phaseKey: DemoPhaseKey,
+    viewport: HTMLDivElement | null,
+    content: HTMLDivElement | null
+) {
+    const maxOffset = viewport && content ? Math.max(0, content.scrollHeight - viewport.clientHeight) : 0;
+    if (phaseKey === 'reports') {
+        return maxOffset > 8 ? Math.round(maxOffset / 8) * 8 : 0;
+    }
+
+    const preferredStopsPx: Partial<Record<DemoPhaseKey, number>> = {
+        game: 0,
+        journal: 240,
+    };
+    const targetOffset = maxOffset > 8 ? Math.min(maxOffset, preferredStopsPx[phaseKey] ?? maxOffset) : 0;
+    return targetOffset > 8 ? Math.round(targetOffset / 8) * 8 : 0;
+}
+
 export const DeviceMockup = ({
     screens,
     dark = false,
@@ -408,77 +481,9 @@ export const DeviceMockup = ({
     const viewportRef = useRef<HTMLDivElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
 
-    const tabs = [
-        { icon: House, label: 'Home' },
-        { icon: BookOpen, label: 'Paths' },
-        { icon: Play, label: 'Learn' },
-        { icon: User, label: 'Progress' },
-        { icon: NotebookPen, label: 'Journal' },
-        { icon: BarChart3, label: 'Reports' },
-    ] as const;
-
-    const demoPhases = [
-        { key: 'game', label: 'Game', tab: 'Paths' },
-        { key: 'reports', label: 'Reports', tab: 'Reports' },
-        { key: 'journal', label: 'Journal', tab: 'Journal' },
-    ] as const;
-
-    const phaseMarketing: Record<(typeof demoPhases)[number]['key'], { eyebrow: string; title: string; description: string }> = {
-        game: {
-            eyebrow: 'Mindset shift',
-            title: 'Untangle the stories dancers were taught to believe',
-            description: 'Gentle interactive moments help users question old beliefs and imagine a future that feels more honest and more expansive.',
-        },
-        reports: {
-            eyebrow: 'Patterns you can feel',
-            title: 'Notice what is giving you energy back',
-            description: 'The app gathers your reflections into a calmer view of what is changing, what is recurring, and what wants more attention.',
-        },
-        journal: {
-            eyebrow: 'Private reflection',
-            title: 'Catch the thought while it is still honest',
-            description: 'A simple journal space helps users write what they are noticing in real time and return to it later.',
-        },
-    };
-
-    const phaseIntroMeta: Record<
-        (typeof demoPhases)[number]['key'],
-        { icon: React.ComponentType<{ className?: string }>; stat: string; note: string }
-    > = {
-        game: {
-            icon: CheckCircle2,
-            stat: 'A gentle mindset reset',
-            note: 'A moment inside the app',
-        },
-        reports: {
-            icon: BarChart3,
-            stat: 'See your patterns clearly',
-            note: 'A moment inside the app',
-        },
-        journal: {
-            icon: NotebookPen,
-            stat: 'Write in real time',
-            note: 'A moment inside the app',
-        },
-    };
-    const getIntroHoldMs = (phaseKey: (typeof demoPhases)[number]['key']) => (phaseKey === 'game' ? 5000 : 5400);
     const demoRevealSettleMs = 1100;
     const scrollStartDelayMs = 760;
     const demoContentSwapMs = 900;
-    const getTargetScrollOffset = (phaseKey: (typeof demoPhases)[number]['key']) => {
-        const viewport = viewportRef.current;
-        const content = contentRef.current;
-        const maxOffset = viewport && content ? Math.max(0, content.scrollHeight - viewport.clientHeight) : 0;
-        if (phaseKey === 'reports') {
-            return maxOffset > 8 ? Math.round(maxOffset / 8) * 8 : 0;
-        }
-        const preferredStopsPx: Partial<Record<(typeof demoPhases)[number]['key'], number>> = {
-            game: 0,
-            journal: 240,
-        };
-        const targetOffset = maxOffset > 8 ? Math.min(maxOffset, preferredStopsPx[phaseKey] ?? maxOffset) : 0;
-        return targetOffset > 8 ? Math.round(targetOffset / 8) * 8 : 0;
-    };
 
     useEffect(() => {
         let enableAnimationTimer: number | undefined;
@@ -514,7 +519,7 @@ export const DeviceMockup = ({
                 setIsScrollAnimating(true);
 
                 startScrollTimer = window.setTimeout(() => {
-                    setScrollOffset(getTargetScrollOffset(phase.key));
+                    setScrollOffset(getTargetScrollOffset(phase.key, viewportRef.current, contentRef.current));
                 }, scrollStartDelayMs);
             }, topPauseMs + demoRevealSettleMs);
 
@@ -534,7 +539,7 @@ export const DeviceMockup = ({
             if (startScrollTimer) window.clearTimeout(startScrollTimer);
             if (advanceTimer) window.clearTimeout(advanceTimer);
         };
-    }, [demoPhases.length, phaseIndex]);
+    }, [phaseIndex]);
 
     useEffect(() => {
         const phaseKey = demoPhases[displayedPhaseIndex]?.key;
@@ -631,9 +636,9 @@ export const DeviceMockup = ({
         };
     }, [displayedPhaseIndex]);
 
-    const renderTabBar = (activeTab: (typeof tabs)[number]['label']) => (
+    const renderTabBar = (activeTab: (typeof deviceMockTabs)[number]['label']) => (
         <div className="grid grid-cols-6 border-t border-black/5 bg-[#E2DED0] px-2 py-2">
-            {tabs.map((item) => {
+            {deviceMockTabs.map((item) => {
                 const Icon = item.icon;
                 const isActive = item.label === activeTab;
                 return (
@@ -649,7 +654,7 @@ export const DeviceMockup = ({
         </div>
     );
 
-    const renderTabShell = (activeTab: (typeof tabs)[number]['label'], content: ReactNode) => (
+    const renderTabShell = (activeTab: (typeof deviceMockTabs)[number]['label'], content: ReactNode) => (
         <div key={activeTab} className="flex h-full flex-col bg-[#E2DED0]">
             <div
                 ref={viewportRef}

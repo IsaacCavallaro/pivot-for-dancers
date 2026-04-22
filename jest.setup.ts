@@ -114,6 +114,35 @@ Object.defineProperty(HTMLElement.prototype, 'scrollTo', {
     value: jest.fn(),
 });
 
+const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
+
+beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation((...args: unknown[]) => {
+        const message = args
+            .filter((value): value is string => typeof value === 'string')
+            .join(' ');
+        if (message.includes('ReactDOMTestUtils.act') && message.includes('deprecated')) {
+            return;
+        }
+        originalConsoleError(...args);
+    });
+
+    jest.spyOn(console, 'warn').mockImplementation((...args: unknown[]) => {
+        const message = args
+            .filter((value): value is string => typeof value === 'string')
+            .join(' ');
+        if (message.includes('The width(0) and height(0) of chart should be greater than 0')) {
+            return;
+        }
+        originalConsoleWarn(...args);
+    });
+});
+
+afterAll(() => {
+    jest.restoreAllMocks();
+});
+
 beforeEach(() => {
     jest.clearAllMocks();
     mockRouter.mockReturnValue({
