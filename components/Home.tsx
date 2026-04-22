@@ -45,13 +45,37 @@ const screens = [
     },
 ];
 
+const youtubePlaylistUrl = 'https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm';
+const spotifyUrl = 'https://open.spotify.com/show/4PfCp7OJWQCaqfGsbjbDZW?si=731ca82e254c43bd';
+
+const featuredEpisodes = [
+    {
+        title: 'How Demi’s roller skating hobby turned into 500K followers on Instagram',
+        guest: 'Demi Jenkins',
+        duration: '23 min',
+        url: 'https://open.spotify.com/episode/5fdb0koSHkDYXFzP8rFjNH?si=aec61c7441064528&nd=1&dlsi=d8c9432002594cc8',
+    },
+    {
+        title: 'Missing the magic of the stage? Here’s how Ali is finding meaning beyond her ballet career',
+        guest: 'Ali Block',
+        duration: '28 min',
+        url: 'https://open.spotify.com/episode/1dpY9nKHk6oBVcpOieodSA?si=98326958322e40f0',
+    },
+    {
+        title: 'How a ski mountain helped Elise let go of her dance career',
+        guest: 'Elise MacDonald',
+        duration: '33 min',
+        url: 'https://open.spotify.com/episode/7eW8KrFIGM2B94vJEbdq07?si=fXQEDUUVTYu2FRUOGlAcvQ',
+    },
+];
+
 const Home = () => {
     return (
         <>
             <section className="px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
                 <div className="mx-auto max-w-[1280px]">
-                    <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
-                        <Reveal>
+                    <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+                        <Reveal className="lg:pt-2">
                             <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
                                 Free support for dancers in transition
                             </div>
@@ -94,7 +118,7 @@ const Home = () => {
                             </div>
                         </Reveal>
 
-                        <Reveal delay={120}>
+                        <Reveal delay={120} className="lg:pt-10">
                             <div className="space-y-5">
                                 <div className="rounded-[30px] border border-black/8 bg-[#F5F6F2] p-5 md:p-6">
                                     <div className="mb-5 flex items-start justify-between gap-4">
@@ -249,6 +273,80 @@ const Home = () => {
             </SectionBlock>
 
             <SectionBlock
+                label="WATCH + LISTEN"
+                title="Real stories, not generic career advice"
+                description="Bring the playlist and episode discovery back onto the homepage so the site immediately shows the voices, stories, and lived experience behind the brand."
+                background="#FFFFFF"
+            >
+                <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
+                    <Reveal>
+                        <div className="overflow-hidden rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]">
+                            <div className="overflow-hidden rounded-[26px] border border-black/8 bg-white">
+                                <iframe
+                                    src="https://www.youtube.com/embed/16JMiSPzlBE?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
+                                    title="Pivot Podcast playlist"
+                                    className="aspect-video w-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                />
+                            </div>
+                            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                                <a
+                                    href={youtubePlaylistUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                                >
+                                    Watch Playlist
+                                    <ArrowRight className="h-4 w-4" />
+                                </a>
+                                <a
+                                    href={spotifyUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
+                                >
+                                    Listen on Spotify
+                                </a>
+                            </div>
+                        </div>
+                    </Reveal>
+
+                    <div className="space-y-4">
+                        {featuredEpisodes.map((episode, index) => (
+                            <Reveal key={episode.title} delay={index * 90}>
+                                <a
+                                    href={episode.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-6 shadow-[0_22px_50px_rgba(45,49,56,0.06)] transition hover:-translate-y-1"
+                                >
+                                    <div className="flex items-center justify-between gap-4">
+                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                            Featured episode
+                                        </div>
+                                        <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#647C90]">
+                                            {episode.duration}
+                                        </span>
+                                    </div>
+                                    <h3 className="mt-4 text-[24px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
+                                        {episode.title}
+                                    </h3>
+                                    <div className="mt-4 flex items-center justify-between gap-4">
+                                        <p className="text-[14px] leading-7 text-[#60636B]">{episode.guest}</p>
+                                        <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]">
+                                            Play
+                                            <Play className="h-4 w-4" />
+                                        </span>
+                                    </div>
+                                </a>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
+            </SectionBlock>
+
+            <SectionBlock
                 label="TRUST + COMMUNITY"
                 title="Real dancers. Real transitions."
                 description="The proof layer should feel clear, premium, and emotionally believable."
@@ -268,20 +366,21 @@ const Home = () => {
                                 Honest stories, founder credibility, and a free app that makes the first step easier all help the site feel more like a serious product ecosystem.
                             </p>
                         </div>
-                        <a
-                            href="https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-4 rounded-[30px] border border-black/8 bg-white p-5"
-                        >
-                            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#111827]">
-                                <Play className="h-5 w-5 text-white" />
-                            </span>
-                            <div>
-                                <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">Community stories</div>
-                                <div className="mt-2 text-[22px] font-bold leading-tight text-[#111827]">Watch real transition stories on YouTube</div>
+                        <div className="rounded-[30px] border border-black/8 bg-white p-5">
+                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">Community stories</div>
+                            <div className="mt-3 text-[22px] font-bold leading-tight text-[#111827]">
+                                Watch real transition stories on YouTube and keep exploring the wider Pivot for Dancers world.
                             </div>
-                        </a>
+                            <a
+                                href={youtubePlaylistUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                            >
+                                Open Playlist
+                                <ArrowRight className="h-4 w-4" />
+                            </a>
+                        </div>
                     </div>
                     <QuotePanel
                         quote="Pivot for Dancers came to me at the perfect time when I was ending my performing career due to injury and burnout and helped me realize that I was not alone."

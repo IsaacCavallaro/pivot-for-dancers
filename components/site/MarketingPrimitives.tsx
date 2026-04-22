@@ -401,9 +401,9 @@ export const DeviceMockup = ({
                             <span className="h-2.5 w-6 rounded-full bg-[#111827]" />
                         </div>
                     </div>
-                    <div className="relative h-[calc(100%-24px)] overflow-hidden rounded-[26px] bg-[#E2DED0]">
+                    <div className="flex h-[calc(100%-24px)] flex-col overflow-hidden rounded-[26px] bg-[#E2DED0]">
                         <div
-                            className="absolute inset-x-0 top-0 h-[148px] rounded-b-[30px] px-5 pb-6 pt-5"
+                            className="relative h-[148px] flex-shrink-0 rounded-b-[30px] px-5 pb-6 pt-5"
                             style={{
                                 background: dark
                                     ? 'linear-gradient(180deg, #4F6272 0%, #647C90 100%)'
@@ -425,8 +425,8 @@ export const DeviceMockup = ({
                             </div>
                         </div>
 
-                        <div className="absolute inset-x-0 bottom-0 top-[112px] px-4 pb-4">
-                            <div className="h-full rounded-[28px] bg-[#E2DED0] px-3 pb-3 pt-4">
+                        <div className="min-h-0 flex-1 px-4 pb-4 pt-4">
+                            <div className="h-full rounded-[28px] bg-[#E2DED0] px-3 pb-3">
                                 <div className="space-y-3">
                                     <div className="rounded-[22px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
                                         <div className="flex items-start gap-3">
