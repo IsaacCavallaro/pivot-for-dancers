@@ -443,12 +443,13 @@ function getTargetScrollOffset(
 ) {
     const maxOffset = viewport && content ? Math.max(0, content.scrollHeight - viewport.clientHeight) : 0;
     if (phaseKey === 'reports') {
-        return maxOffset > 8 ? Math.round(maxOffset / 8) * 8 : 0;
+        const targetOffset = maxOffset > 8 ? Math.min(maxOffset, 184) : 0;
+        return targetOffset > 8 ? Math.round(targetOffset / 8) * 8 : 0;
     }
 
     const preferredStopsPx: Partial<Record<DemoPhaseKey, number>> = {
         game: 0,
-        journal: 240,
+        journal: 0,
     };
     const targetOffset = maxOffset > 8 ? Math.min(maxOffset, preferredStopsPx[phaseKey] ?? maxOffset) : 0;
     return targetOffset > 8 ? Math.round(targetOffset / 8) * 8 : 0;
@@ -470,27 +471,30 @@ export const DeviceMockup = ({
 }) => {
     const [phaseIndex, setPhaseIndex] = useState(0);
     const [displayedPhaseIndex, setDisplayedPhaseIndex] = useState(0);
+    const [introPhaseIndex, setIntroPhaseIndex] = useState(0);
+    const [demoRunKey, setDemoRunKey] = useState(0);
     const [scrollOffset, setScrollOffset] = useState(0);
     const [scrollDurationMs, setScrollDurationMs] = useState(6400);
     const [isScrollAnimating, setIsScrollAnimating] = useState(false);
     const [showPhaseIntro, setShowPhaseIntro] = useState(true);
     const [gameTapStep, setGameTapStep] = useState(0);
-    const [reportsDemoStep, setReportsDemoStep] = useState(0);
     const [journalDemoText, setJournalDemoText] = useState('');
-    const [journalDemoStep, setJournalDemoStep] = useState(0);
+    const [journalEntryAdded, setJournalEntryAdded] = useState(false);
+    const [journalButtonState, setJournalButtonState] = useState<'idle' | 'pressed' | 'saved'>('idle');
     const viewportRef = useRef<HTMLDivElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
 
-    const demoRevealSettleMs = 1100;
-    const scrollStartDelayMs = 760;
-    const demoContentSwapMs = 900;
+    const transitionDurationMs = 1600;
+    const demoRevealSettleMs = 1450;
+    const scrollStartDelayMs = 920;
+    const introCoverDelayMs = 1050;
 
     useEffect(() => {
         let enableAnimationTimer: number | undefined;
         let hideIntroTimer: number | undefined;
         let startScrollTimer: number | undefined;
         let advanceTimer: number | undefined;
-        let swapDisplayedPhaseTimer: number | undefined;
+        let nextPhaseTimer: number | undefined;
         const frame = window.requestAnimationFrame(() => {
             const phase = demoPhases[phaseIndex];
             const topPauseMs = getIntroHoldMs(phase.key);
@@ -498,21 +502,20 @@ export const DeviceMockup = ({
                 phase.key === 'game'
                     ? 7600
                     : phase.key === 'reports'
-                        ? 13200
+                        ? 12800
                         : 11000;
             const endPauseMs = 1300;
 
             setShowPhaseIntro(true);
+            setIntroPhaseIndex(phaseIndex);
+            setDisplayedPhaseIndex(phaseIndex);
             setIsScrollAnimating(false);
             setScrollDurationMs(nextDuration);
             setScrollOffset(0);
 
-            swapDisplayedPhaseTimer = window.setTimeout(() => {
-                setDisplayedPhaseIndex(phaseIndex);
-            }, demoContentSwapMs);
-
             enableAnimationTimer = window.setTimeout(() => {
                 setShowPhaseIntro(false);
+                setDemoRunKey((value) => value + 1);
             }, topPauseMs);
 
             hideIntroTimer = window.setTimeout(() => {
@@ -524,22 +527,27 @@ export const DeviceMockup = ({
             }, topPauseMs + demoRevealSettleMs);
 
             advanceTimer = window.setTimeout(() => {
-                setIsScrollAnimating(false);
-                setScrollOffset(0);
+                const nextIndex = (phaseIndex + 1) % demoPhases.length;
+                setIntroPhaseIndex(nextIndex);
                 setShowPhaseIntro(true);
-                setPhaseIndex((value) => (value + 1) % demoPhases.length);
+
+                nextPhaseTimer = window.setTimeout(() => {
+                    setIsScrollAnimating(false);
+                    setScrollOffset(0);
+                    setPhaseIndex(nextIndex);
+                }, introCoverDelayMs);
             }, topPauseMs + demoRevealSettleMs + scrollStartDelayMs + nextDuration + endPauseMs);
         });
 
         return () => {
             window.cancelAnimationFrame(frame);
-            if (swapDisplayedPhaseTimer) window.clearTimeout(swapDisplayedPhaseTimer);
             if (enableAnimationTimer) window.clearTimeout(enableAnimationTimer);
             if (hideIntroTimer) window.clearTimeout(hideIntroTimer);
             if (startScrollTimer) window.clearTimeout(startScrollTimer);
             if (advanceTimer) window.clearTimeout(advanceTimer);
+            if (nextPhaseTimer) window.clearTimeout(nextPhaseTimer);
         };
-    }, [phaseIndex]);
+    }, [introCoverDelayMs, phaseIndex]);
 
     useEffect(() => {
         const phaseKey = demoPhases[displayedPhaseIndex]?.key;
@@ -549,7 +557,7 @@ export const DeviceMockup = ({
         }
 
         setGameTapStep(0);
-        const baseDelayMs = getIntroHoldMs(phaseKey) + demoRevealSettleMs + 350;
+        const baseDelayMs = demoRevealSettleMs + 350;
 
         const timers = [
             window.setTimeout(() => setGameTapStep(1), baseDelayMs + 700),
@@ -568,73 +576,54 @@ export const DeviceMockup = ({
         return () => {
             timers.forEach((timer) => window.clearTimeout(timer));
         };
-    }, [displayedPhaseIndex]);
-
-    useEffect(() => {
-        const phaseKey = demoPhases[displayedPhaseIndex]?.key;
-        if (phaseKey !== 'reports') {
-            setReportsDemoStep(0);
-            return;
-        }
-
-        setReportsDemoStep(0);
-        const baseDelayMs = getIntroHoldMs(phaseKey) + demoRevealSettleMs + 1000;
-
-        const timers = [
-            window.setTimeout(() => setReportsDemoStep(1), baseDelayMs + 1900),
-            window.setTimeout(() => setReportsDemoStep(2), baseDelayMs + 3700),
-            window.setTimeout(() => setReportsDemoStep(3), baseDelayMs + 5900),
-            window.setTimeout(() => setReportsDemoStep(4), baseDelayMs + 8100),
-        ];
-
-        return () => {
-            timers.forEach((timer) => window.clearTimeout(timer));
-        };
-    }, [displayedPhaseIndex]);
+    }, [demoRevealSettleMs, demoRunKey, displayedPhaseIndex]);
 
     useEffect(() => {
         const phaseKey = demoPhases[displayedPhaseIndex]?.key;
         if (phaseKey !== 'journal') {
             setJournalDemoText('');
-            setJournalDemoStep(0);
+            setJournalEntryAdded(false);
+            setJournalButtonState('idle');
             return;
         }
 
         const demoText = "Today I realised I don't need to have every answer before I start exploring what comes next.";
         setJournalDemoText('');
-        setJournalDemoStep(0);
-        const baseDelayMs = getIntroHoldMs(phaseKey) + demoRevealSettleMs + 900;
+        setJournalEntryAdded(false);
+        setJournalButtonState('idle');
+        const baseDelayMs = demoRevealSettleMs + 900;
 
         let intervalId: number | undefined;
 
         const startTyping = window.setTimeout(() => {
-            setJournalDemoStep(1);
             let index = 0;
             intervalId = window.setInterval(() => {
                 index += 1;
                 setJournalDemoText(demoText.slice(0, index));
                 if (index >= demoText.length) {
                     if (intervalId) window.clearInterval(intervalId);
-                    setJournalDemoStep(2);
                 }
             }, 54);
         }, baseDelayMs + 1500);
 
-        const chooseMood = window.setTimeout(() => {
-            setJournalDemoStep(3);
-        }, baseDelayMs + 7000);
+        const pressSave = window.setTimeout(() => {
+            setJournalButtonState('pressed');
+        }, baseDelayMs + 7800);
 
-        const saveEntry = window.setTimeout(() => {
-            setJournalDemoStep(4);
-        }, baseDelayMs + 8300);
+        const completeSave = window.setTimeout(() => {
+            setJournalButtonState('saved');
+            setJournalEntryAdded(true);
+            setScrollDurationMs(2200);
+            setScrollOffset(112);
+        }, baseDelayMs + 8180);
 
         return () => {
             window.clearTimeout(startTyping);
-            window.clearTimeout(chooseMood);
-            window.clearTimeout(saveEntry);
+            window.clearTimeout(pressSave);
+            window.clearTimeout(completeSave);
             if (intervalId) window.clearInterval(intervalId);
         };
-    }, [displayedPhaseIndex]);
+    }, [demoRevealSettleMs, demoRunKey, displayedPhaseIndex]);
 
     const renderTabBar = (activeTab: (typeof deviceMockTabs)[number]['label']) => (
         <div className="grid grid-cols-6 border-t border-black/5 bg-[#E2DED0] px-2 py-2">
@@ -832,10 +821,10 @@ export const DeviceMockup = ({
                     </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
-                    <div className="rounded-[14px] bg-[#E2DED0] px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#647C90]">
+                    <div className="rounded-[14px] bg-[#E2DED0] px-3 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.14em] text-[#647C90]">
                         Myths
                     </div>
-                    <div className="rounded-[14px] bg-[#E2DED0] px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#647C90]">
+                    <div className="rounded-[14px] bg-[#E2DED0] px-3 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.14em] text-[#647C90]">
                         Realities
                     </div>
                 </div>
@@ -987,14 +976,14 @@ export const DeviceMockup = ({
                     <div className="text-[11px] font-semibold text-[#647C90]">Filter by mood:</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                         {[
-                            { label: 'All', active: journalDemoStep <= 2 },
-                            { label: 'Hopeful', active: journalDemoStep >= 3 },
+                            { label: 'All', active: true },
+                            { label: 'Hopeful', active: false },
                             { label: 'Calm', active: false },
                             { label: 'Reflective', active: false },
                         ].map((item) => (
                             <span
                                 key={item.label}
-                                className={`rounded-full px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.12em] transition-all duration-300 ${
+                                className={`rounded-full px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.12em] ${
                                     item.active ? 'bg-[#647C90] text-[#E2DED0]' : 'bg-[#E2DED0] text-[#647C90]'
                                 }`}
                             >
@@ -1005,11 +994,7 @@ export const DeviceMockup = ({
                 </div>
 
                 <div
-                    className={`rounded-[16px] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                        journalDemoStep >= 1
-                            ? 'border border-[#647C90]/25 bg-[rgba(100,124,144,0.1)]'
-                            : 'bg-[#F5F5F5]'
-                    }`}
+                    className="rounded-[16px] border border-[#647C90]/25 bg-[rgba(100,124,144,0.1)] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]"
                 >
                     <div className="mb-2 flex items-center justify-between gap-3">
                         <div className="text-[11px] font-semibold text-[#647C90]">New Entry</div>
@@ -1017,33 +1002,35 @@ export const DeviceMockup = ({
                     </div>
                     <div className="min-h-[84px] rounded-[12px] bg-white px-3 py-3 text-[11px] leading-4 text-[#4E4F50]">
                         {journalDemoText}
-                        {journalDemoStep >= 1 && journalDemoStep < 4 && (
+                        {journalDemoText.length > 0 && journalDemoText.length < 94 && (
                             <span className="ml-0.5 inline-block h-[14px] w-[1.5px] animate-pulse bg-[#647C90] align-middle" />
                         )}
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
                         <div className="inline-flex h-[34px] w-[112px] items-center justify-center rounded-full bg-[#647C90] px-3 py-2 text-[9px] font-medium uppercase tracking-[0.12em] text-[#E2DED0]">
-                            {journalDemoStep >= 3 ? 'Hopeful' : 'Mood'}
+                            Hopeful
                         </div>
                         <div
-                            className={`inline-flex h-[34px] w-[112px] items-center justify-center gap-2 rounded-full px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] transition-colors duration-300 ${
-                                journalDemoStep >= 4
-                                    ? 'bg-[#5A7D7B] text-[#E2DED0]'
-                                    : 'bg-[#647C90] text-[#E2DED0]'
+                            className={`inline-flex h-[34px] w-[112px] items-center justify-center gap-2 rounded-full px-3 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0] transition-all duration-300 ${
+                                journalButtonState === 'pressed'
+                                    ? 'scale-[0.96] bg-[#556c7f]'
+                                    : journalButtonState === 'saved'
+                                        ? 'bg-[#5A7D7B]'
+                                        : 'bg-[#647C90]'
                             }`}
                         >
-                            {journalDemoStep >= 4 ? 'Saved' : 'Add Entry'}
+                            {journalButtonState === 'saved' ? 'Saved' : 'Add Entry'}
                             <CheckCircle2 className="h-3.5 w-3.5" />
                         </div>
                     </div>
                 </div>
 
                 <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#647C90]">
-                    {journalDemoStep >= 4 ? '4 Entries' : '3 Entries'}
+                    {journalEntryAdded ? '4 Entries' : '3 Entries'}
                 </div>
 
                 {journalEntries
-                    .filter((entry) => !entry.isNew || journalDemoStep >= 4)
+                    .filter((entry) => !entry.isNew || journalEntryAdded)
                     .map((entry) => (
                         <div
                             key={entry.id}
@@ -1075,13 +1062,13 @@ export const DeviceMockup = ({
         <div className="space-y-3 px-3 pb-4 pt-4">
             <div className="flex gap-2 overflow-hidden">
                 {[
-                    { label: 'This path', active: reportsDemoStep <= 1 },
-                    { label: 'All paths', active: reportsDemoStep === 2 },
-                    { label: '30 days', active: reportsDemoStep >= 3 },
+                    { label: 'This path', active: true },
+                    { label: 'All paths', active: false },
+                    { label: '30 days', active: false },
                 ].map((item) => (
                     <div
                         key={item.label}
-                        className={`rounded-full border px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] transition-all duration-300 ${
+                        className={`flex items-center justify-center rounded-full border px-3 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.12em] ${
                             item.active
                                 ? 'border-[#647C90] bg-[#647C90] text-[#E2DED0]'
                                 : 'border-[#D9D3C6] bg-white text-[#928490]'
@@ -1103,13 +1090,7 @@ export const DeviceMockup = ({
                     </div>
                 </div>
             </div>
-            <div
-                className={`rounded-[20px] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                    reportsDemoStep === 1
-                        ? 'border border-[#647C90]/25 bg-[rgba(100,124,144,0.12)]'
-                        : 'bg-[#F5F5F5]'
-                }`}
-            >
+            <div className="rounded-[20px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
                 <div className="mb-3 flex items-center gap-2">
                     <Heart className="h-4 w-4 text-[#647C90]" />
                     <div className="font-serif text-[18px] text-[#647C90]">Mood Analysis</div>
@@ -1143,13 +1124,7 @@ export const DeviceMockup = ({
                     Most Common Mood: Hopeful
                 </p>
             </div>
-            <div
-                className={`rounded-[20px] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                    reportsDemoStep === 2
-                        ? 'border border-[#647C90]/25 bg-[rgba(100,124,144,0.12)]'
-                        : 'bg-[#F5F5F5]'
-                }`}
-            >
+            <div className="rounded-[20px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
                 <div className="mb-3 flex items-center gap-2">
                     <BarChart3 className="h-4 w-4 text-[#647C90]" />
                     <div className="font-serif text-[18px] text-[#647C90]">Path Activity</div>
@@ -1185,23 +1160,13 @@ export const DeviceMockup = ({
             ].map((item, index) => (
                 <div
                     key={item.title}
-                    className={`rounded-[18px] border-l-4 px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                        reportsDemoStep === 3 && index >= 4
-                            ? 'border-[#647C90] bg-[rgba(100,124,144,0.12)]'
-                            : 'border-[#647C90] bg-[#F5F5F5]'
-                    }`}
+                    className={`rounded-[18px] border-l-4 border-[#647C90] bg-[#F5F5F5] px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)] ${index >= 4 ? 'hidden' : ''}`}
                 >
                     <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#928490]">{item.title}</div>
                     <div className="mt-2 text-[12px] leading-4 text-[#4E4F50]">{item.text}</div>
                 </div>
             ))}
-            <div
-                className={`rounded-[20px] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                    reportsDemoStep === 4
-                        ? 'border border-[#647C90]/25 bg-[rgba(100,124,144,0.12)]'
-                        : 'bg-[#F5F5F5]'
-                }`}
-            >
+            <div className="rounded-[20px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
                 <div className="font-serif text-[18px] text-[#647C90]">Recent Wins</div>
                 <div className="mt-3 space-y-2">
                     {[
@@ -1214,25 +1179,6 @@ export const DeviceMockup = ({
                             <div className="text-[11px] leading-4 text-[#4E4F50]">{item}</div>
                         </div>
                     ))}
-                </div>
-            </div>
-            <div
-                className={`rounded-[20px] px-4 py-4 text-center shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                    reportsDemoStep === 4
-                        ? 'border border-[#647C90]/25 bg-[rgba(100,124,144,0.12)]'
-                        : 'bg-[#F5F5F5]'
-                }`}
-            >
-                <Download className="mx-auto h-7 w-7 text-[#647C90]" />
-                <div className="mt-3 font-serif text-[18px] text-[#647C90]">Share Your Progress</div>
-                <p className="mt-2 text-[11px] leading-4 text-[#928490]">
-                    Export and share your journal insights with others or keep for your records.
-                </p>
-                <div className={`mt-3 inline-flex items-center gap-2 rounded-full px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0] transition-all duration-300 ${
-                    reportsDemoStep === 4 ? 'scale-105 bg-[#556c7f]' : 'bg-[#647C90]'
-                }`}>
-                    Export Report
-                    <Share2 className="h-3.5 w-3.5" />
                 </div>
             </div>
         </div>
@@ -1252,7 +1198,7 @@ export const DeviceMockup = ({
         }
     };
 
-    const activePhase = demoPhases[phaseIndex];
+    const activePhase = demoPhases[introPhaseIndex];
     const activeMarketing = phaseMarketing[activePhase.key];
     const activeIntro = phaseIntroMeta[activePhase.key];
     const ActiveIntroIcon = activeIntro.icon;
@@ -1274,21 +1220,23 @@ export const DeviceMockup = ({
                     </div>
                     <div className="relative h-[calc(100%-22px)] overflow-hidden rounded-[22px] border border-[rgba(17,24,39,0.08)] bg-[#E2DED0] sm:h-[calc(100%-24px)] sm:rounded-[26px]">
                         <div
-                            className="h-full transition-[opacity,transform,filter] duration-[1200ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
+                            className="h-full transition-[opacity,transform,filter] ease-[cubic-bezier(0.23,1,0.32,1)]"
                             style={{
-                                opacity: showPhaseIntro ? 0 : 1,
-                                transform: 'scale(1)',
-                                filter: showPhaseIntro ? 'blur(2px)' : 'blur(0px)',
+                                opacity: showPhaseIntro ? 0.02 : 1,
+                                transform: showPhaseIntro ? 'scale(0.988)' : 'scale(1)',
+                                filter: showPhaseIntro ? 'blur(3px)' : 'blur(0px)',
+                                transitionDuration: `${transitionDurationMs}ms`,
                             }}
                         >
                             {renderCurrentPhase()}
                         </div>
                         <div
-                            className="pointer-events-none absolute inset-0 z-20 transition-[opacity,transform,filter] duration-[1200ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
+                            className="pointer-events-none absolute inset-0 z-20 transition-[opacity,transform,filter] ease-[cubic-bezier(0.23,1,0.32,1)]"
                             style={{
                                 opacity: showPhaseIntro ? 1 : 0,
-                                transform: 'translateY(0)',
+                                transform: showPhaseIntro ? 'translateY(0) scale(1)' : 'translateY(-4px) scale(1.01)',
                                 filter: showPhaseIntro ? 'blur(0px)' : 'blur(1px)',
+                                transitionDuration: `${transitionDurationMs}ms`,
                             }}
                         >
                             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(226,222,208,0.98),rgba(226,222,208,0.94))]" />
@@ -1333,8 +1281,8 @@ export const DeviceMockup = ({
                                 onClick={() => {
                                     setIsScrollAnimating(false);
                                     setScrollOffset(0);
+                                    setIntroPhaseIndex(nextIndex);
                                     setPhaseIndex(nextIndex);
-                                    setDisplayedPhaseIndex(nextIndex);
                                 }}
                                 aria-label={`Show ${phase.label}`}
                                 className="h-2 rounded-full transition-all duration-300"
