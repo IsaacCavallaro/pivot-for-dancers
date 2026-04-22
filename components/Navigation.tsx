@@ -130,7 +130,7 @@ const Navigation = () => {
                         href={bookNowUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:opacity-92"
+                        className="inline-flex items-center gap-2 rounded-full bg-[#647C90] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
                     >
                         Book support
                         <ArrowRight className="h-4 w-4" />
@@ -211,7 +211,7 @@ const Navigation = () => {
                         href={bookNowUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#647C90] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
                     >
                         Book support
                         <ArrowRight className="h-4 w-4" />

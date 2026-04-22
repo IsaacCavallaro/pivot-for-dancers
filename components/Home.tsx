@@ -10,37 +10,40 @@ import TestimonialsSection from './TestimonialSection';
 
 const screens = [
     {
-        variant: 'welcome' as const,
-        eyebrow: 'Day 3 of 7',
-        title: 'Welcome Back',
+        variant: 'onboarding' as const,
+        eyebrow: 'Pivot Paths',
+        title: 'A calmer first step for dancers figuring out what comes next.',
+        description: 'This app is designed to help you explore options, build confidence, and keep momentum without losing your place.',
         lines: [
-            'How today\'s scenario reveals your priorities.',
-            'What your instincts say about the future you want.',
-            'One small reflection to carry into the rest of your week.',
+            'Choose a direction',
+            'Track your progress',
+            'Learn from real stories',
         ],
-        ctaLabel: 'Save Entry',
+        ctaLabel: 'Start With This Focus',
     },
     {
-        variant: 'paths' as const,
-        eyebrow: 'Continue where you left off',
-        title: 'Discover Your Dream Life',
+        variant: 'home' as const,
+        eyebrow: 'By Pivot For Dancers',
+        title: 'Pivot Paths',
+        description: 'Resume your progress, explore guided paths, and learn from dancer stories in one place.',
         lines: [
-            '7 day journeys designed specifically for professional dancers.',
-            'Real experiences from dancers who have already pivoted.',
-            'Career, mindset, and finance support in one place.',
+            'Guided Paths',
+            'Video Stories',
+            'Personalized Support',
         ],
         ctaLabel: 'Continue Path',
     },
     {
-        variant: 'journal' as const,
-        eyebrow: 'Private by design',
-        title: 'Your personal journal',
+        variant: 'welcome' as const,
+        eyebrow: 'Discover Your Dream Life',
+        title: 'Welcome Back Maya',
+        description: 'You’re building real momentum. Each day you come back, you get clearer about what you want life beyond dance to feel like.',
         lines: [
-            'Journal entries stay inside your own personal record.',
-            'Career, mindset, and finance prompts live in one place.',
-            'Free, private, and easy to come back to.',
+            'How your current instincts shape your choices',
+            'What this scenario reveals about your priorities',
+            'What an alternative future could open up for you',
         ],
-        ctaLabel: 'Explore the app',
+        ctaLabel: 'Save Entry',
     },
 ];
 
@@ -165,29 +168,30 @@ const Home = () => {
                 <div className="relative mx-auto max-w-[1280px]">
                     <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
                         <Reveal className="lg:flex lg:h-full lg:flex-col lg:justify-between lg:pt-10">
-                            <div>
+                            <div className="text-center lg:text-left">
                                 <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
-                                    Support for dancers in transition
+                                    Career change, made for dancers
                                 </div>
-                                <h1 className="mt-5 max-w-xl text-[52px] font-bold leading-[0.93] tracking-[-0.04em] text-[#111827] md:text-[72px] lg:text-[92px]">
+                                <h1 className="mx-auto mt-5 max-w-xl text-[46px] font-bold leading-[0.93] tracking-[-0.04em] text-[#111827] sm:text-[52px] md:text-[72px] lg:mx-0 lg:text-[92px]">
                                     Pivot from surviving to thriving
                                 </h1>
-                                <p className="mt-6 max-w-xl text-[18px] leading-8 text-[#60636B] md:text-[20px]">
+                                <p className="mx-auto mt-6 max-w-xl text-[18px] leading-8 text-[#60636B] md:text-[20px] lg:mx-0">
                                     We’re helping professional dancers find meaning off the stage through dancer-specific career change resources.
                                 </p>
 
-                                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                                <div className="mx-auto mt-8 flex max-w-md flex-col gap-4 sm:flex-row lg:mx-0 lg:max-w-none">
                                     <a
                                         href="/resources/pivot-paths"
-                                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f] sm:w-auto"
                                     >
                                         Start with Pivot Paths
+                                        <ArrowRight className="h-4 w-4" />
                                     </a>
                                     <a
                                         href="https://tidycal.com/pivotfordancers/mentorship-1"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827] transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
                                     >
                                         Book support
                                     </a>
@@ -195,50 +199,70 @@ const Home = () => {
                             </div>
 
                             <div className="mt-8 lg:mt-10">
-                                <div className="grid max-w-xl gap-3 sm:grid-cols-2">
+                                <div className="mx-auto grid max-w-xl gap-3 sm:grid-cols-2 lg:mx-0">
                                     {heroStats.map((item) => (
                                         <StatCard key={item.label} value={item.value} label={item.label} />
                                     ))}
                                 </div>
 
-                                <div className="mt-5 max-w-xl rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_24px_56px_rgba(45,49,56,0.08)]">
-                                    <div className="rounded-[24px] border border-black/8 bg-white px-5 py-5">
-                                    <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
-                                        Founder-led support
-                                    </div>
-                                    <div className="mt-3 text-[22px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
-                                        Built by a former professional dancer who has already lived the pivot.
-                                    </div>
-                                    <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
-                                        The emotional side of the transition is treated as seriously as the practical side.
-                                    </p>
+                                <div className="mx-auto mt-5 max-w-xl rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_24px_56px_rgba(45,49,56,0.08)] lg:mx-0">
+                                    <div className="rounded-[24px] border border-black/8 bg-white px-5 py-5 text-center lg:text-left">
+                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                            Founder-led support
+                                        </div>
+                                        <div className="mt-3 text-[22px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
+                                            Built by a former professional dancer who has already lived the pivot.
+                                        </div>
+                                        <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                            We recognise the emotional side of the transition is as important as the practical side.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </Reveal>
 
-                        <Reveal delay={120} className="lg:flex lg:h-full lg:flex-col">
-                            <div className="rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)] md:p-5 lg:flex lg:h-full lg:flex-col">
-                                <div className="rounded-[28px] border border-black/8 bg-white p-5 md:p-6 lg:flex lg:h-full lg:flex-col">
-                                    <div className="mb-5 flex items-start justify-between gap-4">
-                                        <div>
-                                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
-                                                Pivot Paths preview
+                        <Reveal delay={120} className="lg:flex lg:h-full lg:items-center lg:justify-center">
+                            <div className="mx-auto w-full max-w-[540px] rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)] md:p-5 lg:max-w-[430px] lg:p-4 xl:max-w-[460px]">
+                                <div className="rounded-[28px] border border-black/8 bg-white p-4 sm:p-5 md:p-6 lg:p-5">
+                                    <div className="mb-5">
+                                        <div className="flex items-center justify-center gap-3 sm:justify-between">
+                                            <div>
+                                                <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                                    Start here
+                                                </div>
                                             </div>
-                                            <div className="mt-2 max-w-sm text-[18px] font-semibold leading-7 text-[#111827]">
-                                                Your private toolkit for career transition, mindset wellness, and financial planning
+                                            <div className="hidden rounded-full bg-[#F5F6F2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#647C90] sm:inline-flex">
+                                                Free guided app
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="rounded-[24px] bg-[radial-gradient(circle_at_top,rgba(100,124,144,0.12),transparent_58%),linear-gradient(180deg,#FCFAF6_0%,#F5F6F2_100%)] p-4">
+                                    <div className="lg:flex lg:flex-1 lg:items-center lg:justify-center">
+                                        <div className="mx-auto w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[290px] xl:max-w-[310px]">
+                                            <DeviceMockup screens={screens} />
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div className="mt-5 text-center text-[16px] font-medium leading-7 text-[#60636B]">
+                                        Your private toolkit for career transition, mindset wellness, and financial planning
+                                    </div>
+                                    <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                                         <a
-                                            href="/resources/pivot-paths"
-                                            className="hidden items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-[12px] font-bold uppercase tracking-[0.16em] text-[#111827] md:inline-flex"
+                                            href="https://stats.sender.net/forms/bkRKWX/view"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f] sm:w-auto"
                                         >
-                                            Explore
+                                            Join the waitlist
                                             <ArrowRight className="h-4 w-4" />
                                         </a>
-                                    </div>
-                                    <div className="lg:flex lg:flex-1 lg:items-center">
-                                        <DeviceMockup screens={screens} />
+                                        <a
+                                            href="/resources/pivot-paths"
+                                            className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827] transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
+                                        >
+                                            See More
+                                            <ArrowRight className="h-4 w-4" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -259,6 +283,7 @@ const Home = () => {
                             title: 'Products',
                             description: 'Dancer-focused digital products to guide you through your career transition.',
                             href: '/products',
+                            kicker: 'Digital guides',
                             ctaLabel: 'Browse products',
                             image: '/assets/how-to-pivot-ebook.png',
                             tone: 'brand',
@@ -267,6 +292,7 @@ const Home = () => {
                             title: 'Services',
                             description: 'Bespoke career change services tailored to your unique experience and goals.',
                             href: '/services',
+                            kicker: 'Personalized support',
                             ctaLabel: 'View services',
                             image: '/assets/pivot-mentorship.png',
                             tone: 'dark',
@@ -275,6 +301,7 @@ const Home = () => {
                             title: 'Resources',
                             description: 'Countless hours of free, accessible content to help you feel less alone on your pivot journey.',
                             href: '/resources',
+                            kicker: 'Free tools',
                             ctaLabel: 'Explore resources',
                             image: '/assets/data.png',
                             tone: 'light',
@@ -301,7 +328,7 @@ const Home = () => {
                                     allowFullScreen
                                 />
                             </div>
-                            <div className="mt-5 flex flex-1 flex-col justify-between gap-5 rounded-[26px] border border-[#E8E0D4] bg-white px-5 py-5">
+                            <div className="mt-5 flex flex-1 flex-col justify-between gap-5 rounded-[26px] border border-[#E8E0D4] bg-white px-5 py-5 text-center md:text-left">
                                 <div className="flex flex-wrap items-center gap-3">
                                     <span className="rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
                                         Now Playing
@@ -329,14 +356,14 @@ const Home = () => {
                                         href={youtubePlaylistUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#647C90] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f] sm:w-auto"
                                     >
                                         Watch Playlist
                                         <ArrowRight className="h-4 w-4" />
                                     </a>
                                     <a
                                         href={podcastGuestCtaUrl}
-                                        className="inline-flex items-center justify-center rounded-full border border-black/10 bg-[#F8F6F0] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
+                                        className="inline-flex w-full items-center justify-center rounded-full border border-black/10 bg-[#F8F6F0] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827] sm:w-auto"
                                     >
                                         Submit a guest request
                                     </a>
@@ -357,8 +384,8 @@ const Home = () => {
                                         borderColor: selectedEpisode.videoId === episode.videoId ? '#647C90' : '#E8E0D4',
                                     }}
                                 >
-                                    <div>
-                                        <div className="flex items-center justify-between gap-4">
+                                    <div className="text-center md:text-left">
+                                        <div className="flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
                                             <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                                 {selectedEpisode.videoId === episode.videoId ? 'Now playing' : 'Featured episode'}
                                             </div>
@@ -373,7 +400,7 @@ const Home = () => {
                                             {episode.description}
                                         </p>
                                     </div>
-                                    <div className="mt-5 flex items-center justify-between gap-4">
+                                    <div className="mt-5 flex flex-col items-center justify-between gap-3 md:flex-row md:gap-4">
                                         <p className="text-[14px] leading-7 text-[#60636B]">{episode.guest}</p>
                                         <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]">
                                             Play

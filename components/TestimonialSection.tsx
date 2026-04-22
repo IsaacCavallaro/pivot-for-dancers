@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MessageSquareQuote, Star } from 'lucide-react';
 
 const testimonials = [
     {
@@ -50,7 +50,7 @@ const TestimonialsSection = () => {
             <div className="relative mx-auto max-w-7xl">
                 <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch lg:gap-10">
                     <div className="flex h-full flex-col gap-6 pt-2">
-                        <div className="max-w-xl">
+                        <div className="max-w-xl text-center lg:text-left">
                             <span className="text-xs font-bold uppercase tracking-[0.24em] text-[#928490]">
                                 TESTIMONIALS
                             </span>
@@ -63,18 +63,17 @@ const TestimonialsSection = () => {
                         </div>
 
                         <div className="flex flex-1 flex-col rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]">
-                            <div className="flex items-center justify-between gap-4 rounded-[24px] border border-black/8 bg-white px-5 py-4">
-                                <div className="flex items-center gap-1">
-                                    {Array.from({ length: 5 }).map((_, starIndex) => (
-                                        <Star key={starIndex} className="h-4 w-4 fill-[#F4B740] text-[#F4B740]" />
-                                    ))}
+                            <div className="flex flex-col items-center justify-between gap-3 rounded-[24px] border border-black/8 bg-white px-5 py-4 text-center sm:flex-row sm:text-left">
+                                <div className="inline-flex items-center gap-2 rounded-full bg-[#F8F6F0] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#111827]">
+                                    <MessageSquareQuote className="h-3.5 w-3.5" />
+                                    Community reviews
                                 </div>
                                 <div className="rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
-                                    Google review
+                                    Share your story
                                 </div>
                             </div>
 
-                            <div className="mt-4 flex flex-1 flex-col justify-between rounded-[26px] border border-black/8 bg-white px-5 py-5 md:px-6">
+                            <div className="mt-4 flex flex-1 flex-col justify-between rounded-[26px] border border-black/8 bg-white px-5 py-5 text-center md:px-6 lg:text-left">
                                 <div>
                                     <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                         Share your experience
@@ -95,7 +94,7 @@ const TestimonialsSection = () => {
                                         href={reviewUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-3 rounded-full bg-[#647C90] px-6 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f]"
+                                        className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#647C90] px-6 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f] sm:w-auto"
                                     >
                                         Add review
                                         <ArrowRight className="h-4 w-4" />
@@ -120,14 +119,14 @@ const TestimonialsSection = () => {
                         </div>
 
                         <div className="mt-4 flex flex-1 flex-col gap-4">
-                            <div className="flex flex-1 items-center rounded-[26px] border border-black/8 bg-white px-5 py-6 md:px-6">
-                                <p className="text-[22px] font-semibold leading-[1.55] text-[#111827] md:text-[28px]">
+                            <div className="flex flex-1 items-center rounded-[26px] border border-black/8 bg-white px-5 py-6 text-center md:px-6">
+                                <p className="w-full text-[22px] font-semibold leading-[1.55] text-[#111827] md:text-[28px]">
                                     “{active.content}”
                                 </p>
                             </div>
 
-                            <div className="flex flex-col gap-5 rounded-[26px] border border-black/8 bg-white px-5 py-5 xl:flex-row xl:items-center xl:justify-between">
-                                <div className="flex items-center gap-4">
+                            <div className="flex flex-col gap-5 rounded-[26px] border border-black/8 bg-white px-5 py-5">
+                                <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
                                     <Image
                                         src={active.imageSrc}
                                         alt={active.author}
@@ -141,7 +140,7 @@ const TestimonialsSection = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-3 xl:ml-auto">
+                                <div className="flex items-center justify-center gap-3">
                                     {testimonials.map((item, dotIndex) => (
                                         <button
                                             key={item.author}
@@ -157,7 +156,7 @@ const TestimonialsSection = () => {
                                     ))}
                                 </div>
 
-                                <div className="flex gap-3">
+                                <div className="flex justify-center gap-3">
                                     <button
                                         type="button"
                                         onClick={() => setIndex((value) => (value - 1 + testimonials.length) % testimonials.length)}

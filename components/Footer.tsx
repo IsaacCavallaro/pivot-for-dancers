@@ -69,7 +69,7 @@ const Footer = () => {
                         <button
                             type="button"
                             onClick={handleSubmit}
-                            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#111827] px-5 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#647C90] px-5 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
                         >
                             {status === 'loading' ? 'Joining...' : 'Join the community'}
                             <ArrowRight className="h-4 w-4" />
