@@ -18,13 +18,13 @@ export const resources: Resource[] = [
         id: 1,
         title: 'Pivot Paths',
         type: 'Blog',
-        description: 'A mobile app to help you find your path',
+        description: 'A free guided app for dancers exploring career, mindset, and financial next steps',
         icon: BookOpen,
         url: '/resources/pivot-paths',
         image: '/assets/how-to-pivot-ebook.png',
         gradient: 'from-blue-200 to-blue-300',
-        duration: 'Mobile App',
-        features: ['Career Transition', 'Guided Paths']
+        duration: 'Free App',
+        features: ['Career Transition', 'Mindset', 'Finance']
     },
     {
         id: 2,
