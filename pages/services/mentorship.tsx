@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Heart, MessageCircle, Star, Target, TrendingUp, Users } from 'lucide-react';
 import DetailCardShell from '../../components/site/DetailCardShell';
 import { SiteChrome } from '../../components/site/MarketingPrimitives';
@@ -106,12 +107,12 @@ export default function MentorshipPage() {
                                                 Book mentorship
                                                 <ArrowRight className="h-4 w-4" />
                                             </a>
-                                            <a
+                                            <Link
                                                 href="/services"
                                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
                                             >
                                                 See all services
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

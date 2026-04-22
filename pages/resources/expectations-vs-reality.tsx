@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import {
     ArrowRight,
     BarChart3,
@@ -217,12 +218,12 @@ export default function ExpectationsVsRealityPage() {
                                                 Explore the data
                                                 <ArrowRight className="h-4 w-4" />
                                             </a>
-                                            <a
+                                            <Link
                                                 href="/resources"
                                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
                                             >
                                                 Browse all resources
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

@@ -155,10 +155,10 @@ const Quiz: React.FC = () => {
                                 <h3 className="font-merriweather text-2xl text-dark-gray mb-4">What This Means For Your Transition</h3>
                                 <div className="space-y-4 font-montserrat text-light-gray">
                                     <p>
-                                        Based on your answers, we've identified key strengths and challenges that could come up during your transition.
+                                        Based on your answers, we&apos;ve identified key strengths and challenges that could come up during your transition.
                                     </p>
                                     <p>
-                                        We've sent a detailed breakdown to your email with unique career change recommendations to suit your pivot personality.
+                                        We&apos;ve sent a detailed breakdown to your email with unique career change recommendations to suit your pivot personality.
                                     </p>
                                 </div>
                             </div>

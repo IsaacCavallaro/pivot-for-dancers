@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { ArrowRight, Play } from 'lucide-react';
 import {
     DeviceMockup,
@@ -180,13 +181,13 @@ const Home = () => {
                                 </p>
 
                                 <div className="mx-auto mt-8 flex max-w-md flex-col gap-4 sm:flex-row lg:mx-0 lg:max-w-none">
-                                    <a
+                                    <Link
                                         href="/resources/pivot-paths"
                                         className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f] sm:w-auto"
                                     >
                                         Start with Pivot Paths
                                         <ArrowRight className="h-4 w-4" />
-                                    </a>
+                                    </Link>
                                     <a
                                         href="https://tidycal.com/pivotfordancers/mentorship-1"
                                         target="_blank"
@@ -256,13 +257,13 @@ const Home = () => {
                                             Join the waitlist
                                             <ArrowRight className="h-4 w-4" />
                                         </a>
-                                        <a
+                                        <Link
                                             href="/resources/pivot-paths"
                                             className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827] transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
                                         >
                                             See More
                                             <ArrowRight className="h-4 w-4" />
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

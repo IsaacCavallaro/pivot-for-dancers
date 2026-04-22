@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Brain, Compass, Heart, Shield, Star, Target } from 'lucide-react';
 import DetailCardShell from '../../components/site/DetailCardShell';
 import { ebookPaymentUrl } from '../../data/products';
@@ -105,12 +106,12 @@ export default function HowToPivotPage() {
                                                 Buy the ebook
                                                 <ArrowRight className="h-4 w-4" />
                                             </a>
-                                            <a
+                                            <Link
                                                 href="/products"
                                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
                                             >
                                                 See all products
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Brain, Search, UserCheck, Zap } from 'lucide-react';
 import Quiz from '../../components/Quiz';
 import DetailCardShell from '../../components/site/DetailCardShell';
@@ -96,12 +97,12 @@ export default function FindYourPivotPersonalityPage() {
                                                 Take the quiz
                                                 <ArrowRight className="h-4 w-4" />
                                             </a>
-                                            <a
+                                            <Link
                                                 href="/resources"
                                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
                                             >
                                                 See all resources
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -198,13 +199,13 @@ export default function FindYourPivotPersonalityPage() {
                                         <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
                                             If you want more tailored guidance after the quiz, mentorship can help you translate your result into clearer action and support.
                                         </p>
-                                        <a
+                                        <Link
                                             href="/services/mentorship"
                                             className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
                                         >
                                             Book mentorship
                                             <ArrowRight className="h-4 w-4" />
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
