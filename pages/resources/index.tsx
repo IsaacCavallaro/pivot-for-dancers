@@ -7,14 +7,14 @@ export default function ResourcesPage() {
         <SiteChrome>
             <section className="px-4 pb-10 pt-28 sm:px-6 lg:px-8 lg:pb-12 lg:pt-32">
                 <div className="mx-auto max-w-[1280px]">
-                    <div className="max-w-3xl">
+                    <div className="max-w-3xl text-center lg:text-left">
                         <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
                             FREE TOOLS
                         </div>
                         <h1 className="mt-5 text-[48px] font-bold leading-[0.95] tracking-[-0.04em] text-[#111827] md:text-[64px] lg:text-[76px]">
                             Resources
                         </h1>
-                        <p className="mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B]">
+                        <p className="mx-auto mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B] lg:mx-0">
                             Countless hours of free, accessible content to help you feel less alone on your pivot journey.
                         </p>
                     </div>
@@ -114,7 +114,7 @@ export default function ResourcesPage() {
                                     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                                         <a
                                             href={resource.url}
-                                            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                                            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
                                         >
                                             Open resource
                                             <ArrowRight className="h-4 w-4" />

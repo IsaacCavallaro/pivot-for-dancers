@@ -1,23 +1,7 @@
-import { Brain, Briefcase, DollarSign, Lock, Shield, Smartphone, User } from 'lucide-react';
-import {
-    Checklist,
-    DeviceMockup,
-    InfoGrid,
-    PageHero,
-    SectionBlock,
-    SiteChrome,
-} from '../../components/site/MarketingPrimitives';
+import { ArrowRight, Brain, Briefcase, DeviceMobile, DollarSign, Lock, Shield, Star, User } from 'lucide-react';
+import { DeviceMockup, SiteChrome } from '../../components/site/MarketingPrimitives';
 
 const pivotPathsSignupUrl = 'https://stats.sender.net/forms/bkRKWX/view';
-
-const appFeatures = [
-    '9 weeks of structured career change content for dancers.',
-    'Daily prompts, exercises, and reflective games.',
-    'Mindset tools and wellness experiments.',
-    'Career transition assessments and development resources.',
-    'Financial literacy exercises and money planning.',
-    '100% free, private, and secure.',
-];
 
 const appCategories = [
     {
@@ -45,7 +29,7 @@ const privacyCards = [
     },
     {
         title: 'Totally free',
-        description: 'We’ll never sell your data and you can complete each path as many times as you’d like, completely free of charge. There’s nothing holding you back from exploring!',
+        description: 'We’ll never sell your data and you can complete each path as many times as you’d like, completely free of charge.',
         icon: Shield,
     },
     {
@@ -53,15 +37,6 @@ const privacyCards = [
         description: 'You own your data and if you delete the app, your information isn’t stored on our end. Learn more about yourself without anyone over your shoulder.',
         icon: User,
     },
-];
-
-const launchFeatures = [
-    'Career Transition Resources',
-    'Mindset & Wellness Tools',
-    'Financial Planning Guides',
-    '100% Local Data Storage',
-    'Personal Growth Games',
-    'Free Forever',
 ];
 
 const screens = [
@@ -103,123 +78,164 @@ const screens = [
     },
 ];
 
+const CardShell = ({
+    children,
+    className = '',
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) => (
+    <div className={`rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)] ${className}`}>
+        <div className="h-full rounded-[28px] border border-black/8 bg-white">{children}</div>
+    </div>
+);
+
 export default function PivotPathsPage() {
     return (
         <SiteChrome>
-            <PageHero
-                eyebrow="FREE APP"
-                title="Pivot Paths"
-                description="Your private dancer-focused toolkit for mindset shifts, career transitions, and financial planning."
-                primaryCta={{ label: 'Join the waitlist', href: pivotPathsSignupUrl, external: true, dark: true }}
-                secondaryCta={{ label: 'Browse all resources', href: '/resources' }}
-                metrics={[
-                    { value: '3', label: 'pivot categories' },
-                    { value: '100%', label: 'anonymous' },
-                    { value: '$0', label: 'download costs' },
-                    { value: '9', label: 'weeks of content' },
-                ]}
-                media={
-                    <div className="mx-auto w-full max-w-[380px] lg:mr-0">
-                        <DeviceMockup screens={screens} />
-                    </div>
-                }
-            />
-
-            <SectionBlock
-                label="INSIDE THE APP"
-                title="What is the Pivot Paths App?"
-                description="Your life, beyond the stage. Curated just for dancers. Navigate your next act with confidence with our all-in-one toolkit for career, mindset, and financial wellness."
-                background="#FFFFFF"
-                aside={
-                    <a
-                        href={pivotPathsSignupUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
-                    >
-                        Get updates
-                    </a>
-                }
-            >
-                <div className="grid gap-8 lg:grid-cols-[0.96fr_1.04fr] lg:items-stretch">
-                    <div className="h-full">
-                        <Checklist items={appFeatures} />
-                    </div>
-                    <div className="h-full">
-                        <InfoGrid columns={1} cards={appCategories} />
+            <section className="px-4 pb-10 pt-28 sm:px-6 lg:px-8 lg:pb-12 lg:pt-32">
+                <div className="mx-auto max-w-[1280px]">
+                    <div className="max-w-3xl text-center lg:text-left">
+                        <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
+                            FREE APP
+                        </div>
+                        <h1 className="mt-5 text-[48px] font-bold leading-[0.95] tracking-[-0.04em] text-[#111827] md:text-[64px] lg:text-[76px]">
+                            Pivot Paths
+                        </h1>
+                        <p className="mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B]">
+                            Your private dancer-focused toolkit for mindset shifts, career transitions, and financial planning.
+                        </p>
                     </div>
                 </div>
-            </SectionBlock>
+            </section>
 
-            <SectionBlock
-                label="PRIVATE BY DESIGN"
-                title="Built to feel safe, low-pressure, and easy to explore"
-                description="The app is meant to support honest reflection. That only works if dancers feel they have space to think without needing to perform the transition for anyone else."
-                background="#F7F2EA"
-            >
-                <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch">
-                    <div className="h-full">
-                        <InfoGrid cards={privacyCards} columns={1} />
-                    </div>
-                    <div className="h-full">
-                        <div className="flex h-full flex-col rounded-[32px] border border-black/8 bg-white p-7 shadow-[0_24px_56px_rgba(45,49,56,0.06)]">
-                            <div>
-                                <div className="flex h-12 w-12 items-center justify-center rounded-[18px] bg-[#111827] text-white">
-                                    <Smartphone className="h-5 w-5" />
+            <section className="bg-[#F7F2EA] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+                <div className="mx-auto max-w-[1280px]">
+                    <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
+                        <CardShell className="h-full">
+                            <div className="flex h-full flex-col p-5 md:p-6">
+                                <div className="flex flex-col items-center justify-between gap-3 rounded-[24px] border border-black/8 bg-white px-5 py-4 text-center sm:flex-row sm:text-left">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
+                                        Free app
+                                    </div>
+                                    <div className="rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#5E6167]">
+                                        Private by design
+                                    </div>
                                 </div>
-                                <h3 className="mt-5 text-[28px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
-                                    Mobile-first and easy to come back to
-                                </h3>
-                                <p className="mt-4 text-[15px] leading-8 text-[#60636B]">
-                                    The app is designed for short moments of reflection, not long stretches of concentration. That makes it easier to return whenever you need guidance.
-                                </p>
-                            </div>
 
-                            <div className="mt-8 rounded-[24px] border border-[#E8E0D4] bg-[#FCFAF6] px-5 py-5">
-                                <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
-                                    Status
+                                <div className="mt-4 flex flex-1 flex-col gap-4">
+                                    <div className="rounded-[26px] border border-black/8 bg-white px-5 py-6 md:px-6">
+                                        <div className="mt-5 text-center md:text-left">
+                                            <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                                What it is
+                                            </p>
+                                            <h2 className="mt-3 text-[30px] font-bold leading-[1.02] tracking-[-0.03em] text-[#111827] md:text-[36px]">
+                                                Your life, beyond the stage
+                                            </h2>
+                                            <p className="mt-4 text-[15px] leading-8 text-[#60636B]">
+                                                Curated just for dancers, Pivot Paths helps users navigate mindset, career, and money decisions with private tools, guided reflection, and mobile-first support.
+                                            </p>
+                                        </div>
+                                        <div className="mt-6 flex min-h-[300px] items-center justify-center rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] p-6">
+                                            <div className="mx-auto w-full max-w-[300px]">
+                                                <DeviceMockup screens={screens} />
+                                            </div>
+                                        </div>
+                                        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                                            <a
+                                                href={pivotPathsSignupUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
+                                            >
+                                                Join the waitlist
+                                                <ArrowRight className="h-4 w-4" />
+                                            </a>
+                                            <a
+                                                href="/resources"
+                                                className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
+                                            >
+                                                Browse all resources
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="mt-3 text-[28px] font-bold leading-none tracking-[-0.03em] text-[#111827]">
-                                    Coming soon
-                                </div>
-                                <p className="mt-4 text-[14px] leading-7 text-[#60636B]">
-                                    Join the waiting list to hear when the app is ready to download and when new guided paths are released.
-                                </p>
                             </div>
+                        </CardShell>
+
+                        <div className="grid gap-8">
+                            <CardShell>
+                                <div className="p-5 md:p-6">
+                                    <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                        Inside the app
+                                    </div>
+                                    <h2 className="mt-3 text-[30px] font-bold leading-[1.02] tracking-[-0.03em] text-[#111827]">
+                                        Explore the categories designed for the pivot
+                                    </h2>
+                                    <div className="mt-5 grid gap-4">
+                                        {appCategories.map((item) => (
+                                            <div
+                                                key={item.title}
+                                                className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-5 py-5"
+                                            >
+                                                <div className="flex items-start gap-3">
+                                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#647C90] text-white">
+                                                        <item.icon className="h-5 w-5" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-[22px] font-bold leading-tight text-[#111827]">
+                                                            {item.title}
+                                                        </div>
+                                                        <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                                            {item.description}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="mt-5 border-t border-[#E8E0D4] pt-5">
+                                        <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                            Dancer review
+                                        </div>
+                                        <div className="rounded-[22px] border border-black/8 bg-white px-5 py-5">
+                                            <div className="flex items-center justify-center gap-1 md:justify-start">
+                                                {Array.from({ length: 5 }).map((_, index) => (
+                                                    <Star key={index} className="h-4 w-4 fill-[#F4B740] text-[#F4B740]" />
+                                                ))}
+                                            </div>
+                                            <p className="mt-4 text-[18px] font-medium leading-8 text-[#4E4F50] md:text-[20px] md:leading-9">
+                                                “A thoughtful first step for dancers who want private, practical support while they figure out what comes next.”
+                                            </p>
+                                            <div className="mt-4 text-[13px] font-bold uppercase tracking-[0.16em] text-[#928490]">
+                                                Pivot for Dancers Community
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </CardShell>
                         </div>
                     </div>
-                </div>
-            </SectionBlock>
 
-            <SectionBlock
-                label="TAKE THE FIRST STEP"
-                title="Take the First Step on Your New Path"
-                description="Explore curated paths designed to build your skills, confidence, and future, all in one place."
-                background="#FFFFFF"
-                aside={
-                    <a
-                        href={pivotPathsSignupUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
-                    >
-                        Join the waiting list
-                    </a>
-                }
-            >
-                <div className="rounded-[32px] border border-black/8 bg-[#F5F6F2] p-7 shadow-[0_24px_56px_rgba(45,49,56,0.06)] md:p-8">
-                    <div className="flex flex-wrap gap-3">
-                        {launchFeatures.map((feature) => (
-                            <span
-                                key={feature}
-                                className="rounded-full border border-[#DCE4EB] bg-white px-4 py-3 text-[12px] font-bold uppercase tracking-[0.14em] text-[#647C90]"
-                            >
-                                {feature}
-                            </span>
+                    <div className="mt-8 grid gap-8 lg:grid-cols-3">
+                        {privacyCards.map((item) => (
+                            <CardShell key={item.title}>
+                                <div className="p-5 md:p-6">
+                                    <div className="flex h-11 w-11 items-center justify-center rounded-[18px] bg-[#647C90] text-white">
+                                        <item.icon className="h-5 w-5" />
+                                    </div>
+                                    <div className="mt-4 text-[28px] font-bold leading-[1.02] tracking-[-0.03em] text-[#111827]">
+                                        {item.title}
+                                    </div>
+                                    <p className="mt-4 text-[15px] leading-8 text-[#60636B]">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </CardShell>
                         ))}
                     </div>
                 </div>
-            </SectionBlock>
+            </section>
         </SiteChrome>
     );
 }

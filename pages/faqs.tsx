@@ -1,7 +1,7 @@
 import { FAQAccordion, SectionBlock, SiteChrome } from '../components/site/MarketingPrimitives';
 
 const answerCtaClassName =
-    'mt-6 inline-flex items-center justify-center rounded-full bg-[#647C90] px-6 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f]';
+    'mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#647C90] px-6 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f] sm:w-auto';
 
 const faqItems = [
     {
@@ -138,14 +138,14 @@ export default function FaqsPage() {
         <SiteChrome>
             <section className="px-4 pb-10 pt-28 sm:px-6 lg:px-8 lg:pb-12 lg:pt-32">
                 <div className="mx-auto max-w-[1280px]">
-                    <div className="max-w-3xl">
+                    <div className="max-w-3xl text-center lg:text-left">
                         <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
                             FAQS
                         </div>
                         <h1 className="mt-5 text-[48px] font-bold leading-[0.95] tracking-[-0.04em] text-[#111827] md:text-[64px] lg:text-[76px]">
                             Frequently Asked Questions
                         </h1>
-                        <p className="mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B]">
+                        <p className="mx-auto mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B] lg:mx-0">
                             Answers to common questions about Pivot for Dancers.
                         </p>
                     </div>

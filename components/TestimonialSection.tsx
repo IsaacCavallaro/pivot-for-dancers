@@ -78,7 +78,7 @@ const TestimonialsSection = () => {
                                     <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                         Share your experience
                                     </p>
-                                    <h3 className="mt-3 max-w-[15ch] text-[24px] font-bold leading-[1.08] tracking-[-0.03em] text-[#111827] md:text-[26px]">
+                                    <h3 className="mx-auto mt-3 max-w-[15ch] text-[24px] font-bold leading-[1.08] tracking-[-0.03em] text-[#111827] md:mx-0 md:text-[26px]">
                                         Help another dancer feel less alone
                                     </h3>
                                     <p className="mt-3 max-w-sm text-[14px] leading-6 text-[#5E6167]">
@@ -104,29 +104,27 @@ const TestimonialsSection = () => {
                         </div>
                     </div>
 
-                    <div
-                        className="flex h-full flex-col rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]"
-                    >
-                        <div className="flex flex-wrap items-center justify-between gap-4 rounded-[24px] border border-black/8 bg-white px-5 py-4">
-                            <div className="flex items-center gap-1">
-                                {Array.from({ length: 5 }).map((_, starIndex) => (
-                                    <Star key={starIndex} className="h-4 w-4 fill-[#F4B740] text-[#F4B740]" />
-                                ))}
+                    <div className="flex h-full flex-col rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]">
+                        <div className="flex flex-1 flex-col rounded-[26px] border border-black/8 bg-white px-5 py-5 md:px-6">
+                            <div className="flex flex-wrap items-center justify-center gap-4">
+                                <div className="flex items-center gap-1">
+                                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                                        <Star key={starIndex} className="h-4 w-4 fill-[#F4B740] text-[#F4B740]" />
+                                    ))}
+                                </div>
+                                <div className="rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#5E6167]">
+                                    {String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+                                </div>
                             </div>
-                            <div className="rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#5E6167]">
-                                {String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
-                            </div>
-                        </div>
 
-                        <div className="mt-4 flex flex-1 flex-col gap-4">
-                            <div className="flex flex-1 items-center rounded-[26px] border border-black/8 bg-white px-5 py-6 text-center md:px-6">
+                            <div className="flex flex-1 items-center py-8 text-center">
                                 <p className="w-full text-[22px] font-semibold leading-[1.55] text-[#111827] md:text-[28px]">
                                     “{active.content}”
                                 </p>
                             </div>
 
-                            <div className="flex flex-col gap-5 rounded-[26px] border border-black/8 bg-white px-5 py-5">
-                                <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+                            <div className="border-t border-[#E8E0D4] pt-5">
+                                <div className="flex flex-col items-center gap-4 text-center">
                                     <Image
                                         src={active.imageSrc}
                                         alt={active.author}
@@ -139,39 +137,41 @@ const TestimonialsSection = () => {
                                         <div className="text-sm text-[#5E6167]">{active.role}</div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div className="flex items-center justify-center gap-3">
-                                    {testimonials.map((item, dotIndex) => (
-                                        <button
-                                            key={item.author}
-                                            type="button"
-                                            onClick={() => setIndex(dotIndex)}
-                                            aria-label={`Show testimonial from ${item.author}`}
-                                            className="h-2.5 rounded-full transition-all"
-                                            style={{
-                                                width: index === dotIndex ? 30 : 10,
-                                                backgroundColor: index === dotIndex ? '#111827' : '#D6CDC1',
-                                            }}
-                                        />
-                                    ))}
-                                </div>
+                        <div className="mt-5 flex flex-col gap-5">
+                            <div className="flex items-center justify-center gap-3">
+                                {testimonials.map((item, dotIndex) => (
+                                    <button
+                                        key={item.author}
+                                        type="button"
+                                        onClick={() => setIndex(dotIndex)}
+                                        aria-label={`Show testimonial from ${item.author}`}
+                                        className="h-2.5 rounded-full transition-all"
+                                        style={{
+                                            width: index === dotIndex ? 30 : 10,
+                                            backgroundColor: index === dotIndex ? '#647C90' : '#D6CDC1',
+                                        }}
+                                    />
+                                ))}
+                            </div>
 
-                                <div className="flex justify-center gap-3">
-                                    <button
-                                        type="button"
-                                        onClick={() => setIndex((value) => (value - 1 + testimonials.length) % testimonials.length)}
-                                        className="flex h-12 w-12 items-center justify-center rounded-full border border-[#E5DDCF] bg-[#FCFAF6] text-[#111827]"
-                                    >
-                                        <ArrowLeft className="h-4 w-4" />
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() => setIndex((value) => (value + 1) % testimonials.length)}
-                                        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#111827] text-white"
-                                    >
-                                        <ArrowRight className="h-4 w-4" />
-                                    </button>
-                                </div>
+                            <div className="flex justify-center gap-3">
+                                <button
+                                    type="button"
+                                    onClick={() => setIndex((value) => (value - 1 + testimonials.length) % testimonials.length)}
+                                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#D8E1E8] bg-[#EEF2F5] text-[#647C90] transition hover:bg-[#e2e8ed]"
+                                >
+                                    <ArrowLeft className="h-4 w-4" />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setIndex((value) => (value + 1) % testimonials.length)}
+                                    className="flex h-12 w-12 items-center justify-center rounded-full bg-[#647C90] text-white transition hover:bg-[#556c7f]"
+                                >
+                                    <ArrowRight className="h-4 w-4" />
+                                </button>
                             </div>
                         </div>
                     </div>

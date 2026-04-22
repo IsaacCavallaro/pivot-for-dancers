@@ -137,7 +137,7 @@ const StatCard = ({ value, label }: { value: string; label: string }) => {
             ref={ref}
             className="rounded-[24px] border border-[#E8E0D4] bg-[#F5F6F2] p-3 shadow-[0_22px_50px_rgba(45,49,56,0.08)]"
         >
-            <div className="rounded-[18px] border border-black/8 bg-white px-4 py-4">
+            <div className="rounded-[18px] border border-black/8 bg-white px-4 py-4 text-center">
                 <div className="text-[26px] font-bold leading-none text-[#111827]">
                     {isNumeric ? (
                         <>
@@ -172,8 +172,8 @@ const Home = () => {
                                 <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
                                     Career change, made for dancers
                                 </div>
-                                <h1 className="mx-auto mt-5 max-w-xl text-[46px] font-bold leading-[0.93] tracking-[-0.04em] text-[#111827] sm:text-[52px] md:text-[72px] lg:mx-0 lg:text-[92px]">
-                                    Pivot from surviving to thriving
+                                <h1 className="mx-auto mt-5 max-w-xl text-[46px] font-bold leading-[1] tracking-[-0.04em] text-[#111827] sm:text-[52px] md:text-[68px] lg:mx-0 lg:text-[78px] xl:text-[84px]">
+                                    Pivot from the dream job to the <em>dream life</em>
                                 </h1>
                                 <p className="mx-auto mt-6 max-w-xl text-[18px] leading-8 text-[#60636B] md:text-[20px] lg:mx-0">
                                     We’re helping professional dancers find meaning off the stage through dancer-specific career change resources.

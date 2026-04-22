@@ -37,19 +37,19 @@ const Footer = () => {
         <footer className="border-t border-black/8 bg-white">
             <div className="mx-auto max-w-[1280px] px-4 py-20 sm:px-6 lg:px-8">
                 <div className="grid gap-10 border-b border-black/8 pb-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-                    <div>
+                    <div className="text-center lg:text-left">
                         <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
                             Join our Community
                         </div>
-                        <h2 className="mt-5 max-w-2xl text-4xl font-bold leading-tight text-[#111827] md:text-5xl">
+                        <h2 className="mx-auto mt-5 max-w-2xl text-4xl font-bold leading-tight text-[#111827] md:text-5xl lg:mx-0">
                             Discover inspiration, guidance, and a vibrant community to help you navigate your journey toward a fulfilling and meaningful future.
                         </h2>
-                        <p className="mt-5 max-w-xl text-lg leading-8 text-[#60636B]">
+                        <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-[#60636B] lg:mx-0">
                             Join our mailing list for updates, support, and resources designed for dancers navigating career change.
                         </p>
                     </div>
 
-                    <div className="rounded-[32px] border border-black/10 bg-[#F5F6F2] p-6 md:p-8">
+                    <div className="mx-auto w-full max-w-xl rounded-[32px] border border-black/10 bg-[#F5F6F2] p-6 text-center md:p-8 lg:mx-0 lg:max-w-none lg:text-left">
                         <label className="text-[12px] font-bold uppercase tracking-[0.22em] text-[#7A7D86]">
                             Email address
                         </label>
@@ -88,7 +88,7 @@ const Footer = () => {
                 </div>
 
                 <div className="grid gap-10 pt-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
-                    <div>
+                    <div className="flex flex-col items-center text-center md:items-start md:text-left">
                         <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#647C90]/20 bg-white p-[3px] shadow-[0_10px_24px_rgba(17,24,39,0.08)]">
                             <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-black/8 bg-[#E2DED0]">
                                 <img src="/assets/logo.png" alt="Pivot For Dancers" className="h-full w-full object-cover" />
@@ -99,7 +99,7 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    <div>
+                    <div className="text-center md:text-left">
                         <h3 className="text-[12px] font-bold uppercase tracking-[0.22em] text-[#7A7D86]">Explore</h3>
                         <div className="mt-4 flex flex-col gap-3 text-[15px] text-[#111827]">
                             <Link href="/products">Products</Link>
@@ -109,7 +109,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="text-center md:text-left">
                         <h3 className="text-[12px] font-bold uppercase tracking-[0.22em] text-[#7A7D86]">Company</h3>
                         <div className="mt-4 flex flex-col gap-3 text-[15px] text-[#111827]">
                             <Link href="/about">About</Link>
@@ -118,9 +118,9 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="text-center md:text-left">
                         <h3 className="text-[12px] font-bold uppercase tracking-[0.22em] text-[#7A7D86]">Follow</h3>
-                        <div className="mt-4 flex gap-3">
+                        <div className="mt-4 flex justify-center gap-3 md:justify-start">
                             {socialLinks.map((item) => (
                                 <a
                                     key={item.href}

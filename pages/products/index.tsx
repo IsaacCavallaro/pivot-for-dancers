@@ -9,14 +9,14 @@ export default function ProductsPage() {
         <SiteChrome>
             <section className="px-4 pb-10 pt-28 sm:px-6 lg:px-8 lg:pb-12 lg:pt-32">
                 <div className="mx-auto max-w-[1280px]">
-                    <div className="max-w-3xl">
+                    <div className="max-w-3xl text-center lg:text-left">
                         <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
                             DIGITAL GUIDES
                         </div>
                         <h1 className="mt-5 text-[48px] font-bold leading-[0.95] tracking-[-0.04em] text-[#111827] md:text-[64px] lg:text-[76px]">
                             Products
                         </h1>
-                        <p className="mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B]">
+                        <p className="mx-auto mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B] lg:mx-0">
                             Dancer-focused digital products to guide you through your career transition.
                         </p>
                     </div>
@@ -35,7 +35,7 @@ export default function ProductsPage() {
                                 key={product.id}
                                 className="flex h-full rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]"
                             >
-                                <div className="flex h-full w-full flex-col rounded-[28px] border border-black/8 bg-white p-6">
+                                <div className="flex h-full w-full flex-col rounded-[28px] border border-black/8 bg-white p-6 text-center lg:text-left">
                                     <div className="mb-6 flex min-h-[280px] items-center justify-center rounded-[24px] border border-black/6 bg-white p-6">
                                         <img
                                             src={product.img}
@@ -46,7 +46,7 @@ export default function ProductsPage() {
 
                                 <div className="flex flex-1 flex-col">
                                     <div className="min-h-[170px]">
-                                        <div className="flex flex-wrap items-center gap-2">
+                                        <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
                                             <span className="rounded-full border border-[#DCE4EB] bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
                                                 {product.subtitle}
                                             </span>
@@ -54,7 +54,7 @@ export default function ProductsPage() {
                                         <h2 className="mt-4 text-[34px] font-bold leading-[0.98] tracking-[-0.03em] text-[#111827]">
                                             {product.name}
                                         </h2>
-                                        <p className="mt-4 max-w-[26rem] text-[15px] leading-8 text-[#60636B]">
+                                        <p className="mx-auto mt-4 max-w-[26rem] text-[15px] leading-8 text-[#60636B] lg:mx-0">
                                             {product.description}
                                         </p>
                                     </div>
@@ -63,25 +63,27 @@ export default function ProductsPage() {
                                         <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                             Investment
                                         </div>
-                                        <div className="mt-2 text-[28px] font-bold leading-none tracking-[-0.03em] text-[#111827]">
-                                            ${product.price}
+                                        <div className="mt-2 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 lg:justify-start">
+                                            <div className="text-[28px] font-bold leading-none tracking-[-0.03em] text-[#111827]">
+                                                ${product.price}
+                                            </div>
+                                            {product.originalPrice > 0 && (
+                                                <>
+                                                    <div className="text-[13px] leading-6 text-[#60636B]">
+                                                        <span className="line-through">${product.originalPrice}</span>
+                                                        {' '}before
+                                                    </div>
+                                                    <div className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#647C90]">
+                                                        Save ${product.originalPrice - product.price}
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
-                                        {product.originalPrice > 0 && (
-                                            <div className="mt-3 text-[13px] leading-6 text-[#60636B]">
-                                                <span className="line-through">${product.originalPrice}</span>
-                                                {' '}before
-                                            </div>
-                                        )}
-                                        {product.originalPrice > 0 && (
-                                            <div className="mt-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-[#647C90]">
-                                                Save ${product.originalPrice - product.price}
-                                            </div>
-                                        )}
                                     </div>
 
                                         <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                                            <div className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-4 py-4">
-                                                <div className="flex items-center gap-2 text-[#647C90]">
+                                            <div className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-4 py-4 text-center lg:text-left">
+                                                <div className="flex items-center justify-center gap-2 text-[#647C90] lg:justify-start">
                                                     <BookOpen className="h-4 w-4" />
                                                     <span className="text-[11px] font-bold uppercase tracking-[0.16em]">Format</span>
                                                 </div>
@@ -89,8 +91,8 @@ export default function ProductsPage() {
                                                     {product.category}
                                                 </div>
                                             </div>
-                                            <div className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-4 py-4">
-                                                <div className="flex items-center gap-2 text-[#647C90]">
+                                            <div className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-4 py-4 text-center lg:text-left">
+                                                <div className="flex items-center justify-center gap-2 text-[#647C90] lg:justify-start">
                                                     <Clock3 className="h-4 w-4" />
                                                     <span className="text-[11px] font-bold uppercase tracking-[0.16em]">Pace</span>
                                                 </div>
@@ -98,8 +100,8 @@ export default function ProductsPage() {
                                                     {product.duration}
                                                 </div>
                                             </div>
-                                            <div className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-4 py-4">
-                                                <div className="flex items-center gap-2 text-[#647C90]">
+                                            <div className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-4 py-4 text-center lg:text-left">
+                                                <div className="flex items-center justify-center gap-2 text-[#647C90] lg:justify-start">
                                                     <Star className="h-4 w-4" />
                                                     <span className="text-[11px] font-bold uppercase tracking-[0.16em]">Reviews</span>
                                                 </div>
@@ -113,22 +115,22 @@ export default function ProductsPage() {
                                             <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                                 What you get
                                             </div>
-                                            <div className="mt-3 flex flex-wrap gap-2">
-                                                {product.features.map((feature) => (
-                                                    <span
-                                                        key={feature}
-                                                        className="rounded-full border border-[#DCE4EB] bg-[#EEF2F5] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#647C90]"
-                                                    >
+                                        <div className="mt-3 flex flex-wrap justify-center gap-2 lg:justify-start">
+                                            {product.features.slice(0, 3).map((feature) => (
+                                                <span
+                                                    key={feature}
+                                                    className="rounded-full border border-[#DCE4EB] bg-[#EEF2F5] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#647C90]"
+                                                >
                                                         {feature}
                                                     </span>
                                                 ))}
                                             </div>
                                         </div>
 
-                                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                                        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
                                             <a
                                                 href={detailHref}
-                                                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                                                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
                                             >
                                                 View product
                                                 <ArrowRight className="h-4 w-4" />

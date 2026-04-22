@@ -258,28 +258,30 @@ export const PageHero = ({
     >
         <div className="mx-auto max-w-[1280px]">
             <div className="grid gap-12 lg:grid-cols-[0.84fr_1.16fr] lg:items-center">
-                <Reveal>
-                    <SectionLabel text={eyebrow} inverse={dark} />
+                <Reveal className="text-center lg:text-left">
+                    <div className="flex justify-center lg:justify-start">
+                        <SectionLabel text={eyebrow} inverse={dark} />
+                    </div>
                     <h1
-                        className="mt-5 max-w-xl text-[48px] font-bold leading-[0.94] tracking-[-0.04em] md:text-[66px] lg:text-[82px]"
+                        className="mx-auto mt-5 max-w-xl text-[48px] font-bold leading-[0.94] tracking-[-0.04em] md:text-[66px] lg:mx-0 lg:text-[82px]"
                         style={{ color: dark ? '#FFFFFF' : '#111827' }}
                     >
                         {title}
                     </h1>
                     <p
-                        className="mt-6 max-w-xl text-[18px] leading-8 md:text-[20px]"
+                        className="mx-auto mt-6 max-w-xl text-[18px] leading-8 md:text-[20px] lg:mx-0"
                         style={{ color: dark ? 'rgba(255,255,255,0.76)' : '#60636B' }}
                     >
                         {description}
                     </p>
                     {(primaryCta || secondaryCta) && (
-                        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
                             {primaryCta && <CTAButton cta={{ ...primaryCta, dark: primaryCta.dark ?? true }} />}
                             {secondaryCta && <CTAButton cta={secondaryCta} />}
                         </div>
                     )}
                     {metrics && metrics.length > 0 && (
-                        <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-2">
+                        <div className="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2 lg:mx-0">
                             {metrics.slice(0, 4).map((metric) => (
                                 <div
                                     key={metric.label}
@@ -318,9 +320,11 @@ export const SectionBlock = ({
 }) => (
     <section className="px-4 py-20 sm:px-6 lg:px-8 lg:py-24" style={{ backgroundColor: background }}>
         <div className="mx-auto max-w-[1280px]">
-            <Reveal className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <Reveal className="flex flex-col gap-5 text-center md:flex-row md:items-end md:justify-between md:text-left">
                 <div className="max-w-3xl">
-                    <SectionLabel text={label} inverse={dark} />
+                    <div className="flex justify-center md:justify-start">
+                        <SectionLabel text={label} inverse={dark} />
+                    </div>
                     <h2
                         className="mt-4 text-[36px] font-bold leading-[1.02] tracking-[-0.03em] md:text-[50px]"
                         style={{ color: dark ? '#FFFFFF' : '#111827' }}
@@ -329,14 +333,16 @@ export const SectionBlock = ({
                     </h2>
                     {description && (
                         <p
-                            className="mt-5 max-w-2xl text-[18px] leading-8"
+                            className="mx-auto mt-5 max-w-2xl text-[18px] leading-8 md:mx-0"
                             style={{ color: dark ? 'rgba(255,255,255,0.76)' : '#60636B' }}
                         >
                             {description}
                         </p>
                     )}
                 </div>
-                {aside}
+                <div className="flex justify-center md:block">
+                    {aside}
+                </div>
             </Reveal>
             {children && <div className="mt-12">{children}</div>}
         </div>
@@ -1733,12 +1739,12 @@ export const DeviceMockup = ({
     const ActiveIntroIcon = activeIntro.icon;
 
     return (
-        <div className="relative mx-auto aspect-[318/640] w-full max-w-[380px]">
+        <div className="relative mx-auto aspect-[318/640] w-full max-w-[312px] sm:max-w-[340px] md:max-w-[380px]">
             <div
-                className="absolute inset-0 z-10 rounded-[42px] border-[10px] border-[#111827] bg-[#111827] p-2 shadow-[0_42px_96px_rgba(17,24,39,0.18)]"
+                className="absolute inset-0 z-10 rounded-[36px] border-[8px] border-[#111827] bg-[#111827] p-1.5 shadow-[0_32px_72px_rgba(17,24,39,0.18)] sm:rounded-[42px] sm:border-[10px] sm:p-2 sm:shadow-[0_42px_96px_rgba(17,24,39,0.18)]"
             >
-                <div className="h-full rounded-[32px] bg-[#FAF9F5] p-3">
-                    <div className="mb-3 flex items-center justify-between px-2 text-[11px] font-semibold text-[#111827]">
+                <div className="h-full rounded-[28px] bg-[#FAF9F5] p-2.5 sm:rounded-[32px] sm:p-3">
+                    <div className="mb-2.5 flex items-center justify-between px-1.5 text-[10px] font-semibold text-[#111827] sm:mb-3 sm:px-2 sm:text-[11px]">
                         <span>9:41</span>
                         <div className="flex items-center gap-1">
                             <span className="h-2.5 w-2.5 rounded-full bg-[#647C90]" />
@@ -1746,7 +1752,7 @@ export const DeviceMockup = ({
                             <span className="h-2.5 w-6 rounded-full bg-[#111827]" />
                         </div>
                     </div>
-                    <div className="relative h-[calc(100%-24px)] overflow-hidden rounded-[26px] border border-[rgba(17,24,39,0.08)] bg-[#E2DED0]">
+                    <div className="relative h-[calc(100%-22px)] overflow-hidden rounded-[22px] border border-[rgba(17,24,39,0.08)] bg-[#E2DED0] sm:h-[calc(100%-24px)] sm:rounded-[26px]">
                         <div
                             className="h-full transition-[opacity,transform,filter] duration-[1200ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
                             style={{
@@ -1841,7 +1847,7 @@ export const FAQAccordion = ({ items }: { items: FAQItem[] }) => {
                         className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left"
                     >
                         <span className="text-[22px] font-bold leading-tight text-[#111827]">{item.question}</span>
-                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#111827] text-white">
+                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#647C90] text-white">
                             {activeIndex === index ? '−' : '+'}
                         </span>
                     </button>
