@@ -1,13 +1,14 @@
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Brain, Briefcase, DollarSign, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, Brain, Briefcase, DollarSign, Play } from 'lucide-react';
 import {
     DeviceMockup,
     InfoGrid,
-    QuotePanel,
     Reveal,
     SectionBlock,
     ShowcaseGrid,
 } from './site/MarketingPrimitives';
+import TestimonialsSection from './TestimonialSection';
 
 const screens = [
     {
@@ -69,101 +70,159 @@ const featuredEpisodes = [
     },
 ];
 
+const heroStats = [
+    { value: '25+', label: 'years of\ndance experience' },
+    { value: '1,309+', label: 'dancers in\nour community' },
+    { value: '17+', label: 'countries\nparticipating' },
+    { value: '20+', label: 'successful\nworkshops' },
+];
+
+const Counter = ({ end, duration }: { end: number; duration: number }) => {
+    const [count, setCount] = useState(0);
+    const frameRef = useRef<number>(0);
+
+    useEffect(() => {
+        let start = 0;
+        const increment = end / (duration / 16);
+
+        const step = () => {
+            start += increment;
+
+            if (start < end) {
+                setCount(Math.floor(start));
+                frameRef.current = requestAnimationFrame(step);
+                return;
+            }
+
+            setCount(end);
+        };
+
+        frameRef.current = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(frameRef.current);
+    }, [duration, end]);
+
+    return <span>{count.toLocaleString()}</span>;
+};
+
+const StatCard = ({ value, label }: { value: string; label: string }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+    const numericValue = Number.parseInt(value.replace(/[^\d]/g, ''), 10);
+    const prefixMatch = value.match(/^[^\d]+/);
+    const prefix = prefixMatch?.[0] ?? '';
+    const hasPlus = value.endsWith('+');
+    const isNumeric = Number.isFinite(numericValue) && numericValue > 0;
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) return;
+                setIsVisible(true);
+                observer.disconnect();
+            },
+            { threshold: 0.35 }
+        );
+
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div ref={ref} className="rounded-[20px] border border-black/8 bg-[#F5F6F2] px-4 py-4 shadow-[0_10px_24px_rgba(17,24,39,0.04)]">
+            <div className="text-[26px] font-bold leading-none text-[#111827]">
+                {isNumeric ? (
+                    <>
+                        {prefix}
+                        {isVisible ? <Counter end={numericValue} duration={1800} /> : 0}
+                        {hasPlus ? '+' : ''}
+                    </>
+                ) : (
+                    value
+                )}
+            </div>
+            <div className="mt-2 whitespace-pre-line text-[14px] leading-6 text-[#60636B]">{label}</div>
+        </div>
+    );
+};
+
 const Home = () => {
     return (
         <>
             <section className="px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
                 <div className="mx-auto max-w-[1280px]">
-                    <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-                        <Reveal className="lg:pt-2">
-                            <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
-                                Free support for dancers in transition
-                            </div>
-                            <h1 className="mt-5 max-w-xl text-[52px] font-bold leading-[0.93] tracking-[-0.04em] text-[#111827] md:text-[72px] lg:text-[92px]">
-                                Pivot from surviving to thriving
-                            </h1>
-                            <p className="mt-6 max-w-xl text-[18px] leading-8 text-[#60636B] md:text-[20px]">
-                                Career change support built specifically for dancers, with a free guided app, clearer next steps, and direct pathways into the wider Pivot for Dancers ecosystem.
-                            </p>
+                    <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
+                        <Reveal className="lg:flex lg:h-full lg:flex-col lg:justify-between lg:pt-10">
+                            <div>
+                                <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
+                                    Support for dancers in transition
+                                </div>
+                                <h1 className="mt-5 max-w-xl text-[52px] font-bold leading-[0.93] tracking-[-0.04em] text-[#111827] md:text-[72px] lg:text-[92px]">
+                                    Pivot from surviving to thriving
+                                </h1>
+                                <p className="mt-6 max-w-xl text-[18px] leading-8 text-[#60636B] md:text-[20px]">
+                                    We’re helping professional dancers find meaning off the stage through dancer-specific career change resources.
+                                </p>
 
-                            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                                <a
-                                    href="/resources/pivot-paths"
-                                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
-                                >
-                                    Start with Pivot Paths
-                                </a>
-                                <a
-                                    href="https://tidycal.com/pivotfordancers/mentorship-1"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
-                                >
-                                    Book support
-                                </a>
+                                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                                    <a
+                                        href="/resources/pivot-paths"
+                                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111827] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+                                    >
+                                        Start with Pivot Paths
+                                    </a>
+                                    <a
+                                        href="https://tidycal.com/pivotfordancers/mentorship-1"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
+                                    >
+                                        Book support
+                                    </a>
+                                </div>
                             </div>
 
-                            <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-2">
-                                {[
-                                    { value: 'Free', label: 'Pivot Paths guided app' },
-                                    { value: '$6.99+', label: 'products for deeper support' },
-                                    { value: '$29.99+', label: 'services for direct help' },
-                                    { value: '1309+', label: 'dancers in the community' },
-                                ].map((item) => (
-                                    <div key={item.label} className="rounded-[20px] border border-black/8 bg-[#F5F6F2] px-4 py-4">
-                                        <div className="text-[26px] font-bold leading-none text-[#111827]">{item.value}</div>
-                                        <div className="mt-2 text-[14px] leading-6 text-[#60636B]">{item.label}</div>
+                            <div className="mt-8 lg:mt-10">
+                                <div className="grid max-w-xl gap-3 sm:grid-cols-2">
+                                    {heroStats.map((item) => (
+                                        <StatCard key={item.label} value={item.value} label={item.label} />
+                                    ))}
+                                </div>
+
+                                <div className="mt-5 max-w-xl rounded-[26px] border border-black/8 bg-[#F5F6F2] p-5">
+                                    <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                        Founder-led support
                                     </div>
-                                ))}
+                                    <div className="mt-3 text-[22px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
+                                        Built by a former professional dancer who has already lived the pivot.
+                                    </div>
+                                    <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                        The emotional side of the transition is treated as seriously as the practical side.
+                                    </p>
+                                </div>
                             </div>
                         </Reveal>
 
-                        <Reveal delay={120} className="lg:pt-10">
-                            <div className="space-y-5">
-                                <div className="rounded-[30px] border border-black/8 bg-[#F5F6F2] p-5 md:p-6">
-                                    <div className="mb-5 flex items-start justify-between gap-4">
-                                        <div>
-                                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
-                                                Pivot Paths preview
-                                            </div>
-                                            <div className="mt-2 max-w-sm text-[18px] font-semibold leading-7 text-[#111827]">
-                                                A free guided app that feels personal, mobile-first, and easy to start with.
-                                            </div>
+                        <Reveal delay={120} className="lg:flex lg:h-full lg:flex-col">
+                            <div className="rounded-[30px] border border-black/8 bg-[#F5F6F2] p-5 md:p-6 lg:flex lg:h-full lg:flex-col">
+                                <div className="mb-5 flex items-start justify-between gap-4">
+                                    <div>
+                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                            Pivot Paths preview
                                         </div>
-                                        <a
-                                            href="/resources/pivot-paths"
-                                            className="hidden items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-[12px] font-bold uppercase tracking-[0.16em] text-[#111827] md:inline-flex"
-                                        >
-                                            Explore
-                                            <ArrowRight className="h-4 w-4" />
-                                        </a>
+                                        <div className="mt-2 max-w-sm text-[18px] font-semibold leading-7 text-[#111827]">
+                                            Your private toolkit for career transition, mindset wellness, and financial planning
+                                        </div>
                                     </div>
-                                    <DeviceMockup screens={screens} />
+                                    <a
+                                        href="/resources/pivot-paths"
+                                        className="hidden items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-3 text-[12px] font-bold uppercase tracking-[0.16em] text-[#111827] md:inline-flex"
+                                    >
+                                        Explore
+                                        <ArrowRight className="h-4 w-4" />
+                                    </a>
                                 </div>
-
-                                <div className="grid gap-5 md:grid-cols-[0.72fr_1.28fr]">
-                                    <div className="rounded-[26px] border border-black/8 bg-white p-4">
-                                        <div className="overflow-hidden rounded-[18px]">
-                                            <Image
-                                                src="/assets/kr-head-shot.jpg"
-                                                alt="Kaylee from Pivot for Dancers"
-                                                width={616}
-                                                height={816}
-                                                className="h-[160px] w-full object-cover"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="rounded-[26px] bg-[#111827] p-5 text-white">
-                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-white/60">
-                                            Founder-led support
-                                        </div>
-                                        <div className="mt-3 text-[22px] font-bold leading-tight tracking-[-0.02em]">
-                                            Built by a former professional dancer who has already lived the pivot.
-                                        </div>
-                                        <p className="mt-3 text-[14px] leading-7 text-white/72">
-                                            The emotional side of the transition is treated as seriously as the practical side.
-                                        </p>
-                                    </div>
+                                <div className="lg:flex lg:flex-1 lg:items-center">
+                                    <DeviceMockup screens={screens} />
                                 </div>
                             </div>
                         </Reveal>
@@ -218,20 +277,12 @@ const Home = () => {
                 <ShowcaseGrid
                     cards={[
                         {
-                            title: 'Pivot Paths',
-                            description: 'A free guided app for dancers navigating transition, identity shifts, and first next steps.',
-                            href: '/resources/pivot-paths',
-                            ctaLabel: 'Explore the app',
-                            image: '/assets/pivot-mentorship.png',
-                            tone: 'brand',
-                        },
-                        {
                             title: 'Products',
                             description: 'Digital guides and courses that give dancers more structure, more depth, and a stronger roadmap.',
                             href: '/products',
                             ctaLabel: 'Browse products',
                             image: '/assets/how-to-pivot-ebook.png',
-                            tone: 'light',
+                            tone: 'brand',
                         },
                         {
                             title: 'Services',
@@ -240,6 +291,14 @@ const Home = () => {
                             ctaLabel: 'View services',
                             image: '/assets/pivot-mentorship.png',
                             tone: 'dark',
+                        },
+                        {
+                            title: 'Resources',
+                            description: 'Free tools, podcast conversations, and research-backed content that help dancers feel less alone as they pivot.',
+                            href: '/resources',
+                            ctaLabel: 'Explore resources',
+                            image: '/assets/data.png',
+                            tone: 'light',
                         },
                     ]}
                 />
@@ -346,50 +405,7 @@ const Home = () => {
                 </div>
             </SectionBlock>
 
-            <SectionBlock
-                label="TRUST + COMMUNITY"
-                title="Real dancers. Real transitions."
-                description="The proof layer should feel clear, premium, and emotionally believable."
-                background="#F5F6F2"
-            >
-                <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-                    <div className="space-y-5">
-                        <div className="rounded-[30px] border border-black/8 bg-white p-6">
-                            <div className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
-                                <Sparkles className="h-4 w-4 text-[#647C90]" />
-                                What makes this brand useful
-                            </div>
-                            <div className="mt-5 text-[30px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
-                                It speaks to dancers the way generic career advice never can.
-                            </div>
-                            <p className="mt-5 text-[15px] leading-8 text-[#60636B]">
-                                Honest stories, founder credibility, and a free app that makes the first step easier all help the site feel more like a serious product ecosystem.
-                            </p>
-                        </div>
-                        <div className="rounded-[30px] border border-black/8 bg-white p-5">
-                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">Community stories</div>
-                            <div className="mt-3 text-[22px] font-bold leading-tight text-[#111827]">
-                                Watch real transition stories on YouTube and keep exploring the wider Pivot for Dancers world.
-                            </div>
-                            <a
-                                href={youtubePlaylistUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
-                            >
-                                Open Playlist
-                                <ArrowRight className="h-4 w-4" />
-                            </a>
-                        </div>
-                    </div>
-                    <QuotePanel
-                        quote="Pivot for Dancers came to me at the perfect time when I was ending my performing career due to injury and burnout and helped me realize that I was not alone."
-                        author="Mallory Gladman"
-                        role="Former Dancer & Event Business Owner"
-                        image="/assets/mallory-gladman.jpg"
-                    />
-                </div>
-            </SectionBlock>
+            <TestimonialsSection />
         </>
     );
 };

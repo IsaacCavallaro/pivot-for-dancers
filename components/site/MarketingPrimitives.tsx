@@ -381,17 +381,180 @@ export const DeviceMockup = ({
     }[];
     dark?: boolean;
 }) => {
-    const resumeTitle = screens.find((screen) => screen.variant === 'paths')?.title ?? 'Discover Your Dream Life';
-    const guidedPathsDescription =
-        screens.find((screen) => screen.variant === 'paths')?.lines[0] ??
-        '7 day journeys designed specifically for professional dancers.';
-    const videoStoriesDescription =
-        screens.find((screen) => screen.variant === 'paths')?.lines[1] ??
-        'Real experiences from dancers who successfully pivoted careers.';
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = window.setInterval(() => {
+            setIndex((value) => (value + 1) % screens.length);
+        }, 2800);
+
+        return () => window.clearInterval(timer);
+    }, [screens.length]);
+
+    const renderSlide = (screen: {
+        title: string;
+        description?: string;
+        lines: string[];
+        eyebrow?: string;
+        ctaLabel?: string;
+        variant?: 'welcome' | 'paths' | 'journal';
+    }) => {
+        if (screen.variant === 'welcome') {
+            return (
+                <div className="flex h-full flex-col gap-2.5 overflow-hidden">
+                    <div className="rounded-[22px] bg-[#F5F5F5] px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
+                        <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#928490]">
+                            {screen.eyebrow ?? 'Day 1 of 7'}
+                        </div>
+                        <div className="mt-1 font-serif text-[21px] leading-tight text-[#647C90]">
+                            {screen.title}
+                        </div>
+                    </div>
+
+                    <div className="rounded-[20px] border border-[#928490]/18 bg-white/84 px-4 py-3.5 shadow-[0_10px_20px_rgba(17,24,39,0.06)]">
+                        <div className="text-[12px] font-semibold text-[#647C90]">What we&apos;ll learn today</div>
+                        <div className="mt-2.5 space-y-1.5">
+                            {screen.lines.map((line) => (
+                                <div key={line} className="flex items-start gap-2">
+                                    <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-[#647C90]" />
+                                    <p className="text-[11px] leading-5 text-[#4E4F50]">{line}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="flex-1 rounded-[20px] border border-[#928490]/18 bg-[rgba(146,132,144,0.08)] px-4 py-3.5">
+                        <div className="text-[12px] font-semibold text-[#647C90]">Journal Prompt</div>
+                        <p className="mt-2 text-[11px] leading-5 text-[#647C90]">
+                            Before you begin, what feels hardest to prioritise outside of dance right now?
+                        </p>
+                        <div className="mt-3 rounded-[14px] border border-[#928490]/20 bg-white px-3 py-3 text-[11px] text-[#928490]">
+                            Add your entry here
+                        </div>
+                        <div className="mt-3 flex items-center justify-center rounded-[14px] bg-[#647C90] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0] shadow-[0_10px_20px_rgba(100,124,144,0.28)]">
+                            {screen.ctaLabel ?? 'Save Entry'}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        if (screen.variant === 'paths') {
+            return (
+                <div className="flex h-full flex-col gap-2.5 overflow-hidden">
+                    <div className="rounded-[22px] bg-[#F5F5F5] px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
+                        <div className="flex items-start gap-3">
+                            <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0]">
+                                <Compass className="h-4.5 w-4.5" />
+                            </div>
+                            <div className="flex-1">
+                                <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#928490]">
+                                    {screen.eyebrow ?? 'Continue where you left off'}
+                                </div>
+                                <div className="mt-1 font-serif text-[21px] leading-tight text-[#647C90]">
+                                    {screen.title}
+                                </div>
+                                <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#647C90]/12">
+                                    <div className="h-full w-[68%] rounded-full bg-[#647C90]" />
+                                </div>
+                                <div className="mt-2 text-[11px] font-medium text-[#647C90]">68% completed</div>
+                            </div>
+                        </div>
+                        <div className="mt-4 flex items-center justify-center rounded-[14px] bg-[#647C90] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0]">
+                            {screen.ctaLabel ?? 'Continue Path'}
+                        </div>
+                    </div>
+
+                    {[
+                        { icon: BookOpen, title: 'Guided Paths', text: screen.lines[0] ?? '7 day journeys designed specifically for professional dancers.', badges: ['mindset', 'career', 'finance'] },
+                        { icon: Play, title: 'Video Stories', text: screen.lines[1] ?? 'Real experiences from dancers who successfully pivoted careers.' },
+                    ].map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <div key={item.title} className="rounded-[20px] bg-[#F5F5F5] px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
+                                <div className="flex items-start gap-3">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0] shadow-[0_8px_18px_rgba(100,124,144,0.24)]">
+                                        <Icon className="h-4.5 w-4.5" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="font-serif text-[18px] leading-tight text-[#647C90]">{item.title}</div>
+                                        <p className="mt-1 text-[11px] leading-5 text-[#928490]">{item.text}</p>
+                                        {item.badges && (
+                                            <div className="mt-3 flex flex-wrap gap-1.5">
+                                                {item.badges.map((badge) => (
+                                                    <span key={badge} className="rounded-full border border-[#647C90] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#647C90]">
+                                                        {badge}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            );
+        }
+
+        return (
+            <div className="flex h-full flex-col gap-2.5 overflow-hidden">
+                <div className="rounded-[22px] bg-[#F5F5F5] px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
+                    <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#928490]">
+                        {screen.eyebrow ?? 'Private by design'}
+                    </div>
+                    <div className="mt-1 font-serif text-[21px] leading-tight text-[#647C90]">
+                        {screen.title}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2">
+                    {[
+                        { icon: BookOpen, label: 'Paths' },
+                        { icon: Compass, label: 'Progress' },
+                        { icon: Play, label: 'Stories' },
+                    ].map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <div key={item.label} className="rounded-[18px] bg-[#F5F5F5] px-2 py-2.5 text-center shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
+                                <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0] shadow-[0_8px_18px_rgba(100,124,144,0.24)]">
+                                    <Icon className="h-4.5 w-4.5" />
+                                </div>
+                                <div className="mt-2 font-serif text-[13px] text-[#647C90]">{item.label}</div>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                <div className="flex-1 rounded-[20px] border border-[#928490]/18 bg-[rgba(146,132,144,0.08)] px-4 py-3.5">
+                    <div className="text-[12px] font-semibold text-[#647C90]">Personal journal</div>
+                    <div className="mt-2.5 space-y-2">
+                        {screen.lines.map((line) => (
+                            <div key={line} className="flex items-start gap-2">
+                                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-[#647C90]" />
+                                <p className="text-[11px] leading-5 text-[#4E4F50]">{line}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="mt-4 rounded-[14px] border border-[#928490]/20 bg-white px-3 py-3 text-[11px] text-[#928490]">
+                        Add your entry here
+                    </div>
+                    <div className="mt-3 flex items-center justify-center rounded-[14px] bg-[#647C90] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0] shadow-[0_10px_20px_rgba(100,124,144,0.28)]">
+                        {screen.ctaLabel ?? 'Explore the app'}
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className="relative mx-auto w-full max-w-[380px]">
             <div className="relative mx-auto aspect-[318/640] w-full rounded-[42px] border-[10px] border-[#111827] bg-[#111827] p-2 shadow-[0_42px_96px_rgba(17,24,39,0.18)]">
+                <div className="pointer-events-none absolute right-[-10px] top-[-10px] z-20 h-24 w-24 overflow-hidden">
+                    <div className="absolute right-[-30px] top-[17px] w-[136px] rotate-45 bg-[#E2DED0] py-1.5 text-center text-[9px] font-bold uppercase tracking-[0.16em] text-[#4F6272] shadow-[0_10px_22px_rgba(17,24,39,0.24)]">
+                        Coming Soon
+                    </div>
+                </div>
                 <div className="h-full rounded-[32px] bg-[#FAF9F5] p-3">
                     <div className="mb-3 flex items-center justify-between px-2 text-[11px] font-semibold text-[#111827]">
                         <span>9:41</span>
@@ -410,9 +573,11 @@ export const DeviceMockup = ({
                                     : 'linear-gradient(180deg, #5E7488 0%, #6B8397 100%)',
                             }}
                         >
-                            <div className="relative flex items-center gap-3">
-                                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-[3px] border-white/25 bg-white/10 shadow-[0_12px_24px_rgba(17,24,39,0.18)]">
-                                    <Image src="/assets/logo.png" alt="Pivot for Dancers" width={56} height={56} className="h-full w-full object-cover" />
+                    <div className="relative flex items-center gap-3">
+                                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#E2DED0]/70 bg-white/16 p-[3px] shadow-[0_12px_24px_rgba(17,24,39,0.18)]">
+                                    <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-white/30 bg-[#E2DED0]">
+                                        <Image src="/assets/logo.png" alt="Pivot for Dancers" width={50} height={50} className="h-full w-full object-cover" />
+                                    </div>
                                 </div>
                                 <div>
                                     <div className="font-serif text-[26px] leading-none text-[#F5F1E8] drop-shadow-[0_3px_8px_rgba(17,24,39,0.18)]">
@@ -426,67 +591,29 @@ export const DeviceMockup = ({
                         </div>
 
                         <div className="min-h-0 flex-1 px-4 pb-4 pt-4">
-                            <div className="h-full rounded-[28px] bg-[#E2DED0] px-3 pb-3">
-                                <div className="space-y-3">
-                                    <div className="rounded-[22px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                                        <div className="flex items-start gap-3">
-                                            <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0]">
-                                                <Compass className="h-4.5 w-4.5" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#928490]">
-                                                    Continue where you left off
-                                                </div>
-                                                <div className="mt-1 font-serif text-[21px] leading-tight text-[#647C90]">
-                                                    {resumeTitle}
-                                                </div>
-                                                <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#647C90]/12">
-                                                    <div className="h-full w-[68%] rounded-full bg-[#647C90]" />
-                                                </div>
-                                                <div className="mt-2 text-[11px] font-medium text-[#647C90]">68% completed</div>
-                                            </div>
+                            <div className="h-full overflow-hidden rounded-[28px] bg-[#E2DED0]">
+                                <div className="flex h-full transition-transform duration-700 ease-out" style={{ transform: `translateX(-${index * 100}%)` }}>
+                                    {screens.map((screen) => (
+                                        <div key={`${screen.variant ?? 'slide'}-${screen.title}`} className="h-full w-full flex-none px-3 pb-3">
+                                            {renderSlide(screen)}
                                         </div>
-                                        <div className="mt-4 flex items-center justify-center rounded-[14px] bg-[#647C90] px-4 py-3 text-[12px] font-semibold text-[#E2DED0]">
-                                            Continue Path
-                                        </div>
-                                    </div>
-
-                                    {[
-                                        { icon: BookOpen, title: 'Guided Paths', text: guidedPathsDescription, badges: ['mindset', 'career', 'finance'] },
-                                        { icon: Play, title: 'Video Stories', text: videoStoriesDescription },
-                                    ].map((item) => {
-                                        const Icon = item.icon;
-                                        return (
-                                            <div key={item.title} className="rounded-[20px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                                                <div className="flex items-start gap-3">
-                                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0] shadow-[0_8px_18px_rgba(100,124,144,0.24)]">
-                                                        <Icon className="h-4.5 w-4.5" />
-                                                    </div>
-                                                    <div className="flex-1">
-                                                        <div className="font-serif text-[18px] leading-tight text-[#647C90]">{item.title}</div>
-                                                        <p className="mt-1 text-[11px] leading-5 text-[#928490]">{item.text}</p>
-                                                        {item.badges && (
-                                                            <div className="mt-3 flex flex-wrap gap-1.5">
-                                                                {item.badges.map((badge) => (
-                                                                    <span key={badge} className="rounded-full border border-[#647C90] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#647C90]">
-                                                                        {badge}
-                                                                    </span>
-                                                                ))}
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-
-                                    <div className="rounded-[20px] bg-[#647C90] px-4 py-4 text-center shadow-[0_14px_28px_rgba(100,124,144,0.22)]">
-                                        <div className="font-serif text-[18px] leading-tight text-[#E2DED0]">Want Personalized Support?</div>
-                                        <div className="mt-3 inline-flex items-center justify-center rounded-full border border-[#E2DED0]/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#E2DED0]">
-                                            Get Started
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
+                            </div>
+                            <div className="mt-3 flex justify-center gap-2">
+                                {screens.map((screen, screenIndex) => (
+                                    <button
+                                        key={`screen-indicator-${screen.title}`}
+                                        type="button"
+                                        onClick={() => setIndex(screenIndex)}
+                                        aria-label={`Show ${screen.title}`}
+                                        className="h-2 rounded-full transition-all duration-300"
+                                        style={{
+                                            width: screenIndex === index ? 26 : 8,
+                                            backgroundColor: screenIndex === index ? '#647C90' : 'rgba(100,124,144,0.26)',
+                                        }}
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>

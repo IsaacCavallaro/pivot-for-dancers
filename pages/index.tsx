@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Home from '../components/Home';
 import Navigation from '../components/Navigation';
 import Footer from '@/components/Footer';
-import TestimonialsSection from '@/components/TestimonialSection';
 
 export default function HomePage() {
     // Remove trailing slash from base URL to avoid double slashes
@@ -37,7 +36,6 @@ export default function HomePage() {
             <div>
                 <Navigation />
                 <Home />
-                <TestimonialsSection />
                 <Footer />
             </div>
         </>
