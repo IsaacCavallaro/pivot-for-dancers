@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ArrowRight, Menu, X } from 'lucide-react';
@@ -96,8 +97,14 @@ const Navigation = () => {
                 <div className="flex items-center gap-4 sm:gap-8">
                     <Link href="/" className="flex items-center gap-3">
                         <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-[2.5px] border-[#647C90]/20 bg-white p-[2px] shadow-[0_8px_18px_rgba(17,24,39,0.08)]">
-                            <span className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-black/8 bg-[#E2DED0]">
-                                <img src="/assets/logo.png" alt="Pivot For Dancers" className="h-full w-full object-cover" />
+                            <span className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-black/8 bg-[#E2DED0]">
+                                <Image
+                                    src="/assets/logo.png"
+                                    alt="Pivot For Dancers"
+                                    fill
+                                    sizes="44px"
+                                    className="object-cover"
+                                />
                             </span>
                         </span>
                         <span className="hidden text-[13px] font-semibold uppercase tracking-[0.22em] text-[#111827] md:inline-block">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 
@@ -90,8 +91,14 @@ const Footer = () => {
                 <div className="grid gap-10 pt-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
                     <div className="flex flex-col items-center text-center md:items-start md:text-left">
                         <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-[3px] border-[#647C90]/20 bg-white p-[3px] shadow-[0_10px_24px_rgba(17,24,39,0.08)]">
-                            <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-black/8 bg-[#E2DED0]">
-                                <img src="/assets/logo.png" alt="Pivot For Dancers" className="h-full w-full object-cover" />
+                            <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-black/8 bg-[#E2DED0]">
+                                <Image
+                                    src="/assets/logo.png"
+                                    alt="Pivot For Dancers"
+                                    fill
+                                    sizes="56px"
+                                    className="object-cover"
+                                />
                             </div>
                         </div>
                         <p className="mt-5 max-w-sm text-sm leading-7 text-[#60636B]">

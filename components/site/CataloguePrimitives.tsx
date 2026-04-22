@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { ComponentType, ReactNode } from 'react';
 import DetailCardShell from './DetailCardShell';
 
@@ -106,9 +107,12 @@ export function CatalogueCard({
         <DetailCardShell className="flex h-full">
             <div className={`flex h-full w-full flex-col rounded-[28px] border border-black/8 bg-white p-6 ${textAlignClass}`}>
                 <div className="mb-6 flex min-h-[280px] items-center justify-center rounded-[24px] border border-black/6 bg-white p-6">
-                    <img
+                    <Image
                         src={image.src}
                         alt={image.alt}
+                        width={720}
+                        height={440}
+                        sizes="(min-width: 1024px) 28rem, 100vw"
                         className="h-[220px] w-full object-contain"
                     />
                 </div>
