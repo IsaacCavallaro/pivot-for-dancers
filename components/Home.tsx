@@ -229,7 +229,7 @@ const Home = () => {
                                         <div className="flex items-center justify-center gap-3 sm:justify-between">
                                             <div>
                                                 <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
-                                                    Start here
+                                                    Meet Pivot Paths
                                                 </div>
                                             </div>
                                             <div className="hidden rounded-full bg-[#F5F6F2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#647C90] sm:inline-flex">

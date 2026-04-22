@@ -99,7 +99,7 @@ export default function AboutPage() {
                                                 className="h-[220px] w-auto object-contain md:h-[280px]"
                                             />
                                         </div>
-                                        <div className="mt-6 rounded-[24px] border border-[#E8E0D4] bg-[#FCFAF6] px-5 py-5">
+                                        <div className="mt-6 rounded-[24px] border border-[#E8E0D4] bg-[#FCFAF6] px-5 py-5 text-center md:text-left">
                                             <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                                 Our story
                                             </div>
@@ -163,10 +163,10 @@ export default function AboutPage() {
                                         ))}
                                     </div>
                                     <div className="mt-5 border-t border-[#E8E0D4] pt-5">
-                                        <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                        <div className="mb-4 text-center text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490] md:text-left">
                                             Founder note
                                         </div>
-                                        <div className="rounded-[22px] border border-black/8 bg-white px-5 py-5">
+                                        <div className="rounded-[22px] border border-black/8 bg-white px-5 py-5 text-center md:text-left">
                                             <p className="text-[18px] font-medium leading-8 text-[#4E4F50] md:text-[20px] md:leading-9">
                                                 “Our mission is to foster empowerment, community, and authenticity within the dance industry so dancers feel supported as they step onto their next stage of life.”
                                             </p>

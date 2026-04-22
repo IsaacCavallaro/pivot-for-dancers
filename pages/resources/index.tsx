@@ -35,7 +35,7 @@ export default function ResourcesPage() {
                         metrics={[
                             { icon: BookOpen, label: 'Format', value: resource.type },
                             { icon: Clock3, label: 'Category', value: resource.duration },
-                            { icon: Sparkles, label: 'Access', value: 'Open now' },
+                            { icon: Sparkles, label: 'Access', value: resource.accessStatus },
                         ]}
                         features={resource.features}
                         primaryAction={{
@@ -47,6 +47,7 @@ export default function ResourcesPage() {
                                 </>
                             ),
                         }}
+                        responsiveCenter
                         featuresMinHeightClass="min-h-[92px] content-start"
                     />
                 ))}

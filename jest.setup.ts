@@ -18,7 +18,7 @@ jest.mock('next/link', () => ({
     }) => React.createElement('a', { href: typeof href === 'string' ? href : href?.pathname ?? '', ...props }, children),
 }));
 
-const mockRouter = jest.fn(() => ({
+const buildMockRouter = (overrides: Record<string, unknown> = {}) => ({
     pathname: '/',
     route: '/',
     asPath: '/',
@@ -32,11 +32,25 @@ const mockRouter = jest.fn(() => ({
         emit: jest.fn(),
     },
     isFallback: false,
+    ...overrides,
+});
+
+const mockRouter = jest.fn(() => ({
+    ...buildMockRouter(),
 }));
 
 jest.mock('next/router', () => ({
     useRouter: () => mockRouter(),
 }));
+
+const setMockRouter = (overrides: Record<string, unknown> = {}) => {
+    mockRouter.mockReturnValue(buildMockRouter(overrides));
+};
+
+Object.defineProperty(globalThis, '__setMockRouter', {
+    writable: true,
+    value: setMockRouter,
+});
 
 class MockIntersectionObserver {
     constructor(private readonly callback: IntersectionObserverCallback) {}
@@ -145,20 +159,6 @@ afterAll(() => {
 
 beforeEach(() => {
     jest.clearAllMocks();
-    mockRouter.mockReturnValue({
-        pathname: '/',
-        route: '/',
-        asPath: '/',
-        query: {},
-        push: jest.fn(),
-        replace: jest.fn(),
-        prefetch: jest.fn(),
-        events: {
-            on: jest.fn(),
-            off: jest.fn(),
-            emit: jest.fn(),
-        },
-        isFallback: false,
-    });
+    setMockRouter();
     global.fetch = jest.fn();
 });

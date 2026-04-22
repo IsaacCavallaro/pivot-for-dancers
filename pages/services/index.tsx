@@ -24,7 +24,7 @@ export default function ServicesPage() {
                                 <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                     Investment
                                 </div>
-                                <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                <div className="mt-2 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 lg:justify-start">
                                     <div className="text-[28px] font-bold leading-none tracking-[-0.03em] text-[#111827]">
                                         ${formatMoney(service.price)}
                                     </div>
@@ -62,6 +62,7 @@ export default function ServicesPage() {
                             label: 'Book now',
                             external: true,
                         }}
+                        responsiveCenter
                     />
                 ))}
             </CataloguePageSection>
