@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ArrowRight, Award, Heart, Shield, Star, TrendingUp } from 'lucide-react';
+import DetailCardShell from '../../components/site/DetailCardShell';
 import { coursePaymentUrl } from '../../data/products';
 import { SiteChrome } from '../../components/site/MarketingPrimitives';
 
@@ -39,18 +40,6 @@ const supportAreas = [
     },
 ];
 
-const CardShell = ({
-    children,
-    className = '',
-}: {
-    children: React.ReactNode;
-    className?: string;
-}) => (
-    <div className={`rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)] ${className}`}>
-        <div className="h-full rounded-[28px] border border-black/8 bg-white">{children}</div>
-    </div>
-);
-
 export default function HappyTrailsPage() {
     return (
         <SiteChrome>
@@ -73,7 +62,7 @@ export default function HappyTrailsPage() {
             <section className="bg-[#F7F2EA] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                 <div className="mx-auto max-w-[1280px]">
                     <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
-                        <CardShell className="h-full">
+                        <DetailCardShell className="h-full">
                             <div className="flex h-full flex-col p-5 md:p-6">
                                 <div className="flex flex-col items-center justify-between gap-3 rounded-[24px] border border-black/8 bg-white px-5 py-4 text-center sm:flex-row sm:text-left">
                                     <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
@@ -126,10 +115,10 @@ export default function HappyTrailsPage() {
                                     </div>
                                 </div>
                             </div>
-                        </CardShell>
+                        </DetailCardShell>
 
                         <div className="grid gap-8">
-                            <CardShell>
+                            <DetailCardShell>
                                 <div className="p-5 md:p-6">
                                     <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
                                         The pathway
@@ -178,13 +167,13 @@ export default function HappyTrailsPage() {
                                         </div>
                                     </div>
                                 </div>
-                            </CardShell>
+                            </DetailCardShell>
                         </div>
                     </div>
 
                     <div className="mt-8 grid gap-8 lg:grid-cols-3">
                         {supportAreas.map((item) => (
-                            <CardShell key={item.title}>
+                            <DetailCardShell key={item.title}>
                                 <div className="p-5 md:p-6">
                                     <div className="flex h-11 w-11 items-center justify-center rounded-[18px] bg-[#647C90] text-white">
                                         <item.icon className="h-5 w-5" />
@@ -196,7 +185,7 @@ export default function HappyTrailsPage() {
                                         {item.description}
                                     </p>
                                 </div>
-                            </CardShell>
+                            </DetailCardShell>
                         ))}
                     </div>
                 </div>

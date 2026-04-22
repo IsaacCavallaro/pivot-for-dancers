@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
-import { ArrowRight, BarChart3, BookOpen, CheckCircle2, ChevronDown, ChevronRight, ChevronUp, Compass, Download, Filter, Heart, House, NotebookPen, Play, PlayCircle, PlusCircle, Search, Share2, Star, Target, Trash2, Trophy, User } from 'lucide-react';
+import { ArrowRight, BarChart3, BookOpen, CheckCircle2, Download, Heart, House, NotebookPen, Play, PlusCircle, Search, Share2, Trash2, User } from 'lucide-react';
 
 type CTA = {
     label: string;
@@ -403,13 +403,11 @@ export const DeviceMockup = ({
     const [showPhaseIntro, setShowPhaseIntro] = useState(true);
     const [gameTapStep, setGameTapStep] = useState(0);
     const [reportsDemoStep, setReportsDemoStep] = useState(0);
-    const [progressDemoStep, setProgressDemoStep] = useState(0);
     const [journalDemoText, setJournalDemoText] = useState('');
     const [journalDemoStep, setJournalDemoStep] = useState(0);
     const viewportRef = useRef<HTMLDivElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
 
-    const homeScreen = screens.find((screen) => screen.variant === 'home') ?? screens[0];
     const tabs = [
         { icon: House, label: 'Home' },
         { icon: BookOpen, label: 'Paths' },
@@ -422,7 +420,6 @@ export const DeviceMockup = ({
     const demoPhases = [
         { key: 'game', label: 'Game', tab: 'Paths' },
         { key: 'reports', label: 'Reports', tab: 'Reports' },
-        { key: 'progress', label: 'Progress', tab: 'Progress' },
         { key: 'journal', label: 'Journal', tab: 'Journal' },
     ] as const;
 
@@ -436,11 +433,6 @@ export const DeviceMockup = ({
             eyebrow: 'Patterns you can feel',
             title: 'Notice what is giving you energy back',
             description: 'The app gathers your reflections into a calmer view of what is changing, what is recurring, and what wants more attention.',
-        },
-        progress: {
-            eyebrow: 'Progress',
-            title: 'See real momentum, not just good intentions',
-            description: 'Completed paths, achievements, and steady progress make the transition feel more tangible and more possible.',
         },
         journal: {
             eyebrow: 'Private reflection',
@@ -463,11 +455,6 @@ export const DeviceMockup = ({
             stat: 'See your patterns clearly',
             note: 'A moment inside the app',
         },
-        progress: {
-            icon: Trophy,
-            stat: 'Watch your momentum build',
-            note: 'A moment inside the app',
-        },
         journal: {
             icon: NotebookPen,
             stat: 'Write in real time',
@@ -485,38 +472,13 @@ export const DeviceMockup = ({
         if (phaseKey === 'reports') {
             return maxOffset > 8 ? Math.round(maxOffset / 8) * 8 : 0;
         }
-        const preferredStopsPx: Record<(typeof demoPhases)[number]['key'], number> = {
+        const preferredStopsPx: Partial<Record<(typeof demoPhases)[number]['key'], number>> = {
             game: 0,
-            progress: 380,
             journal: 240,
         };
         const targetOffset = maxOffset > 8 ? Math.min(maxOffset, preferredStopsPx[phaseKey] ?? maxOffset) : 0;
         return targetOffset > 8 ? Math.round(targetOffset / 8) * 8 : 0;
     };
-
-    const learnVideos = [
-        {
-            id: '16JMiSPzlBE',
-            title: 'How a ski mountain helped Elise let go of her dance career',
-            duration: '32:21',
-            category: 'Career Stories',
-            expanded: true,
-        },
-        {
-            id: '7EUfZS8mQtk',
-            title: 'How Demi\'s roller skating hobby turned into 500K followers on Instagram',
-            duration: '22:36',
-            category: 'Career Stories',
-            expanded: false,
-        },
-        {
-            id: 'tnPkI_ezUto',
-            title: 'Missing the magic of the stage? Here\'s how Ali is finding meaning beyond her ballet career',
-            duration: '27:28',
-            category: 'Career Stories',
-            expanded: false,
-        },
-    ] as const;
 
     useEffect(() => {
         let enableAnimationTimer: number | undefined;
@@ -532,9 +494,7 @@ export const DeviceMockup = ({
                     ? 7600
                     : phase.key === 'reports'
                         ? 13200
-                        : phase.key === 'progress'
-                            ? 12200
-                            : 11000;
+                        : 11000;
             const endPauseMs = 1300;
 
             setShowPhaseIntro(true);
@@ -629,28 +589,6 @@ export const DeviceMockup = ({
 
     useEffect(() => {
         const phaseKey = demoPhases[displayedPhaseIndex]?.key;
-        if (phaseKey !== 'progress') {
-            setProgressDemoStep(0);
-            return;
-        }
-
-        setProgressDemoStep(0);
-        const baseDelayMs = getIntroHoldMs(phaseKey) + demoRevealSettleMs + 1000;
-
-        const timers = [
-            window.setTimeout(() => setProgressDemoStep(1), baseDelayMs + 1800),
-            window.setTimeout(() => setProgressDemoStep(2), baseDelayMs + 3600),
-            window.setTimeout(() => setProgressDemoStep(3), baseDelayMs + 5800),
-            window.setTimeout(() => setProgressDemoStep(4), baseDelayMs + 8000),
-        ];
-
-        return () => {
-            timers.forEach((timer) => window.clearTimeout(timer));
-        };
-    }, [displayedPhaseIndex]);
-
-    useEffect(() => {
-        const phaseKey = demoPhases[displayedPhaseIndex]?.key;
         if (phaseKey !== 'journal') {
             setJournalDemoText('');
             setJournalDemoStep(0);
@@ -733,282 +671,27 @@ export const DeviceMockup = ({
         </div>
     );
 
-    const renderStickyTabShell = (
-        activeTab: (typeof tabs)[number]['label'],
-        header: ReactNode,
-        content: ReactNode
-    ) => (
-        <div key={activeTab} className="flex h-full flex-col bg-[#E2DED0]">
-            <div className="shrink-0">
-                {header}
-            </div>
-            <div
-                ref={viewportRef}
-                className="min-h-0 flex-1 overflow-hidden"
-            >
-                <div
-                    ref={contentRef}
-                    className="min-h-full"
-                    style={{
-                        transform: `translateY(-${scrollOffset}px)`,
-                        transition: isScrollAnimating ? `transform ${scrollDurationMs}ms cubic-bezier(0.16, 0.84, 0.24, 1)` : 'none',
-                        willChange: 'transform',
-                    }}
-                >
-                    {content}
-                </div>
-            </div>
-            {renderTabBar(activeTab)}
-        </div>
-    );
-
-    const renderHomeTab = () => renderTabShell('Home', (
-        <div className="px-3 pb-4 pt-3">
-            <div className="rounded-[24px] bg-[#647C90] px-4 py-4">
-                <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-[#E2DED0]/70 bg-white/10 p-[2px]">
-                        <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-[#E2DED0]">
-                            <Image src="/assets/logo.png" alt="Pivot for Dancers" width={42} height={42} className="h-full w-full object-cover" />
-                        </div>
-                    </div>
-                    <div>
-                        <div className="font-serif text-[24px] leading-none text-[#E2DED0]">{homeScreen?.title ?? 'Pivot Paths'}</div>
-                        <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E2DED0]/82">
-                            {homeScreen?.eyebrow ?? 'By Pivot For Dancers'}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="mt-3 rounded-[20px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0]">
-                        <Compass className="h-4 w-4" />
-                    </div>
-                    <div className="flex-1">
-                        <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#928490]">
-                            Continue where you left off
-                        </div>
-                        <div className="mt-1 font-serif text-[19px] leading-tight text-[#647C90]">
-                            Discover Your Dream Life
-                        </div>
-                        <p className="mt-1 text-[11px] leading-4 text-[#928490]">
-                            Pick up on day 3 of 7 in Mindset and Wellness.
-                        </p>
-                    </div>
-                </div>
-                <div className="mt-3">
-                    <div className="h-2 overflow-hidden rounded-full bg-[#647C90]/12">
-                        <div className="h-full w-[68%] rounded-full bg-[#647C90]" />
-                    </div>
-                    <div className="mt-1.5 text-[11px] font-medium text-[#647C90]">68% completed</div>
-                </div>
-                <div className="mt-3 flex items-center justify-center gap-2 rounded-full bg-[#928490] px-4 py-3 text-[11px] font-semibold text-[#E2DED0]">
-                    Continue Path
-                    <ChevronRight className="h-4 w-4" />
-                </div>
-            </div>
-
-            <div className="mt-3 space-y-2.5">
-                {[
-                    { icon: BookOpen, title: 'Guided Paths', text: '7 day journeys designed specifically for professional dancers.', badges: ['mindset', 'career', 'finance'] },
-                    { icon: Play, title: 'Video Stories', text: 'Real experiences from dancers who successfully pivoted careers.', badges: ['interviews', 'guides', 'stories'], thumbnail: '7EUfZS8mQtk' },
-                ].map((item) => {
-                    const Icon = item.icon;
-                    return (
-                        <div key={item.title} className="rounded-[18px] bg-[#F5F5F5] px-3.5 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                            <div className="flex items-start gap-3">
-                                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0]">
-                                    <Icon className="h-4 w-4" />
-                                </div>
-                                <div className="flex-1">
-                                    <div className="font-serif text-[18px] leading-tight text-[#647C90]">{item.title}</div>
-                                    <p className="mt-1 text-[11px] leading-4 text-[#928490]">{item.text}</p>
-                                    {item.thumbnail ? (
-                                        <div className="mt-3 overflow-hidden rounded-[12px] bg-black shadow-[0_8px_18px_rgba(17,24,39,0.14)]">
-                                            <div className="relative aspect-[16/8]">
-                                                <img
-                                                    src={`https://i.ytimg.com/vi/${item.thumbnail}/hqdefault.jpg`}
-                                                    alt={item.title}
-                                                    className="h-full w-full object-cover"
-                                                />
-                                                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,24,39,0.1),rgba(17,24,39,0.4))]" />
-                                                <div className="absolute inset-0 flex items-center justify-center">
-                                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/92 text-[#647C90] shadow-[0_8px_18px_rgba(17,24,39,0.24)]">
-                                                        <PlayCircle className="h-6 w-6 fill-current" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ) : null}
-                                    <div className="mt-2 flex flex-wrap gap-1.5">
-                                        {item.badges.map((badge) => (
-                                            <span key={badge} className="rounded-full border border-[#647C90] px-2 py-1 text-[8px] font-medium uppercase tracking-[0.12em] text-[#647C90]">
-                                                {badge}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-
-            <div className="mt-3 rounded-[20px] bg-[#647C90] px-4 py-4 text-center shadow-[0_10px_22px_rgba(17,24,39,0.12)]">
-                <div className="font-serif text-[17px] text-[#E2DED0]">Want Personalized Support?</div>
-                <p className="mt-2 text-[10px] leading-4 text-[#E2DED0]/88">
-                    Our mentorship program provides personalized guidance from experienced former professional dancers who understand your unique journey.
-                </p>
-                <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0]">
-                    Get Started
-                    <ChevronRight className="h-3.5 w-3.5" />
-                </div>
-            </div>
-
-            <div className="mt-3 rounded-[18px] bg-[#F5F5F5] px-4 py-3 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                <div className="text-center text-[10px] font-semibold text-[#647C90]">pivotfordancers.com</div>
-                <div className="mt-3 flex items-center justify-center gap-3 text-[#647C90]">
-                    {['IG', 'YT', 'FB', 'IN'].map((item) => (
-                        <span key={item} className="flex h-7 w-7 items-center justify-center rounded-full bg-[#E2DED0] text-[8px] font-bold tracking-[0.12em]">
-                            {item}
-                        </span>
-                    ))}
-                </div>
-            </div>
-        </div>
-    ));
-
-    const renderPathsTab = () => renderStickyTabShell('Paths', (
-            <div className="rounded-b-[24px] bg-[#647C90] px-4 pb-4 pt-5 shadow-[0_10px_24px_rgba(100,124,144,0.18)]">
-                <div className="flex min-h-[54px] items-center justify-between">
-                    <span className="w-6 text-[26px] leading-none text-[#E2DED0]">‹</span>
-                    <span className="font-serif text-[25px] leading-none text-[#E2DED0]">Guided Paths</span>
-                    <span className="w-6" />
-                </div>
-            </div>
-        ), (
-        <div className="space-y-3 px-3 pb-4 pt-4">
-            {[
-                { title: 'Mindset & Wellness', text: 'Mindset shifts and practical tools to support overall wellness during your transition.', icon: '☁️', count: 'Guided path collection' },
-                { title: 'Career Transitions', text: 'Explore your potential, identify your strengths, and prep your pivot.', icon: '🚀', count: 'Guided path collection' },
-                { title: 'Finance', text: 'Financial literacy tools tailored to dancers and the reality of creative careers.', icon: '💸', count: '9 paths available' },
-            ].map((item) => (
-                <div key={item.title} className="rounded-[22px] bg-[#F5F5F5] px-4 py-4 text-center shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#647C90] text-[22px] shadow-[0_8px_18px_rgba(100,124,144,0.24)]">
-                        {item.icon}
-                    </div>
-                    <div className="mt-3 font-serif text-[20px] leading-tight text-[#647C90]">{item.title}</div>
-                    <p className="mt-2 text-[11px] leading-4 text-[#928490]">{item.text}</p>
-                    <div className="mt-3 inline-flex rounded-full border border-[#647C90] bg-[rgba(146,132,144,0.08)] px-3 py-2 text-[9px] font-medium uppercase tracking-[0.12em] text-[#647C90]">
-                        {item.count}
-                    </div>
-                </div>
-            ))}
-            <div className="rounded-[18px] border-l-4 border-[#647C90] bg-[rgba(100,124,144,0.1)] px-4 py-4">
-                <div className="font-serif text-[16px] text-[#647C90]">Take your next step with confidence</div>
-                <p className="mt-1 text-[11px] leading-4 text-[#4E4F50]">
-                    Happy Trails is a self-paced mini course to help you make a plan for before, during, and after your pivot.
-                </p>
-            </div>
-        </div>
-    ));
-
-    const renderLearnTab = () => renderStickyTabShell('Learn', (
-            <div className="rounded-b-[24px] bg-[#647C90] px-4 pb-4 pt-5 shadow-[0_10px_24px_rgba(100,124,144,0.18)]">
-                <div className="flex min-h-[54px] items-center justify-between">
-                    <span className="w-6 text-[26px] leading-none text-[#E2DED0]">‹</span>
-                    <span className="font-serif text-[25px] leading-none text-[#E2DED0]">Learn &amp; Grow</span>
-                    <span className="w-6" />
-                </div>
-            </div>
-        ), (
-        <div className="space-y-3 px-3 pb-4 pt-4">
-            <div className="flex gap-2 overflow-x-hidden px-0">
-                {[
-                    { label: 'Career Stories', active: true },
-                    { label: 'Data', active: false },
-                ].map((item) => (
-                    <div
-                        key={item.label}
-                        className={`rounded-full border px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] ${
-                            item.active ? 'border-[#928490] bg-[#928490] text-[#E2DED0]' : 'border-[#746C70] bg-transparent text-[#746C70]'
-                        }`}
-                    >
-                        {item.label}
-                    </div>
-                ))}
-            </div>
-            {learnVideos.map((video) => (
-                <div key={video.title} className="rounded-[18px] bg-[#F5F5F5] px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                    <div className="flex items-start gap-3">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0] shadow-[0_8px_18px_rgba(100,124,144,0.24)]">
-                            <Play className="h-5 w-5" />
-                        </div>
-                        <div className="flex-1">
-                            <div className="font-serif text-[18px] leading-6 text-[#647C90]">{video.title}</div>
-                            <div className="mt-2 flex gap-2">
-                                <span className="rounded-full bg-[#E2DED0] px-2 py-1 text-[8px] font-medium uppercase tracking-[0.12em] text-[#647C90]">
-                                    {video.duration}
-                                </span>
-                                <span className="rounded-full bg-[#E2DED0] px-2 py-1 text-[8px] font-medium uppercase tracking-[0.12em] text-[#647C90]">
-                                    {video.category}
-                                </span>
-                            </div>
-                        </div>
-                        <div className="flex min-h-[56px] items-center">
-                            {video.expanded ? (
-                                <ChevronUp className="h-5 w-5 text-[#647C90]" />
-                            ) : (
-                                <ChevronDown className="h-5 w-5 text-[#647C90]" />
-                            )}
-                        </div>
-                    </div>
-                    {video.expanded ? (
-                        <div className="mt-4 overflow-hidden rounded-[12px] bg-black shadow-[0_12px_24px_rgba(17,24,39,0.14)]">
-                            <div className="relative aspect-video">
-                                <img
-                                    src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
-                                    alt={video.title}
-                                    className="h-full w-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,24,39,0.08),rgba(17,24,39,0.34))]" />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/92 text-[#647C90] shadow-[0_10px_24px_rgba(17,24,39,0.24)]">
-                                        <PlayCircle className="h-7 w-7 fill-current" />
-                                    </div>
-                                </div>
-                                <div className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.12em] text-white">
-                                    Youtube Preview
-                                </div>
-                            </div>
-                        </div>
-                    ) : null}
-                </div>
-            ))}
-            <div className="rounded-[20px] bg-[#647C90] px-4 py-4 text-center shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                <div className="font-serif text-[18px] text-[#E2DED0]">Ready for more?</div>
-                <p className="mt-2 text-[10px] leading-4 text-[#E2DED0]/88">
-                    Dive deeper with our part self-help book and part action-focused career resource tailored specifically for professional dancers.
-                </p>
-                <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0]">
-                    Learn More
-                    <ChevronRight className="h-3.5 w-3.5" />
-                </div>
-            </div>
-        </div>
-    ));
-
     const renderGameTab = () => {
-        const gameFrames = [
+        type MythCardId = 'plan-b' | 'dream' | 'never-give-up';
+        type GameFrame = {
+            matchedCount: number;
+            status: string;
+            selectedMyths: MythCardId[];
+            selectedRealities: MythCardId[];
+            matchedPairs: MythCardId[];
+            mismatchReality: MythCardId | null;
+            pointer: { left: string; top: string } | null;
+        };
+
+        const gameFrames: GameFrame[] = [
             {
                 matchedCount: 0,
                 status: 'Watch the demo',
-                selectedMyths: [] as string[],
-                selectedRealities: [] as string[],
-                matchedPairs: [] as string[],
-                mismatchReality: null as string | null,
-                pointer: null as { left: string; top: string } | null,
+                selectedMyths: [],
+                selectedRealities: [],
+                matchedPairs: [],
+                mismatchReality: null,
+                pointer: null,
             },
             {
                 matchedCount: 0,
@@ -1118,15 +801,15 @@ export const DeviceMockup = ({
                 mismatchReality: null,
                 pointer: null,
             },
-        ] as const;
+        ];
 
         const frame = gameFrames[Math.min(gameTapStep, gameFrames.length - 1)];
-        const myths = [
+        const myths: { id: MythCardId; text: string }[] = [
             { id: 'plan-b', text: "Dancers shouldn't have a plan B." },
             { id: 'dream', text: 'Dance is the dream.' },
             { id: 'never-give-up', text: 'Never give up.' },
         ];
-        const realities = [
+        const realities: { id: MythCardId; text: string }[] = [
             { id: 'dream', text: 'You can have more than one dream.' },
             { id: 'never-give-up', text: "It's ok to let go." },
             { id: 'plan-b', text: 'A backup plan is essential.' },
@@ -1257,173 +940,6 @@ export const DeviceMockup = ({
         </div>
     ));
     };
-
-    const renderProgressTab = () => renderTabShell('Progress', (
-        <div className="space-y-3 px-3 pb-4 pt-4">
-            <div className="flex gap-2 overflow-hidden">
-                {[
-                    { label: 'In Progress', active: progressDemoStep <= 2 },
-                    { label: 'Achievements', active: progressDemoStep >= 3 },
-                ].map((item) => (
-                    <div
-                        key={item.label}
-                        className={`rounded-full border px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] transition-all duration-300 ${
-                            item.active
-                                ? 'border-[#647C90] bg-[#647C90] text-[#E2DED0]'
-                                : 'border-[#D9D3C6] bg-white text-[#928490]'
-                        }`}
-                    >
-                        {item.label}
-                    </div>
-                ))}
-            </div>
-            <div>
-                <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#647C90]">Paths in Progress</div>
-                <div className="space-y-2.5">
-                    {[
-                        { icon: '☁️', title: 'Your Dream Life', subtitle: 'Discover what matters most beyond dance', area: 'Mindset & Wellness', progress: '43%', days: '3/7 days' },
-                        { icon: '💸', title: 'Money Mindsets', subtitle: 'Challenge the beliefs shaping your financial life', area: 'Finance', progress: '71%', days: '5/7 days' },
-                        { icon: '🚀', title: 'Prep Your Pivot', subtitle: 'Build clarity around your next chapter', area: 'Career Transitions', progress: '28%', days: '2/7 days' },
-                    ].map((item, index) => (
-                        <div
-                            key={item.title}
-                            className={`rounded-[18px] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                                progressDemoStep === 1 && index === 1
-                                    ? 'scale-[1.01] border border-[#647C90]/25 bg-[rgba(100,124,144,0.12)]'
-                                    : 'bg-[#F5F5F5]'
-                            }`}
-                        >
-                            <div className="flex items-start gap-3">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0]">{item.icon}</div>
-                                <div className="flex-1">
-                                    <div className="font-serif text-[18px] leading-tight text-[#647C90]">{item.title}</div>
-                                    <div className="mt-1 text-[10px] leading-4 text-[#4E4F50]">{item.subtitle}</div>
-                                    <div className="mt-1 text-[11px] text-[#928490]">{item.area}</div>
-                                </div>
-                                <div className="text-[12px] font-semibold text-[#647C90]">{item.progress}</div>
-                            </div>
-                            <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#647C90]/12">
-                                <div className="h-full rounded-full bg-[#647C90]" style={{ width: item.progress }} />
-                            </div>
-                            <div className="mt-2 text-[10px] text-[#928490]">{item.days}</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <div>
-                <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#647C90]">Completed Paths</div>
-                <div className="space-y-2.5">
-                    {[
-                        { icon: '💼', title: 'Confidence Gap', subtitle: 'Turn self-doubt into clearer action', area: 'Prep Your Pivot' },
-                        { icon: '🌱', title: 'Beyond Your Identity', subtitle: 'Separate who you are from what you do', area: 'Mindset Shifts' },
-                    ].map((item, index) => (
-                        <div
-                            key={item.title}
-                            className={`rounded-[18px] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                                progressDemoStep === 2 && index === 0
-                                    ? 'scale-[1.01] border border-[#647C90]/25 bg-[rgba(100,124,144,0.12)]'
-                                    : 'bg-[#F5F5F5]'
-                            }`}
-                        >
-                            <div className="flex items-start gap-3">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0]">{item.icon}</div>
-                                <div className="flex-1">
-                                    <div className="font-serif text-[18px] leading-tight text-[#647C90]">{item.title}</div>
-                                    <div className="mt-1 text-[10px] leading-4 text-[#4E4F50]">{item.subtitle}</div>
-                                    <div className="mt-1 text-[11px] text-[#928490]">{item.area}</div>
-                                    <div className="mt-1 text-[11px] text-[#928490]">Completed all 7 days</div>
-                                </div>
-                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#647C90] text-[12px] text-[#E2DED0]">✓</div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <div>
-                <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#647C90]">Achievements</div>
-                <div className="space-y-2.5">
-                    {[
-                        { title: 'First Step', text: 'Completed your first day', icon: Trophy },
-                        { title: 'Week Warrior', text: 'Completed 7 days', icon: Target },
-                        { title: 'Path Completer', text: 'Finished a complete path', icon: Star },
-                        { title: 'Transformation Master', text: 'Completed 30+ days of growth', icon: Trophy },
-                        { title: 'Path Pioneer', text: 'Completed your first path', icon: Trophy },
-                        { title: 'Journey Master', text: 'Completed 3 paths', icon: Star },
-                    ].map((item, index) => {
-                        const Icon = item.icon;
-                        return (
-                            <div
-                                key={item.title}
-                                className={`rounded-[18px] px-4 py-3.5 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                                    progressDemoStep >= 3 && index < 2
-                                        ? 'border border-[#647C90]/20 bg-[rgba(100,124,144,0.1)]'
-                                        : 'bg-[#F5F5F5]'
-                                }`}
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#647C90] text-[#E2DED0]">
-                                        <Icon className="h-4 w-4" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="text-[12px] font-semibold text-[#4E4F50]">{item.title}</div>
-                                        <div className="mt-1 text-[11px] text-[#928490]">{item.text}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-
-            <div
-                className={`rounded-[18px] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)] transition-all duration-300 ${
-                    progressDemoStep === 4
-                        ? 'border border-[#647C90]/25 bg-[rgba(100,124,144,0.12)]'
-                        : 'bg-[#F5F5F5]'
-                }`}
-            >
-                <div className="font-serif text-[16px] text-[#647C90]">Want more Support?</div>
-                <p className="mt-2 text-[10px] leading-4 text-[#4E4F50]">
-                    Our mentorship program provides personalized guidance from experienced former professional dancers who understand your unique journey.
-                </p>
-                <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#647C90] px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#E2DED0]">
-                    Learn More
-                    <ChevronRight className="h-3.5 w-3.5" />
-                </div>
-            </div>
-
-            <div className="rounded-[18px] bg-[#F5F5F5] px-4 py-4 text-center shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#928490]">Welcome Guide</div>
-                <div className="mt-2 text-[11px] font-semibold text-[#4E4F50]">View Welcome Guide Again</div>
-            </div>
-
-            <div className="rounded-[18px] bg-[#F5F5F5] px-4 py-4 text-center shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#928490]">Reset</div>
-                <div className="mt-2 text-[11px] font-semibold text-[#4E4F50]">Reset Progress</div>
-            </div>
-
-            <div className="rounded-[18px] bg-[#F5F5F5] px-4 py-4 shadow-[0_10px_22px_rgba(17,24,39,0.08)]">
-                <div className="font-serif text-[16px] text-[#647C90]">Support &amp; privacy</div>
-                <p className="mt-2 text-[10px] leading-4 text-[#928490]">
-                    Pivot Paths is a free resource connected to Pivot for Dancers. Open the resource page, email support, or review the current privacy details.
-                </p>
-                <div className="mt-3 space-y-2">
-                    {['Open Pivot Paths Resource Page', 'Email Support', 'View Privacy Policy'].map((item, index) => (
-                        <div
-                            key={item}
-                            className={`rounded-full px-3 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.12em] ${
-                                index === 0 ? 'bg-[#647C90] text-[#E2DED0]' : 'bg-[#E2DED0] text-[#647C90]'
-                            }`}
-                        >
-                            {item}
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    ));
 
     const renderJournalTab = () => {
         const journalEntries = [
@@ -1724,8 +1240,6 @@ export const DeviceMockup = ({
                 return renderGameTab();
             case 'reports':
                 return renderReportsTab();
-            case 'progress':
-                return renderProgressTab();
             case 'journal':
                 return renderJournalTab();
             default:
