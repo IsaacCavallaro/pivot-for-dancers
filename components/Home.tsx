@@ -1,960 +1,423 @@
-"use client"
-
-import { useState, useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { ArrowRight, Play } from 'lucide-react';
 import {
-  Star,
-  CheckCircle,
-  Users,
-  Play,
-  Shield,
-  MapPin,
-  Heart,
-  TrendingUp,
-  Calendar,
-  Target,
-  Award,
-  Globe,
-  Linkedin,
-  Youtube,
-  Instagram,
-  Facebook,
-  ArrowRight,
-  Smartphone,
-  Headphones,
-  BookOpen,
-} from "lucide-react"
+    DeviceMockup,
+    Reveal,
+    SectionBlock,
+    ShowcaseGrid,
+} from './site/MarketingPrimitives';
+import TestimonialsSection from './TestimonialSection';
 
-interface ScrollAnimationProps {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-  direction?: "up" | "down" | "left" | "right" | "scale";
-  duration?: number;
-  threshold?: number;
-  style?: React.CSSProperties;
-  [key: string]: any;
-}
+const screens = [
+    {
+        variant: 'onboarding' as const,
+        eyebrow: 'Pivot Paths',
+        title: 'A calmer first step for dancers figuring out what comes next.',
+        description: 'This app is designed to help you explore options, build confidence, and keep momentum without losing your place.',
+        lines: [
+            'Choose a direction',
+            'Track your progress',
+            'Learn from real stories',
+        ],
+        ctaLabel: 'Start With This Focus',
+    },
+    {
+        variant: 'home' as const,
+        eyebrow: 'By Pivot For Dancers',
+        title: 'Pivot Paths',
+        description: 'Resume your progress, explore guided paths, and learn from dancer stories in one place.',
+        lines: [
+            'Guided Paths',
+            'Video Stories',
+            'Personalized Support',
+        ],
+        ctaLabel: 'Continue Path',
+    },
+    {
+        variant: 'welcome' as const,
+        eyebrow: 'Discover Your Dream Life',
+        title: 'Welcome Back Maya',
+        description: 'You’re building real momentum. Each day you come back, you get clearer about what you want life beyond dance to feel like.',
+        lines: [
+            'How your current instincts shape your choices',
+            'What this scenario reveals about your priorities',
+            'What an alternative future could open up for you',
+        ],
+        ctaLabel: 'Save Entry',
+    },
+];
 
-const ScrollAnimation = ({
-  children,
-  className = "",
-  delay = 0,
-  direction = "up",
-  duration = 0.6,
-  threshold = 0.1,
-  ...props
-}: ScrollAnimationProps) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
+const youtubePlaylistUrl = 'https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm';
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsVisible(true)
-          }, delay)
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold }
-    )
+const featuredEpisodes = [
+    {
+        title: 'How Demi’s roller skating hobby turned into 500K followers on Instagram',
+        guest: 'Demi Jenkins',
+        duration: '22:37',
+        videoId: '7EUfZS8mQtk',
+        description: 'From dancer to social media creator, Demi shares how an unexpected interest became a whole new path.',
+    },
+    {
+        title: 'Missing the magic of the stage? Here’s how Ali is finding meaning beyond her ballet career',
+        guest: 'Ali Block',
+        duration: '27:28',
+        videoId: 'tnPkI_ezUto',
+        description: 'Ali reflects on grief, identity, and the process of building purpose beyond ballet.',
+    },
+    {
+        title: 'How a ski mountain helped Elise let go of her dance career',
+        guest: 'Elise MacDonald',
+        duration: '32:22',
+        videoId: '16JMiSPzlBE',
+        description: 'Elise shares how space away from dance helped her release an old identity and imagine a new chapter.',
+    },
+];
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
+const podcastGuestCtaUrl = 'mailto:pivotfordancers@gmail.com?subject=Pivot%20Podcast%20Guest%20Request';
 
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
-      }
-    }
-  }, [delay, threshold])
-
-  const getTransform = () => {
-    if (!isVisible) {
-      switch (direction) {
-        case 'up': return 'translateY(60px)'
-        case 'down': return 'translateY(-60px)'
-        case 'left': return 'translateX(60px)'
-        case 'right': return 'translateX(-60px)'
-        case 'scale': return 'scale(0.8)'
-        default: return 'translateY(60px)'
-      }
-    }
-    return 'translateY(0) translateX(0) scale(1)'
-  }
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: getTransform(),
-        transition: `all ${duration}s cubic-bezier(0.16, 1, 0.3, 1)`,
-        ...props.style
-      }}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-}
+const heroStats = [
+    { value: '25+', label: 'years of\ndance experience' },
+    { value: '1,309+', label: 'dancers in\nour community' },
+    { value: '17+', label: 'countries\nparticipating' },
+    { value: '20+', label: 'successful\nworkshops' },
+];
 
 const Counter = ({ end, duration }: { end: number; duration: number }) => {
-  const [count, setCount] = useState(0)
-  const ref = useRef<number>(0)
+    const [count, setCount] = useState(0);
+    const frameRef = useRef<number>(0);
 
-  useEffect(() => {
-    let start = 0
-    const increment = end / (duration / 16)
-    const step = () => {
-      start += increment
-      if (start < end) {
-        setCount(Math.floor(start))
-        ref.current = requestAnimationFrame(step)
-      } else {
-        setCount(end)
-      }
-    }
-    ref.current = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(ref.current)
-  }, [end, duration])
+    useEffect(() => {
+        let start = 0;
+        const increment = end / (duration / 16);
 
-  return <span>{count.toLocaleString()}</span>
-}
+        const step = () => {
+            start += increment;
 
-const StatCard = ({ number, label, icon: IconComponent, index }: { number: string; label: string; icon: React.ComponentType<any>; index: number }) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+            if (start < end) {
+                setCount(Math.floor(start));
+                frameRef.current = requestAnimationFrame(step);
+                return;
+            }
 
-  const splitLabel = (text: string) => {
-    const words = text.split(" ")
-    const midPoint = Math.ceil(words.length / 2)
-    return {
-      line1: words.slice(0, midPoint).join(" "),
-      line2: words.slice(midPoint).join(" "),
-    }
-  }
+            setCount(end);
+        };
 
-  const highlightKeyWords = (text: string) => {
-    return text
-  }
+        frameRef.current = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(frameRef.current);
+    }, [duration, end]);
 
-  const { line1, line2 } = splitLabel(label)
-  const numericValue = Number.parseInt(number.replace(/\D/g, ""))
+    return <span>{count.toLocaleString()}</span>;
+};
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          if (ref.current) observer.unobserve(ref.current)
-        }
-      },
-      { threshold: 0.3 },
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => {
-      if (ref.current) observer.unobserve(ref.current)
-    }
-  }, [])
+const StatCard = ({ value, label }: { value: string; label: string }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+    const numericValue = Number.parseInt(value.replace(/[^\d]/g, ''), 10);
+    const prefixMatch = value.match(/^[^\d]+/);
+    const prefix = prefixMatch?.[0] ?? '';
+    const hasPlus = value.endsWith('+');
+    const isNumeric = Number.isFinite(numericValue) && numericValue > 0;
 
-  const backgroundColor = "#fff"
-  const borderColor = index % 2 === 0 ? "#647C90" : "#928490"
-  const iconColor = index % 2 === 0 ? "#647C90" : "#928490"
-  const textColor = "#647C90"
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) return;
+                setIsVisible(true);
+                observer.disconnect();
+            },
+            { threshold: 0.35 }
+        );
 
-  return (
-    <div ref={ref} className="text-center">
-      <div
-        className="rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
-        style={{
-          backgroundColor: backgroundColor,
-          border: `2px solid ${borderColor}`,
-        }}
-      >
-        {/* Icon with enhanced styling */}
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
         <div
-          className="w-8 h-8 md:w-7 md:h-7 rounded-full flex items-center justify-center mb-2 md:mb-1 relative z-10"
-          style={{ backgroundColor: iconColor }}
+            ref={ref}
+            className="rounded-[24px] border border-[#E8E0D4] bg-[#F5F6F2] p-3 shadow-[0_22px_50px_rgba(45,49,56,0.08)]"
         >
-          <IconComponent className="w-5 h-5 md:w-4 md:h-4 text-white" />
-        </div>
-
-        <div className="text-xl md:text-lg font-bold mb-1 relative z-10" style={{ color: textColor }}>
-          {isVisible ? (
-            <>
-              <Counter end={numericValue} duration={2000} />
-              {number.includes("+") && "+"}
-            </>
-          ) : (
-            "0"
-          )}
-        </div>
-        <div className="text-xs leading-tight relative z-10" style={{ color: textColor }}>
-          <div dangerouslySetInnerHTML={{ __html: highlightKeyWords(line1) }} />
-          <div dangerouslySetInnerHTML={{ __html: highlightKeyWords(line2) }} />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// New Suite CTA Section Component with ScrollAnimation
-const SuiteCTASection = () => {
-  const products = [
-    {
-      title: "Products",
-      description: "Dancer-focused digital products to guide you through your career transition",
-      icon: Smartphone,
-      color: "#928490",
-      link: "/products",
-      badge: "Digital Guides",
-    },
-    {
-      title: "Services",
-      description: "Bespoke career change services tailored to your unique experience and goals",
-      icon: BookOpen,
-      color: "#928490",
-      link: "/services",
-      badge: "Personalized Support",
-    },
-    {
-      title: "Resources",
-      description: "Countless hours of free, accessible content to help you feel less alone on your pivot journe",
-      icon: Headphones,
-      color: "#928490",
-      link: "/resources",
-      badge: "Free Tools",
-    },
-  ];
-
-  return (
-    <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#647C90' }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Enhanced Heading with ScrollAnimation */}
-        <ScrollAnimation
-          className="text-center mb-20"
-          direction="up"
-          duration={0.8}
-        >
-          <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(255, 255, 255, 0.3)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
-            <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#E2DED0' }}></div>
-            <span className="text-sm font-bold text-white tracking-widest">COMPREHENSIVE SUITE</span>
-            <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#E2DED0' }}></div>
-          </div>
-
-          <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Explore Our Complete Offerings
-          </h2>
-
-
-          <p className="text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-            Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions
-          </p>
-        </ScrollAnimation>
-
-        {/* Enhanced Products Grid with Slower Animations */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <ScrollAnimation
-              key={index}
-              delay={index * 300} // Increased delay for slower staggered effect
-              direction="up"
-              duration={1.2} // Increased duration for slower animation
-              threshold={0.1} // Lower threshold for earlier trigger
-              className="flex w-full"
-            >
-              <div
-                className="group relative backdrop bl rounded-3xl p-8 shadow-2xl border transition-all duration-1000 hover:-translate-y-4 flex flex-col h-full w-full overflow-hidden"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                  borderColor: 'rgba(255, 255, 255, 0.2)',
-                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-                }}
-              >
-                {/* Animated background gradient on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-1000 rounded-3xl" style={{ backgroundColor: 'rgba(226, 222, 208, 0.1)' }}></div>
-
-                {/* Most Popular badge for Services card only */}
-                {product.title === "Services" && (
-                  <div className="absolute -right-8 top-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold font-montserrat text-xs py-1 px-8 transform rotate-45 z-10 shadow-md">
-                    Most Popular
-                  </div>
-                )}
-
-                {/* Enhanced Icon with 3D effect - No ScrollAnimation */}
-                <div className="relative mb-6 flex justify-center">
-                  <div
-                    className="absolute inset-0 opacity-20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-1000 group-hover:bg-[#647C90]"
-                    style={{ backgroundColor: `${product.color}40` }}
-                  ></div>
-                  <div
-                    className="relative w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-1000 shadow-2xl group-hover:bg-[#647C90]"
-                    style={{ backgroundColor: product.color }}
-                  >
-                    <product.icon className="w-10 h-10 text-white transition-all duration-1000 group-hover:scale-110" />
-                  </div>
+            <div className="rounded-[18px] border border-black/8 bg-white px-4 py-4 text-center">
+                <div className="text-[26px] font-bold leading-none text-[#111827]">
+                    {isNumeric ? (
+                        <>
+                            {prefix}
+                            {isVisible ? <Counter end={numericValue} duration={1800} /> : 0}
+                            {hasPlus ? '+' : ''}
+                        </>
+                    ) : (
+                        value
+                    )}
                 </div>
-
-                {/* Enhanced Badge - No ScrollAnimation */}
-                <div className="mb-4 flex justify-center">
-                  <span
-                    className="inline-block text-center px-4 py-2 text-xs font-bold rounded-full transition-all duration-700 group-hover:scale-105 shadow-lg border group-hover:bg-[#647C90] group-hover:bg-opacity-20 group-hover:border-[#647C90] group-hover:border-opacity-30 group-hover:text-[#647C90]"
-                    style={{
-                      backgroundColor: 'rgba(226, 222, 208, 0.2)',
-                      color: '#928490',
-                      borderColor: 'rgba(146, 132, 144, 0.3)'
-                    }}
-                  >
-                    {product.badge}
-                  </span>
-                </div>
-
-                {/* Enhanced Title with gradient - No ScrollAnimation */}
-                <h4 className="font-black text-center text-3xl mb-4 transition-colors duration-700 relative z-10 group-hover:text-[#647C90]" style={{ color: '#647C90' }}>
-                  <span className="group-hover:opacity-80 transition-opacity duration-700">
-                    {product.title}
-                  </span>
-                </h4>
-
-                {/* Enhanced Description - No ScrollAnimation */}
-                <p className="text-gray-600 text-center text-sm mb-8 leading-relaxed group-hover:text-gray-800 transition-colors duration-700 relative z-10 font-medium flex-grow">
-                  {product.description}
-                </p>
-
-                {/* Enhanced Button with gradient and glow - No ScrollAnimation */}
-                <div className="mt-auto pt-4">
-                  <a
-                    href={product.link}
-                    className="relative inline-flex items-center justify-center w-full font-bold py-4 px-8 rounded-2xl transition-all duration-1000 group-hover:scale-105 shadow-xl group-hover:shadow-2xl overflow-hidden group/button text-white group-hover:bg-[#647C90]"
-                    style={{ backgroundColor: product.color }}
-                  >
-                    {/* Button background glow effect */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover/button:opacity-30 transition-opacity duration-1000 rounded-2xl group-hover:bg-[#647C90]"
-                      style={{ backgroundColor: '#E2DED0' }}
-                    ></div>
-
-                    {/* Button content */}
-                    <span className="relative mr-3 tracking-wider">LEARN MORE</span>
-                    <svg
-                      className="relative w-5 h-5 transition-transform duration-1000 group-hover/button:translate-x-2 group-hover/button:scale-110"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </ScrollAnimation>
-          ))}
+                <div className="mt-2 whitespace-pre-line text-[14px] leading-6 text-[#60636B]">{label}</div>
+            </div>
         </div>
-
-        {/* Enhanced Bottom CTA with ScrollAnimation */}
-        <ScrollAnimation
-          className="text-center mt-20"
-          delay={800}
-          direction="up"
-          duration={0.8}
-        >
-          <div className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105" style={{ backgroundColor: '#928490', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
-            <span className="text-white font-bold mr-3 text-lg">Ready to get started?</span>
-            <a
-              href="https://tidycal.com/pivotfordancers/mentorship-1"
-              className="font-black text-lg transition-all duration-300 text-white hover:opacity-80"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              BOOK NOW
-            </a>
-            <svg
-              className="w-5 h-5 ml-3 text-white group-hover:translate-x-2 group-hover:scale-110 transition-all duration-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-        </ScrollAnimation>
-      </div>
-    </section>
-  );
+    );
 };
 
-const CommunitySection = () => {
-  const [shuffledVideos, setShuffledVideos] = useState<any[]>([]);
+const Home = () => {
+    const [selectedEpisode, setSelectedEpisode] = useState(featuredEpisodes[0]);
 
-  const playlistVideos = [
-    {
-      id: "FJRbh7AI9HQ",
-      title: "Are we done telling dancers not to have a backup plan? Rachel's story",
-      description: "Rachel is proof that you can successfully transition from dance while maintaining your passion and finding new purpose",
-      duration: "30:29"
-    },
-    {
-      id: "16JMiSPzlBE",
-      title: "How a ski mountain helped Elise let go of her dance career",
-      description: "Elise shares her journey of finding closure and new beginnings through outdoor adventure",
-      duration: "32:22"
-    },
-    {
-      id: "7EUfZS8mQtk",
-      title: "How Demi's roller skating hobby turned into 500K followers",
-      description: "From dancer to social media influencer - Demi's unexpected career pivot success story",
-      duration: "22:37"
-    },
-    {
-      id: "ZsvNvXLtcC4",
-      title: "Will you regret being a dancer? How Monica turned guilt into growth",
-      description: "Monica discusses overcoming post-career doubts and finding value in her dance journey",
-      duration: "26:03"
-    },
-    {
-      id: "tnPkI_ezUto",
-      title: "Finding meaning beyond ballet: Ali's journey after the stage",
-      description: "Ali explores how she's discovering new purpose and magic outside her ballet career",
-      duration: "27:28"
-    }
-  ];
-
-  // Shuffle function using Fisher-Yates algorithm
-  const shuffleArray = (array: any[]) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
-
-  useEffect(() => {
-    // Shuffle videos when component mounts
-    setShuffledVideos(shuffleArray(playlistVideos));
-  }, []);
-
-  return (
-    <section className="py-16 sm:py-20 lg:py-20 relative overflow-hidden" style={{ backgroundColor: '#E2DED0' }}>
-      <div className="absolute inset-0 bg-[radial-gradient(#d5d1c5_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <ScrollAnimation className="text-center mb-10 sm:mb-16 lg:mb-20" direction="up" duration={0.8}>
-          <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 sm:mb-8 border backdrop-blur-xl shadow-xl" style={{ borderColor: 'rgba(100, 124, 144, 0.3)', backgroundColor: 'rgba(100, 124, 144, 0.1)' }}>
-            <div className="w-2 h-2 rounded-full mr-3 animate-pulse" style={{ backgroundColor: '#647C90' }}></div>
-            <span className="text-sm font-bold tracking-widest" style={{ color: '#647C90' }}>COMMUNITY STORIES</span>
-            <div className="w-2 h-2 rounded-full ml-3 animate-pulse delay-300" style={{ backgroundColor: '#647C90' }}></div>
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight" style={{ color: '#647C90' }}>
-            Real Dancers, Real Transitions
-          </h2>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: '#746C70' }}>
-            Watch inspiring stories from dancers who successfully navigated career changes and found new paths.
-          </p>
-        </ScrollAnimation>
-
-        {/* Main YouTube Player and Playlist */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          {/* Main Video Player */}
-          <div className="lg:col-span-2">
-            <ScrollAnimation delay={400} direction="up" duration={1}>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border" style={{ borderColor: 'rgba(100, 124, 144, 0.2)' }}>
-                <div className="aspect-video bg-gray-900 relative">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${shuffledVideos[0]?.id || 'FJRbh7AI9HQ'}?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm`}
-                    title={shuffledVideos[0]?.title || "Rachel's Story - Are we done telling dancers not to have a backup plan?"}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+    return (
+        <>
+            <section className="relative overflow-hidden bg-[#F7F2EA] px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
+                <div className="pointer-events-none absolute inset-0 opacity-60">
+                    <div className="absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(247,242,234,0.92),rgba(247,242,234,0))]" />
+                    <div className="absolute inset-y-0 right-0 w-[32rem] bg-[radial-gradient(circle_at_center,rgba(100,124,144,0.08),transparent_70%)]" />
                 </div>
-              </div>
-            </ScrollAnimation>
-          </div>
-
-          {/* Playlist Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-3xl p-6 shadow-2xl border h-full" style={{ borderColor: 'rgba(100, 124, 144, 0.2)' }}>
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-xl" style={{ color: '#647C90' }}>Success Stories</h3>
-                <div className="flex items-center text-sm" style={{ color: '#928490' }}>
-                  <Play className="w-4 h-4 mr-1" />
-                  <span>{playlistVideos.length} videos</span>
-                </div>
-              </div>
-
-              <div className="space-y-4 max-h-96 overflow-y-auto">
-                {shuffledVideos.map((video, index) => (
-                  <div
-                    key={video.id}
-                    className="flex gap-4 p-4 rounded-2xl transition-all duration-300 hover:shadow-lg cursor-pointer group border"
-                    style={{
-                      borderColor: 'rgba(100, 124, 144, 0.1)',
-                      backgroundColor: index === 0 ? 'rgba(100, 124, 144, 0.05)' : 'transparent'
-                    }}
-                    onClick={() => {
-                      // This would update the main video in a real implementation
-                      const iframe = document.querySelector('iframe');
-                      if (iframe) {
-                        iframe.src = `https://www.youtube.com/embed/${video.id}?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm&autoplay=1`;
-                      }
-                    }}
-                  >
-                    <div className="relative flex-shrink-0">
-                      <div className="w-20 h-12 rounded-lg bg-gray-300 overflow-hidden">
-                        <img
-                          src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
-                          alt={video.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="absolute bottom-1 right-1 bg-black bg-opacity-80 text-white text-xs px-1 rounded">
-                        {video.duration}
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-sm mb-1 line-clamp-2 group-hover:text-[#647C90] transition-colors" style={{ color: '#647C90' }}>
-                        {video.title}
-                      </h4>
-                      <p className="text-xs text-gray-600 line-clamp-2">
-                        {video.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="https://www.youtube.com/playlist?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105"
-            style={{ backgroundColor: '#928490', borderColor: 'rgba(100, 124, 144, 0.3)' }}
-          >
-            <Youtube className="w-6 h-6 mr-3 text-white" />
-            <span className="font-bold text-lg mr-3 text-white">Watch Full Playlist</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-white" />
-          </a>
-
-          <a
-            href="mailto:kaylee@pivotfordancers.com"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full backdrop-blur-xl border shadow-2xl transition-all duration-500 group hover:scale-105"
-            style={{ backgroundColor: '#928490', borderColor: 'rgba(100, 124, 144, 0.3)' }}
-          >
-            <Users className="w-5 h-5 mr-3 text-white" />
-            <span className="font-bold text-lg mr-3 text-white">Share Your Story</span>
-            <Heart className="w-5 h-5 group-hover:scale-110 transition-transform text-white" />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
-const HeroSection = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const [currentScreen, setCurrentScreen] = useState(0)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentScreen((prev) => (prev + 1) % 4)
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  const stats = [
-    { number: "25+", label: "years of dance experience", icon: Star },
-    { number: "1309+", label: "dancers in our community", icon: Users },
-    { number: "17+", label: "countries participating", icon: Globe },
-    { number: "20+", label: "successful workshops", icon: CheckCircle },
-  ]
-
-  const screens = [
-    {
-      title: "Pivot Paths",
-      subtitle: "Your Dance Career Companion",
-      content: (
-        <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center mb-2">
-              <MapPin className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Career Transition
-              </span>
-            </div>
-            <div className="w-full rounded-full h-2" style={{ backgroundColor: "rgba(100, 124, 144, 0.3)" }}>
-              <div style={{ backgroundColor: "#647C90" }} className="rounded-full h-2 w-3/4"></div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center mb-2">
-              <Heart className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Mindset Wellness
-              </span>
-            </div>
-            <div className="w-full rounded-full h-2" style={{ backgroundColor: "rgba(100, 124, 144, 0.3)" }}>
-              <div style={{ backgroundColor: "#647C90" }} className="rounded-full h-2 w-1/2"></div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center mb-2">
-              <CheckCircle className="w-5 h-5 mr-2" style={{ color: "#647C90" }} />
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Financial Planning
-              </span>
-            </div>
-            <div className="w-full rounded-full h-2" style={{ backgroundColor: "rgba(100, 124, 144, 0.3)" }}>
-              <div style={{ backgroundColor: "#647C90" }} className="rounded-full h-2 w-1/4"></div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Career Transition",
-      subtitle: "Navigate Your Next Chapter",
-      content: (
-        <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Skills Assessment
-              </span>
-              <Target className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Identify transferable skills from your dance background
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Industry Exploration
-              </span>
-              <Shield className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Discover career paths that value your unique experience
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Network Building
-              </span>
-              <Award className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Connect with professionals in your target industry
-            </p>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Identify Transferable Skills",
-      subtitle: "Unlock Your Potential",
-      content: (
-        <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Skill Mapping
-              </span>
-              <Users className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Identify transferable skills from your dance background
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Industry Exploration
-              </span>
-              <TrendingUp className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Discover career paths that value your unique experience
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Action Planning
-              </span>
-              <Calendar className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Create step-by-step transition roadmap
-            </p>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Mindset Wellness",
-      subtitle: "Mental Health & Confidence",
-      content: (
-        <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Daily Affirmations
-              </span>
-              <Heart className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Build confidence with personalized positive messaging
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Stress Management
-              </span>
-              <Shield className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Techniques to handle transition anxiety and uncertainty
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Community Support
-              </span>
-              <Users className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Connect with other dancers on similar journeys
-            </p>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Financial Planning",
-      subtitle: "Secure Your Future",
-      content: (
-        <div className="flex-1 px-4 space-y-4">
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Budget Planning
-              </span>
-              <TrendingUp className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Manage finances during career transition periods
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Emergency Fund
-              </span>
-              <Shield className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Build financial security for unexpected changes
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-4 border border-white/30" style={{ backgroundColor: "#fff" }}>
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ color: "#647C90" }} className="font-semibold">
-                Investment Basics
-              </span>
-              <Award className="w-5 h-5" style={{ color: "#647C90" }} />
-            </div>
-            <p style={{ color: "#647C90" }} className="text-sm opacity-90">
-              Learn to grow wealth beyond your dance career
-            </p>
-          </div>
-        </div>
-      ),
-    },
-  ]
-
-  return (
-    <>
-      <section
-        id="home"
-        className="relative overflow-hidden pt-32 pb-10"
-        style={{
-          backgroundColor: "#E2DED0",
-        }}
-      >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start justify-between">
-            {/* Left Column */}
-            <div
-              className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} text-center md:text-left`}
-            >
-              <div className="relative flex justify-center md:justify-start -mt-8 mb-4 md:mb-6">
-                <div className="flex flex-col items-center gap-3">
-                  <span className="text-white font-semibold px-4 py-2 rounded-full text-sm md:text-base flex items-center bg-purple-gray backdrop-blur-sm border border-white/20">
-                    <Shield className="w-4 h-4 mr-2" />
-                    Trusted by professional dancers worldwide
-                  </span>
-                </div>
-              </div>
-
-              <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-6 leading-tight">
-                Career change resources made for dancers
-              </h1>
-
-              <p className="font-montserrat text-xl mb-8 leading-relaxed max-w-xl" style={{ color: "#746C70" }}>
-                We’re helping professional dancers find meaning off the stage through dancer-specific career change resources.
-              </p>
-
-              <div className="mt-12">
-                {/* Stats Section */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {stats.map((stat, index) => (
-                    <StatCard key={index} {...stat} index={index} />
-                  ))}
-                </div>
-
-                {/* Social Media Icons Section - Centered underneath stats */}
-                <div className="flex justify-center items-center gap-4 mt-8">
-                  <div className="flex items-center gap-3">
-                    <a
-                      href="https://www.linkedin.com/company/pivotfordancers/"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                      style={{ backgroundColor: "#647C90" }}
-                    >
-                      <Linkedin className="w-5 h-5 text-white" />
-                    </a>
-                    <a
-                      href="https://www.youtube.com/@pivotfordancers"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                      style={{ backgroundColor: "#928490" }}
-                    >
-                      <Youtube className="w-5 h-5 text-white" />
-                    </a>
-                    <a
-                      href="https://www.instagram.com/pivotfordancers/"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                      style={{ backgroundColor: "#647C90" }}
-                    >
-                      <Instagram className="w-5 h-5 text-white" />
-                    </a>
-                    <a
-                      href="https://www.facebook.com/pivotfordancers/"
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                      style={{ backgroundColor: "#928490" }}
-                    >
-                      <Facebook className="w-5 h-5 text-white" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Mobile Phone Mockup */}
-            <div
-              className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                } flex justify-center`}
-            >
-              <div className="relative flex flex-col mt-[-1px]">
-                <div className="relative">
-                  {/* Phone Frame */}
-                  <div className="relative w-80 h-[600px] bg-gray-900 rounded-[3rem] p-2 shadow-2xl overflow-hidden">
-                    {/* COMING SOON Ribbon - sits on top of the entire phone */}
-                    <div className="absolute -right-10 top-9 bg-gradient-to-r from-yellow-400 to-yellow-500 text-dark-gray font-bold text-xs md:text-sm py-1 px-10 transform rotate-45 z-40 shadow-lg">
-                      COMING SOON
-                    </div>
-
-                    {/* Status Bar */}
-                    <div className="bg-gray-50 h-8 flex items-center justify-between px-6 text-xs font-medium text-gray-900 rounded-t-[2.5rem] relative z-10">
-                      <span>9:41</span>
-                      <div className="flex items-center space-x-1">
-                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
-                        <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
-                        <div className="w-6 h-3 bg-green-500 rounded-sm"></div>
-                      </div>
-                    </div>
-                    {/* Screen Container */}
-                    <div
-                      className="relative w-full overflow-hidden rounded-b-[2.5rem] bg-slate-600"
-                      style={{ height: "calc(100% - 2rem)", backgroundColor: "#647C90", isolation: "isolate" }}
-                    >
-                      <div className="relative w-full h-full overflow-hidden rounded-b-[2.5rem]">
-                        {screens.map((screen, index) => (
-                          <div
-                            key={index}
-                            className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out bg-slate-600 ${index === currentScreen
-                              ? "translate-x-0 opacity-100"
-                              : index < currentScreen
-                                ? "-translate-x-full opacity-0"
-                                : "translate-x-full opacity-0"
-                              }`}
-                            style={{
-                              backgroundColor: "#647C90",
-                              clipPath: "inset(0 0 0 0 round 0 0 2.5rem 2.5rem)",
-                              willChange: "transform",
-                              backfaceVisibility: "hidden",
-                            }}
-                          >
-                            <div className="flex flex-col h-full w-full">
-                              <div className="p-6 text-center flex-shrink-0" style={{ backgroundColor: "#647C90" }}>
-                                <h2 className="text-2xl font-bold text-white mb-2">{screen.title}</h2>
-                                <p className="text-white text-sm opacity-90">{screen.subtitle}</p>
-                              </div>
-
-                              {/* Screen Content */}
-                              <div className="flex-1 overflow-y-auto overflow-x-hidden rounded-b-[2.5rem] px-4">
-                                <div className="h-full w-full" style={{ contain: "strict" }}>
-                                  {screen.content}
+                <div className="relative mx-auto max-w-[1280px]">
+                    <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
+                        <Reveal className="lg:flex lg:h-full lg:flex-col lg:justify-between lg:pt-10">
+                            <div className="text-center lg:text-left">
+                                <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
+                                    Career change, made for dancers
                                 </div>
-                              </div>
+                                <h1 className="mx-auto mt-5 max-w-xl text-[46px] font-bold leading-[1] tracking-[-0.04em] text-[#111827] sm:text-[52px] md:text-[68px] lg:mx-0 lg:text-[78px] xl:text-[84px]">
+                                    Pivot from the dream job to the <em>dream life</em>
+                                </h1>
+                                <p className="mx-auto mt-6 max-w-xl text-[18px] leading-8 text-[#60636B] md:text-[20px] lg:mx-0">
+                                    We’re helping professional dancers find meaning off the stage through dancer-specific career change resources.
+                                </p>
+
+                                <div className="mx-auto mt-8 flex max-w-md flex-col gap-4 sm:flex-row lg:mx-0 lg:max-w-none">
+                                    <Link
+                                        href="/resources/pivot-paths"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f] sm:w-auto"
+                                    >
+                                        Start with Pivot Paths
+                                        <ArrowRight className="h-4 w-4" />
+                                    </Link>
+                                    <a
+                                        href="https://tidycal.com/pivotfordancers/mentorship-1"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827] transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
+                                    >
+                                        Book support
+                                    </a>
+                                </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
+
+                            <div className="mt-8 lg:mt-10">
+                                <div className="mx-auto grid max-w-xl gap-3 sm:grid-cols-2 lg:mx-0">
+                                    {heroStats.map((item) => (
+                                        <StatCard key={item.label} value={item.value} label={item.label} />
+                                    ))}
+                                </div>
+
+                                <div className="mx-auto mt-5 max-w-xl rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_24px_56px_rgba(45,49,56,0.08)] lg:mx-0">
+                                    <div className="rounded-[24px] border border-black/8 bg-white px-5 py-5 text-center lg:text-left">
+                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                            Founder-led support
+                                        </div>
+                                        <div className="mt-3 text-[22px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
+                                            Built by a former professional dancer who has already lived the pivot.
+                                        </div>
+                                        <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                            We recognise the emotional side of the transition is as important as the practical side.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Reveal>
+
+                        <Reveal delay={120} className="lg:flex lg:h-full lg:items-center lg:justify-center">
+                            <div className="mx-auto w-full max-w-[540px] rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)] md:p-5 lg:max-w-[430px] lg:p-4 xl:max-w-[460px]">
+                                <div className="rounded-[28px] border border-black/8 bg-white p-4 sm:p-5 md:p-6 lg:p-5">
+                                    <div className="mb-5">
+                                        <div className="flex items-center justify-center gap-3 sm:justify-between">
+                                            <div>
+                                                <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                                    Meet Pivot Paths
+                                                </div>
+                                            </div>
+                                            <div className="hidden rounded-full bg-[#F5F6F2] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#647C90] sm:inline-flex">
+                                                Free guided app
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="rounded-[24px] bg-[radial-gradient(circle_at_top,rgba(100,124,144,0.12),transparent_58%),linear-gradient(180deg,#FCFAF6_0%,#F5F6F2_100%)] p-4">
+                                    <div className="lg:flex lg:flex-1 lg:items-center lg:justify-center">
+                                        <div className="mx-auto w-full">
+                                            <DeviceMockup screens={screens} />
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div className="mt-5 text-center text-[16px] font-medium leading-7 text-[#60636B]">
+                                        Your private toolkit for career transition, mindset wellness, and financial planning
+                                    </div>
+                                    <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                                        <a
+                                            href="https://stats.sender.net/forms/bkRKWX/view"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#556c7f] sm:w-auto"
+                                        >
+                                            Join the waitlist
+                                            <ArrowRight className="h-4 w-4" />
+                                        </a>
+                                        <Link
+                                            href="/resources/pivot-paths"
+                                            className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827] transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
+                                        >
+                                            See More
+                                            <ArrowRight className="h-4 w-4" />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </Reveal>
                     </div>
-
-                    {/* Home Indicator */}
-                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full"></div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
 
-      {/* New Suite CTA Section */}
-      <SuiteCTASection />
+            <SectionBlock
+                label="COMPREHENSIVE SUITE"
+                title="Explore Our Complete Offerings"
+                description="Discover our comprehensive suite of products, services, and resources designed specifically for dancers navigating career transitions."
+                background="#F3EEE6"
+            >
+                <ShowcaseGrid
+                    cards={[
+                        {
+                            title: 'Products',
+                            description: 'Dancer-focused digital products to guide you through your career transition.',
+                            href: '/products',
+                            kicker: 'Digital guides',
+                            ctaLabel: 'Browse products',
+                            image: '/assets/how-to-pivot-ebook.png',
+                            tone: 'brand',
+                        },
+                        {
+                            title: 'Services',
+                            description: 'Bespoke career change services tailored to your unique experience and goals.',
+                            href: '/services',
+                            kicker: 'Personalized support',
+                            ctaLabel: 'View services',
+                            image: '/assets/pivot-mentorship.png',
+                            tone: 'dark',
+                        },
+                        {
+                            title: 'Resources',
+                            description: 'Countless hours of free, accessible content to help you feel less alone on your pivot journey.',
+                            href: '/resources',
+                            kicker: 'Free tools',
+                            ctaLabel: 'Explore resources',
+                            image: '/assets/data.png',
+                            tone: 'light',
+                        },
+                    ]}
+                />
+            </SectionBlock>
 
-      {/* New Community Section */}
-      <CommunitySection />
-    </>
-  )
-}
+            <SectionBlock
+                label="WATCH + LISTEN"
+                title="Real stories, not generic career advice"
+                description="Podcast conversations and dancer stories that make career transition feel more human, specific, and possible."
+                background="#FFFFFF"
+            >
+                <div className="grid gap-8 md:grid-cols-[1.04fr_0.96fr] md:items-stretch">
+                    <Reveal className="h-full">
+                        <div className="flex h-full flex-col overflow-hidden rounded-[34px] border border-[#E8E0D4] bg-[#F5F6F2] p-4 shadow-[0_30px_70px_rgba(45,49,56,0.08)]">
+                            <div className="overflow-hidden rounded-[26px] border border-black/8 bg-white">
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${selectedEpisode.videoId}?list=PLjTsov7LqGgJ1XUG3vPMIFA6KOojU4_mm`}
+                                    title={selectedEpisode.title}
+                                    className="aspect-video w-full md:min-h-[320px] lg:min-h-[360px]"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                />
+                            </div>
+                            <div className="mt-5 flex flex-1 flex-col justify-between gap-5 rounded-[26px] border border-[#E8E0D4] bg-white px-5 py-5 text-center md:text-left">
+                                <div className="flex flex-wrap items-center gap-3">
+                                    <span className="rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
+                                        Now Playing
+                                    </span>
+                                    <span className="rounded-full border border-black/8 bg-[#F8F6F0] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#111827]">
+                                        {selectedEpisode.duration}
+                                    </span>
+                                </div>
 
-export default HeroSection
+                                <div>
+                                    <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                        Share your story
+                                    </p>
+                                    <h3 className="mt-3 max-w-[16ch] text-[28px] font-bold leading-[1.05] tracking-[-0.03em] text-[#111827] lg:text-[32px]">
+                                        Want to be interviewed for the podcast?
+                                    </h3>
+                                    <p className="mt-4 max-w-[60ch] text-[14px] leading-7 text-[#60636B]">
+                                        If you have navigated a career pivot, identity shift, or unexpected transition beyond dance,
+                                        we would love to hear your story and explore featuring it on Pivot Podcast.
+                                    </p>
+                                </div>
+
+                                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                    <a
+                                        href={youtubePlaylistUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#647C90] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f] sm:w-auto"
+                                    >
+                                        Watch Playlist
+                                        <ArrowRight className="h-4 w-4" />
+                                    </a>
+                                    <a
+                                        href={podcastGuestCtaUrl}
+                                        className="inline-flex w-full items-center justify-center rounded-full border border-black/10 bg-[#F8F6F0] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827] sm:w-auto"
+                                    >
+                                        Submit a guest request
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </Reveal>
+
+                    <div className="flex h-full flex-col gap-4">
+                        {featuredEpisodes.map((episode, index) => (
+                            <Reveal key={episode.title} delay={index * 90} className="flex-1">
+                                <button
+                                    type="button"
+                                    onClick={() => setSelectedEpisode(episode)}
+                                    className="flex h-full w-full flex-col justify-between rounded-[30px] border border-[#E8E0D4] bg-[#F5F6F2] p-6 text-left shadow-[0_22px_50px_rgba(45,49,56,0.06)] transition hover:-translate-y-1"
+                                    style={{
+                                        backgroundColor: selectedEpisode.videoId === episode.videoId ? '#EEF2F5' : '#F5F6F2',
+                                        borderColor: selectedEpisode.videoId === episode.videoId ? '#647C90' : '#E8E0D4',
+                                    }}
+                                >
+                                    <div className="text-center md:text-left">
+                                        <div className="flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
+                                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                                {selectedEpisode.videoId === episode.videoId ? 'Now playing' : 'Featured episode'}
+                                            </div>
+                                            <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#647C90]">
+                                                {episode.duration}
+                                            </span>
+                                        </div>
+                                        <h3 className="mt-4 text-[24px] font-bold leading-tight tracking-[-0.02em] text-[#111827]">
+                                            {episode.title}
+                                        </h3>
+                                        <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                            {episode.description}
+                                        </p>
+                                    </div>
+                                    <div className="mt-5 flex flex-col items-center justify-between gap-3 md:flex-row md:gap-4">
+                                        <p className="text-[14px] leading-7 text-[#60636B]">{episode.guest}</p>
+                                        <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]">
+                                            Play
+                                            <Play className="h-4 w-4" />
+                                        </span>
+                                    </div>
+                                </button>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
+            </SectionBlock>
+
+            <TestimonialsSection />
+        </>
+    );
+};
+
+export default Home;

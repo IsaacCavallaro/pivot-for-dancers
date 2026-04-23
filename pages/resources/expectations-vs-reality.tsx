@@ -1,156 +1,39 @@
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Users, Globe, Award, Heart, Shield, TrendingUp, Calendar, ExternalLink } from 'lucide-react';
-import Navigation from '../../components/Navigation';
-import Footer from '../../components/Footer';
-import { useRouter } from 'next/router';
-import { useState, useEffect, useRef } from 'react';
 import {
-    BarChart,
+    ArrowRight,
+    BarChart3,
+    Calendar,
+    ExternalLink,
+    Globe,
+    Shield,
+    TrendingUp,
+    Users,
+} from 'lucide-react';
+import DetailCardShell from '../../components/site/DetailCardShell';
+import {
     Bar,
-    XAxis,
-    YAxis,
+    BarChart,
     CartesianGrid,
-    Tooltip,
+    LabelList,
     Legend,
     ResponsiveContainer,
-    LabelList,
+    Tooltip,
+    XAxis,
+    YAxis,
 } from 'recharts';
+import { SiteChrome } from '../../components/site/MarketingPrimitives';
 
-// Counter component from reference code
-const Counter = ({ end, duration }: { end: number; duration: number }) => {
-    const [count, setCount] = useState(0)
-    const ref = useRef<number>(0)
-
-    useEffect(() => {
-        let start = 0
-        const increment = end / (duration / 16)
-        const step = () => {
-            start += increment
-            if (start < end) {
-                setCount(Math.floor(start))
-                ref.current = requestAnimationFrame(step)
-            } else {
-                setCount(end)
-            }
-        }
-        ref.current = requestAnimationFrame(step)
-        return () => cancelAnimationFrame(ref.current)
-    }, [end, duration])
-
-    return <span>{count.toLocaleString()}</span>
-}
-
-interface ScrollAnimationProps {
-    children: React.ReactNode;
-    delay?: number;
-    className?: string;
-}
-
-const ScrollAnimation = ({ children, delay = 0, className = '' }: ScrollAnimationProps) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    if (ref.current) observer.unobserve(ref.current);
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        if (ref.current) observer.observe(ref.current);
-        return () => {
-            if (ref.current) observer.unobserve(ref.current);
-        };
-    }, []);
-
-    return (
-        <div
-            ref={ref}
-            className={`transition-all duration-1000 ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'} ${className}`}
-            style={{ transitionDelay: isVisible ? `${delay}ms` : '0ms' }}
-        >
-            {children}
-        </div>
-    );
-};
-
-const StatCard = ({ number, label, icon: IconComponent, index }: { number: string; label: string; icon: React.ComponentType<any>; index: number }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    if (ref.current) observer.unobserve(ref.current);
-                }
-            },
-            { threshold: 0.3 }
-        );
-        if (ref.current) observer.observe(ref.current);
-        return () => {
-            if (ref.current) observer.unobserve(ref.current);
-        };
-    }, []);
-
-    const backgroundColor = "#E2DED0";
-    const borderColor = index % 2 === 0 ? "#647C90" : "#928490";
-    const iconColor = index % 2 === 0 ? "#647C90" : "#928490";
-    const textColor = "#647C90";
-
-    // Extract numeric value from the number string
-    const numericValue = Number.parseInt(number.replace(/\D/g, ""));
-
-    return (
-        <div ref={ref} className="text-center">
-            <div
-                className="rounded-2xl p-4 md:p-3 shadow-lg flex flex-col items-center justify-center h-full relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-                style={{
-                    backgroundColor: backgroundColor,
-                    border: `2px solid ${borderColor}`,
-                }}
-            >
-                {/* Animated background effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-
-                <div
-                    className="w-8 h-8 md:w-7 md:h-7 rounded-full flex items-center justify-center mb-2 md:mb-1 relative z-10 group-hover:scale-110 transition-transform duration-300"
-                    style={{ backgroundColor: iconColor }}
-                >
-                    <IconComponent className="w-5 h-5 md:w-4 md:h-4 text-white" />
-                </div>
-
-                <div className="text-xl md:text-lg font-bold mb-1 relative z-10 font-merriweather" style={{ color: textColor }}>
-                    {isVisible ? (
-                        <>
-                            <Counter end={numericValue} duration={2000} />
-                            {number.includes("+") && "+"}
-                        </>
-                    ) : (
-                        "0"
-                    )}
-                </div>
-                <div className="text-xs leading-tight relative z-10 font-montserrat" style={{ color: textColor }}>
-                    {label}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-// Data Section Component
 type Country = 'Australia' | 'UnitedStates' | 'Switzerland';
-type AgeData = {
+
+type AgeDatum = {
     category: string;
     value: number;
 };
 
-const ageData = {
+const sourceUrl = 'http://neumann.hec.ca/aimac2005/PDF_Text/JeffriJ_ThrosbyD.pdf';
+
+const ageData: Record<Country, AgeDatum[]> = {
     UnitedStates: [
         { category: 'Expectations', value: 40.9 },
         { category: 'Reality', value: 33.9 },
@@ -165,587 +48,462 @@ const ageData = {
     ],
 };
 
-const countryDisplayNames = {
-    UnitedStates: 'United States',
+const countryLabels: Record<Country, string> = {
     Australia: 'Australia',
+    UnitedStates: 'United States',
     Switzerland: 'Switzerland',
 };
 
-const getAgeStats = (countryAgeData: AgeData[]) => {
-    const expectedAge = countryAgeData[0].value;
-    const actualAge = countryAgeData[1].value;
-    const meanGap = expectedAge - actualAge;
+const impactCards = [
+    {
+        title: 'Earlier planning',
+        description:
+            'The findings point to the need for transition planning well before the end of a performance career feels imminent.',
+        icon: Calendar,
+    },
+    {
+        title: 'A global pattern',
+        description:
+            'The gap appears across multiple countries, which helps frame the issue as an industry-wide reality rather than a personal failure.',
+        icon: Globe,
+    },
+    {
+        title: 'Less isolation',
+        description:
+            'Research helps dancers see that uncertainty, grief, and surprise around retirement timing are shared experiences.',
+        icon: Shield,
+    },
+];
+
+const usageCards = [
+    {
+        title: 'Understand the gap',
+        description:
+            'The chart shows the difference between when dancers expect to retire and when they actually do, making the gap much easier to understand.',
+        icon: TrendingUp,
+    },
+    {
+        title: 'Compare contexts',
+        description:
+            'Use the country selector to see how retirement patterns vary across regions while still revealing a broader global pattern.',
+        icon: Globe,
+    },
+    {
+        title: 'Plan your timeline',
+        description:
+            'If the data shows dancers retire years earlier than expected, it becomes much easier to see why planning sooner matters.',
+        icon: Users,
+    },
+];
+
+const countryTableRows = (Object.keys(ageData) as Country[]).map((country) => {
+    const [expected, actual] = ageData[country];
+    const gap = Number((expected.value - actual.value).toFixed(1));
+
+    return {
+        country,
+        label: countryLabels[country],
+        expected: expected.value,
+        actual: actual.value,
+        gap,
+    };
+});
+
+const getAgeStats = (country: Country) => {
+    const [expected, actual] = ageData[country];
+    const gap = Number((expected.value - actual.value).toFixed(1));
 
     return [
         {
-            label: `Dancers retired ${meanGap.toFixed(1)} years earlier than expected`,
-            value: `${meanGap.toFixed(1)} Years`,
-            badge: "The Gap"
+            label: 'Expected retirement age',
+            value: `${expected.value}`,
+            caption: 'What dancers thought their career length would be',
         },
         {
-            label: `The average age dancers expected to retire was ${expectedAge}`,
-            value: `Age ${expectedAge}`,
-            badge: "Expectations"
+            label: 'Actual retirement age',
+            value: `${actual.value}`,
+            caption: 'What happened in practice',
         },
         {
-            label: `The average age dancers actually retired was ${actualAge}`,
-            value: `Age ${actualAge}`,
-            badge: "Reality"
+            label: 'Expectation gap',
+            value: `${gap} yrs`,
+            caption: 'How much earlier careers ended on average',
         },
         {
-            label: 'Dance careers are much shorter than you expect',
-            value: 'Reality',
-            badge: "Insight"
+            label: 'Core insight',
+            value: 'Plan earlier',
+            caption: 'Transition preparation needs to start sooner than most expect',
         },
     ];
 };
 
-const DataSection = () => {
-    const [ageCountry, setAgeCountry] = useState<Country>('Australia');
+export default function ExpectationsVsRealityPage() {
+    const [selectedCountry, setSelectedCountry] = useState<Country>('Australia');
+    const selectedStats = useMemo(() => getAgeStats(selectedCountry), [selectedCountry]);
 
     return (
-        <section id="data-section" className="py-12 md:py-20 bg-beige">
-            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Mobile Layout (Stacked) */}
-                <div className="block md:hidden space-y-8">
-                    {/* Title and Content */}
-                    <div className="space-y-6">
-                        <h2 className="text-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+        <SiteChrome>
+            <section className="px-4 pb-10 pt-28 sm:px-6 lg:px-8 lg:pb-12 lg:pt-32">
+                <div className="mx-auto max-w-[1280px]">
+                    <div className="max-w-3xl text-center lg:text-left">
+                        <div className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#7A7D86]">
+                            RESEARCH
+                        </div>
+                        <h1 className="mt-5 text-[48px] font-bold leading-[0.95] tracking-[-0.04em] text-[#111827] md:text-[64px] lg:text-[76px]">
                             Expectations vs Reality
-                        </h2>
+                        </h1>
+                        <p className="mt-5 max-w-2xl text-[18px] leading-8 text-[#60636B]">
+                            Research shows a significant gap between when dancers expect to retire and when they actually do.
+                        </p>
                     </div>
+                </div>
+            </section>
 
-                    {/* Chart */}
-                    <div>
-                        <div className="border-none shadow-lg bg-white backdrop-blur-sm overflow-hidden rounded-lg">
-                            <div className="bg-light-gray p-4">
-                                <h3 className="text-white font-merriweather text-lg">Mean Ages of Transition</h3>
-                                <p className="text-white/80 font-montserrat text-xs">
-                                    <a
-                                        href="http://neumann.hec.ca/aimac2005/PDF_Text/JeffriJ_ThrosbyD.pdf"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="underline hover:text-white inline-flex items-center"
-                                    >
-                                        Source: Making Changes: Facilitating the Transition of Dancers
-                                        <ExternalLink className="h-3 w-3 ml-1" />
-                                    </a>
-                                </p>
-                            </div>
-                            <div className="p-4">
-                                <div className="mb-4 flex flex-wrap gap-2">
-                                    {(['Australia', 'UnitedStates', 'Switzerland'] as const).map((c) => (
-                                        <button
-                                            key={c}
-                                            className={`rounded-full px-3 py-1 text-sm font-montserrat ${ageCountry === c ? 'bg-purple-gray text-white' : 'bg-off-white border border-light-gray'}`}
-                                            onClick={() => setAgeCountry(c)}
-                                        >
-                                            {c === 'UnitedStates' ? 'USA' : c}
-                                        </button>
-                                    ))}
+            <section className="bg-[#F7F2EA] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+                <div className="mx-auto max-w-[1280px]">
+                    <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
+                        <DetailCardShell className="h-full">
+                            <div className="flex h-full flex-col p-5 md:p-6">
+                                <div className="flex flex-col items-center justify-between gap-3 rounded-[24px] border border-black/8 bg-white px-5 py-4 text-center sm:flex-row sm:text-left">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF2F5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#647C90]">
+                                        Free resource
+                                    </div>
+                                    <div className="rounded-full border border-[#E5DDCF] bg-[#FCFAF6] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#5E6167]">
+                                        Practical context
+                                    </div>
                                 </div>
-                                <div className="mb-4">
-                                    <h3 className="text-dark-gray font-merriweather text-base mb-1">
-                                        {countryDisplayNames[ageCountry]} Dancers
-                                    </h3>
-                                    <p className="text-xs text-dark-gray mb-2 font-montserrat">
-                                        When dancers expect to retire vs. when they actually do
-                                    </p>
-                                </div>
-                                <div className="h-[300px]">
-                                    <ResponsiveContainer width="100%" height="100%">
-                                        <BarChart
-                                            data={ageData[ageCountry]}
-                                            margin={{
-                                                top: 20,
-                                                right: 30,
-                                                left: 10,
-                                                bottom: 30,
-                                            }}
-                                        >
-                                            <CartesianGrid strokeDasharray="3 3" stroke="#647C90" />
-                                            <XAxis
-                                                dataKey="category"
-                                                stroke="#4E4F50"
-                                                tick={{ fontSize: 10, fontFamily: 'Montserrat, sans-serif' }}
-                                            />
-                                            <YAxis
-                                                stroke="#4E4F50"
-                                                tick={{ fontSize: 10, fontFamily: 'Montserrat, sans-serif' }}
-                                                label={{
-                                                    value: 'Age (years)',
-                                                    angle: -90,
-                                                    position: 'insideLeft',
-                                                    style: {
-                                                        textAnchor: 'middle',
-                                                        fontSize: 10,
-                                                        fontFamily: 'Montserrat, sans-serif',
-                                                        fill: '#4E4F50'
-                                                    },
-                                                }}
-                                            />
-                                            <Tooltip
-                                                formatter={(value) => [`${value} years`, '']}
-                                                contentStyle={{
-                                                    backgroundColor: '#E2DED0',
-                                                    borderColor: '#746C70',
-                                                    borderRadius: '8px',
-                                                    fontFamily: 'Montserrat, sans-serif',
-                                                    fontSize: '12px',
-                                                }}
-                                                labelStyle={{
-                                                    color: '#4E4F50',
-                                                    fontFamily: 'Merriweather, serif',
-                                                    fontSize: '12px',
-                                                }}
-                                            />
-                                            <Legend
-                                                verticalAlign="bottom"
-                                                height={36}
-                                                wrapperStyle={{
-                                                    fontFamily: 'Montserrat, sans-serif',
-                                                    fontSize: '10px',
-                                                }}
-                                            />
-                                            <Bar
-                                                dataKey="value"
-                                                name="Dance Career Retirement Age"
-                                                fill="#928490"
-                                                radius={[4, 4, 0, 0]}
+
+                                <div className="mt-4 flex flex-1 flex-col gap-4">
+                                    <div className="rounded-[26px] border border-black/8 bg-white px-5 py-6 md:px-6">
+                                        <div className="mt-5 text-center md:text-left">
+                                            <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                                How to use this
+                                            </p>
+                                            <h2 className="mt-3 text-[30px] font-bold leading-[1.02] tracking-[-0.03em] text-[#111827] md:text-[36px]">
+                                                How to read and use the research
+                                            </h2>
+                                            <p className="mt-4 text-[15px] leading-8 text-[#60636B]">
+                                                The point of the data is not just to inform. It is to help dancers plan earlier, interpret their own timeline more honestly, and make stronger transition decisions.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-6 grid gap-4">
+                                            {usageCards.map((item) => (
+                                                <div
+                                                    key={item.title}
+                                                    className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-5 py-5"
+                                                >
+                                                    <div className="flex items-start gap-3">
+                                                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#647C90] text-white">
+                                                            <item.icon className="h-5 w-5" />
+                                                        </div>
+                                                        <div>
+                                                            <div className="text-[22px] font-bold leading-tight text-[#111827]">
+                                                                {item.title}
+                                                            </div>
+                                                            <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                                                {item.description}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                                            <a
+                                                href="#data"
+                                                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#647C90] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#556c7f]"
                                             >
-                                                <LabelList
-                                                    dataKey="value"
-                                                    position="top"
-                                                    style={{
-                                                        fill: '#4E4F50',
-                                                        fontFamily: 'Montserrat, sans-serif',
-                                                        fontWeight: '500',
-                                                        fontSize: '10px',
-                                                    }}
-                                                />
-                                            </Bar>
-                                        </BarChart>
-                                    </ResponsiveContainer>
+                                                Explore the data
+                                                <ArrowRight className="h-4 w-4" />
+                                            </a>
+                                            <Link
+                                                href="/resources"
+                                                className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#FCFAF6] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#111827]"
+                                            >
+                                                Browse all resources
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </DetailCardShell>
 
-                    {/* Statistics Cards */}
-                    <div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {getAgeStats(ageData[ageCountry]).map((stat, i) => (
-                                <div key={i} className="bg-white backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
-                                    <div className="text-2xl text-center font-bold text-brown-gray font-merriweather">{stat.value}</div>
-                                    <p className="text-dark-gray text-center text-xs mt-1 font-montserrat flex-grow">{stat.label}</p>
-                                    {/* Badge added here */}
-                                    <div className="mt-2 pt-2 border-t border-light-gray border-opacity-30 flex justify-center">
-                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
-                                            Data Insight
-                                        </span>
+                        <div className="grid gap-8">
+                            <DetailCardShell>
+                                <div className="p-5 md:p-6">
+                                    <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                        Why this matters
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                                    <h2 className="mt-3 text-[30px] font-bold leading-[1.02] tracking-[-0.03em] text-[#111827]">
+                                        The data makes the emotional reality easier to name
+                                    </h2>
 
-                {/* Desktop Layout - Vertical Flow */}
-                <div className="hidden md:block space-y-12">
-                    {/* Header Section */}
-                    <div className="text-center max-w-2xl mx-auto">
-                        <h2 className="text-bold text-center text-5xl md:text-6xl lg:text-6xl font-bold text-black mb-6 leading-tight">
-                            Expectations vs Reality
-                        </h2>
-                    </div>
-
-                    {/* Country Selector */}
-                    <div className="flex justify-center">
-                        <div className="inline-flex rounded-full bg-white p-1 shadow-inner">
-                            {(['Australia', 'UnitedStates', 'Switzerland'] as const).map((c) => (
-                                <button
-                                    key={c}
-                                    className={`px-6 py-2 rounded-full font-montserrat transition-all ${ageCountry === c
-                                        ? 'bg-purple-gray text-white shadow-md'
-                                        : 'text-dark-gray hover:bg-beige'}`}
-                                    onClick={() => setAgeCountry(c)}
-                                >
-                                    {c === 'UnitedStates' ? 'USA' : c}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Chart Section */}
-                    <div className="border-none shadow-lg bg-white backdrop-blur-sm overflow-hidden rounded-lg">
-                        <div className="bg-light-gray p-6">
-                            <h3 className="text-white font-merriweather text-xl text-center">
-                                Average Retirement Age for {countryDisplayNames[ageCountry]} Dancers
-                            </h3>
-                            <p className="text-white/80 font-montserrat text-sm text-center mt-2">
-                                <a
-                                    href="http://neumann.hec.ca/aimac2005/PDF_Text/JeffriJ_ThrosbyD.pdf"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="underline hover:text-white inline-flex items-center"
-                                >
-                                    Source: Making Changes: Facilitating the Transition of Dancers
-                                    <ExternalLink className="h-3 w-3 ml-1" />
-                                </a>
-                            </p>
-                        </div>
-                        <div className="p-6">
-                            <div className="h-[400px]">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <BarChart
-                                        data={ageData[ageCountry]}
-                                        margin={{
-                                            top: 20,
-                                            right: 30,
-                                            left: 20,
-                                            bottom: 30,
-                                        }}
-                                    >
-                                        <CartesianGrid strokeDasharray="3 3" stroke="#647C90" />
-                                        <XAxis
-                                            dataKey="category"
-                                            stroke="#4E4F50"
-                                            tick={{
-                                                fontSize: 12,
-                                                fontFamily: 'Montserrat, sans-serif'
-                                            }}
-                                        />
-                                        <YAxis
-                                            stroke="#4E4F50"
-                                            tick={{
-                                                fontSize: 12,
-                                                fontFamily: 'Montserrat, sans-serif'
-                                            }}
-                                            label={{
-                                                value: 'Age (years)',
-                                                angle: -90,
-                                                position: 'insideLeft',
-                                                style: {
-                                                    textAnchor: 'middle',
-                                                    fontFamily: 'Montserrat, sans-serif',
-                                                    fill: '#4E4F50'
-                                                },
-                                            }}
-                                        />
-                                        <Tooltip
-                                            formatter={(value) => [`${value} years`, '']}
-                                            contentStyle={{
-                                                backgroundColor: '#E2DED0',
-                                                borderColor: '#746C70',
-                                                borderRadius: '8px',
-                                                fontFamily: 'Montserrat, sans-serif',
-                                                fontSize: '14px',
-                                            }}
-                                            labelStyle={{
-                                                color: '#4E4F50',
-                                                fontFamily: 'Merriweather, serif',
-                                                fontSize: '14px',
-                                            }}
-                                        />
-                                        <Legend
-                                            verticalAlign="bottom"
-                                            height={36}
-                                            wrapperStyle={{
-                                                fontFamily: 'Montserrat, sans-serif',
-                                                fontSize: '12px',
-                                            }}
-                                        />
-                                        <Bar
-                                            dataKey="value"
-                                            name="Dance Career Retirement Age"
-                                            fill="#928490"
-                                            radius={[4, 4, 0, 0]}
-                                        >
-                                            <LabelList
-                                                dataKey="value"
-                                                position="top"
-                                                style={{
-                                                    fill: '#4E4F50',
-                                                    fontFamily: 'Montserrat, sans-serif',
-                                                    fontWeight: '500',
-                                                    fontSize: '12px',
-                                                }}
-                                            />
-                                        </Bar>
-                                    </BarChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Stats Grid */}
-                    <div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {getAgeStats(ageData[ageCountry]).map((stat, i) => (
-                                <div key={i} className="bg-white backdrop-blur-sm rounded-lg p-4 shadow-md flex flex-col">
-                                    <div className="text-2xl text-center font-bold text-brown-gray font-merriweather">{stat.value}</div>
-                                    <p className="text-dark-gray text-center text-1xl mt-1 font-montserrat flex-grow">{stat.label}</p>
-                                    {/* Badge added here */}
-                                    <div className="mt-2 pt-2 border-t border-light-gray border-opacity-30 flex justify-center">
-                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
-                                            {stat.badge}
-                                        </span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-};
-
-const ExpectationsVsRealityPage = () => {
-    const router = useRouter();
-    const [isVisible, setIsVisible] = useState(false);
-    const BASE_PATH = process.env.PUBLIC_URL || "";
-
-    useEffect(() => {
-        setIsVisible(true);
-    }, []);
-
-    const stats = [
-        { number: "9", label: "Year Gap Average", icon: TrendingUp },
-        { number: "3", label: "Countries Studied", icon: Globe },
-        { number: "33", label: "Average Retirement Age", icon: Award },
-        { number: "100", label: "Free Access", icon: Heart }
-    ];
-
-    const insights = [
-        {
-            title: "Early Planning Matters",
-            description: "Dancers who understand that they need to plan for retirement sooner than they might want to, have significantly better outcomes in their next career.",
-            icon: Calendar
-        },
-        {
-            title: "Dancers Aren’t Prepared",
-            description: "Unfortunately, due to pressures of the industry and unhelpful narratives, professional dancers are often unprepared for life after dance.",
-            icon: Shield
-        },
-        {
-            title: "Unrealistic Expectations",
-            description: "We all know dance careers are short but we don’t think our dance careers will be short. Facing this reality head on will help you both as a dancer and in your life off the stage.",
-            icon: Users
-        }
-    ];
-
-    return (
-        <div className="bg-beige min-h-screen">
-            <Navigation />
-            <div className="bg-beige">
-                {/* Hero Section */}
-                <div className="relative pt-24 pb-16 md:py-24 overflow-hidden">
-                    <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="bg-white backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20 overflow-hidden">
-                            <div className="relative z-10 text-center">
-                                <ScrollAnimation delay={200}>
-                                    <div className="inline-flex items-center justify-center px-6 py-3 rounded-full mb-6 border backdrop-blur-xl shadow-xl"
-                                        style={{ borderColor: 'rgba(100, 124, 144,0.3)', backgroundColor: 'rgba(100, 124, 144, 0.7)' }}>
-                                        <div className="w-2 h-2 rounded-full mr-3 " style={{ backgroundColor: '#E2DED0' }}></div>
-                                        <span className="text-sm font-bold tracking-widest text-white">DATA-DRIVEN GUIDENCE</span>
-                                        <div className="w-2 h-2 rounded-full ml-3" style={{ backgroundColor: '#E2DED0' }}></div>
-                                    </div>
-                                    <h1 className="text-5xl md:text-7xl font-bold text-black">
-                                        Career Transition Insights
-                                    </h1>
-                                </ScrollAnimation>
-                                <ScrollAnimation delay={300}>
-                                    <br></br>
-                                    <p className="font-montserrat text-xl text-brown-gray max-w-3xl mx-auto mb-8 px-4 md:px-0">
-                                        Research shows a significant gap between when dancers expect to retire and when they actually do
-                                    </p>
-                                </ScrollAnimation>
-
-                                {/* Stats Section */}
-                                <ScrollAnimation delay={400}>
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-10">
-                                        {stats.map((stat, index) => (
-                                            <StatCard key={index} {...stat} index={index} />
+                                    <div className="mt-5 grid gap-4">
+                                        {impactCards.map((item) => (
+                                            <div
+                                                key={item.title}
+                                                className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-5 py-5"
+                                            >
+                                                <div className="flex items-start gap-3">
+                                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#647C90] text-white">
+                                                        <item.icon className="h-5 w-5" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-[22px] font-bold leading-tight text-[#111827]">
+                                                            {item.title}
+                                                        </div>
+                                                        <p className="mt-3 text-[14px] leading-7 text-[#60636B]">
+                                                            {item.description}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         ))}
                                     </div>
-                                </ScrollAnimation>
 
-                                <ScrollAnimation delay={500}>
-                                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                                        <button
-                                            onClick={() => {
-                                                const dataSection = document.getElementById('data-section');
-                                                if (dataSection) {
-                                                    dataSection.scrollIntoView({ behavior: 'smooth' });
-                                                }
-                                            }}
-                                            className="bg-purple-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                                        >
-                                            <span className="relative z-10">EXPLORE DATA</span>
-                                            <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        </button>
-                                    </div>
-                                </ScrollAnimation>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* How to use Section */}
-                <div className="py-16 bg-light-gray">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <ScrollAnimation>
-                            <div className="text-center mb-16">
-                                <h2 className="text-bold text-5xl font-bold text-white mb-4">How to Read and Use This Data</h2>
-                                <p className="font-montserrat text-xl text-white max-w-2xl mx-auto">
-                                    Learn how to interpret the research findings and apply them to your career planning
-                                </p>
-                            </div>
-                        </ScrollAnimation>
-
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <ScrollAnimation delay={0}>
-                                <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
-                                    <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                        <TrendingUp className="w-8 h-8 text-white" />
-                                    </div>
-                                    <h3 className="font-merriweather text-2xl font-bold text-black mb-4">Understand the Gap</h3>
-                                    <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">
-                                        The bar chart shows the difference between when dancers expect to retire (Expectations) and when they actually do (Reality). The gap represents how much earlier careers typically end compared to expectations.
-                                    </p>
-                                    {/* Badge added here */}
-                                    <div className="mt-4 pt-4 border-t border-light-gray border-opacity-30 flex justify-center">
-                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
-                                            Step 1
-                                        </span>
-                                    </div>
-                                </div>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={300}>
-                                <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
-                                    <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                        <Globe className="w-8 h-8 text-white" />
-                                    </div>
-                                    <h3 className="font-merriweather text-2xl font-bold text-black mb-4">Compare Countries</h3>
-                                    <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">
-                                        Use the country buttons to see how retirement patterns vary across different regions. This helps you understand the global context of dance career transitions and identify relevant benchmarks for your situation.
-                                    </p>
-                                    {/* Badge added here */}
-                                    <div className="mt-4 pt-4 border-t border-light-gray border-opacity-30 flex justify-center">
-                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
-                                            Step 2
-                                        </span>
-                                    </div>
-                                </div>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={600}>
-                                <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
-                                    <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                        <Calendar className="w-8 h-8 text-white" />
-                                    </div>
-                                    <h3 className="font-merriweather text-2xl font-bold text-black mb-4">Plan Your Timeline</h3>
-                                    <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">
-                                        Use the statistics to create a realistic transition timeline. If the data shows dancers retire 7 years earlier than expected, it’s important to start planning your career change sooner than you think.
-                                    </p>
-                                    {/* Badge added here */}
-                                    <div className="mt-4 pt-4 border-t border-light-gray border-opacity-30 flex justify-center">
-                                        <span className="inline-block text-xs font-montserrat text-white bg-light-gray px-2 py-1 rounded-full">
-                                            Step 3
-                                        </span>
-                                    </div>
-                                </div>
-                            </ScrollAnimation>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Data Visualization Section */}
-                <DataSection />
-
-                {/* Key Insights Section */}
-                <div className="py-16 bg-light-gray">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <ScrollAnimation>
-                            <div className="text-center mb-16">
-                                <h2 className="text-bold text-5xl font-bold text-white mb-4">Key Insights from the Research</h2>
-                                <p className="font-montserrat text-xl text-white max-w-2xl mx-auto">
-                                    Understanding the data can help you make better decisions about your career transition
-                                </p>
-                            </div>
-                        </ScrollAnimation>
-
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {insights.map((insight, index) => (
-                                <ScrollAnimation key={index} delay={index * 300}>
-                                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-gray text-center hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 flex flex-col h-full">
-                                        <div className="w-16 h-16 rounded-full bg-purple-gray flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                                            <insight.icon className="w-8 h-8 text-white" />
+                                    <div className="mt-5 border-t border-[#E8E0D4] pt-5">
+                                        <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                            Research insight
                                         </div>
-                                        <h3 className="font-merriweather text-2xl font-bold text-black mb-4">{insight.title}</h3>
-                                        <p className="font-montserrat text-brown-gray leading-relaxed flex-grow">{insight.description}</p>
+                                        <div className="rounded-[22px] border border-black/8 bg-white px-5 py-5">
+                                            <p className="text-[18px] font-medium leading-8 text-[#4E4F50] md:text-[20px] md:leading-9">
+                                                “When dancers see the expectation gap in the research, it becomes easier to understand that early retirement is a structural part of the profession rather than a personal failure.”
+                                            </p>
+                                            <a
+                                                href={sourceUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-[#647C90]"
+                                            >
+                                                View source
+                                                <ExternalLink className="h-4 w-4" />
+                                            </a>
+                                        </div>
                                     </div>
-                                </ScrollAnimation>
-                            ))}
+                                </div>
+                            </DetailCardShell>
                         </div>
                     </div>
-                </div>
 
-                {/* Final CTA Section */}
-                <div className="text-center py-16 bg-beige relative overflow-hidden">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="bg-white rounded-2xl shadow-lg mx-auto max-w-4xl p-8 md:p-12 border-2 border-light-gray">
-                            <ScrollAnimation delay={0}>
-                                <div className="flex items-center justify-center mb-4">
-                                    <h2 className="text-bold text-4xl md:text-5xl font-bold text-black text-center">
-                                        Plan Your Transition with Confidence
-                                    </h2>
-                                </div>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={300}>
-                                <p className="font-montserrat text-brown-gray text-lg mb-8 max-w-2xl mx-auto">
-                                    Start planning for before, during, and after your pivot with the Happy Trails course. This 5-year career change roadmap helps guide you through your career change journey — step by step.
-                                </p>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation delay={700}>
-                                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                                    <Link
-                                        href="/products/happy-trails"
-                                        className="bg-light-gray hover:bg-purple-gray text-white font-montserrat font-semibold py-4 px-10 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group"
-                                    >
-                                        <span className="relative z-10">GET STARTED</span>
-                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-gray/20 to-light-gray/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    </Link>
-                                </div>
-                            </ScrollAnimation>
-
-                            {/* Questions Section */}
-                            <ScrollAnimation delay={900}>
-                                <div className="border-t border-gray-200 pt-8 mt-8">
-                                    <div className="text-center">
-                                        <h4 className="font-merriweather text-lg font-bold text-black mb-2 flex items-center justify-center">
-                                            <Users className="w-5 h-5 text-purple-gray mr-2" />
-                                            Questions about the data?
-                                        </h4>
-                                        <p className="font-montserrat text-brown-gray">
-                                            <a href="mailto:kaylee@pivotfordancers.com" className="text-purple-gray hover:underline">
-                                                kaylee@pivotfordancers.com
-                                            </a>
+                    <div className="mt-8 grid gap-8">
+                        <DetailCardShell>
+                            <div id="data" className="p-5 md:p-6">
+                                <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                                    <div>
+                                        <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                            Interactive data
+                                        </div>
+                                        <h2 className="mt-3 text-[30px] font-bold leading-[1.02] tracking-[-0.03em] text-[#111827] md:text-[36px]">
+                                            Compare what dancers expected with what actually happened
+                                        </h2>
+                                        <p className="mt-4 max-w-3xl text-[15px] leading-8 text-[#60636B]">
+                                            Use the selector to move between countries, then review the chart, summary cards, and comparison table below.
                                         </p>
                                     </div>
+                                    <a
+                                        href={sourceUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em] text-[#647C90]"
+                                    >
+                                        View source
+                                        <ExternalLink className="h-4 w-4" />
+                                    </a>
                                 </div>
-                            </ScrollAnimation>
+
+                                <div className="mt-6 flex justify-center lg:justify-start">
+                                    <div className="inline-flex flex-wrap justify-center gap-2 rounded-full border border-black/8 bg-[#FCFAF6] p-2 shadow-[0_18px_40px_rgba(45,49,56,0.06)]">
+                                        {(Object.keys(countryLabels) as Country[]).map((country) => (
+                                            <button
+                                                key={country}
+                                                type="button"
+                                                onClick={() => setSelectedCountry(country)}
+                                                className="rounded-full px-5 py-2.5 text-[13px] font-bold uppercase tracking-[0.14em] transition"
+                                                style={{
+                                                    backgroundColor: selectedCountry === country ? '#647C90' : 'transparent',
+                                                    color: selectedCountry === country ? '#FFFFFF' : '#60636B',
+                                                }}
+                                            >
+                                                {country === 'UnitedStates' ? 'USA' : country}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="mt-6 rounded-[26px] border border-[#E8E0D4] bg-[#FCFAF6]">
+                                    <div className="border-b border-black/8 bg-[#647C90] px-6 py-6 text-white md:px-8">
+                                        <h3 className="text-[26px] font-bold tracking-[-0.02em]">
+                                            Average retirement age for {countryLabels[selectedCountry]} dancers
+                                        </h3>
+                                        <p className="mt-2 text-[15px] leading-7 text-white/80">
+                                            Expectations show when dancers thought they would retire. Reality shows when they actually did.
+                                        </p>
+                                    </div>
+
+                                    <div className="p-5 md:p-8">
+                                        <div className="h-[320px] md:h-[420px]">
+                                            <ResponsiveContainer width="100%" height="100%">
+                                                <BarChart
+                                                    data={ageData[selectedCountry]}
+                                                    margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
+                                                >
+                                                    <CartesianGrid strokeDasharray="3 3" stroke="#D7D0C4" />
+                                                    <XAxis
+                                                        dataKey="category"
+                                                        stroke="#4E4F50"
+                                                        tick={{ fontSize: 12, fontFamily: 'Montserrat, sans-serif' }}
+                                                    />
+                                                    <YAxis
+                                                        stroke="#4E4F50"
+                                                        tick={{ fontSize: 12, fontFamily: 'Montserrat, sans-serif' }}
+                                                        label={{
+                                                            value: 'Age (years)',
+                                                            angle: -90,
+                                                            position: 'insideLeft',
+                                                            style: {
+                                                                textAnchor: 'middle',
+                                                                fill: '#4E4F50',
+                                                                fontFamily: 'Montserrat, sans-serif',
+                                                                fontSize: 12,
+                                                            },
+                                                        }}
+                                                    />
+                                                    <Tooltip
+                                                        formatter={(value) => [`${value} years`, '']}
+                                                        contentStyle={{
+                                                            backgroundColor: '#F5F6F2',
+                                                            borderColor: '#D7D0C4',
+                                                            borderRadius: '12px',
+                                                            fontFamily: 'Montserrat, sans-serif',
+                                                            fontSize: '12px',
+                                                        }}
+                                                        labelStyle={{
+                                                            color: '#111827',
+                                                            fontFamily: 'Merriweather, serif',
+                                                        }}
+                                                    />
+                                                    <Legend
+                                                        verticalAlign="bottom"
+                                                        height={36}
+                                                        wrapperStyle={{
+                                                            fontFamily: 'Montserrat, sans-serif',
+                                                            fontSize: '12px',
+                                                        }}
+                                                    />
+                                                    <Bar
+                                                        dataKey="value"
+                                                        name="Dance career retirement age"
+                                                        fill="#928490"
+                                                        radius={[8, 8, 0, 0]}
+                                                    >
+                                                        <LabelList
+                                                            dataKey="value"
+                                                            position="top"
+                                                            style={{
+                                                                fill: '#4E4F50',
+                                                                fontFamily: 'Montserrat, sans-serif',
+                                                                fontSize: '12px',
+                                                                fontWeight: 600,
+                                                            }}
+                                                        />
+                                                    </Bar>
+                                                </BarChart>
+                                            </ResponsiveContainer>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                                    {selectedStats.map((stat) => (
+                                        <div
+                                            key={stat.label}
+                                            className="rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6] px-5 py-5"
+                                        >
+                                            <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#928490]">
+                                                {stat.label}
+                                            </div>
+                                            <div className="mt-3 text-[34px] font-bold leading-none tracking-[-0.03em] text-[#111827]">
+                                                {stat.value}
+                                            </div>
+                                            <p className="mt-4 text-[14px] leading-7 text-[#60636B]">
+                                                {stat.caption}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </DetailCardShell>
+
+                        <div className="grid gap-8">
+                            <DetailCardShell>
+                                <div className="p-5 md:p-6">
+                                    <div className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.18em] text-[#7A7D86]">
+                                        <BarChart3 className="h-4 w-4 text-[#647C90]" />
+                                        Country comparison table
+                                    </div>
+                                    <p className="mt-3 max-w-2xl text-[15px] leading-7 text-[#60636B]">
+                                        A direct comparison of expected retirement age, actual retirement age, and the average gap for each country represented in the research.
+                                    </p>
+
+                                    <div className="mt-5 overflow-hidden rounded-[22px] border border-[#E8E0D4] bg-[#FCFAF6]">
+                                        <div className="overflow-x-auto">
+                                            <table className="min-w-full border-collapse">
+                                                <thead>
+                                                    <tr className="bg-white">
+                                                        <th className="px-6 py-4 text-left text-[12px] font-bold uppercase tracking-[0.16em] text-[#7A7D86] md:px-8">
+                                                            Country
+                                                        </th>
+                                                        <th className="px-6 py-4 text-left text-[12px] font-bold uppercase tracking-[0.16em] text-[#7A7D86] md:px-8">
+                                                            Expected age
+                                                        </th>
+                                                        <th className="px-6 py-4 text-left text-[12px] font-bold uppercase tracking-[0.16em] text-[#7A7D86] md:px-8">
+                                                            Actual age
+                                                        </th>
+                                                        <th className="px-6 py-4 text-left text-[12px] font-bold uppercase tracking-[0.16em] text-[#7A7D86] md:px-8">
+                                                            Gap
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {countryTableRows.map((row) => (
+                                                        <tr
+                                                            key={row.country}
+                                                            className="border-t border-black/8"
+                                                            style={{
+                                                                backgroundColor:
+                                                                    row.country === selectedCountry
+                                                                        ? 'rgba(100,124,144,0.06)'
+                                                                        : '#FCFAF6',
+                                                            }}
+                                                        >
+                                                            <td className="px-6 py-5 text-[16px] font-semibold text-[#111827] md:px-8">
+                                                                {row.label}
+                                                            </td>
+                                                            <td className="px-6 py-5 text-[15px] text-[#60636B] md:px-8">
+                                                                {row.expected}
+                                                            </td>
+                                                            <td className="px-6 py-5 text-[15px] text-[#60636B] md:px-8">
+                                                                {row.actual}
+                                                            </td>
+                                                            <td className="px-6 py-5 md:px-8">
+                                                                <span className="rounded-full bg-[#647C90] px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white">
+                                                                    {row.gap} yrs
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </DetailCardShell>
                         </div>
                     </div>
                 </div>
-            </div>
-            <Footer />
-        </div>
+            </section>
+        </SiteChrome>
     );
-};
-
-export default ExpectationsVsRealityPage;
+}

@@ -1,3 +1,4 @@
+import type { ComponentType } from 'react';
 import { Briefcase, MessageSquare } from 'lucide-react';
 
 export interface Service {
@@ -6,7 +7,7 @@ export interface Service {
     subtitle: string;
     description: string;
     img: string;
-    icon: React.FC<any>;
+    icon: ComponentType<{ className?: string }>;
     rating: number;
     reviews: number;
     price: number;
@@ -37,7 +38,7 @@ export const services: Service[] = [
             'LinkedIn profile optimization',
         ],
         url: 'https://tidycal.com/pivotfordancers/mentorship-1',
-        category: "",
+        category: '',
     },
     {
         id: 2,
@@ -58,6 +59,6 @@ export const services: Service[] = [
             'Confidence building',
         ],
         url: 'https://tidycal.com/pivotfordancers/mock-interview',
-        category: "",
+        category: '',
     },
 ];

@@ -129,7 +129,7 @@ const Quiz: React.FC = () => {
 
     function ResultCard({ personalityType }: ResultCardProps) {
         const handleDownload = () => {
-            window.open(personalityType.pdfLink, '_blank');
+            window.open(personalityType.pdfLink, '_blank', 'noopener,noreferrer');
         };
 
         return (
@@ -155,10 +155,10 @@ const Quiz: React.FC = () => {
                                 <h3 className="font-merriweather text-2xl text-dark-gray mb-4">What This Means For Your Transition</h3>
                                 <div className="space-y-4 font-montserrat text-light-gray">
                                     <p>
-                                        Based on your answers, we've identified key strengths and challenges that could come up during your transition.
+                                        Based on your answers, we&apos;ve identified key strengths and challenges that could come up during your transition.
                                     </p>
                                     <p>
-                                        We've sent a detailed breakdown to your email with unique career change recommendations to suit your pivot personality.
+                                        We&apos;ve sent a detailed breakdown to your email with unique career change recommendations to suit your pivot personality.
                                     </p>
                                 </div>
                             </div>
@@ -292,7 +292,6 @@ const Quiz: React.FC = () => {
     const [name, setName] = useState("")
     const [error, setError] = useState<string | null>(null)
 
-    // API configuration - using Next.js environment variables
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -352,7 +351,6 @@ const Quiz: React.FC = () => {
         const { groupId } = personalityTypes[personalityResult as keyof typeof personalityTypes]
 
         try {
-            // Make the API request to submit user data with the correct group ID
             const response = await fetch(API_URL || "", {
                 method: "POST",
                 headers: {
@@ -361,25 +359,20 @@ const Quiz: React.FC = () => {
                     Accept: "application/json",
                 },
                 body: JSON.stringify({
-                    email: email,
+                    email,
                     firstname: name,
-                    groups: [groupId], // Using the correct group ID based on personality type
-                    trigger_automation: true, // Enable automation if you have one set up
+                    groups: [groupId],
+                    trigger_automation: true,
                 }),
             })
 
             if (response.ok) {
-                console.log("Successfully submitted user data to API")
                 setResult(personalityResult)
-
             } else {
-                const errorData = await response.json()
-                console.error("API error:", errorData)
                 setError("There was an error submitting your results. Please try again.")
             }
-        } catch (err) {
+        } catch {
             setError("There was an error submitting your results. Please try again.")
-            console.error(err)
         } finally {
             setIsSubmitting(false)
         }
